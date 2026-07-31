@@ -19,6 +19,8 @@
   - `chronos-logo-v2.html` — ロゴ探索版（Erode + Timeline Dot、旧案）
 - `assets/chronos-logo.svg` — **確定ロゴ原本**（グラデーション円シンボル+白ワードマーク、5.7MB）
   - 配信用軽量版: `prototypes/assets/chronos-logo.svg`（埋め込みテクスチャを800pxに縮小、68KB）
+  - シンボル単体: `assets/chronos-symbol.svg`（原本）/ `prototypes/assets/chronos-symbol.svg`（軽量版）
+  - favicon: `prototypes/assets/favicon.png`（64px）+ `apple-touch-icon.png`（180px）。全プロトタイプ・共有環境のheadに設定済み
   - SVGはロゴぴったりのサイズのため、設置時はロゴ高さの50%以上のアイソレーションを確保する
   - `chronos-design-system.html` — デザインシステム一覧
 - `docs/` — 仕様書・ブランドガイドライン・収支（docx/xlsx）
