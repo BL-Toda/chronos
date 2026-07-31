@@ -17,8 +17,16 @@ export interface Env {
 interface ManifestItem {
   file: string;
   title: string;
+  name: string;
+  group: string;
+  order: number;
   size: number;
   mtime: number;
+}
+
+interface Manifest {
+  groups: string[];
+  items: ManifestItem[];
 }
 
 const COOKIE_NAME = "chronos_session";
@@ -216,20 +224,32 @@ ${error ? '<p class="err">パスワードが違います。</p>' : ""}
 }
 
 function indexPage(): string {
-  const items = (manifest as ManifestItem[])
-    .slice()
-    .sort((a, b) => b.mtime - a.mtime);
-  const rows = items
-    .map((it) => {
-      const kb = (it.size / 1024).toFixed(0);
-      const date = new Date(it.mtime).toLocaleDateString("ja-JP", {
-        year: "numeric", month: "2-digit", day: "2-digit", timeZone: "Asia/Tokyo",
-      });
-      return `<a class="row" href="/${encodeURIComponent(it.file)}" target="_blank" rel="noopener" data-q="${escapeHtml((it.title + " " + it.file).toLowerCase())}">
-<span class="t">${escapeHtml(it.title)}</span>
+  const { groups, items } = manifest as Manifest;
+  // 「未分類」（names.json未登録の新規ファイル）は目に付くよう先頭に出す
+  const groupOrder = items.some((i) => i.group === "未分類") ? ["未分類", ...groups] : groups;
+  const renderRow = (it: ManifestItem) => {
+    const kb = (it.size / 1024).toFixed(0);
+    const date = new Date(it.mtime).toLocaleDateString("ja-JP", {
+      year: "numeric", month: "2-digit", day: "2-digit", timeZone: "Asia/Tokyo",
+    });
+    return `<a class="row" href="/${encodeURIComponent(it.file)}" target="_blank" rel="noopener" data-q="${escapeHtml((it.name + " " + it.title + " " + it.file).toLowerCase())}">
+<span class="t">${escapeHtml(it.name)}</span>
 <span class="f mono">${escapeHtml(it.file)}</span>
 <span class="m mono">${kb} KB ・ ${date}</span>
 </a>`;
+  };
+  const sections = groupOrder
+    .map((g) => {
+      const members = items
+        .filter((it) => it.group === g)
+        .sort((a, b) => (a.order === b.order ? a.file.localeCompare(b.file) : a.order - b.order));
+      if (!members.length) return "";
+      return `<section class="grp" data-grp>
+<h2 class="grp-title">${escapeHtml(g)}<span class="grp-count mono">${members.length}</span></h2>
+<div class="list">
+${members.map(renderRow).join("\n")}
+</div>
+</section>`;
     })
     .join("\n");
 
@@ -239,12 +259,12 @@ function indexPage(): string {
 ${FONT_LINKS}
 <style>${BASE_CSS}
 .container{max-width:880px;margin:0 auto;padding:32px 24px 96px}
-header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0 32px;
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;height:100px;
   margin-bottom:28px;border-bottom:1px solid var(--border)}
-/* ロゴのアイソレーション：高さの50%以上を周囲に確保（headerのpadding/gapで担保） */
+/* ロゴのアイソレーション：高さの50%以上を周囲に確保（headerの高さ100pxで担保） */
 .brand{display:flex;align-items:center;gap:14px;margin:0}
-.brand img{display:block;height:26px;width:auto}
-.brand small{font-size:11px;letter-spacing:.06em;color:var(--text2);margin-left:13px}
+.brand img{display:block;height:40px;width:auto}
+.brand small{font-size:11px;letter-spacing:.06em;color:var(--text2);margin-left:20px}
 .logout{background:none;border:1px solid var(--border);border-radius:8px;color:var(--text2);
   font-size:12px;font-family:inherit;padding:7px 14px;cursor:pointer;transition:.15s}
 .logout:hover{border-color:var(--accent);color:var(--text)}
@@ -253,6 +273,11 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;pa
   font-family:inherit;background:var(--card);color:var(--text)}
 .toolbar input:focus{outline:none;border-color:var(--accent)}
 .count{font-size:12px;color:var(--text2);white-space:nowrap}
+.grp{margin-bottom:36px}
+.grp-title{font-size:13px;font-weight:500;letter-spacing:.12em;color:var(--text2);margin:0 0 12px;
+  display:flex;align-items:center;gap:10px}
+.grp-count{font-size:11px;color:var(--text2);opacity:.7}
+.grp[hidden]{display:none}
 .list{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:14px;overflow:hidden}
 .row{display:grid;grid-template-columns:1fr auto auto;gap:18px;align-items:center;
   padding:15px 20px;background:var(--card);border-bottom:1px solid var(--border);transition:.15s}
@@ -274,13 +299,12 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;pa
   <input id="search" type="search" placeholder="検索（タイトル・ファイル名）" autocomplete="off">
   <span id="count" class="count"></span>
 </div>
-<div class="list" id="list">
-${rows}
-</div>
+${sections}
 <p class="empty" id="empty" hidden>該当するプロトタイプがありません。</p>
 </div>
 <script>
 var rows=[].slice.call(document.querySelectorAll('.row'));
+var grps=[].slice.call(document.querySelectorAll('[data-grp]'));
 var count=document.getElementById('count');
 var empty=document.getElementById('empty');
 function apply(){
@@ -290,9 +314,12 @@ function apply(){
     var hit=!q||r.getAttribute('data-q').indexOf(q)>=0;
     r.hidden=!hit;if(hit)n++;
   });
+  grps.forEach(function(g){
+    var visible=g.querySelectorAll('.row:not([hidden])').length;
+    g.hidden=visible===0;
+  });
   count.textContent=n+' / '+rows.length+' 件';
   empty.hidden=n>0;
-  document.getElementById('list').style.display=n>0?'':'none';
 }
 document.getElementById('search').addEventListener('input',apply);
 apply();

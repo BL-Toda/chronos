@@ -1,0 +1,33 @@
+{
+  "_comment": "共有環境の一覧ページに表示する名称とグループ。編集後は npm run deploy で反映。ここに無いファイルはtitleで「未分類」に表示される",
+  "groups": ["アプリ画面", "LP", "ドキュメント", "アーカイブ"],
+  "pages": {
+    "chronos-explore.html": { "name": "年表一覧 Explore（v2・現行作業中）", "group": "アプリ画面" },
+    "chronos-viewer.html": { "name": "年表ビューア（Appleの歴史デモ）", "group": "アプリ画面" },
+    "chronos-screens.html": { "name": "主要画面集（マイページ・設定ほか）", "group": "アプリ画面" },
+    "chronos-auth.html": { "name": "ログイン / サインアップ", "group": "アプリ画面" },
+    "chronos-onboarding.html": { "name": "オンボーディング v1", "group": "アプリ画面" },
+    "chronos-onboarding-v2.html": { "name": "オンボーディング v2", "group": "アプリ画面" },
+    "chronos-creation-flow.html": { "name": "年表作成フロー", "group": "アプリ画面" },
+    "chronos-share-embed.html": { "name": "共有・埋め込みUI", "group": "アプリ画面" },
+    "chronos-period-lanes.html": { "name": "期間イベント表示（レーン案）", "group": "アプリ画面" },
+    "chronos-period-ui.html": { "name": "期間イベントUI検討", "group": "アプリ画面" },
+    "chronos-avatars.html": { "name": "アバター案", "group": "アプリ画面" },
+    "chronos.html": { "name": "アプリ全体 v1", "group": "アプリ画面" },
+    "chronos-v2.html": { "name": "アプリ全体 v2", "group": "アプリ画面" },
+    "chronos-v3-multilayer.html": { "name": "アプリ全体 v3（マルチレイヤー）", "group": "アプリ画面" },
+    "chronos-lp.html": { "name": "LP v1", "group": "LP" },
+    "chronos-lp-v2.html": { "name": "LP v2", "group": "LP" },
+    "chronos-lp-v3.html": { "name": "LP v3（最新）", "group": "LP" },
+    "chronos-lp-brand.html": { "name": "LP ブランド訴求案", "group": "LP" },
+    "chronos-lp-launch.html": { "name": "LP ローンチ告知版", "group": "LP" },
+    "chronos-design-system.html": { "name": "デザインシステム", "group": "ドキュメント" },
+    "chronos-sitemap.html": { "name": "サイトマップ・画面遷移", "group": "ドキュメント" },
+    "chronos-tech-overview.html": { "name": "技術構成メモ", "group": "ドキュメント" },
+    "chronos-ogp-templates.html": { "name": "OGP画像テンプレート", "group": "ドキュメント" },
+    "chronos-logo-exploration.html": { "name": "ロゴ検討（旧案）", "group": "アーカイブ" },
+    "chronos-logo-v2.html": { "name": "ロゴ検討 v2（旧案）", "group": "アーカイブ" },
+    "chronos-font-compare.html": { "name": "フォント比較", "group": "アーカイブ" },
+    "chronos-font-gothic.html": { "name": "ゴシック体検討", "group": "アーカイブ" }
+  }
+}

@@ -8,6 +8,8 @@
 - URL: https://chronos.babelinc.workers.dev （共有パスワードでログイン、関係者専用）
 - 実体: `share/` — prototypes/ を静的アセット配信する認証ゲート付きWorker（eコンシェルmockup-shareと同方式）
 - デプロイ: `cd share && npm run deploy` （プロトタイプ更新後はこれを実行するだけで反映）
+- 一覧の表示名・グループ: `share/names.json` で管理（新規プロトタイプ追加時はここに登録。未登録は「未分類」で先頭表示）
+- ヘッダー規則: アプリ画面・LPのヘッダー/ナビは高さ100px・ロゴ高さ40px
 - パスワード変更: `cd share && npx wrangler secret put SHARE_PASSWORD`
 
 ## ディレクトリ構成

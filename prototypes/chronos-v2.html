@@ -107,7 +107,7 @@
     position: sticky; top: 0; z-index: 100;
     background: rgba(10, 10, 12, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
-    padding: 0 20px; height: 60px;
+    padding: 0 20px; height: 100px;
     display: flex; align-items: center; justify-content: space-between;
   }
   .header-brand {
@@ -508,7 +508,7 @@
 
   /* Progress Bar */
   .progress-bar {
-    position: fixed; top: 60px; left: 0; height: 2px;
+    position: fixed; top: 100px; left: 0; height: 2px;
     background: var(--accent); z-index: 99;
     transition: width 0.15s ease-out; width: 0;
   }
@@ -568,7 +568,7 @@
 <!-- APP -->
 <div class="app" id="app">
   <header class="header">
-    <div class="header-brand" onclick="showHome()"><img src="assets/chronos-logo.svg" alt="Chronos" style="height:26px;width:auto;display:block"></div>
+    <div class="header-brand" onclick="showHome()"><img src="assets/chronos-logo.svg" alt="Chronos" style="height:40px;width:auto;display:block"></div>
     <div class="header-actions">
       <button class="header-back" id="backBtn" onclick="showHome()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
