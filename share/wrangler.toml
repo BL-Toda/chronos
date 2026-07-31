@@ -1,0 +1,15 @@
+name = "chronos-share"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+
+# リポジトリ内の prototypes/ をそのまま静的アセットとして配信する。
+# run_worker_first により全リクエストがWorkerを通るため、認証ゲートを必ず経由する。
+[assets]
+directory = "../prototypes"
+binding = "ASSETS"
+run_worker_first = true
+
+# 秘密情報（パスワード・署名鍵）はwrangler.tomlには書かない。
+# 下記コマンドでCloudflare側に安全に登録する：
+#   npx wrangler secret put SHARE_PASSWORD
+#   npx wrangler secret put SESSION_SECRET
