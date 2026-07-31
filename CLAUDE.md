@@ -5,7 +5,7 @@
 
 ## 共有環境（Cloudflare Workers）
 
-- URL: https://chronos-share.babel-design.workers.dev （共有パスワードでログイン、関係者専用）
+- URL: https://chronos.babelinc.workers.dev （共有パスワードでログイン、関係者専用）
 - 実体: `share/` — prototypes/ を静的アセット配信する認証ゲート付きWorker（eコンシェルmockup-shareと同方式）
 - デプロイ: `cd share && npm run deploy` （プロトタイプ更新後はこれを実行するだけで反映）
 - パスワード変更: `cd share && npx wrangler secret put SHARE_PASSWORD`
