@@ -37,14 +37,16 @@
 - フォント: 見出し **Erode**（Fontshare, Medium 500, letter-spacing +8〜12px）/ 本文 **DM Sans** / 数値 **JetBrains Mono**
 - トーン: 北欧的・静か・余白重視。コピーに「!」は使わない
 
-## 未着手タスク: Explore v3（次の実装対象）
+## Explore v3 — 完了（2026-08-01）
 
-対象: `prototypes/chronos-explore.html`
+`chronos-explore.html` はv3実装済み: 生成型カバー画像（シード決定論・カテゴリカラー6パターン）/ ♡🔖ボタン+カウント（カード・リスト両対応）/ フルード全幅グリッド / モバイル導線（ボトムシート型フィルタ+ハンバーガー）/ a11y（button化・focus-visible・コントラスト是正）。
+ソーシャル状態はlocalStorageで画面間連携: `chronos_likes_v1`（id配列）/ `chronos_bookmarks_v1`（`{id,title,desc,cat,catName,likes}`配列）。マイページ（screens）にブックマークタブ、viewerにいいねボタン実装済み。
 
-1. 全年表カードにカバー画像を全面適用（画像アセットは無し → カテゴリカラーベースのSVG/CSSグラデーション生成型。年表テーマに合った抽象パターン）
-2. いいね ♡ + ブックマーク 🔖 ボタンをカード/リスト両ビューに追加、両カウントを表示
-3. ブックマークはローカル状態管理し、マイページにブックマークタブを追加
-4. コンテナのmax-widthを撤廃し、フルード全幅レイアウトに（グリッドは `auto-fill/minmax`、ビューポート連動カラム数）
+## 次の実装候補
+
+- 公開系UXのデザイン（公開設定モーダル・イベント編集パネル拡張・公開プロフィール @username）→ 仕様は docs/chronos-spec-v2-addendum.md
+- Next.js + Supabase + Cloudflare の雛形構築（再実装方針）
+- LPのFramer移行検討
 
 ## DB・API設計（正: docs/chronos-spec-v2-addendum.md）
 

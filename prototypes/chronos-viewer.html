@@ -489,6 +489,29 @@
     max-width:480px; margin:0 auto;
   }
 
+  /* Like button */
+  .like-btn {
+    display:inline-flex; align-items:center; gap:7px;
+    height:30px; padding:0 14px; border-radius:15px;
+    border:1px solid var(--border); background:transparent;
+    color:var(--text2); font-family:var(--f-body); font-size:12px;
+    cursor:pointer; transition:all 0.25s;
+  }
+  .like-btn:hover { border-color:var(--border2); color:var(--text); }
+  .like-btn svg {
+    width:14px; height:14px; flex-shrink:0;
+    stroke:currentColor; stroke-width:1.8; fill:none;
+    stroke-linecap:round; stroke-linejoin:round; transition:all 0.25s;
+  }
+  .like-count {
+    font-family:var(--f-mono); font-size:11px; letter-spacing:0.04em;
+  }
+  .like-btn.liked {
+    border-color:rgba(212,132,154,0.35); background:var(--c-pink-dim); color:var(--c-pink);
+  }
+  .like-btn.liked svg { fill:var(--c-pink); stroke:var(--c-pink); }
+  .like-btn:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+
   /* Share button in header */
   .hdr-btn {
     height:34px; padding:0 14px; border-radius:8px;
@@ -590,6 +613,10 @@
       <span>@toda</span>
     </div>
     <span class="pub-stat">14 events · 3 layers · 1976–2019</span>
+    <button class="like-btn" id="likeBtn" type="button" aria-pressed="false" onclick="toggleTimelineLike()" aria-label="この年表にいいね">
+      <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <span class="like-count" id="likeCount">3,049</span>
+    </button>
   </div>
   <div class="pub-desc">1976年の創業から現在まで。製品リリース・経営判断・業界動向の3つの視点で読み解く、Apple 43年の歩み。</div>
 </div>
@@ -1140,6 +1167,37 @@ window.addEventListener('DOMContentLoaded', () => {
 function openShare(){document.getElementById('shareOverlay').classList.add('open');document.body.style.overflow='hidden';}
 function closeShare(){document.getElementById('shareOverlay').classList.remove('open');document.body.style.overflow='';}
 function copyURL(){const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000);}
+// Escキーで共有シートを閉じる（オーバーレイクリックはHTML側のonclickで対応済み）
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && document.getElementById('shareOverlay').classList.contains('open')) closeShare();
+});
+
+// ===== Like (Explore v3と共通のlocalStorageスキーマ) =====
+const LIKE_KEY = 'chronos_likes_v1';
+const TIMELINE_ID = 'apple-history';
+const LIKE_BASE = 3049;
+
+function getLikedIds() {
+  try {
+    const v = JSON.parse(localStorage.getItem(LIKE_KEY));
+    return Array.isArray(v) ? v : [];
+  } catch (e) { return []; }
+}
+function renderLike() {
+  const liked = getLikedIds().includes(TIMELINE_ID);
+  const btn = document.getElementById('likeBtn');
+  btn.classList.toggle('liked', liked);
+  btn.setAttribute('aria-pressed', liked ? 'true' : 'false');
+  document.getElementById('likeCount').textContent = (LIKE_BASE + (liked ? 1 : 0)).toLocaleString('ja-JP');
+}
+function toggleTimelineLike() {
+  let ids = getLikedIds();
+  if (ids.includes(TIMELINE_ID)) ids = ids.filter(id => id !== TIMELINE_ID);
+  else ids.push(TIMELINE_ID);
+  localStorage.setItem(LIKE_KEY, JSON.stringify(ids));
+  renderLike();
+}
+renderLike();
 </script>
 </body>
 </html>
