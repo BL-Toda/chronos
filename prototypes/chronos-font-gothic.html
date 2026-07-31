@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja" style="background-color:#0A0A0C;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chronos — 日本語ゴシック体フォント比較</title>
+<link href="https://api.fontshare.com/v2/css?f[]=erode@300,400,500,600,300i,400i&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;color:#E8E4DE;-webkit-font-smoothing:antialiased;margin:0}
+.wrap{background-color:#0A0A0C;min-height:100vh;padding:40px 24px 80px}
+.container{max-width:720px;margin:0 auto}
+
+.doc-header{text-align:center;margin-bottom:48px;padding-bottom:24px;border-bottom:1px solid rgba(200,168,126,0.1)}
+.doc-brand{font-family:'Erode',serif;font-size:14px;font-weight:500;letter-spacing:0.18em;color:#C8A87E;text-transform:uppercase;margin-bottom:6px}
+.doc-title{font-family:'Erode',serif;font-size:22px;font-weight:400;color:#F5F2ED;margin-bottom:8px}
+.doc-desc{font-size:12px;color:#8A8680;line-height:1.6}
+
+.font-card{
+  border-radius:16px;background:#16161A;border:1px solid rgba(200,168,126,0.1);
+  margin-bottom:20px;overflow:hidden;transition:all 0.3s;
+}
+.font-card:hover{border-color:rgba(200,168,126,0.22)}
+.font-card-header{
+  padding:16px 20px;display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid rgba(200,168,126,0.06);
+}
+.font-card-name{font-family:'JetBrains Mono',monospace;font-size:11px;color:#C8A87E;letter-spacing:0.06em}
+.font-card-meta{font-size:10px;color:#5A5754;font-family:'JetBrains Mono',monospace}
+.font-card-body{padding:24px 20px}
+
+.sample-row{margin-bottom:20px}
+.sample-row:last-child{margin-bottom:0}
+.sample-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:#5A5754;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px}
+.sample-hero{font-size:26px;font-weight:400;color:#F5F2ED;line-height:1.3;margin-bottom:4px}
+.sample-hero em{font-style:normal;color:#C8A87E}
+.sample-sub{font-size:16px;font-weight:400;color:#F5F2ED;line-height:1.4;margin-bottom:4px}
+.sample-body{font-size:14px;color:#8A8680;line-height:1.6}
+.sample-mixed{font-size:22px;font-weight:400;color:#F5F2ED;line-height:1.3}
+
+.rec-badge{
+  padding:4px 10px;border-radius:6px;font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:0.04em;background:rgba(123,198,126,0.12);color:#7BC67E;
+}
+
+/* Compare grids */
+.compare-section{margin-top:40px;padding-top:32px;border-top:1px solid rgba(200,168,126,0.1)}
+.compare-title{font-family:'Erode',serif;font-size:18px;color:#F5F2ED;margin-bottom:8px;text-align:center}
+.compare-desc{font-size:12px;color:#8A8680;text-align:center;margin-bottom:20px}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.compare-cell{padding:20px;border-radius:12px;background:#111114;border:1px solid rgba(200,168,126,0.1);text-align:center}
+.compare-cell-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:#5A5754;margin-bottom:8px}
+.compare-cell-type{font-family:'JetBrains Mono',monospace;font-size:10px;color:#C8A87E;margin-bottom:4px}
+.compare-cell-text{font-size:22px;color:#F5F2ED;line-height:1.3}
+
+/* Context mock */
+.ctx{margin-top:40px;padding-top:32px;border-top:1px solid rgba(200,168,126,0.1)}
+.ctx-title{font-family:'Erode',serif;font-size:18px;color:#F5F2ED;margin-bottom:20px;text-align:center}
+.ctx-card{padding:24px 20px;border-radius:14px;background:#111114;border:1px solid rgba(200,168,126,0.1);margin-bottom:16px}
+.ctx-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:#C8A87E;margin-bottom:12px;letter-spacing:0.06em}
+.ctx-mock-header{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.ctx-mock-dot{width:10px;height:10px;border-radius:50%;border:2.5px solid #5B9BD5;background:#111114;flex-shrink:0}
+.ctx-mock-year{font-family:'JetBrains Mono',monospace;font-size:11px;color:#5A5754}
+.ctx-mock-title{font-size:16px;color:#F5F2ED;font-weight:500;margin-bottom:4px}
+.ctx-mock-desc{font-size:14px;color:#8A8680;line-height:1.6}
+.ctx-mock-tag{display:inline-block;padding:3px 10px;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:10px;background:rgba(91,155,213,0.12);color:#5B9BD5;margin-top:8px}
+
+@media(max-width:500px){.compare-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="container">
+
+<div class="doc-header">
+  <div class="doc-brand">Chronos</div>
+  <div class="doc-title">日本語ゴシック体フォント比較</div>
+  <div class="doc-desc">Erode（英数字）と組み合わせる日本語ゴシック系Webフォント候補。<br>明朝（Shippori Mincho）との比較セクション付き。</div>
+</div>
+
+<!-- 1. Noto Sans JP -->
+<div class="font-card">
+  <div class="font-card-header">
+    <div class="font-card-name">① Noto Sans JP</div>
+    <div class="font-card-meta">Google Fonts / 7 weights / OFL</div>
+  </div>
+  <div class="font-card-body">
+    <div class="sample-row">
+      <div class="sample-label">Hero — 26px</div>
+      <div class="sample-hero" style="font-family:'Noto Sans JP',sans-serif">あらゆる出来事の<em>文脈</em>を、可視化する。</div>
+    </div>
+    <div class="sample-row">
+      <div class="sample-label">Title — 16px</div>
+      <div class="sample-sub" style="font-family:'Noto Sans JP',sans-serif">Steve Jobs、Appleを退社</div>
+    </div>
+    <div class="sample-row">
+      <div class="sample-label">Mixed（Erode + Noto Sans JP）</div>
+      <div class="sample-mixed"><span style="font-family:'Erode',serif">Apple</span> <span style="font-family:'Noto Sans JP',sans-serif">の歴史</span></div>
+    </div>
+    <div class="sample-row">
+      <div class="sample-label">特徴</div>
+      <div class="sample-body">最も普及した日本語ゴシック。クセがなく高い可読性。ウェイト7段階。ニュートラルゆえに個性は控えめ。Erodeとの組み合わせはセリフ×サンセリフの対比が生まれる。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 2. Zen Kaku Gothic New -->
+<div class="font-card">
+  <div class="font-card-header">
+    <div class="font-card-name">② Zen Kaku Gothic New</div>
+    <div style="display:flex;gap:8px;align-items:center"><span class="rec-badge">推奨</span><span class="font-card-meta">Google Fonts / 5 weights / OFL</span></div>
+  </div>
+  <div class="font-card-body">
+    <div class="sample-row">
+      <div class="sample-label">Hero — 26px</div>
+      <div class="sample-hero" style="font-family:'Zen Kaku Gothic New',sans-serif">あらゆる出来事の<em>文脈</em>を、可視化する。</div>
+    </div>
+    <div class="sample-row">
+      <div class="sample-label">Title — 16px</div>
+      <div class="sample-sub" style="font-family:'Zen Kaku Gothic New',sans-serif">Steve Jobs、Appleを退社</div>
+    </div>
+    <div class="sample-row">
+      <div class="sample-label">Mixed（Erode + Zen Kaku Gothic New）</div>
+      <div class="sample-mixed"><span style="font-family:'Erode',serif">Apple</span> <span style="font-family:'Zen Kaku Gothic New',sans-serif">の歴史</span></div>
+    </div>
+    <div class="sample-row">
+      <div class="sample-label">特徴</div>
+      <div class="sample-body">程よい丸みとモダンさを持つゴシック。Noto Sans JPより少し柔らかく、Erodeの有機的なセリフと調和する。線の太さが均一で、ダークUI上での視認性が高い。「洗練されたカジュアル」。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 3. M PLUS 1p -->
+<div class="font-card">
+  <div class="font-card-header">
+    <div class="font-card-name">③ M PLUS 1p</div>
+    <div class="font-card-meta">Google Fonts / 4 weights / OFL</div>
+  </div>
+  <div class="font-card-body">
+    <div class="sample-row">
+      <div class="sample-label">Hero — 26px</div>
+      <div class="sample-hero" style="font-family:'M PLUS 1p',sans-serif">あらゆる出来事の<em>文脈</em>を、可視化する。</div>
+    </div>
+    <div class="sample-row">
+      <div class="sample-label">Title — 16px</div>
+      <div class="sample-sub" style="font-family:'M PLUS 1p',sans-serif">Steve Jobs、Appleを退社</div>
+    </div>
+    <div class="sample-row">
+      <div class="sample-label">Mixed（Erode + M PLUS 1p）</div>
+      <div class="sample-mixed"><span style="font-family:'Erode',serif">Apple</span> <span style="font-family:'M PLUS 1p',sans-serif">の歴史</span></div>
+    </div>
+    <div class="sample-row">
+      <div class="sample-label">特徴</div>
+      <div class="sample-body">幾何学的でスッキリしたゴシック。やや角張った印象があり、テクノロジー寄りのトーン。Chronosの「知的さ」は出るが、Erodeとの温度差がやや大きい。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 4. BIZ UDPGothic -->
+<div class="font-card">
+  <div class="font-card-header">
+    <div class="font-card-name">④ BIZ UDPGothic</div>
+    <div class="font-card-meta">Google Fonts / 2 weights / OFL</div>
+  </div>
+  <div class="font-card-body">
+    <div class="sample-row">
+      <div class="sample-label">Hero — 26px</div>
+      <div class="sample-hero" style="font-family:'BIZ UDPGothic',sans-serif">あらゆる出来事の<em>文脈</em>を、可視化する。</div>
+    </div>
+    <div class="sample-row">
+      <div class="sample-label">Title — 16px</div>
+      <div class="sample-sub" style="font-family:'BIZ UDPGothic',sans-serif">Steve Jobs、Appleを退社</div>
+    </div>
+    <div class="sample-row">
+      <div class="sample-label">Mixed（Erode + BIZ UDPGothic）</div>
+      <div class="sample-mixed"><span style="font-family:'Erode',serif">Apple</span> <span style="font-family:'BIZ UDPGothic',sans-serif">の歴史</span></div>
+    </div>
+    <div class="sample-row">
+      <div class="sample-label">特徴</div>
+      <div class="sample-body">ユニバーサルデザイン設計。字面が大きく視認性が非常に高い。実用性重視でやや事務的な印象。ウェイトが2段階しかなく、デザイン上の柔軟性に欠ける。</div>
+    </div>
+  </div>
+</div>
+
+<!-- Side by side: Gothic comparison -->
+<div class="compare-section">
+  <div class="compare-title">ゴシック4書体 同一テキスト比較</div>
+  <div class="compare-grid">
+    <div class="compare-cell">
+      <div class="compare-cell-label">Noto Sans JP</div>
+      <div class="compare-cell-text" style="font-family:'Noto Sans JP',sans-serif">文脈を可視化する</div>
+    </div>
+    <div class="compare-cell">
+      <div class="compare-cell-label">Zen Kaku Gothic New ★</div>
+      <div class="compare-cell-text" style="font-family:'Zen Kaku Gothic New',sans-serif">文脈を可視化する</div>
+    </div>
+    <div class="compare-cell">
+      <div class="compare-cell-label">M PLUS 1p</div>
+      <div class="compare-cell-text" style="font-family:'M PLUS 1p',sans-serif">文脈を可視化する</div>
+    </div>
+    <div class="compare-cell">
+      <div class="compare-cell-label">BIZ UDPGothic</div>
+      <div class="compare-cell-text" style="font-family:'BIZ UDPGothic',sans-serif">文脈を可視化する</div>
+    </div>
+  </div>
+</div>
+
+<!-- Cross-category comparison: Mincho vs Gothic -->
+<div class="compare-section">
+  <div class="compare-title">明朝 vs ゴシック — 最終候補比較</div>
+  <div class="compare-desc">見出しの印象がどう変わるか</div>
+  <div class="compare-grid">
+    <div class="compare-cell">
+      <div class="compare-cell-type">明朝</div>
+      <div class="compare-cell-label">Shippori Mincho</div>
+      <div class="compare-cell-text" style="font-family:'Shippori Mincho',serif">文脈を可視化する</div>
+    </div>
+    <div class="compare-cell">
+      <div class="compare-cell-type">ゴシック</div>
+      <div class="compare-cell-label">Zen Kaku Gothic New</div>
+      <div class="compare-cell-text" style="font-family:'Zen Kaku Gothic New',sans-serif">文脈を可視化する</div>
+    </div>
+  </div>
+</div>
+
+<!-- Context mock: Timeline event -->
+<div class="ctx">
+  <div class="ctx-title">タイムライン上での見え方</div>
+
+  <div class="ctx-card">
+    <div class="ctx-label">Shippori Mincho（明朝）</div>
+    <div class="ctx-mock-header">
+      <div class="ctx-mock-dot"></div>
+      <div class="ctx-mock-year">2007年 1月</div>
+    </div>
+    <div class="ctx-mock-title" style="font-family:'Shippori Mincho',serif">iPhone 発表</div>
+    <div class="ctx-mock-desc">マルチタッチのスマートフォンが世界を変えた。「電話を再発明する」— Macworld 2007での伝説的プレゼン。</div>
+    <div class="ctx-mock-tag">製品</div>
+  </div>
+
+  <div class="ctx-card">
+    <div class="ctx-label">Zen Kaku Gothic New（ゴシック）</div>
+    <div class="ctx-mock-header">
+      <div class="ctx-mock-dot"></div>
+      <div class="ctx-mock-year">2007年 1月</div>
+    </div>
+    <div class="ctx-mock-title" style="font-family:'Zen Kaku Gothic New',sans-serif">iPhone 発表</div>
+    <div class="ctx-mock-desc">マルチタッチのスマートフォンが世界を変えた。「電話を再発明する」— Macworld 2007での伝説的プレゼン。</div>
+    <div class="ctx-mock-tag">製品</div>
+  </div>
+
+  <div class="ctx-card">
+    <div class="ctx-label">Noto Sans JP（ゴシック）</div>
+    <div class="ctx-mock-header">
+      <div class="ctx-mock-dot"></div>
+      <div class="ctx-mock-year">2007年 1月</div>
+    </div>
+    <div class="ctx-mock-title" style="font-family:'Noto Sans JP',sans-serif">iPhone 発表</div>
+    <div class="ctx-mock-desc">マルチタッチのスマートフォンが世界を変えた。「電話を再発明する」— Macworld 2007での伝説的プレゼン。</div>
+    <div class="ctx-mock-tag">製品</div>
+  </div>
+</div>
+
+</div>
+</div>
+</body>
+</html>

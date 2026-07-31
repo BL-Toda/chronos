@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Chronos — Beautiful Timeline Creation</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0A0A0C;
+    --bg-secondary: #111114;
+    --bg-card: #18181C;
+    --bg-card-hover: #1E1E24;
+    --accent: #C8A87E;
+    --accent-dim: rgba(200, 168, 126, 0.15);
+    --accent-glow: rgba(200, 168, 126, 0.06);
+    --text-primary: #E8E4DE;
+    --text-secondary: #8A8680;
+    --text-muted: #5A5754;
+    --border: rgba(200, 168, 126, 0.12);
+    --border-strong: rgba(200, 168, 126, 0.25);
+    --timeline-line: rgba(200, 168, 126, 0.2);
+    --layer-tech: #7EB8C8;
+    --layer-culture: #C87E9A;
+    --layer-politics: #8EC87E;
+    --layer-business: #C8B87E;
+    --layer-science: #9E7EC8;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== SPLASH ===== */
+  .splash {
+    position: fixed; inset: 0; z-index: 1000;
+    background: var(--bg-primary);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+  }
+  .splash.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+  .splash-logo {
+    font-family: var(--font-display); font-size: 4rem; font-weight: 300;
+    letter-spacing: 0.3em; color: var(--accent); text-transform: uppercase;
+    opacity: 0; animation: fadeUp 1.2s ease forwards 0.3s;
+  }
+  .splash-sub {
+    font-family: var(--font-body); font-size: 0.85rem; letter-spacing: 0.25em;
+    color: var(--text-muted); margin-top: 12px; text-transform: uppercase;
+    opacity: 0; animation: fadeUp 1.2s ease forwards 0.7s;
+  }
+  .splash-cta { margin-top: 48px; opacity: 0; animation: fadeUp 1.2s ease forwards 1.1s; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== BUTTONS ===== */
+  .btn {
+    font-family: var(--font-body); font-size: 0.82rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    border: none; cursor: pointer; transition: all 0.3s ease; border-radius: var(--radius-sm);
+  }
+  .btn-primary { background: var(--accent); color: var(--bg-primary); padding: 14px 36px; }
+  .btn-primary:hover { background: #D4B88E; transform: translateY(-1px); }
+  .btn-ghost { background: transparent; color: var(--accent); border: 1px solid var(--border-strong); padding: 10px 24px; }
+  .btn-ghost:hover { background: var(--accent-dim); }
+  .btn-small { font-size: 0.72rem; padding: 8px 16px; }
+  .btn-icon {
+    background: var(--bg-card); border: 1px solid var(--border); color: var(--text-secondary);
+    width: 40px; height: 40px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.3s ease;
+  }
+  .btn-icon:hover { background: var(--bg-card-hover); color: var(--accent); border-color: var(--border-strong); }
+
+  /* ===== APP SHELL ===== */
+  .app { display: none; min-height: 100vh; }
+  .app.active { display: block; }
+
+  /* ===== HEADER ===== */
+  .header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10, 10, 12, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 20px; height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .header-brand {
+    font-family: var(--font-display); font-size: 1.4rem; font-weight: 300;
+    letter-spacing: 0.2em; color: var(--accent); text-transform: uppercase; cursor: pointer;
+  }
+  .header-actions { display: flex; gap: 10px; align-items: center; }
+  .header-back {
+    display: none; align-items: center; gap: 6px;
+    font-family: var(--font-body); font-size: 0.78rem; font-weight: 500;
+    color: var(--accent); background: none; border: none; cursor: pointer;
+    letter-spacing: 0.05em;
+  }
+  .header-back svg { width: 16px; height: 16px; }
+  .header-back.visible { display: flex; }
+
+  /* ===== HOME VIEW ===== */
+  .home { padding: 24px 20px 100px; max-width: 800px; margin: 0 auto; }
+
+  /* ===== AI GENERATION PANEL ===== */
+  .ai-panel {
+    background: var(--bg-secondary); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 24px 20px; margin-bottom: 32px;
+    position: relative; overflow: hidden;
+  }
+  .ai-panel::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: 0.5;
+  }
+  .ai-panel-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .ai-badge {
+    font-family: var(--font-mono); font-size: 0.65rem; font-weight: 400;
+    letter-spacing: 0.1em; color: var(--accent); background: var(--accent-dim);
+    padding: 4px 10px; border-radius: 20px;
+  }
+  .ai-panel-title { font-size: 0.92rem; font-weight: 500; color: var(--text-primary); }
+  .ai-input-group { display: flex; flex-direction: column; gap: 10px; }
+  .ai-input {
+    width: 100%; font-family: var(--font-body); font-size: 0.88rem;
+    color: var(--text-primary); background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: var(--radius-sm);
+    padding: 12px 14px; outline: none; transition: border-color 0.3s ease;
+  }
+  .ai-input:focus { border-color: var(--accent); }
+  .ai-input::placeholder { color: var(--text-muted); }
+  .ai-input-row { display: flex; gap: 10px; }
+  .ai-input-row .ai-input { flex: 1; }
+  .ai-generate-btn {
+    width: 100%; padding: 13px; margin-top: 4px;
+    font-family: var(--font-body); font-size: 0.8rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--bg-primary); background: linear-gradient(135deg, var(--accent), #D4B88E);
+    border: none; border-radius: var(--radius-sm); cursor: pointer;
+    transition: all 0.3s ease; position: relative; overflow: hidden;
+  }
+  .ai-generate-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 30px rgba(200, 168, 126, 0.2); }
+  .ai-generate-btn.loading { color: transparent; pointer-events: none; }
+  .ai-generate-btn.loading::after {
+    content: ''; position: absolute; top: 50%; left: 50%;
+    width: 20px; height: 20px; margin: -10px 0 0 -10px;
+    border: 2px solid transparent; border-top-color: var(--bg-primary);
+    border-radius: 50%; animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ===== SECTION CONTROLS ===== */
+  .section-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 16px; gap: 12px;
+  }
+  .section-label {
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--text-muted); white-space: nowrap;
+  }
+  .section-count {
+    font-family: var(--font-mono); font-size: 0.65rem;
+    color: var(--text-muted); margin-left: 8px;
+  }
+
+  /* ===== SEARCH BAR ===== */
+  .search-bar {
+    position: relative; margin-bottom: 16px;
+  }
+  .search-bar input {
+    width: 100%; font-family: var(--font-body); font-size: 0.85rem;
+    color: var(--text-primary); background: var(--bg-secondary);
+    border: 1px solid var(--border); border-radius: var(--radius-md);
+    padding: 12px 14px 12px 40px; outline: none; transition: border-color 0.3s ease;
+  }
+  .search-bar input:focus { border-color: var(--border-strong); }
+  .search-bar input::placeholder { color: var(--text-muted); }
+  .search-bar svg {
+    position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+    width: 16px; height: 16px; color: var(--text-muted);
+  }
+
+  /* ===== TAB FILTER ===== */
+  .tab-filter {
+    display: flex; gap: 2px; margin-bottom: 20px;
+    background: var(--bg-secondary); border-radius: var(--radius-sm);
+    padding: 3px; border: 1px solid var(--border);
+  }
+  .tab-btn {
+    flex: 1; font-family: var(--font-body); font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase; text-align: center;
+    padding: 9px 8px; border: none; border-radius: 6px;
+    background: transparent; color: var(--text-muted); cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .tab-btn.active { background: var(--bg-card-hover); color: var(--accent); }
+
+  /* ===== VIEW TOGGLE (Grid / List) ===== */
+  .view-toggle { display: flex; gap: 4px; }
+  .view-toggle-btn {
+    width: 34px; height: 34px; border-radius: 6px;
+    background: transparent; border: 1px solid var(--border);
+    color: var(--text-muted); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s ease;
+  }
+  .view-toggle-btn.active { background: var(--accent-dim); color: var(--accent); border-color: var(--accent); }
+  .view-toggle-btn svg { width: 16px; height: 16px; }
+
+  /* ===== SORT ===== */
+  .sort-select {
+    font-family: var(--font-body); font-size: 0.72rem;
+    color: var(--text-secondary); background: var(--bg-secondary);
+    border: 1px solid var(--border); border-radius: 6px;
+    padding: 7px 10px; outline: none; cursor: pointer;
+    -webkit-appearance: none;
+  }
+
+  /* ===== TIMELINE CARDS — LIST VIEW ===== */
+  .timeline-list { display: flex; flex-direction: column; gap: 12px; }
+  .timeline-list.grid-view {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  }
+
+  .timeline-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius-md); cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative; overflow: hidden;
+    opacity: 0; animation: slideUp 0.5s ease forwards;
+  }
+  .timeline-card:nth-child(1) { animation-delay: 0.05s; }
+  .timeline-card:nth-child(2) { animation-delay: 0.1s; }
+  .timeline-card:nth-child(3) { animation-delay: 0.15s; }
+  .timeline-card:nth-child(4) { animation-delay: 0.2s; }
+  .timeline-card:nth-child(5) { animation-delay: 0.25s; }
+  .timeline-card:nth-child(6) { animation-delay: 0.3s; }
+
+  .timeline-card:hover {
+    background: var(--bg-card-hover); border-color: var(--border-strong);
+    transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+
+  /* Card color accent strip */
+  .timeline-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--accent); opacity: 0.4;
+    transition: opacity 0.3s ease;
+  }
+  .timeline-card:hover::before { opacity: 0.8; }
+  .timeline-card[data-color="tech"]::before { background: var(--layer-tech); }
+  .timeline-card[data-color="culture"]::before { background: var(--layer-culture); }
+  .timeline-card[data-color="politics"]::before { background: var(--layer-politics); }
+  .timeline-card[data-color="business"]::before { background: var(--layer-business); }
+  .timeline-card[data-color="science"]::before { background: var(--layer-science); }
+
+  .card-inner { padding: 20px 18px; }
+
+  /* Grid-specific card style */
+  .grid-view .card-inner { padding: 16px 14px; }
+  .grid-view .timeline-card-title { font-size: 1.05rem; margin-bottom: 4px; }
+  .grid-view .timeline-card-desc { display: none; }
+  .grid-view .timeline-card-meta { margin-bottom: 8px; }
+
+  .timeline-card-title {
+    font-family: var(--font-display); font-size: 1.25rem; font-weight: 400;
+    margin-bottom: 6px; color: var(--text-primary); line-height: 1.3;
+  }
+  .timeline-card-desc {
+    font-size: 0.78rem; color: var(--text-secondary); line-height: 1.5;
+    margin-bottom: 10px;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .timeline-card-meta {
+    font-size: 0.7rem; color: var(--text-muted); display: flex;
+    gap: 12px; margin-bottom: 10px; align-items: center;
+  }
+  .timeline-card-meta svg { width: 12px; height: 12px; margin-right: 3px; vertical-align: -1px; }
+  .timeline-card-footer { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  .tag {
+    font-size: 0.6rem; font-weight: 500; letter-spacing: 0.05em;
+    padding: 3px 9px; border-radius: 20px; text-transform: uppercase;
+  }
+  .tag-tech { background: rgba(126, 184, 200, 0.15); color: var(--layer-tech); }
+  .tag-culture { background: rgba(200, 126, 154, 0.15); color: var(--layer-culture); }
+  .tag-politics { background: rgba(142, 200, 126, 0.15); color: var(--layer-politics); }
+  .tag-business { background: rgba(200, 184, 126, 0.15); color: var(--layer-business); }
+  .tag-science { background: rgba(158, 126, 200, 0.15); color: var(--layer-science); }
+
+  .shared-badge {
+    font-family: var(--font-mono); font-size: 0.58rem;
+    color: var(--text-muted); background: rgba(255,255,255,0.05);
+    padding: 2px 8px; border-radius: 10px; margin-left: auto;
+  }
+
+  /* ===== MINI TIMELINE PREVIEW ===== */
+  .mini-timeline {
+    display: flex; align-items: center; gap: 3px;
+    margin-top: 12px; padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+  .mini-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    transition: transform 0.2s ease;
+  }
+  .mini-line {
+    flex: 1; height: 1px; background: var(--border);
+  }
+  .mini-dot.tech { background: var(--layer-tech); }
+  .mini-dot.culture { background: var(--layer-culture); }
+  .mini-dot.politics { background: var(--layer-politics); }
+  .mini-dot.business { background: var(--layer-business); }
+  .mini-dot.science { background: var(--layer-science); }
+
+  .timeline-card:hover .mini-dot { transform: scale(1.5); }
+
+  .grid-view .mini-timeline { display: none; }
+
+  /* ===== EMPTY STATE ===== */
+  .empty-state {
+    text-align: center; padding: 60px 20px;
+    color: var(--text-muted);
+  }
+  .empty-state svg { width: 48px; height: 48px; margin-bottom: 16px; opacity: 0.3; }
+  .empty-state p { font-size: 0.85rem; line-height: 1.6; }
+
+  /* ===== TIMELINE DETAIL VIEW ===== */
+  .timeline-view { display: none; min-height: 100vh; padding-bottom: 100px; }
+  .timeline-view.active { display: block; }
+
+  .timeline-header {
+    padding: 32px 20px 20px; max-width: 640px; margin: 0 auto; text-align: center;
+  }
+  .timeline-header h1 {
+    font-family: var(--font-display); font-size: 2rem; font-weight: 300;
+    line-height: 1.3; margin-bottom: 8px;
+  }
+  .timeline-header p {
+    font-size: 0.82rem; color: var(--text-secondary);
+    line-height: 1.6; max-width: 480px; margin: 0 auto 16px;
+  }
+  .timeline-stats {
+    display: flex; justify-content: center; gap: 24px;
+    font-family: var(--font-mono); font-size: 0.68rem;
+    color: var(--text-muted); letter-spacing: 0.05em;
+  }
+  .timeline-stats span { display: flex; align-items: center; gap: 5px; }
+
+  /* Layer Filter */
+  .layer-filter {
+    display: flex; justify-content: center; gap: 8px;
+    padding: 12px 20px 20px; flex-wrap: wrap;
+  }
+  .layer-btn {
+    font-family: var(--font-body); font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 7px 16px; border-radius: 20px;
+    border: 1px solid var(--border); background: transparent;
+    color: var(--text-secondary); cursor: pointer; transition: all 0.3s ease;
+  }
+  .layer-btn.active { border-color: currentColor; }
+  .layer-btn[data-layer="all"].active { color: var(--accent); background: var(--accent-dim); border-color: var(--accent); }
+  .layer-btn[data-layer="tech"].active { color: var(--layer-tech); background: rgba(126, 184, 200, 0.12); }
+  .layer-btn[data-layer="culture"].active { color: var(--layer-culture); background: rgba(200, 126, 154, 0.12); }
+  .layer-btn[data-layer="politics"].active { color: var(--layer-politics); background: rgba(142, 200, 126, 0.12); }
+
+  /* View Toggle */
+  .story-toggle {
+    display: flex; justify-content: center; gap: 4px; padding: 0 20px 20px;
+  }
+  .story-toggle-btn {
+    font-family: var(--font-body); font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.06em; padding: 7px 16px;
+    border: 1px solid var(--border); background: transparent;
+    color: var(--text-muted); cursor: pointer; transition: all 0.3s ease;
+  }
+  .story-toggle-btn:first-child { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+  .story-toggle-btn:last-child { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+  .story-toggle-btn.active { background: var(--accent-dim); color: var(--accent); border-color: var(--accent); }
+
+  /* Timeline Track */
+  .timeline-track {
+    position: relative; max-width: 640px; margin: 0 auto; padding: 0 20px 0 48px;
+  }
+  .timeline-track::before {
+    content: ''; position: absolute; left: 34px; top: 0; bottom: 0;
+    width: 1px; background: var(--timeline-line);
+  }
+
+  .event-node {
+    position: relative; padding: 0 0 28px 28px;
+    opacity: 0; transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .event-node.visible { opacity: 1; transform: translateY(0); }
+  .event-node.hidden-layer { display: none; }
+
+  .event-dot {
+    position: absolute; left: -21px; top: 6px;
+    width: 11px; height: 11px; border-radius: 50%;
+    background: var(--accent); border: 2px solid var(--bg-primary);
+    box-shadow: 0 0 0 3px var(--accent-dim); z-index: 2;
+  }
+  .event-dot.tech { background: var(--layer-tech); box-shadow: 0 0 0 3px rgba(126, 184, 200, 0.15); }
+  .event-dot.culture { background: var(--layer-culture); box-shadow: 0 0 0 3px rgba(200, 126, 154, 0.15); }
+  .event-dot.politics { background: var(--layer-politics); box-shadow: 0 0 0 3px rgba(142, 200, 126, 0.15); }
+
+  .event-date {
+    font-family: var(--font-mono); font-size: 0.68rem;
+    color: var(--text-muted); letter-spacing: 0.1em; margin-bottom: 6px;
+  }
+  .event-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius-md); overflow: hidden;
+    transition: all 0.3s ease; cursor: pointer;
+  }
+  .event-card:hover { border-color: var(--border-strong); background: var(--bg-card-hover); }
+  .event-card-body { padding: 16px; }
+  .event-card-title {
+    font-family: var(--font-display); font-size: 1.15rem; font-weight: 400;
+    line-height: 1.3; margin-bottom: 5px; color: var(--text-primary);
+  }
+  .event-card-summary { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; }
+  .event-card-detail {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .event-card.expanded .event-card-detail { max-height: 400px; }
+  .event-card-detail-inner {
+    padding: 0 16px 16px; border-top: 1px solid var(--border); padding-top: 12px;
+  }
+  .event-card-detail p { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 10px; }
+  .event-source { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); }
+
+  /* Story View */
+  .story-container {
+    display: none; position: relative; overflow: hidden;
+    height: calc(100vh - 280px); min-height: 400px;
+  }
+  .story-container.active { display: block; }
+  .story-slide {
+    position: absolute; inset: 0; padding: 40px 28px;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+    opacity: 0; transform: translateX(100%);
+  }
+  .story-slide.active { opacity: 1; transform: translateX(0); }
+  .story-slide.prev { opacity: 0; transform: translateX(-100%); }
+  .story-year {
+    font-family: var(--font-display); font-size: 3.5rem; font-weight: 300;
+    color: var(--accent); opacity: 0.35; margin-bottom: 8px;
+  }
+  .story-title {
+    font-family: var(--font-display); font-size: 1.5rem; font-weight: 400;
+    line-height: 1.3; margin-bottom: 16px; max-width: 400px;
+  }
+  .story-text {
+    font-size: 0.85rem; color: var(--text-secondary);
+    line-height: 1.7; max-width: 400px;
+  }
+  .story-nav {
+    display: flex; justify-content: center; align-items: center;
+    gap: 20px; padding: 16px;
+  }
+  .story-dots { display: flex; gap: 5px; }
+  .story-dot-item {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--text-muted); transition: all 0.3s ease;
+  }
+  .story-dot-item.active { background: var(--accent); width: 20px; border-radius: 3px; }
+
+  /* Era Divider */
+  .era-divider { text-align: center; padding: 32px 20px 16px; max-width: 640px; margin: 0 auto; }
+  .era-divider-year {
+    font-family: var(--font-display); font-size: 2.5rem; font-weight: 300;
+    color: var(--accent); opacity: 0.25;
+  }
+
+  /* Scroll container */
+  .scroll-container { }
+  .scroll-container.hidden { display: none; }
+
+  /* Progress Bar */
+  .progress-bar {
+    position: fixed; top: 60px; left: 0; height: 2px;
+    background: var(--accent); z-index: 99;
+    transition: width 0.15s ease-out; width: 0;
+  }
+
+  /* ===== BOTTOM NAV ===== */
+  .bottom-nav {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10, 10, 12, 0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-around;
+    padding: 10px 0 calc(10px + var(--safe-bottom));
+  }
+  .nav-item {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    background: none; border: none; color: var(--text-muted); cursor: pointer;
+    padding: 6px 16px; transition: color 0.3s ease; font-family: var(--font-body);
+  }
+  .nav-item.active { color: var(--accent); }
+  .nav-item svg { width: 22px; height: 22px; }
+  .nav-item span { font-size: 0.6rem; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* ===== TOAST ===== */
+  .toast {
+    position: fixed; bottom: 90px; left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--bg-card); border: 1px solid var(--border-strong);
+    color: var(--text-primary); padding: 12px 24px; border-radius: var(--radius-sm);
+    font-size: 0.82rem; opacity: 0; transition: all 0.4s ease;
+    z-index: 200; pointer-events: none; white-space: nowrap;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (min-width: 768px) {
+    .splash-logo { font-size: 5rem; }
+    .home { padding: 40px 32px 120px; }
+    .timeline-list.grid-view { grid-template-columns: repeat(3, 1fr); }
+    .timeline-header h1 { font-size: 2.4rem; }
+    .timeline-track { padding-left: 60px; }
+    .timeline-track::before { left: 46px; }
+    .event-node { padding-left: 36px; }
+    .bottom-nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SPLASH -->
+<div class="splash" id="splash">
+  <div class="splash-logo">Chronos</div>
+  <div class="splash-sub">Beautiful Timelines, Powered by AI</div>
+  <div class="splash-cta">
+    <button class="btn btn-primary" onclick="enterApp()">はじめる</button>
+  </div>
+</div>
+
+<!-- APP -->
+<div class="app" id="app">
+  <header class="header">
+    <div class="header-brand" onclick="showHome()">Chronos</div>
+    <div class="header-actions">
+      <button class="header-back" id="backBtn" onclick="showHome()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        一覧へ
+      </button>
+    </div>
+  </header>
+
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- ===== HOME VIEW ===== -->
+  <div class="home" id="homeView">
+
+    <!-- AI Panel -->
+    <div class="ai-panel">
+      <div class="ai-panel-header">
+        <span class="ai-badge">AI</span>
+        <span class="ai-panel-title">テーマから年表を自動生成</span>
+      </div>
+      <div class="ai-input-group">
+        <input class="ai-input" type="text" placeholder="テーマを入力（例：宇宙開発の歴史）" id="aiThemeInput">
+        <div class="ai-input-row">
+          <input class="ai-input" type="text" placeholder="開始年" id="aiStartYear">
+          <input class="ai-input" type="text" placeholder="終了年" id="aiEndYear">
+        </div>
+        <button class="ai-generate-btn" id="aiGenerateBtn" onclick="generateTimeline()">
+          AIで年表を生成
+        </button>
+      </div>
+    </div>
+
+    <!-- Tab Filter -->
+    <div class="tab-filter">
+      <button class="tab-btn active" onclick="filterTab('all', this)">すべて</button>
+      <button class="tab-btn" onclick="filterTab('mine', this)">自分の年表</button>
+      <button class="tab-btn" onclick="filterTab('shared', this)">共有された</button>
+    </div>
+
+    <!-- Search -->
+    <div class="search-bar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" placeholder="年表を検索…" id="searchInput" oninput="handleSearch()">
+    </div>
+
+    <!-- Section Bar -->
+    <div class="section-bar">
+      <div style="display:flex; align-items:center;">
+        <span class="section-label">マイ年表</span>
+        <span class="section-count" id="timelineCount">6件</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <select class="sort-select" id="sortSelect" onchange="handleSort()">
+          <option value="updated">更新順</option>
+          <option value="created">作成順</option>
+          <option value="name">名前順</option>
+        </select>
+        <div class="view-toggle">
+          <button class="view-toggle-btn active" id="listViewBtn" onclick="setViewMode('list')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+          </button>
+          <button class="view-toggle-btn" id="gridViewBtn" onclick="setViewMode('grid')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline List -->
+    <div class="timeline-list" id="timelineList"></div>
+
+  </div>
+
+  <!-- ===== TIMELINE DETAIL VIEW ===== -->
+  <div class="timeline-view" id="timelineView">
+    <div class="timeline-header" id="timelineDetailHeader"></div>
+    <div class="layer-filter" id="layerFilter">
+      <button class="layer-btn active" data-layer="all" onclick="filterLayer('all')">すべて</button>
+      <button class="layer-btn" data-layer="tech" onclick="filterLayer('tech')">テクノロジー</button>
+      <button class="layer-btn" data-layer="culture" onclick="filterLayer('culture')">カルチャー</button>
+      <button class="layer-btn" data-layer="politics" onclick="filterLayer('politics')">社会</button>
+    </div>
+    <div class="story-toggle">
+      <button class="story-toggle-btn active" onclick="switchView('scroll')">タイムライン</button>
+      <button class="story-toggle-btn" onclick="switchView('story')">ストーリー</button>
+    </div>
+    <div class="scroll-container" id="scrollContainer">
+      <div class="timeline-track" id="timelineTrack"></div>
+    </div>
+    <div class="story-container" id="storyContainer"></div>
+    <div class="story-nav" id="storyNav" style="display:none;">
+      <button class="btn-icon" onclick="storyPrev()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="story-dots" id="storyDots"></div>
+      <button class="btn-icon" onclick="storyNext()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <button class="nav-item active" onclick="showHome()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+      <span>ホーム</span>
+    </button>
+    <button class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <span>検索</span>
+    </button>
+    <button class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>
+      <span>作成</span>
+    </button>
+    <button class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>設定</span>
+    </button>
+  </nav>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ===== DATA =====
+const allTimelines = [
+  {
+    id: 1, title: 'スマートフォンの歴史', color: 'tech',
+    description: '2007年のiPhone登場から現在まで、モバイル革命の軌跡をたどる。',
+    period: '2007–2025', eventCount: 12, owner: 'mine', shared: false,
+    updatedAt: '2026-02-09', createdAt: '2026-01-15',
+    tags: ['tech', 'culture'],
+    events: [
+      { year:2007,month:1,date:'2007年1月',title:'iPhone発表',summary:'Steve Jobsが初代iPhoneを発表。タッチスクリーンが世界を変えた。',detail:'Macworld Conference & Expoにて、Apple CEOのSteve Jobsが「電話を再発明する」と宣言。マルチタッチインターフェースを搭載した初代iPhoneは、携帯電話の概念を根本から変えた。',source:'Apple Keynote, 2007',layer:'tech'},
+      { year:2008,month:7,date:'2008年7月',title:'App Store開始',summary:'サードパーティ製アプリの配信開始。モバイルエコシステム誕生。',detail:'iPhone 3Gと同時にApp Storeが公開。初日から500本のアプリが利用可能に。アプリ経済圏という新しい産業が生まれた。',source:'Apple Press Release, 2008',layer:'tech'},
+      { year:2008,month:10,date:'2008年10月',title:'Android OS登場',summary:'Googleのオープンソース OS がスマホ市場の競争を加速。',detail:'HTC Dream が初の Android 搭載端末として発売。オープンソース戦略で多くのメーカーが参入した。',source:'Google Official Blog, 2008',layer:'tech'},
+      { year:2010,month:10,date:'2010年10月',title:'Instagram誕生',summary:'写真共有アプリが登場、ビジュアル SNS の時代が始まる。',detail:'Kevin SystromとMike Kriegerが開発。フィルター機能が人気を呼び、スマートフォン写真文化を変えた。',source:'Instagram Blog',layer:'culture'},
+      { year:2011,month:6,date:'2011年6月',title:'LINEリリース',summary:'東日本大震災を機に生まれたメッセージアプリが日本を変革。',detail:'震災後の安否確認ニーズから開発。スタンプ機能が若年層に爆発的に普及した。',source:'LINE Corporation',layer:'culture'},
+      { year:2013,month:9,date:'2013年9月',title:'Touch ID導入',summary:'iPhone 5sに指紋認証搭載。バイオメトリクスが日常に。',detail:'モバイル決済やセキュリティの在り方を変える転換点となった。',source:'Apple Keynote, 2013',layer:'tech'},
+      { year:2016,month:7,date:'2016年7月',title:'Pokémon GO社会現象化',summary:'AR ゲームが世界を席巻。位置情報ゲームの可能性を示す。',detail:'配信開始1ヶ月で1億DL突破。ARとGPSを組み合わせた体験が社会現象に。',source:'Niantic Press Release',layer:'culture'},
+      { year:2017,month:11,date:'2017年11月',title:'iPhone X発売',summary:'ホームボタン廃止・Face ID搭載でデザイン言語が一変。',detail:'有機EL、Face ID、ジェスチャー操作を導入。以後のスマートフォンデザインの基準を作った。',source:'Apple Keynote, 2017',layer:'tech'},
+      { year:2020,month:3,date:'2020年3月',title:'COVID-19とモバイルシフト',summary:'パンデミックでスマートフォンが生活インフラに。',detail:'接触確認アプリ、リモートワーク、オンライン診療、デリバリー。社会的役割が決定的に変わった。',source:'WHO, 各国政府発表',layer:'politics'},
+      { year:2023,month:3,date:'2023年3月',title:'GPT-4とモバイルAI',summary:'ChatGPTの普及でスマホ上のAI活用が一般化。',detail:'OS統合型AI（Apple Intelligence, Google Gemini）が次の競争軸に。',source:'OpenAI Blog, 2023',layer:'tech'},
+      { year:2024,month:2,date:'2024年2月',title:'Apple Vision Pro発売',summary:'空間コンピューティングが「スマホの次」を予感させる。',detail:'Apple Vision Proの登場で、空間コンピューティングとの融合が次の10年のテーマに。',source:'Apple Press Release, 2024',layer:'tech'},
+      { year:2025,month:1,date:'2025年',title:'AI エージェントの時代へ',summary:'AIがアプリを超えて自律的にタスクを実行する時代が到来。',detail:'Claude, GPT, Geminiなどの大規模言語モデルがOS統合され、スマホの使い方が根本から変わり始めた。',source:'各社プレスリリース, 2025',layer:'tech'}
+    ]
+  },
+  {
+    id: 2, title: '日本のインターネット史', color: 'tech',
+    description: 'Windows 95からSNS全盛期まで、日本のネット文化30年の変遷。',
+    period: '1995–2025', eventCount: 15, owner: 'mine', shared: true,
+    updatedAt: '2026-02-07', createdAt: '2026-01-10',
+    tags: ['tech', 'culture'],
+    events: []
+  },
+  {
+    id: 3, title: '宇宙開発の歴史', color: 'science',
+    description: 'スプートニクからアルテミス計画まで、人類の宇宙への挑戦。',
+    period: '1957–2025', eventCount: 20, owner: 'mine', shared: false,
+    updatedAt: '2026-02-05', createdAt: '2025-12-20',
+    tags: ['science', 'politics'],
+    events: []
+  },
+  {
+    id: 4, title: 'ストリーミング戦争', color: 'business',
+    description: 'Netflix、Spotify からDisney+まで、コンテンツ配信の覇権争い。',
+    period: '2007–2025', eventCount: 18, owner: 'mine', shared: false,
+    updatedAt: '2026-01-28', createdAt: '2025-12-15',
+    tags: ['business', 'culture'],
+    events: []
+  },
+  {
+    id: 5, title: 'グローバル気候政策年表', color: 'politics',
+    description: '京都議定書からパリ協定、COP28まで。気候変動をめぐる国際政治。',
+    period: '1997–2025', eventCount: 22, owner: 'shared', shared: true,
+    updatedAt: '2026-02-01', createdAt: '2025-11-30',
+    tags: ['politics'],
+    events: []
+  },
+  {
+    id: 6, title: 'J-POPの変遷', color: 'culture',
+    description: '小室ファミリーからYOASOBI、藤井風まで。日本の音楽シーンの30年。',
+    period: '1990–2025', eventCount: 25, owner: 'shared', shared: true,
+    updatedAt: '2026-01-20', createdAt: '2025-11-10',
+    tags: ['culture'],
+    events: []
+  }
+];
+
+let currentTimeline = null;
+let currentStoryIndex = 0;
+let currentViewMode = 'scroll';
+let activeLayer = 'all';
+let viewMode = 'list';
+let activeTab = 'all';
+let searchQuery = '';
+
+// ===== SPLASH =====
+function enterApp() {
+  document.getElementById('splash').classList.add('hidden');
+  document.getElementById('app').classList.add('active');
+  renderTimelineList();
+}
+
+// ===== NAVIGATION =====
+function showHome() {
+  document.getElementById('homeView').style.display = 'block';
+  document.getElementById('timelineView').classList.remove('active');
+  document.getElementById('backBtn').classList.remove('visible');
+  document.getElementById('progressBar').style.width = '0';
+  currentTimeline = null;
+  window.scrollTo(0, 0);
+}
+
+function showTimeline(id) {
+  const tl = allTimelines.find(t => t.id === id);
+  if (!tl || tl.events.length === 0) {
+    showToast('この年表はまだデモデータがありません');
+    return;
+  }
+  currentTimeline = tl;
+  document.getElementById('homeView').style.display = 'none';
+  document.getElementById('timelineView').classList.add('active');
+  document.getElementById('backBtn').classList.add('visible');
+
+  document.getElementById('timelineDetailHeader').innerHTML = `
+    <h1>${tl.title}</h1>
+    <p>${tl.description}</p>
+    <div class="timeline-stats">
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>${tl.period}</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>${tl.eventCount} events</span>
+    </div>
+  `;
+
+  activeLayer = 'all';
+  document.querySelectorAll('.layer-btn').forEach(b => b.classList.toggle('active', b.dataset.layer === 'all'));
+  renderTimelineEvents(tl.events);
+  renderStorySlides(tl.events);
+  switchView('scroll');
+  window.scrollTo(0, 0);
+  setTimeout(() => { observeEvents(); updateProgress(); }, 100);
+}
+
+// ===== RENDER LIST =====
+function getFilteredTimelines() {
+  let list = [...allTimelines];
+  if (activeTab === 'mine') list = list.filter(t => t.owner === 'mine');
+  if (activeTab === 'shared') list = list.filter(t => t.owner === 'shared' || t.shared);
+  if (searchQuery) {
+    const q = searchQuery.toLowerCase();
+    list = list.filter(t =>
+      t.title.toLowerCase().includes(q) ||
+      t.description.toLowerCase().includes(q) ||
+      t.tags.some(tag => tag.includes(q))
+    );
+  }
+  const sort = document.getElementById('sortSelect')?.value || 'updated';
+  if (sort === 'updated') list.sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+  if (sort === 'created') list.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+  if (sort === 'name') list.sort((a, b) => a.title.localeCompare(b.title));
+  return list;
+}
+
+function renderTimelineList() {
+  const list = document.getElementById('timelineList');
+  const timelines = getFilteredTimelines();
+
+  document.getElementById('timelineCount').textContent = `${timelines.length}件`;
+  list.className = `timeline-list${viewMode === 'grid' ? ' grid-view' : ''}`;
+
+  if (timelines.length === 0) {
+    list.innerHTML = `
+      <div class="empty-state">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <p>該当する年表がありません。<br>AIで新しい年表を作成してみましょう。</p>
+      </div>
+    `;
+    return;
+  }
+
+  list.innerHTML = timelines.map(tl => {
+    const miniDots = tl.tags.map(tag =>
+      `<span class="mini-dot ${tag}"></span><span class="mini-line"></span>`
+    ).join('') + `<span class="mini-dot ${tl.tags[0] || 'tech'}"></span>`;
+
+    return `
+      <div class="timeline-card" data-color="${tl.color}" onclick="showTimeline(${tl.id})">
+        <div class="card-inner">
+          <div class="timeline-card-meta">
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>${tl.period}</span>
+            <span>${tl.eventCount} events</span>
+          </div>
+          <div class="timeline-card-title">${tl.title}</div>
+          <div class="timeline-card-desc">${tl.description}</div>
+          <div class="timeline-card-footer">
+            ${tl.tags.map(t => `<span class="tag tag-${t}">${tagLabel(t)}</span>`).join('')}
+            ${tl.shared ? '<span class="shared-badge">共有中</span>' : ''}
+          </div>
+          <div class="mini-timeline">${miniDots}</div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function tagLabel(t) {
+  const m = { tech:'テクノロジー', culture:'カルチャー', politics:'社会', business:'ビジネス', science:'サイエンス' };
+  return m[t] || t;
+}
+
+// ===== FILTERS & CONTROLS =====
+function filterTab(tab, el) {
+  activeTab = tab;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  renderTimelineList();
+}
+
+function handleSearch() {
+  searchQuery = document.getElementById('searchInput').value;
+  renderTimelineList();
+}
+
+function handleSort() { renderTimelineList(); }
+
+function setViewMode(mode) {
+  viewMode = mode;
+  document.getElementById('listViewBtn').classList.toggle('active', mode === 'list');
+  document.getElementById('gridViewBtn').classList.toggle('active', mode === 'grid');
+  renderTimelineList();
+}
+
+// ===== RENDER EVENTS =====
+function renderTimelineEvents(events) {
+  const track = document.getElementById('timelineTrack');
+  let lastEra = null;
+  let html = '';
+  events.forEach((ev, i) => {
+    const era = Math.floor(ev.year / 5) * 5;
+    if (era !== lastEra) {
+      html += `<div class="era-divider"><div class="era-divider-year">${era}s</div></div>`;
+      lastEra = era;
+    }
+    html += `
+      <div class="event-node" data-layer="${ev.layer}" data-index="${i}">
+        <div class="event-dot ${ev.layer}"></div>
+        <div class="event-date">${ev.date}</div>
+        <div class="event-card" onclick="toggleEventDetail(this)">
+          <div class="event-card-body">
+            <div class="event-card-title">${ev.title}</div>
+            <div class="event-card-summary">${ev.summary}</div>
+          </div>
+          <div class="event-card-detail">
+            <div class="event-card-detail-inner">
+              <p>${ev.detail}</p>
+              <div class="event-source">出典: ${ev.source}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+  track.innerHTML = html;
+}
+
+function toggleEventDetail(card) { card.classList.toggle('expanded'); }
+
+// ===== STORY =====
+function renderStorySlides(events) {
+  const c = document.getElementById('storyContainer');
+  const d = document.getElementById('storyDots');
+  c.innerHTML = events.map((ev, i) => `
+    <div class="story-slide ${i===0?'active':''}" data-index="${i}" data-layer="${ev.layer}">
+      <div class="story-year">${ev.year}</div>
+      <div class="story-title">${ev.title}</div>
+      <div class="story-text">${ev.detail}</div>
+    </div>
+  `).join('');
+  d.innerHTML = events.map((_, i) => `<div class="story-dot-item ${i===0?'active':''}"></div>`).join('');
+  currentStoryIndex = 0;
+}
+
+function updateStorySlide(n) {
+  if (!currentTimeline) return;
+  const events = getFilteredEvents();
+  if (n < 0 || n >= events.length) return;
+  const slides = document.querySelectorAll('.story-slide');
+  const dots = document.querySelectorAll('.story-dot-item');
+  slides.forEach(s => s.classList.remove('active', 'prev'));
+  if (currentStoryIndex < n) slides[currentStoryIndex]?.classList.add('prev');
+  currentStoryIndex = n;
+  slides[currentStoryIndex]?.classList.add('active');
+  dots.forEach((d, i) => d.classList.toggle('active', i === currentStoryIndex));
+}
+
+function storyNext() { updateStorySlide(currentStoryIndex + 1); }
+function storyPrev() { updateStorySlide(currentStoryIndex - 1); }
+
+function switchView(mode) {
+  currentViewMode = mode;
+  const sc = document.getElementById('scrollContainer');
+  const st = document.getElementById('storyContainer');
+  const sn = document.getElementById('storyNav');
+  const btns = document.querySelectorAll('.story-toggle-btn');
+  if (mode === 'scroll') {
+    sc.classList.remove('hidden'); st.classList.remove('active'); sn.style.display='none';
+    btns[0].classList.add('active'); btns[1].classList.remove('active');
+    observeEvents();
+  } else {
+    sc.classList.add('hidden'); st.classList.add('active'); sn.style.display='flex';
+    btns[0].classList.remove('active'); btns[1].classList.add('active');
+    currentStoryIndex = 0;
+    const slides = document.querySelectorAll('.story-slide');
+    slides.forEach((s,i) => { s.classList.remove('active','prev'); if(i===0) s.classList.add('active'); });
+    const dots = document.querySelectorAll('.story-dot-item');
+    dots.forEach((d,i) => d.classList.toggle('active', i===0));
+  }
+}
+
+function getFilteredEvents() {
+  if (!currentTimeline) return [];
+  if (activeLayer === 'all') return currentTimeline.events;
+  return currentTimeline.events.filter(e => e.layer === activeLayer);
+}
+
+function filterLayer(layer) {
+  activeLayer = layer;
+  document.querySelectorAll('.layer-btn').forEach(b => b.classList.toggle('active', b.dataset.layer === layer));
+  document.querySelectorAll('.event-node').forEach(node => {
+    node.classList.toggle('hidden-layer', layer !== 'all' && node.dataset.layer !== layer);
+  });
+  if (currentViewMode === 'story') renderStorySlides(getFilteredEvents());
+  observeEvents();
+}
+
+// ===== AI GEN =====
+function generateTimeline() {
+  const theme = document.getElementById('aiThemeInput').value.trim();
+  if (!theme) { showToast('テーマを入力してください'); return; }
+  const btn = document.getElementById('aiGenerateBtn');
+  btn.classList.add('loading');
+  setTimeout(() => { btn.classList.remove('loading'); showToast('✨ 年表を生成しました'); showTimeline(1); }, 2500);
+}
+
+// ===== OBSERVERS =====
+function observeEvents() {
+  const nodes = document.querySelectorAll('.event-node:not(.hidden-layer)');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  nodes.forEach(n => obs.observe(n));
+}
+
+function updateProgress() {
+  window.addEventListener('scroll', () => {
+    if (!currentTimeline || currentViewMode !== 'scroll') return;
+    const s = window.scrollY;
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    document.getElementById('progressBar').style.width = (h > 0 ? (s/h)*100 : 0) + '%';
+  });
+}
+
+// ===== TOAST =====
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ===== SWIPE =====
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { if (currentViewMode === 'story') touchStartX = e.touches[0].clientX; });
+document.addEventListener('touchend', e => {
+  if (currentViewMode !== 'story') return;
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 50) { diff > 0 ? storyNext() : storyPrev(); }
+});
+</script>
+</body>
+</html>

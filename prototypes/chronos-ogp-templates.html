@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chronos — OGP Templates</title>
+<link href="https://api.fontshare.com/v2/css?f[]=erode@300,400,500,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0A0C;--card:#16161A;
+  --accent:#C8A87E;
+  --text:#E8E4DE;--text2:#9A9590;--text3:#5E5A56;
+  --border:rgba(200,168,126,0.10);--border2:rgba(200,168,126,0.20);
+  --f-d:'Erode',serif;--f-b:'DM Sans',sans-serif;--f-m:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--f-b);background:var(--bg);color:var(--text);padding:48px 24px}
+.container{max-width:900px;margin:0 auto}
+.page-label{font-family:var(--f-m);font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.page-h{font-family:var(--f-d);font-size:2rem;font-weight:400;margin-bottom:6px}
+.page-sub{font-size:0.84rem;color:var(--text2);margin-bottom:40px;line-height:1.7}
+
+.ogp-section{margin-bottom:40px}
+.ogp-label{font-family:var(--f-m);font-size:0.54rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text3);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.ogp-label .cat-dot{width:8px;height:8px;border-radius:50%}
+
+/* OGP FRAME */
+.ogp-frame{width:100%;aspect-ratio:1.91/1;border-radius:12px;overflow:hidden;position:relative;
+  box-shadow:0 8px 40px rgba(0,0,0,0.4)}
+
+/* SHARED CONTENT OVERLAY */
+.ogp-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:36px 40px;z-index:2}
+.ogp-meta{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.ogp-meta-dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.ogp-meta-text{font-family:var(--f-m);font-size:0.52rem;letter-spacing:0.1em;color:rgba(232,228,222,0.6);text-transform:uppercase}
+.ogp-title{font-family:var(--f-d);font-size:clamp(1.4rem,3vw,2rem);font-weight:500;color:#fff;
+  line-height:1.25;margin-bottom:8px;text-shadow:0 2px 20px rgba(0,0,0,0.5)}
+.ogp-sub{font-size:0.72rem;color:rgba(232,228,222,0.55);line-height:1.5}
+.ogp-badge{position:absolute;top:24px;right:28px;display:flex;align-items:center;gap:6px;z-index:3}
+.ogp-badge-logo{font-family:var(--f-d);font-size:0.7rem;font-weight:500;letter-spacing:0.15em;color:rgba(232,228,222,0.5)}
+.ogp-badge-sym{opacity:0.5}
+
+/* ===== PATTERN 1: GRADIENT MESH ===== */
+.pat-mesh{background:#0A0A0C}
+.pat-mesh .mesh-1{position:absolute;width:70%;height:80%;top:-10%;right:-15%;
+  background:radial-gradient(ellipse at 60% 40%,rgba(200,168,126,0.15) 0%,transparent 60%)}
+.pat-mesh .mesh-2{position:absolute;width:50%;height:70%;bottom:-5%;left:-10%;
+  background:radial-gradient(ellipse at 40% 60%,rgba(91,155,213,0.08) 0%,transparent 55%)}
+.pat-mesh .mesh-3{position:absolute;width:40%;height:50%;top:20%;left:30%;
+  background:radial-gradient(ellipse,rgba(123,198,126,0.06) 0%,transparent 50%)}
+.pat-mesh::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 40%,rgba(10,10,12,0.85) 100%);z-index:1}
+
+/* ===== PATTERN 2: LAYERED WAVES ===== */
+.pat-waves{background:#0C0C0F}
+.pat-waves svg.wave-bg{position:absolute;inset:0;width:100%;height:100%}
+.pat-waves::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 30%,rgba(12,12,15,0.9) 100%);z-index:1}
+
+/* ===== PATTERN 3: DOT MATRIX ===== */
+.pat-dots{background:#0A0A0C;
+  background-image:radial-gradient(rgba(200,168,126,0.08) 1px,transparent 1px);
+  background-size:20px 20px}
+.pat-dots .dots-glow{position:absolute;width:60%;height:60%;top:10%;right:5%;
+  background:radial-gradient(ellipse,rgba(200,168,126,0.1) 0%,transparent 60%)}
+.pat-dots::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 35%,rgba(10,10,12,0.9) 100%);z-index:1}
+
+/* ===== PATTERN 4: TOPOGRAPHIC ===== */
+.pat-topo{background:#0B0B0E}
+.pat-topo svg.topo-bg{position:absolute;inset:0;width:100%;height:100%}
+.pat-topo::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 30%,rgba(11,11,14,0.92) 100%);z-index:1}
+
+/* ===== PATTERN 5: AURORA ===== */
+.pat-aurora{background:#08080B}
+.pat-aurora .au-1{position:absolute;width:120%;height:60%;top:-20%;left:-10%;
+  background:linear-gradient(135deg,rgba(91,155,213,0.12) 0%,rgba(123,198,126,0.08) 40%,rgba(200,168,126,0.1) 70%,transparent 100%);
+  filter:blur(40px);transform:rotate(-5deg)}
+.pat-aurora .au-2{position:absolute;width:80%;height:40%;bottom:10%;right:-20%;
+  background:linear-gradient(225deg,rgba(212,132,154,0.1) 0%,rgba(158,126,200,0.06) 50%,transparent 100%);
+  filter:blur(50px)}
+.pat-aurora::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 40%,rgba(8,8,11,0.88) 100%);z-index:1}
+
+/* ===== PATTERN 6: GEOMETRIC GRID ===== */
+.pat-grid{background:#0A0A0C}
+.pat-grid svg.grid-bg{position:absolute;inset:0;width:100%;height:100%}
+.pat-grid::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 35%,rgba(10,10,12,0.92) 100%);z-index:1}
+
+.note{font-size:0.74rem;color:var(--text3);margin-top:8px;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="container">
+
+<p class="page-label">OGP Image Templates</p>
+<h1 class="page-h">年表ごとの OGP テンプレート</h1>
+<p class="page-sub">公開年表をSNSで共有した際に表示されるプレビュー画像。<br>カテゴリに応じた抽象背景＋年表タイトルで自動生成。1200×630px。</p>
+
+<!-- ===== 1: GRADIENT MESH ===== -->
+<div class="ogp-section">
+  <div class="ogp-label"><span class="cat-dot" style="background:#C8A87E"></span>Pattern 1 — Gradient Mesh（汎用・デフォルト）</div>
+  <div class="ogp-frame pat-mesh">
+    <div class="mesh-1"></div>
+    <div class="mesh-2"></div>
+    <div class="mesh-3"></div>
+    <div class="ogp-badge">
+      <svg class="ogp-badge-sym" width="10" height="28" viewBox="0 0 10 28"><line x1="5" y1="0" x2="5" y2="28" stroke="#E8E4DE" stroke-width="0.8" opacity="0.3"/><circle cx="5" cy="5" r="1.5" fill="none" stroke="#E8E4DE" stroke-width="0.8" opacity="0.4"/><circle cx="5" cy="14" r="2.5" fill="#C8A87E" opacity="0.7"/><circle cx="5" cy="23" r="1.5" fill="none" stroke="#E8E4DE" stroke-width="0.8" opacity="0.4"/></svg>
+      <span class="ogp-badge-logo">CHRONOS</span>
+    </div>
+    <div class="ogp-content">
+      <div class="ogp-meta"><span class="ogp-meta-dot"></span><span class="ogp-meta-text">32 events · 83% verified</span></div>
+      <div class="ogp-title">モバイル革命の全体像</div>
+      <div class="ogp-sub">iPhone × Android × 業界動向 — @kenta_h</div>
+    </div>
+  </div>
+  <p class="note">ゴールド・ブルー・グリーンのグラデーションが溶け合うデフォルトパターン。どのカテゴリにも合う。</p>
+</div>
+
+<!-- ===== 2: LAYERED WAVES ===== -->
+<div class="ogp-section">
+  <div class="ogp-label"><span class="cat-dot" style="background:#5B9BD5"></span>Pattern 2 — Layered Waves（テクノロジー）</div>
+  <div class="ogp-frame pat-waves">
+    <svg class="wave-bg" viewBox="0 0 1200 630" preserveAspectRatio="none">
+      <path d="M0 300 Q200 250 400 280 T800 260 T1200 290 V630 H0Z" fill="rgba(91,155,213,0.06)"/>
+      <path d="M0 340 Q300 300 500 320 T900 300 T1200 330 V630 H0Z" fill="rgba(91,155,213,0.04)"/>
+      <path d="M0 380 Q250 350 450 370 T850 350 T1200 370 V630 H0Z" fill="rgba(91,155,213,0.03)"/>
+      <path d="M0 200 Q150 160 350 190 T700 170 T1200 210 V0 H0Z" fill="rgba(200,168,126,0.03)"/>
+      <line x1="200" y1="0" x2="200" y2="630" stroke="rgba(91,155,213,0.04)" stroke-width="1"/>
+      <line x1="500" y1="0" x2="500" y2="630" stroke="rgba(91,155,213,0.04)" stroke-width="1"/>
+      <line x1="800" y1="0" x2="800" y2="630" stroke="rgba(91,155,213,0.04)" stroke-width="1"/>
+    </svg>
+    <div class="ogp-badge">
+      <svg class="ogp-badge-sym" width="10" height="28" viewBox="0 0 10 28"><line x1="5" y1="0" x2="5" y2="28" stroke="#E8E4DE" stroke-width="0.8" opacity="0.3"/><circle cx="5" cy="5" r="1.5" fill="none" stroke="#E8E4DE" stroke-width="0.8" opacity="0.4"/><circle cx="5" cy="14" r="2.5" fill="#C8A87E" opacity="0.7"/><circle cx="5" cy="23" r="1.5" fill="none" stroke="#E8E4DE" stroke-width="0.8" opacity="0.4"/></svg>
+      <span class="ogp-badge-logo">CHRONOS</span>
+    </div>
+    <div class="ogp-content">
+      <div class="ogp-meta"><span class="ogp-meta-dot"></span><span class="ogp-meta-text">72 events · 91% verified</span></div>
+      <div class="ogp-title">AI研究の系譜：1956年から現在まで</div>
+      <div class="ogp-sub">テクノロジー — @ai_timeline</div>
+    </div>
+  </div>
+  <p class="note">水平の波紋が時間の流れを表現。テクノロジーカテゴリのBlueを基調に。</p>
+</div>
+
+<!-- ===== 3: DOT MATRIX ===== -->
+<div class="ogp-section">
+  <div class="ogp-label"><span class="cat-dot" style="background:#7BC67E"></span>Pattern 3 — Dot Matrix（サイエンス）</div>
+  <div class="ogp-frame pat-dots">
+    <div class="dots-glow"></div>
+    <div class="ogp-badge">
+      <svg class="ogp-badge-sym" width="10" height="28" viewBox="0 0 10 28"><line x1="5" y1="0" x2="5" y2="28" stroke="#E8E4DE" stroke-width="0.8" opacity="0.3"/><circle cx="5" cy="5" r="1.5" fill="none" stroke="#E8E4DE" stroke-width="0.8" opacity="0.4"/><circle cx="5" cy="14" r="2.5" fill="#C8A87E" opacity="0.7"/><circle cx="5" cy="23" r="1.5" fill="none" stroke="#E8E4DE" stroke-width="0.8" opacity="0.4"/></svg>
+      <span class="ogp-badge-logo">CHRONOS</span>
+    </div>
+    <div class="ogp-content">
+      <div class="ogp-meta"><span class="ogp-meta-dot"></span><span class="ogp-meta-text">40 events · 88% verified</span></div>
+      <div class="ogp-title">ワクチン開発の200年史</div>
+      <div class="ogp-sub">サイエンス — @sci_chrono</div>
+    </div>
+  </div>
+  <p class="note">均一なドットグリッドにゴールドのグロー。データの集積・知の蓄積を暗示。</p>
+</div>
+
+<!-- ===== 4: TOPOGRAPHIC ===== -->
+<div class="ogp-section">
+  <div class="ogp-label"><span class="cat-dot" style="background:#D4849A"></span>Pattern 4 — Topographic（カルチャー）</div>
+  <div class="ogp-frame pat-topo">
+    <svg class="topo-bg" viewBox="0 0 1200 630" preserveAspectRatio="none">
+      <ellipse cx="700" cy="250" rx="350" ry="200" fill="none" stroke="rgba(212,132,154,0.06)" stroke-width="1.5"/>
+      <ellipse cx="700" cy="250" rx="280" ry="160" fill="none" stroke="rgba(212,132,154,0.05)" stroke-width="1.5"/>
+      <ellipse cx="700" cy="250" rx="210" ry="120" fill="none" stroke="rgba(212,132,154,0.04)" stroke-width="1.5"/>
+      <ellipse cx="700" cy="250" rx="140" ry="80" fill="none" stroke="rgba(212,132,154,0.035)" stroke-width="1.5"/>
+      <ellipse cx="700" cy="250" rx="70" ry="40" fill="none" stroke="rgba(212,132,154,0.03)" stroke-width="1.5"/>
+      <ellipse cx="350" cy="400" rx="250" ry="180" fill="none" stroke="rgba(200,168,126,0.04)" stroke-width="1"/>
+      <ellipse cx="350" cy="400" rx="180" ry="130" fill="none" stroke="rgba(200,168,126,0.03)" stroke-width="1"/>
+      <ellipse cx="350" cy="400" rx="110" ry="80" fill="none" stroke="rgba(200,168,126,0.025)" stroke-width="1"/>
+    </svg>
+    <div class="ogp-badge">
+      <svg class="ogp-badge-sym" width="10" height="28" viewBox="0 0 10 28"><line x1="5" y1="0" x2="5" y2="28" stroke="#E8E4DE" stroke-width="0.8" opacity="0.3"/><circle cx="5" cy="5" r="1.5" fill="none" stroke="#E8E4DE" stroke-width="0.8" opacity="0.4"/><circle cx="5" cy="14" r="2.5" fill="#C8A87E" opacity="0.7"/><circle cx="5" cy="23" r="1.5" fill="none" stroke="#E8E4DE" stroke-width="0.8" opacity="0.4"/></svg>
+      <span class="ogp-badge-logo">CHRONOS</span>
+    </div>
+    <div class="ogp-content">
+      <div class="ogp-meta"><span class="ogp-meta-dot"></span><span class="ogp-meta-text">45 events · 79% verified</span></div>
+      <div class="ogp-title">J-POPとストリーミングの30年</div>
+      <div class="ogp-sub">カルチャー — @music_nerd</div>
+    </div>
+  </div>
+  <p class="note">等高線のような同心楕円。文化の地層・積み重なりを表現。Pinkを基調に。</p>
+</div>
+
+<!-- ===== 5: AURORA ===== -->
+<div class="ogp-section">
+  <div class="ogp-label"><span class="cat-dot" style="background:#9E7EC8"></span>Pattern 5 — Aurora（政治・社会）</div>
+  <div class="ogp-frame pat-aurora">
+    <div class="au-1"></div>
+    <div class="au-2"></div>
+    <div class="ogp-badge">
+      <svg class="ogp-badge-sym" width="10" height="28" viewBox="0 0 10 28"><line x1="5" y1="0" x2="5" y2="28" stroke="#E8E4DE" stroke-width="0.8" opacity="0.3"/><circle cx="5" cy="5" r="1.5" fill="none" stroke="#E8E4DE" stroke-width="0.8" opacity="0.4"/><circle cx="5" cy="14" r="2.5" fill="#C8A87E" opacity="0.7"/><circle cx="5" cy="23" r="1.5" fill="none" stroke="#E8E4DE" stroke-width="0.8" opacity="0.4"/></svg>
+      <span class="ogp-badge-logo">CHRONOS</span>
+    </div>
+    <div class="ogp-content">
+      <div class="ogp-meta"><span class="ogp-meta-dot"></span><span class="ogp-meta-text">58 events · 95% verified</span></div>
+      <div class="ogp-title">冷戦と宇宙開発の相関</div>
+      <div class="ogp-sub">政治・社会 — @space_hist</div>
+    </div>
+  </div>
+  <p class="note">複数色のオーロラがブラーで溶け合う。多様な視点の交差、立場の混ざり合いを表現。</p>
+</div>
+
+<!-- ===== 6: GEOMETRIC GRID ===== -->
+<div class="ogp-section">
+  <div class="ogp-label"><span class="cat-dot" style="background:#C8B87E"></span>Pattern 6 — Geometric Grid（ビジネス）</div>
+  <div class="ogp-frame pat-grid">
+    <svg class="grid-bg" viewBox="0 0 1200 630" preserveAspectRatio="none">
+      <!-- Horizontal lines -->
+      <line x1="0" y1="100" x2="1200" y2="100" stroke="rgba(200,184,126,0.04)" stroke-width="1"/>
+      <line x1="0" y1="200" x2="1200" y2="200" stroke="rgba(200,184,126,0.04)" stroke-width="1"/>
+      <line x1="0" y1="300" x2="1200" y2="300" stroke="rgba(200,184,126,0.05)" stroke-width="1"/>
+      <line x1="0" y1="400" x2="1200" y2="400" stroke="rgba(200,184,126,0.04)" stroke-width="1"/>
+      <line x1="0" y1="500" x2="1200" y2="500" stroke="rgba(200,184,126,0.03)" stroke-width="1"/>
+      <!-- Vertical lines -->
+      <line x1="240" y1="0" x2="240" y2="630" stroke="rgba(200,184,126,0.04)" stroke-width="1"/>
+      <line x1="480" y1="0" x2="480" y2="630" stroke="rgba(200,184,126,0.04)" stroke-width="1"/>
+      <line x1="720" y1="0" x2="720" y2="630" stroke="rgba(200,184,126,0.05)" stroke-width="1"/>
+      <line x1="960" y1="0" x2="960" y2="630" stroke="rgba(200,184,126,0.04)" stroke-width="1"/>
+      <!-- Accent nodes -->
+      <circle cx="720" cy="200" r="4" fill="rgba(200,184,126,0.12)"/>
+      <circle cx="480" cy="300" r="3" fill="rgba(200,184,126,0.08)"/>
+      <circle cx="960" cy="300" r="3" fill="rgba(200,184,126,0.08)"/>
+      <circle cx="720" cy="400" r="4" fill="rgba(200,184,126,0.12)"/>
+      <!-- Connection lines -->
+      <line x1="720" y1="200" x2="480" y2="300" stroke="rgba(200,184,126,0.06)" stroke-width="1"/>
+      <line x1="720" y1="200" x2="960" y2="300" stroke="rgba(200,184,126,0.06)" stroke-width="1"/>
+      <line x1="480" y1="300" x2="720" y2="400" stroke="rgba(200,184,126,0.06)" stroke-width="1"/>
+      <line x1="960" y1="300" x2="720" y2="400" stroke="rgba(200,184,126,0.06)" stroke-width="1"/>
+      <!-- Glow -->
+      <circle cx="720" cy="300" r="200" fill="rgba(200,184,126,0.03)"/>
+    </svg>
+    <div class="ogp-badge">
+      <svg class="ogp-badge-sym" width="10" height="28" viewBox="0 0 10 28"><line x1="5" y1="0" x2="5" y2="28" stroke="#E8E4DE" stroke-width="0.8" opacity="0.3"/><circle cx="5" cy="5" r="1.5" fill="none" stroke="#E8E4DE" stroke-width="0.8" opacity="0.4"/><circle cx="5" cy="14" r="2.5" fill="#C8A87E" opacity="0.7"/><circle cx="5" cy="23" r="1.5" fill="none" stroke="#E8E4DE" stroke-width="0.8" opacity="0.4"/></svg>
+      <span class="ogp-badge-logo">CHRONOS</span>
+    </div>
+    <div class="ogp-content">
+      <div class="ogp-meta"><span class="ogp-meta-dot"></span><span class="ogp-meta-text">36 events · 86% verified</span></div>
+      <div class="ogp-title">GAFAMの成長と規制の歴史</div>
+      <div class="ogp-sub">ビジネス — @biz_insight</div>
+    </div>
+  </div>
+  <p class="note">構造的なグリッド＋ノード接続。ビジネスの関係性・構造を可視化するイメージ。</p>
+</div>
+
+<!-- SPEC -->
+<div style="margin-top:48px;padding:24px;background:var(--card);border:1px solid var(--border);border-radius:12px">
+  <p style="font-family:var(--f-m);font-size:0.56rem;letter-spacing:0.16em;color:var(--accent);text-transform:uppercase;margin-bottom:12px">Implementation Spec</p>
+  <div style="font-size:0.78rem;color:var(--text2);line-height:1.8">
+    <strong style="color:var(--text)">サイズ:</strong> 1200×630px（OGP標準）<br>
+    <strong style="color:var(--text)">フォーマット:</strong> PNG（サーバーサイドで動的生成。Vercel OG / Satori推奨）<br>
+    <strong style="color:var(--text)">動的要素:</strong> 年表タイトル / カテゴリ名 / 作成者 / イベント数 / 検証率<br>
+    <strong style="color:var(--text)">パターン割り当て:</strong><br>
+    　テクノロジー → Layered Waves　/　カルチャー → Topographic　/　政治・社会 → Aurora<br>
+    　サイエンス → Dot Matrix　/　ビジネス → Geometric Grid　/　その他 → Gradient Mesh（デフォルト）<br>
+    <strong style="color:var(--text)">共通要素:</strong> 右上にChronosロゴ（シンボル＋ワードマーク）。下部にグラデーションオーバーレイでテキスト視認性確保。<br>
+    <strong style="color:var(--text)">フォント:</strong> タイトル = Erode Medium、メタ情報 = JetBrains Mono / DM Sans
+  </div>
+</div>
+
+</div>
+</body>
+</html>

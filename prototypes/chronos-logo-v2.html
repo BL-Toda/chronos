@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chronos — Logo Design v2</title>
+<link href="https://api.fontshare.com/v2/css?f[]=erode@300,400,500,600,700,1,2&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0A0C;--bg2:#0E0E11;--bg3:#131316;
+  --card:#16161A;--card-h:#1C1C22;
+  --accent:#C8A87E;--accent-soft:rgba(200,168,126,0.10);
+  --text:#E8E4DE;--text2:#9A9590;--text3:#5E5A56;
+  --border:rgba(200,168,126,0.10);--border2:rgba(200,168,126,0.20);
+  --c-blue:#5B9BD5;--c-green:#7BC67E;--c-pink:#D4849A;
+  --f-d:'Erode',serif;--f-b:'DM Sans',sans-serif;--f-m:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--f-b);background:var(--bg);color:var(--text);padding:60px 24px}
+.container{max-width:1100px;margin:0 auto}
+.page-label{font-family:var(--f-m);font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.page-h{font-family:var(--f-d);font-size:2.2rem;font-weight:400;margin-bottom:8px}
+.page-sub{font-size:0.85rem;color:var(--text2);margin-bottom:48px;line-height:1.7}
+
+.section{margin-bottom:56px}
+.section-label{font-family:var(--f-m);font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.section-h{font-family:var(--f-d);font-size:1.5rem;font-weight:400;margin-bottom:20px}
+
+/* LOGO CARD */
+.logo-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:20px}
+.logo-display{display:flex;align-items:center;justify-content:center;padding:56px 32px;min-height:200px}
+.logo-display.compact{padding:36px 24px;min-height:140px}
+
+/* VARIANTS GRID */
+.var-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border)}
+@media(max-width:640px){.var-grid{grid-template-columns:repeat(2,1fr)}}
+.var-cell{padding:32px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border-right:1px solid var(--border);min-height:130px;position:relative}
+.var-cell:last-child{border-right:none}
+.var-label{position:absolute;top:8px;left:12px;font-family:var(--f-m);font-size:0.48rem;
+  letter-spacing:0.1em;color:var(--text3);text-transform:uppercase}
+.var-cell.light{background:#F0EDE7}
+.var-cell.light .var-label{color:#8A8680}
+.var-cell.cream{background:#FAF8F4}
+.var-cell.cream .var-label{color:#8A8680}
+
+/* NOTES */
+.notes{padding:16px 24px 20px;border-top:1px solid var(--border);font-size:0.78rem;color:var(--text2);line-height:1.7}
+.notes strong{color:var(--text);font-weight:500}
+
+/* COMPARISON */
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.comp-grid{grid-template-columns:1fr}}
+.comp-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.comp-header{padding:10px 16px;border-bottom:1px solid var(--border);
+  font-family:var(--f-m);font-size:0.52rem;letter-spacing:0.12em;color:var(--text3);text-transform:uppercase}
+.comp-body{padding:24px;display:flex;align-items:center;justify-content:center;min-height:110px}
+.comp-body.dark{background:var(--bg)}
+.comp-body.light{background:#F0EDE7}
+
+/* FAVICON ROW */
+.fav-row{display:flex;gap:16px;align-items:center;justify-content:center;flex-wrap:wrap}
+.fav-box{width:48px;height:48px;border-radius:11px;display:flex;align-items:center;justify-content:center;position:relative}
+.fav-box.d{background:var(--bg);border:1px solid var(--border2)}
+.fav-box.l{background:#F0EDE7;border:1px solid #D4CFC7}
+.fav-box.a{background:var(--accent)}
+.fav-box.r{background:#1C1C22;border:1px solid var(--border2);border-radius:50%}
+.fav-size{position:absolute;bottom:-16px;font-family:var(--f-m);font-size:0.46rem;color:var(--text3)}
+
+/* BADGE */
+.rec{display:inline-block;font-family:var(--f-m);font-size:0.5rem;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);
+  padding:3px 10px;border-radius:10px;margin-left:8px}
+
+/* SPEC TABLE */
+.spec{margin-top:24px;font-size:0.78rem;color:var(--text2);line-height:1.8}
+.spec dt{color:var(--text);font-weight:500;display:inline}
+.spec dd{display:inline;margin-left:4px;margin-right:16px}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <p class="page-label">Logo Design v2</p>
+  <h1 class="page-h">Chronos — ロゴデザイン v2</h1>
+  <p class="page-sub">
+    フォント: <strong>Erode</strong>（Indian Type Foundry / Fontshare）— 知的だけど気取らない。エディトリアルな落ち着き。<br>
+    シンボル: <strong>Concept B「Timeline Dot」ベース</strong> — 縦の時間軸。プロダクトUIと一致する方向性。
+  </p>
+
+  <!-- ===== A: PRIMARY LOCKUP ===== -->
+  <div class="section">
+    <p class="section-label">Primary Lockup <span class="rec">標準使用</span></p>
+    <div class="logo-card">
+      <div class="logo-display">
+        <svg width="340" height="72" viewBox="0 0 340 72">
+          <!-- Symbol: Vertical timeline dot -->
+          <g transform="translate(12, 4)">
+            <line x1="8" y1="0" x2="8" y2="64" stroke="#C8A87E" stroke-width="1.2" opacity="0.18"/>
+            <circle cx="8" cy="12" r="2.8" fill="none" stroke="#C8A87E" stroke-width="1.2" opacity="0.35"/>
+            <circle cx="8" cy="32" r="4.5" fill="#C8A87E"/>
+            <circle cx="8" cy="52" r="2.8" fill="none" stroke="#C8A87E" stroke-width="1.2" opacity="0.35"/>
+          </g>
+          <!-- Wordmark: Erode Medium, letterspaced -->
+          <text x="40" y="46" font-family="'Erode', serif" font-size="38" font-weight="500" letter-spacing="10" fill="#E8E4DE">CHRONOS</text>
+        </svg>
+      </div>
+      <div class="var-grid">
+        <div class="var-cell" style="background:var(--bg)">
+          <span class="var-label">Dark</span>
+          <svg width="180" height="40" viewBox="0 0 180 40">
+            <g transform="translate(4, 2)"><line x1="6" y1="0" x2="6" y2="36" stroke="#C8A87E" stroke-width="1" opacity="0.18"/><circle cx="6" cy="8" r="2" fill="none" stroke="#C8A87E" stroke-width="1" opacity="0.35"/><circle cx="6" cy="18" r="3.2" fill="#C8A87E"/><circle cx="6" cy="28" r="2" fill="none" stroke="#C8A87E" stroke-width="1" opacity="0.35"/></g>
+            <text x="22" y="25" font-family="'Erode', serif" font-size="22" font-weight="500" letter-spacing="6" fill="#E8E4DE">CHRONOS</text>
+          </svg>
+        </div>
+        <div class="var-cell light">
+          <span class="var-label">Light</span>
+          <svg width="180" height="40" viewBox="0 0 180 40">
+            <g transform="translate(4, 2)"><line x1="6" y1="0" x2="6" y2="36" stroke="#0A0A0C" stroke-width="1" opacity="0.08"/><circle cx="6" cy="8" r="2" fill="none" stroke="#0A0A0C" stroke-width="1" opacity="0.12"/><circle cx="6" cy="18" r="3.2" fill="#C8A87E"/><circle cx="6" cy="28" r="2" fill="none" stroke="#0A0A0C" stroke-width="1" opacity="0.12"/></g>
+            <text x="22" y="25" font-family="'Erode', serif" font-size="22" font-weight="500" letter-spacing="6" fill="#0A0A0C">CHRONOS</text>
+          </svg>
+        </div>
+        <div class="var-cell cream">
+          <span class="var-label">Cream</span>
+          <svg width="180" height="40" viewBox="0 0 180 40">
+            <g transform="translate(4, 2)"><line x1="6" y1="0" x2="6" y2="36" stroke="#3A3A3A" stroke-width="1" opacity="0.08"/><circle cx="6" cy="8" r="2" fill="none" stroke="#3A3A3A" stroke-width="1" opacity="0.12"/><circle cx="6" cy="18" r="3.2" fill="#C8A87E"/><circle cx="6" cy="28" r="2" fill="none" stroke="#3A3A3A" stroke-width="1" opacity="0.12"/></g>
+            <text x="22" y="25" font-family="'Erode', serif" font-size="22" font-weight="500" letter-spacing="6" fill="#2A2A2A">CHRONOS</text>
+          </svg>
+        </div>
+        <div class="var-cell" style="background:var(--bg)">
+          <span class="var-label">Gold Mono</span>
+          <svg width="180" height="40" viewBox="0 0 180 40">
+            <g transform="translate(4, 2)"><line x1="6" y1="0" x2="6" y2="36" stroke="#C8A87E" stroke-width="1" opacity="0.15"/><circle cx="6" cy="8" r="2" fill="none" stroke="#C8A87E" stroke-width="1" opacity="0.3"/><circle cx="6" cy="18" r="3.2" fill="#C8A87E"/><circle cx="6" cy="28" r="2" fill="none" stroke="#C8A87E" stroke-width="1" opacity="0.3"/></g>
+            <text x="22" y="25" font-family="'Erode', serif" font-size="22" font-weight="500" letter-spacing="6" fill="#C8A87E">CHRONOS</text>
+          </svg>
+        </div>
+      </div>
+      <div class="notes">
+        <strong>Primary Lockup:</strong> シンボル（左）＋ワードマーク（右）の横組み。ナビバー、LP、書類ヘッダーに使用。<br>
+        <strong>最小使用サイズ:</strong> 横幅120px以上。これ以下ではシンボル単体を使用。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== B: SYMBOL ONLY ===== -->
+  <div class="section">
+    <p class="section-label">Symbol Mark</p>
+    <div class="logo-card">
+      <div class="logo-display compact">
+        <div style="display:flex;gap:48px;align-items:center">
+          <!-- Standard -->
+          <svg width="32" height="80" viewBox="0 0 32 80">
+            <line x1="16" y1="0" x2="16" y2="80" stroke="#C8A87E" stroke-width="1.5" opacity="0.18"/>
+            <circle cx="16" cy="16" r="4" fill="none" stroke="#C8A87E" stroke-width="1.5" opacity="0.35"/>
+            <circle cx="16" cy="40" r="6.5" fill="#C8A87E"/>
+            <circle cx="16" cy="64" r="4" fill="none" stroke="#C8A87E" stroke-width="1.5" opacity="0.35"/>
+          </svg>
+          <!-- With layer colors -->
+          <svg width="32" height="80" viewBox="0 0 32 80">
+            <line x1="16" y1="0" x2="16" y2="80" stroke="#C8A87E" stroke-width="1.5" opacity="0.18"/>
+            <circle cx="16" cy="16" r="4" fill="none" stroke="#5B9BD5" stroke-width="1.5" opacity="0.6"/>
+            <circle cx="16" cy="40" r="6.5" fill="#C8A87E"/>
+            <circle cx="16" cy="64" r="4" fill="none" stroke="#7BC67E" stroke-width="1.5" opacity="0.6"/>
+          </svg>
+          <!-- Compact (no line) -->
+          <svg width="32" height="72" viewBox="0 0 32 72">
+            <circle cx="16" cy="10" r="3.5" fill="none" stroke="#C8A87E" stroke-width="1.3" opacity="0.3"/>
+            <circle cx="16" cy="36" r="6" fill="#C8A87E"/>
+            <circle cx="16" cy="62" r="3.5" fill="none" stroke="#C8A87E" stroke-width="1.3" opacity="0.3"/>
+          </svg>
+          <!-- Minimal (dot only) -->
+          <svg width="32" height="32" viewBox="0 0 32 32">
+            <circle cx="16" cy="16" r="8" fill="#C8A87E"/>
+          </svg>
+        </div>
+      </div>
+      <div class="var-grid">
+        <div class="var-cell" style="background:var(--bg)">
+          <span class="var-label">Standard</span>
+          <svg width="20" height="56" viewBox="0 0 20 56"><line x1="10" y1="0" x2="10" y2="56" stroke="#C8A87E" stroke-width="1.2" opacity="0.18"/><circle cx="10" cy="10" r="3" fill="none" stroke="#C8A87E" stroke-width="1.2" opacity="0.35"/><circle cx="10" cy="28" r="4.8" fill="#C8A87E"/><circle cx="10" cy="46" r="3" fill="none" stroke="#C8A87E" stroke-width="1.2" opacity="0.35"/></svg>
+        </div>
+        <div class="var-cell light">
+          <span class="var-label">Layer Colors</span>
+          <svg width="20" height="56" viewBox="0 0 20 56"><line x1="10" y1="0" x2="10" y2="56" stroke="#0A0A0C" stroke-width="1.2" opacity="0.06"/><circle cx="10" cy="10" r="3" fill="none" stroke="#5B9BD5" stroke-width="1.2" opacity="0.7"/><circle cx="10" cy="28" r="4.8" fill="#C8A87E"/><circle cx="10" cy="46" r="3" fill="none" stroke="#7BC67E" stroke-width="1.2" opacity="0.7"/></svg>
+        </div>
+        <div class="var-cell cream">
+          <span class="var-label">Compact</span>
+          <svg width="20" height="48" viewBox="0 0 20 48"><circle cx="10" cy="7" r="2.5" fill="none" stroke="#3A3A3A" stroke-width="1.1" opacity="0.18"/><circle cx="10" cy="24" r="4.5" fill="#C8A87E"/><circle cx="10" cy="41" r="2.5" fill="none" stroke="#3A3A3A" stroke-width="1.1" opacity="0.18"/></svg>
+        </div>
+        <div class="var-cell" style="background:var(--bg)">
+          <span class="var-label">Minimal</span>
+          <svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="#C8A87E"/></svg>
+        </div>
+      </div>
+      <div class="notes">
+        <strong>4段階のシンプリフィケーション:</strong> Standard → Layer Colors → Compact → Minimal。使用サイズに応じて選択。<br>
+        <strong>ファビコン / アプリアイコン:</strong> Standard または Compact を使用。16px以下ではMinimal（ドット単体）。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== C: WORDMARK ONLY ===== -->
+  <div class="section">
+    <p class="section-label">Wordmark Only</p>
+    <div class="logo-card">
+      <div class="logo-display compact">
+        <div style="display:flex;gap:56px;align-items:baseline">
+          <span style="font-family:var(--f-d);font-size:32px;font-weight:500;letter-spacing:10px;color:var(--text)">CHRONOS</span>
+          <span style="font-family:var(--f-d);font-size:32px;font-weight:400;letter-spacing:10px;color:var(--text)">CHRONOS</span>
+          <span style="font-family:var(--f-d);font-size:32px;font-weight:300;letter-spacing:10px;color:var(--text)">CHRONOS</span>
+        </div>
+      </div>
+      <div class="notes">
+        <strong>ウェイトバリエーション:</strong> Medium（500）を標準使用。Regular（400）はサブヘッダー、Light（300）は大サイズ・ポスター向け。<br>
+        <strong>レタースペーシング:</strong> ロゴ使用時は常に +8〜12px。本文テキストとは明確に区別する。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== USAGE EXAMPLES ===== -->
+  <div class="section">
+    <p class="section-label">Usage Examples</p>
+    <h2 class="section-h">使用例</h2>
+
+    <div class="comp-grid">
+      <!-- Nav -->
+      <div class="comp-card" style="grid-column:1/-1">
+        <div class="comp-header">Navigation Bar</div>
+        <div class="comp-body dark">
+          <div style="display:flex;align-items:center;width:100%;max-width:700px;padding:0 8px">
+            <div style="display:flex;align-items:center;gap:10px">
+              <svg width="16" height="44" viewBox="0 0 16 44"><line x1="8" y1="0" x2="8" y2="44" stroke="#C8A87E" stroke-width="1" opacity="0.18"/><circle cx="8" cy="8" r="2.2" fill="none" stroke="#C8A87E" stroke-width="1" opacity="0.35"/><circle cx="8" cy="22" r="3.5" fill="#C8A87E"/><circle cx="8" cy="36" r="2.2" fill="none" stroke="#C8A87E" stroke-width="1" opacity="0.35"/></svg>
+              <span style="font-family:var(--f-d);font-size:1.1rem;font-weight:500;letter-spacing:0.2em;color:var(--accent)">CHRONOS</span>
+            </div>
+            <div style="flex:1"></div>
+            <span style="font-size:0.72rem;color:var(--text3)">機能</span>
+            <span style="font-size:0.72rem;color:var(--text3);margin-left:20px">料金</span>
+            <span style="font-size:0.72rem;color:var(--accent);margin-left:20px">ログイン</span>
+            <span style="font-size:0.66rem;background:var(--accent);color:var(--bg);padding:7px 16px;border-radius:5px;margin-left:16px;font-weight:500">無料で始める</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Favicon -->
+      <div class="comp-card">
+        <div class="comp-header">Favicon / App Icon</div>
+        <div class="comp-body dark">
+          <div class="fav-row">
+            <div class="fav-box d">
+              <svg width="24" height="40" viewBox="0 0 24 40"><line x1="12" y1="2" x2="12" y2="38" stroke="#C8A87E" stroke-width="1.2" opacity="0.18"/><circle cx="12" cy="8" r="2.5" fill="none" stroke="#C8A87E" stroke-width="1.2" opacity="0.35"/><circle cx="12" cy="20" r="4" fill="#C8A87E"/><circle cx="12" cy="32" r="2.5" fill="none" stroke="#C8A87E" stroke-width="1.2" opacity="0.35"/></svg>
+            </div>
+            <div class="fav-box a">
+              <svg width="24" height="40" viewBox="0 0 24 40"><line x1="12" y1="2" x2="12" y2="38" stroke="#fff" stroke-width="1.2" opacity="0.2"/><circle cx="12" cy="8" r="2.5" fill="none" stroke="#fff" stroke-width="1.2" opacity="0.4"/><circle cx="12" cy="20" r="4" fill="#fff"/><circle cx="12" cy="32" r="2.5" fill="none" stroke="#fff" stroke-width="1.2" opacity="0.4"/></svg>
+            </div>
+            <div class="fav-box l">
+              <svg width="24" height="40" viewBox="0 0 24 40"><line x1="12" y1="2" x2="12" y2="38" stroke="#0A0A0C" stroke-width="1.2" opacity="0.06"/><circle cx="12" cy="8" r="2.5" fill="none" stroke="#0A0A0C" stroke-width="1.2" opacity="0.12"/><circle cx="12" cy="20" r="4" fill="#C8A87E"/><circle cx="12" cy="32" r="2.5" fill="none" stroke="#0A0A0C" stroke-width="1.2" opacity="0.12"/></svg>
+            </div>
+            <div class="fav-box r">
+              <svg width="24" height="40" viewBox="0 0 24 40"><line x1="12" y1="2" x2="12" y2="38" stroke="#C8A87E" stroke-width="1.2" opacity="0.18"/><circle cx="12" cy="8" r="2.5" fill="none" stroke="#C8A87E" stroke-width="1.2" opacity="0.35"/><circle cx="12" cy="20" r="4" fill="#C8A87E"/><circle cx="12" cy="32" r="2.5" fill="none" stroke="#C8A87E" stroke-width="1.2" opacity="0.35"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Loading -->
+      <div class="comp-card">
+        <div class="comp-header">Loading Animation</div>
+        <div class="comp-body dark">
+          <svg width="24" height="60" viewBox="0 0 24 60">
+            <line x1="12" y1="0" x2="12" y2="60" stroke="#C8A87E" stroke-width="1" opacity="0.12"/>
+            <circle cx="12" cy="10" r="2.5" fill="none" stroke="#C8A87E" stroke-width="1.2" opacity="0.25">
+              <animate attributeName="opacity" values="0.25;0.6;0.25" dur="2s" repeatCount="indefinite" begin="0s"/>
+            </circle>
+            <circle cx="12" cy="30" r="4.5" fill="#C8A87E">
+              <animate attributeName="r" values="4.5;5.5;4.5" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="1;0.7;1" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="12" cy="50" r="2.5" fill="none" stroke="#C8A87E" stroke-width="1.2" opacity="0.25">
+              <animate attributeName="opacity" values="0.25;0.6;0.25" dur="2s" repeatCount="indefinite" begin="1s"/>
+            </circle>
+          </svg>
+        </div>
+      </div>
+
+      <!-- OGP -->
+      <div class="comp-card" style="grid-column:1/-1">
+        <div class="comp-header">OGP Image（1200×630）</div>
+        <div class="comp-body dark" style="padding:0">
+          <div style="width:100%;max-width:600px;aspect-ratio:1.91/1;
+            background:linear-gradient(160deg,var(--bg) 0%,var(--bg3) 100%);
+            border:1px solid var(--border);border-radius:8px;overflow:hidden;
+            display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative">
+            <div style="position:absolute;width:320px;height:320px;
+              background:radial-gradient(circle,rgba(200,168,126,0.05) 0%,transparent 65%);
+              top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+            <div style="display:flex;align-items:center;gap:12px;position:relative">
+              <svg width="18" height="52" viewBox="0 0 18 52"><line x1="9" y1="0" x2="9" y2="52" stroke="#C8A87E" stroke-width="1.2" opacity="0.18"/><circle cx="9" cy="8" r="2.5" fill="none" stroke="#C8A87E" stroke-width="1.2" opacity="0.35"/><circle cx="9" cy="26" r="4" fill="#C8A87E"/><circle cx="9" cy="44" r="2.5" fill="none" stroke="#C8A87E" stroke-width="1.2" opacity="0.35"/></svg>
+              <span style="font-family:var(--f-d);font-size:28px;font-weight:500;letter-spacing:8px;color:var(--text)">CHRONOS</span>
+            </div>
+            <p style="font-family:var(--f-d);font-size:0.78rem;font-style:italic;color:var(--text2);margin-top:12px;letter-spacing:0.06em;position:relative;font-weight:300">Every event has context.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FONT COMPARISON ===== -->
+  <div class="section">
+    <p class="section-label">Typography Update</p>
+    <h2 class="section-h">Garamond → Erode 比較</h2>
+    <div class="comp-grid">
+      <div class="comp-card">
+        <div class="comp-header">Before: Cormorant Garamond</div>
+        <div class="comp-body dark">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;letter-spacing:8px;color:var(--text)">CHRONOS</span>
+        </div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-header">After: Erode <span class="rec" style="margin-left:6px">採用</span></div>
+        <div class="comp-body dark">
+          <span style="font-family:'Erode',serif;font-size:28px;font-weight:500;letter-spacing:8px;color:var(--text)">CHRONOS</span>
+        </div>
+      </div>
+    </div>
+    <div class="notes" style="margin-top:16px;padding:16px 0;border:none">
+      <strong>Garamond:</strong> クラシカルで優雅。ラグジュアリー感が強い。<br>
+      <strong>Erode:</strong> 現代的なセリフ体。ストロークコントラストが程よく、知的で落ち着いているがカジュアルさもある。Fontshare（ITF）の無料フォントで商用利用可。
+    </div>
+  </div>
+
+  <!-- ===== SPEC ===== -->
+  <div class="section">
+    <p class="section-label">Specification</p>
+    <h2 class="section-h">ロゴ仕様</h2>
+    <div class="spec">
+      <dl>
+        <dt>フォント:</dt><dd>Erode Medium (500)</dd>
+        <dt>レタースペーシング:</dt><dd>+8〜12px（CSS: 0.2em）</dd>
+        <dt>ケース:</dt><dd>ALL CAPS</dd><br>
+        <dt>シンボルカラー:</dt><dd>#C8A87E（Warm Gold）</dd>
+        <dt>テキストカラー（Dark）:</dt><dd>#E8E4DE</dd>
+        <dt>テキストカラー（Light）:</dt><dd>#0A0A0C</dd><br>
+        <dt>シンボル構成:</dt><dd>縦線（opacity 0.18）＋ 上下ゴーストドット（stroke, opacity 0.35）＋ 中央ドット（fill）</dd><br>
+        <dt>最小クリアスペース:</dt><dd>シンボル高さの25%を四方に確保</dd>
+        <dt>最小使用サイズ:</dt><dd>Primary Lockup: 横幅120px / Symbol: 16px</dd><br>
+        <dt>ライセンス:</dt><dd>Erode — Fontshare (ITF)。個人・商用利用無料。</dd>
+      </dl>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

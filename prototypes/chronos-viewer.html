@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="ja" style="background-color:#0A0A0C;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Apple の歴史 — Chronos</title>
+<meta property="og:title" content="Apple の歴史 — Chronos">
+<meta property="og:description" content="1976年の創業から現在まで。製品・経営・業界の3レイヤーで読み解くApple年表。">
+<link href="https://api.fontshare.com/v2/css?f[]=erode@300,400,500,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0A0C;
+    --bg2: #111114;
+    --bg-card: #16161A;
+    --bg-card-h: #1C1C22;
+    --accent: #C8A87E;
+    --accent-dim: rgba(200,168,126,0.13);
+    --text: #E8E4DE;
+    --text-h: #F5F2ED;
+    --text2: #8A8680;
+    --text3: #5A5754;
+    --border: rgba(200,168,126,0.1);
+    --border2: rgba(200,168,126,0.22);
+    --line: rgba(200,168,126,0.15);
+
+    --c-blue: #5B9BD5;     --c-blue-dim: rgba(91,155,213,0.12);   --c-blue-bar: rgba(91,155,213,0.22);
+    --c-green: #7BC67E;    --c-green-dim: rgba(123,198,126,0.12);
+    --c-pink: #D4849A;     --c-pink-dim: rgba(212,132,154,0.12);  --c-pink-bar: rgba(212,132,154,0.22);
+    --c-gold: #C8B87E;     --c-gold-dim: rgba(200,184,126,0.12);
+    --c-purple: #9E7EC8;   --c-purple-dim: rgba(158,126,200,0.12);
+    --c-teal: #5BBCB4;     --c-teal-dim: rgba(91,188,180,0.12);   --c-teal-bar: rgba(91,188,180,0.22);
+    --c-orange: #D4A05A;   --c-orange-dim: rgba(212,160,90,0.12);
+
+    --f-display: 'Erode', 'Shippori Mincho', serif;
+    --f-body: 'DM Sans', sans-serif;
+    --f-mono: 'JetBrains Mono', monospace;
+
+    --lane-w: 6px;
+    --lane-gap: 10px;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; background:var(--bg); color-scheme:dark; }
+  body {
+    font-family:var(--f-body); background:var(--bg);
+    color:var(--text); min-height:100vh;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+
+  /* ===== HEADER ===== */
+  .header {
+    position:sticky; top:0; z-index:100;
+    background:rgba(10,10,12,0.88); backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);
+    padding:0 20px; height:56px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .header-brand {
+    font-family:var(--f-display); font-size:20px; font-weight:500;
+    letter-spacing:0.2em; color:var(--accent); text-transform:uppercase;
+  }
+  .header-badge {
+    font-family:var(--f-mono); font-size:11px;
+    padding:4px 10px; border-radius:10px; border:1px solid var(--border);
+    color:var(--text3);
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    text-align:center; padding:36px 20px 8px;
+    max-width:700px; margin:0 auto; background:var(--bg);
+    opacity:0; animation:fadeUp 0.8s ease forwards 0.1s;
+  }
+  .hero h1 {
+    font-family:var(--f-display); font-size:36px; font-weight:400;
+    line-height:1.25; margin-bottom:10px; color:var(--text-h);
+  }
+  .hero p {
+    font-size:14px; color:var(--text2); line-height:1.6;
+    max-width:500px; margin:0 auto;
+  }
+
+  /* ===== LAYER CONTROLS ===== */
+  .layer-controls {
+    position:sticky; top:56px; z-index:90;
+    background:rgba(10,10,12,0.92); backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--border);
+    padding:12px 16px; display:flex; gap:8px; flex-wrap:wrap;
+    justify-content:center;
+  }
+  .layer-chip {
+    font-family:var(--f-body); font-size:12px; font-weight:500;
+    letter-spacing:0.04em; padding:6px 14px; border-radius:16px;
+    border:1px solid var(--border); background:transparent;
+    cursor:pointer; transition:all 0.3s; user-select:none;
+    display:flex; align-items:center; gap:6px; color:var(--text3);
+  }
+  .chip-dot { width:7px; height:7px; border-radius:50%; }
+  .layer-chip[data-layer="art"] .chip-dot { background:var(--c-blue); }
+  .layer-chip[data-layer="art"].active { border-color:var(--c-blue); background:var(--c-blue-dim); color:var(--c-blue); }
+  .layer-chip[data-layer="history"] .chip-dot { background:var(--c-pink); }
+  .layer-chip[data-layer="history"].active { border-color:var(--c-pink); background:var(--c-pink-dim); color:var(--c-pink); }
+  .layer-chip[data-layer="science"] .chip-dot { background:var(--c-teal); }
+  .layer-chip[data-layer="science"].active { border-color:var(--c-teal); background:var(--c-teal-dim); color:var(--c-teal); }
+  .layer-chip[data-layer="product"] .chip-dot { background:var(--c-blue); }
+  .layer-chip[data-layer="product"].active { border-color:var(--c-blue); background:var(--c-blue-dim); color:var(--c-blue); }
+  .layer-chip[data-layer="management"] .chip-dot { background:var(--c-pink); }
+  .layer-chip[data-layer="management"].active { border-color:var(--c-pink); background:var(--c-pink-dim); color:var(--c-pink); }
+  .layer-chip[data-layer="industry"] .chip-dot { background:var(--c-teal); }
+  .layer-chip[data-layer="industry"].active { border-color:var(--c-teal); background:var(--c-teal-dim); color:var(--c-teal); }
+
+  /* ===== LEGEND ===== */
+  .legend {
+    display:flex; gap:20px; justify-content:center;
+    padding:16px 16px 6px; max-width:700px; margin:0 auto;
+    background:var(--bg);
+    opacity:0; animation:fadeUp 0.6s ease forwards 0.3s;
+  }
+  .legend-item {
+    display:flex; align-items:center; gap:6px;
+    font-size:12px; color:var(--text3);
+  }
+  .legend-dot-icon {
+    width:8px; height:8px; border-radius:50%; background:var(--accent); opacity:0.5;
+  }
+  .legend-bar-icon {
+    width:6px; height:20px; border-radius:3px; background:var(--accent); opacity:0.35;
+  }
+
+  /* ===== TIMELINE CONTAINER ===== */
+  .tl-wrap {
+    max-width:700px; margin:0 auto;
+    padding:10px 16px 100px 16px;
+    background:var(--bg);
+  }
+
+  /* ===== TIMELINE ROW ===== */
+  .tl-row {
+    display:flex; align-items:stretch;
+    min-height:24px; position:relative;
+    opacity:0; transform:translateY(12px);
+    transition:all 0.5s cubic-bezier(0.16,1,0.3,1);
+  }
+  .tl-row.visible { opacity:1; transform:translateY(0); }
+  .tl-row.hidden { display:none; }
+
+  /* ===== LANE AREA (left side) ===== */
+  .tl-lanes {
+    display:flex; gap:4px; flex-shrink:0;
+    width:60px; padding:0 8px 0 0; position:relative;
+    align-items:stretch;
+  }
+
+  /* Individual lane bar */
+  .lane {
+    width:var(--lane-w); border-radius:3px;
+    flex-shrink:0; position:relative;
+    transition:opacity 0.4s ease, width 0.3s ease;
+  }
+  .lane.active {
+    opacity:1;
+  }
+  .lane.inactive {
+    width:0; opacity:0; margin:0; padding:0;
+  }
+  .lane.art    { background:var(--c-blue-bar); }
+  .lane.history { background:var(--c-pink-bar); }
+  .lane.science { background:var(--c-teal-bar); }
+
+  /* Lane start cap */
+  .lane.start { border-radius:3px 3px 0 0; }
+  .lane.end   { border-radius:0 0 3px 3px; }
+  .lane.start.end { border-radius:3px; }
+
+  /* Lane label (appears at start) */
+  .lane-label {
+    position:absolute; top:-20px; left:50%; transform:translateX(-50%);
+    font-family:var(--f-mono); font-size:10px; letter-spacing:0.04em;
+    white-space:nowrap; writing-mode:horizontal-tb;
+    opacity:0.7;
+  }
+  .lane-label.art { color:var(--c-blue); }
+  .lane-label.history { color:var(--c-pink); }
+  .lane-label.science { color:var(--c-teal); }
+
+  /* Spacer lane (invisible, holds position) */
+  .lane.spacer {
+    width:var(--lane-w); background:transparent;
+  }
+
+  /* ===== AXIS DOT ===== */
+  .tl-axis {
+    display:flex; flex-direction:column; align-items:center;
+    width:24px; flex-shrink:0; position:relative;
+  }
+  .tl-axis::before {
+    content:''; position:absolute; top:0; bottom:0; left:50%;
+    width:1px; background:var(--line); transform:translateX(-50%);
+  }
+  .axis-dot {
+    width:10px; height:10px; border-radius:50%;
+    border:2px solid var(--bg); position:relative; z-index:5;
+    margin-top:16px; flex-shrink:0;
+  }
+  .axis-dot.art    { background:var(--c-blue); box-shadow:0 0 0 3px var(--c-blue-dim); }
+  .axis-dot.history { background:var(--c-pink); box-shadow:0 0 0 3px var(--c-pink-dim); }
+  .axis-dot.science { background:var(--c-teal); box-shadow:0 0 0 3px var(--c-teal-dim); }
+
+  /* Period marker on axis — small horizontal bar */
+  .axis-period-mark {
+    width:16px; height:3px; border-radius:2px;
+    position:relative; z-index:5; margin-top:18px; flex-shrink:0;
+  }
+  .axis-period-mark.start.art     { background:var(--c-blue); }
+  .axis-period-mark.start.history  { background:var(--c-pink); }
+  .axis-period-mark.start.science  { background:var(--c-teal); }
+  .axis-period-mark.end.art       { background:var(--c-blue); opacity:0.4; }
+  .axis-period-mark.end.history    { background:var(--c-pink); opacity:0.4; }
+  .axis-period-mark.end.science    { background:var(--c-teal); opacity:0.4; }
+
+  /* Dashed connector: lane → axis for period rows */
+  .period-connector {
+    display:flex; align-items:center; flex-shrink:0;
+    width:12px; position:relative;
+  }
+  .period-connector::before {
+    content:''; position:absolute;
+    top:19px; left:0; right:0; height:0;
+    border-top:1.5px dashed var(--text3);
+    opacity:0.35;
+  }
+  .period-connector.art::before    { border-color:var(--c-blue); opacity:0.45; }
+  .period-connector.history::before { border-color:var(--c-pink); opacity:0.45; }
+  .period-connector.science::before { border-color:var(--c-teal); opacity:0.45; }
+  .period-connector.end::before { opacity:0.25; }
+
+  /* Invisible spacer — same width, keeps axis aligned on non-period rows */
+  .connector-spacer {
+    width:12px; flex-shrink:0;
+  }
+
+  /* ===== CONTENT AREA (right) ===== */
+  .tl-content {
+    flex:1; padding:6px 0 6px 10px; min-width:0;
+  }
+
+  /* Year separator */
+  .tl-year {
+    display:flex; align-items:center; padding:20px 0 8px 0;
+  }
+  .tl-year-text {
+    font-family:var(--f-display); font-size:36px; font-weight:400;
+    color:var(--accent); opacity:0.2; line-height:1;
+  }
+  .tl-year-line {
+    flex:1; height:1px; margin-left:14px;
+    background:linear-gradient(90deg, var(--line), transparent);
+  }
+
+  /* Event card */
+  .ev-card {
+    background:var(--bg-card); border:1px solid var(--border);
+    border-radius:12px; padding:12px 14px; margin-bottom:4px;
+    transition:all 0.3s ease; cursor:pointer; position:relative;
+    overflow:hidden;
+  }
+  .ev-card:hover { background:var(--bg-card-h); border-color:var(--border2); }
+  .ev-card::before {
+    content:''; position:absolute; top:0; left:0; bottom:0; width:3px;
+    border-radius:3px 0 0 3px;
+  }
+  .ev-card.art::before    { background:var(--c-blue); }
+  .ev-card.history::before { background:var(--c-pink); }
+  .ev-card.science::before { background:var(--c-teal); }
+
+  /* Caret for ev-card (point events) */
+  .ev-card .ev-caret {
+    position:absolute; top:12px; right:12px;
+    width:20px; height:20px; display:flex; align-items:center; justify-content:center;
+    transition:transform 0.35s cubic-bezier(0.16,1,0.3,1);
+  }
+  .ev-card .ev-caret svg {
+    width:14px; height:14px; stroke:var(--text3); stroke-width:2;
+    fill:none; stroke-linecap:round; stroke-linejoin:round;
+  }
+  .ev-card:hover .ev-caret svg { stroke:var(--text2); }
+  .ev-card.expanded .ev-caret { transform:rotate(180deg); }
+
+  /* Accordion body for ev-card */
+  .ev-card .ev-accordion-body {
+    max-height:0; overflow:hidden;
+    transition:max-height 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease;
+    opacity:0;
+  }
+  .ev-card.expanded .ev-accordion-body {
+    max-height:300px; opacity:1;
+  }
+
+  .ev-date {
+    font-family:var(--f-mono); font-size:11px; color:var(--text3);
+    letter-spacing:0.08em; margin-bottom:3px;
+  }
+  .ev-title {
+    font-family:var(--f-display); font-size:16px; font-weight:500;
+    line-height:1.3; color:var(--text-h); margin-bottom:3px;
+  }
+  .ev-summary {
+    font-size:12px; color:var(--text2); line-height:1.5;
+  }
+  .ev-tags { margin-top:5px; display:flex; gap:4px; flex-wrap:wrap; }
+  .ev-tag {
+    display:inline-block; font-family:var(--f-mono); font-size:10px;
+    letter-spacing:0.06em; padding:2px 7px; border-radius:8px;
+  }
+  .ev-tag.art    { background:var(--c-blue-dim); color:var(--c-blue); }
+  .ev-tag.history { background:var(--c-pink-dim); color:var(--c-pink); }
+  .ev-tag.science { background:var(--c-teal-dim); color:var(--c-teal); }
+  .ev-tag.cred   { background:rgba(123,198,126,0.1); color:var(--c-green); }
+  .ev-tag.period { background:rgba(200,168,126,0.08); color:var(--accent); }
+
+  /* Period start card — expandable, same fields as point events */
+  .period-card-start {
+    background:var(--bg-card); border:1px solid var(--border);
+    border-radius:12px; padding:12px 14px; margin-bottom:4px;
+    transition:all 0.3s ease; cursor:pointer; position:relative;
+    overflow:hidden;
+  }
+  .period-card-start:hover { background:var(--bg-card-h); border-color:var(--border2); }
+  .period-card-start::before {
+    content:''; position:absolute; top:0; left:0; bottom:0; width:3px;
+    border-radius:3px 0 0 3px;
+  }
+  .period-card-start.art::before    { background:var(--c-blue); }
+  .period-card-start.history::before { background:var(--c-pink); }
+  .period-card-start.science::before { background:var(--c-teal); }
+
+  /* Period bar inside card */
+  .period-bar-inline {
+    display:flex; align-items:center; gap:8px; margin:8px 0 6px;
+  }
+  .period-bar-track {
+    flex:1; height:6px; border-radius:3px; position:relative; overflow:hidden;
+  }
+  .period-bar-track.art    { background:var(--c-blue-dim); }
+  .period-bar-track.history { background:var(--c-pink-dim); }
+  .period-bar-track.science { background:var(--c-teal-dim); }
+  .period-bar-fill {
+    position:absolute; top:0; left:0; bottom:0; border-radius:3px;
+    animation: barGrow 1s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .period-bar-track.art .period-bar-fill    { background:var(--c-blue); opacity:0.45; }
+  .period-bar-track.history .period-bar-fill { background:var(--c-pink); opacity:0.45; }
+  .period-bar-track.science .period-bar-fill { background:var(--c-teal); opacity:0.45; }
+  @keyframes barGrow { from{width:0} to{width:100%} }
+
+  .period-bar-year {
+    font-family:var(--f-mono); font-size:10px; color:var(--text3);
+    letter-spacing:0.04em; flex-shrink:0;
+  }
+
+  /* Period end card — minimal */
+  .period-label-end {
+    padding:6px 14px; margin-bottom:4px;
+    background:transparent; border:1px dashed var(--border);
+    border-radius:10px; display:flex; align-items:center; gap:8px;
+  }
+  .period-label-end .pl-bar {
+    width:20px; height:4px; border-radius:2px; flex-shrink:0; opacity:0.4;
+  }
+  .period-label-end .pl-bar.art    { background:var(--c-blue); }
+  .period-label-end .pl-bar.history { background:var(--c-pink); }
+  .period-label-end .pl-bar.science { background:var(--c-teal); }
+
+  .pl-text {
+    font-family:var(--f-display); font-size:14px; font-weight:400;
+    color:var(--text-h);
+  }
+  .pl-text .pl-end-note {
+    font-family:var(--f-body); font-size:12px; color:var(--text3);
+    margin-left:6px;
+  }
+
+  /* Lane hover & active highlight */
+  .lane:not(.spacer) { cursor:pointer; transition:opacity 0.4s ease, width 0.3s ease, filter 0.3s ease; }
+  .lane:not(.spacer):hover { filter:brightness(1.6); }
+
+  /* Period highlight — glow on active period rows */
+  .tl-row.period-highlight .ev-card,
+  .tl-row.period-highlight .period-card-start {
+    border-color:var(--border2);
+    box-shadow:0 0 0 1px var(--accent-dim), 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .tl-row.period-highlight .period-label-end {
+    border-color:var(--border2);
+  }
+  /* Dim non-highlighted rows */
+  .tl-wrap.has-highlight .tl-row:not(.period-highlight):not([data-layers="all"]) {
+    opacity:0.22; transition:opacity 0.35s ease;
+  }
+  .tl-wrap.has-highlight .tl-row.period-highlight {
+    opacity:1; transition:opacity 0.35s ease;
+  }
+  /* Lane glow */
+  .lane.lane-glow {
+    filter:brightness(2.2) !important;
+    box-shadow:0 0 8px rgba(200,168,126,0.15);
+  }
+
+  /* Caret icon for period accordion */
+  .period-caret {
+    position:absolute; top:12px; right:12px;
+    width:20px; height:20px; display:flex; align-items:center; justify-content:center;
+    transition:transform 0.35s cubic-bezier(0.16,1,0.3,1);
+  }
+  .period-caret svg {
+    width:14px; height:14px; stroke:var(--text3); stroke-width:2;
+    fill:none; stroke-linecap:round; stroke-linejoin:round;
+  }
+  .period-card-start:hover .period-caret svg { stroke:var(--text2); }
+  .period-card-start.expanded .period-caret { transform:rotate(180deg); }
+
+  /* Accordion body */
+  .period-accordion-body {
+    max-height:0; overflow:hidden;
+    transition:max-height 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease;
+    opacity:0;
+  }
+  .period-card-start.expanded .period-accordion-body {
+    max-height:300px; opacity:1;
+  }
+
+  /* Center-focus highlight — card nearest viewport center gets subtle glow */
+  .ev-card.center-focus,
+  .period-card-start.center-focus {
+    border-color:rgba(200,168,126,0.28) !important;
+    background:var(--bg-card-h) !important;
+    box-shadow:0 0 0 1px rgba(200,168,126,0.06), 0 2px 14px rgba(0,0,0,0.2) !important;
+    transition:border-color 0.5s ease, box-shadow 0.5s ease, background 0.5s ease;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (min-width:768px) {
+    .hero h1 { font-size:2.6rem; }
+    .tl-wrap { padding-left:32px; padding-right:32px; }
+    .tl-lanes { width:72px; }
+  }
+  @media (max-width:400px) {
+    .tl-lanes { width:44px; padding-right:4px; }
+    .ev-title { font-size:16px; }
+  }
+
+  /* ===== VIEWER-SPECIFIC ===== */
+  /* Public hero */
+  .pub-hero {
+    text-align:center; padding:32px 20px 24px;
+    max-width:700px; margin:0 auto;
+    border-bottom:1px solid var(--border);
+    opacity:0; animation:fadeUp 0.8s ease forwards 0.1s;
+  }
+  .pub-emoji { font-size:2.5rem; margin-bottom:12px; }
+  .pub-title {
+    font-family:var(--f-display); font-size:26px; font-weight:400;
+    color:var(--text-h); margin-bottom:10px; line-height:1.3;
+  }
+  .pub-meta {
+    display:flex; align-items:center; justify-content:center;
+    gap:12px; margin-bottom:16px; flex-wrap:wrap;
+  }
+  .pub-author { display:flex; align-items:center; gap:6px; font-size:12px; color:var(--text2); }
+  .pub-avatar {
+    width:24px; height:24px; border-radius:50%;
+    background:linear-gradient(135deg,var(--accent-dim),var(--bg-card));
+    border:1px solid var(--border2);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--f-display); font-size:11px; color:var(--accent);
+  }
+  .pub-stat {
+    font-family:var(--f-mono); font-size:11px;
+    color:var(--text3); letter-spacing:0.04em;
+  }
+  .pub-desc {
+    font-size:14px; color:var(--text2); line-height:1.6;
+    max-width:480px; margin:0 auto;
+  }
+
+  /* Share button in header */
+  .hdr-btn {
+    height:34px; padding:0 14px; border-radius:8px;
+    border:1px solid var(--border); background:none;
+    color:var(--text2); font-size:12px; font-family:var(--f-body);
+    cursor:pointer; display:flex; align-items:center; gap:6px;
+    transition:all 0.2s; white-space:nowrap;
+  }
+  .hdr-btn:hover { border-color:var(--border2); color:var(--text); }
+  .hdr-btn svg { width:14px; height:14px; flex-shrink:0; }
+
+  /* Share sheet */
+  .share-overlay {
+    position:fixed; inset:0; z-index:300;
+    background:rgba(0,0,0,0.7); backdrop-filter:blur(8px);
+    display:none; align-items:flex-end; justify-content:center;
+  }
+  .share-overlay.open { display:flex; }
+  .share-sheet {
+    width:100%; max-width:440px; background:var(--bg2);
+    border-radius:20px 20px 0 0; border:1px solid var(--border);
+    border-bottom:none; padding:20px 24px 32px;
+    animation:slideUp 0.35s cubic-bezier(0.16,1,0.3,1);
+  }
+  @keyframes slideUp { from{transform:translateY(100%)} to{transform:translateY(0)} }
+  .share-handle { width:36px; height:4px; border-radius:2px; background:var(--text3); margin:0 auto 16px; opacity:0.3; }
+  .share-title { font-family:var(--f-display); font-size:18px; font-weight:500; color:var(--text-h); text-align:center; margin-bottom:20px; }
+  .share-url {
+    display:flex; align-items:center; gap:8px; padding:12px 14px;
+    border-radius:10px; background:var(--bg-card); border:1px solid var(--border); margin-bottom:20px;
+  }
+  .share-url-text { flex:1; font-family:var(--f-mono); font-size:12px; color:var(--text2); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .share-url-copy {
+    padding:6px 14px; border-radius:8px; background:var(--accent); color:var(--bg);
+    font-size:12px; font-family:var(--f-body); font-weight:500;
+    border:none; cursor:pointer; flex-shrink:0;
+  }
+  .share-btns { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:20px; }
+  .share-btn {
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+    padding:14px 8px; border-radius:12px; border:1px solid var(--border);
+    background:var(--bg-card); cursor:pointer; transition:all 0.2s;
+  }
+  .share-btn:hover { border-color:var(--border2); transform:translateY(-2px); }
+  .share-btn-icon { font-size:20px; }
+  .share-btn-label { font-size:10px; color:var(--text3); }
+  .share-dismiss {
+    width:100%; padding:12px; border-radius:12px; background:none;
+    border:1px solid var(--border); color:var(--text2);
+    font-size:14px; font-family:var(--f-body); cursor:pointer;
+  }
+
+  /* CTA footer */
+  .pub-footer {
+    position:fixed; bottom:0; left:0; right:0; z-index:80;
+    background:rgba(10,10,12,0.92); backdrop-filter:blur(16px);
+    border-top:1px solid var(--border);
+    padding:12px 16px; display:flex; align-items:center;
+    justify-content:space-between; gap:12px;
+  }
+  .pub-footer-brand { font-family:var(--f-display); font-size:12px; color:var(--accent); letter-spacing:0.12em; text-transform:uppercase; }
+  .pub-footer-desc { font-size:11px; color:var(--text3); margin-top:1px; }
+  .pub-footer-cta {
+    padding:10px 20px; border-radius:10px; background:var(--accent); color:var(--bg);
+    font-size:14px; font-family:var(--f-body); font-weight:500;
+    border:none; cursor:pointer; white-space:nowrap; flex-shrink:0;
+  }
+  .toast {
+    position:fixed; bottom:100px; left:50%; transform:translateX(-50%) translateY(16px);
+    padding:10px 20px; border-radius:10px; background:var(--c-green); color:var(--bg);
+    font-size:14px; font-weight:500; opacity:0; transition:all 0.3s;
+    z-index:400; pointer-events:none;
+  }
+  .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+
+</style>
+</head>
+<body>
+
+<!-- Header (Viewer) -->
+<header class="header">
+  <a href="#" class="header-brand" style="text-decoration:none"><svg width="12" height="28" viewBox="0 0 16 36" style="vertical-align:middle;margin-right:4px"><line x1="8" y1="0" x2="8" y2="36" stroke="#C8A87E" stroke-width="1.2" opacity="0.18"/><circle cx="8" cy="7" r="2.5" fill="none" stroke="#C8A87E" stroke-width="1.2" opacity="0.35"/><circle cx="8" cy="18" r="4" fill="#C8A87E"/><circle cx="8" cy="29" r="2.5" fill="none" stroke="#C8A87E" stroke-width="1.2" opacity="0.35"/></svg>Chronos</a>
+  <div style="flex:1;text-align:center;padding:0 12px;overflow:hidden">
+    <div style="font-family:var(--f-display);font-size:14px;font-weight:500;color:var(--text-h);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Apple の歴史</div>
+  </div>
+  <button class="hdr-btn" onclick="openShare()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+    共有
+  </button>
+</header>
+
+<!-- Public Hero -->
+<div class="pub-hero">
+  <div class="pub-emoji">🍎</div>
+  <div class="pub-title">Apple の歴史</div>
+  <div class="pub-meta">
+    <div class="pub-author">
+      <div class="pub-avatar">T</div>
+      <span>@toda</span>
+    </div>
+    <span class="pub-stat">14 events · 3 layers · 1976–2019</span>
+  </div>
+  <div class="pub-desc">1976年の創業から現在まで。製品リリース・経営判断・業界動向の3つの視点で読み解く、Apple 43年の歩み。</div>
+</div>
+
+<!-- Layer Controls -->
+<div class="layer-controls">
+  <button class="layer-chip active" data-layer="product" onclick="toggleLayer('product',this)">
+    <span class="chip-dot" style="background:var(--c-blue)"></span>製品
+  </button>
+  <button class="layer-chip active" data-layer="management" onclick="toggleLayer('management',this)">
+    <span class="chip-dot" style="background:var(--c-pink)"></span>経営
+  </button>
+  <button class="layer-chip active" data-layer="industry" onclick="toggleLayer('industry',this)">
+    <span class="chip-dot" style="background:var(--c-teal)"></span>業界動向
+  </button>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot-icon"></div>点のイベント</div>
+  <div class="legend-item"><div class="legend-bar-icon"></div>期間のイベント</div>
+</div>
+
+<div class="tl-wrap" id="timeline">
+
+  <!-- ======= 1970s–1980s ======= -->
+  <div class="tl-row visible" data-layers="all">
+    <div class="tl-lanes"></div>
+    <div class="connector-spacer"></div>
+    <div class="tl-axis"><div style="margin-top:28px"></div></div>
+    <div class="tl-content">
+      <div class="tl-year"><div class="tl-year-text">1970s</div><div class="tl-year-line"></div></div>
+    </div>
+  </div>
+
+  <!-- POINT: Apple設立 -->
+  <div class="tl-row" data-layers="management">
+    <div class="tl-lanes">
+      <div class="lane spacer" data-period="jobs-away"></div>
+      <div class="lane spacer" data-period="windows-era"></div>
+      <div class="lane spacer" data-period="cook-era"></div>
+    </div>
+    <div class="connector-spacer"></div>
+    <div class="tl-axis"><div class="axis-dot history"></div></div>
+    <div class="tl-content">
+      <div class="ev-card history" onclick="toggleEvAccordion(this)">
+        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="ev-date">1976.04</div>
+        <div class="ev-title">Apple Computer 設立</div>
+        <div class="ev-accordion-body">
+          <div class="ev-summary">Steve Jobs、Steve Wozniak、Ronald Wayneの3人がカリフォルニア州ロスアルトスのガレージで創業。Apple Iは666.66ドルで販売された。</div>
+          <div class="ev-tags"><span class="ev-tag history">経営</span><span class="ev-tag cred">✓ 確認済み</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POINT: Macintosh -->
+  <div class="tl-row" data-layers="product">
+    <div class="tl-lanes">
+      <div class="lane spacer" data-period="jobs-away"></div>
+      <div class="lane spacer" data-period="windows-era"></div>
+      <div class="lane spacer" data-period="cook-era"></div>
+    </div>
+    <div class="connector-spacer"></div>
+    <div class="tl-axis"><div class="axis-dot art"></div></div>
+    <div class="tl-content">
+      <div class="ev-card art" onclick="toggleEvAccordion(this)">
+        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="ev-date">1984.01</div>
+        <div class="ev-title">Macintosh 発売</div>
+        <div class="ev-accordion-body">
+          <div class="ev-summary">GUIとマウスを搭載した革新的PC。リドリー・スコット監督の「1984」CMは広告史に残る名作。</div>
+          <div class="ev-tags"><span class="ev-tag art">製品</span><span class="ev-tag cred">✓ 確認済み</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERIOD START: Jobs不在期 -->
+  <div class="tl-row" data-layers="management" data-period-id="jobs-away" data-period-action="start">
+    <div class="tl-lanes">
+      <div class="lane history start active" data-period="jobs-away"></div>
+      <div class="lane spacer" data-period="windows-era"></div>
+      <div class="lane spacer" data-period="cook-era"></div>
+    </div>
+    <div class="period-connector history"></div>
+    <div class="tl-axis"><div class="axis-period-mark start history"></div></div>
+    <div class="tl-content">
+      <div class="period-card-start history" onclick="toggleAccordion(this)">
+        <div class="period-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="ev-date">1985 — 1997</div>
+        <div class="ev-title">Steve Jobs 不在期</div>
+        <div class="period-bar-inline">
+          <span class="period-bar-year">1985</span>
+          <div class="period-bar-track history"><div class="period-bar-fill"></div></div>
+          <span class="period-bar-year">1997</span>
+        </div>
+        <div class="period-accordion-body">
+          <div class="ev-summary">取締役会との対立でJobsが退社。12年間で3人のCEOが交代し業績は低迷。NeXT買収を機にJobsが復帰するまで暗黒時代が続いた。</div>
+          <div class="ev-tags"><span class="ev-tag history">経営</span><span class="ev-tag period">期間 12年</span><span class="ev-tag cred">✓ 確認済み</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= 1990s ======= -->
+  <div class="tl-row visible" data-layers="all">
+    <div class="tl-lanes">
+      <div class="lane history active" data-period="jobs-away"></div>
+      <div class="lane spacer" data-period="windows-era"></div>
+      <div class="lane spacer" data-period="cook-era"></div>
+    </div>
+    <div class="connector-spacer"></div>
+    <div class="tl-axis"><div style="margin-top:28px"></div></div>
+    <div class="tl-content">
+      <div class="tl-year"><div class="tl-year-text">1990s</div><div class="tl-year-line"></div></div>
+    </div>
+  </div>
+
+  <!-- PERIOD START: Windows全盛期 -->
+  <div class="tl-row" data-layers="industry" data-period-id="windows-era" data-period-action="start">
+    <div class="tl-lanes">
+      <div class="lane history active" data-period="jobs-away"></div>
+      <div class="lane science start active" data-period="windows-era"></div>
+      <div class="lane spacer" data-period="cook-era"></div>
+    </div>
+    <div class="period-connector science"></div>
+    <div class="tl-axis"><div class="axis-period-mark start science"></div></div>
+    <div class="tl-content">
+      <div class="period-card-start science" onclick="toggleAccordion(this)">
+        <div class="period-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="ev-date">1995 — 2007</div>
+        <div class="ev-title">Windows / PC全盛期</div>
+        <div class="period-bar-inline">
+          <span class="period-bar-year">1995</span>
+          <div class="period-bar-track science"><div class="period-bar-fill"></div></div>
+          <span class="period-bar-year">2007</span>
+        </div>
+        <div class="period-accordion-body">
+          <div class="ev-summary">Windows 95の登場でMicrosoftがOS市場を独占。Appleのシェアは一桁台に低下し、iPhone登場まで劣勢が続いた。</div>
+          <div class="ev-tags"><span class="ev-tag science">業界動向</span><span class="ev-tag period">期間 12年</span><span class="ev-tag cred">✓ 確認済み</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERIOD END: Jobs不在期 + POINT: Jobs復帰 -->
+  <div class="tl-row" data-layers="management" data-period-id="jobs-away" data-period-action="end">
+    <div class="tl-lanes">
+      <div class="lane history end active" data-period="jobs-away"></div>
+      <div class="lane science active" data-period="windows-era"></div>
+      <div class="lane spacer" data-period="cook-era"></div>
+    </div>
+    <div class="period-connector history end"></div>
+    <div class="tl-axis"><div class="axis-period-mark end history"></div></div>
+    <div class="tl-content">
+      <div class="ev-card history" onclick="toggleEvAccordion(this)">
+        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="ev-date">1997.07</div>
+        <div class="ev-title">Steve Jobs 復帰</div>
+        <div class="ev-accordion-body">
+          <div class="ev-summary">NeXTを4.29億ドルで買収したことを機に復帰。製品ラインを70%削減し「Think Different」でブランドを再構築。</div>
+          <div class="ev-tags"><span class="ev-tag history">経営</span><span class="ev-tag cred">✓ 確認済み</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POINT: iMac G3 -->
+  <div class="tl-row" data-layers="product">
+    <div class="tl-lanes">
+      <div class="lane spacer" data-period="jobs-away"></div>
+      <div class="lane science active" data-period="windows-era"></div>
+      <div class="lane spacer" data-period="cook-era"></div>
+    </div>
+    <div class="connector-spacer"></div>
+    <div class="tl-axis"><div class="axis-dot art"></div></div>
+    <div class="tl-content">
+      <div class="ev-card art" onclick="toggleEvAccordion(this)">
+        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="ev-date">1998.08</div>
+        <div class="ev-title">iMac G3 発売</div>
+        <div class="ev-accordion-body">
+          <div class="ev-summary">ボンダイブルーの半透明筐体。Jony Iveのデザインが世界的注目を集めた、Jobs復帰後の最初のヒット。</div>
+          <div class="ev-tags"><span class="ev-tag art">製品</span><span class="ev-tag cred">✓ 確認済み</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= 2000s ======= -->
+  <div class="tl-row visible" data-layers="all">
+    <div class="tl-lanes">
+      <div class="lane spacer" data-period="jobs-away"></div>
+      <div class="lane science active" data-period="windows-era"></div>
+      <div class="lane spacer" data-period="cook-era"></div>
+    </div>
+    <div class="connector-spacer"></div>
+    <div class="tl-axis"><div style="margin-top:28px"></div></div>
+    <div class="tl-content">
+      <div class="tl-year"><div class="tl-year-text">2000s</div><div class="tl-year-line"></div></div>
+    </div>
+  </div>
+
+  <!-- POINT: iPod -->
+  <div class="tl-row" data-layers="product">
+    <div class="tl-lanes">
+      <div class="lane spacer" data-period="jobs-away"></div>
+      <div class="lane science active" data-period="windows-era"></div>
+      <div class="lane spacer" data-period="cook-era"></div>
+    </div>
+    <div class="connector-spacer"></div>
+    <div class="tl-axis"><div class="axis-dot art"></div></div>
+    <div class="tl-content">
+      <div class="ev-card art" onclick="toggleEvAccordion(this)">
+        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="ev-date">2001.10</div>
+        <div class="ev-title">iPod 発表</div>
+        <div class="ev-accordion-body">
+          <div class="ev-summary">「1000曲をポケットに」。iTunes Storeと連携し、音楽のデジタル販売モデルを確立した。</div>
+          <div class="ev-tags"><span class="ev-tag art">製品</span><span class="ev-tag cred">✓ 確認済み</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERIOD END: Windows全盛期 + POINT: iPhone -->
+  <div class="tl-row" data-layers="product,industry" data-period-id="windows-era" data-period-action="end">
+    <div class="tl-lanes">
+      <div class="lane spacer" data-period="jobs-away"></div>
+      <div class="lane science end active" data-period="windows-era"></div>
+      <div class="lane spacer" data-period="cook-era"></div>
+    </div>
+    <div class="period-connector science end"></div>
+    <div class="tl-axis"><div class="axis-dot art"></div></div>
+    <div class="tl-content">
+      <div class="ev-card art" onclick="toggleEvAccordion(this)">
+        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="ev-date">2007.01</div>
+        <div class="ev-title">iPhone 発表</div>
+        <div class="ev-accordion-body">
+          <div class="ev-summary">Steve JobsがMacworld 2007で「電話を再発明する」と宣言。iPod＋電話＋インターネットの3機能を統合し、モバイル産業を変革した。</div>
+          <div class="ev-tags"><span class="ev-tag art">製品</span><span class="ev-tag cred">✓ 確認済み</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POINT: App Store -->
+  <div class="tl-row" data-layers="industry">
+    <div class="tl-lanes">
+      <div class="lane spacer" data-period="jobs-away"></div>
+      <div class="lane spacer" data-period="windows-era"></div>
+      <div class="lane spacer" data-period="cook-era"></div>
+    </div>
+    <div class="connector-spacer"></div>
+    <div class="tl-axis"><div class="axis-dot science"></div></div>
+    <div class="tl-content">
+      <div class="ev-card science" onclick="toggleEvAccordion(this)">
+        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="ev-date">2008.07</div>
+        <div class="ev-title">App Store 開設</div>
+        <div class="ev-accordion-body">
+          <div class="ev-summary">サードパーティアプリ配信プラットフォーム。初年度で約10億DL。モバイルアプリ経済という巨大市場を創出した。</div>
+          <div class="ev-tags"><span class="ev-tag science">業界動向</span><span class="ev-tag cred">✓ 確認済み</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= 2010s ======= -->
+  <div class="tl-row visible" data-layers="all">
+    <div class="tl-lanes">
+      <div class="lane spacer" data-period="jobs-away"></div>
+      <div class="lane spacer" data-period="windows-era"></div>
+      <div class="lane spacer" data-period="cook-era"></div>
+    </div>
+    <div class="connector-spacer"></div>
+    <div class="tl-axis"><div style="margin-top:28px"></div></div>
+    <div class="tl-content">
+      <div class="tl-year"><div class="tl-year-text">2010s</div><div class="tl-year-line"></div></div>
+    </div>
+  </div>
+
+  <!-- POINT: iPad -->
+  <div class="tl-row" data-layers="product">
+    <div class="tl-lanes">
+      <div class="lane spacer" data-period="jobs-away"></div>
+      <div class="lane spacer" data-period="windows-era"></div>
+      <div class="lane spacer" data-period="cook-era"></div>
+    </div>
+    <div class="connector-spacer"></div>
+    <div class="tl-axis"><div class="axis-dot art"></div></div>
+    <div class="tl-content">
+      <div class="ev-card art" onclick="toggleEvAccordion(this)">
+        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="ev-date">2010.04</div>
+        <div class="ev-title">iPad 発表</div>
+        <div class="ev-accordion-body">
+          <div class="ev-summary">タブレットという新カテゴリを確立。教育・ビジネス・エンタメに広く普及した。</div>
+          <div class="ev-tags"><span class="ev-tag art">製品</span><span class="ev-tag cred">✓ 確認済み</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POINT: Jobs逝去 -->
+  <div class="tl-row" data-layers="management">
+    <div class="tl-lanes">
+      <div class="lane spacer" data-period="jobs-away"></div>
+      <div class="lane spacer" data-period="windows-era"></div>
+      <div class="lane spacer" data-period="cook-era"></div>
+    </div>
+    <div class="connector-spacer"></div>
+    <div class="tl-axis"><div class="axis-dot history"></div></div>
+    <div class="tl-content">
+      <div class="ev-card history" onclick="toggleEvAccordion(this)">
+        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="ev-date">2011.10</div>
+        <div class="ev-title">Steve Jobs 逝去</div>
+        <div class="ev-accordion-body">
+          <div class="ev-summary">膵臓神経内分泌腫瘍により56歳で死去。Tim Cookが後任CEOに就任した。</div>
+          <div class="ev-tags"><span class="ev-tag history">経営</span><span class="ev-tag cred">✓ 確認済み</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERIOD START: Tim Cook時代 -->
+  <div class="tl-row" data-layers="management" data-period-id="cook-era" data-period-action="start">
+    <div class="tl-lanes">
+      <div class="lane spacer" data-period="jobs-away"></div>
+      <div class="lane spacer" data-period="windows-era"></div>
+      <div class="lane history start active" data-period="cook-era"></div>
+    </div>
+    <div class="period-connector history"></div>
+    <div class="tl-axis"><div class="axis-period-mark start history"></div></div>
+    <div class="tl-content">
+      <div class="period-card-start history" onclick="toggleAccordion(this)">
+        <div class="period-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="ev-date">2011 — 現在</div>
+        <div class="ev-title">Tim Cook CEO時代</div>
+        <div class="period-bar-inline">
+          <span class="period-bar-year">2011</span>
+          <div class="period-bar-track history"><div class="period-bar-fill" style="width:85%"></div></div>
+          <span class="period-bar-year">現在</span>
+        </div>
+        <div class="period-accordion-body">
+          <div class="ev-summary">ハードウェア中心からサービス事業への転換を推進。Apple Watch、AirPods、Apple TV+で収益源を多角化。時価総額世界一を達成。</div>
+          <div class="ev-tags"><span class="ev-tag history">経営</span><span class="ev-tag period">期間 14年+</span><span class="ev-tag cred">✓ 確認済み</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POINT: Apple Watch -->
+  <div class="tl-row" data-layers="product">
+    <div class="tl-lanes">
+      <div class="lane spacer" data-period="jobs-away"></div>
+      <div class="lane spacer" data-period="windows-era"></div>
+      <div class="lane history active" data-period="cook-era"></div>
+    </div>
+    <div class="connector-spacer"></div>
+    <div class="tl-axis"><div class="axis-dot art"></div></div>
+    <div class="tl-content">
+      <div class="ev-card art" onclick="toggleEvAccordion(this)">
+        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="ev-date">2015.04</div>
+        <div class="ev-title">Apple Watch 発売</div>
+        <div class="ev-accordion-body">
+          <div class="ev-summary">ウェアラブル市場に参入。心拍数モニタリングや転倒検出などヘルスケア機能が高く評価された。</div>
+          <div class="ev-tags"><span class="ev-tag art">製品</span><span class="ev-tag cred">✓ 確認済み</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POINT: Apple TV+ -->
+  <div class="tl-row" data-layers="product">
+    <div class="tl-lanes">
+      <div class="lane spacer" data-period="jobs-away"></div>
+      <div class="lane spacer" data-period="windows-era"></div>
+      <div class="lane history active" data-period="cook-era"></div>
+    </div>
+    <div class="connector-spacer"></div>
+    <div class="tl-axis"><div class="axis-dot art"></div></div>
+    <div class="tl-content">
+      <div class="ev-card art" onclick="toggleEvAccordion(this)">
+        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="ev-date">2019.11</div>
+        <div class="ev-title">Apple TV+ 開始</div>
+        <div class="ev-accordion-body">
+          <div class="ev-summary">オリジナルコンテンツ配信サービス。ハードからサービスへの戦略転換を象徴する事業。</div>
+          <div class="ev-tags"><span class="ev-tag art">製品</span><span class="ev-tag cred">✓ 確認済み</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA Footer -->
+<div class="pub-footer">
+  <div>
+    <div class="pub-footer-brand"><svg width="12" height="28" viewBox="0 0 16 36" style="vertical-align:middle;margin-right:4px"><line x1="8" y1="0" x2="8" y2="36" stroke="#C8A87E" stroke-width="1.2" opacity="0.18"/><circle cx="8" cy="7" r="2.5" fill="none" stroke="#C8A87E" stroke-width="1.2" opacity="0.35"/><circle cx="8" cy="18" r="4" fill="#C8A87E"/><circle cx="8" cy="29" r="2.5" fill="none" stroke="#C8A87E" stroke-width="1.2" opacity="0.35"/></svg>Chronos</div>
+    <div class="pub-footer-desc">AIで年表をつくろう</div>
+  </div>
+  <button class="pub-footer-cta">無料ではじめる</button>
+</div>
+
+<!-- Share Sheet -->
+<div class="share-overlay" id="shareOverlay" onclick="closeShare()">
+  <div class="share-sheet" onclick="event.stopPropagation()">
+    <div class="share-handle"></div>
+    <div class="share-title">この年表を共有</div>
+    <div class="share-url">
+      <span class="share-url-text">https://chronos.app/t/apple-history-toda</span>
+      <button class="share-url-copy" onclick="copyURL()">コピー</button>
+    </div>
+    <div class="share-btns">
+      <div class="share-btn"><div class="share-btn-icon">𝕏</div><div class="share-btn-label">Post</div></div>
+      <div class="share-btn"><div class="share-btn-icon">💬</div><div class="share-btn-label">LINE</div></div>
+      <div class="share-btn"><div class="share-btn-icon">📘</div><div class="share-btn-label">Facebook</div></div>
+      <div class="share-btn"><div class="share-btn-icon">🔗</div><div class="share-btn-label">埋め込み</div></div>
+    </div>
+    <button class="share-dismiss" onclick="closeShare()">閉じる</button>
+  </div>
+</div>
+<div class="toast" id="toast">コピーしました</div>
+
+<script>
+const activeLayers = new Set(['product','management','industry']);
+// Map layer names to CSS classes
+const layerToClass = {product:'art', management:'history', industry:'science'};
+let activePeriod = null;
+
+function toggleLayer(layer, chip) {
+  if (activeLayers.has(layer)) {
+    if (activeLayers.size <= 1) return;
+    activeLayers.delete(layer);
+    chip.classList.remove('active');
+  } else {
+    activeLayers.add(layer);
+    chip.classList.add('active');
+  }
+  clearPeriodHighlight();
+  updateVisibility();
+}
+
+function updateVisibility() {
+  document.querySelectorAll('.tl-row').forEach(row => {
+    const layers = row.dataset.layers;
+    if (layers === 'all') return;
+    const rowLayers = layers.split(',').map(s=>s.trim());
+    const visible = rowLayers.some(l => activeLayers.has(l));
+    if (visible) { row.classList.remove('hidden'); row.classList.add('visible'); }
+    else { row.classList.add('hidden'); row.classList.remove('visible'); }
+  });
+  document.querySelectorAll('.lane').forEach(lane => {
+    if (lane.classList.contains('spacer')) return;
+    const lc = ['art','history','science'].find(c => lane.classList.contains(c));
+    // Map CSS class back to layer name
+    const classToLayer = {art:'product', history:'management', science:'industry'};
+    const layerName = classToLayer[lc];
+    if (layerName && !activeLayers.has(layerName)) { lane.classList.remove('active'); lane.classList.add('inactive'); }
+    else { lane.classList.add('active'); lane.classList.remove('inactive'); }
+  });
+}
+
+function highlightPeriod(periodId) {
+  const wrap = document.getElementById('timeline');
+  if (activePeriod === periodId) { clearPeriodHighlight(); return; }
+  activePeriod = periodId;
+  wrap.classList.add('has-highlight');
+  document.querySelectorAll('.period-highlight').forEach(el => el.classList.remove('period-highlight'));
+  document.querySelectorAll('.lane-glow').forEach(el => el.classList.remove('lane-glow'));
+  document.querySelectorAll('.tl-row').forEach(row => {
+    const lanes = row.querySelectorAll('.lane[data-period="'+periodId+'"]:not(.spacer)');
+    const isPeriodRow = row.dataset.periodId === periodId;
+    if (lanes.length > 0 || isPeriodRow) {
+      row.classList.add('period-highlight');
+      lanes.forEach(l => l.classList.add('lane-glow'));
+    }
+  });
+}
+function clearPeriodHighlight() {
+  activePeriod = null;
+  const wrap = document.getElementById('timeline');
+  wrap.classList.remove('has-highlight');
+  document.querySelectorAll('.period-highlight').forEach(el => el.classList.remove('period-highlight'));
+  document.querySelectorAll('.lane-glow').forEach(el => el.classList.remove('lane-glow'));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.lane:not(.spacer)').forEach(lane => {
+    lane.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const periodId = lane.dataset.period;
+      if (periodId) highlightPeriod(periodId);
+    });
+  });
+  document.addEventListener('click', (e) => {
+    if (activePeriod && !e.target.closest('.lane:not(.spacer)')) clearPeriodHighlight();
+  });
+});
+
+function toggleAccordion(card) { card.classList.toggle('expanded'); }
+function toggleEvAccordion(card) { card.classList.toggle('expanded'); }
+
+// Stagger animation
+window.addEventListener('DOMContentLoaded', () => {
+  const rows = document.querySelectorAll('.tl-row');
+  rows.forEach((row, i) => {
+    row.style.transitionDelay = (0.06 * i) + 's';
+    setTimeout(() => row.classList.add('visible'), 80);
+  });
+});
+
+// Center-focus highlight
+(function() {
+  let currentFocus = null;
+  const allCards = document.querySelectorAll('.ev-card, .period-card-start');
+  function tick() {
+    const vh = Math.min(window.innerHeight||Infinity,document.documentElement.clientHeight||Infinity);
+    const center = vh * 0.42;
+    let closest=null, closestDist=Infinity;
+    allCards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > vh) return;
+      const dist = Math.abs(rect.top + rect.height/2 - center);
+      if (dist < closestDist) { closestDist=dist; closest=card; }
+    });
+    if (closest !== currentFocus) {
+      if (currentFocus) currentFocus.classList.remove('center-focus');
+      if (closest) closest.classList.add('center-focus');
+      currentFocus = closest;
+    }
+  }
+  setInterval(tick, 120);
+  ['scroll','touchmove','touchend'].forEach(evt => {
+    window.addEventListener(evt, tick, {passive:true, capture:true});
+    document.addEventListener(evt, tick, {passive:true, capture:true});
+  });
+  tick(); setTimeout(tick,100); setTimeout(tick,500);
+})();
+
+// Share
+function openShare(){document.getElementById('shareOverlay').classList.add('open');document.body.style.overflow='hidden';}
+function closeShare(){document.getElementById('shareOverlay').classList.remove('open');document.body.style.overflow='';}
+function copyURL(){const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000);}
+</script>
+</body>
+</html>

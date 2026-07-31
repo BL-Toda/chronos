@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Chronos — ログイン / サインアップ</title>
+<link href="https://api.fontshare.com/v2/css?f[]=erode@300,400,500,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A0A0C;--bg2:#111114;--bg-card:#16161A;--bg-card-h:#1C1C22;--accent:#C8A87E;--accent-dim:rgba(200,168,126,0.13);--accent-glow:rgba(200,168,126,0.04);--text:#E8E4DE;--text-h:#F5F2ED;--text2:#8A8680;--text3:#5A5754;--border:rgba(200,168,126,0.1);--border2:rgba(200,168,126,0.22);--line:rgba(200,168,126,0.15);--c-green:#7BC67E;--danger:#D45A5A;--f-display:'Erode',serif;--f-body:'DM Sans',sans-serif;--f-mono:'JetBrains Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg);color-scheme:dark;min-height:100vh;min-height:100dvh}
+body{font-family:var(--f-body);color:var(--text);-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;position:relative;overflow:hidden}
+
+/* Background effects */
+body::before{content:'';position:fixed;top:-30%;left:50%;transform:translateX(-50%);width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(200,168,126,0.05) 0%,transparent 70%);pointer-events:none}
+body::after{content:'';position:fixed;top:0;left:50%;transform:translateX(-50%);width:1px;height:100%;background:linear-gradient(to bottom,transparent 0%,var(--line) 30%,var(--line) 70%,transparent 100%);opacity:0.15;pointer-events:none}
+
+/* Brand */
+.brand{text-align:center;margin-bottom:36px;animation:fadeUp 0.6s ease both}
+.brand-logo{font-family:var(--f-display);font-size:28px;font-weight:500;letter-spacing:0.22em;color:var(--accent);text-transform:uppercase;margin-bottom:6px}
+.brand-tagline{font-family:var(--f-mono);font-size:10px;letter-spacing:0.12em;color:var(--text3);text-transform:uppercase}
+
+/* Card */
+.auth-card{
+  width:100%;max-width:400px;border-radius:20px;border:1px solid var(--border);
+  background:var(--bg-card);overflow:hidden;animation:fadeUp 0.6s ease 0.1s both;
+  position:relative;
+}
+.auth-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(200,168,126,0.2),transparent)}
+
+/* Tabs */
+.auth-tabs{display:flex;border-bottom:1px solid var(--border)}
+.auth-tab{
+  flex:1;padding:16px;text-align:center;font-size:14px;color:var(--text3);
+  background:none;border:none;cursor:pointer;font-family:var(--f-body);
+  position:relative;transition:color 0.3s;
+}
+.auth-tab.active{color:var(--text-h)}
+.auth-tab.active::after{
+  content:'';position:absolute;bottom:-1px;left:20%;right:20%;height:2px;
+  background:var(--accent);border-radius:1px;
+}
+.auth-tab:hover:not(.active){color:var(--text2)}
+
+/* Body */
+.auth-body{padding:28px 24px 32px}
+
+/* Social buttons */
+.social-btns{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.social-btn{
+  width:100%;padding:14px;border-radius:12px;border:1px solid var(--border);
+  background:var(--bg2);color:var(--text);font-size:14px;font-family:var(--f-body);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;
+  transition:all 0.3s;position:relative;
+}
+.social-btn:hover{border-color:var(--border2);background:var(--bg-card-h);transform:translateY(-1px)}
+.social-btn svg{width:18px;height:18px;flex-shrink:0}
+
+/* Divider */
+.auth-divider{
+  display:flex;align-items:center;gap:16px;margin-bottom:24px;
+}
+.auth-divider-line{flex:1;height:1px;background:var(--border)}
+.auth-divider-text{font-family:var(--f-mono);font-size:10px;color:var(--text3);letter-spacing:0.08em;text-transform:uppercase}
+
+/* Email input */
+.auth-field{margin-bottom:16px}
+.auth-label{display:block;font-size:12px;color:var(--text3);margin-bottom:6px;font-family:var(--f-mono);letter-spacing:0.04em}
+.auth-input{
+  width:100%;padding:14px 16px;border-radius:12px;background:var(--bg);
+  border:1px solid var(--border);color:var(--text);font-size:16px;
+  font-family:var(--f-body);outline:none;transition:border-color 0.3s;
+}
+.auth-input:focus{border-color:var(--accent)}
+.auth-input::placeholder{color:var(--text3)}
+
+/* Submit */
+.auth-submit{
+  width:100%;padding:15px;border-radius:12px;background:var(--accent);color:var(--bg);
+  font-size:14px;font-family:var(--f-body);font-weight:500;border:none;cursor:pointer;
+  transition:all 0.3s;margin-top:4px;
+}
+.auth-submit:hover{filter:brightness(1.12);transform:translateY(-1px);box-shadow:0 6px 24px rgba(200,168,126,0.2)}
+.auth-submit:disabled{opacity:0.4;cursor:default;transform:none;filter:none;box-shadow:none}
+
+/* Magic link hint */
+.auth-hint{
+  font-size:12px;color:var(--text3);text-align:center;margin-top:14px;line-height:1.5;
+}
+
+/* Terms */
+.auth-terms{
+  font-size:11px;color:var(--text3);text-align:center;margin-top:20px;line-height:1.6;
+  padding-top:16px;border-top:1px solid var(--border);
+}
+.auth-terms a{color:var(--text2);text-decoration:underline;text-underline-offset:2px}
+.auth-terms a:hover{color:var(--accent)}
+
+/* Success state */
+.auth-success{display:none;text-align:center;padding:40px 24px}
+.auth-success-icon{font-size:40px;margin-bottom:16px}
+.auth-success-title{font-family:var(--f-display);font-size:22px;font-weight:500;color:var(--text-h);margin-bottom:8px}
+.auth-success-desc{font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:24px}
+.auth-success-email{
+  display:inline-block;padding:6px 14px;border-radius:8px;background:var(--accent-dim);
+  font-family:var(--f-mono);font-size:12px;color:var(--accent);letter-spacing:0.02em;margin-bottom:20px;
+}
+.auth-success-retry{
+  font-size:12px;color:var(--text3);background:none;border:none;cursor:pointer;
+  text-decoration:underline;text-underline-offset:3px;font-family:var(--f-body);
+}
+.auth-success-retry:hover{color:var(--text2)}
+
+/* Footer */
+.auth-footer{
+  margin-top:24px;text-align:center;animation:fadeUp 0.6s ease 0.2s both;
+}
+.auth-footer a{font-size:12px;color:var(--text3);text-decoration:none;transition:color 0.2s}
+.auth-footer a:hover{color:var(--accent)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Loading spinner */
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(10,10,12,0.2);border-top-color:var(--bg);border-radius:50%;animation:spin 0.6s linear infinite}
+
+/* Responsive */
+@media(max-width:440px){
+  .auth-body{padding:24px 20px 28px}
+}
+</style>
+</head>
+<body>
+
+<div class="brand">
+  <div class="brand-logo"><svg width="16" height="36" viewBox="0 0 16 36" style="vertical-align:middle;margin-right:6px;margin-bottom:4px"><line x1="8" y1="0" x2="8" y2="36" stroke="#C8A87E" stroke-width="1.2" opacity="0.18"/><circle cx="8" cy="7" r="2.5" fill="none" stroke="#C8A87E" stroke-width="1.2" opacity="0.35"/><circle cx="8" cy="18" r="4" fill="#C8A87E"/><circle cx="8" cy="29" r="2.5" fill="none" stroke="#C8A87E" stroke-width="1.2" opacity="0.35"/></svg>Chronos</div>
+  <div class="brand-tagline">Every event has context.</div>
+</div>
+
+<div class="auth-card">
+  <!-- Tabs -->
+  <div class="auth-tabs">
+    <button class="auth-tab active" onclick="switchTab('signup')">サインアップ</button>
+    <button class="auth-tab" onclick="switchTab('login')">ログイン</button>
+  </div>
+
+  <!-- Form body -->
+  <div class="auth-body" id="authForm">
+    <!-- Social login -->
+    <div class="social-btns">
+      <button class="social-btn" onclick="socialLogin('Google')">
+        <svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A10.96 10.96 0 001 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        <span id="googleText">Googleで続ける</span>
+      </button>
+      <button class="social-btn" onclick="socialLogin('Apple')">
+        <svg viewBox="0 0 24 24" fill="var(--text-h)"><path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+        <span id="appleText">Appleで続ける</span>
+      </button>
+    </div>
+
+    <!-- Divider -->
+    <div class="auth-divider">
+      <div class="auth-divider-line"></div>
+      <div class="auth-divider-text">or</div>
+      <div class="auth-divider-line"></div>
+    </div>
+
+    <!-- Email (Magic Link) -->
+    <div class="auth-field">
+      <label class="auth-label">メールアドレス</label>
+      <input class="auth-input" type="email" id="emailInput" placeholder="you@example.com" oninput="validateEmail()">
+    </div>
+    <button class="auth-submit" id="submitBtn" disabled onclick="sendMagicLink()">
+      <span id="submitText">マジックリンクを送信</span>
+    </button>
+    <div class="auth-hint" id="authHint">パスワード不要 — メールに届くリンクをクリックするだけ</div>
+
+    <!-- Terms (signup only) -->
+    <div class="auth-terms" id="termsBlock">
+      サインアップすることで、<a href="#">利用規約</a> と <a href="#">プライバシーポリシー</a> に同意したものとみなされます。
+    </div>
+  </div>
+
+  <!-- Magic link sent success -->
+  <div class="auth-success" id="authSuccess">
+    <div class="auth-success-icon">✉️</div>
+    <div class="auth-success-title">メールを送信しました</div>
+    <div class="auth-success-desc">以下のアドレスにログインリンクを送信しました。<br>メール内のリンクをクリックしてください。</div>
+    <div class="auth-success-email" id="sentEmail">you@example.com</div>
+    <div style="margin-top:8px">
+      <button class="auth-success-retry" onclick="resetForm()">メールが届かない場合は再送信</button>
+    </div>
+  </div>
+</div>
+
+<div class="auth-footer">
+  <a href="#">← トップページに戻る</a>
+</div>
+
+<script>
+let currentTab = 'signup';
+
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.auth-tab').forEach((t, i) => {
+    t.classList.toggle('active', (tab === 'signup' && i === 0) || (tab === 'login' && i === 1));
+  });
+
+  const termsBlock = document.getElementById('termsBlock');
+  const googleText = document.getElementById('googleText');
+  const appleText = document.getElementById('appleText');
+  const hint = document.getElementById('authHint');
+
+  if (tab === 'signup') {
+    termsBlock.style.display = 'block';
+    googleText.textContent = 'Googleで続ける';
+    appleText.textContent = 'Appleで続ける';
+    hint.textContent = 'パスワード不要 — メールに届くリンクをクリックするだけ';
+  } else {
+    termsBlock.style.display = 'none';
+    googleText.textContent = 'Googleでログイン';
+    appleText.textContent = 'Appleでログイン';
+    hint.textContent = '登録済みのメールアドレスにログインリンクを送信します';
+  }
+
+  // Reset success state if visible
+  resetForm();
+}
+
+function validateEmail() {
+  const email = document.getElementById('emailInput').value;
+  const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  document.getElementById('submitBtn').disabled = !valid;
+}
+
+function sendMagicLink() {
+  const email = document.getElementById('emailInput').value;
+  const btn = document.getElementById('submitBtn');
+
+  // Loading state
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>';
+
+  setTimeout(() => {
+    document.getElementById('authForm').style.display = 'none';
+    document.getElementById('authSuccess').style.display = 'block';
+    document.getElementById('sentEmail').textContent = email;
+    btn.innerHTML = '<span id="submitText">マジックリンクを送信</span>';
+    btn.disabled = false;
+  }, 1200);
+}
+
+function resetForm() {
+  document.getElementById('authForm').style.display = 'block';
+  document.getElementById('authSuccess').style.display = 'none';
+}
+
+function socialLogin(provider) {
+  // Demo: just show a brief visual feedback
+  const btns = document.querySelectorAll('.social-btn');
+  btns.forEach(b => { b.style.pointerEvents = 'none'; b.style.opacity = '0.5'; });
+
+  setTimeout(() => {
+    btns.forEach(b => { b.style.pointerEvents = ''; b.style.opacity = ''; });
+    alert(provider + ' 認証のデモです（実装時はOAuthフローに接続）');
+  }, 600);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Chronos — Period Events UI</title>
+<link href="https://api.fontshare.com/v2/css?f[]=erode@300,400,500,600,300i,400i&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0A0C;
+    --bg2: #111114;
+    --bg-card: #16161A;
+    --bg-card-h: #1C1C22;
+    --accent: #C8A87E;
+    --accent-dim: rgba(200,168,126,0.13);
+    --accent-glow: rgba(200,168,126,0.04);
+    --text: #E8E4DE;
+    --text-h: #F5F2ED;
+    --text2: #8A8680;
+    --text3: #5A5754;
+    --border: rgba(200,168,126,0.1);
+    --border2: rgba(200,168,126,0.22);
+    --line: rgba(200,168,126,0.15);
+
+    --c-blue: #5B9BD5;
+    --c-blue-dim: rgba(91,155,213,0.12);
+    --c-green: #7BC67E;
+    --c-green-dim: rgba(123,198,126,0.12);
+    --c-pink: #D4849A;
+    --c-pink-dim: rgba(212,132,154,0.12);
+    --c-gold: #C8B87E;
+    --c-gold-dim: rgba(200,184,126,0.12);
+    --c-purple: #9E7EC8;
+    --c-purple-dim: rgba(158,126,200,0.12);
+    --c-teal: #5BBCB4;
+    --c-teal-dim: rgba(91,188,180,0.12);
+    --c-orange: #D4A05A;
+    --c-orange-dim: rgba(212,160,90,0.12);
+
+    --f-display: 'Erode', serif;
+    --f-body: 'DM Sans', sans-serif;
+    --f-mono: 'JetBrains Mono', monospace;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; background: var(--bg); color-scheme: dark; }
+  body {
+    font-family: var(--f-body); background: var(--bg);
+    color: var(--text); min-height:100vh;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+
+  /* ===== HEADER ===== */
+  .header {
+    position:sticky; top:0; z-index:100;
+    background:rgba(10,10,12,0.88); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);
+    padding:0 20px; height:56px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .header-brand {
+    font-family:var(--f-display); font-size:1.3rem; font-weight:500;
+    letter-spacing:0.2em; color:var(--accent); text-transform:uppercase;
+  }
+  .header-subtitle {
+    font-size:0.7rem; color:var(--text3); letter-spacing:0.06em;
+  }
+  .header-badge {
+    font-family:var(--f-mono); font-size:0.58rem; letter-spacing:0.04em;
+    padding:4px 10px; border-radius:10px; border:1px solid var(--border);
+    color:var(--text3);
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    text-align:center; padding:36px 20px 8px;
+    max-width:640px; margin:0 auto;
+    background:var(--bg);
+    opacity:0; animation: fadeUp 0.8s ease forwards 0.1s;
+  }
+  .hero h1 {
+    font-family:var(--f-display); font-size:2.2rem; font-weight:400;
+    line-height:1.25; margin-bottom:10px; color:var(--text-h);
+  }
+  .hero p {
+    font-size:0.82rem; color:var(--text2); line-height:1.6;
+    max-width:480px; margin:0 auto;
+  }
+
+  /* ===== LAYER CONTROLS ===== */
+  .layer-controls {
+    position:sticky; top:56px; z-index:90;
+    background:rgba(10,10,12,0.92); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--border);
+    padding:12px 16px; display:flex; gap:8px; flex-wrap:wrap;
+    justify-content:center;
+  }
+  .layer-chip {
+    font-family:var(--f-body); font-size:0.68rem; font-weight:500;
+    letter-spacing:0.04em; padding:6px 14px; border-radius:16px;
+    border:1px solid var(--border); background:transparent;
+    cursor:pointer; transition:all 0.3s; user-select:none;
+    display:flex; align-items:center; gap:6px;
+    color:var(--text3);
+  }
+  .chip-dot { width:7px; height:7px; border-radius:50%; }
+
+  .layer-chip[data-layer="art"] .chip-dot { background:var(--c-blue); }
+  .layer-chip[data-layer="art"].active { border-color:var(--c-blue); background:var(--c-blue-dim); color:var(--c-blue); }
+  .layer-chip[data-layer="history"] .chip-dot { background:var(--c-pink); }
+  .layer-chip[data-layer="history"].active { border-color:var(--c-pink); background:var(--c-pink-dim); color:var(--c-pink); }
+  .layer-chip[data-layer="science"] .chip-dot { background:var(--c-teal); }
+  .layer-chip[data-layer="science"].active { border-color:var(--c-teal); background:var(--c-teal-dim); color:var(--c-teal); }
+
+  /* ===== LEGEND ===== */
+  .legend {
+    display:flex; gap:16px; justify-content:center;
+    padding:14px 16px 6px; max-width:640px; margin:0 auto;
+  }
+  .legend-item {
+    display:flex; align-items:center; gap:6px;
+    font-size:0.66rem; color:var(--text3); letter-spacing:0.02em;
+  }
+  .legend-dot {
+    width:8px; height:8px; border-radius:50%; border:2px solid var(--accent);
+    background:transparent;
+  }
+  .legend-bar {
+    width:24px; height:6px; border-radius:3px; background:var(--accent); opacity:0.5;
+  }
+
+  /* ===== TIMELINE ===== */
+  .timeline {
+    position:relative; max-width:640px; margin:0 auto;
+    padding:20px 16px 120px 16px;
+    background:var(--bg);
+  }
+  .timeline::before {
+    content:''; position:absolute; left:36px; top:0; bottom:0;
+    width:1px; background:var(--line);
+  }
+
+  /* ===== YEAR LABEL ===== */
+  .year-label {
+    position:relative; padding:28px 0 16px 0;
+    display:flex; align-items:center;
+  }
+  .year-label-text {
+    font-family:var(--f-display); font-size:2.6rem; font-weight:400;
+    color:var(--accent); opacity:0.2;
+    margin-left:8px; line-height:1;
+  }
+  .year-label-line {
+    flex:1; height:1px; margin-left:16px;
+    background:linear-gradient(90deg, var(--line), transparent);
+  }
+
+  /* ===== POINT EVENT ===== */
+  .event-row {
+    position:relative;
+    padding:0 0 6px 50px;
+    opacity:0; transform:translateY(14px);
+    transition:all 0.55s cubic-bezier(0.16,1,0.3,1);
+  }
+  .event-row.visible { opacity:1; transform:translateY(0); }
+  .event-row.layer-hidden { display:none; }
+
+  .ev-dot {
+    position:absolute; left:30px; top:14px;
+    width:12px; height:12px; border-radius:50%;
+    border:2.5px solid var(--bg); z-index:5;
+    transition:transform 0.25s ease;
+  }
+  .ev-dot.art { background:var(--c-blue); box-shadow:0 0 0 3px var(--c-blue-dim); }
+  .ev-dot.history { background:var(--c-pink); box-shadow:0 0 0 3px var(--c-pink-dim); }
+  .ev-dot.science { background:var(--c-teal); box-shadow:0 0 0 3px var(--c-teal-dim); }
+
+  .ev-connector {
+    position:absolute; left:35px; top:26px; bottom:-6px;
+    width:2px; z-index:1;
+  }
+  .ev-connector.art { background:var(--c-blue); opacity:0.3; }
+  .ev-connector.history { background:var(--c-pink); opacity:0.3; }
+  .ev-connector.science { background:var(--c-teal); opacity:0.3; }
+
+  .ev-card {
+    background:var(--bg-card); border:1px solid var(--border);
+    border-radius:12px; padding:14px 16px; margin-bottom:8px;
+    transition:all 0.3s ease; position:relative;
+    overflow:hidden; cursor:pointer;
+  }
+  .ev-card:hover { background:var(--bg-card-h); border-color:var(--border2); }
+  .ev-card::before {
+    content:''; position:absolute; top:0; left:0; bottom:0;
+    width:3px; border-radius:3px 0 0 3px;
+  }
+  .ev-card.art::before { background:var(--c-blue); }
+  .ev-card.history::before { background:var(--c-pink); }
+  .ev-card.science::before { background:var(--c-teal); }
+
+  .ev-date {
+    font-family:var(--f-mono); font-size:0.62rem; color:var(--text3);
+    letter-spacing:0.08em; margin-bottom:4px;
+  }
+  .ev-title {
+    font-family:var(--f-display); font-size:1.15rem; font-weight:500;
+    line-height:1.3; color:var(--text-h); margin-bottom:4px;
+  }
+  .ev-summary {
+    font-size:0.78rem; color:var(--text2); line-height:1.55;
+  }
+  .ev-layer-tag {
+    display:inline-block; font-family:var(--f-mono); font-size:0.56rem;
+    letter-spacing:0.06em; padding:2px 8px; border-radius:8px; margin-top:6px;
+  }
+  .ev-layer-tag.art { background:var(--c-blue-dim); color:var(--c-blue); }
+  .ev-layer-tag.history { background:var(--c-pink-dim); color:var(--c-pink); }
+  .ev-layer-tag.science { background:var(--c-teal-dim); color:var(--c-teal); }
+
+  .ev-cred {
+    display:inline-block; font-family:var(--f-mono); font-size:0.54rem;
+    letter-spacing:0.04em; padding:2px 7px; border-radius:8px;
+    margin-top:6px; margin-left:4px;
+  }
+  .ev-cred.verified { background:rgba(123,198,126,0.12); color:var(--c-green); }
+  .ev-cred.unverified { background:rgba(200,168,126,0.08); color:var(--text3); }
+
+  /* ===== PERIOD EVENT (SPAN / BAR) ===== */
+  .period-row {
+    position:relative;
+    padding:0 0 6px 50px;
+    opacity:0; transform:translateY(14px);
+    transition:all 0.55s cubic-bezier(0.16,1,0.3,1);
+  }
+  .period-row.visible { opacity:1; transform:translateY(0); }
+  .period-row.layer-hidden { display:none; }
+
+  /* Start marker — diamond shape */
+  .period-start-marker {
+    position:absolute; left:29px; top:14px;
+    width:14px; height:14px;
+    border:2.5px solid var(--bg); z-index:5;
+    border-radius:2px;
+    transform:rotate(45deg);
+    transition:transform 0.25s ease;
+  }
+  .period-start-marker.art { background:var(--c-blue); box-shadow:0 0 0 3px var(--c-blue-dim); }
+  .period-start-marker.history { background:var(--c-pink); box-shadow:0 0 0 3px var(--c-pink-dim); }
+  .period-start-marker.science { background:var(--c-teal); box-shadow:0 0 0 3px var(--c-teal-dim); }
+
+  .period-card {
+    background:var(--bg-card); border:1px solid var(--border);
+    border-radius:12px; padding:14px 16px; margin-bottom:8px;
+    transition:all 0.3s ease; position:relative;
+    overflow:hidden; cursor:pointer;
+  }
+  .period-card:hover { background:var(--bg-card-h); border-color:var(--border2); }
+
+  /* Period bar — the core visual */
+  .period-bar-wrap {
+    margin:10px 0 6px;
+    position:relative;
+  }
+  .period-bar {
+    height:8px; border-radius:4px; position:relative;
+    overflow:hidden;
+  }
+  .period-bar.art { background:var(--c-blue-dim); }
+  .period-bar.history { background:var(--c-pink-dim); }
+  .period-bar.science { background:var(--c-teal-dim); }
+
+  .period-bar-fill {
+    position:absolute; top:0; left:0; bottom:0;
+    border-radius:4px;
+    animation: barFill 1.2s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .period-bar.art .period-bar-fill { background:var(--c-blue); opacity:0.5; }
+  .period-bar.history .period-bar-fill { background:var(--c-pink); opacity:0.5; }
+  .period-bar.science .period-bar-fill { background:var(--c-teal); opacity:0.5; }
+
+  @keyframes barFill { from { width:0 } to { width:100% } }
+
+  .period-bar-labels {
+    display:flex; justify-content:space-between;
+    margin-top:4px;
+  }
+  .period-bar-label {
+    font-family:var(--f-mono); font-size:0.58rem; color:var(--text3);
+    letter-spacing:0.06em;
+  }
+
+  .period-title {
+    font-family:var(--f-display); font-size:1.15rem; font-weight:500;
+    line-height:1.3; color:var(--text-h); margin-bottom:2px;
+  }
+  .period-duration {
+    font-family:var(--f-mono); font-size:0.6rem; color:var(--text3);
+    letter-spacing:0.04em; margin-bottom:4px;
+  }
+  .period-summary {
+    font-size:0.78rem; color:var(--text2); line-height:1.55;
+  }
+  .period-type-badge {
+    display:inline-block; font-family:var(--f-mono); font-size:0.52rem;
+    letter-spacing:0.06em; padding:2px 7px; border-radius:8px;
+    margin-top:6px; background:rgba(200,168,126,0.08); color:var(--accent);
+  }
+
+  /* Side accent line for period card */
+  .period-card::before {
+    content:''; position:absolute; top:0; left:0; bottom:0;
+    width:3px; border-radius:3px 0 0 3px;
+  }
+  .period-card.art::before { background:var(--c-blue); }
+  .period-card.history::before { background:var(--c-pink); }
+  .period-card.science::before { background:var(--c-teal); }
+
+  /* Period span line along the axis */
+  .period-axis-line {
+    position:absolute; left:34px; top:28px; width:4px;
+    border-radius:2px; z-index:2;
+  }
+  .period-axis-line.art { background:var(--c-blue); opacity:0.25; }
+  .period-axis-line.history { background:var(--c-pink); opacity:0.25; }
+  .period-axis-line.science { background:var(--c-teal); opacity:0.25; }
+
+  /* ===== PERIOD END MARKER ===== */
+  .period-end-row {
+    position:relative;
+    padding:0 0 6px 50px;
+  }
+  .period-end-row.layer-hidden { display:none; }
+
+  .period-end-marker {
+    position:absolute; left:29px; top:6px;
+    width:14px; height:14px;
+    border:2.5px solid var(--bg); z-index:5;
+    border-radius:2px;
+    transform:rotate(45deg);
+    opacity:0.5;
+  }
+  .period-end-marker.art { background:var(--c-blue); }
+  .period-end-marker.history { background:var(--c-pink); }
+  .period-end-marker.science { background:var(--c-teal); }
+
+  .period-end-label {
+    font-family:var(--f-mono); font-size:0.6rem; color:var(--text3);
+    letter-spacing:0.06em; padding:4px 0;
+  }
+  .period-end-label span {
+    font-family:var(--f-display); font-weight:400; color:var(--text2);
+    font-size:0.85rem; margin-left:8px;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (min-width: 768px) {
+    .hero h1 { font-size:2.8rem; }
+    .timeline { padding-left:32px; padding-right:32px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div>
+    <div class="header-brand">Chronos</div>
+  </div>
+  <span class="header-badge">Period Events UI</span>
+</header>
+
+<div class="hero">
+  <h1>芸術と時代の交差</h1>
+  <p>ゴッホ、印象派、そして19世紀ヨーロッパ。<br>点の出来事と、時代の流れを重ねて見る。</p>
+</div>
+
+<div class="layer-controls">
+  <button class="layer-chip active" data-layer="art" onclick="toggleLayer('art',this)">
+    <span class="chip-dot"></span>芸術
+  </button>
+  <button class="layer-chip active" data-layer="history" onclick="toggleLayer('history',this)">
+    <span class="chip-dot"></span>時代・政治
+  </button>
+  <button class="layer-chip active" data-layer="science" onclick="toggleLayer('science',this)">
+    <span class="chip-dot"></span>科学・技術
+  </button>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot"></div>点のイベント</div>
+  <div class="legend-item"><div class="legend-bar"></div>期間のイベント</div>
+</div>
+
+<div class="timeline" id="timeline">
+
+  <!-- YEAR: 1800s -->
+  <div class="year-label">
+    <div class="year-label-text">1800s</div>
+    <div class="year-label-line"></div>
+  </div>
+
+  <!-- PERIOD: 江戸時代（末期）-->
+  <div class="period-row visible" data-layer="history">
+    <div class="period-start-marker history"></div>
+    <div class="period-axis-line history" style="height:80px;"></div>
+    <div class="period-card history">
+      <div class="period-title">江戸時代</div>
+      <div class="period-duration">1603 — 1868 ・ 265年間</div>
+      <div class="period-bar-wrap">
+        <div class="period-bar history">
+          <div class="period-bar-fill"></div>
+        </div>
+        <div class="period-bar-labels">
+          <span class="period-bar-label">1603</span>
+          <span class="period-bar-label">1868</span>
+        </div>
+      </div>
+      <div class="period-summary">徳川幕府による統治。鎖国政策の下、独自の文化が発展。</div>
+      <span class="ev-layer-tag history">時代・政治</span>
+      <span class="period-type-badge">期間</span>
+      <span class="ev-cred verified">✓ 確認済み</span>
+    </div>
+  </div>
+
+  <!-- POINT: ペリー来航 -->
+  <div class="event-row visible" data-layer="history">
+    <div class="ev-dot history"></div>
+    <div class="ev-connector history"></div>
+    <div class="ev-card history">
+      <div class="ev-date">1853.07</div>
+      <div class="ev-title">ペリー来航</div>
+      <div class="ev-summary">アメリカ海軍のマシュー・ペリーが浦賀に来航。開国を迫る。</div>
+      <span class="ev-layer-tag history">時代・政治</span>
+      <span class="ev-cred verified">✓ 確認済み</span>
+    </div>
+  </div>
+
+  <!-- PERIOD: ゴッホの生涯 -->
+  <div class="period-row visible" data-layer="art">
+    <div class="period-start-marker art"></div>
+    <div class="period-axis-line art" style="height:80px;"></div>
+    <div class="period-card art">
+      <div class="period-title">フィンセント・ファン・ゴッホ</div>
+      <div class="period-duration">1853 — 1890 ・ 37年間</div>
+      <div class="period-bar-wrap">
+        <div class="period-bar art">
+          <div class="period-bar-fill"></div>
+        </div>
+        <div class="period-bar-labels">
+          <span class="period-bar-label">1853</span>
+          <span class="period-bar-label">1890</span>
+        </div>
+      </div>
+      <div class="period-summary">後期印象派の画家。わずか10年の画業で2,000点以上を制作。生前はほぼ無名だった。</div>
+      <span class="ev-layer-tag art">芸術</span>
+      <span class="period-type-badge">期間</span>
+      <span class="ev-cred verified">✓ 確認済み</span>
+    </div>
+  </div>
+
+  <!-- POINT: 明治維新 -->
+  <div class="event-row visible" data-layer="history">
+    <div class="ev-dot history"></div>
+    <div class="ev-connector history"></div>
+    <div class="ev-card history">
+      <div class="ev-date">1868.01</div>
+      <div class="ev-title">明治維新</div>
+      <div class="ev-summary">王政復古の大号令。約260年続いた江戸幕府が終焉。日本の近代化が始まる。</div>
+      <span class="ev-layer-tag history">時代・政治</span>
+      <span class="ev-cred verified">✓ 確認済み</span>
+    </div>
+  </div>
+
+  <!-- PERIOD END: 江戸時代 -->
+  <div class="period-end-row" data-layer="history">
+    <div class="period-end-marker history"></div>
+    <div class="period-end-label">1868 <span>江戸時代 終了</span></div>
+  </div>
+
+  <!-- POINT: 電話の発明 -->
+  <div class="event-row visible" data-layer="science">
+    <div class="ev-dot science"></div>
+    <div class="ev-connector science"></div>
+    <div class="ev-card science">
+      <div class="ev-date">1876.03</div>
+      <div class="ev-title">グラハム・ベル、電話を特許取得</div>
+      <div class="ev-summary">通信技術の革新。音声の遠隔伝送が可能に。</div>
+      <span class="ev-layer-tag science">科学・技術</span>
+      <span class="ev-cred verified">✓ 確認済み</span>
+    </div>
+  </div>
+
+  <!-- PERIOD: 印象派運動 -->
+  <div class="period-row visible" data-layer="art">
+    <div class="period-start-marker art"></div>
+    <div class="period-axis-line art" style="height:80px;"></div>
+    <div class="period-card art">
+      <div class="period-title">印象派運動</div>
+      <div class="period-duration">1867 — 1886 ・ 約19年間</div>
+      <div class="period-bar-wrap">
+        <div class="period-bar art">
+          <div class="period-bar-fill"></div>
+        </div>
+        <div class="period-bar-labels">
+          <span class="period-bar-label">1867</span>
+          <span class="period-bar-label">1886</span>
+        </div>
+      </div>
+      <div class="period-summary">光と色彩の表現を追求した芸術運動。モネ、ルノワール、ドガらが中心。8回の展覧会を開催。</div>
+      <span class="ev-layer-tag art">芸術</span>
+      <span class="period-type-badge">期間</span>
+      <span class="ev-cred verified">✓ 確認済み</span>
+    </div>
+  </div>
+
+  <!-- POINT: ゴッホ「星月夜」 -->
+  <div class="event-row visible" data-layer="art">
+    <div class="ev-dot art"></div>
+    <div class="ev-connector art"></div>
+    <div class="ev-card art">
+      <div class="ev-date">1889.06</div>
+      <div class="ev-title">ゴッホ「星月夜」を制作</div>
+      <div class="ev-summary">サン＝レミ＝ド＝プロヴァンスの療養院にて。現在はMoMAに所蔵。</div>
+      <span class="ev-layer-tag art">芸術</span>
+      <span class="ev-cred verified">✓ 確認済み</span>
+    </div>
+  </div>
+
+  <!-- PERIOD END: ゴッホの生涯 -->
+  <div class="period-end-row" data-layer="art">
+    <div class="period-end-marker art"></div>
+    <div class="period-end-label">1890 <span>ゴッホ 没</span></div>
+  </div>
+
+  <!-- POINT: エジソン -->
+  <div class="event-row visible" data-layer="science">
+    <div class="ev-dot science"></div>
+    <div class="ev-connector science"></div>
+    <div class="ev-card science">
+      <div class="ev-date">1879.10</div>
+      <div class="ev-title">エジソン、実用的な白熱電球を開発</div>
+      <div class="ev-summary">40時間以上の連続点灯に成功。電気の時代が始まる。</div>
+      <span class="ev-layer-tag science">科学・技術</span>
+      <span class="ev-cred verified">✓ 確認済み</span>
+    </div>
+  </div>
+
+  <!-- YEAR: 1900s -->
+  <div class="year-label">
+    <div class="year-label-text">1900s</div>
+    <div class="year-label-line"></div>
+  </div>
+
+  <!-- PERIOD: 明治時代 -->
+  <div class="period-row visible" data-layer="history">
+    <div class="period-start-marker history"></div>
+    <div class="period-axis-line history" style="height:80px;"></div>
+    <div class="period-card history">
+      <div class="period-title">明治時代</div>
+      <div class="period-duration">1868 — 1912 ・ 44年間</div>
+      <div class="period-bar-wrap">
+        <div class="period-bar history">
+          <div class="period-bar-fill"></div>
+        </div>
+        <div class="period-bar-labels">
+          <span class="period-bar-label">1868</span>
+          <span class="period-bar-label">1912</span>
+        </div>
+      </div>
+      <div class="period-summary">急速な近代化と西洋化。殖産興業・富国強兵。世界の列強に仲間入り。</div>
+      <span class="ev-layer-tag history">時代・政治</span>
+      <span class="period-type-badge">期間</span>
+      <span class="ev-cred verified">✓ 確認済み</span>
+    </div>
+  </div>
+
+  <!-- POINT: ライト兄弟 -->
+  <div class="event-row visible" data-layer="science">
+    <div class="ev-dot science"></div>
+    <div class="ev-card science">
+      <div class="ev-date">1903.12</div>
+      <div class="ev-title">ライト兄弟、初の動力飛行に成功</div>
+      <div class="ev-summary">ノースカロライナ州キティホークにて。12秒間、36mの飛行。</div>
+      <span class="ev-layer-tag science">科学・技術</span>
+      <span class="ev-cred verified">✓ 確認済み</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Layer toggle
+const activeLayers = new Set(['art', 'history', 'science']);
+
+function toggleLayer(layer, chip) {
+  if (activeLayers.has(layer)) {
+    if (activeLayers.size <= 1) return;
+    activeLayers.delete(layer);
+    chip.classList.remove('active');
+  } else {
+    activeLayers.add(layer);
+    chip.classList.add('active');
+  }
+  document.querySelectorAll('[data-layer]').forEach(el => {
+    const l = el.dataset.layer;
+    if (activeLayers.has(l)) {
+      el.classList.remove('layer-hidden');
+      if (el.classList.contains('event-row') || el.classList.contains('period-row')) {
+        el.classList.add('visible');
+      }
+    } else {
+      el.classList.add('layer-hidden');
+      el.classList.remove('visible');
+    }
+  });
+}
+
+// Stagger animation on load
+window.addEventListener('DOMContentLoaded', () => {
+  const rows = document.querySelectorAll('.event-row, .period-row');
+  rows.forEach((row, i) => {
+    row.style.transitionDelay = `${0.08 * i}s`;
+    setTimeout(() => row.classList.add('visible'), 50);
+  });
+});
+</script>
+</body>
+</html>

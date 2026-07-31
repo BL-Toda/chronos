@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ja" style="background-color:#0A0A0C;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chronos — Design System & React Handoff</title>
+<link href="https://api.fontshare.com/v2/css?f[]=erode@300,400,500,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0A0C;--bg2:#111114;--bg-card:#16161A;--bg-card-h:#1C1C22;
+  --accent:#C8A87E;--accent-dim:rgba(200,168,126,0.13);
+  --text:#E8E4DE;--text-h:#F5F2ED;--text2:#8A8680;--text3:#5A5754;
+  --border:rgba(200,168,126,0.1);--border2:rgba(200,168,126,0.22);
+  --f-d:'Erode','Shippori Mincho',serif;--f-b:'DM Sans',sans-serif;--f-m:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--f-b);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+.wrap{max-width:840px;margin:0 auto;padding:40px 24px 120px}
+
+/* Header */
+.doc-header{text-align:center;margin-bottom:56px;padding-bottom:28px;border-bottom:1px solid var(--border)}
+.doc-brand{font-family:var(--f-d);font-size:14px;font-weight:500;letter-spacing:0.18em;color:var(--accent);text-transform:uppercase;margin-bottom:6px}
+.doc-title{font-family:var(--f-d);font-size:26px;font-weight:400;color:var(--text-h);margin-bottom:10px}
+.doc-desc{font-size:12px;color:var(--text2);line-height:1.7}
+
+/* TOC */
+.toc{padding:20px 24px;border-radius:14px;background:var(--bg-card);border:1px solid var(--border);margin-bottom:48px}
+.toc-title{font-family:var(--f-m);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+.toc-list li{font-size:14px;color:var(--text2);padding:6px 0;border-bottom:1px solid rgba(200,168,126,0.05)}
+.toc-list li:last-child{border:none}
+.toc-list a{color:var(--text2);text-decoration:none;transition:color 0.2s}
+.toc-list a:hover{color:var(--accent)}
+.toc-num{font-family:var(--f-m);font-size:11px;color:var(--text3);margin-right:10px}
+
+/* Section */
+.section{margin-bottom:56px}
+.section-label{font-family:var(--f-m);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.section-title{font-family:var(--f-d);font-size:22px;font-weight:400;color:var(--text-h);margin-bottom:8px}
+.section-desc{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:24px}
+
+/* Code block */
+.code{padding:20px;border-radius:12px;background:var(--bg2);border:1px solid var(--border);margin:16px 0;overflow-x:auto}
+.code pre{font-family:var(--f-m);font-size:12px;color:var(--text);line-height:1.7;white-space:pre}
+.code-label{font-family:var(--f-m);font-size:10px;letter-spacing:0.08em;color:var(--text3);margin-bottom:8px}
+.code-filename{font-family:var(--f-m);font-size:11px;color:var(--accent);margin-bottom:6px;display:inline-block;padding:2px 8px;border-radius:4px;background:var(--accent-dim)}
+
+/* Table */
+.tbl{width:100%;border-collapse:collapse;margin:16px 0}
+.tbl th{font-family:var(--f-m);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);font-weight:400}
+.tbl td{font-size:12px;color:var(--text);padding:10px 12px;border-bottom:1px solid rgba(200,168,126,0.05);vertical-align:top}
+.tbl td code{font-family:var(--f-m);font-size:11px;color:var(--accent);background:var(--accent-dim);padding:1px 6px;border-radius:4px}
+.tbl tr:hover td{background:rgba(200,168,126,0.03)}
+
+/* Component card */
+.comp{padding:24px;border-radius:14px;background:var(--bg-card);border:1px solid var(--border);margin:16px 0}
+.comp-name{font-family:var(--f-d);font-size:18px;color:var(--text-h);margin-bottom:4px}
+.comp-desc{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:16px}
+.comp-props{display:flex;flex-direction:column;gap:6px}
+.comp-prop{display:flex;gap:8px;font-size:12px;align-items:baseline}
+.comp-prop-name{font-family:var(--f-m);font-size:11px;color:var(--accent);min-width:110px;flex-shrink:0}
+.comp-prop-type{font-family:var(--f-m);font-size:10px;color:var(--text3);min-width:100px;flex-shrink:0}
+.comp-prop-desc{color:var(--text2)}
+
+/* State badge */
+.state-badge{display:inline-block;padding:2px 8px;border-radius:6px;font-family:var(--f-m);font-size:10px;letter-spacing:0.04em}
+.sb-global{background:rgba(200,168,126,0.1);color:var(--accent)}
+.sb-local{background:rgba(91,155,213,0.1);color:#5B9BD5}
+.sb-server{background:rgba(123,198,126,0.1);color:#7BC67E}
+
+/* Tree */
+.tree{font-family:var(--f-m);font-size:12px;color:var(--text2);line-height:2.0;padding:20px 24px;background:var(--bg2);border-radius:12px;border:1px solid var(--border);margin:16px 0}
+.tree .dir{color:var(--accent)}
+.tree .file{color:var(--text)}
+.tree .note{color:var(--text3);font-size:10px}
+
+/* Swatch inline */
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:middle;margin-right:4px}
+
+/* Separator */
+.sep{height:1px;background:var(--border);margin:48px 0}
+
+@media(max-width:500px){
+  .comp-prop{flex-direction:column;gap:2px}
+  .comp-prop-name,.comp-prop-type{min-width:auto}
+}
+</style>
+</head>
+<body style="background-color:#0A0A0C;">
+<div class="wrap">
+
+<!-- ===== HEADER ===== -->
+<div class="doc-header">
+  <div class="doc-brand">Chronos</div>
+  <div class="doc-title">Design System & React Handoff</div>
+  <div class="doc-desc">プロトタイプ（HTML）からプロダクション（React / Next.js）への移行に必要な<br>デザイントークン、コンポーネント仕様、状態設計、ファイル構成を一元化したドキュメント。</div>
+</div>
+
+<!-- ===== TOC ===== -->
+<div class="toc">
+  <div class="toc-title">Contents</div>
+  <ul class="toc-list">
+    <li><a href="#tokens"><span class="toc-num">01</span>デザイントークン（CSS変数 → TS定数）</a></li>
+    <li><a href="#typo"><span class="toc-num">02</span>タイポグラフィ仕様</a></li>
+    <li><a href="#components"><span class="toc-num">03</span>コンポーネントカタログ & Props定義</a></li>
+    <li><a href="#state"><span class="toc-num">04</span>状態管理設計</a></li>
+    <li><a href="#data"><span class="toc-num">05</span>データモデル（TypeScript型）</a></li>
+    <li><a href="#pages"><span class="toc-num">06</span>ページ構成 & ルーティング</a></li>
+    <li><a href="#structure"><span class="toc-num">07</span>推奨ディレクトリ構成</a></li>
+    <li><a href="#stack"><span class="toc-num">08</span>推奨技術スタック</a></li>
+    <li><a href="#proto"><span class="toc-num">09</span>プロトタイプ → React 対応表</a></li>
+  </ul>
+</div>
+
+<!-- ===== 01. DESIGN TOKENS ===== -->
+<div class="section" id="tokens">
+  <div class="section-label">01 — Design Tokens</div>
+  <div class="section-title">デザイントークン</div>
+  <div class="section-desc">CSSカスタムプロパティ → TypeScript定数オブジェクトへの変換。Tailwind CSS v4のCSS-first configとの併用も可。</div>
+
+  <div class="code">
+    <div class="code-filename">tokens/colors.ts</div>
+    <pre>
+export const colors = {
+  // Backgrounds
+  bg:        '#0A0A0C',
+  bg2:       '#111114',
+  bgCard:    '#16161A',
+  bgCardH:   '#1C1C22',
+
+  // Accent
+  accent:    '#C8A87E',
+  accentDim: 'rgba(200,168,126,0.13)',
+
+  // Text
+  textH:     '#F5F2ED',   // 見出し
+  text:      '#E8E4DE',   // 本文
+  text2:     '#8A8680',   // サブテキスト
+  text3:     '#5A5754',   // ラベル・プレースホルダ
+
+  // Borders
+  border:    'rgba(200,168,126,0.10)',
+  border2:   'rgba(200,168,126,0.22)',
+  line:      'rgba(200,168,126,0.15)',
+
+  // Layer Colors (7色プリセット)
+  layer: {
+    blue:   { base:'#5B9BD5', dim:'rgba(91,155,213,0.12)',  bar:'rgba(91,155,213,0.22)' },
+    pink:   { base:'#D4849A', dim:'rgba(212,132,154,0.12)', bar:'rgba(212,132,154,0.22)' },
+    teal:   { base:'#5BBCB4', dim:'rgba(91,188,180,0.12)',  bar:'rgba(91,188,180,0.22)' },
+    green:  { base:'#7BC67E', dim:'rgba(123,198,126,0.12)', bar:'rgba(123,198,126,0.22)' },
+    gold:   { base:'#C8B87E', dim:'rgba(200,184,126,0.12)', bar:'rgba(200,184,126,0.22)' },
+    purple: { base:'#9E7EC8', dim:'rgba(158,126,200,0.12)', bar:'rgba(158,126,200,0.22)' },
+    orange: { base:'#D4A05A', dim:'rgba(212,160,90,0.12)',  bar:'rgba(212,160,90,0.22)' },
+  },
+
+  // Semantic
+  success: '#7BC67E',
+  danger:  '#D45A5A',
+} as const;</pre>
+  </div>
+
+  <div class="code">
+    <div class="code-filename">tokens/spacing.ts</div>
+    <pre>
+export const spacing = {
+  xs:  4,   // タグ内padding
+  sm:  8,   // チップgap、最小margin
+  md:  12,  // カード内padding-small
+  lg:  16,  // セクション間小
+  xl:  20,  // カード内padding
+  xxl: 24,  // セクション間中
+  '3xl': 32,
+  '4xl': 48, // セクション間大
+} as const;</pre>
+  </div>
+
+  <div class="code">
+    <div class="code-filename">tokens/radius.ts</div>
+    <pre>
+export const radius = {
+  xs:   4,   // タグ
+  sm:   8,   // ボタン、バッジ
+  md:  12,   // カード、入力フィールド
+  lg:  14,   // モーダル、大きいカード
+  xl:  16,   // ドロップダウン、シート
+  full: 9999, // 丸型（アバター、ドット）
+} as const;</pre>
+  </div>
+</div>
+
+<!-- ===== 02. TYPOGRAPHY ===== -->
+<div class="section" id="typo">
+  <div class="section-label">02 — Typography</div>
+  <div class="section-title">タイポグラフィ仕様</div>
+
+  <div class="code">
+    <div class="code-filename">tokens/typography.ts</div>
+    <pre>
+export const fontFamily = {
+  display: "'Erode', 'Shippori Mincho', serif",
+  body:    "'DM Sans', sans-serif",
+  mono:    "'JetBrains Mono', monospace",
+} as const;
+
+// Erode: 英数字の見出し・ブランド
+// Shippori Mincho: Erode未対応の日本語にフォールバック
+// ※ 斜体は使用しない（全ウェイト正体のみ）
+
+export const fontSize = {
+  xs:    10,  // タグ・バッジ・最小ラベル
+  cap:   11,  // キャプション・年月ラベル
+  sm:    12,  // サブテキスト・説明文
+  base:  14,  // 本文・ボタン・ナビ ★基準値
+  md:    16,  // カードタイトル・小見出し
+  lg:    18,  // セクション見出し
+  xl:    22,  // モーダル見出し
+  '2xl': 26,  // ページタイトル
+} as const;
+
+export const fontWeight = {
+  light:    300,
+  regular:  400,
+  medium:   500,
+  semibold: 600,
+} as const;
+
+// フォント読み込み（next/font or @fontsource）
+// Erode: https://www.fontshare.com/fonts/erode (OFL)
+// Shippori Mincho: Google Fonts (OFL)
+// DM Sans: Google Fonts (OFL)
+// JetBrains Mono: Google Fonts (OFL)</pre>
+  </div>
+
+  <table class="tbl">
+    <tr><th>Size</th><th>Font</th><th>Weight</th><th>用途</th></tr>
+    <tr><td>10px</td><td><code>mono</code></td><td>400</td><td>タグ、バッジ、年月ラベル内アクセント</td></tr>
+    <tr><td>11px</td><td><code>mono</code></td><td>400</td><td>年月ラベル、メタ情報、信憑性フラグ</td></tr>
+    <tr><td>12px</td><td><code>body</code></td><td>300–400</td><td>サブテキスト、カード説明文、ナビリンク</td></tr>
+    <tr><td>14px</td><td><code>body</code></td><td>400–500</td><td>本文、ボタンラベル、フォーム入力</td></tr>
+    <tr><td>16px</td><td><code>display</code></td><td>500</td><td>イベントタイトル、カード見出し</td></tr>
+    <tr><td>18px</td><td><code>display</code></td><td>400</td><td>セクション見出し、共有シートタイトル</td></tr>
+    <tr><td>22px</td><td><code>display</code></td><td>400</td><td>モーダル見出し、ヒーローサブ</td></tr>
+    <tr><td>26px</td><td><code>display</code></td><td>400</td><td>ページタイトル、年表タイトル</td></tr>
+  </table>
+</div>
+
+<!-- ===== 03. COMPONENTS ===== -->
+<div class="section" id="components">
+  <div class="section-label">03 — Component Catalog</div>
+  <div class="section-title">コンポーネントカタログ</div>
+  <div class="section-desc">プロトタイプのCSS class → Reactコンポーネント名の対応と、各コンポーネントのProps定義。</div>
+
+  <!-- Atoms -->
+  <div style="font-family:var(--f-m);font-size:11px;color:var(--accent);letter-spacing:0.1em;margin-bottom:12px;margin-top:8px">ATOMS（最小単位）</div>
+
+  <div class="comp">
+    <div class="comp-name">LayerChip</div>
+    <div class="comp-desc">レイヤーの ON/OFF トグル。タイムライン上部に固定表示。</div>
+    <div class="comp-props">
+      <div class="comp-prop"><span class="comp-prop-name">label</span><span class="comp-prop-type">string</span><span class="comp-prop-desc">表示名（例: "製品"）</span></div>
+      <div class="comp-prop"><span class="comp-prop-name">color</span><span class="comp-prop-type">LayerColor</span><span class="comp-prop-desc">layer.blue / layer.pink 等</span></div>
+      <div class="comp-prop"><span class="comp-prop-name">active</span><span class="comp-prop-type">boolean</span><span class="comp-prop-desc">ON/OFF状態</span></div>
+      <div class="comp-prop"><span class="comp-prop-name">onToggle</span><span class="comp-prop-type">() => void</span><span class="comp-prop-desc">トグル時コールバック</span></div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="comp-name">AxisDot</div>
+    <div class="comp-desc">タイムライン中央軸上のドット（点イベント用）。</div>
+    <div class="comp-props">
+      <div class="comp-prop"><span class="comp-prop-name">color</span><span class="comp-prop-type">LayerColor</span><span class="comp-prop-desc">レイヤー色</span></div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="comp-name">AxisPeriodMark</div>
+    <div class="comp-desc">タイムライン中央軸上の横バー（期間イベント開始/終了用）。</div>
+    <div class="comp-props">
+      <div class="comp-prop"><span class="comp-prop-name">color</span><span class="comp-prop-type">LayerColor</span><span class="comp-prop-desc">レイヤー色</span></div>
+      <div class="comp-prop"><span class="comp-prop-name">type</span><span class="comp-prop-type">'start' | 'end'</span><span class="comp-prop-desc">開始: 不透明 / 終了: 半透明</span></div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="comp-name">EventTag</div>
+    <div class="comp-desc">イベントカード内のタグ。レイヤー名、信憑性、期間ラベル。</div>
+    <div class="comp-props">
+      <div class="comp-prop"><span class="comp-prop-name">label</span><span class="comp-prop-type">string</span><span class="comp-prop-desc">"製品", "✓ 確認済み", "期間 12年"</span></div>
+      <div class="comp-prop"><span class="comp-prop-name">variant</span><span class="comp-prop-type">'layer' | 'cred' | 'period'</span><span class="comp-prop-desc">色バリエーション</span></div>
+      <div class="comp-prop"><span class="comp-prop-name">color?</span><span class="comp-prop-type">LayerColor</span><span class="comp-prop-desc">variant='layer'の場合のレイヤー色</span></div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="comp-name">PeriodBar</div>
+    <div class="comp-desc">期間イベントの進捗バー（開始年〜終了年）。</div>
+    <div class="comp-props">
+      <div class="comp-prop"><span class="comp-prop-name">startYear</span><span class="comp-prop-type">string</span><span class="comp-prop-desc">"1985"</span></div>
+      <div class="comp-prop"><span class="comp-prop-name">endYear</span><span class="comp-prop-type">string</span><span class="comp-prop-desc">"1997" / "現在"</span></div>
+      <div class="comp-prop"><span class="comp-prop-name">color</span><span class="comp-prop-type">LayerColor</span><span class="comp-prop-desc">レイヤー色</span></div>
+      <div class="comp-prop"><span class="comp-prop-name">fillPercent?</span><span class="comp-prop-type">number</span><span class="comp-prop-desc">進行中の場合 0–100</span></div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="comp-name">LaneLine</div>
+    <div class="comp-desc">タイムライン左側のレーンバー（期間の縦線）。</div>
+    <div class="comp-props">
+      <div class="comp-prop"><span class="comp-prop-name">color</span><span class="comp-prop-type">LayerColor</span><span class="comp-prop-desc">レイヤー色</span></div>
+      <div class="comp-prop"><span class="comp-prop-name">position</span><span class="comp-prop-type">'start' | 'mid' | 'end' | 'start-end'</span><span class="comp-prop-desc">角丸の方向</span></div>
+      <div class="comp-prop"><span class="comp-prop-name">active</span><span class="comp-prop-type">boolean</span><span class="comp-prop-desc">レイヤーONなら true</span></div>
+      <div class="comp-prop"><span class="comp-prop-name">periodId</span><span class="comp-prop-type">string</span><span class="comp-prop-desc">所属する期間ID</span></div>
+    </div>
+  </div>
+
+  <!-- Molecules -->
+  <div style="font-family:var(--f-m);font-size:11px;color:var(--accent);letter-spacing:0.1em;margin:24px 0 12px">MOLECULES（組み合わせ）</div>
+
+  <div class="comp">
+    <div class="comp-name">EventCard</div>
+    <div class="comp-desc">点イベントのカード。アコーディオン展開で詳細・タグを表示。</div>
+    <div class="comp-props">
+      <div class="comp-prop"><span class="comp-prop-name">event</span><span class="comp-prop-type">TimelineEvent</span><span class="comp-prop-desc">イベントデータ</span></div>
+      <div class="comp-prop"><span class="comp-prop-name">expanded</span><span class="comp-prop-type">boolean</span><span class="comp-prop-desc">アコーディオン状態</span></div>
+      <div class="comp-prop"><span class="comp-prop-name">onToggle</span><span class="comp-prop-type">() => void</span><span class="comp-prop-desc">展開/折りたたみ</span></div>
+      <div class="comp-prop"><span class="comp-prop-name">isCenterFocus</span><span class="comp-prop-type">boolean</span><span class="comp-prop-desc">画面中央にあるとき true</span></div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="comp-name">PeriodCard</div>
+    <div class="comp-desc">期間イベントの開始カード。PeriodBar + アコーディオン展開。</div>
+    <div class="comp-props">
+      <div class="comp-prop"><span class="comp-prop-name">period</span><span class="comp-prop-type">TimelinePeriod</span><span class="comp-prop-desc">期間データ</span></div>
+      <div class="comp-prop"><span class="comp-prop-name">expanded</span><span class="comp-prop-type">boolean</span><span class="comp-prop-desc">アコーディオン状態</span></div>
+      <div class="comp-prop"><span class="comp-prop-name">onToggle</span><span class="comp-prop-type">() => void</span><span class="comp-prop-desc"></span></div>
+      <div class="comp-prop"><span class="comp-prop-name">isCenterFocus</span><span class="comp-prop-type">boolean</span><span class="comp-prop-desc"></span></div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="comp-name">PeriodEndLabel</div>
+    <div class="comp-desc">期間イベントの終了行。破線ボーダー + ミニバー + テキスト。</div>
+    <div class="comp-props">
+      <div class="comp-prop"><span class="comp-prop-name">period</span><span class="comp-prop-type">TimelinePeriod</span><span class="comp-prop-desc">期間データ</span></div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="comp-name">YearSeparator</div>
+    <div class="comp-desc">年代区切り行。大きな年ラベル + フェードライン。</div>
+    <div class="comp-props">
+      <div class="comp-prop"><span class="comp-prop-name">year</span><span class="comp-prop-type">string</span><span class="comp-prop-desc">"1970s", "2000s" 等</span></div>
+    </div>
+  </div>
+
+  <!-- Organisms -->
+  <div style="font-family:var(--f-m);font-size:11px;color:var(--accent);letter-spacing:0.1em;margin:24px 0 12px">ORGANISMS（画面構成単位）</div>
+
+  <div class="comp">
+    <div class="comp-name">TimelineRow</div>
+    <div class="comp-desc">タイムラインの1行。レーン領域 + 軸 + コンテンツの3カラム構成。</div>
+    <div class="comp-props">
+      <div class="comp-prop"><span class="comp-prop-name">lanes</span><span class="comp-prop-type">LaneConfig[]</span><span class="comp-prop-desc">左側レーンバーの配置</span></div>
+      <div class="comp-prop"><span class="comp-prop-name">axisElement</span><span class="comp-prop-type">ReactNode</span><span class="comp-prop-desc">AxisDot or AxisPeriodMark</span></div>
+      <div class="comp-prop"><span class="comp-prop-name">children</span><span class="comp-prop-type">ReactNode</span><span class="comp-prop-desc">EventCard / PeriodCard / YearSeparator</span></div>
+      <div class="comp-prop"><span class="comp-prop-name">layers</span><span class="comp-prop-type">string[]</span><span class="comp-prop-desc">この行が属するレイヤー名</span></div>
+      <div class="comp-prop"><span class="comp-prop-name">visible</span><span class="comp-prop-type">boolean</span><span class="comp-prop-desc">レイヤーフィルタ後の表示状態</span></div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="comp-name">TimelineView</div>
+    <div class="comp-desc">タイムライン全体。LayerControls + Legend + TimelineRow[] + center-focus ロジック。</div>
+    <div class="comp-props">
+      <div class="comp-prop"><span class="comp-prop-name">timeline</span><span class="comp-prop-type">Timeline</span><span class="comp-prop-desc">年表データ全体</span></div>
+      <div class="comp-prop"><span class="comp-prop-name">mode</span><span class="comp-prop-type">'author' | 'public'</span><span class="comp-prop-desc">作成者ビュー / 公開ビュー</span></div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="comp-name">ShareSheet</div>
+    <div class="comp-desc">共有シート（ボトムシート）。URL コピー + SNS共有 + 埋め込み。</div>
+    <div class="comp-props">
+      <div class="comp-prop"><span class="comp-prop-name">url</span><span class="comp-prop-type">string</span><span class="comp-prop-desc">共有URL</span></div>
+      <div class="comp-prop"><span class="comp-prop-name">title</span><span class="comp-prop-type">string</span><span class="comp-prop-desc">年表タイトル</span></div>
+      <div class="comp-prop"><span class="comp-prop-name">open</span><span class="comp-prop-type">boolean</span><span class="comp-prop-desc"></span></div>
+      <div class="comp-prop"><span class="comp-prop-name">onClose</span><span class="comp-prop-type">() => void</span><span class="comp-prop-desc"></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 04. STATE ===== -->
+<div class="section" id="state">
+  <div class="section-label">04 — State Management</div>
+  <div class="section-title">状態管理設計</div>
+  <div class="section-desc">各状態のスコープと推奨管理方法。</div>
+
+  <table class="tbl">
+    <tr><th>状態</th><th>スコープ</th><th>管理方法</th><th>説明</th></tr>
+    <tr><td>activeLayers</td><td><span class="state-badge sb-local">Local</span></td><td><code>useState&lt;Set&gt;</code></td><td>ON になっているレイヤーの Set</td></tr>
+    <tr><td>expandedCards</td><td><span class="state-badge sb-local">Local</span></td><td><code>useState&lt;Set&gt;</code></td><td>展開中のカードIDの Set</td></tr>
+    <tr><td>activePeriod</td><td><span class="state-badge sb-local">Local</span></td><td><code>useState</code></td><td>ハイライト中の期間ID（null可）</td></tr>
+    <tr><td>centerFocusId</td><td><span class="state-badge sb-local">Local</span></td><td><code>useRef</code> + IntersectionObserver</td><td>画面中央に最も近いカードID</td></tr>
+    <tr><td>shareSheetOpen</td><td><span class="state-badge sb-local">Local</span></td><td><code>useState</code></td><td>共有シートの開閉</td></tr>
+    <tr><td>currentUser</td><td><span class="state-badge sb-global">Global</span></td><td>Context or Zustand</td><td>ログインユーザー情報</td></tr>
+    <tr><td>timelineData</td><td><span class="state-badge sb-server">Server</span></td><td>Server Component / SWR</td><td>APIから取得した年表データ</td></tr>
+    <tr><td>userTimelines</td><td><span class="state-badge sb-server">Server</span></td><td>Server Component / SWR</td><td>マイページ用年表一覧</td></tr>
+  </table>
+</div>
+
+<!-- ===== 05. DATA MODEL ===== -->
+<div class="section" id="data">
+  <div class="section-label">05 — Data Model</div>
+  <div class="section-title">データモデル</div>
+
+  <div class="code">
+    <div class="code-filename">types/timeline.ts</div>
+    <pre>
+type Credibility = 'verified' | 'disputed' | 'unverified';
+
+type LayerColorKey = 'blue' | 'pink' | 'teal' | 'green'
+                   | 'gold' | 'purple' | 'orange';
+
+interface Layer {
+  id: string;
+  name: string;          // "製品"
+  color: LayerColorKey;  // "blue"
+}
+
+interface TimelineEvent {
+  id: string;
+  type: 'point';
+  layerId: string;
+  date: string;          // "2007.01"
+  title: string;
+  summary?: string;
+  credibility: Credibility;
+  sourceUrl?: string;
+  tags?: string[];
+}
+
+interface TimelinePeriod {
+  id: string;
+  type: 'period';
+  layerId: string;
+  startDate: string;     // "1985"
+  endDate: string;       // "1997" | "present"
+  title: string;
+  summary?: string;
+  credibility: Credibility;
+  sourceUrl?: string;
+}
+
+type TimelineItem = TimelineEvent | TimelinePeriod;
+
+interface Timeline {
+  id: string;
+  slug: string;          // URL用: "apple-history-toda"
+  title: string;
+  emoji?: string;
+  description: string;
+  authorId: string;
+  authorUsername: string;
+  visibility: 'public' | 'limited' | 'private';
+  layers: Layer[];
+  items: TimelineItem[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+interface User {
+  id: string;
+  username: string;      // "@toda"
+  displayName: string;
+  plan: 'free' | 'pro';
+  timelinesCount: number;
+  aiGenerationsUsed: number;
+  aiGenerationsLimit: number; // free: 5, pro: Infinity
+}</pre>
+  </div>
+</div>
+
+<!-- ===== 06. PAGES ===== -->
+<div class="section" id="pages">
+  <div class="section-label">06 — Pages & Routing</div>
+  <div class="section-title">ページ構成 & ルーティング</div>
+
+  <table class="tbl">
+    <tr><th>パス</th><th>ページ</th><th>プロトタイプ</th><th>レンダリング</th></tr>
+    <tr><td><code>/</code></td><td>LP</td><td>chronos-lp.html</td><td>SSG</td></tr>
+    <tr><td><code>/login</code></td><td>ログイン / サインアップ</td><td>chronos-auth.html</td><td>Client</td></tr>
+    <tr><td><code>/onboarding</code></td><td>初回体験フロー</td><td>chronos-onboarding-v2.html</td><td>Client</td></tr>
+    <tr><td><code>/dashboard</code></td><td>マイページ</td><td>chronos-screens.html</td><td>SSR</td></tr>
+    <tr><td><code>/create</code></td><td>年表作成フロー</td><td>chronos-creation-flow.html</td><td>Client</td></tr>
+    <tr><td><code>/t/[slug]</code></td><td>年表閲覧（作成者）</td><td>chronos-period-lanes.html</td><td>SSR</td></tr>
+    <tr><td><code>/t/[slug]</code></td><td>年表閲覧（公開）</td><td>chronos-viewer.html</td><td>SSR (※同一ルート、権限で切替)</td></tr>
+    <tr><td><code>/t/[slug]/edit</code></td><td>年表編集</td><td>（未作成）</td><td>Client</td></tr>
+    <tr><td><code>/@[username]</code></td><td>ユーザープロフィール</td><td>chronos-screens.html内</td><td>SSR</td></tr>
+    <tr><td><code>/explore</code></td><td>探索</td><td>（未作成）</td><td>SSR</td></tr>
+  </table>
+</div>
+
+<!-- ===== 07. DIRECTORY ===== -->
+<div class="section" id="structure">
+  <div class="section-label">07 — Directory Structure</div>
+  <div class="section-title">推奨ディレクトリ構成</div>
+
+  <div class="tree">
+<span class="dir">src/</span>
+├── <span class="dir">app/</span>                    <span class="note">Next.js App Router</span>
+│   ├── <span class="file">layout.tsx</span>          <span class="note">ルートレイアウト（フォント読込）</span>
+│   ├── <span class="file">page.tsx</span>            <span class="note">LP</span>
+│   ├── <span class="dir">login/</span>
+│   ├── <span class="dir">onboarding/</span>
+│   ├── <span class="dir">dashboard/</span>
+│   ├── <span class="dir">create/</span>
+│   ├── <span class="dir">t/[slug]/</span>           <span class="note">年表閲覧・編集</span>
+│   │   ├── <span class="file">page.tsx</span>        <span class="note">SSR — 閲覧</span>
+│   │   └── <span class="dir">edit/</span>
+│   ├── <span class="dir">@[username]/</span>
+│   └── <span class="dir">explore/</span>
+│
+├── <span class="dir">components/</span>
+│   ├── <span class="dir">ui/</span>                  <span class="note">汎用Atoms</span>
+│   │   ├── <span class="file">Button.tsx</span>
+│   │   ├── <span class="file">Tag.tsx</span>
+│   │   ├── <span class="file">Toast.tsx</span>
+│   │   └── <span class="file">BottomSheet.tsx</span>
+│   │
+│   ├── <span class="dir">timeline/</span>            <span class="note">タイムライン専用</span>
+│   │   ├── <span class="file">TimelineView.tsx</span>
+│   │   ├── <span class="file">TimelineRow.tsx</span>
+│   │   ├── <span class="file">EventCard.tsx</span>
+│   │   ├── <span class="file">PeriodCard.tsx</span>
+│   │   ├── <span class="file">PeriodEndLabel.tsx</span>
+│   │   ├── <span class="file">YearSeparator.tsx</span>
+│   │   ├── <span class="file">LayerChip.tsx</span>
+│   │   ├── <span class="file">AxisDot.tsx</span>
+│   │   ├── <span class="file">AxisPeriodMark.tsx</span>
+│   │   ├── <span class="file">LaneLine.tsx</span>
+│   │   ├── <span class="file">PeriodBar.tsx</span>
+│   │   └── <span class="file">EventTag.tsx</span>
+│   │
+│   ├── <span class="dir">layout/</span>              <span class="note">ヘッダー・フッター</span>
+│   │   ├── <span class="file">Header.tsx</span>
+│   │   ├── <span class="file">PublicHeader.tsx</span>
+│   │   ├── <span class="file">PublicFooterCTA.tsx</span>
+│   │   └── <span class="file">Footer.tsx</span>
+│   │
+│   └── <span class="dir">share/</span>
+│       └── <span class="file">ShareSheet.tsx</span>
+│
+├── <span class="dir">tokens/</span>
+│   ├── <span class="file">colors.ts</span>
+│   ├── <span class="file">typography.ts</span>
+│   ├── <span class="file">spacing.ts</span>
+│   └── <span class="file">radius.ts</span>
+│
+├── <span class="dir">types/</span>
+│   ├── <span class="file">timeline.ts</span>
+│   └── <span class="file">user.ts</span>
+│
+├── <span class="dir">hooks/</span>
+│   ├── <span class="file">useCenterFocus.ts</span>   <span class="note">IntersectionObserver ベース</span>
+│   ├── <span class="file">useLayerFilter.ts</span>
+│   └── <span class="file">usePeriodHighlight.ts</span>
+│
+├── <span class="dir">lib/</span>
+│   ├── <span class="file">api.ts</span>              <span class="note">API クライアント</span>
+│   └── <span class="file">og.ts</span>               <span class="note">OGP画像生成</span>
+│
+└── <span class="dir">styles/</span>
+    ├── <span class="file">globals.css</span>          <span class="note">CSS変数・リセット</span>
+    └── <span class="file">animations.css</span>       <span class="note">fadeUp, barGrow 等</span>
+  </div>
+</div>
+
+<!-- ===== 08. TECH STACK ===== -->
+<div class="section" id="stack">
+  <div class="section-label">08 — Tech Stack</div>
+  <div class="section-title">推奨技術スタック</div>
+
+  <table class="tbl">
+    <tr><th>カテゴリ</th><th>技術</th><th>理由</th></tr>
+    <tr><td>フレームワーク</td><td><code>Next.js 15 (App Router)</code></td><td>SSR/SSG混在、OGP対応、RSC</td></tr>
+    <tr><td>言語</td><td><code>TypeScript</code></td><td>型安全、データモデルの厳密化</td></tr>
+    <tr><td>スタイリング</td><td><code>CSS Modules + CSS変数</code></td><td>既存トークンをそのまま移植。Tailwindも併用可</td></tr>
+    <tr><td>フォント</td><td><code>next/font + @fontsource</code></td><td>Erodeは@fontsource未対応のためセルフホスト</td></tr>
+    <tr><td>アニメーション</td><td><code>Framer Motion</code></td><td>fadeUp、アコーディオン、シート、center-focus遷移</td></tr>
+    <tr><td>状態管理</td><td><code>React state + Context</code></td><td>小規模。必要に応じてZustand追加</td></tr>
+    <tr><td>データ取得</td><td><code>SWR or TanStack Query</code></td><td>キャッシュ・再検証</td></tr>
+    <tr><td>認証</td><td><code>NextAuth.js (Auth.js)</code></td><td>Google / Magic Link</td></tr>
+    <tr><td>DB</td><td><code>Supabase (PostgreSQL)</code></td><td>認証統合、リアルタイム（将来の共同編集）</td></tr>
+    <tr><td>AI生成</td><td><code>Anthropic Claude API</code></td><td>年表自動生成、AI Edit Assist</td></tr>
+    <tr><td>OGP画像</td><td><code>@vercel/og (Satori)</code></td><td>動的OGP生成</td></tr>
+    <tr><td>ホスティング</td><td><code>Vercel</code></td><td>Next.jsとの親和性、Edge Functions</td></tr>
+  </table>
+</div>
+
+<!-- ===== 09. PROTO → REACT ===== -->
+<div class="section" id="proto">
+  <div class="section-label">09 — Prototype → React 対応表</div>
+  <div class="section-title">プロトタイプ → React 対応表</div>
+  <div class="section-desc">各HTMLプロトタイプのCSS class が、Reactコンポーネントのどこに対応するかの一覧。</div>
+
+  <table class="tbl">
+    <tr><th>HTML Class</th><th>React Component</th><th>ファイル</th></tr>
+    <tr><td><code>.layer-chip</code></td><td>LayerChip</td><td>timeline/LayerChip.tsx</td></tr>
+    <tr><td><code>.axis-dot</code></td><td>AxisDot</td><td>timeline/AxisDot.tsx</td></tr>
+    <tr><td><code>.axis-period-mark</code></td><td>AxisPeriodMark</td><td>timeline/AxisPeriodMark.tsx</td></tr>
+    <tr><td><code>.ev-card</code></td><td>EventCard</td><td>timeline/EventCard.tsx</td></tr>
+    <tr><td><code>.period-card-start</code></td><td>PeriodCard</td><td>timeline/PeriodCard.tsx</td></tr>
+    <tr><td><code>.period-label-end</code></td><td>PeriodEndLabel</td><td>timeline/PeriodEndLabel.tsx</td></tr>
+    <tr><td><code>.ev-tag</code></td><td>EventTag</td><td>timeline/EventTag.tsx</td></tr>
+    <tr><td><code>.period-bar-inline</code></td><td>PeriodBar</td><td>timeline/PeriodBar.tsx</td></tr>
+    <tr><td><code>.lane</code></td><td>LaneLine</td><td>timeline/LaneLine.tsx</td></tr>
+    <tr><td><code>.tl-row</code></td><td>TimelineRow</td><td>timeline/TimelineRow.tsx</td></tr>
+    <tr><td><code>.tl-year</code></td><td>YearSeparator</td><td>timeline/YearSeparator.tsx</td></tr>
+    <tr><td><code>.tl-wrap + .layer-controls</code></td><td>TimelineView</td><td>timeline/TimelineView.tsx</td></tr>
+    <tr><td><code>.share-overlay</code></td><td>ShareSheet</td><td>share/ShareSheet.tsx</td></tr>
+    <tr><td><code>.header</code></td><td>Header / PublicHeader</td><td>layout/Header.tsx</td></tr>
+    <tr><td><code>.pub-footer</code></td><td>PublicFooterCTA</td><td>layout/PublicFooterCTA.tsx</td></tr>
+    <tr><td><code>.auth-card</code></td><td>AuthCard</td><td>app/login/AuthCard.tsx</td></tr>
+  </table>
+</div>
+
+</div>
+</body>
+</html>

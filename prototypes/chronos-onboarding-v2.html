@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Chronos — オンボーディング</title>
+<link href="https://api.fontshare.com/v2/css?f[]=erode@300,400,500,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A0A0C;--bg2:#111114;--bg-card:#16161A;--bg-card-h:#1C1C22;--accent:#C8A87E;--accent-dim:rgba(200,168,126,0.13);--text:#E8E4DE;--text-h:#F5F2ED;--text2:#8A8680;--text3:#5A5754;--border:rgba(200,168,126,0.1);--border2:rgba(200,168,126,0.22);--line:rgba(200,168,126,0.15);--c-blue:#5B9BD5;--c-pink:#D4849A;--c-teal:#5BBCB4;--c-green:#7BC67E;--c-gold:#C8B87E;--c-purple:#9E7EC8;--c-orange:#D4A05A;--danger:#D45A5A;--f-display:'Erode',serif;--f-body:'DM Sans',sans-serif;--f-mono:'JetBrains Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg);color-scheme:dark;min-height:100vh;min-height:100dvh}
+body{font-family:var(--f-body);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* Layout */
+.ob-wrap{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;position:relative}
+.ob-wrap::before{content:'';position:fixed;top:-20%;left:50%;transform:translateX(-50%);width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(200,168,126,0.04) 0%,transparent 70%);pointer-events:none}
+
+/* Progress */
+.ob-progress{position:fixed;top:0;left:0;right:0;height:3px;background:rgba(200,168,126,0.08);z-index:100}
+.ob-progress-fill{height:100%;background:var(--accent);transition:width 0.6s cubic-bezier(0.16,1,0.3,1);width:0%}
+
+/* Step container */
+.ob-step{display:none;width:100%;max-width:440px;animation:fadeUp 0.5s ease both}
+.ob-step.active{display:block}
+
+/* Step counter */
+.ob-counter{font-family:var(--f-mono);font-size:10px;letter-spacing:0.12em;color:var(--text3);text-transform:uppercase;margin-bottom:24px;text-align:center}
+
+/* Card */
+.ob-card{border-radius:20px;border:1px solid var(--border);background:var(--bg-card);overflow:hidden;position:relative}
+.ob-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(200,168,126,0.2),transparent)}
+.ob-card-body{padding:36px 28px 32px}
+
+/* Typography */
+.ob-icon{font-size:36px;text-align:center;margin-bottom:16px}
+.ob-title{font-family:var(--f-display);font-size:24px;font-weight:400;color:var(--text-h);text-align:center;margin-bottom:8px;line-height:1.3}
+.ob-title em{font-style:normal;color:var(--accent)}
+.ob-desc{font-size:14px;color:var(--text2);text-align:center;line-height:1.6;margin-bottom:28px}
+
+/* Buttons */
+.ob-btn{
+  width:100%;padding:15px;border-radius:12px;background:var(--accent);color:var(--bg);
+  font-size:14px;font-family:var(--f-body);font-weight:500;border:none;cursor:pointer;
+  transition:all 0.3s;
+}
+.ob-btn:hover{filter:brightness(1.12);transform:translateY(-1px);box-shadow:0 6px 24px rgba(200,168,126,0.2)}
+.ob-btn:disabled{opacity:0.35;cursor:default;transform:none;filter:none;box-shadow:none}
+.ob-btn-ghost{
+  width:100%;padding:12px;border-radius:12px;background:none;color:var(--text3);
+  font-size:12px;font-family:var(--f-body);border:none;cursor:pointer;
+  transition:color 0.3s;margin-top:8px;
+}
+.ob-btn-ghost:hover{color:var(--text2)}
+
+/* Input */
+.ob-input-wrap{margin-bottom:20px}
+.ob-label{display:block;font-size:12px;color:var(--text3);margin-bottom:6px;font-family:var(--f-mono);letter-spacing:0.04em}
+.ob-input-row{display:flex;align-items:center;gap:0;border-radius:12px;border:1px solid var(--border);background:var(--bg);overflow:hidden;transition:border-color 0.3s}
+.ob-input-row:focus-within{border-color:var(--accent)}
+.ob-input-prefix{padding:14px 0 14px 16px;font-size:16px;color:var(--text3);flex-shrink:0;font-family:var(--f-body)}
+.ob-input{
+  flex:1;padding:14px 16px;background:none;border:none;color:var(--text);font-size:16px;
+  font-family:var(--f-body);outline:none;
+}
+.ob-input::placeholder{color:var(--text3)}
+.ob-input-hint{font-size:11px;color:var(--text3);margin-top:6px;line-height:1.4}
+.ob-input-solo{
+  width:100%;padding:14px 16px;border-radius:12px;border:1px solid var(--border);
+  background:var(--bg);color:var(--text);font-size:16px;font-family:var(--f-body);outline:none;
+  transition:border-color 0.3s;
+}
+.ob-input-solo:focus{border-color:var(--accent)}
+.ob-input-solo::placeholder{color:var(--text3)}
+
+/* Category chips */
+.ob-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;justify-content:center}
+.ob-chip{
+  padding:10px 18px;border-radius:100px;border:1px solid var(--border);
+  background:var(--bg);font-size:14px;color:var(--text2);cursor:pointer;
+  transition:all 0.3s;user-select:none;display:flex;align-items:center;gap:6px;
+}
+.ob-chip:hover{border-color:var(--border2);background:var(--bg-card)}
+.ob-chip.selected{border-color:var(--accent);background:var(--accent-dim);color:var(--accent)}
+.ob-chip-icon{font-size:0.9rem}
+.ob-chips-hint{font-size:11px;color:var(--text3);text-align:center;margin-bottom:20px}
+
+/* Welcome features */
+.ob-features{display:flex;flex-direction:column;gap:16px;margin-bottom:28px}
+.ob-feat{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border-radius:12px;background:var(--bg);border:1px solid var(--border)}
+.ob-feat-icon{font-size:22px;flex-shrink:0;margin-top:2px}
+.ob-feat-text{flex:1}
+.ob-feat-title{font-size:14px;color:var(--text-h);margin-bottom:2px;font-weight:500}
+.ob-feat-desc{font-size:12px;color:var(--text3);line-height:1.5}
+
+/* Generation screen */
+.gen-wrap{width:100%;max-width:520px;text-align:center;animation:fadeUp 0.5s ease both}
+.gen-theme{
+  display:inline-block;padding:8px 20px;border-radius:100px;
+  background:var(--accent-dim);border:1px solid var(--border2);
+  font-family:var(--f-display);font-size:16px;color:var(--accent);
+  margin-bottom:32px;
+}
+
+/* Generation timeline animation */
+.gen-timeline{max-width:400px;margin:0 auto;text-align:left}
+.gen-tl-line{position:relative;padding-left:32px;border-left:1px solid var(--line);margin-left:8px}
+.gen-event{
+  position:relative;margin-bottom:0;opacity:0;transform:translateY(12px);
+  transition:all 0.5s cubic-bezier(0.16,1,0.3,1);padding-bottom:20px;
+}
+.gen-event.visible{opacity:1;transform:translateY(0)}
+.gen-event::before{
+  content:'';position:absolute;left:-37px;top:6px;width:10px;height:10px;
+  border-radius:50%;border:2px solid var(--accent);background:var(--bg-card);
+}
+.gen-event-year{font-family:var(--f-mono);font-size:10px;color:var(--text3);letter-spacing:0.06em;margin-bottom:3px}
+.gen-event-title{font-family:var(--f-display);font-size:14px;font-weight:500;color:var(--text-h);margin-bottom:2px}
+.gen-event-desc{font-size:12px;color:var(--text2);line-height:1.5}
+.gen-event-tag{
+  display:inline-block;margin-top:4px;padding:2px 8px;border-radius:6px;
+  font-family:var(--f-mono);font-size:10px;letter-spacing:0.04em;
+}
+
+/* Generation progress */
+.gen-status{margin-bottom:24px}
+.gen-status-text{font-size:14px;color:var(--text2);margin-bottom:8px}
+.gen-status-bar{height:3px;border-radius:2px;background:rgba(200,168,126,0.1);overflow:hidden}
+.gen-status-fill{height:100%;background:var(--accent);border-radius:2px;transition:width 0.4s ease;width:0%}
+
+/* Generating dots */
+.gen-dots{display:inline-flex;gap:4px;vertical-align:middle;margin-left:4px}
+.gen-dots span{width:4px;height:4px;border-radius:50%;background:var(--accent);animation:dotPulse 1.2s ease infinite}
+.gen-dots span:nth-child(2){animation-delay:0.2s}
+.gen-dots span:nth-child(3){animation-delay:0.4s}
+@keyframes dotPulse{0%,100%{opacity:0.2;transform:scale(0.8)}50%{opacity:1;transform:scale(1.2)}}
+
+/* Complete state */
+.gen-complete{display:none;animation:fadeUp 0.5s ease both}
+.gen-complete-icon{font-size:40px;margin-bottom:16px}
+.gen-complete-title{font-family:var(--f-display);font-size:22px;font-weight:400;color:var(--text-h);margin-bottom:8px}
+.gen-complete-stats{
+  display:flex;gap:20px;justify-content:center;margin:20px 0 28px;
+}
+.gen-stat{text-align:center}
+.gen-stat-num{font-family:var(--f-display);font-size:24px;font-weight:500;color:var(--accent)}
+.gen-stat-label{font-size:11px;color:var(--text3);font-family:var(--f-mono);letter-spacing:0.06em;margin-top:2px}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(10,10,12,0.2);border-top-color:var(--bg);border-radius:50%;animation:spin 0.6s linear infinite}
+
+@media(max-width:440px){
+  .ob-card-body{padding:28px 20px 24px}
+  .ob-title{font-size:22px}
+}
+</style>
+</head>
+<body>
+
+<div class="ob-progress"><div class="ob-progress-fill" id="progressFill"></div></div>
+
+<!-- ===== STEP 1: WELCOME ===== -->
+<div class="ob-wrap">
+<div class="ob-step active" id="step1">
+  <div class="ob-card">
+    <div class="ob-card-body">
+      <div class="ob-icon">✦</div>
+      <div class="ob-title">ようこそ、<em>Chronos</em>へ</div>
+      <div class="ob-desc">AIがあなたの知りたいテーマを年表にします。<br>レイヤーを重ねて、出来事の文脈を発見しましょう。</div>
+
+      <div class="ob-features">
+        <div class="ob-feat">
+          <div class="ob-feat-icon">🤖</div>
+          <div class="ob-feat-text">
+            <div class="ob-feat-title">AIが年表を自動生成</div>
+            <div class="ob-feat-desc">テーマを入力するだけ。調査からデータ整理まで全自動。</div>
+          </div>
+        </div>
+        <div class="ob-feat">
+          <div class="ob-feat-icon">📚</div>
+          <div class="ob-feat-text">
+            <div class="ob-feat-title">レイヤーで文脈を重ねる</div>
+            <div class="ob-feat-desc">異なる視点のレイヤーを重ねて、因果関係を可視化。</div>
+          </div>
+        </div>
+        <div class="ob-feat">
+          <div class="ob-feat-icon">🌐</div>
+          <div class="ob-feat-text">
+            <div class="ob-feat-title">つくったら共有</div>
+            <div class="ob-feat-desc">URLひとつで世界に公開。ブログへの埋め込みも対応。</div>
+          </div>
+        </div>
+      </div>
+
+      <button class="ob-btn" onclick="goStep(2)">はじめる</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== STEP 2: USERNAME ===== -->
+<div class="ob-step" id="step2">
+  <div class="ob-counter">Step 1 / 3</div>
+  <div class="ob-card">
+    <div class="ob-card-body">
+      <div class="ob-icon">👤</div>
+      <div class="ob-title">ユーザーネームを決めよう</div>
+      <div class="ob-desc">公開年表やプロフィールに表示される名前です。<br>あとから変更もできます。</div>
+
+      <div class="ob-input-wrap">
+        <label class="ob-label">ユーザーネーム</label>
+        <div class="ob-input-row">
+          <span class="ob-input-prefix">@</span>
+          <input class="ob-input" id="usernameInput" placeholder="chronos_user" maxlength="20" oninput="validateUsername()">
+        </div>
+        <div class="ob-input-hint" id="usernameHint">英数字・アンダースコア（3〜20文字）</div>
+      </div>
+
+      <button class="ob-btn" id="usernameBtn" disabled onclick="goStep(3)">次へ</button>
+      <button class="ob-btn-ghost" onclick="goStep(3)">あとで設定する</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== STEP 3: INTERESTS ===== -->
+<div class="ob-step" id="step3">
+  <div class="ob-counter">Step 2 / 3</div>
+  <div class="ob-card">
+    <div class="ob-card-body">
+      <div class="ob-icon">🧭</div>
+      <div class="ob-title">興味のあるジャンルは？</div>
+      <div class="ob-desc">選んだジャンルに基づいて、おすすめの年表テーマを提案します。</div>
+
+      <div class="ob-chips-hint">3つまで選択できます</div>
+      <div class="ob-chips" id="chipGroup">
+        <div class="ob-chip" onclick="toggleChip(this)"><span class="ob-chip-icon">💻</span>テクノロジー</div>
+        <div class="ob-chip" onclick="toggleChip(this)"><span class="ob-chip-icon">🏛️</span>政治・社会</div>
+        <div class="ob-chip" onclick="toggleChip(this)"><span class="ob-chip-icon">🎨</span>アート・デザイン</div>
+        <div class="ob-chip" onclick="toggleChip(this)"><span class="ob-chip-icon">🎵</span>音楽</div>
+        <div class="ob-chip" onclick="toggleChip(this)"><span class="ob-chip-icon">📺</span>エンタメ</div>
+        <div class="ob-chip" onclick="toggleChip(this)"><span class="ob-chip-icon">⚽</span>スポーツ</div>
+        <div class="ob-chip" onclick="toggleChip(this)"><span class="ob-chip-icon">🔬</span>科学</div>
+        <div class="ob-chip" onclick="toggleChip(this)"><span class="ob-chip-icon">💰</span>経済・ビジネス</div>
+        <div class="ob-chip" onclick="toggleChip(this)"><span class="ob-chip-icon">📚</span>歴史</div>
+        <div class="ob-chip" onclick="toggleChip(this)"><span class="ob-chip-icon">🎮</span>ゲーム</div>
+        <div class="ob-chip" onclick="toggleChip(this)"><span class="ob-chip-icon">🍿</span>映画</div>
+        <div class="ob-chip" onclick="toggleChip(this)"><span class="ob-chip-icon">✈️</span>旅行・地理</div>
+      </div>
+
+      <button class="ob-btn" id="interestBtn" disabled onclick="goStep(4)">次へ</button>
+      <button class="ob-btn-ghost" onclick="goStep(4)">スキップ</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== STEP 4: FIRST GENERATION ===== -->
+<div class="ob-step" id="step4">
+  <div class="ob-counter">Step 3 / 3</div>
+  <div class="ob-card">
+    <div class="ob-card-body">
+      <div class="ob-icon">🚀</div>
+      <div class="ob-title">最初の年表をつくろう</div>
+      <div class="ob-desc">知りたいテーマを入力してください。<br>AIが年表を自動生成します。</div>
+
+      <div class="ob-input-wrap">
+        <label class="ob-label">テーマ</label>
+        <input class="ob-input-solo" id="themeInput" placeholder="例：Appleの歴史、日本のアニメ産業" oninput="validateTheme()">
+        <div class="ob-input-hint">具体的なほど、より精度の高い年表が生成されます</div>
+      </div>
+
+      <div style="margin-bottom:16px">
+        <div class="ob-label" style="margin-bottom:8px">テーマ候補</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px" id="themeSuggestions">
+          <button class="theme-sug" onclick="pickTheme(this)">🍎 Appleの歴史</button>
+          <button class="theme-sug" onclick="pickTheme(this)">🚀 宇宙開発の歴史</button>
+          <button class="theme-sug" onclick="pickTheme(this)">🎮 任天堂の歩み</button>
+          <button class="theme-sug" onclick="pickTheme(this)">🎬 スタジオジブリ作品</button>
+        </div>
+      </div>
+
+      <button class="ob-btn" id="genBtn" disabled onclick="startGeneration()">年表を生成する</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== STEP 5: GENERATING ===== -->
+<div class="ob-step" id="step5">
+  <div class="gen-wrap">
+    <div class="ob-title" style="margin-bottom:8px">年表を生成中<span class="gen-dots"><span></span><span></span><span></span></span></div>
+    <div class="gen-theme" id="genThemeLabel">Appleの歴史</div>
+
+    <div class="gen-status">
+      <div class="gen-status-text" id="genStatusText">リサーチ中...</div>
+      <div class="gen-status-bar"><div class="gen-status-fill" id="genStatusFill"></div></div>
+    </div>
+
+    <div class="gen-timeline">
+      <div class="gen-tl-line" id="genTimeline">
+        <!-- Events appear here dynamically -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== STEP 6: COMPLETE ===== -->
+<div class="ob-step" id="step6">
+  <div class="gen-complete" id="genComplete" style="display:block;text-align:center;max-width:440px;width:100%">
+    <div class="gen-complete-icon">🎉</div>
+    <div class="gen-complete-title">年表が完成しました！</div>
+    <div style="font-size:14px;color:var(--text2);margin-bottom:4px">テーマ</div>
+    <div class="gen-theme" id="completeTheme" style="margin-bottom:16px">Appleの歴史</div>
+
+    <div class="gen-complete-stats">
+      <div class="gen-stat"><div class="gen-stat-num" id="statEvents">12</div><div class="gen-stat-label">イベント</div></div>
+      <div class="gen-stat"><div class="gen-stat-num" id="statLayers">3</div><div class="gen-stat-label">レイヤー</div></div>
+      <div class="gen-stat"><div class="gen-stat-num" id="statSpan">43年</div><div class="gen-stat-label">期間</div></div>
+    </div>
+
+    <button class="ob-btn" onclick="alert('年表閲覧画面へ遷移（次回プロトタイプ）')">年表を見る</button>
+    <button class="ob-btn-ghost" onclick="alert('マイページへ遷移')">マイページへ</button>
+  </div>
+</div>
+</div>
+
+<style>
+.theme-sug{
+  padding:8px 14px;border-radius:100px;border:1px solid var(--border);background:var(--bg);
+  font-size:12px;color:var(--text2);cursor:pointer;font-family:var(--f-body);
+  transition:all 0.3s;white-space:nowrap;
+}
+.theme-sug:hover{border-color:var(--border2);background:var(--bg-card)}
+</style>
+
+<script>
+let currentStep = 1;
+const totalSteps = 6;
+const progressSteps = [0, 0, 20, 45, 65, 80, 100];
+
+function goStep(n) {
+  document.getElementById('step' + currentStep).classList.remove('active');
+  currentStep = n;
+  const step = document.getElementById('step' + n);
+  step.classList.remove('active');
+  // Force reflow for animation
+  void step.offsetWidth;
+  step.classList.add('active');
+  document.getElementById('progressFill').style.width = progressSteps[n] + '%';
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// Username validation
+function validateUsername() {
+  const val = document.getElementById('usernameInput').value;
+  const valid = /^[a-zA-Z0-9_]{3,20}$/.test(val);
+  document.getElementById('usernameBtn').disabled = !valid;
+  const hint = document.getElementById('usernameHint');
+  if (val.length > 0 && !valid) {
+    hint.style.color = 'var(--danger)';
+    hint.textContent = val.length < 3 ? '3文字以上で入力してください' : '英数字・アンダースコアのみ使用できます';
+  } else if (valid) {
+    hint.style.color = 'var(--c-green)';
+    hint.textContent = '✓ 使用できます';
+  } else {
+    hint.style.color = 'var(--text3)';
+    hint.textContent = '英数字・アンダースコア（3〜20文字）';
+  }
+}
+
+// Interest chips
+function toggleChip(el) {
+  const selected = document.querySelectorAll('.ob-chip.selected');
+  if (!el.classList.contains('selected') && selected.length >= 3) return;
+  el.classList.toggle('selected');
+  const count = document.querySelectorAll('.ob-chip.selected').length;
+  document.getElementById('interestBtn').disabled = count === 0;
+}
+
+// Theme validation
+function validateTheme() {
+  const val = document.getElementById('themeInput').value.trim();
+  document.getElementById('genBtn').disabled = val.length < 2;
+}
+
+function pickTheme(btn) {
+  const text = btn.textContent.replace(/^[^\s]+\s/, '');
+  document.getElementById('themeInput').value = text;
+  validateTheme();
+}
+
+// Generation flow
+const genEvents = [
+  {year:'1976', title:'Apple Computer 設立', desc:'Steve Jobs、Steve Wozniak、Ronald Wayneの3人がガレージで創業。', tag:'経営', color:'var(--c-pink)'},
+  {year:'1984', title:'Macintosh 発売', desc:'GUIを搭載した革新的なPC。「1984」のSuper Bowl CMとともに発表。', tag:'製品', color:'var(--c-blue)'},
+  {year:'1985', title:'Steve Jobs 退社', desc:'取締役会との対立でAppleを離れ、NeXTを設立。', tag:'経営', color:'var(--c-pink)'},
+  {year:'1997', title:'Steve Jobs 復帰', desc:'NeXT買収を経てAppleに復帰。iMacなど新ラインを推進。', tag:'経営', color:'var(--c-pink)'},
+  {year:'2001', title:'iPod 発表', desc:'「1000曲をポケットに」— 音楽体験を根本から変えたデバイス。', tag:'製品', color:'var(--c-blue)'},
+  {year:'2007', title:'iPhone 発表', desc:'タッチスクリーンのスマートフォンが世界のモバイル市場を創出。', tag:'製品', color:'var(--c-blue)'},
+  {year:'2010', title:'iPad 発表', desc:'タブレットという新カテゴリを確立。教育やビジネスに普及。', tag:'製品', color:'var(--c-blue)'},
+  {year:'2011', title:'Steve Jobs 逝去', desc:'Appleの共同創業者が56歳で死去。Tim Cookが後任CEOに。', tag:'経営', color:'var(--c-pink)'},
+  {year:'2015', title:'Apple Watch 発売', desc:'ウェアラブル市場への参入。ヘルスケア機能が後に注目される。', tag:'製品', color:'var(--c-blue)'},
+  {year:'2019', title:'Apple TV+ 開始', desc:'コンテンツ配信サービスへの本格参入。ハードからサービスへの転換。', tag:'ビジネス', color:'var(--c-teal)'},
+];
+
+const statusMessages = [
+  {text:'リサーチ中...', pct:10},
+  {text:'データを収集しています...', pct:25},
+  {text:'イベントを整理中...', pct:40},
+  {text:'レイヤーを構成中...', pct:55},
+  {text:'タイムラインを生成中...', pct:70},
+  {text:'仕上げ中...', pct:85},
+];
+
+function startGeneration() {
+  const theme = document.getElementById('themeInput').value.trim();
+  document.getElementById('genThemeLabel').textContent = theme;
+  document.getElementById('completeTheme').textContent = theme;
+  goStep(5);
+
+  const tl = document.getElementById('genTimeline');
+  tl.innerHTML = '';
+  let eventIdx = 0;
+  let statusIdx = 0;
+
+  // Status updates
+  const statusInterval = setInterval(() => {
+    if (statusIdx < statusMessages.length) {
+      document.getElementById('genStatusText').textContent = statusMessages[statusIdx].text;
+      document.getElementById('genStatusFill').style.width = statusMessages[statusIdx].pct + '%';
+      statusIdx++;
+    }
+  }, 800);
+
+  // Event reveals
+  const eventInterval = setInterval(() => {
+    if (eventIdx < genEvents.length) {
+      const ev = genEvents[eventIdx];
+      const el = document.createElement('div');
+      el.className = 'gen-event';
+      el.innerHTML = `
+        <div class="gen-event-year">${ev.year}</div>
+        <div class="gen-event-title">${ev.title}</div>
+        <div class="gen-event-desc">${ev.desc}</div>
+        <span class="gen-event-tag" style="background:${ev.color.replace(')', ',0.12)')};color:${ev.color}">${ev.tag}</span>
+      `;
+      tl.appendChild(el);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => el.classList.add('visible'));
+      });
+      eventIdx++;
+    } else {
+      clearInterval(eventInterval);
+      clearInterval(statusInterval);
+      document.getElementById('genStatusText').textContent = '完了！';
+      document.getElementById('genStatusFill').style.width = '100%';
+      document.getElementById('progressFill').style.width = '100%';
+
+      setTimeout(() => {
+        goStep(6);
+      }, 1000);
+    }
+  }, 600);
+}
+</script>
+</body>
+</html>

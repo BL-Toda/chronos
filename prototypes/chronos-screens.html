@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Chronos — マイページ・課金・レイヤー・AI Edit</title>
+<link href="https://api.fontshare.com/v2/css?f[]=erode@300,400,500,600,300i,400i&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0A0A0C;--bg2:#111114;--bg-card:#16161A;--bg-card-h:#1C1C22;
+  --accent:#C8A87E;--accent-dim:rgba(200,168,126,0.13);--accent-glow:rgba(200,168,126,0.04);
+  --text:#E8E4DE;--text-h:#F5F2ED;--text2:#8A8680;--text3:#5A5754;
+  --border:rgba(200,168,126,0.1);--border2:rgba(200,168,126,0.22);
+  --line:rgba(200,168,126,0.15);
+  --c-blue:#5B9BD5;--c-blue-dim:rgba(91,155,213,0.12);
+  --c-green:#7BC67E;--c-green-dim:rgba(123,198,126,0.12);
+  --c-pink:#D4849A;--c-pink-dim:rgba(212,132,154,0.12);
+  --c-teal:#5BBCB4;--c-teal-dim:rgba(91,188,180,0.12);
+  --c-gold:#C8B87E;--c-gold-dim:rgba(200,184,126,0.12);
+  --c-purple:#9E7EC8;--c-purple-dim:rgba(158,126,200,0.12);
+  --c-orange:#D4A05A;--c-orange-dim:rgba(212,160,90,0.12);
+  --danger:#D45A5A;--danger-dim:rgba(212,90,90,0.12);
+  --f-display:'Erode',serif;--f-body:'DM Sans',sans-serif;--f-mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg);color-scheme:dark}
+body{font-family:var(--f-body);color:var(--text);min-height:100vh;min-height:100dvh;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes pulse{0%,100%{opacity:0.4}50%{opacity:1}}
+@keyframes typewriter{from{width:0}to{width:100%}}
+
+/* ===== HEADER ===== */
+.hdr{position:sticky;top:0;z-index:100;background:rgba(10,10,12,0.88);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);padding:0 20px;height:56px;
+  display:flex;align-items:center;justify-content:space-between}
+.hdr-brand{font-family:var(--f-display);font-size:1.3rem;font-weight:500;
+  letter-spacing:0.2em;color:var(--accent);text-transform:uppercase}
+
+/* ===== TAB NAVIGATION ===== */
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--border);background:var(--bg);
+  overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+  padding:12px 16px;font-size:0.68rem;color:var(--text3);white-space:nowrap;
+  border:none;background:none;cursor:pointer;font-family:var(--f-body);
+  border-bottom:2px solid transparent;transition:all 0.3s;flex-shrink:0;
+}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tab:hover{color:var(--text2)}
+
+/* ===== SCREEN ===== */
+.screen{display:none;background:var(--bg);min-height:calc(100vh - 104px)}
+.screen.active{display:block}
+
+/* =============================================
+   1. MY PAGE
+   ============================================= */
+.mp-profile{padding:24px 20px 16px;display:flex;align-items:center;gap:14px;background:var(--bg)}
+.mp-avatar{
+  width:48px;height:48px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent-dim),var(--bg-card));
+  border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;
+  font-family:var(--f-display);font-size:1.1rem;color:var(--accent);
+}
+.mp-name{font-family:var(--f-display);font-size:1.1rem;font-weight:500;color:var(--text-h)}
+.mp-plan{font-family:var(--f-mono);font-size:0.58rem;color:var(--text3);letter-spacing:0.06em;margin-top:2px}
+
+/* Usage bar */
+.mp-usage{padding:0 20px 20px;background:var(--bg)}
+.mp-usage-bar-wrap{
+  padding:14px;border-radius:12px;background:var(--bg-card);border:1px solid var(--border);
+}
+.mp-usage-label{display:flex;justify-content:space-between;margin-bottom:8px}
+.mp-usage-text{font-size:0.7rem;color:var(--text2)}
+.mp-usage-count{font-family:var(--f-mono);font-size:0.7rem;color:var(--accent)}
+.mp-usage-track{height:4px;border-radius:2px;background:var(--bg2);overflow:hidden}
+.mp-usage-fill{height:100%;border-radius:2px;background:var(--accent);transition:width 1s cubic-bezier(0.16,1,0.3,1)}
+.mp-usage-note{font-size:0.6rem;color:var(--text3);margin-top:6px}
+.mp-upgrade-nudge{
+  display:block;width:100%;margin-top:10px;padding:10px;font-size:0.72rem;
+  font-family:var(--f-body);color:var(--accent);background:var(--accent-dim);
+  border:1px solid rgba(200,168,126,0.15);border-radius:10px;cursor:pointer;
+  text-align:center;transition:all 0.3s;
+}
+.mp-upgrade-nudge:hover{background:rgba(200,168,126,0.18)}
+
+/* Section header */
+.mp-section{padding:12px 20px 8px;display:flex;align-items:center;justify-content:space-between;background:var(--bg)}
+.mp-section-title{font-family:var(--f-display);font-size:1rem;font-weight:500;color:var(--text-h)}
+.mp-section-action{font-size:0.68rem;color:var(--accent);cursor:pointer;border:none;background:none;font-family:var(--f-body)}
+
+/* Timeline cards */
+.mp-list{padding:0 20px 24px;display:flex;flex-direction:column;gap:10px;background:var(--bg)}
+.mp-card{
+  padding:14px;border-radius:14px;background:var(--bg-card);border:1px solid var(--border);
+  cursor:pointer;transition:all 0.3s;position:relative;overflow:hidden;
+}
+.mp-card:hover{border-color:var(--border2);background:var(--bg-card-h)}
+.mp-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;border-radius:3px 0 0 3px}
+.mp-card.clr-blue::before{background:var(--c-blue)}
+.mp-card.clr-pink::before{background:var(--c-pink)}
+.mp-card.clr-teal::before{background:var(--c-teal)}
+.mp-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px}
+.mp-card-title{font-family:var(--f-display);font-size:0.95rem;font-weight:500;color:var(--text-h)}
+.mp-card-badge{font-family:var(--f-mono);font-size:0.5rem;padding:3px 8px;border-radius:8px;letter-spacing:0.04em}
+.mp-card-badge.public{background:var(--c-green-dim);color:var(--c-green)}
+.mp-card-badge.private{background:rgba(255,255,255,0.04);color:var(--text3)}
+.mp-card-badge.draft{background:var(--c-gold-dim);color:var(--c-gold)}
+.mp-card-meta{font-size:0.65rem;color:var(--text3);display:flex;gap:12px}
+.mp-card-layers{display:flex;gap:4px;margin-top:8px}
+.mp-card-layer-dot{width:6px;height:6px;border-radius:50%}
+
+/* Settings */
+.mp-settings-group{
+  border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--bg-card);
+}
+.mp-settings-item{
+  display:flex;align-items:center;gap:10px;padding:13px 14px;
+  cursor:pointer;transition:background 0.2s;
+  border-bottom:1px solid var(--border);
+}
+.mp-settings-item:last-child{border-bottom:none}
+.mp-settings-item:hover{background:var(--bg-card-h)}
+.mp-settings-icon{font-size:0.85rem;width:24px;text-align:center;flex-shrink:0}
+.mp-settings-label{flex:1;font-size:0.78rem;color:var(--text)}
+.mp-settings-value{font-size:0.68rem;color:var(--text3);margin-right:2px}
+.mp-settings-arrow{color:var(--text3);font-size:1rem;flex-shrink:0}
+.mp-settings-logout:hover{background:var(--danger-dim)}
+
+/* Subpages */
+.subpage-overlay{
+  position:fixed;inset:0;z-index:300;background:rgba(0,0,0,0.5);
+  backdrop-filter:blur(4px);display:none;
+}
+.subpage-overlay.open{display:block}
+.subpage{
+  position:fixed;top:0;right:-100%;width:100%;max-width:480px;height:100%;z-index:310;
+  background:var(--bg);overflow-y:auto;transition:right 0.35s cubic-bezier(0.16,1,0.3,1);
+}
+.subpage.open{right:0}
+.subpage-header{
+  position:sticky;top:0;z-index:10;background:rgba(10,10,12,0.92);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);padding:0 16px;height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.subpage-back{
+  width:32px;height:32px;border:none;background:none;color:var(--text);
+  font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;
+}
+.subpage-title{font-family:var(--f-display);font-size:1rem;font-weight:500;color:var(--text-h)}
+.subpage-body{padding:20px}
+
+/* Sub-page form elements */
+.sub-field{margin-bottom:20px}
+.sub-label{display:block;font-size:0.68rem;color:var(--text3);margin-bottom:6px;font-family:var(--f-mono);letter-spacing:0.04em}
+.sub-input-row{display:flex;gap:8px;align-items:center}
+.sub-input{
+  flex:1;padding:11px 14px;border-radius:10px;background:var(--bg-card);border:1px solid var(--border);
+  color:var(--text);font-size:16px;font-family:var(--f-body);outline:none;
+}
+.sub-input:focus{border-color:var(--accent)}
+.sub-edit-btn{
+  padding:8px 14px;border-radius:8px;border:1px solid var(--border);background:none;
+  color:var(--text2);font-size:0.7rem;font-family:var(--f-body);cursor:pointer;
+  white-space:nowrap;transition:all 0.2s;flex-shrink:0;
+}
+.sub-edit-btn:hover{border-color:var(--border2);color:var(--text)}
+.sub-danger-btn{
+  width:100%;padding:12px;border-radius:10px;border:1px solid rgba(212,90,90,0.2);
+  background:var(--danger-dim);color:var(--danger);font-size:0.78rem;
+  font-family:var(--f-body);cursor:pointer;transition:all 0.2s;
+}
+.sub-danger-btn:hover{background:rgba(212,90,90,0.18)}
+.sub-select{
+  width:100%;padding:11px 14px;border-radius:10px;background:var(--bg-card);border:1px solid var(--border);
+  color:var(--text);font-size:16px;font-family:var(--f-body);outline:none;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%238A8680' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;
+}
+.sub-textarea{
+  width:100%;padding:11px 14px;border-radius:10px;background:var(--bg-card);border:1px solid var(--border);
+  color:var(--text);font-size:16px;font-family:var(--f-body);outline:none;resize:vertical;min-height:100px;
+}
+.sub-textarea:focus,.sub-select:focus{border-color:var(--accent)}
+.sub-file-upload{
+  margin-top:6px;padding:20px;border-radius:10px;border:1px dashed var(--border);
+  text-align:center;font-size:0.72rem;color:var(--text3);cursor:pointer;transition:all 0.2s;
+}
+.sub-file-upload:hover{border-color:var(--border2);background:var(--accent-glow)}
+.sub-submit-btn{
+  width:100%;padding:14px;border-radius:12px;background:var(--accent);color:var(--bg);
+  border:none;font-size:0.85rem;font-family:var(--f-body);cursor:pointer;transition:all 0.3s;
+  margin-top:8px;
+}
+.sub-submit-btn:hover{filter:brightness(1.1)}
+
+/* Toggle groups */
+.sub-toggle-group{border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--bg-card)}
+.sub-toggle-item{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:14px;border-bottom:1px solid var(--border);
+}
+.sub-toggle-item:last-child{border-bottom:none}
+.sub-toggle-label{font-size:0.82rem;color:var(--text-h);margin-bottom:2px}
+.sub-toggle-desc{font-size:0.62rem;color:var(--text3)}
+
+/* Radio groups */
+.sub-radio-group{border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--bg-card)}
+.sub-radio-item{
+  display:flex;align-items:center;justify-content:space-between;padding:14px;
+  border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.2s;
+}
+.sub-radio-item:last-child{border-bottom:none}
+.sub-radio-item:hover{background:var(--bg-card-h)}
+.sub-radio-label{font-size:0.82rem;color:var(--text)}
+.sub-radio-check{color:var(--accent);font-size:0.9rem;display:none}
+.sub-radio-item.selected .sub-radio-check{display:block}
+.sub-radio-item.selected .sub-radio-label{color:var(--text-h)}
+
+/* Legal text */
+.sub-legal-date{font-family:var(--f-mono);font-size:0.6rem;color:var(--text3);margin-bottom:20px;letter-spacing:0.04em}
+.sub-legal-h{font-family:var(--f-display);font-size:0.95rem;font-weight:500;color:var(--text-h);margin:20px 0 8px}
+.sub-legal-p{font-size:0.78rem;color:var(--text2);line-height:1.65}
+
+/* Private note */
+.sub-private-note{
+  display:flex;align-items:flex-start;gap:4px;margin-top:6px;
+  font-size:0.6rem;color:var(--text3);line-height:1.4;
+}
+.sub-private-icon{font-size:0.55rem;flex-shrink:0;margin-top:1px}
+
+/* Logout sheet */
+.logout-overlay{position:fixed;inset:0;z-index:400;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);display:none}
+.logout-overlay.open{display:block}
+.logout-sheet{
+  position:fixed;bottom:-100%;left:50%;transform:translateX(-50%);width:100%;max-width:480px;z-index:410;
+  background:var(--bg2);border-radius:20px 20px 0 0;border:1px solid var(--border);border-bottom:none;
+  padding:20px 20px 32px;transition:bottom 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.logout-sheet.open{bottom:0}
+
+/* FAB */
+.mp-fab{
+  position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;
+  background:var(--accent);color:var(--bg);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 24px rgba(200,168,126,0.25);transition:all 0.3s;z-index:80;
+}
+.mp-fab:hover{transform:scale(1.08);box-shadow:0 6px 32px rgba(200,168,126,0.35)}
+.mp-fab svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* =============================================
+   2. PRO UPGRADE
+   ============================================= */
+.pro-overlay{
+  position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);
+  display:none;align-items:flex-end;justify-content:center;
+}
+.pro-overlay.open{display:flex}
+.pro-sheet{
+  width:100%;max-width:480px;background:var(--bg2);border-radius:20px 20px 0 0;
+  border:1px solid var(--border);border-bottom:none;
+  padding:20px 20px 32px;animation:slideUp 0.4s cubic-bezier(0.16,1,0.3,1);
+  max-height:90vh;overflow-y:auto;
+}
+.pro-handle{width:32px;height:4px;border-radius:2px;background:var(--text3);opacity:0.3;margin:0 auto 16px}
+.pro-icon{
+  width:56px;height:56px;border-radius:16px;margin:0 auto 14px;
+  background:linear-gradient(135deg,rgba(200,168,126,0.15),rgba(200,168,126,0.05));
+  border:1px solid rgba(200,168,126,0.2);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--f-display);font-size:1.5rem;color:var(--accent);
+}
+.pro-title{font-family:var(--f-display);font-size:1.5rem;font-weight:400;
+  color:var(--text-h);text-align:center;margin-bottom:4px}
+.pro-sub{font-size:0.78rem;color:var(--text2);text-align:center;margin-bottom:20px;line-height:1.5}
+.pro-features{margin-bottom:20px}
+.pro-feat{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.pro-feat:last-child{border-bottom:none}
+.pro-feat-icon{
+  width:28px;height:28px;border-radius:8px;background:var(--accent-dim);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.72rem;
+}
+.pro-feat-text{font-size:0.78rem;color:var(--text);line-height:1.4}
+.pro-feat-note{font-size:0.65rem;color:var(--text3);margin-top:2px}
+
+.pro-price{text-align:center;margin-bottom:16px}
+.pro-price-amount{font-family:var(--f-display);font-size:2rem;font-weight:500;color:var(--text-h)}
+.pro-price-period{font-size:0.75rem;color:var(--text2)}
+
+.pro-cta{
+  width:100%;padding:16px;font-size:0.9rem;font-weight:500;font-family:var(--f-body);
+  background:var(--accent);color:var(--bg);border:none;border-radius:14px;
+  cursor:pointer;transition:all 0.3s;margin-bottom:8px;
+}
+.pro-cta:hover{filter:brightness(1.1)}
+.pro-dismiss{
+  width:100%;padding:12px;font-size:0.78rem;font-family:var(--f-body);
+  background:none;color:var(--text3);border:none;cursor:pointer;text-align:center;
+}
+
+/* Limit reached banner */
+.limit-banner{
+  padding:14px;border-radius:12px;
+  background:var(--accent-dim);border:1px solid rgba(200,168,126,0.15);
+  display:flex;align-items:center;gap:10px;cursor:pointer;transition:all 0.3s;
+  width:100%;box-sizing:border-box;
+}
+.limit-banner:hover{background:rgba(200,168,126,0.18)}
+.limit-icon{font-size:1.1rem;flex-shrink:0}
+.limit-text{flex:1;min-width:0}
+
+/* Pro state switcher */
+.pro-state-btn{
+  padding:7px 14px;border-radius:10px;font-size:0.68rem;font-family:var(--f-body);
+  border:1px solid var(--border);background:none;color:var(--text3);
+  cursor:pointer;transition:all 0.25s;
+}
+.pro-state-btn.active{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
+.pro-state-btn:hover{border-color:var(--border2);color:var(--text2)}
+.pro-state{display:none;animation:fadeUp 0.4s ease}
+.pro-state.active{display:block}
+.limit-title{font-size:0.78rem;color:var(--text-h);margin-bottom:2px}
+.limit-desc{font-size:0.65rem;color:var(--text2)}
+.limit-arrow{color:var(--accent);font-size:0.8rem}
+
+/* =============================================
+   3. LAYER MANAGEMENT
+   ============================================= */
+.lm-wrap{padding:16px 20px;background:var(--bg)}
+.lm-title{font-family:var(--f-display);font-size:1.3rem;font-weight:400;color:var(--text-h);margin-bottom:4px}
+.lm-sub{font-size:0.72rem;color:var(--text2);margin-bottom:20px}
+
+.lm-list{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.lm-item{
+  display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:12px;
+  background:var(--bg-card);border:1px solid var(--border);transition:all 0.3s;
+}
+.lm-item:hover{border-color:var(--border2)}
+.lm-drag{cursor:grab;color:var(--text3);display:flex;flex-direction:column;gap:2px}
+.lm-drag-line{width:12px;height:1.5px;background:var(--text3);border-radius:1px}
+.lm-color{
+  width:20px;height:20px;border-radius:6px;cursor:pointer;flex-shrink:0;
+  position:relative;transition:transform 0.2s;
+}
+.lm-color:hover{transform:scale(1.15)}
+.lm-name{
+  flex:1;font-size:0.85rem;color:var(--text-h);background:none;border:none;
+  font-family:var(--f-body);outline:none;padding:4px 0;
+}
+.lm-name:focus{border-bottom:1px solid var(--accent)}
+.lm-count{font-family:var(--f-mono);font-size:0.58rem;color:var(--text3);flex-shrink:0}
+.lm-toggle{
+  width:36px;height:20px;border-radius:10px;background:var(--bg2);border:1px solid var(--border);
+  cursor:pointer;position:relative;flex-shrink:0;transition:all 0.3s;
+}
+.lm-toggle.on{background:var(--accent-dim);border-color:rgba(200,168,126,0.3)}
+.lm-toggle-knob{
+  width:16px;height:16px;border-radius:50%;background:var(--text3);
+  position:absolute;top:1px;left:1px;transition:all 0.3s;
+}
+.lm-toggle.on .lm-toggle-knob{left:17px;background:var(--accent)}
+.lm-delete{
+  border:none;background:none;color:var(--text3);cursor:pointer;padding:4px;
+  font-size:0.9rem;transition:color 0.2s;
+}
+.lm-delete:hover{color:var(--danger)}
+
+/* Color picker popover */
+.lm-colors-pop{
+  display:none;position:absolute;top:calc(100% + 6px);left:0;z-index:50;
+  padding:8px;border-radius:10px;background:var(--bg2);border:1px solid var(--border2);
+  display:none;flex-wrap:wrap;gap:6px;width:120px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.4);
+}
+.lm-colors-pop.open{display:flex}
+.lm-color-opt{
+  width:20px;height:20px;border-radius:6px;cursor:pointer;
+  transition:transform 0.15s;border:2px solid transparent;
+}
+.lm-color-opt:hover{transform:scale(1.2)}
+.lm-color-opt.selected{border-color:var(--text-h)}
+
+/* Add layer button */
+.lm-add{
+  width:100%;padding:12px;border-radius:12px;border:1px dashed var(--border);
+  background:none;color:var(--text3);font-size:0.78rem;font-family:var(--f-body);
+  cursor:pointer;transition:all 0.3s;display:flex;align-items:center;justify-content:center;gap:6px;
+}
+.lm-add:hover{border-color:var(--border2);color:var(--text2);background:var(--accent-glow)}
+
+/* =============================================
+   4. AI EDIT ASSIST DEMO
+   ============================================= */
+.ai-wrap{padding:16px 20px;background:var(--bg)}
+.ai-title{font-family:var(--f-display);font-size:1.3rem;font-weight:400;color:var(--text-h);margin-bottom:4px}
+.ai-sub{font-size:0.72rem;color:var(--text2);margin-bottom:20px;line-height:1.5}
+
+/* Demo card being analyzed */
+.ai-demo-card{
+  padding:14px;border-radius:14px;background:var(--bg-card);border:1px solid var(--border);
+  margin-bottom:16px;position:relative;
+}
+.ai-demo-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;
+  border-radius:3px 0 0 3px;background:var(--c-blue)}
+.ai-demo-date{font-family:var(--f-mono);font-size:0.6rem;color:var(--text3);margin-bottom:3px}
+.ai-demo-title{font-family:var(--f-display);font-size:1rem;font-weight:500;color:var(--text-h);margin-bottom:4px}
+.ai-demo-desc{font-size:0.78rem;color:var(--text2);line-height:1.55}
+.ai-demo-tag{
+  display:inline-block;margin-top:6px;font-family:var(--f-mono);font-size:0.5rem;
+  padding:3px 8px;border-radius:8px;background:var(--c-blue-dim);color:var(--c-blue);
+}
+
+/* AI action buttons */
+.ai-actions{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+.ai-action{
+  padding:9px 14px;border-radius:10px;font-size:0.72rem;font-family:var(--f-body);
+  border:1px solid var(--border);background:none;color:var(--text2);
+  cursor:pointer;transition:all 0.3s;display:flex;align-items:center;gap:5px;
+}
+.ai-action:hover{border-color:var(--border2);color:var(--text);background:var(--accent-glow)}
+.ai-action.active-action{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
+.ai-action-icon{font-size:0.85rem}
+
+/* AI response area */
+.ai-response{
+  border-radius:14px;background:var(--bg-card);border:1px solid var(--border);
+  overflow:hidden;
+}
+.ai-response-header{
+  padding:10px 14px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:8px;
+}
+.ai-response-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+.ai-response-label{font-family:var(--f-mono);font-size:0.6rem;color:var(--accent);letter-spacing:0.06em}
+
+.ai-response-body{padding:14px;display:none}
+.ai-response-body.show{display:block;animation:fadeUp 0.5s ease}
+.ai-response-text{font-size:0.78rem;color:var(--text);line-height:1.65;margin-bottom:12px}
+.ai-response-text strong{color:var(--text-h);font-weight:500}
+
+.ai-response-actions{display:flex;gap:8px}
+.ai-resp-btn{
+  padding:8px 16px;border-radius:8px;font-size:0.72rem;font-family:var(--f-body);
+  cursor:pointer;transition:all 0.2s;
+}
+.ai-resp-btn.accept{background:var(--accent-dim);color:var(--accent);border:1px solid rgba(200,168,126,0.2)}
+.ai-resp-btn.dismiss{background:none;color:var(--text3);border:1px solid var(--border)}
+
+/* Loading state */
+.ai-loading{padding:14px;display:none;align-items:center;gap:8px}
+.ai-loading.show{display:flex}
+.ai-loading-dots{display:flex;gap:4px}
+.ai-loading-dot{width:4px;height:4px;border-radius:50%;background:var(--accent)}
+.ai-loading-dot:nth-child(1){animation:pulse 1.2s infinite 0s}
+.ai-loading-dot:nth-child(2){animation:pulse 1.2s infinite 0.2s}
+.ai-loading-dot:nth-child(3){animation:pulse 1.2s infinite 0.4s}
+.ai-loading-text{font-size:0.68rem;color:var(--text3)}
+
+/* Source cards */
+.ai-source{
+  margin-top:8px;padding:10px 12px;border-radius:10px;
+  background:var(--bg2);border:1px solid var(--border);
+}
+.ai-source-label{font-family:var(--f-mono);font-size:0.52rem;color:var(--text3);letter-spacing:0.06em;margin-bottom:4px}
+.ai-source-link{font-size:0.7rem;color:var(--c-blue);text-decoration:none}
+
+/* Gap detection */
+.ai-gap{
+  margin-top:8px;padding:10px 12px;border-radius:10px;
+  background:rgba(200,168,126,0.04);border:1px dashed rgba(200,168,126,0.15);
+}
+.ai-gap-label{font-family:var(--f-mono);font-size:0.52rem;color:var(--accent);letter-spacing:0.06em;margin-bottom:3px}
+.ai-gap-text{font-size:0.72rem;color:var(--text2);line-height:1.4}
+
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-brand">Chronos</div>
+</header>
+
+<div class="tabs">
+  <button class="tab active" onclick="showScreen('mypage')">マイページ</button>
+  <button class="tab" onclick="showScreen('pro')">Pro課金導線</button>
+  <button class="tab" onclick="showScreen('aiedit')">AI Edit Assist Demo</button>
+</div>
+
+<!-- =============================================
+     1. MY PAGE
+     ============================================= -->
+<div class="screen active" id="s-mypage">
+  <div class="mp-profile" style="animation:fadeUp 0.5s ease">
+    <div class="mp-avatar">T</div>
+    <div>
+      <div class="mp-name">Toda</div>
+      <div style="font-size:0.68rem;color:var(--text2);margin-top:1px">@toda</div>
+      <div class="mp-plan">FREE PLAN</div>
+    </div>
+  </div>
+
+  <div class="mp-usage">
+    <div class="mp-usage-bar-wrap">
+      <div class="mp-usage-label">
+        <span class="mp-usage-text">今月のAI生成回数</span>
+        <span class="mp-usage-count">7 / 10</span>
+      </div>
+      <div class="mp-usage-track">
+        <div class="mp-usage-fill" style="width:70%"></div>
+      </div>
+      <div class="mp-usage-note">次回リセット：3月1日</div>
+    </div>
+    <div class="mp-usage-bar-wrap" style="margin-top:8px">
+      <div class="mp-usage-label">
+        <span class="mp-usage-text">年表保存数</span>
+        <span class="mp-usage-count">2 / 2</span>
+      </div>
+      <div class="mp-usage-track">
+        <div class="mp-usage-fill" style="width:100%;background:var(--danger)"></div>
+      </div>
+      <div class="mp-usage-note" style="color:var(--danger)">上限に達しています — 新規作成にはProが必要です</div>
+    </div>
+    <button class="mp-upgrade-nudge" onclick="openPro()">Pro にアップグレードして無制限に →</button>
+    </div>
+  </div>
+
+  <div class="mp-section">
+    <div class="mp-section-title">年表一覧</div>
+    <button class="mp-section-action">並び替え</button>
+  </div>
+
+  <div class="mp-list">
+    <div class="mp-card clr-blue" onclick="void(0)">
+      <div class="mp-card-top">
+        <div class="mp-card-title">スマートフォンの歴史</div>
+        <div class="mp-card-badge public">公開中</div>
+      </div>
+      <div class="mp-card-meta">
+        <span>12 イベント</span><span>3 レイヤー</span><span>2日前に編集</span>
+      </div>
+      <div class="mp-card-layers">
+        <div class="mp-card-layer-dot" style="background:var(--c-blue)"></div>
+        <div class="mp-card-layer-dot" style="background:var(--c-pink)"></div>
+        <div class="mp-card-layer-dot" style="background:var(--c-teal)"></div>
+      </div>
+    </div>
+
+    <div class="mp-card clr-pink" onclick="void(0)">
+      <div class="mp-card-top">
+        <div class="mp-card-title">印象派の画家たち</div>
+        <div class="mp-card-badge draft">下書き</div>
+      </div>
+      <div class="mp-card-meta">
+        <span>8 イベント</span><span>2 レイヤー</span><span>1週間前</span>
+      </div>
+      <div class="mp-card-layers">
+        <div class="mp-card-layer-dot" style="background:var(--c-pink)"></div>
+        <div class="mp-card-layer-dot" style="background:var(--c-teal)"></div>
+      </div>
+    </div>
+
+    <div class="mp-card clr-teal" onclick="void(0)">
+      <div class="mp-card-top">
+        <div class="mp-card-title">宇宙開発の歩み</div>
+        <div class="mp-card-badge private">非公開</div>
+      </div>
+      <div class="mp-card-meta">
+        <span>15 イベント</span><span>4 レイヤー</span><span>昨日</span>
+      </div>
+      <div class="mp-card-layers">
+        <div class="mp-card-layer-dot" style="background:var(--c-blue)"></div>
+        <div class="mp-card-layer-dot" style="background:var(--c-green-dim.replace('dim','')"></div>
+        <div class="mp-card-layer-dot" style="background:var(--c-teal)"></div>
+        <div class="mp-card-layer-dot" style="background:var(--c-pink)"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Section -->
+  <div class="mp-section" style="margin-top:8px">
+    <div class="mp-section-title">設定</div>
+  </div>
+  <div style="padding:0 20px 32px;background:var(--bg)">
+    <div class="mp-settings-group">
+      <div class="mp-settings-item" onclick="openSubpage('account')">
+        <div class="mp-settings-icon">👤</div>
+        <div class="mp-settings-label">アカウント設定</div>
+        <div class="mp-settings-arrow">›</div>
+      </div>
+      <div class="mp-settings-item" onclick="openSubpage('notif')">
+        <div class="mp-settings-icon">🔔</div>
+        <div class="mp-settings-label">通知設定</div>
+        <div class="mp-settings-arrow">›</div>
+      </div>
+    </div>
+    <div class="mp-settings-group" style="margin-top:10px">
+      <div class="mp-settings-item" onclick="openSubpage('terms')">
+        <div class="mp-settings-icon">📄</div>
+        <div class="mp-settings-label">利用規約</div>
+        <div class="mp-settings-arrow">›</div>
+      </div>
+      <div class="mp-settings-item" onclick="openSubpage('privacy')">
+        <div class="mp-settings-icon">🔒</div>
+        <div class="mp-settings-label">プライバシーポリシー</div>
+        <div class="mp-settings-arrow">›</div>
+      </div>
+      <div class="mp-settings-item" onclick="openSubpage('contact')">
+        <div class="mp-settings-icon">💬</div>
+        <div class="mp-settings-label">お問い合わせ・フィードバック</div>
+        <div class="mp-settings-arrow">›</div>
+      </div>
+    </div>
+    <div class="mp-settings-group" style="margin-top:10px">
+      <div class="mp-settings-item mp-settings-logout" onclick="openLogout()">
+        <div class="mp-settings-icon">🚪</div>
+        <div class="mp-settings-label" style="color:var(--danger)">ログアウト</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:16px;font-family:var(--f-mono);font-size:0.55rem;color:var(--text3);letter-spacing:0.06em">
+      Chronos v1.0.0
+    </div>
+  </div>
+
+  <!-- FAB: 新規年表作成 -->
+  <button class="mp-fab" onclick="fabAction()">
+    <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+  </button>
+</div>
+
+<!-- ===== SETTINGS SUBPAGES ===== -->
+<div class="subpage-overlay" id="subpageOverlay" onclick="closeSubpage()"></div>
+
+<!-- Account Settings -->
+<div class="subpage" id="sub-account">
+  <div class="subpage-header">
+    <button class="subpage-back" onclick="closeSubpage()">‹</button>
+    <div class="subpage-title">アカウント設定</div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="subpage-body">
+    <div class="sub-field">
+      <label class="sub-label">アバター</label>
+      <div style="display:flex;align-items:center;gap:12px;margin-top:6px">
+        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--accent-dim),var(--bg-card));border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-size:1.3rem;color:var(--accent)">T</div>
+        <button class="sub-edit-btn">画像をアップロード</button>
+      </div>
+      <div style="font-size:0.6rem;color:var(--text3);margin-top:6px;line-height:1.4">プロフィールや公開年表のページに表示されます</div>
+    </div>
+    <div class="sub-field">
+      <label class="sub-label">ユーザーネーム（公開表示名）</label>
+      <div class="sub-input-row">
+        <div style="font-size:0.82rem;color:var(--text3);padding:11px 0 11px 2px;flex-shrink:0">@</div>
+        <input class="sub-input" value="toda" readonly>
+        <button class="sub-edit-btn">変更</button>
+      </div>
+      <div style="font-size:0.6rem;color:var(--text3);margin-top:4px;line-height:1.4">年表の公開ページやプロフィールに表示されます</div>
+    </div>
+    <div class="sub-field">
+      <label class="sub-label">氏名</label>
+      <div class="sub-input-row">
+        <input class="sub-input" value="戸田" readonly style="max-width:45%">
+        <input class="sub-input" value="太郎" readonly style="max-width:45%">
+        <button class="sub-edit-btn">変更</button>
+      </div>
+      <div class="sub-private-note">
+        <span class="sub-private-icon">🔒</span>
+        この情報は公開されません。本人確認・お問い合わせ対応にのみ使用します。
+      </div>
+    </div>
+    <div class="sub-field">
+      <label class="sub-label">メールアドレス</label>
+      <div class="sub-input-row">
+        <input class="sub-input" value="toda@example.com" readonly>
+        <button class="sub-edit-btn">変更</button>
+      </div>
+      <div class="sub-private-note">
+        <span class="sub-private-icon">🔒</span>
+        他のユーザーには公開されません
+      </div>
+    </div>
+    <div class="sub-field">
+      <label class="sub-label">プラン</label>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:6px">
+        <span style="font-family:var(--f-mono);font-size:0.65rem;padding:3px 10px;border-radius:8px;background:rgba(255,255,255,0.04);color:var(--text3);letter-spacing:0.06em">FREE PLAN</span>
+        <button class="sub-edit-btn" style="color:var(--accent);border-color:rgba(200,168,126,0.2)" onclick="closeSubpage();setTimeout(()=>openPro(),300)">Proにアップグレード</button>
+      </div>
+    </div>
+    <div style="margin-top:32px;padding-top:20px;border-top:1px solid var(--border)">
+      <button class="sub-danger-btn">アカウントを削除</button>
+      <div style="font-size:0.62rem;color:var(--text3);margin-top:6px;line-height:1.5">アカウントを削除すると、すべての年表データが完全に削除されます。この操作は取り消せません。</div>
+    </div>
+  </div>
+</div>
+
+<!-- Notification Settings -->
+<div class="subpage" id="sub-notif">
+  <div class="subpage-header">
+    <button class="subpage-back" onclick="closeSubpage()">‹</button>
+    <div class="subpage-title">通知設定</div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="subpage-body">
+    <div style="font-size:0.68rem;color:var(--text3);margin-bottom:12px;font-family:var(--f-mono);letter-spacing:0.04em">メール通知</div>
+    <div class="sub-toggle-group">
+      <div class="sub-toggle-item">
+        <div><div class="sub-toggle-label">AI生成完了</div><div class="sub-toggle-desc">年表の生成が完了したときにメールで通知</div></div>
+        <div class="lm-toggle on" onclick="toggleLayer(this)"><div class="lm-toggle-knob"></div></div>
+      </div>
+      <div class="sub-toggle-item">
+        <div><div class="sub-toggle-label">コメント・リアクション</div><div class="sub-toggle-desc">公開中の年表にコメントが付いたとき</div></div>
+        <div class="lm-toggle on" onclick="toggleLayer(this)"><div class="lm-toggle-knob"></div></div>
+      </div>
+      <div class="sub-toggle-item">
+        <div><div class="sub-toggle-label">週間レポート</div><div class="sub-toggle-desc">毎週月曜に閲覧数のサマリーをメール送信</div></div>
+        <div class="lm-toggle" onclick="toggleLayer(this)"><div class="lm-toggle-knob"></div></div>
+      </div>
+      <div class="sub-toggle-item">
+        <div><div class="sub-toggle-label">Chronosからのお知らせ</div><div class="sub-toggle-desc">新機能やキャンペーン情報をメールで受け取る</div></div>
+        <div class="lm-toggle on" onclick="toggleLayer(this)"><div class="lm-toggle-knob"></div></div>
+      </div>
+      <div class="sub-toggle-item">
+        <div><div class="sub-toggle-label">セキュリティ通知</div><div class="sub-toggle-desc">ログインや設定変更時にメールで通知</div></div>
+        <div class="lm-toggle on" onclick="toggleLayer(this)"><div class="lm-toggle-knob"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Language -->
+<!-- Terms -->
+<div class="subpage" id="sub-terms">
+  <div class="subpage-header">
+    <button class="subpage-back" onclick="closeSubpage()">‹</button>
+    <div class="subpage-title">利用規約</div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="subpage-body">
+    <div class="sub-legal">
+      <div class="sub-legal-date">最終更新日：2026年2月1日</div>
+      <h3 class="sub-legal-h">第1条（適用）</h3>
+      <p class="sub-legal-p">本規約は、ユーザーと当社との間のサービス利用に関わる一切の関係に適用されます。</p>
+      <h3 class="sub-legal-h">第2条（利用登録）</h3>
+      <p class="sub-legal-p">登録希望者が当社の定める方法によって利用登録を申請し、当社がこれを承認することによって成立します。</p>
+      <h3 class="sub-legal-h">第3条（禁止事項）</h3>
+      <p class="sub-legal-p">ユーザーは、本サービスの利用にあたり、法令または公序良俗に違反する行為、犯罪行為に関連する行為等を行ってはなりません。</p>
+      <h3 class="sub-legal-h">第4条（サービスの変更等）</h3>
+      <p class="sub-legal-p">当社は、ユーザーに通知することなく、本サービスの内容を変更しまたは提供を中止することができるものとします。</p>
+    </div>
+  </div>
+</div>
+
+<!-- Privacy Policy -->
+<div class="subpage" id="sub-privacy">
+  <div class="subpage-header">
+    <button class="subpage-back" onclick="closeSubpage()">‹</button>
+    <div class="subpage-title">プライバシーポリシー</div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="subpage-body">
+    <div class="sub-legal">
+      <div class="sub-legal-date">最終更新日：2026年2月1日</div>
+      <h3 class="sub-legal-h">1. 収集する情報</h3>
+      <p class="sub-legal-p">当社は、メールアドレス、表示名、利用履歴、年表の作成・閲覧データなどの情報を収集します。</p>
+      <h3 class="sub-legal-h">2. 利用目的</h3>
+      <p class="sub-legal-p">収集した情報は、サービスの提供・改善、お問い合わせへの対応、利用状況の分析に利用します。</p>
+      <h3 class="sub-legal-h">3. 第三者提供</h3>
+      <p class="sub-legal-p">法令に基づく場合を除き、ユーザーの同意なく第三者に個人情報を提供することはありません。</p>
+      <h3 class="sub-legal-h">4. データの保管</h3>
+      <p class="sub-legal-p">ユーザーデータは暗号化された状態で安全に保管されます。アカウント削除時にはすべてのデータが完全に消去されます。</p>
+    </div>
+  </div>
+</div>
+
+<!-- Contact -->
+<div class="subpage" id="sub-contact">
+  <div class="subpage-header">
+    <button class="subpage-back" onclick="closeSubpage()">‹</button>
+    <div class="subpage-title">お問い合わせ</div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="subpage-body">
+    <div class="sub-field">
+      <label class="sub-label">カテゴリ</label>
+      <select class="sub-select">
+        <option>不具合の報告</option>
+        <option>機能リクエスト</option>
+        <option>アカウントに関して</option>
+        <option>課金・決済に関して</option>
+        <option>その他</option>
+      </select>
+    </div>
+    <div class="sub-field">
+      <label class="sub-label">件名</label>
+      <input class="sub-input" placeholder="例：年表が正しく表示されない">
+    </div>
+    <div class="sub-field">
+      <label class="sub-label">詳細</label>
+      <textarea class="sub-textarea" rows="5" placeholder="できるだけ具体的に記載してください"></textarea>
+    </div>
+    <div class="sub-field">
+      <label class="sub-label">スクリーンショット（任意）</label>
+      <div class="sub-file-upload">
+        <div style="font-size:1.2rem;margin-bottom:4px">📎</div>
+        <div>タップして画像を選択</div>
+      </div>
+    </div>
+    <button class="sub-submit-btn">送信する</button>
+  </div>
+</div>
+
+<!-- Logout Confirm Sheet -->
+<div class="logout-overlay" id="logoutOverlay" onclick="closeLogout()"></div>
+<div class="logout-sheet" id="logoutSheet">
+  <div class="pro-handle"></div>
+  <div style="font-size:1.5rem;text-align:center;margin-bottom:12px">🚪</div>
+  <div style="font-family:var(--f-display);font-size:1.2rem;color:var(--text-h);text-align:center;margin-bottom:6px">ログアウト</div>
+  <div style="font-size:0.78rem;color:var(--text2);text-align:center;margin-bottom:20px;line-height:1.5">ログアウトしますか？<br>再度ログインすればデータは保持されます。</div>
+  <button style="width:100%;padding:14px;border-radius:12px;background:var(--danger);color:white;border:none;font-size:0.85rem;font-family:var(--f-body);cursor:pointer;margin-bottom:8px">ログアウト</button>
+  <button class="pro-dismiss" onclick="closeLogout()">キャンセル</button>
+</div>
+
+<!-- =============================================
+     2. PRO UPGRADE
+     ============================================= -->
+<div class="screen" id="s-pro">
+
+  <!-- State switcher -->
+  <div style="padding:14px 20px 0;background:var(--bg)">
+    <div style="font-family:var(--f-display);font-size:1.1rem;font-weight:400;color:var(--text-h);margin-bottom:4px">課金導線のUXプレビュー</div>
+    <div style="font-size:0.68rem;color:var(--text3);line-height:1.5;margin-bottom:12px">Freeユーザーのジャーニーに沿った3つの状態。作成フローやマイページの各所に出現する課金導線UIの一覧です。</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap">
+      <button class="pro-state-btn active" onclick="setProState('normal',this)">Free（余裕あり）</button>
+      <button class="pro-state-btn" onclick="setProState('limit',this)">Free（上限到達）</button>
+      <button class="pro-state-btn" onclick="setProState('subscribed',this)">Pro 課金済み</button>
+    </div>
+  </div>
+
+  <!-- State: Normal Free (余裕あり) -->
+  <div class="pro-state active" id="pro-normal">
+    <div style="padding:20px;background:var(--bg)">
+      <div style="padding:16px;border-radius:14px;background:var(--bg-card);border:1px solid var(--border)">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+          <span style="font-family:var(--f-mono);font-size:0.6rem;padding:3px 8px;border-radius:8px;background:rgba(255,255,255,0.04);color:var(--text3);letter-spacing:0.06em">FREE PLAN</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px">
+          <div style="display:flex;justify-content:space-between;font-size:0.72rem">
+            <span style="color:var(--text2)">AI生成</span>
+            <span style="color:var(--text-h)">月10回</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.72rem">
+            <span style="color:var(--text2)">年表保存数</span>
+            <span style="color:var(--text-h)">2つまで</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding-top:12px;border-top:1px solid var(--border)">
+          <div style="font-size:1.1rem">✦</div>
+          <div>
+            <div style="font-size:0.78rem;color:var(--text-h)">Proでもっとできることがあります</div>
+            <div style="font-size:0.62rem;color:var(--text3);margin-top:2px">無制限生成・AI Edit・高解像度書き出し</div>
+          </div>
+        </div>
+        <button class="mp-upgrade-nudge" onclick="openPro()" style="margin-top:12px">Pro プランを見る →</button>
+      </div>
+    </div>
+    <div style="padding:0 20px;background:var(--bg)">
+      <div style="font-size:0.72rem;color:var(--text3);line-height:1.6;padding:12px;border-radius:10px;background:var(--bg-card);border:1px solid var(--border)">
+        💡 <strong>余裕あり：</strong>プラン情報を表示しつつ、控えめなPro紹介カードで興味があればタップできる設計。押し付けない。
+      </div>
+    </div>
+  </div>
+
+  <!-- State: Limit Reached -->
+  <div class="pro-state" id="pro-limit">
+    <div style="padding:20px;background:var(--bg)">
+      <div class="limit-banner" onclick="openPro()">
+        <div class="limit-icon">⚡</div>
+        <div class="limit-text">
+          <div class="limit-title">AI生成回数の上限に達しました</div>
+          <div class="limit-desc">今月の無料枠（10回）をすべて使いました</div>
+        </div>
+        <div class="limit-arrow">→</div>
+      </div>
+    </div>
+    <div style="padding:0 20px 16px;background:var(--bg)">
+      <div style="padding:16px;border-radius:14px;background:var(--bg-card);border:1px solid rgba(212,90,90,0.15)">
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px">
+          <div style="display:flex;justify-content:space-between;font-size:0.72rem">
+            <span style="color:var(--text2)">AI生成</span>
+            <span style="color:var(--danger)">10/10（上限）</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.72rem">
+            <span style="color:var(--text2)">年表保存数</span>
+            <span style="color:var(--danger)">2/2（上限）</span>
+          </div>
+        </div>
+        <button style="width:100%;padding:14px;border-radius:12px;background:var(--accent);color:var(--bg);
+          border:none;font-size:0.85rem;font-family:var(--f-body);cursor:pointer"
+          onclick="openPro()">Proにアップグレードして制限を解除</button>
+      </div>
+    </div>
+    <div style="padding:0 20px;background:var(--bg)">
+      <div style="font-size:0.72rem;color:var(--text3);line-height:1.6;padding:12px;border-radius:10px;background:var(--bg-card);border:1px solid var(--border)">
+        🚨 <strong>上限到達：</strong>赤バナーで明確にPro誘導。作成フローの「生成する」ボタンもこの状態では非活性に。FAB（＋）タップ時もPro誘導シートへ遷移。
+      </div>
+    </div>
+  </div>
+
+  <!-- State: Pro Subscribed -->
+  <div class="pro-state" id="pro-subscribed">
+    <div style="padding:16px 20px;background:var(--bg)">
+      <div class="mp-usage-bar-wrap" style="border-color:rgba(200,168,126,0.2)">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+          <span style="font-family:var(--f-mono);font-size:0.6rem;padding:3px 8px;border-radius:8px;background:var(--accent-dim);color:var(--accent);letter-spacing:0.06em">PRO</span>
+          <span class="mp-usage-text">プラン有効</span>
+        </div>
+        <div style="font-size:0.72rem;color:var(--text2);margin-bottom:8px">AI生成回数：<span style="color:var(--text-h)">無制限</span> ｜ 年表保存数：<span style="color:var(--text-h)">無制限</span></div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;align-items:center;gap:6px">
+            <span style="color:var(--c-green);font-size:0.7rem">✓</span>
+            <span style="font-size:0.7rem;color:var(--text2)">AI Edit Assist</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px">
+            <span style="color:var(--c-green);font-size:0.7rem">✓</span>
+            <span style="font-size:0.7rem;color:var(--text2)">カスタムカラー</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px">
+            <span style="color:var(--c-green);font-size:0.7rem">✓</span>
+            <span style="font-size:0.7rem;color:var(--text2)">高解像度PNG書き出し</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px">
+            <span style="color:var(--c-green);font-size:0.7rem">✓</span>
+            <span style="font-size:0.7rem;color:var(--text2)">埋め込みウィジェット</span>
+          </div>
+        </div>
+        <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:0.68rem;color:var(--text3)">次回更新：2026年3月11日</span>
+          <button style="font-size:0.65rem;color:var(--text3);background:none;border:1px solid var(--border);
+            padding:5px 12px;border-radius:8px;cursor:pointer;font-family:var(--f-body)">プラン管理</button>
+        </div>
+      </div>
+    </div>
+    <div style="padding:0 20px;background:var(--bg)">
+      <div style="font-size:0.72rem;color:var(--text3);line-height:1.6;padding:12px;border-radius:10px;background:var(--bg-card);border:1px solid var(--border)">
+        ✅ <strong>Pro課金後：</strong>使用量バーの代わりにProバッジと有効機能一覧。プラン管理ボタンから解約・変更への導線も確保。マイページの使用量セクションがこの表示に切り替わります。
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Pro overlay -->
+<div class="pro-overlay" id="proOverlay" onclick="closePro(event)">
+  <div class="pro-sheet" onclick="event.stopPropagation()">
+    <div class="pro-handle"></div>
+    <div class="pro-icon">✦</div>
+    <div class="pro-title">Chronos Pro</div>
+    <div class="pro-sub">もっと自由に、もっと深く。<br>あなたの年表づくりを加速します。</div>
+
+    <div class="pro-features">
+      <div class="pro-feat">
+        <div class="pro-feat-icon">∞</div>
+        <div><div class="pro-feat-text">AI生成が無制限</div>
+        <div class="pro-feat-note">Free: 月10回 → Pro: 無制限</div></div>
+      </div>
+      <div class="pro-feat">
+        <div class="pro-feat-icon">📚</div>
+        <div><div class="pro-feat-text">年表の保存数が無制限</div>
+        <div class="pro-feat-note">Free: 2つまで → Pro: 無制限</div></div>
+      </div>
+      <div class="pro-feat">
+        <div class="pro-feat-icon">🎨</div>
+        <div><div class="pro-feat-text">カスタムカラー</div>
+        <div class="pro-feat-note">7色プリセット + 任意のHEX指定</div></div>
+      </div>
+      <div class="pro-feat">
+        <div class="pro-feat-icon">📐</div>
+        <div><div class="pro-feat-text">高解像度PNG書き出し</div>
+        <div class="pro-feat-note">透かしなし・2x解像度</div></div>
+      </div>
+      <div class="pro-feat">
+        <div class="pro-feat-icon">🤖</div>
+        <div><div class="pro-feat-text">AI Edit Assist</div>
+        <div class="pro-feat-note">補足・出典・抜け検出・添削</div></div>
+      </div>
+      <div class="pro-feat">
+        <div class="pro-feat-icon">🔗</div>
+        <div><div class="pro-feat-text">埋め込みウィジェット</div>
+        <div class="pro-feat-note">ブログやNotionに年表を埋め込み</div></div>
+      </div>
+    </div>
+
+    <div class="pro-price">
+      <div class="pro-price-amount">¥980</div>
+      <div class="pro-price-period">/ 月（税込）</div>
+    </div>
+
+    <button class="pro-cta">Pro にアップグレード</button>
+    <button class="pro-dismiss" onclick="closePro()">あとで</button>
+  </div>
+</div>
+
+
+  <div class="ai-wrap" style="animation:fadeUp 0.5s ease">
+    <div class="ai-title">AI Edit Assist Demo</div>
+    <div class="ai-sub">実際のアプリでは、編集モードでカードを選択するとAIアシストを呼び出せます。<br>以下はその操作イメージです。ボタンをタップして体験してみてください。</div>
+
+    <!-- Target card -->
+    <div class="ai-demo-card">
+      <div class="ai-demo-date">2007.01</div>
+      <div class="ai-demo-title">Apple iPhone 発表</div>
+      <div class="ai-demo-desc" id="aiDemoDesc">スティーブ・ジョブズがMacworldで発表。マルチタッチUIでスマートフォンの概念を一変させた。</div>
+      <span class="ai-demo-tag">製品</span>
+    </div>
+
+    <!-- Action buttons -->
+    <div class="ai-actions">
+      <button class="ai-action" onclick="runAI('supplement')">
+        <span class="ai-action-icon">＋</span>補足する
+      </button>
+      <button class="ai-action" onclick="runAI('source')">
+        <span class="ai-action-icon">📎</span>出典を探す
+      </button>
+      <button class="ai-action" onclick="runAI('gap')">
+        <span class="ai-action-icon">🔍</span>抜けを検出
+      </button>
+      <button class="ai-action" onclick="runAI('proofread')">
+        <span class="ai-action-icon">✏️</span>添削する
+      </button>
+    </div>
+
+    <!-- AI Response -->
+    <div class="ai-response">
+      <div class="ai-response-header">
+        <div class="ai-response-dot"></div>
+        <div class="ai-response-label">AI EDIT ASSIST</div>
+      </div>
+      <div class="ai-loading" id="aiLoading">
+        <div class="ai-loading-dots">
+          <div class="ai-loading-dot"></div><div class="ai-loading-dot"></div><div class="ai-loading-dot"></div>
+        </div>
+        <div class="ai-loading-text">分析中...</div>
+      </div>
+      <div class="ai-response-body" id="aiResult"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== TAB NAVIGATION =====
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('s-' + id).classList.add('active');
+  event.target.classList.add('active');
+  // Hide fab outside mypage
+  const fab = document.querySelector('.mp-fab');
+  if (fab) fab.style.display = id === 'mypage' ? '' : 'none';
+}
+
+// ===== PRO STATE SWITCHER =====
+function setProState(state, btn) {
+  document.querySelectorAll('.pro-state').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.pro-state-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('pro-' + state).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ===== PRO OVERLAY =====
+function openPro() {
+  document.getElementById('proOverlay').classList.add('open');
+}
+function closePro(e) {
+  if (!e || e.target === document.getElementById('proOverlay')) {
+    document.getElementById('proOverlay').classList.remove('open');
+  }
+}
+
+// ===== LAYER MANAGEMENT =====
+function toggleColorPicker(el) {
+  const pop = el.querySelector('.lm-colors-pop');
+  // Close others
+  document.querySelectorAll('.lm-colors-pop.open').forEach(p => { if (p !== pop) p.classList.remove('open') });
+  pop.classList.toggle('open');
+}
+
+function pickColor(e, opt, varName) {
+  e.stopPropagation();
+  const pop = opt.closest('.lm-colors-pop');
+  const colorEl = pop.parentElement;
+  pop.querySelectorAll('.lm-color-opt').forEach(o => o.classList.remove('selected'));
+  opt.classList.add('selected');
+  colorEl.style.background = `var(${varName})`;
+  pop.classList.remove('open');
+}
+
+function toggleLayer(el) {
+  el.classList.toggle('on');
+}
+
+function deleteLayer(btn) {
+  const item = btn.closest('.lm-item');
+  item.style.opacity = '0';
+  item.style.transform = 'translateX(-20px)';
+  item.style.transition = 'all 0.3s ease';
+  setTimeout(() => item.remove(), 300);
+}
+
+function addLayer() {
+  const list = document.getElementById('layerList');
+  const colors = ['--c-purple', '--c-gold', '--c-orange', '--c-green'];
+  const color = colors[list.children.length % colors.length];
+  const item = document.createElement('div');
+  item.className = 'lm-item';
+  item.style.animation = 'fadeUp 0.4s ease';
+  item.innerHTML = `
+    <div class="lm-drag"><div class="lm-drag-line"></div><div class="lm-drag-line"></div><div class="lm-drag-line"></div></div>
+    <div class="lm-color" style="background:var(${color})" onclick="toggleColorPicker(this)">
+      <div class="lm-colors-pop">
+        <div class="lm-color-opt" style="background:var(--c-blue)" onclick="pickColor(event,this,'--c-blue')"></div>
+        <div class="lm-color-opt" style="background:var(--c-pink)" onclick="pickColor(event,this,'--c-pink')"></div>
+        <div class="lm-color-opt" style="background:var(--c-teal)" onclick="pickColor(event,this,'--c-teal')"></div>
+        <div class="lm-color-opt" style="background:var(--c-green)" onclick="pickColor(event,this,'--c-green')"></div>
+        <div class="lm-color-opt" style="background:var(--c-gold)" onclick="pickColor(event,this,'--c-gold')"></div>
+        <div class="lm-color-opt" style="background:var(--c-purple)" onclick="pickColor(event,this,'--c-purple')"></div>
+        <div class="lm-color-opt" style="background:var(--c-orange)" onclick="pickColor(event,this,'--c-orange')"></div>
+      </div>
+    </div>
+    <input class="lm-name" value="新しいレイヤー" onfocus="this.select()">
+    <div class="lm-count">0件</div>
+    <div class="lm-toggle on" onclick="toggleLayer(this)"><div class="lm-toggle-knob"></div></div>
+    <button class="lm-delete" onclick="deleteLayer(this)">×</button>
+  `;
+  list.appendChild(item);
+}
+
+// Close color pickers on outside click
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.lm-color')) {
+    document.querySelectorAll('.lm-colors-pop.open').forEach(p => p.classList.remove('open'));
+  }
+});
+
+// ===== AI EDIT ASSIST =====
+const aiResponses = {
+  supplement: {
+    text: `<strong>補足提案：</strong><br><br>初代iPhoneは2007年6月29日に米国で発売。価格は4GB版が$499、8GB版が$599（2年契約AT&T縛り）。発売初週末に約27万台を販売。<br><br>ジョブズは発表時「電話を再発明する」と宣言。タッチスクリーン、iPod、インターネット通信デバイスの3つを1台に統合するコンセプトを示した。`,
+    extra: ''
+  },
+  source: {
+    text: `<strong>出典候補を検出しました：</strong>`,
+    extra: `<div class="ai-source"><div class="ai-source-label">SOURCE 1</div><a class="ai-source-link" href="#">Apple Press Release — "Apple Reinvents the Phone" (2007.01.09)</a></div>
+    <div class="ai-source" style="margin-top:6px"><div class="ai-source-label">SOURCE 2</div><a class="ai-source-link" href="#">Macworld 2007 Keynote — Steve Jobs iPhone Introduction (YouTube)</a></div>`
+  },
+  gap: {
+    text: `<strong>この前後に抜けている可能性のあるイベント：</strong>`,
+    extra: `<div class="ai-gap"><div class="ai-gap-label">GAP DETECTED</div><div class="ai-gap-text">2006年 — LG Prada発表（iPhoneより先にフルタッチスクリーン携帯を発表）</div></div>
+    <div class="ai-gap" style="margin-top:6px"><div class="ai-gap-label">GAP DETECTED</div><div class="ai-gap-text">2007年6月 — iPhone発売日（発表と発売は別イベントとして分けることを推奨）</div></div>`
+  },
+  proofread: {
+    text: `<strong>添削結果：</strong><br><br>「マルチタッチUI でスマートフォンの概念を一変させた」→「マルチタッチUIにより、スマートフォンの操作体験を根本から変えた」<br><br><em>理由：</em>「概念を一変」は少し抽象的。「操作体験を根本から変えた」のほうが具体的で、何が変わったのかが伝わります。`,
+    extra: ''
+  }
+};
+
+function runAI(type) {
+  // Highlight active button
+  document.querySelectorAll('.ai-action').forEach(a => a.classList.remove('active-action'));
+  event.target.closest('.ai-action').classList.add('active-action');
+
+  // Show loading
+  document.getElementById('aiLoading').classList.add('show');
+  document.getElementById('aiResult').classList.remove('show');
+  document.getElementById('aiResult').innerHTML = '';
+
+  // Simulate AI response
+  setTimeout(() => {
+    document.getElementById('aiLoading').classList.remove('show');
+    const resp = aiResponses[type];
+    document.getElementById('aiResult').innerHTML = `
+      <div class="ai-response-text">${resp.text}</div>
+      ${resp.extra}
+      <div class="ai-response-actions" style="margin-top:12px">
+        <button class="ai-resp-btn accept">反映する</button>
+        <button class="ai-resp-btn dismiss">無視</button>
+      </div>
+    `;
+    document.getElementById('aiResult').classList.add('show');
+  }, 1500 + Math.random() * 1000);
+}
+// ===== SUBPAGES =====
+function openSubpage(id) {
+  document.getElementById('subpageOverlay').classList.add('open');
+  document.getElementById('sub-' + id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeSubpage() {
+  document.getElementById('subpageOverlay').classList.remove('open');
+  document.querySelectorAll('.subpage.open').forEach(s => s.classList.remove('open'));
+  document.body.style.overflow = '';
+}
+
+function selectRadio(el) {
+  el.closest('.sub-radio-group').querySelectorAll('.sub-radio-item').forEach(i => i.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+// ===== LOGOUT =====
+function openLogout() {
+  document.getElementById('logoutOverlay').classList.add('open');
+  document.getElementById('logoutSheet').classList.add('open');
+}
+function closeLogout() {
+  document.getElementById('logoutOverlay').classList.remove('open');
+  document.getElementById('logoutSheet').classList.remove('open');
+}
+
+// ===== FAB (新規年表作成) =====
+function fabAction() {
+  // 年表2/2で上限到達 → Pro誘導
+  openPro();
+}
+</script>
+</body>
+</html>

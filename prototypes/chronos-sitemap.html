@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ja" style="background-color:#0A0A0C;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chronos — サイトマップ & カラーパレット</title>
+<link href="https://api.fontshare.com/v2/css?f[]=erode@300,400,500,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#0A0A0C;color-scheme:dark}
+body{font-family:"DM Sans",sans-serif;color:#E8E4DE;-webkit-font-smoothing:antialiased;margin:0}
+
+.container{max-width:900px;margin:0 auto}
+
+/* Header */
+.doc-header{text-align:center;margin-bottom:56px;padding-bottom:32px;border-bottom:1px solid rgba(200,168,126,0.1)}
+.doc-brand{font-family:'Erode','Shippori Mincho',serif;font-size:26px;font-weight:500;letter-spacing:0.22em;color:#C8A87E;text-transform:uppercase;margin-bottom:6px}
+.doc-subtitle{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#5A5754;text-transform:uppercase}
+.doc-date{font-size:12px;color:#5A5754;margin-top:12px}
+
+/* Section */
+.section{margin-bottom:56px}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#C8A87E;text-transform:uppercase;margin-bottom:8px}
+.section-title{font-family:'Erode','Shippori Mincho',serif;font-size:28px;font-weight:400;color:#F5F2ED;margin-bottom:24px}
+
+/* ===== COLOR PALETTE ===== */
+.palette-group{margin-bottom:28px}
+.palette-group-label{font-size:12px;color:#8A8680;margin-bottom:12px;font-weight:500}
+.palette-row{display:flex;gap:12px;flex-wrap:wrap}
+.color-chip{
+  width:120px;border-radius:12px;overflow:hidden;
+  border:1px solid rgba(200,168,126,0.1);background:#16161A;
+}
+.color-chip-swatch{height:56px;position:relative}
+.color-chip-info{padding:10px 12px}
+.color-chip-name{font-size:12px;color:#F5F2ED;margin-bottom:2px}
+.color-chip-hex{font-family:'JetBrains Mono',monospace;font-size:10px;color:#5A5754;letter-spacing:0.04em}
+.color-chip-use{font-size:10px;color:#8A8680;margin-top:3px;line-height:1.3}
+
+/* Wide chip for backgrounds */
+.color-chip.wide{width:180px}
+.color-chip.full{width:100%;max-width:380px}
+
+/* ===== SITEMAP ===== */
+.sitemap{position:relative}
+
+/* Flow node */
+.flow-section{margin-bottom:40px;position:relative}
+.flow-phase{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:0.1em;color:#C8A87E;text-transform:uppercase;
+  padding:6px 14px;border-radius:100px;border:1px solid rgba(200,168,126,0.22);
+  background:rgba(200,168,126,0.08);display:inline-block;margin-bottom:16px;
+}
+.flow-nodes{display:flex;gap:12px;flex-wrap:wrap;padding-left:16px;border-left:2px solid rgba(200,168,126,0.1)}
+.flow-node{
+  padding:16px 20px;border-radius:14px;background:#16161A;
+  border:1px solid rgba(200,168,126,0.1);min-width:200px;flex:1;max-width:280px;
+  transition:all 0.3s;position:relative;
+}
+.flow-node:hover{border-color:rgba(200,168,126,0.22);transform:translateY(-2px)}
+.flow-node-title{font-family:'Erode','Shippori Mincho',serif;font-size:16px;font-weight:500;color:#F5F2ED;margin-bottom:4px}
+.flow-node-file{font-family:'JetBrains Mono',monospace;font-size:10px;color:#5A5754;letter-spacing:0.02em;margin-bottom:6px}
+.flow-node-desc{font-size:12px;color:#8A8680;line-height:1.5}
+.flow-node-badge{
+  position:absolute;top:10px;right:12px;font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:0.06em;padding:3px 8px;border-radius:6px;
+}
+.badge-new{background:rgba(123,198,126,0.12);color:#7BC67E}
+.badge-prev{background:rgba(91,155,213,0.12);color:#5B9BD5}
+.badge-both{background:rgba(200,168,126,0.12);color:#C8A87E}
+
+/* Arrow connector */
+.flow-arrow{
+  display:flex;align-items:center;gap:6px;padding:8px 0 8px 16px;
+  color:#5A5754;font-size:11px;font-family:'JetBrains Mono',monospace;
+}
+.flow-arrow::before{content:'↓';font-size:0.8rem;color:rgba(200,168,126,0.3)}
+
+/* Sub pages */
+.sub-pages{margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.03)}
+.sub-page{font-size:11px;color:#5A5754;padding:3px 0;display:flex;align-items:center;gap:6px}
+.sub-page::before{content:'└';color:rgba(200,168,126,0.2);font-family:'JetBrains Mono',monospace}
+
+/* Legend */
+.legend{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:32px}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:11px;color:#8A8680}
+.legend-dot{width:8px;height:8px;border-radius:3px}
+
+/* Typography section */
+.type-sample{margin-bottom:20px;padding:20px;border-radius:12px;background:#16161A;border:1px solid rgba(200,168,126,0.1)}
+.type-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:#5A5754;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px}
+.type-erode{font-family:'Erode','Shippori Mincho',serif}
+.type-dm{font-family:'DM Sans',sans-serif}
+.type-jb{font-family:'JetBrains Mono',monospace}
+</style>
+</head>
+<body style="background-color:#0A0A0C;">
+<div style="background-color:#0A0A0C;min-height:100vh;min-height:100dvh;padding:40px 24px 80px;">
+<div class="container">
+
+<!-- Header -->
+<div class="doc-header">
+  <div class="doc-brand">Chronos</div>
+  <div class="doc-subtitle">Design System Reference</div>
+  <div class="doc-date">Last updated: 2026.02.12</div>
+</div>
+
+<!-- ===== 1. COLOR PALETTE ===== -->
+<div class="section">
+  <div class="section-label">01 — Color Palette</div>
+  <div class="section-title">カラーパレット</div>
+
+  <!-- Backgrounds -->
+  <div class="palette-group">
+    <div class="palette-group-label">Backgrounds</div>
+    <div class="palette-row">
+      <div class="color-chip wide"><div class="color-chip-swatch" style="background:#0A0A0C"></div><div class="color-chip-info"><div class="color-chip-name">bg</div><div class="color-chip-hex">#0A0A0C</div><div class="color-chip-use">メイン背景</div></div></div>
+      <div class="color-chip wide"><div class="color-chip-swatch" style="background:#111114"></div><div class="color-chip-info"><div class="color-chip-name">bg2</div><div class="color-chip-hex">#111114</div><div class="color-chip-use">モーダル・サブ背景</div></div></div>
+      <div class="color-chip wide"><div class="color-chip-swatch" style="background:#16161A"></div><div class="color-chip-info"><div class="color-chip-name">bg-card</div><div class="color-chip-hex">#16161A</div><div class="color-chip-use">カード・入力フィールド</div></div></div>
+      <div class="color-chip wide"><div class="color-chip-swatch" style="background:#1C1C22"></div><div class="color-chip-info"><div class="color-chip-name">bg-card-hover</div><div class="color-chip-hex">#1C1C22</div><div class="color-chip-use">カードホバー</div></div></div>
+    </div>
+  </div>
+
+  <!-- Accent -->
+  <div class="palette-group">
+    <div class="palette-group-label">Accent</div>
+    <div class="palette-row">
+      <div class="color-chip wide"><div class="color-chip-swatch" style="background:#C8A87E"></div><div class="color-chip-info"><div class="color-chip-name">accent (Gold)</div><div class="color-chip-hex">#C8A87E</div><div class="color-chip-use">CTA・ブランド・リンク</div></div></div>
+      <div class="color-chip wide"><div class="color-chip-swatch" style="background:rgba(200,168,126,0.13)"></div><div class="color-chip-info"><div class="color-chip-name">accent-dim</div><div class="color-chip-hex">rgba(…, 0.13)</div><div class="color-chip-use">アクティブ状態・バッジ</div></div></div>
+    </div>
+  </div>
+
+  <!-- Text -->
+  <div class="palette-group">
+    <div class="palette-group-label">Text</div>
+    <div class="palette-row">
+      <div class="color-chip"><div class="color-chip-swatch" style="background:#F5F2ED"></div><div class="color-chip-info"><div class="color-chip-name">text-h</div><div class="color-chip-hex">#F5F2ED</div><div class="color-chip-use">見出し</div></div></div>
+      <div class="color-chip"><div class="color-chip-swatch" style="background:#E8E4DE"></div><div class="color-chip-info"><div class="color-chip-name">text</div><div class="color-chip-hex">#E8E4DE</div><div class="color-chip-use">本文</div></div></div>
+      <div class="color-chip"><div class="color-chip-swatch" style="background:#8A8680"></div><div class="color-chip-info"><div class="color-chip-name">text2</div><div class="color-chip-hex">#8A8680</div><div class="color-chip-use">説明・サブテキスト</div></div></div>
+      <div class="color-chip"><div class="color-chip-swatch" style="background:#5A5754"></div><div class="color-chip-info"><div class="color-chip-name">text3</div><div class="color-chip-hex">#5A5754</div><div class="color-chip-use">ラベル・プレースホルダ</div></div></div>
+    </div>
+  </div>
+
+  <!-- Border -->
+  <div class="palette-group">
+    <div class="palette-group-label">Border & Line</div>
+    <div class="palette-row">
+      <div class="color-chip wide"><div class="color-chip-swatch" style="background:rgba(200,168,126,0.1);border:2px solid rgba(200,168,126,0.1)"></div><div class="color-chip-info"><div class="color-chip-name">border</div><div class="color-chip-hex">rgba(…, 0.10)</div><div class="color-chip-use">デフォルト枠線</div></div></div>
+      <div class="color-chip wide"><div class="color-chip-swatch" style="background:rgba(200,168,126,0.22);border:2px solid rgba(200,168,126,0.22)"></div><div class="color-chip-info"><div class="color-chip-name">border2</div><div class="color-chip-hex">rgba(…, 0.22)</div><div class="color-chip-use">ホバー・アクティブ枠</div></div></div>
+      <div class="color-chip wide"><div class="color-chip-swatch" style="background:rgba(200,168,126,0.15)"></div><div class="color-chip-info"><div class="color-chip-name">line</div><div class="color-chip-hex">rgba(…, 0.15)</div><div class="color-chip-use">タイムライン軸線</div></div></div>
+    </div>
+  </div>
+
+  <!-- Layer colors -->
+  <div class="palette-group">
+    <div class="palette-group-label">Layer Colors（年表レイヤー用 7色プリセット）</div>
+    <div class="palette-row">
+      <div class="color-chip"><div class="color-chip-swatch" style="background:#5B9BD5"></div><div class="color-chip-info"><div class="color-chip-name">Blue</div><div class="color-chip-hex">#5B9BD5</div></div></div>
+      <div class="color-chip"><div class="color-chip-swatch" style="background:#D4849A"></div><div class="color-chip-info"><div class="color-chip-name">Pink</div><div class="color-chip-hex">#D4849A</div></div></div>
+      <div class="color-chip"><div class="color-chip-swatch" style="background:#5BBCB4"></div><div class="color-chip-info"><div class="color-chip-name">Teal</div><div class="color-chip-hex">#5BBCB4</div></div></div>
+      <div class="color-chip"><div class="color-chip-swatch" style="background:#7BC67E"></div><div class="color-chip-info"><div class="color-chip-name">Green</div><div class="color-chip-hex">#7BC67E</div></div></div>
+      <div class="color-chip"><div class="color-chip-swatch" style="background:#C8B87E"></div><div class="color-chip-info"><div class="color-chip-name">Gold</div><div class="color-chip-hex">#C8B87E</div></div></div>
+      <div class="color-chip"><div class="color-chip-swatch" style="background:#9E7EC8"></div><div class="color-chip-info"><div class="color-chip-name">Purple</div><div class="color-chip-hex">#9E7EC8</div></div></div>
+      <div class="color-chip"><div class="color-chip-swatch" style="background:#D4A05A"></div><div class="color-chip-info"><div class="color-chip-name">Orange</div><div class="color-chip-hex">#D4A05A</div></div></div>
+    </div>
+  </div>
+
+  <!-- Semantic -->
+  <div class="palette-group">
+    <div class="palette-group-label">Semantic</div>
+    <div class="palette-row">
+      <div class="color-chip"><div class="color-chip-swatch" style="background:#7BC67E"></div><div class="color-chip-info"><div class="color-chip-name">Success</div><div class="color-chip-hex">#7BC67E</div></div></div>
+      <div class="color-chip"><div class="color-chip-swatch" style="background:#D45A5A"></div><div class="color-chip-info"><div class="color-chip-name">Danger</div><div class="color-chip-hex">#D45A5A</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 2. TYPOGRAPHY ===== -->
+<div class="section">
+  <div class="section-label">02 — Typography</div>
+  <div class="section-title">タイポグラフィ</div>
+  <div class="type-sample">
+    <div class="type-label">Display — Erode (serif)</div>
+    <div class="type-erode" style="font-size:32px;color:#F5F2ED;font-weight:400;margin-bottom:4px">あらゆる出来事の文脈を、可視化する。</div>
+    <div class="type-erode" style="font-size:14px;color:#8A8680;">見出し・ブランド・タイトル・年表イベント名</div>
+  </div>
+  <div class="type-sample">
+    <div class="type-label">Body — DM Sans (sans-serif)</div>
+    <div class="type-dm" style="font-size:14px;color:#E8E4DE;line-height:1.6;margin-bottom:4px">Chronosは、AIが年表を自動生成するタイムラインプラットフォーム。複数のレイヤーを重ねることで、出来事のつながりと背景が浮かび上がります。</div>
+    <div class="type-dm" style="font-size:12px;color:#8A8680">本文・UI要素・ボタンラベル・説明文</div>
+  </div>
+  <div class="type-sample">
+    <div class="type-label">Mono — JetBrains Mono</div>
+    <div class="type-jb" style="font-size:14px;color:#E8E4DE;letter-spacing:0.06em;margin-bottom:4px">12 events · 3 layers · 1976–2019</div>
+    <div class="type-jb" style="font-size:12px;color:#8A8680">年月ラベル・メタ情報・バッジ・コード</div>
+  </div>
+
+  <div style="margin-top:24px;padding:20px;border-radius:12px;background:#16161A;border:1px solid rgba(200,168,126,0.1)">
+    <div class="type-label" style="margin-bottom:12px">Type Scale</div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#5A5754;width:50px;text-align:right">10px</span><span style="font-size:10px;color:#8A8680">タグ・バッジ・最小ラベル</span></div>
+      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#5A5754;width:50px;text-align:right">11px</span><span style="font-size:11px;color:#8A8680">キャプション・年月ラベル</span></div>
+      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#5A5754;width:50px;text-align:right">12px</span><span style="font-size:12px;color:#8A8680">サブテキスト・説明文</span></div>
+      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#C8A87E;width:50px;text-align:right">14px</span><span style="font-size:14px;color:#F5F2ED;font-weight:500">本文・ボタン・ナビ（基準値）</span></div>
+      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#5A5754;width:50px;text-align:right">16px</span><span style="font-size:16px;color:#F5F2ED;font-family:'Erode','Shippori Mincho',serif">カードタイトル・小見出し</span></div>
+      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#5A5754;width:50px;text-align:right">18px</span><span style="font-size:18px;color:#F5F2ED;font-family:'Erode','Shippori Mincho',serif">セクション見出し</span></div>
+      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#5A5754;width:50px;text-align:right">22px</span><span style="font-size:22px;color:#F5F2ED;font-family:'Erode','Shippori Mincho',serif">モーダル見出し</span></div>
+      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#5A5754;width:50px;text-align:right">26px</span><span style="font-size:26px;color:#F5F2ED;font-family:'Erode','Shippori Mincho',serif">ページタイトル</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 3. SITEMAP ===== -->
+<div class="section">
+  <div class="section-label">03 — Sitemap</div>
+  <div class="section-title">サイトマップ</div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#7BC67E"></div>今回セッション新規</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#5B9BD5"></div>以前のセッションで作成済</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#C8A87E"></div>今回更新あり</div>
+  </div>
+
+  <div class="sitemap">
+
+    <!-- Phase: 集客 -->
+    <div class="flow-section">
+      <div class="flow-phase">Phase 1 — 集客</div>
+      <div class="flow-nodes">
+        <div class="flow-node">
+          <div class="flow-node-badge badge-both">更新</div>
+          <div class="flow-node-title">ランディングページ</div>
+          <div class="flow-node-file">chronos-lp.html</div>
+          <div class="flow-node-desc">機能訴求型LP。Hero → デモ年表 → 機能一覧 → 使い方 → レイヤーデモ → 料金 → CTA</div>
+        </div>
+        <div class="flow-node">
+          <div class="flow-node-badge badge-prev">以前</div>
+          <div class="flow-node-title">OGP / SNSシェア</div>
+          <div class="flow-node-file">chronos-ogp-templates.html</div>
+          <div class="flow-node-desc">OGPカードテンプレート</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-arrow">ユーザーがサイトに到達</div>
+
+    <!-- Phase: 認証 -->
+    <div class="flow-section">
+      <div class="flow-phase">Phase 2 — 認証</div>
+      <div class="flow-nodes">
+        <div class="flow-node">
+          <div class="flow-node-badge badge-new">新規</div>
+          <div class="flow-node-title">サインアップ / ログイン</div>
+          <div class="flow-node-file">chronos-auth.html</div>
+          <div class="flow-node-desc">1画面タブ切替。Google / Apple / マジックリンク（メール）。パスワードレス</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-arrow">認証完了 → 初回ユーザーはオンボーディングへ</div>
+
+    <!-- Phase: オンボーディング -->
+    <div class="flow-section">
+      <div class="flow-phase">Phase 3 — オンボーディング</div>
+      <div class="flow-nodes">
+        <div class="flow-node">
+          <div class="flow-node-badge badge-new">新規</div>
+          <div class="flow-node-title">オンボーディング</div>
+          <div class="flow-node-file">chronos-onboarding-v2.html</div>
+          <div class="flow-node-desc">Welcome → ユーザーネーム設定 → 興味カテゴリ（12ジャンル）→ 初回AI年表生成 → 完成画面</div>
+          <div class="sub-pages">
+            <div class="sub-page">Step 1: ウェルカム（価値説明）</div>
+            <div class="sub-page">Step 2: ユーザーネーム設定</div>
+            <div class="sub-page">Step 3: 興味カテゴリ選択</div>
+            <div class="sub-page">Step 4: テーマ入力 → AI生成中 → 完成</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-arrow">初回年表が完成 → メイン画面へ</div>
+
+    <!-- Phase: メインアプリ -->
+    <div class="flow-section">
+      <div class="flow-phase">Phase 4 — メインアプリ</div>
+      <div class="flow-nodes">
+        <div class="flow-node">
+          <div class="flow-node-badge badge-prev">以前</div>
+          <div class="flow-node-title">マイページ</div>
+          <div class="flow-node-file">chronos-screens.html</div>
+          <div class="flow-node-desc">年表一覧・Pro課金導線・設定</div>
+          <div class="sub-pages">
+            <div class="sub-page">年表一覧（グリッド表示）</div>
+            <div class="sub-page">Pro プラン訴求タブ</div>
+            <div class="sub-page">設定（アカウント/通知/規約等）</div>
+          </div>
+        </div>
+        <div class="flow-node">
+          <div class="flow-node-badge badge-prev">以前</div>
+          <div class="flow-node-title">年表作成フロー</div>
+          <div class="flow-node-file">chronos-creation-flow.html</div>
+          <div class="flow-node-desc">テーマ入力 → AI生成 → 編集</div>
+        </div>
+        <div class="flow-node">
+          <div class="flow-node-badge badge-prev">以前</div>
+          <div class="flow-node-title">年表閲覧（作成者）</div>
+          <div class="flow-node-file">chronos-v3-multilayer.html</div>
+          <div class="flow-node-desc">マルチレイヤータイムライン。レイヤーON/OFF・編集ボタン付き</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-arrow">年表を公開 → 共有URLが生成</div>
+
+    <!-- Phase: 共有・公開 -->
+    <div class="flow-section">
+      <div class="flow-phase">Phase 5 — 共有・公開</div>
+      <div class="flow-nodes">
+        <div class="flow-node">
+          <div class="flow-node-badge badge-new">新規</div>
+          <div class="flow-node-title">年表閲覧（公開ビュー）</div>
+          <div class="flow-node-file">chronos-viewer.html</div>
+          <div class="flow-node-desc">シェアされた側の閲覧画面。レイヤーON/OFF・詳細モーダル・共有シート・CTA固定フッター</div>
+          <div class="sub-pages">
+            <div class="sub-page">作成者プロフィール表示</div>
+            <div class="sub-page">点イベント + 線イベント（期間）</div>
+            <div class="sub-page">イベント詳細モーダル</div>
+            <div class="sub-page">共有シート（URL/SNS/埋込）</div>
+          </div>
+        </div>
+        <div class="flow-node">
+          <div class="flow-node-badge badge-prev">以前</div>
+          <div class="flow-node-title">共有・埋め込みUI</div>
+          <div class="flow-node-file">chronos-share-embed.html</div>
+          <div class="flow-node-desc">OGPカード・埋め込みウィジェット・公開ページのプレゼン</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-arrow">未ログインユーザーがCTAクリック → Phase 2 へ</div>
+
+    <!-- Phase: 実験・その他 -->
+    <div class="flow-section">
+      <div class="flow-phase">Other — UI実験・素材</div>
+      <div class="flow-nodes">
+        <div class="flow-node">
+          <div class="flow-node-badge badge-prev">以前</div>
+          <div class="flow-node-title">期間レーンUI</div>
+          <div class="flow-node-file">chronos-period-lanes.html</div>
+          <div class="flow-node-desc">レーン形式の期間イベント表現</div>
+        </div>
+        <div class="flow-node">
+          <div class="flow-node-badge badge-prev">以前</div>
+          <div class="flow-node-title">期間バーUI</div>
+          <div class="flow-node-file">chronos-period-ui.html</div>
+          <div class="flow-node-desc">バー形式の期間イベント表現</div>
+        </div>
+        <div class="flow-node">
+          <div class="flow-node-badge badge-prev">以前</div>
+          <div class="flow-node-title">ロゴ検討</div>
+          <div class="flow-node-file">chronos-logo-v2.html</div>
+          <div class="flow-node-desc">ロゴバリエーション</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+</div>
+</body>
+</html>

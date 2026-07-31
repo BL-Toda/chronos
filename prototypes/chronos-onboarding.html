@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Chronos — Onboarding</title>
+<link href="https://api.fontshare.com/v2/css?f[]=erode@300,400,500,600,300i,400i&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0A0A0C; --bg2:#111114; --bg-card:#16161A;
+  --accent:#C8A87E; --accent-dim:rgba(200,168,126,0.13);
+  --text:#E8E4DE; --text-h:#F5F2ED; --text2:#8A8680; --text3:#5A5754;
+  --border:rgba(200,168,126,0.1); --border2:rgba(200,168,126,0.22);
+  --c-blue:#5B9BD5; --c-pink:#D4849A; --c-teal:#5BBCB4; --c-green:#7BC67E;
+  --f-display:'Erode',serif; --f-body:'DM Sans',sans-serif; --f-mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:var(--bg);color-scheme:dark}
+body{font-family:var(--f-body);background:var(--bg);color:var(--text);
+  min-height:100vh;min-height:100dvh;-webkit-font-smoothing:antialiased;
+  overflow:hidden;position:relative}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes shimmer{0%{opacity:0.15}50%{opacity:0.35}100%{opacity:0.15}}
+@keyframes pulseRing{0%{transform:scale(0.8);opacity:0.6}100%{transform:scale(1.6);opacity:0}}
+@keyframes drawLine{from{height:0}to{height:100%}}
+@keyframes layerSlide{from{transform:translateX(-20px);opacity:0}to{transform:translateX(0);opacity:1}}
+
+/* ===== SLIDES CONTAINER ===== */
+.slides{
+  display:flex; width:500vw; height:100vh; height:100dvh;
+  transition:transform 0.6s cubic-bezier(0.16,1,0.3,1);
+  background:var(--bg);
+}
+.slide{
+  width:100vw; height:100vh; height:100dvh;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:40px 28px 120px; position:relative; overflow:hidden; background:var(--bg);
+}
+
+/* ===== NAVIGATION ===== */
+.nav{
+  position:fixed; bottom:0; left:0; right:0; z-index:100;
+  background:rgba(10,10,12,0.9); backdrop-filter:blur(16px);
+  padding:16px 24px 32px; display:flex; flex-direction:column; align-items:center; gap:16px;
+}
+.nav-dots{display:flex;gap:8px}
+.nav-dot{
+  width:8px;height:8px;border-radius:50%;background:var(--text3);opacity:0.3;
+  transition:all 0.4s;cursor:pointer;
+}
+.nav-dot.active{background:var(--accent);opacity:1;width:24px;border-radius:4px}
+.nav-btns{display:flex;gap:10px;width:100%;max-width:400px}
+.nav-btn{
+  flex:1;padding:15px;font-size:0.88rem;font-weight:500;font-family:var(--f-body);
+  border-radius:13px;cursor:pointer;transition:all 0.3s;letter-spacing:0.02em;text-align:center;
+}
+.nav-btn.primary{background:var(--accent);color:var(--bg);border:none}
+.nav-btn.primary:hover{filter:brightness(1.1)}
+.nav-btn.secondary{background:transparent;color:var(--text2);border:1px solid var(--border)}
+.nav-btn.secondary:hover{border-color:var(--border2);color:var(--text)}
+.skip-btn{
+  font-size:0.7rem;color:var(--text3);cursor:pointer;border:none;background:none;
+  font-family:var(--f-body);padding:4px 8px;transition:color 0.2s;
+}
+.skip-btn:hover{color:var(--text2)}
+
+/* ===== SLIDE CONTENT ===== */
+.slide-visual{
+  width:220px;height:220px;position:relative;margin-bottom:32px;
+  display:flex;align-items:center;justify-content:center;
+}
+.slide-title{
+  font-family:var(--f-display);font-size:1.9rem;font-weight:400;
+  line-height:1.3;text-align:center;color:var(--text-h);margin-bottom:10px;
+}
+.slide-desc{
+  font-size:0.84rem;color:var(--text2);text-align:center;line-height:1.65;
+  max-width:340px;
+}
+
+/* ===== SLIDE 0: SPLASH ===== */
+.s0-logo{
+  font-family:var(--f-display);font-size:3.2rem;font-weight:500;
+  letter-spacing:0.25em;color:var(--accent);text-transform:uppercase;
+  margin-bottom:8px;
+}
+.s0-tagline{
+  font-family:var(--f-display);font-size:1rem;font-weight:300;font-style:italic;
+  color:var(--text2);letter-spacing:0.08em;
+}
+.s0-line{
+  width:1px;height:60px;background:linear-gradient(180deg,var(--accent),transparent);
+  margin:24px auto 0;opacity:0.3;
+}
+
+/* ===== VISUAL 1: Timeline illustration ===== */
+.v1-axis{
+  position:absolute;left:50%;top:20px;bottom:20px;width:2px;
+  background:linear-gradient(180deg,transparent,var(--accent),transparent);
+  opacity:0.2;transform:translateX(-50%);
+}
+.v1-axis-fill{
+  position:absolute;left:0;top:0;width:100%;
+  background:var(--accent);opacity:0.6;border-radius:1px;
+  animation:drawLine 2s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.v1-dot{
+  position:absolute;left:50%;width:12px;height:12px;border-radius:50%;
+  transform:translateX(-50%);border:2px solid var(--bg);
+  opacity:0;animation:fadeUp 0.5s ease forwards;
+}
+.v1-dot:nth-child(2){top:30px;background:var(--c-blue);animation-delay:0.6s}
+.v1-dot:nth-child(3){top:80px;background:var(--c-pink);animation-delay:0.9s}
+.v1-dot:nth-child(4){top:130px;background:var(--c-teal);animation-delay:1.2s}
+.v1-dot:nth-child(5){top:180px;background:var(--c-blue);animation-delay:1.5s}
+
+.v1-card{
+  position:absolute;padding:6px 12px;border-radius:8px;
+  background:var(--bg-card);border:1px solid var(--border);
+  font-size:0.6rem;color:var(--text2);white-space:nowrap;
+  opacity:0;animation:fadeUp 0.5s ease forwards;
+}
+.v1-card:nth-child(6){top:22px;left:56%;animation-delay:0.8s}
+.v1-card:nth-child(7){top:72px;right:56%;text-align:right;animation-delay:1.1s}
+.v1-card:nth-child(8){top:122px;left:56%;animation-delay:1.4s}
+.v1-card:nth-child(9){top:172px;right:56%;text-align:right;animation-delay:1.7s}
+
+/* ===== VISUAL 2: Layers illustration ===== */
+.v2-layers{position:absolute;width:180px;height:180px;left:50%;top:50%;transform:translate(-50%,-50%)}
+.v2-layer{
+  position:absolute;left:0;right:0;height:40px;border-radius:10px;
+  display:flex;align-items:center;padding:0 14px;gap:8px;
+  opacity:0;animation:layerSlide 0.6s ease forwards;
+}
+.v2-layer:nth-child(1){top:0;background:rgba(91,155,213,0.12);border:1px solid rgba(91,155,213,0.2);animation-delay:0.3s}
+.v2-layer:nth-child(2){top:50px;background:rgba(212,132,154,0.12);border:1px solid rgba(212,132,154,0.2);animation-delay:0.6s}
+.v2-layer:nth-child(3){top:100px;background:rgba(91,188,180,0.12);border:1px solid rgba(91,188,180,0.2);animation-delay:0.9s}
+.v2-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.v2-layer:nth-child(1) .v2-dot{background:var(--c-blue)}
+.v2-layer:nth-child(2) .v2-dot{background:var(--c-pink)}
+.v2-layer:nth-child(3) .v2-dot{background:var(--c-teal)}
+.v2-text{font-size:0.68rem;color:var(--text2);letter-spacing:0.02em}
+
+/* Overlap indicator */
+.v2-overlap{
+  position:absolute;top:140px;left:50%;transform:translateX(-50%);
+  font-family:var(--f-mono);font-size:0.56rem;color:var(--accent);
+  letter-spacing:0.06em;opacity:0;animation:fadeIn 0.5s ease 1.4s forwards;
+  white-space:nowrap;
+}
+
+/* ===== VISUAL 3: AI sparkle ===== */
+.v3-input{
+  position:absolute;top:10px;left:50%;transform:translateX(-50%);
+  width:190px;padding:10px 14px;border-radius:10px;
+  background:var(--bg-card);border:1px solid var(--border);
+  font-size:0.68rem;color:var(--text2);text-align:center;
+}
+.v3-arrow{
+  position:absolute;top:52px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+}
+.v3-arrow-line{width:1px;height:18px;background:var(--accent);opacity:0.3}
+.v3-arrow-head{width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;
+  border-top:5px solid var(--accent);opacity:0.3}
+.v3-result{
+  position:absolute;top:82px;left:50%;transform:translateX(-50%);
+  width:190px;
+}
+.v3-result-card{
+  padding:7px 10px;border-radius:8px;margin-bottom:4px;
+  background:var(--bg-card);border:1px solid var(--border);
+  display:flex;align-items:center;gap:6px;
+}
+.v3-result-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.v3-result-text{font-size:0.56rem;color:var(--text2)}
+.v3-sparkle{
+  position:absolute;width:4px;height:4px;border-radius:50%;background:var(--accent);
+  animation:shimmer 2s infinite;
+}
+
+/* ===== SLIDE 4: SIGN UP ===== */
+.s4-logo{
+  font-family:var(--f-display);font-size:1.8rem;font-weight:500;
+  letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;margin-bottom:6px;
+}
+.s4-tagline{font-size:0.78rem;color:var(--text2);margin-bottom:32px}
+.s4-form{width:100%;max-width:360px}
+.s4-input{
+  width:100%;padding:15px 16px;font-size:0.9rem;font-family:var(--f-body);
+  background:var(--bg-card);border:1px solid var(--border);border-radius:13px;
+  color:var(--text-h);outline:none;margin-bottom:10px;transition:border-color 0.3s;
+}
+.s4-input:focus{border-color:var(--accent)}
+.s4-input::placeholder{color:var(--text3)}
+.s4-submit{
+  width:100%;padding:15px;font-size:0.9rem;font-weight:500;font-family:var(--f-body);
+  background:var(--accent);color:var(--bg);border:none;border-radius:13px;
+  cursor:pointer;transition:all 0.3s;margin-bottom:12px;
+}
+.s4-submit:hover{filter:brightness(1.1)}
+.s4-divider{
+  display:flex;align-items:center;gap:12px;margin:16px 0;
+}
+.s4-divider-line{flex:1;height:1px;background:var(--border)}
+.s4-divider-text{font-size:0.68rem;color:var(--text3)}
+.s4-social{
+  width:100%;padding:14px;font-size:0.82rem;font-family:var(--f-body);
+  background:transparent;color:var(--text2);border:1px solid var(--border);
+  border-radius:13px;cursor:pointer;transition:all 0.3s;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.s4-social:hover{border-color:var(--border2);color:var(--text)}
+.s4-social svg{width:18px;height:18px;fill:currentColor}
+.s4-login{font-size:0.72rem;color:var(--text3);margin-top:16px;text-align:center}
+.s4-login a{color:var(--accent);text-decoration:none}
+
+@media(min-width:768px){
+  .slide-title{font-size:2.3rem}
+  .s0-logo{font-size:4rem}
+}
+</style>
+</head>
+<body>
+
+<div class="slides" id="slides">
+
+  <!-- ===== SLIDE 0: SPLASH ===== -->
+  <div class="slide">
+    <div class="s0-logo" style="animation:fadeUp 0.8s ease">Chronos</div>
+    <div class="s0-tagline" style="animation:fadeUp 0.8s ease 0.3s both">Every event has context.</div>
+    <div class="s0-line" style="animation:fadeUp 0.8s ease 0.6s both"></div>
+  </div>
+
+  <!-- ===== SLIDE 1: TIMELINE ===== -->
+  <div class="slide">
+    <div class="slide-visual">
+      <div class="v1-axis"><div class="v1-axis-fill"></div></div>
+      <div class="v1-dot"></div>
+      <div class="v1-dot"></div>
+      <div class="v1-dot"></div>
+      <div class="v1-dot"></div>
+      <div class="v1-card">iPhone 発表</div>
+      <div class="v1-card">印象派運動</div>
+      <div class="v1-card">Android OS</div>
+      <div class="v1-card">5G 本格展開</div>
+    </div>
+    <h2 class="slide-title">出来事を、<br>時間に並べる</h2>
+    <p class="slide-desc">テーマを入力するだけで、AIが出来事を集めて年表にします。あなたは並べるだけ。</p>
+  </div>
+
+  <!-- ===== SLIDE 2: LAYERS ===== -->
+  <div class="slide">
+    <div class="slide-visual">
+      <div class="v2-layers">
+        <div class="v2-layer"><div class="v2-dot"></div><div class="v2-text">テクノロジー</div></div>
+        <div class="v2-layer"><div class="v2-dot"></div><div class="v2-text">カルチャー</div></div>
+        <div class="v2-layer"><div class="v2-dot"></div><div class="v2-text">政治・経済</div></div>
+      </div>
+      <div class="v2-overlap">重ねると、文脈が見える ↓</div>
+    </div>
+    <h2 class="slide-title">レイヤーで、<br>文脈を重ねる</h2>
+    <p class="slide-desc">テクノロジー、カルチャー、政治。複数の視点を重ねると、出来事の「なぜ」が浮かび上がります。</p>
+  </div>
+
+  <!-- ===== SLIDE 3: AI ===== -->
+  <div class="slide">
+    <div class="slide-visual">
+      <div class="v3-input">「スマートフォンの歴史」</div>
+      <div class="v3-arrow"><div class="v3-arrow-line"></div><div class="v3-arrow-head"></div></div>
+      <div class="v3-result">
+        <div class="v3-result-card"><div class="v3-result-dot" style="background:var(--c-blue)"></div><div class="v3-result-text">iPhone 発表 (2007)</div></div>
+        <div class="v3-result-card"><div class="v3-result-dot" style="background:var(--c-teal)"></div><div class="v3-result-text">Android OS 発表 (2007)</div></div>
+        <div class="v3-result-card"><div class="v3-result-dot" style="background:var(--c-pink)"></div><div class="v3-result-text">App Store 開始 (2008)</div></div>
+      </div>
+      <div class="v3-sparkle" style="top:30px;right:30px;animation-delay:0s"></div>
+      <div class="v3-sparkle" style="top:90px;left:20px;animation-delay:0.7s"></div>
+      <div class="v3-sparkle" style="bottom:40px;right:40px;animation-delay:1.4s"></div>
+    </div>
+    <h2 class="slide-title">AIが土台を<br>つくる</h2>
+    <p class="slide-desc">テーマを伝えるだけ。AIが出来事を集めて、レイヤーを提案し、年表の下書きを生成します。</p>
+  </div>
+
+  <!-- ===== SLIDE 4: SIGN UP ===== -->
+  <div class="slide">
+    <div class="s4-logo">Chronos</div>
+    <div class="s4-tagline">無料ではじめる</div>
+    <div class="s4-form">
+      <input class="s4-input" type="email" placeholder="メールアドレス">
+      <button class="s4-submit">アカウントを作成</button>
+      <div class="s4-divider">
+        <div class="s4-divider-line"></div>
+        <div class="s4-divider-text">または</div>
+        <div class="s4-divider-line"></div>
+      </div>
+      <button class="s4-social">
+        <svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        Googleで続ける
+      </button>
+      <div class="s4-login">すでにアカウントをお持ちの方は <a href="#">ログイン</a></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Navigation -->
+<div class="nav" id="nav">
+  <div class="nav-dots" id="navDots">
+    <div class="nav-dot active" onclick="goTo(0)"></div>
+    <div class="nav-dot" onclick="goTo(1)"></div>
+    <div class="nav-dot" onclick="goTo(2)"></div>
+    <div class="nav-dot" onclick="goTo(3)"></div>
+    <div class="nav-dot" onclick="goTo(4)"></div>
+  </div>
+  <div class="nav-btns" id="navBtns">
+    <button class="nav-btn primary" id="nextBtn" onclick="next()">はじめる</button>
+  </div>
+  <button class="skip-btn" id="skipBtn" onclick="goTo(4)">スキップ</button>
+</div>
+
+<script>
+let current = 0;
+const total = 5;
+const slides = document.getElementById('slides');
+const dots = document.querySelectorAll('.nav-dot');
+const nextBtn = document.getElementById('nextBtn');
+const skipBtn = document.getElementById('skipBtn');
+const navBtns = document.getElementById('navBtns');
+
+function goTo(i) {
+  current = i;
+  slides.style.transform = `translateX(-${i * 100}vw)`;
+
+  dots.forEach((d, idx) => {
+    d.classList.toggle('active', idx === i);
+  });
+
+  // Update button text
+  if (i === 0) {
+    nextBtn.textContent = 'はじめる';
+    nextBtn.className = 'nav-btn primary';
+    skipBtn.style.display = '';
+    navBtns.innerHTML = '<button class="nav-btn primary" onclick="next()">はじめる</button>';
+  } else if (i < total - 1) {
+    skipBtn.style.display = '';
+    navBtns.innerHTML = `
+      <button class="nav-btn secondary" onclick="prev()">戻る</button>
+      <button class="nav-btn primary" onclick="next()">次へ</button>
+    `;
+  } else {
+    // Sign up slide — hide nav buttons, hide skip
+    skipBtn.style.display = 'none';
+    navBtns.innerHTML = '';
+  }
+}
+
+function next() {
+  if (current < total - 1) goTo(current + 1);
+}
+
+function prev() {
+  if (current > 0) goTo(current - 1);
+}
+
+// Touch swipe support
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener('touchstart', e => {
+  touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+document.addEventListener('touchend', e => {
+  touchEndX = e.changedTouches[0].screenX;
+  const diff = touchStartX - touchEndX;
+  if (Math.abs(diff) > 60) {
+    if (diff > 0) next();
+    else prev();
+  }
+}, { passive: true });
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') next();
+  if (e.key === 'ArrowLeft') prev();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Chronos — Period Lanes UI</title>
+<link href="https://api.fontshare.com/v2/css?f[]=erode@300,400,500,600,300i,400i&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0A0C;
+    --bg2: #111114;
+    --bg-card: #16161A;
+    --bg-card-h: #1C1C22;
+    --accent: #C8A87E;
+    --accent-dim: rgba(200,168,126,0.13);
+    --text: #E8E4DE;
+    --text-h: #F5F2ED;
+    --text2: #8A8680;
+    --text3: #5A5754;
+    --border: rgba(200,168,126,0.1);
+    --border2: rgba(200,168,126,0.22);
+    --line: rgba(200,168,126,0.15);
+
+    --c-blue: #5B9BD5;     --c-blue-dim: rgba(91,155,213,0.12);   --c-blue-bar: rgba(91,155,213,0.22);
+    --c-green: #7BC67E;    --c-green-dim: rgba(123,198,126,0.12);
+    --c-pink: #D4849A;     --c-pink-dim: rgba(212,132,154,0.12);  --c-pink-bar: rgba(212,132,154,0.22);
+    --c-gold: #C8B87E;     --c-gold-dim: rgba(200,184,126,0.12);
+    --c-purple: #9E7EC8;   --c-purple-dim: rgba(158,126,200,0.12);
+    --c-teal: #5BBCB4;     --c-teal-dim: rgba(91,188,180,0.12);   --c-teal-bar: rgba(91,188,180,0.22);
+    --c-orange: #D4A05A;   --c-orange-dim: rgba(212,160,90,0.12);
+
+    --f-display: 'Erode', serif;
+    --f-body: 'DM Sans', sans-serif;
+    --f-mono: 'JetBrains Mono', monospace;
+
+    --lane-w: 6px;
+    --lane-gap: 10px;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; background:var(--bg); color-scheme:dark; }
+  body {
+    font-family:var(--f-body); background:var(--bg);
+    color:var(--text); min-height:100vh;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+
+  /* ===== HEADER ===== */
+  .header {
+    position:sticky; top:0; z-index:100;
+    background:rgba(10,10,12,0.88); backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);
+    padding:0 20px; height:56px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .header-brand {
+    font-family:var(--f-display); font-size:1.3rem; font-weight:500;
+    letter-spacing:0.2em; color:var(--accent); text-transform:uppercase;
+  }
+  .header-badge {
+    font-family:var(--f-mono); font-size:0.58rem;
+    padding:4px 10px; border-radius:10px; border:1px solid var(--border);
+    color:var(--text3);
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    text-align:center; padding:36px 20px 8px;
+    max-width:700px; margin:0 auto; background:var(--bg);
+    opacity:0; animation:fadeUp 0.8s ease forwards 0.1s;
+  }
+  .hero h1 {
+    font-family:var(--f-display); font-size:2.2rem; font-weight:400;
+    line-height:1.25; margin-bottom:10px; color:var(--text-h);
+  }
+  .hero p {
+    font-size:0.82rem; color:var(--text2); line-height:1.6;
+    max-width:500px; margin:0 auto;
+  }
+
+  /* ===== LAYER CONTROLS ===== */
+  .layer-controls {
+    position:sticky; top:56px; z-index:90;
+    background:rgba(10,10,12,0.92); backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--border);
+    padding:12px 16px; display:flex; gap:8px; flex-wrap:wrap;
+    justify-content:center;
+  }
+  .layer-chip {
+    font-family:var(--f-body); font-size:0.68rem; font-weight:500;
+    letter-spacing:0.04em; padding:6px 14px; border-radius:16px;
+    border:1px solid var(--border); background:transparent;
+    cursor:pointer; transition:all 0.3s; user-select:none;
+    display:flex; align-items:center; gap:6px; color:var(--text3);
+  }
+  .chip-dot { width:7px; height:7px; border-radius:50%; }
+  .layer-chip[data-layer="art"] .chip-dot { background:var(--c-blue); }
+  .layer-chip[data-layer="art"].active { border-color:var(--c-blue); background:var(--c-blue-dim); color:var(--c-blue); }
+  .layer-chip[data-layer="history"] .chip-dot { background:var(--c-pink); }
+  .layer-chip[data-layer="history"].active { border-color:var(--c-pink); background:var(--c-pink-dim); color:var(--c-pink); }
+  .layer-chip[data-layer="science"] .chip-dot { background:var(--c-teal); }
+  .layer-chip[data-layer="science"].active { border-color:var(--c-teal); background:var(--c-teal-dim); color:var(--c-teal); }
+
+  /* ===== LEGEND ===== */
+  .legend {
+    display:flex; gap:20px; justify-content:center;
+    padding:16px 16px 6px; max-width:700px; margin:0 auto;
+    background:var(--bg);
+    opacity:0; animation:fadeUp 0.6s ease forwards 0.3s;
+  }
+  .legend-item {
+    display:flex; align-items:center; gap:6px;
+    font-size:0.66rem; color:var(--text3);
+  }
+  .legend-dot-icon {
+    width:8px; height:8px; border-radius:50%; background:var(--accent); opacity:0.5;
+  }
+  .legend-bar-icon {
+    width:6px; height:20px; border-radius:3px; background:var(--accent); opacity:0.35;
+  }
+
+  /* ===== TIMELINE CONTAINER ===== */
+  .tl-wrap {
+    max-width:700px; margin:0 auto;
+    padding:10px 16px 120px 16px;
+    background:var(--bg);
+  }
+
+  /* ===== TIMELINE ROW ===== */
+  .tl-row {
+    display:flex; align-items:stretch;
+    min-height:24px; position:relative;
+    opacity:0; transform:translateY(12px);
+    transition:all 0.5s cubic-bezier(0.16,1,0.3,1);
+  }
+  .tl-row.visible { opacity:1; transform:translateY(0); }
+  .tl-row.hidden { display:none; }
+
+  /* ===== LANE AREA (left side) ===== */
+  .tl-lanes {
+    display:flex; gap:4px; flex-shrink:0;
+    width:60px; padding:0 8px 0 0; position:relative;
+    align-items:stretch;
+  }
+
+  /* Individual lane bar */
+  .lane {
+    width:var(--lane-w); border-radius:3px;
+    flex-shrink:0; position:relative;
+    transition:opacity 0.4s ease, width 0.3s ease;
+  }
+  .lane.active {
+    opacity:1;
+  }
+  .lane.inactive {
+    width:0; opacity:0; margin:0; padding:0;
+  }
+  .lane.art    { background:var(--c-blue-bar); }
+  .lane.history { background:var(--c-pink-bar); }
+  .lane.science { background:var(--c-teal-bar); }
+
+  /* Lane start cap */
+  .lane.start { border-radius:3px 3px 0 0; }
+  .lane.end   { border-radius:0 0 3px 3px; }
+  .lane.start.end { border-radius:3px; }
+
+  /* Lane label (appears at start) */
+  .lane-label {
+    position:absolute; top:-20px; left:50%; transform:translateX(-50%);
+    font-family:var(--f-mono); font-size:0.48rem; letter-spacing:0.04em;
+    white-space:nowrap; writing-mode:horizontal-tb;
+    opacity:0.7;
+  }
+  .lane-label.art { color:var(--c-blue); }
+  .lane-label.history { color:var(--c-pink); }
+  .lane-label.science { color:var(--c-teal); }
+
+  /* Spacer lane (invisible, holds position) */
+  .lane.spacer {
+    width:var(--lane-w); background:transparent;
+  }
+
+  /* ===== AXIS DOT ===== */
+  .tl-axis {
+    display:flex; flex-direction:column; align-items:center;
+    width:24px; flex-shrink:0; position:relative;
+  }
+  .tl-axis::before {
+    content:''; position:absolute; top:0; bottom:0; left:50%;
+    width:1px; background:var(--line); transform:translateX(-50%);
+  }
+  .axis-dot {
+    width:10px; height:10px; border-radius:50%;
+    border:2px solid var(--bg); position:relative; z-index:5;
+    margin-top:16px; flex-shrink:0;
+  }
+  .axis-dot.art    { background:var(--c-blue); box-shadow:0 0 0 3px var(--c-blue-dim); }
+  .axis-dot.history { background:var(--c-pink); box-shadow:0 0 0 3px var(--c-pink-dim); }
+  .axis-dot.science { background:var(--c-teal); box-shadow:0 0 0 3px var(--c-teal-dim); }
+
+  /* Period marker on axis — small horizontal bar */
+  .axis-period-mark {
+    width:16px; height:3px; border-radius:2px;
+    position:relative; z-index:5; margin-top:18px; flex-shrink:0;
+  }
+  .axis-period-mark.start.art     { background:var(--c-blue); }
+  .axis-period-mark.start.history  { background:var(--c-pink); }
+  .axis-period-mark.start.science  { background:var(--c-teal); }
+  .axis-period-mark.end.art       { background:var(--c-blue); opacity:0.4; }
+  .axis-period-mark.end.history    { background:var(--c-pink); opacity:0.4; }
+  .axis-period-mark.end.science    { background:var(--c-teal); opacity:0.4; }
+
+  /* Dashed connector: lane → axis for period rows */
+  .period-connector {
+    display:flex; align-items:center; flex-shrink:0;
+    width:12px; position:relative;
+  }
+  .period-connector::before {
+    content:''; position:absolute;
+    top:19px; left:0; right:0; height:0;
+    border-top:1.5px dashed var(--text3);
+    opacity:0.35;
+  }
+  .period-connector.art::before    { border-color:var(--c-blue); opacity:0.45; }
+  .period-connector.history::before { border-color:var(--c-pink); opacity:0.45; }
+  .period-connector.science::before { border-color:var(--c-teal); opacity:0.45; }
+  .period-connector.end::before { opacity:0.25; }
+
+  /* Invisible spacer — same width, keeps axis aligned on non-period rows */
+  .connector-spacer {
+    width:12px; flex-shrink:0;
+  }
+
+  /* ===== CONTENT AREA (right) ===== */
+  .tl-content {
+    flex:1; padding:6px 0 6px 10px; min-width:0;
+  }
+
+  /* Year separator */
+  .tl-year {
+    display:flex; align-items:center; padding:20px 0 8px 0;
+  }
+  .tl-year-text {
+    font-family:var(--f-display); font-size:2.2rem; font-weight:400;
+    color:var(--accent); opacity:0.2; line-height:1;
+  }
+  .tl-year-line {
+    flex:1; height:1px; margin-left:14px;
+    background:linear-gradient(90deg, var(--line), transparent);
+  }
+
+  /* Event card */
+  .ev-card {
+    background:var(--bg-card); border:1px solid var(--border);
+    border-radius:12px; padding:12px 14px; margin-bottom:4px;
+    transition:all 0.3s ease; cursor:pointer; position:relative;
+    overflow:hidden;
+  }
+  .ev-card:hover { background:var(--bg-card-h); border-color:var(--border2); }
+  .ev-card::before {
+    content:''; position:absolute; top:0; left:0; bottom:0; width:3px;
+    border-radius:3px 0 0 3px;
+  }
+  .ev-card.art::before    { background:var(--c-blue); }
+  .ev-card.history::before { background:var(--c-pink); }
+  .ev-card.science::before { background:var(--c-teal); }
+
+  /* Caret for ev-card (point events) */
+  .ev-card .ev-caret {
+    position:absolute; top:12px; right:12px;
+    width:20px; height:20px; display:flex; align-items:center; justify-content:center;
+    transition:transform 0.35s cubic-bezier(0.16,1,0.3,1);
+  }
+  .ev-card .ev-caret svg {
+    width:14px; height:14px; stroke:var(--text3); stroke-width:2;
+    fill:none; stroke-linecap:round; stroke-linejoin:round;
+  }
+  .ev-card:hover .ev-caret svg { stroke:var(--text2); }
+  .ev-card.expanded .ev-caret { transform:rotate(180deg); }
+
+  /* Accordion body for ev-card */
+  .ev-card .ev-accordion-body {
+    max-height:0; overflow:hidden;
+    transition:max-height 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease;
+    opacity:0;
+  }
+  .ev-card.expanded .ev-accordion-body {
+    max-height:300px; opacity:1;
+  }
+
+  .ev-date {
+    font-family:var(--f-mono); font-size:0.6rem; color:var(--text3);
+    letter-spacing:0.08em; margin-bottom:3px;
+  }
+  .ev-title {
+    font-family:var(--f-display); font-size:1.05rem; font-weight:500;
+    line-height:1.3; color:var(--text-h); margin-bottom:3px;
+  }
+  .ev-summary {
+    font-size:0.75rem; color:var(--text2); line-height:1.5;
+  }
+  .ev-tags { margin-top:5px; display:flex; gap:4px; flex-wrap:wrap; }
+  .ev-tag {
+    display:inline-block; font-family:var(--f-mono); font-size:0.52rem;
+    letter-spacing:0.06em; padding:2px 7px; border-radius:8px;
+  }
+  .ev-tag.art    { background:var(--c-blue-dim); color:var(--c-blue); }
+  .ev-tag.history { background:var(--c-pink-dim); color:var(--c-pink); }
+  .ev-tag.science { background:var(--c-teal-dim); color:var(--c-teal); }
+  .ev-tag.cred   { background:rgba(123,198,126,0.1); color:var(--c-green); }
+  .ev-tag.period { background:rgba(200,168,126,0.08); color:var(--accent); }
+
+  /* Period start card — expandable, same fields as point events */
+  .period-card-start {
+    background:var(--bg-card); border:1px solid var(--border);
+    border-radius:12px; padding:12px 14px; margin-bottom:4px;
+    transition:all 0.3s ease; cursor:pointer; position:relative;
+    overflow:hidden;
+  }
+  .period-card-start:hover { background:var(--bg-card-h); border-color:var(--border2); }
+  .period-card-start::before {
+    content:''; position:absolute; top:0; left:0; bottom:0; width:3px;
+    border-radius:3px 0 0 3px;
+  }
+  .period-card-start.art::before    { background:var(--c-blue); }
+  .period-card-start.history::before { background:var(--c-pink); }
+  .period-card-start.science::before { background:var(--c-teal); }
+
+  /* Period bar inside card */
+  .period-bar-inline {
+    display:flex; align-items:center; gap:8px; margin:8px 0 6px;
+  }
+  .period-bar-track {
+    flex:1; height:6px; border-radius:3px; position:relative; overflow:hidden;
+  }
+  .period-bar-track.art    { background:var(--c-blue-dim); }
+  .period-bar-track.history { background:var(--c-pink-dim); }
+  .period-bar-track.science { background:var(--c-teal-dim); }
+  .period-bar-fill {
+    position:absolute; top:0; left:0; bottom:0; border-radius:3px;
+    animation: barGrow 1s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .period-bar-track.art .period-bar-fill    { background:var(--c-blue); opacity:0.45; }
+  .period-bar-track.history .period-bar-fill { background:var(--c-pink); opacity:0.45; }
+  .period-bar-track.science .period-bar-fill { background:var(--c-teal); opacity:0.45; }
+  @keyframes barGrow { from{width:0} to{width:100%} }
+
+  .period-bar-year {
+    font-family:var(--f-mono); font-size:0.56rem; color:var(--text3);
+    letter-spacing:0.04em; flex-shrink:0;
+  }
+
+  /* Period end card — minimal */
+  .period-label-end {
+    padding:6px 14px; margin-bottom:4px;
+    background:transparent; border:1px dashed var(--border);
+    border-radius:10px; display:flex; align-items:center; gap:8px;
+  }
+  .period-label-end .pl-bar {
+    width:20px; height:4px; border-radius:2px; flex-shrink:0; opacity:0.4;
+  }
+  .period-label-end .pl-bar.art    { background:var(--c-blue); }
+  .period-label-end .pl-bar.history { background:var(--c-pink); }
+  .period-label-end .pl-bar.science { background:var(--c-teal); }
+
+  .pl-text {
+    font-family:var(--f-display); font-size:0.9rem; font-weight:400;
+    color:var(--text-h);
+  }
+  .pl-text .pl-end-note {
+    font-family:var(--f-body); font-size:0.72rem; color:var(--text3);
+    margin-left:6px;
+  }
+
+  /* Lane hover & active highlight */
+  .lane:not(.spacer) { cursor:pointer; transition:opacity 0.4s ease, width 0.3s ease, filter 0.3s ease; }
+  .lane:not(.spacer):hover { filter:brightness(1.6); }
+
+  /* Period highlight — glow on active period rows */
+  .tl-row.period-highlight .ev-card,
+  .tl-row.period-highlight .period-card-start {
+    border-color:var(--border2);
+    box-shadow:0 0 0 1px var(--accent-dim), 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .tl-row.period-highlight .period-label-end {
+    border-color:var(--border2);
+  }
+  /* Dim non-highlighted rows */
+  .tl-wrap.has-highlight .tl-row:not(.period-highlight):not([data-layers="all"]) {
+    opacity:0.22; transition:opacity 0.35s ease;
+  }
+  .tl-wrap.has-highlight .tl-row.period-highlight {
+    opacity:1; transition:opacity 0.35s ease;
+  }
+  /* Lane glow */
+  .lane.lane-glow {
+    filter:brightness(2.2) !important;
+    box-shadow:0 0 8px rgba(200,168,126,0.15);
+  }
+
+  /* Caret icon for period accordion */
+  .period-caret {
+    position:absolute; top:12px; right:12px;
+    width:20px; height:20px; display:flex; align-items:center; justify-content:center;
+    transition:transform 0.35s cubic-bezier(0.16,1,0.3,1);
+  }
+  .period-caret svg {
+    width:14px; height:14px; stroke:var(--text3); stroke-width:2;
+    fill:none; stroke-linecap:round; stroke-linejoin:round;
+  }
+  .period-card-start:hover .period-caret svg { stroke:var(--text2); }
+  .period-card-start.expanded .period-caret { transform:rotate(180deg); }
+
+  /* Accordion body */
+  .period-accordion-body {
+    max-height:0; overflow:hidden;
+    transition:max-height 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease;
+    opacity:0;
+  }
+  .period-card-start.expanded .period-accordion-body {
+    max-height:300px; opacity:1;
+  }
+
+  /* Center-focus highlight — card nearest viewport center gets subtle glow */
+  .ev-card.center-focus,
+  .period-card-start.center-focus {
+    border-color:rgba(200,168,126,0.28) !important;
+    background:var(--bg-card-h) !important;
+    box-shadow:0 0 0 1px rgba(200,168,126,0.06), 0 2px 14px rgba(0,0,0,0.2) !important;
+    transition:border-color 0.5s ease, box-shadow 0.5s ease, background 0.5s ease;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (min-width:768px) {
+    .hero h1 { font-size:2.6rem; }
+    .tl-wrap { padding-left:32px; padding-right:32px; }
+    .tl-lanes { width:72px; }
+  }
+  @media (max-width:400px) {
+    .tl-lanes { width:44px; padding-right:4px; }
+    .ev-title { font-size:0.95rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-brand">Chronos</div>
+  <span class="header-badge">Period Lanes UI</span>
+</header>
+
+<div class="hero">
+  <h1>芸術と時代の交差</h1>
+  <p>ゴッホの生涯、印象派運動、江戸から明治へ。<br>期間と出来事を重ねて、時代の文脈を読む。</p>
+</div>
+
+<div class="layer-controls">
+  <button class="layer-chip active" data-layer="art" onclick="toggleLayer('art',this)">
+    <span class="chip-dot"></span>芸術
+  </button>
+  <button class="layer-chip active" data-layer="history" onclick="toggleLayer('history',this)">
+    <span class="chip-dot"></span>時代・政治
+  </button>
+  <button class="layer-chip active" data-layer="science" onclick="toggleLayer('science',this)">
+    <span class="chip-dot"></span>科学・技術
+  </button>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot-icon"></div>点のイベント</div>
+  <div class="legend-item"><div class="legend-bar-icon"></div>期間のイベント</div>
+</div>
+
+<div class="tl-wrap" id="timeline">
+
+  <!-- ======= 1800s ======= -->
+  <!-- Year label row -->
+  <div class="tl-row visible" data-layers="all">
+    <div class="tl-lanes"></div>
+    <div class="connector-spacer"></div>
+    <div class="tl-axis"><div style="margin-top:28px"></div></div>
+    <div class="tl-content">
+      <div class="tl-year">
+        <div class="tl-year-text">1800s</div>
+        <div class="tl-year-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERIOD START: 江戸時代 -->
+  <div class="tl-row" data-layers="history" data-period-id="edo" data-period-action="start">
+    <div class="tl-lanes">
+      <div class="lane history start active" data-period="edo"></div>
+      <div class="lane spacer" data-period="gogh"></div>
+      <div class="lane spacer" data-period="impressionism"></div>
+    </div>
+    <div class="period-connector history"></div>
+    <div class="tl-axis"><div class="axis-period-mark start history"></div></div>
+    <div class="tl-content">
+      <div class="period-card-start history" onclick="toggleAccordion(this)">
+        <div class="period-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="ev-date">1603 — 1868</div>
+        <div class="ev-title">江戸時代</div>
+        <div class="period-bar-inline">
+          <span class="period-bar-year">1603</span>
+          <div class="period-bar-track history"><div class="period-bar-fill"></div></div>
+          <span class="period-bar-year">1868</span>
+        </div>
+        <div class="period-accordion-body">
+          <div class="ev-summary">徳川幕府による265年の統治。鎖国政策の下で独自の文化が発展。浮世絵、歌舞伎、俳句などが花開いた。</div>
+          <div class="ev-tags">
+            <span class="ev-tag history">時代・政治</span>
+            <span class="ev-tag period">期間 265年</span>
+            <span class="ev-tag cred">✓ 確認済み</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERIOD START: ゴッホ + POINT: ペリー来航 area -->
+  <div class="tl-row" data-layers="art" data-period-id="gogh" data-period-action="start">
+    <div class="tl-lanes">
+      <div class="lane history active" data-period="edo"></div>
+      <div class="lane art start active" data-period="gogh"></div>
+      <div class="lane spacer" data-period="impressionism"></div>
+    </div>
+    <div class="period-connector art"></div>
+    <div class="tl-axis"><div class="axis-period-mark start art"></div></div>
+    <div class="tl-content">
+      <div class="period-card-start art" onclick="toggleAccordion(this)">
+        <div class="period-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="ev-date">1853 — 1890</div>
+        <div class="ev-title">フィンセント・ファン・ゴッホ</div>
+        <div class="period-bar-inline">
+          <span class="period-bar-year">1853</span>
+          <div class="period-bar-track art"><div class="period-bar-fill"></div></div>
+          <span class="period-bar-year">1890</span>
+        </div>
+        <div class="period-accordion-body">
+          <div class="ev-summary">後期印象派の画家。わずか10年の画業で2,000点以上を制作。生前はほぼ無名だったが、死後に世界的な評価を受けた。</div>
+          <div class="ev-tags">
+            <span class="ev-tag art">芸術</span>
+            <span class="ev-tag period">期間 37年</span>
+            <span class="ev-tag cred">✓ 確認済み</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POINT: ペリー来航 -->
+  <div class="tl-row" data-layers="history">
+    <div class="tl-lanes">
+      <div class="lane history active" data-period="edo"></div>
+      <div class="lane art active" data-period="gogh"></div>
+      <div class="lane spacer" data-period="impressionism"></div>
+    </div>
+    <div class="connector-spacer"></div>
+    <div class="tl-axis"><div class="axis-dot history"></div></div>
+    <div class="tl-content">
+      <div class="ev-card history" onclick="toggleEvAccordion(this)">
+        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="ev-date">1853.07</div>
+        <div class="ev-title">ペリー来航</div>
+        <div class="ev-accordion-body">
+          <div class="ev-summary">アメリカ海軍が浦賀に来航。日本に開国を迫る。</div>
+          <div class="ev-tags"><span class="ev-tag history">時代・政治</span><span class="ev-tag cred">✓ 確認済み</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERIOD START: 印象派 -->
+  <div class="tl-row" data-layers="art" data-period-id="impressionism" data-period-action="start">
+    <div class="tl-lanes">
+      <div class="lane history active" data-period="edo"></div>
+      <div class="lane art active" data-period="gogh"></div>
+      <div class="lane art start active" data-period="impressionism"></div>
+    </div>
+    <div class="period-connector art"></div>
+    <div class="tl-axis"><div class="axis-period-mark start art"></div></div>
+    <div class="tl-content">
+      <div class="period-card-start art" onclick="toggleAccordion(this)">
+        <div class="period-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="ev-date">1867 — 1886</div>
+        <div class="ev-title">印象派運動</div>
+        <div class="period-bar-inline">
+          <span class="period-bar-year">1867</span>
+          <div class="period-bar-track art"><div class="period-bar-fill"></div></div>
+          <span class="period-bar-year">1886</span>
+        </div>
+        <div class="period-accordion-body">
+          <div class="ev-summary">光と色彩の表現を追求した芸術運動。モネ、ルノワール、ドガらが中心。パリで8回の展覧会を開催し、近代美術の扉を開いた。</div>
+          <div class="ev-tags">
+            <span class="ev-tag art">芸術</span>
+            <span class="ev-tag period">期間 19年</span>
+            <span class="ev-tag cred">✓ 確認済み</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POINT: 明治維新 -->
+  <div class="tl-row" data-layers="history">
+    <div class="tl-lanes">
+      <div class="lane history active" data-period="edo"></div>
+      <div class="lane art active" data-period="gogh"></div>
+      <div class="lane art active" data-period="impressionism"></div>
+    </div>
+    <div class="connector-spacer"></div>
+    <div class="tl-axis"><div class="axis-dot history"></div></div>
+    <div class="tl-content">
+      <div class="ev-card history" onclick="toggleEvAccordion(this)">
+        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="ev-date">1868.01</div>
+        <div class="ev-title">明治維新</div>
+        <div class="ev-accordion-body">
+          <div class="ev-summary">王政復古の大号令。約260年続いた江戸幕府が終焉し、日本の近代化が始まる。</div>
+          <div class="ev-tags"><span class="ev-tag history">時代・政治</span><span class="ev-tag cred">✓ 確認済み</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERIOD END: 江戸時代 -->
+  <div class="tl-row" data-layers="history" data-period-id="edo" data-period-action="end">
+    <div class="tl-lanes">
+      <div class="lane history end active" data-period="edo"></div>
+      <div class="lane art active" data-period="gogh"></div>
+      <div class="lane art active" data-period="impressionism"></div>
+    </div>
+    <div class="period-connector history end"></div>
+    <div class="tl-axis"><div class="axis-period-mark end history"></div></div>
+    <div class="tl-content">
+      <div class="period-label-end">
+        <div class="pl-bar history"></div>
+        <div class="pl-text">江戸時代<span class="pl-end-note">— 終了 1868</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POINT: 電話の発明 -->
+  <div class="tl-row" data-layers="science">
+    <div class="tl-lanes">
+      <div class="lane spacer" data-period="edo"></div>
+      <div class="lane art active" data-period="gogh"></div>
+      <div class="lane art active" data-period="impressionism"></div>
+    </div>
+    <div class="connector-spacer"></div>
+    <div class="tl-axis"><div class="axis-dot science"></div></div>
+    <div class="tl-content">
+      <div class="ev-card science" onclick="toggleEvAccordion(this)">
+        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="ev-date">1876.03</div>
+        <div class="ev-title">ベル、電話を特許取得</div>
+        <div class="ev-accordion-body">
+          <div class="ev-summary">音声の遠隔伝送が可能に。通信技術の革新。</div>
+          <div class="ev-tags"><span class="ev-tag science">科学・技術</span><span class="ev-tag cred">✓ 確認済み</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POINT: エジソン -->
+  <div class="tl-row" data-layers="science">
+    <div class="tl-lanes">
+      <div class="lane spacer" data-period="edo"></div>
+      <div class="lane art active" data-period="gogh"></div>
+      <div class="lane art active" data-period="impressionism"></div>
+    </div>
+    <div class="connector-spacer"></div>
+    <div class="tl-axis"><div class="axis-dot science"></div></div>
+    <div class="tl-content">
+      <div class="ev-card science" onclick="toggleEvAccordion(this)">
+        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="ev-date">1879.10</div>
+        <div class="ev-title">エジソン、実用的な白熱電球を開発</div>
+        <div class="ev-accordion-body">
+          <div class="ev-summary">40時間以上の連続点灯に成功。電気の時代が始まる。</div>
+          <div class="ev-tags"><span class="ev-tag science">科学・技術</span><span class="ev-tag cred">✓ 確認済み</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERIOD END: 印象派 -->
+  <div class="tl-row" data-layers="art" data-period-id="impressionism" data-period-action="end">
+    <div class="tl-lanes">
+      <div class="lane spacer" data-period="edo"></div>
+      <div class="lane art active" data-period="gogh"></div>
+      <div class="lane art end active" data-period="impressionism"></div>
+    </div>
+    <div class="period-connector art end"></div>
+    <div class="tl-axis"><div class="axis-period-mark end art"></div></div>
+    <div class="tl-content">
+      <div class="period-label-end">
+        <div class="pl-bar art"></div>
+        <div class="pl-text">印象派運動<span class="pl-end-note">— 終了 1886</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POINT: ゴッホ「星月夜」 -->
+  <div class="tl-row" data-layers="art">
+    <div class="tl-lanes">
+      <div class="lane spacer" data-period="edo"></div>
+      <div class="lane art active" data-period="gogh"></div>
+      <div class="lane spacer" data-period="impressionism"></div>
+    </div>
+    <div class="connector-spacer"></div>
+    <div class="tl-axis"><div class="axis-dot art"></div></div>
+    <div class="tl-content">
+      <div class="ev-card art" onclick="toggleEvAccordion(this)">
+        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="ev-date">1889.06</div>
+        <div class="ev-title">ゴッホ「星月夜」を制作</div>
+        <div class="ev-accordion-body">
+          <div class="ev-summary">サン＝レミ＝ド＝プロヴァンスの療養院にて。印象派の終焉後、後期印象派として独自の画風を確立。</div>
+          <div class="ev-tags"><span class="ev-tag art">芸術</span><span class="ev-tag cred">✓ 確認済み</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERIOD END: ゴッホ -->
+  <div class="tl-row" data-layers="art" data-period-id="gogh" data-period-action="end">
+    <div class="tl-lanes">
+      <div class="lane spacer" data-period="edo"></div>
+      <div class="lane art end active" data-period="gogh"></div>
+      <div class="lane spacer" data-period="impressionism"></div>
+    </div>
+    <div class="period-connector art end"></div>
+    <div class="tl-axis"><div class="axis-period-mark end art"></div></div>
+    <div class="tl-content">
+      <div class="period-label-end">
+        <div class="pl-bar art"></div>
+        <div class="pl-text">ゴッホ<span class="pl-end-note">— 没 1890</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= 1900s ======= -->
+  <div class="tl-row visible" data-layers="all">
+    <div class="tl-lanes">
+      <div class="lane spacer" data-period="edo"></div>
+      <div class="lane spacer" data-period="gogh"></div>
+      <div class="lane spacer" data-period="impressionism"></div>
+    </div>
+    <div class="connector-spacer"></div>
+    <div class="tl-axis"><div style="margin-top:28px"></div></div>
+    <div class="tl-content">
+      <div class="tl-year">
+        <div class="tl-year-text">1900s</div>
+        <div class="tl-year-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POINT: ライト兄弟 -->
+  <div class="tl-row" data-layers="science">
+    <div class="tl-lanes">
+      <div class="lane spacer" data-period="edo"></div>
+      <div class="lane spacer" data-period="gogh"></div>
+      <div class="lane spacer" data-period="impressionism"></div>
+    </div>
+    <div class="connector-spacer"></div>
+    <div class="tl-axis"><div class="axis-dot science"></div></div>
+    <div class="tl-content">
+      <div class="ev-card science" onclick="toggleEvAccordion(this)">
+        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="ev-date">1903.12</div>
+        <div class="ev-title">ライト兄弟、初の動力飛行に成功</div>
+        <div class="ev-accordion-body">
+          <div class="ev-summary">ノースカロライナ州キティホークにて。12秒間、36mの飛行。航空時代の幕開け。</div>
+          <div class="ev-tags"><span class="ev-tag science">科学・技術</span><span class="ev-tag cred">✓ 確認済み</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POINT: 相対性理論 -->
+  <div class="tl-row" data-layers="science">
+    <div class="tl-lanes">
+      <div class="lane spacer" data-period="edo"></div>
+      <div class="lane spacer" data-period="gogh"></div>
+      <div class="lane spacer" data-period="impressionism"></div>
+    </div>
+    <div class="connector-spacer"></div>
+    <div class="tl-axis"><div class="axis-dot science"></div></div>
+    <div class="tl-content">
+      <div class="ev-card science" onclick="toggleEvAccordion(this)">
+        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="ev-date">1905.06</div>
+        <div class="ev-title">アインシュタイン、特殊相対性理論を発表</div>
+        <div class="ev-accordion-body">
+          <div class="ev-summary">「奇跡の年」。時間と空間の概念を根本から覆した。</div>
+          <div class="ev-tags"><span class="ev-tag science">科学・技術</span><span class="ev-tag cred">✓ 確認済み</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const activeLayers = new Set(['art','history','science']);
+let activePeriod = null;
+
+function toggleLayer(layer, chip) {
+  if (activeLayers.has(layer)) {
+    if (activeLayers.size <= 1) return;
+    activeLayers.delete(layer);
+    chip.classList.remove('active');
+  } else {
+    activeLayers.add(layer);
+    chip.classList.add('active');
+  }
+  clearPeriodHighlight();
+  updateVisibility();
+}
+
+function updateVisibility() {
+  document.querySelectorAll('.tl-row').forEach(row => {
+    const layers = row.dataset.layers;
+    if (layers === 'all') return;
+    const rowLayers = layers.split(',').map(s=>s.trim());
+    const visible = rowLayers.some(l => activeLayers.has(l));
+    if (visible) { row.classList.remove('hidden'); row.classList.add('visible'); }
+    else { row.classList.add('hidden'); row.classList.remove('visible'); }
+  });
+  document.querySelectorAll('.lane').forEach(lane => {
+    if (lane.classList.contains('spacer')) return;
+    const lc = ['art','history','science'].find(c => lane.classList.contains(c));
+    if (lc && !activeLayers.has(lc)) { lane.classList.remove('active'); lane.classList.add('inactive'); }
+    else { lane.classList.add('active'); lane.classList.remove('inactive'); }
+  });
+}
+
+// ===== LANE TAP → HIGHLIGHT PERIOD =====
+function highlightPeriod(periodId) {
+  const wrap = document.getElementById('timeline');
+  if (activePeriod === periodId) { clearPeriodHighlight(); return; }
+  activePeriod = periodId;
+  wrap.classList.add('has-highlight');
+
+  // Clear previous
+  document.querySelectorAll('.period-highlight').forEach(el => el.classList.remove('period-highlight'));
+  document.querySelectorAll('.lane-glow').forEach(el => el.classList.remove('lane-glow'));
+
+  // Find all rows that belong to this period
+  // A row belongs to a period if it has a lane with data-period=periodId that is not a spacer,
+  // OR if its data-period-id matches
+  document.querySelectorAll('.tl-row').forEach(row => {
+    const lanes = row.querySelectorAll(`.lane[data-period="${periodId}"]:not(.spacer)`);
+    const isPeriodRow = row.dataset.periodId === periodId;
+    if (lanes.length > 0 || isPeriodRow) {
+      row.classList.add('period-highlight');
+    }
+  });
+
+  // Glow the lanes
+  document.querySelectorAll(`.lane[data-period="${periodId}"]:not(.spacer)`).forEach(l => {
+    l.classList.add('lane-glow');
+  });
+}
+
+function clearPeriodHighlight() {
+  activePeriod = null;
+  const wrap = document.getElementById('timeline');
+  wrap.classList.remove('has-highlight');
+  document.querySelectorAll('.period-highlight').forEach(el => el.classList.remove('period-highlight'));
+  document.querySelectorAll('.lane-glow').forEach(el => el.classList.remove('lane-glow'));
+}
+
+// Attach lane click handlers
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.lane:not(.spacer)').forEach(lane => {
+    lane.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const periodId = lane.dataset.period;
+      if (periodId) highlightPeriod(periodId);
+    });
+  });
+
+  // Click outside to clear
+  document.addEventListener('click', (e) => {
+    if (activePeriod && !e.target.closest('.lane:not(.spacer)')) {
+      clearPeriodHighlight();
+    }
+  });
+});
+
+// ===== ACCORDION TOGGLE =====
+function toggleAccordion(card) {
+  card.classList.toggle('expanded');
+}
+function toggleEvAccordion(card) {
+  card.classList.toggle('expanded');
+}
+
+// Prevent accordion toggle when clicking lane
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.period-card-start, .ev-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+  });
+});
+
+// Stagger animation
+window.addEventListener('DOMContentLoaded', () => {
+  const rows = document.querySelectorAll('.tl-row');
+  rows.forEach((row, i) => {
+    row.style.transitionDelay = `${0.06 * i}s`;
+    setTimeout(() => row.classList.add('visible'), 80);
+  });
+});
+// ===== CENTER-FOCUS HIGHLIGHT =====
+(function() {
+  let currentFocus = null;
+  const allCards = document.querySelectorAll('.ev-card, .period-card-start');
+
+  function getViewportHeight() {
+    // Try multiple methods for iframe compatibility
+    return Math.min(
+      window.innerHeight || Infinity,
+      document.documentElement.clientHeight || Infinity,
+      screen.height || Infinity
+    );
+  }
+
+  function tick() {
+    const vh = getViewportHeight();
+    const center = vh * 0.42;
+    let closest = null;
+    let closestDist = Infinity;
+
+    allCards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > vh) return;
+      const cardCenter = rect.top + rect.height / 2;
+      const dist = Math.abs(cardCenter - center);
+      if (dist < closestDist) {
+        closestDist = dist;
+        closest = card;
+      }
+    });
+
+    if (closest !== currentFocus) {
+      if (currentFocus) currentFocus.classList.remove('center-focus');
+      if (closest) closest.classList.add('center-focus');
+      currentFocus = closest;
+    }
+  }
+
+  // Use both polling AND touch/scroll listeners for maximum compatibility
+  setInterval(tick, 120);
+
+  // Also try to catch scroll on various possible scroll containers
+  ['scroll', 'touchmove', 'touchend'].forEach(evt => {
+    window.addEventListener(evt, tick, { passive: true, capture: true });
+    document.addEventListener(evt, tick, { passive: true, capture: true });
+    document.documentElement.addEventListener(evt, tick, { passive: true });
+    document.body.addEventListener(evt, tick, { passive: true });
+  });
+
+  // Run immediately
+  tick();
+  setTimeout(tick, 100);
+  setTimeout(tick, 500);
+  setTimeout(tick, 1000);
+})();
+</script>
+</body>
+</html>

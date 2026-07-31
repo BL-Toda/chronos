@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Chronos — 共有・埋め込み・公開ページ</title>
+<link href="https://api.fontshare.com/v2/css?f[]=erode@300,400,500,600,300i,400i&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0A0A0C; --bg2:#111114; --bg-card:#16161A; --bg-card-h:#1C1C22;
+  --accent:#C8A87E; --accent-dim:rgba(200,168,126,0.13);
+  --text:#E8E4DE; --text-h:#F5F2ED; --text2:#8A8680; --text3:#5A5754;
+  --border:rgba(200,168,126,0.1); --border2:rgba(200,168,126,0.22);
+  --line:rgba(200,168,126,0.15);
+  --c-blue:#5B9BD5; --c-pink:#D4849A; --c-teal:#5BBCB4; --c-green:#7BC67E;
+  --f-display:'Erode',serif; --f-body:'DM Sans',sans-serif; --f-mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:var(--bg);color-scheme:dark;scroll-behavior:smooth}
+body{font-family:var(--f-body);background:var(--bg);color:var(--text);
+  min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== HEADER ===== */
+.header,.nav,.section,.divider{background:var(--bg)}
+.header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(10,10,12,0.88);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between;
+}
+.header-brand{font-family:var(--f-display);font-size:1.3rem;font-weight:500;
+  letter-spacing:0.2em;color:var(--accent);text-transform:uppercase}
+.header-badge{font-family:var(--f-mono);font-size:0.58rem;padding:4px 10px;
+  border-radius:10px;border:1px solid var(--border);color:var(--text3)}
+
+/* ===== SECTION ===== */
+.section{padding:48px 20px 32px;max-width:600px;margin:0 auto;background:var(--bg)}
+.section-label{
+  font-family:var(--f-mono);font-size:0.6rem;letter-spacing:0.12em;
+  color:var(--accent);text-transform:uppercase;margin-bottom:8px;
+}
+.section-title{
+  font-family:var(--f-display);font-size:1.7rem;font-weight:400;
+  color:var(--text-h);margin-bottom:6px;
+}
+.section-desc{font-size:0.78rem;color:var(--text2);line-height:1.55;margin-bottom:28px}
+.divider{height:1px;background:var(--border);max-width:600px;margin:0 auto}
+
+/* ===== 1. OGP PREVIEW ===== */
+.ogp-context{
+  margin-bottom:16px;padding:12px 14px;border-radius:12px;
+  background:var(--bg-card);border:1px solid var(--border);
+}
+.ogp-context-label{font-size:0.65rem;color:var(--text3);margin-bottom:8px;
+  display:flex;align-items:center;gap:6px}
+.ogp-context-icon{width:16px;height:16px;border-radius:50%;background:#1DA1F2;
+  display:flex;align-items:center;justify-content:center}
+.ogp-context-icon svg{width:10px;height:10px;fill:white}
+
+/* OGP Card */
+.ogp-card{
+  border-radius:14px;overflow:hidden;border:1px solid var(--border);
+  background:var(--bg-card);cursor:pointer;transition:all 0.3s;
+}
+.ogp-card:hover{border-color:var(--border2)}
+.ogp-image{
+  width:100%;aspect-ratio:1.91/1;background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+/* Mini timeline illustration inside OGP */
+.ogp-mini-tl{position:relative;width:80%;height:60%}
+.ogp-mini-axis{
+  position:absolute;top:50%;left:10%;right:10%;height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  opacity:0.25;transform:translateY(-50%);
+}
+.ogp-mini-dot{
+  position:absolute;top:50%;width:10px;height:10px;border-radius:50%;
+  transform:translate(-50%,-50%);border:2px solid var(--bg);
+}
+.ogp-mini-label{
+  position:absolute;top:calc(50% + 12px);font-family:var(--f-mono);
+  font-size:0.5rem;color:var(--text3);transform:translateX(-50%);white-space:nowrap;
+}
+.ogp-mini-title{
+  position:absolute;top:12%;left:50%;transform:translateX(-50%);
+  font-family:var(--f-display);font-size:0.85rem;color:var(--text-h);
+  text-align:center;white-space:nowrap;
+}
+.ogp-mini-badge{
+  position:absolute;bottom:10%;left:50%;transform:translateX(-50%);
+  font-family:var(--f-mono);font-size:0.48rem;color:var(--accent);
+  letter-spacing:0.15em;opacity:0.5;
+}
+
+.ogp-body{padding:12px 14px}
+.ogp-domain{font-family:var(--f-mono);font-size:0.58rem;color:var(--text3);
+  letter-spacing:0.04em;margin-bottom:3px}
+.ogp-title{font-family:var(--f-display);font-size:0.95rem;font-weight:500;
+  color:var(--text-h);margin-bottom:2px}
+.ogp-desc{font-size:0.7rem;color:var(--text2);line-height:1.4}
+
+/* Tweet mock text */
+.tweet-text{font-size:0.82rem;color:var(--text);line-height:1.55;margin-bottom:10px}
+.tweet-meta{font-size:0.62rem;color:var(--text3)}
+
+/* ===== 2. EMBED WIDGET ===== */
+.embed-demo{
+  border-radius:14px;overflow:hidden;border:1px solid var(--border);
+  background:var(--bg2);
+}
+.embed-blog-bar{
+  padding:8px 14px;background:rgba(255,255,255,0.03);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:6px;
+}
+.embed-blog-dot{width:6px;height:6px;border-radius:50%;opacity:0.3}
+.embed-blog-url{font-family:var(--f-mono);font-size:0.55rem;color:var(--text3);margin-left:8px}
+.embed-blog-content{padding:16px}
+.embed-blog-text{font-size:0.75rem;color:var(--text2);line-height:1.6;margin-bottom:14px}
+
+/* The actual embed widget */
+.embed-widget{
+  border-radius:12px;overflow:hidden;border:1px solid var(--border2);
+  background:var(--bg);
+}
+.embed-widget-header{
+  padding:10px 14px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.embed-widget-brand{
+  font-family:var(--f-display);font-size:0.7rem;font-weight:500;
+  letter-spacing:0.15em;color:var(--accent);text-transform:uppercase;
+}
+.embed-widget-title{font-size:0.72rem;color:var(--text2)}
+.embed-widget-body{padding:10px 14px;max-height:200px;overflow:hidden;position:relative}
+.embed-widget-body::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:40px;
+  background:linear-gradient(transparent,var(--bg));
+}
+.embed-ev{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px}
+.embed-ev-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:3px}
+.embed-ev-content{min-width:0}
+.embed-ev-date{font-family:var(--f-mono);font-size:0.5rem;color:var(--text3);letter-spacing:0.06em}
+.embed-ev-title{font-size:0.7rem;color:var(--text-h);margin-bottom:1px}
+.embed-widget-footer{
+  padding:8px 14px;border-top:1px solid var(--border);text-align:center;
+}
+.embed-widget-link{
+  font-size:0.62rem;color:var(--accent);text-decoration:none;
+  font-family:var(--f-mono);letter-spacing:0.04em;
+}
+
+/* Code snippet */
+.code-block{
+  margin-top:16px;padding:12px 14px;border-radius:10px;
+  background:var(--bg-card);border:1px solid var(--border);
+  font-family:var(--f-mono);font-size:0.6rem;color:var(--text2);
+  line-height:1.6;overflow-x:auto;position:relative;
+}
+.code-copy{
+  position:absolute;top:8px;right:8px;font-size:0.58rem;
+  padding:4px 10px;border-radius:6px;border:1px solid var(--border);
+  background:var(--bg);color:var(--text3);cursor:pointer;
+  font-family:var(--f-mono);transition:all 0.2s;
+}
+.code-copy:hover{border-color:var(--border2);color:var(--text2)}
+
+/* ===== 3. PUBLIC PAGE ===== */
+.public-mock{
+  border-radius:14px;overflow:hidden;border:1px solid var(--border);
+  background:var(--bg);
+}
+.public-url-bar{
+  padding:8px 14px;background:rgba(255,255,255,0.02);
+  border-bottom:1px solid var(--border);display:flex;align-items:center;gap:6px;
+}
+.public-url-dot{width:6px;height:6px;border-radius:50%;}
+.public-url-text{
+  flex:1;margin-left:4px;padding:4px 10px;border-radius:6px;
+  background:rgba(255,255,255,0.03);font-family:var(--f-mono);
+  font-size:0.55rem;color:var(--text3);
+}
+.public-page{padding:20px 16px}
+.public-header{text-align:center;margin-bottom:16px}
+.public-brand{
+  font-family:var(--f-display);font-size:0.65rem;letter-spacing:0.15em;
+  color:var(--accent);text-transform:uppercase;opacity:0.5;margin-bottom:6px;
+}
+.public-title{
+  font-family:var(--f-display);font-size:1.3rem;font-weight:400;
+  color:var(--text-h);margin-bottom:4px;
+}
+.public-author{font-size:0.68rem;color:var(--text3)}
+.public-layers{display:flex;gap:6px;justify-content:center;margin-bottom:14px;flex-wrap:wrap}
+.public-chip{
+  font-size:0.58rem;padding:3px 10px;border-radius:10px;
+  border:1px solid var(--border);color:var(--text3);
+  display:flex;align-items:center;gap:4px;
+}
+.public-chip-dot{width:5px;height:5px;border-radius:50%}
+
+/* Mini timeline */
+.public-tl{position:relative;padding-left:24px}
+.public-tl::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:1px;background:var(--line)}
+.public-ev{position:relative;margin-bottom:10px;padding-left:16px}
+.public-ev-dot{
+  position:absolute;left:-18px;top:4px;width:8px;height:8px;border-radius:50%;
+  border:2px solid var(--bg);
+}
+.public-ev-date{font-family:var(--f-mono);font-size:0.5rem;color:var(--text3);margin-bottom:1px}
+.public-ev-title{font-size:0.75rem;color:var(--text-h);margin-bottom:1px}
+.public-ev-desc{font-size:0.62rem;color:var(--text2);line-height:1.4}
+.public-footer{
+  text-align:center;padding:14px 0 4px;border-top:1px solid var(--border);margin-top:14px;
+}
+.public-cta{
+  display:inline-block;font-size:0.68rem;color:var(--accent);
+  text-decoration:none;padding:8px 20px;border-radius:10px;
+  border:1px solid rgba(200,168,126,0.2);transition:all 0.3s;
+}
+.public-cta:hover{background:var(--accent-dim);border-color:var(--accent)}
+
+/* ===== 4. EXPORT PREVIEW ===== */
+.export-preview{
+  border-radius:14px;overflow:hidden;border:1px solid var(--border);
+  background:var(--bg);position:relative;
+}
+.export-image{
+  padding:24px 20px;background:var(--bg);position:relative;
+}
+.export-watermark{
+  position:absolute;bottom:12px;right:16px;
+  font-family:var(--f-display);font-size:0.55rem;letter-spacing:0.15em;
+  color:var(--accent);text-transform:uppercase;opacity:0.2;
+}
+.export-title{
+  font-family:var(--f-display);font-size:1.1rem;font-weight:400;
+  color:var(--text-h);text-align:center;margin-bottom:4px;
+}
+.export-meta{font-size:0.6rem;color:var(--text3);text-align:center;margin-bottom:16px}
+.export-tl{
+  display:flex;align-items:center;gap:0;padding:0 10px;
+  position:relative;
+}
+.export-axis{flex:1;height:2px;background:var(--line);position:relative}
+.export-dot-wrap{display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0;margin:0 -4px;position:relative;z-index:2}
+.export-dot{width:10px;height:10px;border-radius:50%;border:2px solid var(--bg)}
+.export-dot-label{font-family:var(--f-mono);font-size:0.4rem;color:var(--text3);white-space:nowrap}
+.export-options{
+  padding:14px;display:flex;gap:8px;border-top:1px solid var(--border);
+}
+.export-opt{
+  flex:1;padding:10px;border-radius:10px;border:1px solid var(--border);
+  text-align:center;cursor:pointer;transition:all 0.25s;
+}
+.export-opt:hover{border-color:var(--border2);background:var(--accent-dim)}
+.export-opt.pro{position:relative}
+.export-opt-format{font-size:0.72rem;color:var(--text-h);margin-bottom:2px}
+.export-opt-note{font-size:0.58rem;color:var(--text3)}
+.export-opt-pro{
+  position:absolute;top:-6px;right:-4px;
+  font-family:var(--f-mono);font-size:0.45rem;letter-spacing:0.06em;
+  padding:2px 6px;border-radius:6px;background:var(--accent);color:var(--bg);
+}
+
+/* ===== 5. THEME TOGGLE ===== */
+.theme-demo{display:flex;gap:10px}
+.theme-card{
+  flex:1;border-radius:14px;overflow:hidden;border:1px solid var(--border);
+  cursor:pointer;transition:all 0.3s;
+}
+.theme-card:hover{border-color:var(--border2)}
+.theme-card.active-theme{border-color:var(--accent)}
+.theme-preview{padding:14px 12px;position:relative}
+.theme-label{
+  text-align:center;padding:8px;font-size:0.72rem;border-top:1px solid var(--border);
+}
+
+/* Dark theme preview */
+.theme-dark .theme-preview{background:#0A0A0C}
+.theme-dark .theme-label{color:var(--text2);background:var(--bg-card)}
+
+/* Light theme preview */
+.theme-light .theme-preview{background:#F8F6F3}
+.theme-light .theme-label{color:#5A5754;background:#EEEAE5}
+
+.theme-mini-axis{
+  width:2px;height:60px;margin:0 auto;border-radius:1px;
+}
+.theme-dark .theme-mini-axis{background:rgba(200,168,126,0.15)}
+.theme-light .theme-mini-axis{background:rgba(120,100,70,0.15)}
+.theme-mini-dots{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  display:flex;flex-direction:column;gap:12px;align-items:center;
+}
+.theme-mini-dot{width:8px;height:8px;border-radius:50%}
+.theme-dark .theme-mini-dot:nth-child(1){background:var(--c-blue)}
+.theme-dark .theme-mini-dot:nth-child(2){background:var(--c-pink)}
+.theme-dark .theme-mini-dot:nth-child(3){background:var(--c-teal)}
+.theme-light .theme-mini-dot:nth-child(1){background:#4A88C2}
+.theme-light .theme-mini-dot:nth-child(2){background:#C07088}
+.theme-light .theme-mini-dot:nth-child(3){background:#4AA8A0}
+
+@media(min-width:768px){
+  .section-title{font-size:2rem}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-brand">Chronos</div>
+  <span class="header-badge">Share / Embed / Export</span>
+</header>
+
+<!-- ===== 1. SNS SHARE (OGP) ===== -->
+<div class="section" style="animation:fadeUp 0.6s ease">
+  <div class="section-label">01 — SNS Share</div>
+  <div class="section-title">SNSでシェアされた時</div>
+  <div class="section-desc">年表のURLをSNSに貼ると、OGPカードが自動生成されます。タイムラインの要約がプレビューに。</div>
+
+  <div class="ogp-context">
+    <div class="ogp-context-label">
+      <div class="ogp-context-icon"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53A4.48 4.48 0 0 0 12 7.47v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></div>
+      X (Twitter) でのプレビュー
+    </div>
+    <div class="tweet-text">スマートフォンの歴史をChronosで年表にしてみた。レイヤー重ねると面白い。</div>
+    <div class="ogp-card">
+      <div class="ogp-image">
+        <div class="ogp-mini-tl">
+          <div class="ogp-mini-title">スマートフォンの歴史</div>
+          <div class="ogp-mini-axis"></div>
+          <div class="ogp-mini-dot" style="left:15%;background:var(--c-teal)"></div>
+          <div class="ogp-mini-dot" style="left:35%;background:var(--c-blue)"></div>
+          <div class="ogp-mini-dot" style="left:55%;background:var(--c-pink)"></div>
+          <div class="ogp-mini-dot" style="left:75%;background:var(--c-blue)"></div>
+          <div class="ogp-mini-dot" style="left:90%;background:var(--c-teal)"></div>
+          <div class="ogp-mini-label" style="left:15%">1992</div>
+          <div class="ogp-mini-label" style="left:35%">2007</div>
+          <div class="ogp-mini-label" style="left:55%">2008</div>
+          <div class="ogp-mini-label" style="left:75%">2012</div>
+          <div class="ogp-mini-label" style="left:90%">2024</div>
+          <div class="ogp-mini-badge">CHRONOS</div>
+        </div>
+      </div>
+      <div class="ogp-body">
+        <div class="ogp-domain">chronos.app</div>
+        <div class="ogp-title">スマートフォンの歴史 — Chronos</div>
+        <div class="ogp-desc">12のイベント · 3レイヤー · 1992〜2024の年表</div>
+      </div>
+    </div>
+    <div class="tweet-meta" style="margin-top:8px">2:34 PM · Feb 11, 2026</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== 2. EMBED ===== -->
+<div class="section">
+  <div class="section-label">02 — Embed Widget</div>
+  <div class="section-title">ブログに埋め込む</div>
+  <div class="section-desc">埋め込みコードをコピーして貼るだけ。ブログやNotionに年表ウィジェットが表示されます。</div>
+
+  <div class="embed-demo">
+    <div class="embed-blog-bar">
+      <div class="embed-blog-dot" style="background:#FF5F57"></div>
+      <div class="embed-blog-dot" style="background:#FFBD2E"></div>
+      <div class="embed-blog-dot" style="background:#28C840"></div>
+      <div class="embed-blog-url">my-tech-blog.com/smartphone-history</div>
+    </div>
+    <div class="embed-blog-content">
+      <div class="embed-blog-text">スマートフォンがどのように進化してきたか、年表で整理してみました。以下のタイムラインをご覧ください。</div>
+
+      <div class="embed-widget">
+        <div class="embed-widget-header">
+          <div class="embed-widget-brand">Chronos</div>
+          <div class="embed-widget-title">スマートフォンの歴史</div>
+        </div>
+        <div class="embed-widget-body">
+          <div class="embed-ev">
+            <div class="embed-ev-dot" style="background:var(--c-teal)"></div>
+            <div class="embed-ev-content">
+              <div class="embed-ev-date">1992.11</div>
+              <div class="embed-ev-title">世界初のスマートフォン IBM Simon</div>
+            </div>
+          </div>
+          <div class="embed-ev">
+            <div class="embed-ev-dot" style="background:var(--c-blue)"></div>
+            <div class="embed-ev-content">
+              <div class="embed-ev-date">2007.01</div>
+              <div class="embed-ev-title">Apple iPhone 発表</div>
+            </div>
+          </div>
+          <div class="embed-ev">
+            <div class="embed-ev-dot" style="background:var(--c-teal)"></div>
+            <div class="embed-ev-content">
+              <div class="embed-ev-date">2007.11</div>
+              <div class="embed-ev-title">Android OS 発表</div>
+            </div>
+          </div>
+          <div class="embed-ev">
+            <div class="embed-ev-dot" style="background:var(--c-blue)"></div>
+            <div class="embed-ev-content">
+              <div class="embed-ev-date">2008.07</div>
+              <div class="embed-ev-title">App Store 開始</div>
+            </div>
+          </div>
+          <div class="embed-ev">
+            <div class="embed-ev-dot" style="background:var(--c-pink)"></div>
+            <div class="embed-ev-content">
+              <div class="embed-ev-date">2012.10</div>
+              <div class="embed-ev-title">スマホ出荷台数がPCを超える</div>
+            </div>
+          </div>
+        </div>
+        <div class="embed-widget-footer">
+          <a class="embed-widget-link" href="#">chronos.app で全体を見る →</a>
+        </div>
+      </div>
+
+      <div class="embed-blog-text" style="margin-top:14px">特にiPhoneの発表は、業界全体の転換点となりました...</div>
+    </div>
+  </div>
+
+  <div class="code-block">
+    <button class="code-copy" onclick="this.textContent='Copied!'">Copy</button>
+    &lt;iframe src="https://chronos.app/embed/abc123"<br>
+    &nbsp;&nbsp;width="100%" height="400"<br>
+    &nbsp;&nbsp;style="border:none;border-radius:12px"&gt;<br>
+    &lt;/iframe&gt;
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== 3. PUBLIC PAGE ===== -->
+<div class="section">
+  <div class="section-label">03 — Public Page</div>
+  <div class="section-title">公開ページ</div>
+  <div class="section-desc">URLを共有するだけで、誰でもブラウザで年表を閲覧できます。アカウント不要。</div>
+
+  <div class="public-mock">
+    <div class="public-url-bar">
+      <div class="public-url-dot" style="background:#FF5F57"></div>
+      <div class="public-url-dot" style="background:#FFBD2E"></div>
+      <div class="public-url-dot" style="background:#28C840"></div>
+      <div class="public-url-text">chronos.app/t/smartphone-history</div>
+    </div>
+    <div class="public-page">
+      <div class="public-header">
+        <div class="public-brand">Chronos</div>
+        <div class="public-title">スマートフォンの歴史</div>
+        <div class="public-author">by @toda · 12 events · 3 layers</div>
+      </div>
+      <div class="public-layers">
+        <div class="public-chip"><div class="public-chip-dot" style="background:var(--c-blue)"></div>製品</div>
+        <div class="public-chip"><div class="public-chip-dot" style="background:var(--c-pink)"></div>ビジネス</div>
+        <div class="public-chip"><div class="public-chip-dot" style="background:var(--c-teal)"></div>技術革新</div>
+      </div>
+      <div class="public-tl">
+        <div class="public-ev"><div class="public-ev-dot" style="background:var(--c-teal)"></div>
+          <div class="public-ev-date">1992.11</div><div class="public-ev-title">IBM Simon</div>
+          <div class="public-ev-desc">世界初のスマートフォン</div></div>
+        <div class="public-ev"><div class="public-ev-dot" style="background:var(--c-blue)"></div>
+          <div class="public-ev-date">2007.01</div><div class="public-ev-title">iPhone 発表</div>
+          <div class="public-ev-desc">マルチタッチUIでスマホの概念を一変</div></div>
+        <div class="public-ev"><div class="public-ev-dot" style="background:var(--c-teal)"></div>
+          <div class="public-ev-date">2007.11</div><div class="public-ev-title">Android OS 発表</div>
+          <div class="public-ev-desc">オープンソースモバイルOS</div></div>
+        <div class="public-ev"><div class="public-ev-dot" style="background:var(--c-pink)"></div>
+          <div class="public-ev-date">2012.10</div><div class="public-ev-title">スマホがPCを超える</div>
+          <div class="public-ev-desc">モバイルファースト時代の到来</div></div>
+      </div>
+      <div class="public-footer">
+        <a class="public-cta" href="#">自分の年表をつくる →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== 4. EXPORT ===== -->
+<div class="section">
+  <div class="section-label">04 — Export</div>
+  <div class="section-title">画像で書き出し</div>
+  <div class="section-desc">年表を画像として保存。SNSやプレゼンで使えます。</div>
+
+  <div class="export-preview">
+    <div class="export-image">
+      <div class="export-title">スマートフォンの歴史</div>
+      <div class="export-meta">12 events · 3 layers · 1992 — 2024</div>
+      <div class="export-tl">
+        <div class="export-dot-wrap"><div class="export-dot" style="background:var(--c-teal)"></div><div class="export-dot-label">1992</div></div>
+        <div class="export-axis"></div>
+        <div class="export-dot-wrap"><div class="export-dot" style="background:var(--c-blue)"></div><div class="export-dot-label">2007</div></div>
+        <div class="export-axis"></div>
+        <div class="export-dot-wrap"><div class="export-dot" style="background:var(--c-blue)"></div><div class="export-dot-label">2008</div></div>
+        <div class="export-axis"></div>
+        <div class="export-dot-wrap"><div class="export-dot" style="background:var(--c-pink)"></div><div class="export-dot-label">2012</div></div>
+        <div class="export-axis"></div>
+        <div class="export-dot-wrap"><div class="export-dot" style="background:var(--c-teal)"></div><div class="export-dot-label">2024</div></div>
+      </div>
+      <div class="export-watermark">CHRONOS</div>
+    </div>
+    <div class="export-options">
+      <div class="export-opt">
+        <div class="export-opt-format">JPEG</div>
+        <div class="export-opt-note">透かし入り · Free</div>
+      </div>
+      <div class="export-opt pro">
+        <div class="export-opt-pro">PRO</div>
+        <div class="export-opt-format">PNG</div>
+        <div class="export-opt-note">高解像度 · 透かしなし</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== 5. THEME ===== -->
+<div class="section" style="padding-bottom:80px">
+  <div class="section-label">05 — Theme</div>
+  <div class="section-title">ダーク / ライト</div>
+  <div class="section-desc">好みやシーンに合わせてテーマを切り替え。Proプランではカスタムテーマも。</div>
+
+  <div class="theme-demo">
+    <div class="theme-card active-theme theme-dark">
+      <div class="theme-preview">
+        <div class="theme-mini-axis"></div>
+        <div class="theme-mini-dots">
+          <div class="theme-mini-dot"></div>
+          <div class="theme-mini-dot"></div>
+          <div class="theme-mini-dot"></div>
+        </div>
+      </div>
+      <div class="theme-label">Dark</div>
+    </div>
+    <div class="theme-card theme-light">
+      <div class="theme-preview">
+        <div class="theme-mini-axis"></div>
+        <div class="theme-mini-dots">
+          <div class="theme-mini-dot"></div>
+          <div class="theme-mini-dot"></div>
+          <div class="theme-mini-dot"></div>
+        </div>
+      </div>
+      <div class="theme-label">Light</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

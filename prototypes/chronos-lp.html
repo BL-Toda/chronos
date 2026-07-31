@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="ja" style="background-color:#0A0A0C;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chronos — AIで年表をつくる。文脈を、可視化する。</title>
+<meta name="description" content="複数の歴史を同じ時間軸に重ねて、文脈を発見する。AI搭載の年表作成プラットフォーム。">
+<link href="https://api.fontshare.com/v2/css?f[]=erode@300,400,500,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0A0A0C; --bg2:#0E0E11; --bg3:#131316;
+  --card:#16161A; --card-h:#1C1C22; --card-el:#1E1E24;
+  --accent:#C8A87E; --accent-soft:rgba(200,168,126,0.10);
+  --accent-med:rgba(200,168,126,0.18); --accent-glow:rgba(200,168,126,0.04);
+  --text:#E8E4DE; --text2:#9A9590; --text3:#5E5A56;
+  --border:rgba(200,168,126,0.10); --border2:rgba(200,168,126,0.20);
+  --c-blue:#5B9BD5; --c-green:#7BC67E; --c-pink:#D4849A; --c-gold:#C8B87E; --c-purple:#9E7EC8;
+  --c-blue-d:rgba(91,155,213,0.12); --c-green-d:rgba(123,198,126,0.12);
+  --c-pink-d:rgba(212,132,154,0.12); --c-gold-d:rgba(200,184,126,0.12); --c-purple-d:rgba(158,126,200,0.12);
+  --f-d:'Erode','Shippori Mincho',serif; --f-b:'DM Sans',sans-serif; --f-m:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--f-b);background:var(--bg);color:var(--text);overflow-x:hidden}
+.container{max-width:1040px;margin:0 auto;padding:0 24px}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.85s cubic-bezier(0.16,1,0.3,1),transform 0.85s cubic-bezier(0.16,1,0.3,1)}
+.reveal.v{opacity:1;transform:translateY(0)}
+.d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}.d4{transition-delay:0.4s}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(10,10,12,0.72);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
+  border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1040px;margin:0 auto;padding:0 24px;height:58px;
+  display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:var(--f-d);font-size:20px;font-weight:300;
+  letter-spacing:0.22em;color:var(--accent);text-transform:uppercase;text-decoration:none}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-link{font-size:12px;color:var(--text2);text-decoration:none;letter-spacing:0.04em;
+  transition:color 0.3s ease}
+.nav-link:hover{color:var(--text)}
+.nav-cta-s{font-size:12px;color:var(--accent);text-decoration:none;letter-spacing:0.04em;
+  transition:color 0.3s}
+.nav-cta-s:hover{color:#D4B88E}
+.nav-cta{font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--bg);background:var(--accent);padding:9px 22px;border-radius:6px;
+  border:none;cursor:pointer;transition:all 0.3s;text-decoration:none}
+.nav-cta:hover{background:#D4B88E;transform:translateY(-1px)}
+@media(max-width:640px){.nav-links{gap:14px}.nav-link{display:none}}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  align-items:center;text-align:center;padding:120px 24px 60px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero-bg canvas{width:100%;height:100%;display:block}
+.hero-bg::after{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at center 40%,rgba(10,10,12,0.3) 0%,rgba(10,10,12,0.85) 55%,#0A0A0C 80%);
+  pointer-events:none}
+.hero>*:not(.hero-bg){position:relative;z-index:1}
+.hero-tagline{font-family:var(--f-d);font-size:clamp(42px,6.5vw,74px);
+  font-weight:300;line-height:1.15;color:var(--text);
+  opacity:0;animation:hf 1.3s ease forwards 0.2s}
+.hero-sub{font-size:clamp(14px,2vw,16px);font-weight:300;color:var(--text2);
+  line-height:1.8;max-width:520px;margin:28px auto 0;
+  opacity:0;animation:hf 1.3s ease forwards 0.55s}
+.hero-actions{display:flex;gap:14px;margin-top:44px;flex-wrap:wrap;justify-content:center;
+  opacity:0;animation:hf 1.3s ease forwards 0.85s}
+.btn-primary{font-family:var(--f-b);font-size:14px;font-weight:500;
+  letter-spacing:0.06em;color:var(--bg);background:var(--accent);
+  padding:15px 36px;border-radius:8px;border:none;cursor:pointer;
+  transition:all 0.3s;text-decoration:none}
+.btn-primary:hover{background:#D4B88E;transform:translateY(-2px);box-shadow:0 10px 36px rgba(200,168,126,0.2)}
+.btn-secondary{font-family:var(--f-b);font-size:14px;font-weight:400;
+  letter-spacing:0.04em;color:var(--text2);background:transparent;
+  padding:15px 36px;border-radius:8px;border:1px solid var(--border2);cursor:pointer;
+  transition:all 0.3s;text-decoration:none}
+.btn-secondary:hover{color:var(--text);border-color:var(--accent);background:var(--accent-soft)}
+.hero-stats{display:flex;gap:36px;margin-top:48px;
+  opacity:0;animation:hf 1.3s ease forwards 1.1s}
+.hero-stat{text-align:center}
+.hero-stat-num{font-family:var(--f-d);font-size:28px;font-weight:400;color:var(--accent)}
+.hero-stat-label{font-size:12px;color:var(--text3);letter-spacing:0.08em;margin-top:2px}
+.hero-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
+  opacity:0;animation:hf 1.3s ease forwards 1.4s}
+.hero-scroll span{display:block;width:1px;height:36px;
+  background:linear-gradient(to bottom,var(--accent),transparent);
+  margin:0 auto;animation:sp 2.2s ease infinite}
+@keyframes hf{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes sp{0%,100%{opacity:0.2}50%{opacity:0.7}}
+
+/* SECTIONS */
+section{padding:100px 0}
+.sec-alt{background:var(--bg2)}
+.section-label{font-family:var(--f-m);font-size:11px;font-weight:400;
+  letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+.section-h{font-family:var(--f-d);font-size:clamp(28px,4vw,44px);
+  font-weight:300;line-height:1.2;margin-bottom:18px}
+.section-p{font-size:14px;font-weight:300;color:var(--text2);line-height:1.8;max-width:580px}
+
+/* SHOWCASE (Browse preview) */
+.showcase{margin-top:52px}
+.showcase-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.stab{font-family:var(--f-b);font-size:12px;font-weight:500;letter-spacing:0.04em;
+  padding:8px 18px;border-radius:20px;border:1px solid var(--border);
+  background:transparent;color:var(--text3);cursor:pointer;transition:all 0.3s;user-select:none}
+.stab.active{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+.stab:hover:not(.active){color:var(--text2);border-color:var(--border2)}
+
+.showcase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:760px){.showcase-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.showcase-grid{grid-template-columns:1fr}}
+
+.tl-card{background:var(--card);border:1px solid var(--border);border-radius:14px;
+  overflow:hidden;cursor:pointer;transition:all 0.4s cubic-bezier(0.16,1,0.3,1)}
+.tl-card:hover{border-color:var(--border2);transform:translateY(-4px);
+  box-shadow:0 16px 48px rgba(0,0,0,0.3)}
+.tl-card-top{height:6px;display:flex}
+.tl-card-top span{flex:1}
+.tl-card-body{padding:20px 18px 18px}
+.tl-card-cat{font-family:var(--f-m);font-size:10px;letter-spacing:0.1em;
+  text-transform:uppercase;margin-bottom:8px}
+.tl-card-title{font-family:var(--f-d);font-size:18px;font-weight:400;line-height:1.3;margin-bottom:6px}
+.tl-card-desc{font-size:12px;color:var(--text3);line-height:1.5;margin-bottom:14px}
+.tl-card-meta{display:flex;align-items:center;justify-content:space-between}
+.tl-card-author{display:flex;align-items:center;gap:8px}
+.tl-avatar{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:var(--f-m);font-size:10px;font-weight:400}
+.tl-card-author span{font-size:12px;color:var(--text3)}
+.tl-card-stats{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--text3)}
+.tl-card-stats svg{width:13px;height:13px;vertical-align:-2px;margin-right:3px;stroke:var(--text3);fill:none}
+.tl-mini-dots{display:flex;gap:4px;padding:0 18px 16px;flex-wrap:wrap}
+.tl-mini-dot{width:7px;height:7px;border-radius:50%;opacity:0.7}
+
+/* PROBLEM (quote) */
+.p-quote{font-family:var(--f-d);font-size:clamp(22px,3.2vw,32px);
+  font-weight:300;line-height:1.55;color:var(--text);
+  max-width:640px;padding-left:28px;position:relative}
+.p-quote::before{content:'';position:absolute;left:0;top:4px;bottom:4px;
+  width:3px;background:var(--accent);border-radius:2px;opacity:0.5}
+.p-context{font-size:14px;color:var(--text2);line-height:1.8;
+  max-width:600px;margin-top:28px}
+
+/* DEMO (interactive multilayer) */
+.demo-container{margin-top:52px;position:relative}
+.demo-window{background:var(--card);border:1px solid var(--border);border-radius:16px;
+  overflow:hidden;position:relative}
+.demo-toolbar{display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;border-bottom:1px solid var(--border);background:var(--bg3)}
+.demo-toolbar-title{font-family:var(--f-d);font-size:16px;font-weight:400}
+.demo-chips{display:flex;gap:6px}
+.demo-chip{font-size:11px;font-weight:500;letter-spacing:0.04em;
+  padding:5px 12px;border-radius:14px;border:1px solid var(--border);
+  cursor:pointer;transition:all 0.3s;user-select:none;display:flex;align-items:center;gap:5px}
+.demo-chip .dc-dot{width:7px;height:7px;border-radius:50%}
+.demo-chip.active{color:var(--text)}
+.demo-chip.inactive{opacity:0.35}
+.demo-chip[data-l="iphone"]{color:var(--c-blue)}
+.demo-chip[data-l="iphone"].active{border-color:var(--c-blue);background:var(--c-blue-d)}
+.demo-chip[data-l="android"]{color:var(--c-green)}
+.demo-chip[data-l="android"].active{border-color:var(--c-green);background:var(--c-green-d)}
+.demo-chip[data-l="industry"]{color:var(--c-pink)}
+.demo-chip[data-l="industry"].active{border-color:var(--c-pink);background:var(--c-pink-d)}
+
+.demo-body{padding:24px 20px 20px;position:relative;min-height:340px}
+.demo-axis{position:absolute;left:32px;top:24px;bottom:20px;width:1px;background:rgba(200,168,126,0.12)}
+
+.demo-event{display:flex;align-items:flex-start;gap:14px;padding:0 0 20px 46px;position:relative;
+  transition:all 0.45s cubic-bezier(0.16,1,0.3,1)}
+.demo-event.hidden{opacity:0;max-height:0;padding:0 0 0 46px;overflow:hidden;margin:0}
+.demo-event.visible{opacity:1;max-height:120px}
+.de-dot{position:absolute;left:26px;top:4px;width:11px;height:11px;border-radius:50%;
+  border:2.5px solid var(--card);z-index:2;transition:transform 0.25s ease}
+.de-dot.blue{background:var(--c-blue);box-shadow:0 0 0 3px var(--c-blue-d)}
+.de-dot.green{background:var(--c-green);box-shadow:0 0 0 3px var(--c-green-d)}
+.de-dot.pink{background:var(--c-pink);box-shadow:0 0 0 3px var(--c-pink-d)}
+.de-year{font-family:var(--f-m);font-size:11px;color:var(--text3);letter-spacing:0.1em}
+.de-title{font-family:var(--f-d);font-size:16px;color:var(--text);line-height:1.3}
+.de-tag{font-family:var(--f-m);font-size:10px;letter-spacing:0.06em;
+  padding:2px 7px;border-radius:8px;display:inline-block;margin-top:3px}
+.de-tag.blue{background:var(--c-blue-d);color:var(--c-blue)}
+.de-tag.green{background:var(--c-green-d);color:var(--c-green)}
+.de-tag.pink{background:var(--c-pink-d);color:var(--c-pink)}
+
+.demo-label{position:absolute;bottom:14px;right:20px;
+  font-family:var(--f-m);font-size:11px;color:var(--text3);letter-spacing:0.1em}
+
+/* FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+@media(max-width:760px){.features-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.features-grid{grid-template-columns:1fr}}
+
+.f-card{background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:28px 22px;transition:all 0.35s cubic-bezier(0.16,1,0.3,1);position:relative;overflow:hidden}
+.f-card:hover{border-color:var(--border2);transform:translateY(-3px)}
+.f-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  margin-bottom:16px;font-size:18px}
+.f-title{font-family:var(--f-d);font-size:18px;font-weight:400;margin-bottom:6px}
+.f-desc{font-size:14px;color:var(--text2);line-height:1.65}
+
+/* TRUST */
+.trust-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+@media(max-width:640px){.trust-row{grid-template-columns:1fr}}
+.trust-item{background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:24px 20px;text-align:center;transition:border-color 0.3s}
+.trust-item:hover{border-color:var(--border2)}
+.trust-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  margin:0 auto 14px;font-family:var(--f-m);font-size:16px}
+.trust-item:nth-child(1) .trust-icon{background:var(--c-green-d);color:var(--c-green)}
+.trust-item:nth-child(2) .trust-icon{background:var(--accent-soft);color:var(--accent)}
+.trust-item:nth-child(3) .trust-icon{background:rgba(154,149,144,0.1);color:var(--text2)}
+.trust-name{font-size:14px;font-weight:500;margin-bottom:5px}
+.trust-desc{font-size:12px;color:var(--text2);line-height:1.6}
+
+/* USECASES */
+.uc-scroll{display:flex;gap:14px;margin-top:40px;overflow-x:auto;padding-bottom:12px;
+  -ms-overflow-style:none;scrollbar-width:none}
+.uc-scroll::-webkit-scrollbar{display:none}
+.uc-card{min-width:260px;max-width:300px;flex-shrink:0;
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:24px 20px;transition:all 0.3s}
+.uc-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.uc-emoji{font-size:24px;margin-bottom:12px}
+.uc-text{font-size:14px;color:var(--text2);line-height:1.6}
+.uc-text strong{color:var(--text);font-weight:500}
+
+/* PRICING */
+.pricing-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:44px;max-width:720px}
+@media(max-width:560px){.pricing-row{grid-template-columns:1fr}}
+.pr-card{background:var(--card);border:1px solid var(--border);border-radius:16px;
+  padding:36px 28px;position:relative;transition:all 0.3s}
+.pr-card:hover{border-color:var(--border2)}
+.pr-card.pro{border-color:var(--accent)}
+.pr-card.pro::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--accent);border-radius:16px 16px 0 0}
+.pr-name{font-family:var(--f-m);font-size:12px;letter-spacing:0.16em;
+  text-transform:uppercase;color:var(--text3);margin-bottom:14px}
+.pr-card.pro .pr-name{color:var(--accent)}
+.pr-price{font-family:var(--f-d);font-size:44px;font-weight:300;line-height:1;margin-bottom:4px}
+.pr-period{font-size:12px;color:var(--text3);margin-bottom:24px}
+.pr-features{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:28px}
+.pr-features li{font-size:14px;color:var(--text2);line-height:1.45;padding-left:22px;position:relative}
+.pr-features li::before{content:'';position:absolute;left:0;top:6px;width:10px;height:10px;
+  border-radius:50%;border:1.5px solid var(--text3)}
+.pr-card.pro .pr-features li::before{border-color:var(--accent);background:var(--accent-soft)}
+.pr-btn{display:block;width:100%;text-align:center;font-family:var(--f-b);font-size:14px;
+  font-weight:500;letter-spacing:0.06em;padding:14px 0;border-radius:8px;
+  border:none;cursor:pointer;transition:all 0.3s;text-decoration:none}
+.pr-btn-free{color:var(--text);background:var(--bg3);border:1px solid var(--border2)}
+.pr-btn-free:hover{background:var(--card-h);border-color:var(--accent)}
+.pr-btn-pro{color:var(--bg);background:var(--accent)}
+.pr-btn-pro:hover{background:#D4B88E;transform:translateY(-1px)}
+
+/* FINAL CTA */
+.final-cta{text-align:center;padding:120px 24px;position:relative}
+.final-cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:600px;height:500px;
+  background:radial-gradient(ellipse,rgba(200,168,126,0.04) 0%,transparent 65%);pointer-events:none}
+.final-h{font-family:var(--f-d);font-size:clamp(28px,4vw,42px);font-weight:300;line-height:1.3;margin-bottom:16px}
+.final-sub{font-size:14px;color:var(--text2);margin-bottom:40px;line-height:1.7}
+.final-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:48px 24px}
+.footer-inner{max-width:1040px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-left .fl-brand{font-family:var(--f-d);font-size:18px;font-weight:300;
+  letter-spacing:0.2em;color:var(--accent);text-transform:uppercase}
+.footer-left .fl-copy{font-size:12px;color:var(--text3);margin-top:4px}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:12px;color:var(--text3);text-decoration:none;transition:color 0.3s}
+.footer-links a:hover{color:var(--text2)}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  section{padding:72px 0}
+  .hero{padding:100px 20px 50px}
+  .hero-stats{gap:24px}
+  .demo-chips{flex-wrap:wrap}
+}
+</style>
+</head>
+<body style="background-color:#0A0A0C;">
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand"><svg width="14" height="32" viewBox="0 0 16 36" style="vertical-align:middle;margin-right:4px"><line x1="8" y1="0" x2="8" y2="36" stroke="#C8A87E" stroke-width="1.2" opacity="0.18"/><circle cx="8" cy="7" r="2.5" fill="none" stroke="#C8A87E" stroke-width="1.2" opacity="0.35"/><circle cx="8" cy="18" r="4" fill="#C8A87E"/><circle cx="8" cy="29" r="2.5" fill="none" stroke="#C8A87E" stroke-width="1.2" opacity="0.35"/></svg>Chronos</a>
+    <div class="nav-links">
+      <a href="#features" class="nav-link">機能</a>
+      <a href="#pricing" class="nav-link">料金</a>
+      <a href="#" class="nav-cta-s">ログイン</a>
+      <a href="#" class="nav-cta">無料で始める</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"><canvas id="heroBg"></canvas></div>
+  <h1 class="hero-tagline">Every event has context.</h1>
+  <p class="hero-sub">
+    テーマを入力するだけで、AIが年表を自動生成。<br>
+    複数のレイヤーを重ねて、出来事の文脈を可視化する。
+  </p>
+  <div class="hero-actions">
+    <a href="#" class="btn-primary">無料で年表をつくる</a>
+    <a href="#demo" class="btn-secondary">どんな体験か見る</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">30秒</div>
+      <div class="hero-stat-label">で年表が完成</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">3レイヤー</div>
+      <div class="hero-stat-label">まで同時表示</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">Free</div>
+      <div class="hero-stat-label">ではじめられる</div>
+    </div>
+  </div>
+  <div class="hero-scroll"><span></span></div>
+</section>
+
+<!-- BROWSE / SHOWCASE -->
+<section class="sec-alt">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Explore</p>
+      <h2 class="section-h">見つけて、読んで、<br>自分でもつくる。</h2>
+      <p class="section-p">ユーザーが公開した年表を、カテゴリごとに探索。気になるテーマを見つけよう。</p>
+    </div>
+    <div class="showcase reveal d2">
+      <div class="showcase-tabs">
+        <button class="stab active" onclick="filterCards('all',this)">すべて</button>
+        <button class="stab" onclick="filterCards('tech',this)">テクノロジー</button>
+        <button class="stab" onclick="filterCards('culture',this)">カルチャー</button>
+        <button class="stab" onclick="filterCards('politics',this)">政治・社会</button>
+        <button class="stab" onclick="filterCards('science',this)">サイエンス</button>
+        <button class="stab" onclick="filterCards('business',this)">ビジネス</button>
+      </div>
+      <div class="showcase-grid" id="showcaseGrid">
+
+        <div class="tl-card" data-cat="tech">
+          <div class="tl-card-top"><span style="background:var(--c-blue)"></span><span style="background:var(--c-green)"></span><span style="background:var(--c-pink)"></span></div>
+          <div class="tl-card-body">
+            <div class="tl-card-cat" style="color:var(--c-blue)">テクノロジー</div>
+            <div class="tl-card-title">モバイル革命の全体像</div>
+            <div class="tl-card-desc">iPhone × Android × 業界動向を重ねた年表。</div>
+            <div class="tl-card-meta">
+              <div class="tl-card-author">
+                <div class="tl-avatar" style="background:var(--c-blue-d);color:var(--c-blue)">K</div>
+                <span>@kenta_h</span>
+              </div>
+              <div class="tl-card-stats">
+                <span><svg viewBox="0 0 24 24" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>342</span>
+                <span>32 events</span>
+              </div>
+            </div>
+          </div>
+          <div class="tl-mini-dots">
+            <span class="tl-mini-dot" style="background:var(--c-blue)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-green)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-blue)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-pink)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-green)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-blue)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-green)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-pink)"></span>
+          </div>
+        </div>
+
+        <div class="tl-card" data-cat="culture">
+          <div class="tl-card-top"><span style="background:var(--c-pink)"></span><span style="background:var(--c-gold)"></span></div>
+          <div class="tl-card-body">
+            <div class="tl-card-cat" style="color:var(--c-pink)">カルチャー</div>
+            <div class="tl-card-title">J-POPとストリーミングの30年</div>
+            <div class="tl-card-desc">CD全盛期からサブスク時代までの音楽産業の変遷。</div>
+            <div class="tl-card-meta">
+              <div class="tl-card-author">
+                <div class="tl-avatar" style="background:var(--c-pink-d);color:var(--c-pink)">M</div>
+                <span>@music_nerd</span>
+              </div>
+              <div class="tl-card-stats">
+                <span><svg viewBox="0 0 24 24" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>218</span>
+                <span>45 events</span>
+              </div>
+            </div>
+          </div>
+          <div class="tl-mini-dots">
+            <span class="tl-mini-dot" style="background:var(--c-pink)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-gold)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-pink)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-pink)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-gold)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-pink)"></span>
+          </div>
+        </div>
+
+        <div class="tl-card" data-cat="politics">
+          <div class="tl-card-top"><span style="background:var(--c-purple)"></span><span style="background:var(--c-blue)"></span></div>
+          <div class="tl-card-body">
+            <div class="tl-card-cat" style="color:var(--c-purple)">政治・社会</div>
+            <div class="tl-card-title">冷戦と宇宙開発の相関</div>
+            <div class="tl-card-desc">政治的対立が科学技術をどう加速させたか。</div>
+            <div class="tl-card-meta">
+              <div class="tl-card-author">
+                <div class="tl-avatar" style="background:var(--c-purple-d);color:var(--c-purple)">T</div>
+                <span>@space_hist</span>
+              </div>
+              <div class="tl-card-stats">
+                <span><svg viewBox="0 0 24 24" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>489</span>
+                <span>58 events</span>
+              </div>
+            </div>
+          </div>
+          <div class="tl-mini-dots">
+            <span class="tl-mini-dot" style="background:var(--c-purple)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-blue)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-purple)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-blue)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-purple)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-blue)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-purple)"></span>
+          </div>
+        </div>
+
+        <div class="tl-card" data-cat="science">
+          <div class="tl-card-top"><span style="background:var(--c-green)"></span></div>
+          <div class="tl-card-body">
+            <div class="tl-card-cat" style="color:var(--c-green)">サイエンス</div>
+            <div class="tl-card-title">ワクチン開発の200年史</div>
+            <div class="tl-card-desc">天然痘からmRNAまで、免疫学の進歩を辿る。</div>
+            <div class="tl-card-meta">
+              <div class="tl-card-author">
+                <div class="tl-avatar" style="background:var(--c-green-d);color:var(--c-green)">S</div>
+                <span>@sci_chrono</span>
+              </div>
+              <div class="tl-card-stats">
+                <span><svg viewBox="0 0 24 24" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>176</span>
+                <span>40 events</span>
+              </div>
+            </div>
+          </div>
+          <div class="tl-mini-dots">
+            <span class="tl-mini-dot" style="background:var(--c-green)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-green)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-green)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-green)"></span>
+          </div>
+        </div>
+
+        <div class="tl-card" data-cat="business">
+          <div class="tl-card-top"><span style="background:var(--c-gold)"></span><span style="background:var(--c-blue)"></span></div>
+          <div class="tl-card-body">
+            <div class="tl-card-cat" style="color:var(--c-gold)">ビジネス</div>
+            <div class="tl-card-title">GAFAMの成長と規制の歴史</div>
+            <div class="tl-card-desc">テック巨人の拡大と独占禁止法の攻防。</div>
+            <div class="tl-card-meta">
+              <div class="tl-card-author">
+                <div class="tl-avatar" style="background:var(--c-gold-d);color:var(--c-gold)">A</div>
+                <span>@biz_insight</span>
+              </div>
+              <div class="tl-card-stats">
+                <span><svg viewBox="0 0 24 24" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>305</span>
+                <span>36 events</span>
+              </div>
+            </div>
+          </div>
+          <div class="tl-mini-dots">
+            <span class="tl-mini-dot" style="background:var(--c-gold)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-blue)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-gold)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-blue)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-gold)"></span>
+          </div>
+        </div>
+
+        <div class="tl-card" data-cat="tech">
+          <div class="tl-card-top"><span style="background:var(--c-blue)"></span><span style="background:var(--c-gold)"></span></div>
+          <div class="tl-card-body">
+            <div class="tl-card-cat" style="color:var(--c-blue)">テクノロジー</div>
+            <div class="tl-card-title">AI研究の系譜：1956年から現在まで</div>
+            <div class="tl-card-desc">AIの冬と春。ブレイクスルーの歴史。</div>
+            <div class="tl-card-meta">
+              <div class="tl-card-author">
+                <div class="tl-avatar" style="background:var(--c-blue-d);color:var(--c-blue)">R</div>
+                <span>@ai_timeline</span>
+              </div>
+              <div class="tl-card-stats">
+                <span><svg viewBox="0 0 24 24" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>567</span>
+                <span>72 events</span>
+              </div>
+            </div>
+          </div>
+          <div class="tl-mini-dots">
+            <span class="tl-mini-dot" style="background:var(--c-blue)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-gold)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-blue)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-blue)"></span>
+            <span class="tl-mini-dot" style="background:var(--c-gold)"></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section>
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Why</p>
+      <div class="p-quote">
+        ひとつの年表では、点にしか見えない。<br>
+        でも年表を重ねた瞬間、<br>
+        線と線が交差して、文脈が浮かび上がる。
+      </div>
+      <p class="p-context">
+        iPhoneが発表された2007年。同じ年にAndroidも始動していた。その裏には通信規制の緩和があった。——ひとつの出来事の「なぜ」は、別の出来事と重ねてはじめて見えてくる。Chronosは、AIが年表を生成し、レイヤーを重ねることで、あなたの「知りたい」に文脈を与える。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section class="sec-alt" id="demo">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Experience</p>
+      <h2 class="section-h">レイヤーをON/OFFして、<br>文脈の変化を体験する。</h2>
+      <p class="section-p">レイヤーをタップするだけで、見える景色が変わる。</p>
+    </div>
+    <div class="demo-container reveal d2">
+      <div class="demo-window">
+        <div class="demo-toolbar">
+          <div class="demo-toolbar-title">モバイル革命の全体像</div>
+          <div class="demo-chips">
+            <div class="demo-chip active" data-l="iphone" onclick="toggleDemo('iphone',this)"><span class="dc-dot" style="background:var(--c-blue)"></span>iPhone</div>
+            <div class="demo-chip active" data-l="android" onclick="toggleDemo('android',this)"><span class="dc-dot" style="background:var(--c-green)"></span>Android</div>
+            <div class="demo-chip active" data-l="industry" onclick="toggleDemo('industry',this)"><span class="dc-dot" style="background:var(--c-pink)"></span>業界動向</div>
+          </div>
+        </div>
+        <div class="demo-body">
+          <div class="demo-axis"></div>
+          <div class="demo-event visible" data-dl="iphone">
+            <div class="de-dot blue"></div>
+            <div><div class="de-year">2007.01</div><div class="de-title">Steve Jobs、iPhoneを発表</div><span class="de-tag blue">iPhone</span></div>
+          </div>
+          <div class="demo-event visible" data-dl="android">
+            <div class="de-dot green"></div>
+            <div><div class="de-year">2007.11</div><div class="de-title">Google、Android SDKを発表</div><span class="de-tag green">Android</span></div>
+          </div>
+          <div class="demo-event visible" data-dl="iphone">
+            <div class="de-dot blue"></div>
+            <div><div class="de-year">2008.07</div><div class="de-title">App Store開始</div><span class="de-tag blue">iPhone</span></div>
+          </div>
+          <div class="demo-event visible" data-dl="android">
+            <div class="de-dot green"></div>
+            <div><div class="de-year">2008.09</div><div class="de-title">初のAndroid端末 HTC Dream</div><span class="de-tag green">Android</span></div>
+          </div>
+          <div class="demo-event visible" data-dl="industry">
+            <div class="de-dot pink"></div>
+            <div><div class="de-year">2008.09</div><div class="de-title">スマートフォン市場の二強構造へ</div><span class="de-tag pink">業界動向</span></div>
+          </div>
+          <div class="demo-event visible" data-dl="iphone">
+            <div class="de-dot blue"></div>
+            <div><div class="de-year">2010.06</div><div class="de-title">iPhone 4 — Retina Display</div><span class="de-tag blue">iPhone</span></div>
+          </div>
+          <div class="demo-event visible" data-dl="industry">
+            <div class="de-dot pink"></div>
+            <div><div class="de-year">2013.12</div><div class="de-title">世界スマホ出荷10億台突破</div><span class="de-tag pink">業界動向</span></div>
+          </div>
+          <div class="demo-label">レイヤーをタップして体験 →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Features</p>
+      <h2 class="section-h">シンプルに、<br>でも強力に。</h2>
+    </div>
+    <div class="features-grid">
+      <div class="f-card reveal">
+        <div class="f-icon" style="background:var(--c-blue-d)">📐</div>
+        <div class="f-title">マルチレイヤー表示</div>
+        <div class="f-desc">最大3つのタイムラインを同じ時間軸に重ねて表示。レイヤーをON/OFFして、出来事の関係性を発見する。</div>
+      </div>
+      <div class="f-card reveal d1">
+        <div class="f-icon" style="background:var(--c-green-d)">💡</div>
+        <div class="f-title">AI自動生成</div>
+        <div class="f-desc">テーマを入力するだけで、AIが年表を自動生成。点イベントも期間イベントも、構造化されたタイムラインに。</div>
+      </div>
+      <div class="f-card reveal d2">
+        <div class="f-icon" style="background:var(--c-pink-d)">✓</div>
+        <div class="f-title">信憑性フラグ</div>
+        <div class="f-desc">確認済み・諸説あり・未検証。すべてのイベントに信頼度フラグと出典を明示。AIだからこそ、誠実に。</div>
+      </div>
+      <div class="f-card reveal">
+        <div class="f-icon" style="background:var(--accent-soft)">🔗</div>
+        <div class="f-title">共有と公開</div>
+        <div class="f-desc">URLひとつで年表を共有。OGPカード対応で、SNSでのシェアも美しく。埋め込みにも対応。</div>
+      </div>
+      <div class="f-card reveal d1">
+        <div class="f-icon" style="background:var(--c-gold-d)">👤</div>
+        <div class="f-title">マイページ</div>
+        <div class="f-desc">chronos.app/@username で、あなたの年表を一覧公開。知的なポートフォリオとして活用できる。</div>
+      </div>
+      <div class="f-card reveal d2">
+        <div class="f-icon" style="background:var(--c-purple-d)">📱</div>
+        <div class="f-title">スマホ最適化</div>
+        <div class="f-desc">縦スクロールで自然に読めるモバイルファースト設計。どこでも、誰とでも年表を楽しめる。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="sec-alt">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Trust</p>
+      <h2 class="section-h">AIで作る。<br>だからこそ、誠実に。</h2>
+      <p class="section-p">AIが生成した情報には「未検証」のフラグ。出典を確認し、事実と仮説を区別する。知的な誠実さを、設計に組み込む。</p>
+    </div>
+    <div class="trust-row reveal d2">
+      <div class="trust-item">
+        <div class="trust-icon">✓</div>
+        <div class="trust-name">確認済み</div>
+        <div class="trust-desc">出典が明確で、広く認められた事実。出典URLとともに記録。</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">⚡</div>
+        <div class="trust-name">諸説あり</div>
+        <div class="trust-desc">複数の説がある出来事。それぞれの立場を併記し、読み手の判断を尊重する。</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">?</div>
+        <div class="trust-name">未検証</div>
+        <div class="trust-desc">AI生成のまま未確認。検証プロセスを透明にし、ユーザーの確認を促す。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section>
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Use Cases</p>
+      <h2 class="section-h">あなたなら、<br>何を重ねますか。</h2>
+    </div>
+    <div class="uc-scroll reveal d2">
+      <div class="uc-card">
+        <div class="uc-emoji">📱</div>
+        <div class="uc-text"><strong>iPhoneとAndroidの歴史を重ねて、</strong>モバイル革命の全体像を俯瞰する。</div>
+      </div>
+      <div class="uc-card">
+        <div class="uc-emoji">🎵</div>
+        <div class="uc-text"><strong>J-POPとストリーミングを重ねて、</strong>音楽産業の構造変化を読み解く。</div>
+      </div>
+      <div class="uc-card">
+        <div class="uc-emoji">🌍</div>
+        <div class="uc-text"><strong>気候政策と産業革命を重ねて、</strong>環境問題の因果関係を可視化する。</div>
+      </div>
+      <div class="uc-card">
+        <div class="uc-emoji">🏛</div>
+        <div class="uc-text"><strong>冷戦と宇宙開発を重ねて、</strong>科学と政治の相互作用を発見する。</div>
+      </div>
+      <div class="uc-card">
+        <div class="uc-emoji">📚</div>
+        <div class="uc-text"><strong>論文の参考文献を年表にして、</strong>研究の系譜を視覚的に整理する。</div>
+      </div>
+      <div class="uc-card">
+        <div class="uc-emoji">🎮</div>
+        <div class="uc-text"><strong>ゲーム機の歴史を重ねて、</strong>任天堂・ソニー・MSの戦略を比較する。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec-alt" id="pricing">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Pricing</p>
+      <h2 class="section-h">はじめるのに、<br>理由はいらない。</h2>
+      <p class="section-p">まずは無料で。あなたのペースで年表づくりを楽しもう。</p>
+    </div>
+    <div class="pricing-row reveal d2">
+      <div class="pr-card">
+        <div class="pr-name">Free</div>
+        <div class="pr-price">¥0</div>
+        <div class="pr-period">ずっと無料</div>
+        <ul class="pr-features">
+          <li>年表を3つまで作成</li>
+          <li>AI自動生成 月5回まで</li>
+          <li>最大3レイヤー表示</li>
+          <li>共有リンクの発行</li>
+          <li>マイページ（@username）</li>
+        </ul>
+        <a href="#" class="pr-btn pr-btn-free">無料で始める</a>
+      </div>
+      <div class="pr-card pro">
+        <div class="pr-name">Pro</div>
+        <div class="pr-price">¥800<span style="font-family:var(--f-b);font-size:14px;color:var(--text2);font-weight:300"> /月</span></div>
+        <div class="pr-period">年額 ¥6,800（2ヶ月分お得）</div>
+        <ul class="pr-features">
+          <li>年表を無制限に作成</li>
+          <li>AI自動生成 無制限</li>
+          <li>AI Edit Assist（編集支援）</li>
+          <li>高解像度書き出し・透かしなし</li>
+          <li>すべてのテンプレート</li>
+          <li>優先サポート</li>
+        </ul>
+        <a href="#" class="pr-btn pr-btn-pro">Proを始める</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="final-h">すべての出来事には、<br>文脈がある。</h2>
+      <p class="final-sub">テーマを入力して、30秒。<br>あなたの「知りたい」を、年表にしよう。</p>
+      <div class="final-actions">
+        <a href="#" class="btn-primary">無料で年表をつくる</a>
+        <a href="#demo" class="btn-secondary">デモを体験する</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="fl-brand"><svg width="14" height="32" viewBox="0 0 16 36" style="vertical-align:middle;margin-right:4px"><line x1="8" y1="0" x2="8" y2="36" stroke="#C8A87E" stroke-width="1.2" opacity="0.18"/><circle cx="8" cy="7" r="2.5" fill="none" stroke="#C8A87E" stroke-width="1.2" opacity="0.35"/><circle cx="8" cy="18" r="4" fill="#C8A87E"/><circle cx="8" cy="29" r="2.5" fill="none" stroke="#C8A87E" stroke-width="1.2" opacity="0.35"/></svg>Chronos</div>
+      <div class="fl-copy">© 2026 Chronos. Every event has context.</div>
+    </div>
+    <div class="footer-links">
+      <a href="#">利用規約</a>
+      <a href="#">プライバシー</a>
+      <a href="#">お問い合わせ</a>
+      <a href="#">X (Twitter)</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ===== HERO TIMELINE BACKGROUND =====
+(function(){
+  const canvas = document.getElementById('heroBg');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, dpr;
+  const gold = [200,168,126];
+  const blue = [91,155,213];
+  const pink = [212,132,154];
+  const teal = [91,188,180];
+
+  // Timeline axes
+  const axes = [];
+  const dots = [];
+
+  function resize(){
+    dpr = window.devicePixelRatio || 1;
+    W = canvas.parentElement.clientWidth;
+    H = canvas.parentElement.clientHeight;
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    initAxes();
+  }
+
+  function initAxes(){
+    axes.length = 0;
+    dots.length = 0;
+    const count = Math.max(5, Math.floor(W / 120));
+    for(let i=0; i<count; i++){
+      const x = (W/(count+1)) * (i+1) + (Math.random()-0.5)*40;
+      const colors = [gold,blue,pink,teal];
+      const c = colors[i % colors.length];
+      const speed = 0.15 + Math.random()*0.25;
+      const opacity = 0.06 + Math.random()*0.08;
+      axes.push({x, color:c, opacity, phase: Math.random()*Math.PI*2});
+
+      // Dots on this axis
+      const dotCount = 3 + Math.floor(Math.random()*4);
+      for(let j=0; j<dotCount; j++){
+        const y = H*0.08 + Math.random()*H*0.84;
+        const r = 2 + Math.random()*3.5;
+        const filled = Math.random()>0.5;
+        const dotSpeed = speed * (0.6 + Math.random()*0.8);
+        dots.push({
+          x, baseY:y, r, color:c, filled,
+          speed:dotSpeed, phase:Math.random()*Math.PI*2,
+          axisOpacity:opacity,
+          pulsePhase:Math.random()*Math.PI*2,
+          pulseSpeed:0.3+Math.random()*0.4
+        });
+      }
+    }
+  }
+
+  let t = 0;
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    t += 0.008;
+
+    // Draw axes (vertical lines)
+    axes.forEach(a => {
+      const sway = Math.sin(t + a.phase) * 3;
+      ctx.beginPath();
+      ctx.moveTo(a.x + sway, 0);
+      ctx.lineTo(a.x + sway, H);
+      ctx.strokeStyle = `rgba(${a.color.join(',')},${a.opacity})`;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    });
+
+    // Draw dots
+    dots.forEach(d => {
+      const axisSway = Math.sin(t + d.phase) * 3;
+      const drift = Math.sin(t * d.speed + d.phase) * 20;
+      const x = d.x + axisSway;
+      const y = d.baseY + drift;
+      const pulse = 0.5 + 0.5 * Math.sin(t * d.pulseSpeed + d.pulsePhase);
+      const alpha = (0.15 + pulse * 0.25) * (d.axisOpacity / 0.1);
+
+      ctx.beginPath();
+      ctx.arc(x, y, d.r, 0, Math.PI*2);
+
+      if(d.filled){
+        ctx.fillStyle = `rgba(${d.color.join(',')},${alpha * 0.6})`;
+        ctx.fill();
+        // Glow
+        ctx.shadowColor = `rgba(${d.color.join(',')},${alpha * 0.3})`;
+        ctx.shadowBlur = d.r * 3;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      } else {
+        ctx.strokeStyle = `rgba(${d.color.join(',')},${alpha * 0.5})`;
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+      }
+    });
+
+    // Occasional horizontal connector between nearby dots
+    for(let i=0; i<dots.length; i++){
+      for(let j=i+1; j<dots.length; j++){
+        const a = dots[i], b = dots[j];
+        if(a.x === b.x) continue;
+        const driftA = Math.sin(t * a.speed + a.phase)*20;
+        const driftB = Math.sin(t * b.speed + b.phase)*20;
+        const yA = a.baseY + driftA, yB = b.baseY + driftB;
+        const dist = Math.abs(yA - yB);
+        if(dist < 30 && Math.abs(a.x - b.x) < W*0.25){
+          const fade = 1 - dist/30;
+          ctx.beginPath();
+          ctx.moveTo(a.x + Math.sin(t+a.phase)*3, yA);
+          ctx.lineTo(b.x + Math.sin(t+b.phase)*3, yB);
+          ctx.strokeStyle = `rgba(${gold.join(',')},${fade * 0.04})`;
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  draw();
+})();
+// Reveal on scroll
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v')})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Showcase category filter
+function filterCards(cat,btn){
+  document.querySelectorAll('.stab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.tl-card').forEach(c=>{
+    c.style.display=(cat==='all'||c.dataset.cat===cat)?'':'none';
+  });
+}
+
+// Demo layer toggle
+const demoActive=new Set(['iphone','android','industry']);
+function toggleDemo(layer,chip){
+  if(demoActive.has(layer)){
+    if(demoActive.size<=1)return;
+    demoActive.delete(layer);
+    chip.classList.remove('active');chip.classList.add('inactive');
+  }else{
+    demoActive.add(layer);
+    chip.classList.add('active');chip.classList.remove('inactive');
+  }
+  document.querySelectorAll('.demo-event').forEach(ev=>{
+    if(demoActive.has(ev.dataset.dl)){
+      ev.classList.remove('hidden');ev.classList.add('visible');
+    }else{
+      ev.classList.remove('visible');ev.classList.add('hidden');
+    }
+  });
+}
+</script>
+</body>
+</html>
