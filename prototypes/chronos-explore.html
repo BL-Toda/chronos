@@ -143,8 +143,9 @@ body{font-family:var(--f-b);color:var(--text);min-height:100vh;
 .tl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media(max-width:1100px){.tl-grid{grid-template-columns:repeat(2,1fr)}}
 
-.tl-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;
-  overflow:hidden;cursor:pointer;transition:all 0.3s ease}
+.tl-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;
+  overflow:hidden;cursor:pointer;transition:all 0.3s ease;
+  text-decoration:none;color:inherit}
 .tl-card:hover{border-color:var(--border2);transform:translateY(-3px);
   box-shadow:0 8px 32px rgba(0,0,0,0.25)}
 .tl-card-top{height:4px;display:flex}
@@ -178,7 +179,7 @@ body{font-family:var(--f-b);color:var(--text);min-height:100vh;
 
 .tl-list-item{display:flex;align-items:center;gap:14px;padding:12px 14px;
   border-radius:10px;border:1px solid transparent;cursor:pointer;
-  transition:all 0.2s}
+  transition:all 0.2s;text-decoration:none;color:inherit}
 .tl-list-item:hover{background:var(--bg-card);border-color:var(--border)}
 .tl-list-layers{display:flex;gap:3px;flex-shrink:0;width:28px}
 .tl-list-dot{width:6px;height:6px;border-radius:50%}
@@ -400,6 +401,24 @@ const DESCS={
   business:'ビジネスの転換点を構造的に分析した年表。',
   personal:'人生の出来事を複数の軸で記録した年表。'
 };
+// タイトル重複回避用の視点バリエーション（同一ベーステーマの2周目以降に付与）
+const QUALIFIERS=['黎明期','転換点','日本編','海外の潮流','人物でたどる','データで読む','論争の記録','制度と政策','失敗と教訓','地域からの視点','技術の裏側','メディアの記録','次の十年','資料でたどる'];
+const QUAL_DESCS=[
+  '始まりの時代に焦点をあてた年表。',
+  '流れを変えた出来事を軸にした年表。',
+  '日本国内の動きを中心に追った年表。',
+  '海外の動向を重ねて比較する年表。',
+  '関わった人々の歩みでたどる年表。',
+  '数値の推移とともに読み解く年表。',
+  '賛否が分かれた論点を整理した年表。',
+  '制度や政策の変遷を重ねた年表。',
+  'つまずきと学びの記録を集めた年表。',
+  '地域ごとの違いに注目した年表。',
+  '背後にある技術の進歩を追った年表。',
+  '報道と世論の動きを重ねた年表。',
+  'これからの展望までを見通す年表。',
+  '一次資料をもとに構成した年表。'
+];
 const NAMES=['toda_m','sato_ai','yui_art','kenta_h','rika_env','nao_biz','miki_m','abe_hist','hana_k','ryo_t','jun_s','emi_n','dai_k','yuki_o','mai_f','ken_y','aoi_m','shu_h','lin_w','tom_e'];
 
 function generateTimelines(count){
@@ -407,18 +426,22 @@ function generateTimelines(count){
   for(let i=0;i<count;i++){
     const cat=CATS[i%6];
     const titles=TITLES[cat.id];
-    const title=titles[i%titles.length];
+    const j=Math.floor(i/6);
+    const base=titles[j%titles.length];
+    const rep=Math.floor(j/titles.length);
+    const title=rep===0?base:`${base} — ${QUALIFIERS[(rep-1)%QUALIFIERS.length]}`;
+    const desc=rep===0?DESCS[cat.id]:QUAL_DESCS[(rep-1)%QUAL_DESCS.length];
     const layers=2+Math.floor(Math.random()*2);
     const lColors=[];for(let l=0;l<layers;l++)lColors.push(COLORS[(i+l*3)%COLORS.length]);
     items.push({
       id:i,cat:cat.id,catName:cat.name,catColor:cat.color,catColorD:cat.colorD,
-      title,desc:DESCS[cat.id],layers,lColors,
+      title,desc,layers,lColors,
       likes:Math.floor(Math.random()*3000)+50,
       events:Math.floor(Math.random()*80)+8,
       date:20260213-Math.floor(Math.random()*60),
       author:NAMES[i%NAMES.length],
       authorInitial:NAMES[i%NAMES.length][0].toUpperCase(),
-      search:(title+' '+cat.catName+' '+DESCS[cat.id]).toLowerCase()
+      search:(title+' '+cat.name+' '+desc).toLowerCase()
     });
   }
   return items;
@@ -448,7 +471,7 @@ function renderGridCard(item){
     extraDots.push(`<div class="tl-mini-dot" style="background:${item.lColors[(i+1)%item.lColors.length]}"></div>`);
   });
 
-  return `<div class="tl-card">
+  return `<a class="tl-card" href="chronos-viewer.html">
     <div class="tl-card-top">${layerDots}</div>
     <div class="tl-card-body">
       <div class="tl-card-cat" style="color:${item.catColor}">${item.catName}</div>
@@ -460,12 +483,12 @@ function renderGridCard(item){
       </div>
     </div>
     <div class="tl-mini">${extraDots.join('')}</div>
-  </div>`;
+  </a>`;
 }
 
 function renderListItem(item){
   const dots=item.lColors.map(c=>`<div class="tl-list-dot" style="background:${c}"></div>`).join('');
-  return `<div class="tl-list-item">
+  return `<a class="tl-list-item" href="chronos-viewer.html">
     <div class="tl-list-layers">${dots}</div>
     <div class="tl-list-body">
       <div class="tl-list-title">${item.title}</div>
@@ -482,7 +505,7 @@ function renderListItem(item){
       </div>
       <span><svg viewBox="0 0 24 24" style="width:11px;height:11px;stroke:var(--text3);fill:none;stroke-width:2;vertical-align:-1px;margin-right:2px"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>${item.likes.toLocaleString()}</span>
     </div>
-  </div>`;
+  </a>`;
 }
 
 function applyFilters(){

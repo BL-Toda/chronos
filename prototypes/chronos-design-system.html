@@ -105,13 +105,14 @@ body{font-family:var(--f-b);color:var(--text);background:var(--bg);-webkit-font-
   <ul class="toc-list">
     <li><a href="#tokens"><span class="toc-num">01</span>デザイントークン（CSS変数 → TS定数）</a></li>
     <li><a href="#typo"><span class="toc-num">02</span>タイポグラフィ仕様</a></li>
-    <li><a href="#components"><span class="toc-num">03</span>コンポーネントカタログ & Props定義</a></li>
-    <li><a href="#state"><span class="toc-num">04</span>状態管理設計</a></li>
-    <li><a href="#data"><span class="toc-num">05</span>データモデル（TypeScript型）</a></li>
-    <li><a href="#pages"><span class="toc-num">06</span>ページ構成 & ルーティング</a></li>
-    <li><a href="#structure"><span class="toc-num">07</span>推奨ディレクトリ構成</a></li>
-    <li><a href="#stack"><span class="toc-num">08</span>推奨技術スタック</a></li>
-    <li><a href="#proto"><span class="toc-num">09</span>プロトタイプ → React 対応表</a></li>
+    <li><a href="#logo"><span class="toc-num">03</span>ロゴ</a></li>
+    <li><a href="#components"><span class="toc-num">04</span>コンポーネントカタログ & Props定義</a></li>
+    <li><a href="#state"><span class="toc-num">05</span>状態管理設計</a></li>
+    <li><a href="#data"><span class="toc-num">06</span>データモデル（TypeScript型）</a></li>
+    <li><a href="#pages"><span class="toc-num">07</span>ページ構成 & ルーティング</a></li>
+    <li><a href="#structure"><span class="toc-num">08</span>推奨ディレクトリ構成</a></li>
+    <li><a href="#stack"><span class="toc-num">09</span>推奨技術スタック</a></li>
+    <li><a href="#proto"><span class="toc-num">10</span>プロトタイプ → React 対応表</a></li>
   </ul>
 </div>
 
@@ -206,7 +207,8 @@ export const fontFamily = {
   mono:    "'JetBrains Mono', monospace",
 } as const;
 
-// Erode: 英数字の見出し・ブランド
+// Erode: 英数字の見出し（ロゴのワードマークはテキスト組みせず
+//        確定ロゴ画像 assets/chronos-logo.svg を使用 → 03参照）
 // Shippori Mincho: Erode未対応の日本語にフォールバック
 // ※ 斜体は使用しない（全ウェイト正体のみ）
 
@@ -248,9 +250,41 @@ export const fontWeight = {
   </table>
 </div>
 
-<!-- ===== 03. COMPONENTS ===== -->
+<!-- ===== 03. LOGO ===== -->
+<div class="section" id="logo">
+  <div class="section-label">03 — Logo</div>
+  <div class="section-title">ロゴ</div>
+  <div class="section-desc">確定ロゴ（グラデーション円シンボル + 白ワードマーク）。原本は <code style="font-family:var(--f-m);font-size:12px;color:var(--accent)">assets/chronos-logo.svg</code>。ワードマークをテキストで組み直さず、必ずSVG画像を使用する。</div>
+
+  <div class="comp">
+    <div class="comp-name">ロゴタイプ（横組み）</div>
+    <div class="comp-desc">assets/chronos-logo.svg — ヘッダー・LP・ドキュメントの標準表記。</div>
+    <div style="padding:32px;border-radius:12px;background:var(--bg2);border:1px solid var(--border);display:flex;justify-content:center;align-items:center">
+      <img src="assets/chronos-logo.svg" alt="Chronos ロゴ" style="height:40px;width:auto;display:block">
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="comp-name">シンボル単体</div>
+    <div class="comp-desc">assets/chronos-symbol.svg — favicon・アプリアイコン・省スペース用途。</div>
+    <div style="padding:32px;border-radius:12px;background:var(--bg2);border:1px solid var(--border);display:flex;justify-content:center;align-items:center">
+      <img src="assets/chronos-symbol.svg" alt="Chronos シンボル" style="height:56px;width:auto;display:block">
+    </div>
+  </div>
+
+  <table class="tbl">
+    <tr><th>規定</th><th>値</th><th>備考</th></tr>
+    <tr><td>アイソレーション</td><td><code>ロゴ高さの50%以上</code></td><td>SVGはロゴぴったりのサイズのため、設置時に周囲へ余白を確保する</td></tr>
+    <tr><td>ヘッダー高さ</td><td><code>100px</code></td><td>アプリ画面・LPのヘッダー/ナビ共通</td></tr>
+    <tr><td>ヘッダー内ロゴ高さ</td><td><code>40px</code></td><td>上下30pxずつの余白（= アイソレーション規定を満たす）</td></tr>
+    <tr><td>favicon</td><td><code>assets/favicon.png（64px）</code></td><td>+ <code>apple-touch-icon.png（180px）</code>。全プロトタイプのheadに設定済み</td></tr>
+    <tr><td>アセット</td><td><code>assets/chronos-logo.svg</code> / <code>assets/chronos-symbol.svg</code></td><td>リポジトリ直下に原本（5.7MB）、prototypes/assets/ に配信用軽量版（68KB）</td></tr>
+  </table>
+</div>
+
+<!-- ===== 04. COMPONENTS ===== -->
 <div class="section" id="components">
-  <div class="section-label">03 — Component Catalog</div>
+  <div class="section-label">04 — Component Catalog</div>
   <div class="section-title">コンポーネントカタログ</div>
   <div class="section-desc">プロトタイプのCSS class → Reactコンポーネント名の対応と、各コンポーネントのProps定義。</div>
 
@@ -394,9 +428,9 @@ export const fontWeight = {
   </div>
 </div>
 
-<!-- ===== 04. STATE ===== -->
+<!-- ===== 05. STATE ===== -->
 <div class="section" id="state">
-  <div class="section-label">04 — State Management</div>
+  <div class="section-label">05 — State Management</div>
   <div class="section-title">状態管理設計</div>
   <div class="section-desc">各状態のスコープと推奨管理方法。</div>
 
@@ -413,9 +447,9 @@ export const fontWeight = {
   </table>
 </div>
 
-<!-- ===== 05. DATA MODEL ===== -->
+<!-- ===== 06. DATA MODEL ===== -->
 <div class="section" id="data">
-  <div class="section-label">05 — Data Model</div>
+  <div class="section-label">06 — Data Model</div>
   <div class="section-title">データモデル</div>
 
   <div class="code">
@@ -466,7 +500,8 @@ interface Timeline {
   description: string;
   authorId: string;
   authorUsername: string;
-  visibility: 'public' | 'limited' | 'private';
+  visibility: 'public' | 'unlisted' | 'private';
+  shareId?: string;      // unlisted/private の共有URL用
   layers: Layer[];
   items: TimelineItem[];
   createdAt: string;
@@ -477,37 +512,38 @@ interface User {
   id: string;
   username: string;      // "@toda"
   displayName: string;
-  plan: 'free' | 'pro';
+  plan: 'free' | 'pro';  // Pro: ¥800/月・年額¥6,800（月あたり¥567）
   timelinesCount: number;
-  aiGenerationsUsed: number;
-  aiGenerationsLimit: number; // free: 5, pro: Infinity
+  aiGenerationsUsed: number;  // AI下書き生成の当月利用回数
+  aiGenerationsLimit: number; // free: 3/月, pro: Infinity
+  aiEditAssistUsed: number;   // AI Edit Assist の当月利用回数
+  aiEditAssistLimit: number;  // free: 10/月, pro: Infinity
 }</pre>
   </div>
 </div>
 
-<!-- ===== 06. PAGES ===== -->
+<!-- ===== 07. PAGES ===== -->
 <div class="section" id="pages">
-  <div class="section-label">06 — Pages & Routing</div>
+  <div class="section-label">07 — Pages & Routing</div>
   <div class="section-title">ページ構成 & ルーティング</div>
 
   <table class="tbl">
     <tr><th>パス</th><th>ページ</th><th>プロトタイプ</th><th>レンダリング</th></tr>
-    <tr><td><code>/</code></td><td>LP</td><td>chronos-lp.html</td><td>SSG</td></tr>
+    <tr><td><code>/</code></td><td>LP</td><td>chronos-lp-v3.html（現行）</td><td>SSG</td></tr>
     <tr><td><code>/login</code></td><td>ログイン / サインアップ</td><td>chronos-auth.html</td><td>Client</td></tr>
-    <tr><td><code>/onboarding</code></td><td>初回体験フロー</td><td>chronos-onboarding-v2.html</td><td>Client</td></tr>
+    <tr><td><code>/onboarding</code></td><td>初回体験フロー</td><td>chronos-onboarding-v2.html（現行）</td><td>Client</td></tr>
     <tr><td><code>/dashboard</code></td><td>マイページ</td><td>chronos-screens.html</td><td>SSR</td></tr>
     <tr><td><code>/create</code></td><td>年表作成フロー</td><td>chronos-creation-flow.html</td><td>Client</td></tr>
-    <tr><td><code>/t/[slug]</code></td><td>年表閲覧（作成者）</td><td>chronos-period-lanes.html</td><td>SSR</td></tr>
-    <tr><td><code>/t/[slug]</code></td><td>年表閲覧（公開）</td><td>chronos-viewer.html</td><td>SSR (※同一ルート、権限で切替)</td></tr>
-    <tr><td><code>/t/[slug]/edit</code></td><td>年表編集</td><td>（未作成）</td><td>Client</td></tr>
-    <tr><td><code>/@[username]</code></td><td>ユーザープロフィール</td><td>chronos-screens.html内</td><td>SSR</td></tr>
-    <tr><td><code>/explore</code></td><td>探索</td><td>（未作成）</td><td>SSR</td></tr>
+    <tr><td><code>/explore</code></td><td>探索（Explore）</td><td>chronos-explore.html（v2・現行）</td><td>SSR</td></tr>
+    <tr><td><code>/t/[slug]</code></td><td>年表閲覧（作成者 / 公開）</td><td>chronos-viewer.html（現行 ※権限で切替。期間レーン表現は period-lanes を統合予定）</td><td>SSR</td></tr>
+    <tr><td><code>/t/[slug]/edit</code></td><td>年表編集</td><td>（未作成 — 独立画面は作らず「viewer + 編集モード」方針）</td><td>Client</td></tr>
+    <tr><td><code>/@[username]</code></td><td>ユーザープロフィール</td><td>（未作成 — 公開プロフィールとしてデザイン予定）</td><td>SSR</td></tr>
   </table>
 </div>
 
-<!-- ===== 07. DIRECTORY ===== -->
+<!-- ===== 08. DIRECTORY ===== -->
 <div class="section" id="structure">
-  <div class="section-label">07 — Directory Structure</div>
+  <div class="section-label">08 — Directory Structure</div>
   <div class="section-title">推奨ディレクトリ構成</div>
 
   <div class="tree">
@@ -580,9 +616,9 @@ interface User {
   </div>
 </div>
 
-<!-- ===== 08. TECH STACK ===== -->
+<!-- ===== 09. TECH STACK ===== -->
 <div class="section" id="stack">
-  <div class="section-label">08 — Tech Stack</div>
+  <div class="section-label">09 — Tech Stack</div>
   <div class="section-title">推奨技術スタック</div>
 
   <table class="tbl">
@@ -596,15 +632,15 @@ interface User {
     <tr><td>データ取得</td><td><code>SWR or TanStack Query</code></td><td>キャッシュ・再検証</td></tr>
     <tr><td>認証</td><td><code>NextAuth.js (Auth.js)</code></td><td>Google / Magic Link</td></tr>
     <tr><td>DB</td><td><code>Supabase (PostgreSQL)</code></td><td>認証統合、リアルタイム（将来の共同編集）</td></tr>
-    <tr><td>AI生成</td><td><code>Anthropic Claude API</code></td><td>年表自動生成、AI Edit Assist</td></tr>
+    <tr><td>AI生成</td><td><code>Anthropic Claude API</code></td><td>年表下書きの自動生成、AI Edit Assist（UI上の呼称は「下書き」に統一）</td></tr>
     <tr><td>OGP画像</td><td><code>@vercel/og (Satori)</code></td><td>動的OGP生成</td></tr>
     <tr><td>ホスティング</td><td><code>Vercel</code></td><td>Next.jsとの親和性、Edge Functions</td></tr>
   </table>
 </div>
 
-<!-- ===== 09. PROTO → REACT ===== -->
+<!-- ===== 10. PROTO → REACT ===== -->
 <div class="section" id="proto">
-  <div class="section-label">09 — Prototype → React 対応表</div>
+  <div class="section-label">10 — Prototype → React 対応表</div>
   <div class="section-title">プロトタイプ → React 対応表</div>
   <div class="section-desc">各HTMLプロトタイプのCSS class が、Reactコンポーネントのどこに対応するかの一覧。</div>
 

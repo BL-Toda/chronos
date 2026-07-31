@@ -117,6 +117,40 @@ body{font-family:var(--f-body);color:var(--text);min-height:100vh;min-height:100
 .mp-card-meta{font-size:0.65rem;color:var(--text3);display:flex;gap:12px}
 .mp-card-layers{display:flex;gap:4px;margin-top:8px}
 .mp-card-layer-dot{width:6px;height:6px;border-radius:50%}
+.mp-card-del{
+  position:absolute;right:12px;bottom:12px;width:26px;height:26px;border-radius:8px;
+  border:1px solid var(--border);background:var(--bg2);color:var(--text3);
+  font-size:0.8rem;line-height:1;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:all 0.2s;
+}
+.mp-card:hover .mp-card-del{opacity:1}
+.mp-card-del:hover{border-color:rgba(212,90,90,0.3);background:var(--danger-dim);color:var(--danger)}
+
+/* Delete confirm modal */
+.del-overlay{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);display:none}
+.del-overlay.open{display:block;animation:fadeIn 0.25s ease}
+.del-modal{
+  position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:calc(100% - 48px);max-width:360px;z-index:510;
+  background:var(--bg2);border:1px solid rgba(212,90,90,0.25);border-radius:18px;
+  padding:24px 20px 16px;display:none;text-align:center;
+}
+.del-modal.open{display:block;animation:fadeIn 0.25s ease}
+.del-icon{
+  width:48px;height:48px;border-radius:14px;margin:0 auto 12px;
+  background:var(--danger-dim);border:1px solid rgba(212,90,90,0.2);
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;
+}
+.del-title{font-family:var(--f-display);font-size:1.15rem;font-weight:500;color:var(--text-h);margin-bottom:6px}
+.del-desc{font-size:0.75rem;color:var(--text2);line-height:1.6;margin-bottom:6px}
+.del-warn{font-size:0.68rem;color:var(--danger);margin-bottom:16px}
+.del-confirm{
+  width:100%;padding:13px;border-radius:12px;background:var(--danger);color:#fff;
+  border:none;font-size:0.82rem;font-family:var(--f-body);cursor:pointer;
+  transition:filter 0.2s;margin-bottom:4px;
+}
+.del-confirm:hover{filter:brightness(1.1)}
 
 /* Settings */
 .mp-settings-group{
@@ -493,6 +527,7 @@ body{font-family:var(--f-body);color:var(--text);min-height:100vh;min-height:100
 <div class="tabs">
   <button class="tab active" onclick="showScreen('mypage')">マイページ</button>
   <button class="tab" onclick="showScreen('pro')">Pro課金導線</button>
+  <button class="tab" onclick="showScreen('layers')">レイヤー管理</button>
   <button class="tab" onclick="showScreen('aiedit')">AI Edit Assist Demo</button>
 </div>
 
@@ -513,12 +548,22 @@ body{font-family:var(--f-body);color:var(--text);min-height:100vh;min-height:100
     <div class="mp-usage-bar-wrap">
       <div class="mp-usage-label">
         <span class="mp-usage-text">今月のAI生成回数</span>
-        <span class="mp-usage-count">7 / 10</span>
+        <span class="mp-usage-count">2 / 3</span>
       </div>
       <div class="mp-usage-track">
-        <div class="mp-usage-fill" style="width:70%"></div>
+        <div class="mp-usage-fill" style="width:67%"></div>
       </div>
-      <div class="mp-usage-note">次回リセット：3月1日</div>
+      <div class="mp-usage-note">Free: 月3回 ｜ 次回リセット：3月1日</div>
+    </div>
+    <div class="mp-usage-bar-wrap" style="margin-top:8px">
+      <div class="mp-usage-label">
+        <span class="mp-usage-text">今月のAI Edit Assist</span>
+        <span class="mp-usage-count">4 / 10</span>
+      </div>
+      <div class="mp-usage-track">
+        <div class="mp-usage-fill" style="width:40%"></div>
+      </div>
+      <div class="mp-usage-note">FreeでもAI Edit Assistを月10回まで利用できます</div>
     </div>
     <div class="mp-usage-bar-wrap" style="margin-top:8px">
       <div class="mp-usage-label">
@@ -531,7 +576,6 @@ body{font-family:var(--f-body);color:var(--text);min-height:100vh;min-height:100
       <div class="mp-usage-note" style="color:var(--danger)">上限に達しています — 新規作成にはProが必要です</div>
     </div>
     <button class="mp-upgrade-nudge" onclick="openPro()">Pro にアップグレードして無制限に →</button>
-    </div>
   </div>
 
   <div class="mp-section">
@@ -553,6 +597,7 @@ body{font-family:var(--f-body);color:var(--text);min-height:100vh;min-height:100
         <div class="mp-card-layer-dot" style="background:var(--c-pink)"></div>
         <div class="mp-card-layer-dot" style="background:var(--c-teal)"></div>
       </div>
+      <button class="mp-card-del" onclick="openDeleteTimeline(event,this)" aria-label="年表を削除">🗑</button>
     </div>
 
     <div class="mp-card clr-pink" onclick="void(0)">
@@ -567,6 +612,7 @@ body{font-family:var(--f-body);color:var(--text);min-height:100vh;min-height:100
         <div class="mp-card-layer-dot" style="background:var(--c-pink)"></div>
         <div class="mp-card-layer-dot" style="background:var(--c-teal)"></div>
       </div>
+      <button class="mp-card-del" onclick="openDeleteTimeline(event,this)" aria-label="年表を削除">🗑</button>
     </div>
 
     <div class="mp-card clr-teal" onclick="void(0)">
@@ -579,10 +625,11 @@ body{font-family:var(--f-body);color:var(--text);min-height:100vh;min-height:100
       </div>
       <div class="mp-card-layers">
         <div class="mp-card-layer-dot" style="background:var(--c-blue)"></div>
-        <div class="mp-card-layer-dot" style="background:var(--c-green-dim.replace('dim','')"></div>
+        <div class="mp-card-layer-dot" style="background:var(--c-green)"></div>
         <div class="mp-card-layer-dot" style="background:var(--c-teal)"></div>
         <div class="mp-card-layer-dot" style="background:var(--c-pink)"></div>
       </div>
+      <button class="mp-card-del" onclick="openDeleteTimeline(event,this)" aria-label="年表を削除">🗑</button>
     </div>
   </div>
 
@@ -696,7 +743,7 @@ body{font-family:var(--f-body);color:var(--text);min-height:100vh;min-height:100
       </div>
     </div>
     <div style="margin-top:32px;padding-top:20px;border-top:1px solid var(--border)">
-      <button class="sub-danger-btn">アカウントを削除</button>
+      <button class="sub-danger-btn" onclick="openDeleteAccount()">アカウントを削除</button>
       <div style="font-size:0.62rem;color:var(--text3);margin-top:6px;line-height:1.5">アカウントを削除すると、すべての年表データが完全に削除されます。この操作は取り消せません。</div>
     </div>
   </div>
@@ -829,6 +876,17 @@ body{font-family:var(--f-body);color:var(--text);min-height:100vh;min-height:100
   <button class="pro-dismiss" onclick="closeLogout()">キャンセル</button>
 </div>
 
+<!-- Delete Confirm Modal -->
+<div class="del-overlay" id="delOverlay" onclick="closeDelete()"></div>
+<div class="del-modal" id="delModal" role="dialog" aria-modal="true">
+  <div class="del-icon">🗑</div>
+  <div class="del-title" id="delTitle">削除の確認</div>
+  <div class="del-desc" id="delDesc"></div>
+  <div class="del-warn">この操作は取り消せません</div>
+  <button class="del-confirm" id="delConfirm" onclick="confirmDelete()">削除する</button>
+  <button class="pro-dismiss" onclick="closeDelete()">キャンセル</button>
+</div>
+
 <!-- =============================================
      2. PRO UPGRADE
      ============================================= -->
@@ -855,6 +913,10 @@ body{font-family:var(--f-body);color:var(--text);min-height:100vh;min-height:100
         <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px">
           <div style="display:flex;justify-content:space-between;font-size:0.72rem">
             <span style="color:var(--text2)">AI生成</span>
+            <span style="color:var(--text-h)">月3回</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.72rem">
+            <span style="color:var(--text2)">AI Edit Assist</span>
             <span style="color:var(--text-h)">月10回</span>
           </div>
           <div style="display:flex;justify-content:space-between;font-size:0.72rem">
@@ -886,7 +948,7 @@ body{font-family:var(--f-body);color:var(--text);min-height:100vh;min-height:100
         <div class="limit-icon">⚡</div>
         <div class="limit-text">
           <div class="limit-title">AI生成回数の上限に達しました</div>
-          <div class="limit-desc">今月の無料枠（10回）をすべて使いました</div>
+          <div class="limit-desc">今月の無料枠（3回）をすべて使いました</div>
         </div>
         <div class="limit-arrow">→</div>
       </div>
@@ -896,7 +958,7 @@ body{font-family:var(--f-body);color:var(--text);min-height:100vh;min-height:100
         <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px">
           <div style="display:flex;justify-content:space-between;font-size:0.72rem">
             <span style="color:var(--text2)">AI生成</span>
-            <span style="color:var(--danger)">10/10（上限）</span>
+            <span style="color:var(--danger)">3/3（上限）</span>
           </div>
           <div style="display:flex;justify-content:space-between;font-size:0.72rem">
             <span style="color:var(--text2)">年表保存数</span>
@@ -927,7 +989,7 @@ body{font-family:var(--f-body);color:var(--text);min-height:100vh;min-height:100
         <div style="display:flex;flex-direction:column;gap:6px">
           <div style="display:flex;align-items:center;gap:6px">
             <span style="color:var(--c-green);font-size:0.7rem">✓</span>
-            <span style="font-size:0.7rem;color:var(--text2)">AI Edit Assist</span>
+            <span style="font-size:0.7rem;color:var(--text2)">AI Edit Assist 無制限</span>
           </div>
           <div style="display:flex;align-items:center;gap:6px">
             <span style="color:var(--c-green);font-size:0.7rem">✓</span>
@@ -970,7 +1032,7 @@ body{font-family:var(--f-body);color:var(--text);min-height:100vh;min-height:100
       <div class="pro-feat">
         <div class="pro-feat-icon">∞</div>
         <div><div class="pro-feat-text">AI生成が無制限</div>
-        <div class="pro-feat-note">Free: 月10回 → Pro: 無制限</div></div>
+        <div class="pro-feat-note">Free: 生成 月3回・Edit Assist 月10回 / Pro: どちらも無制限</div></div>
       </div>
       <div class="pro-feat">
         <div class="pro-feat-icon">📚</div>
@@ -989,8 +1051,8 @@ body{font-family:var(--f-body);color:var(--text);min-height:100vh;min-height:100
       </div>
       <div class="pro-feat">
         <div class="pro-feat-icon">🤖</div>
-        <div><div class="pro-feat-text">AI Edit Assist</div>
-        <div class="pro-feat-note">補足・出典・抜け検出・添削</div></div>
+        <div><div class="pro-feat-text">AI Edit Assist 無制限</div>
+        <div class="pro-feat-note">補足・出典・抜け検出・添削（Free: 月10回）</div></div>
       </div>
       <div class="pro-feat">
         <div class="pro-feat-icon">🔗</div>
@@ -1000,7 +1062,7 @@ body{font-family:var(--f-body);color:var(--text);min-height:100vh;min-height:100
     </div>
 
     <div class="pro-price">
-      <div class="pro-price-amount">¥980</div>
+      <div class="pro-price-amount">¥800</div>
       <div class="pro-price-period">/ 月（税込）</div>
     </div>
 
@@ -1009,7 +1071,79 @@ body{font-family:var(--f-body);color:var(--text);min-height:100vh;min-height:100
   </div>
 </div>
 
+<!-- =============================================
+     3. LAYER MANAGEMENT
+     ============================================= -->
+<div class="screen" id="s-layers">
+  <div class="lm-wrap" style="animation:fadeUp 0.5s ease">
+    <div class="lm-title">レイヤー管理</div>
+    <div class="lm-sub">「スマートフォンの歴史」のレイヤー。色・名前・表示/非表示を編集できます。</div>
 
+    <div class="lm-list" id="layerList">
+      <div class="lm-item">
+        <div class="lm-drag"><div class="lm-drag-line"></div><div class="lm-drag-line"></div><div class="lm-drag-line"></div></div>
+        <div class="lm-color" style="background:var(--c-blue)" onclick="toggleColorPicker(this)">
+          <div class="lm-colors-pop">
+            <div class="lm-color-opt selected" style="background:var(--c-blue)" onclick="pickColor(event,this,'--c-blue')"></div>
+            <div class="lm-color-opt" style="background:var(--c-pink)" onclick="pickColor(event,this,'--c-pink')"></div>
+            <div class="lm-color-opt" style="background:var(--c-teal)" onclick="pickColor(event,this,'--c-teal')"></div>
+            <div class="lm-color-opt" style="background:var(--c-green)" onclick="pickColor(event,this,'--c-green')"></div>
+            <div class="lm-color-opt" style="background:var(--c-gold)" onclick="pickColor(event,this,'--c-gold')"></div>
+            <div class="lm-color-opt" style="background:var(--c-purple)" onclick="pickColor(event,this,'--c-purple')"></div>
+            <div class="lm-color-opt" style="background:var(--c-orange)" onclick="pickColor(event,this,'--c-orange')"></div>
+          </div>
+        </div>
+        <input class="lm-name" value="製品リリース">
+        <div class="lm-count">6件</div>
+        <div class="lm-toggle on" onclick="toggleLayer(this)"><div class="lm-toggle-knob"></div></div>
+        <button class="lm-delete" onclick="deleteLayer(this)">×</button>
+      </div>
+      <div class="lm-item">
+        <div class="lm-drag"><div class="lm-drag-line"></div><div class="lm-drag-line"></div><div class="lm-drag-line"></div></div>
+        <div class="lm-color" style="background:var(--c-pink)" onclick="toggleColorPicker(this)">
+          <div class="lm-colors-pop">
+            <div class="lm-color-opt" style="background:var(--c-blue)" onclick="pickColor(event,this,'--c-blue')"></div>
+            <div class="lm-color-opt selected" style="background:var(--c-pink)" onclick="pickColor(event,this,'--c-pink')"></div>
+            <div class="lm-color-opt" style="background:var(--c-teal)" onclick="pickColor(event,this,'--c-teal')"></div>
+            <div class="lm-color-opt" style="background:var(--c-green)" onclick="pickColor(event,this,'--c-green')"></div>
+            <div class="lm-color-opt" style="background:var(--c-gold)" onclick="pickColor(event,this,'--c-gold')"></div>
+            <div class="lm-color-opt" style="background:var(--c-purple)" onclick="pickColor(event,this,'--c-purple')"></div>
+            <div class="lm-color-opt" style="background:var(--c-orange)" onclick="pickColor(event,this,'--c-orange')"></div>
+          </div>
+        </div>
+        <input class="lm-name" value="ビジネスの動き">
+        <div class="lm-count">4件</div>
+        <div class="lm-toggle on" onclick="toggleLayer(this)"><div class="lm-toggle-knob"></div></div>
+        <button class="lm-delete" onclick="deleteLayer(this)">×</button>
+      </div>
+      <div class="lm-item">
+        <div class="lm-drag"><div class="lm-drag-line"></div><div class="lm-drag-line"></div><div class="lm-drag-line"></div></div>
+        <div class="lm-color" style="background:var(--c-teal)" onclick="toggleColorPicker(this)">
+          <div class="lm-colors-pop">
+            <div class="lm-color-opt" style="background:var(--c-blue)" onclick="pickColor(event,this,'--c-blue')"></div>
+            <div class="lm-color-opt" style="background:var(--c-pink)" onclick="pickColor(event,this,'--c-pink')"></div>
+            <div class="lm-color-opt selected" style="background:var(--c-teal)" onclick="pickColor(event,this,'--c-teal')"></div>
+            <div class="lm-color-opt" style="background:var(--c-green)" onclick="pickColor(event,this,'--c-green')"></div>
+            <div class="lm-color-opt" style="background:var(--c-gold)" onclick="pickColor(event,this,'--c-gold')"></div>
+            <div class="lm-color-opt" style="background:var(--c-purple)" onclick="pickColor(event,this,'--c-purple')"></div>
+            <div class="lm-color-opt" style="background:var(--c-orange)" onclick="pickColor(event,this,'--c-orange')"></div>
+          </div>
+        </div>
+        <input class="lm-name" value="技術革新">
+        <div class="lm-count">2件</div>
+        <div class="lm-toggle" onclick="toggleLayer(this)"><div class="lm-toggle-knob"></div></div>
+        <button class="lm-delete" onclick="deleteLayer(this)">×</button>
+      </div>
+    </div>
+
+    <button class="lm-add" onclick="addLayer()"><span>＋</span>レイヤーを追加</button>
+  </div>
+</div>
+
+<!-- =============================================
+     4. AI EDIT ASSIST DEMO
+     ============================================= -->
+<div class="screen" id="s-aiedit">
   <div class="ai-wrap" style="animation:fadeUp 0.5s ease">
     <div class="ai-title">AI Edit Assist Demo</div>
     <div class="ai-sub">実際のアプリでは、編集モードでカードを選択するとAIアシストを呼び出せます。<br>以下はその操作イメージです。ボタンをタップして体験してみてください。</div>
@@ -1222,6 +1356,41 @@ function openLogout() {
 function closeLogout() {
   document.getElementById('logoutOverlay').classList.remove('open');
   document.getElementById('logoutSheet').classList.remove('open');
+}
+
+// ===== DELETE CONFIRM =====
+let delTargetCard = null;
+function openDeleteTimeline(e, btn) {
+  e.stopPropagation();
+  delTargetCard = btn.closest('.mp-card');
+  const title = delTargetCard.querySelector('.mp-card-title').textContent;
+  document.getElementById('delTitle').textContent = '年表を削除';
+  document.getElementById('delDesc').innerHTML = `「${title}」を削除します。<br>含まれるイベント・レイヤーもすべて削除されます。`;
+  document.getElementById('delOverlay').classList.add('open');
+  document.getElementById('delModal').classList.add('open');
+}
+function openDeleteAccount() {
+  delTargetCard = null;
+  document.getElementById('delTitle').textContent = 'アカウントを削除';
+  document.getElementById('delDesc').innerHTML = 'アカウントを削除すると、すべての年表データが完全に削除されます。';
+  document.getElementById('delOverlay').classList.add('open');
+  document.getElementById('delModal').classList.add('open');
+}
+function closeDelete() {
+  document.getElementById('delOverlay').classList.remove('open');
+  document.getElementById('delModal').classList.remove('open');
+  delTargetCard = null;
+}
+function confirmDelete() {
+  if (delTargetCard) {
+    const card = delTargetCard;
+    card.style.transition = 'all 0.3s ease';
+    card.style.opacity = '0';
+    card.style.transform = 'translateX(-20px)';
+    setTimeout(() => card.remove(), 300);
+  }
+  // アカウント削除はプロトタイプのため確認モーダルを閉じるのみ
+  closeDelete();
 }
 
 // ===== FAB (新規年表作成) =====

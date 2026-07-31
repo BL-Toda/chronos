@@ -7,8 +7,12 @@
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta name="description" content="複数の歴史を同じ時間軸に重ねて、文脈を発見する。AI搭載の年表作成プラットフォーム。">
+<meta property="og:title" content="Chronos — Every event has context.">
+<meta property="og:description" content="複数の歴史を同じ時間軸に重ねて、文脈を発見する。AI搭載の年表作成プラットフォーム。">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link href="https://api.fontshare.com/v2/css?f[]=erode@300,400,500,600,300i,400i&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg:#0A0A0C; --bg2:#0E0E11; --bg3:#131316;
@@ -22,7 +26,7 @@
   --c-blue-d:rgba(91,155,213,0.12); --c-green-d:rgba(123,198,126,0.12);
   --c-pink-d:rgba(212,132,154,0.12); --c-gold-d:rgba(200,184,126,0.12); --c-purple-d:rgba(158,126,200,0.12);
   --c-teal-d:rgba(91,188,180,0.12); --c-orange-d:rgba(212,160,90,0.12);
-  --f-d:'Erode',serif; --f-b:'DM Sans',sans-serif; --f-m:'JetBrains Mono',monospace;
+  --f-d:'Erode','Shippori Mincho',serif; --f-b:'DM Sans',sans-serif; --f-m:'JetBrains Mono',monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;background:var(--bg);color-scheme:dark}
@@ -143,49 +147,122 @@ section{padding:100px 0;background:var(--bg)}
 .p-context{font-size:0.88rem;color:var(--text2);line-height:1.8;
   max-width:600px;margin-top:28px}
 
-/* DEMO (interactive multilayer) */
+/* DEMO (interactive multilayer, insight版 — v2より移植) */
 .demo-container{margin-top:52px;position:relative}
 .demo-window{background:var(--card);border:1px solid var(--border);border-radius:16px;
   overflow:hidden;position:relative}
 .demo-toolbar{display:flex;align-items:center;justify-content:space-between;
-  padding:14px 20px;border-bottom:1px solid var(--border);background:var(--bg3)}
+  padding:14px 20px;border-bottom:1px solid var(--border);background:var(--bg3);flex-wrap:wrap;gap:8px}
 .demo-toolbar-title{font-family:var(--f-d);font-size:1rem;font-weight:400}
-.demo-chips{display:flex;gap:6px}
-.demo-chip{font-size:0.62rem;font-weight:500;letter-spacing:0.04em;
+.demo-chips{display:flex;gap:6px;flex-wrap:wrap}
+.demo-chip{font-size:0.68rem;font-weight:500;letter-spacing:0.04em;
   padding:5px 12px;border-radius:14px;border:1px solid var(--border);
   cursor:pointer;transition:all 0.3s;user-select:none;display:flex;align-items:center;gap:5px}
 .demo-chip .dc-dot{width:7px;height:7px;border-radius:50%}
 .demo-chip.active{color:var(--text)}
 .demo-chip.inactive{opacity:0.35}
-.demo-chip[data-l="iphone"]{color:var(--c-blue)}
-.demo-chip[data-l="iphone"].active{border-color:var(--c-blue);background:var(--c-blue-d)}
-.demo-chip[data-l="android"]{color:var(--c-green)}
-.demo-chip[data-l="android"].active{border-color:var(--c-green);background:var(--c-green-d)}
-.demo-chip[data-l="industry"]{color:var(--c-pink)}
-.demo-chip[data-l="industry"].active{border-color:var(--c-pink);background:var(--c-pink-d)}
+.demo-chip[data-l="science"]{color:var(--c-blue)}
+.demo-chip[data-l="science"].active{border-color:var(--c-blue);background:var(--c-blue-d)}
+.demo-chip[data-l="decisions"]{color:var(--c-pink)}
+.demo-chip[data-l="decisions"].active{border-color:var(--c-pink);background:var(--c-pink-d)}
+.demo-chip[data-l="world"]{color:var(--c-green)}
+.demo-chip[data-l="world"].active{border-color:var(--c-green);background:var(--c-green-d)}
 
-.demo-body{padding:24px 20px 20px;position:relative;min-height:340px}
-.demo-axis{position:absolute;left:32px;top:24px;bottom:20px;width:1px;background:rgba(200,168,126,0.12)}
+.demo-body{padding:0 20px 20px;position:relative}
 
-.demo-event{display:flex;align-items:flex-start;gap:14px;padding:0 0 20px 46px;position:relative;
+/* Timeline row */
+.tl-row{display:flex;align-items:stretch;
   transition:all 0.45s cubic-bezier(0.16,1,0.3,1)}
-.demo-event.hidden{opacity:0;max-height:0;padding:0 0 0 46px;overflow:hidden;margin:0}
-.demo-event.visible{opacity:1;max-height:120px}
-.de-dot{position:absolute;left:26px;top:4px;width:11px;height:11px;border-radius:50%;
-  border:2.5px solid var(--card);z-index:2;transition:transform 0.25s ease}
-.de-dot.blue{background:var(--c-blue);box-shadow:0 0 0 3px var(--c-blue-d)}
-.de-dot.green{background:var(--c-green);box-shadow:0 0 0 3px var(--c-green-d)}
-.de-dot.pink{background:var(--c-pink);box-shadow:0 0 0 3px var(--c-pink-d)}
-.de-year{font-family:var(--f-m);font-size:0.6rem;color:var(--text3);letter-spacing:0.1em}
-.de-title{font-family:var(--f-d);font-size:1.05rem;color:var(--text);line-height:1.3}
-.de-tag{font-family:var(--f-m);font-size:0.54rem;letter-spacing:0.06em;
-  padding:2px 7px;border-radius:8px;display:inline-block;margin-top:3px}
-.de-tag.blue{background:var(--c-blue-d);color:var(--c-blue)}
-.de-tag.green{background:var(--c-green-d);color:var(--c-green)}
-.de-tag.pink{background:var(--c-pink-d);color:var(--c-pink)}
+.tl-row.hidden-layer{opacity:0;max-height:0;overflow:hidden;margin:0;padding:0}
 
-.demo-label{position:absolute;bottom:14px;right:20px;
-  font-family:var(--f-m);font-size:0.58rem;color:var(--text3);letter-spacing:0.1em}
+/* Axis — center column with vertical line + dot */
+.tl-axis{display:flex;flex-direction:column;align-items:center;
+  width:24px;flex-shrink:0;position:relative}
+.tl-axis::before{content:'';position:absolute;top:0;bottom:0;left:50%;
+  width:1px;background:rgba(200,168,126,0.12);transform:translateX(-50%)}
+.axis-dot{width:10px;height:10px;border-radius:50%;
+  border:2px solid var(--card);position:relative;z-index:5;
+  margin-top:16px;flex-shrink:0;transition:all 0.3s}
+.axis-dot.science{background:var(--c-blue);box-shadow:0 0 0 3px var(--c-blue-d)}
+.axis-dot.decisions{background:var(--c-pink);box-shadow:0 0 0 3px var(--c-pink-d)}
+.axis-dot.world{background:var(--c-green);box-shadow:0 0 0 3px var(--c-green-d)}
+
+.tl-content{flex:1;padding:6px 0 6px 10px;min-width:0}
+
+/* Year separator */
+.tl-year{display:flex;align-items:center;padding:14px 0 4px 0}
+.tl-year-text{font-family:var(--f-d);font-size:1.75rem;font-weight:300;
+  color:var(--accent);opacity:0.18;line-height:1}
+.tl-year-line{flex:1;height:1px;margin-left:12px;
+  background:linear-gradient(90deg,var(--border),transparent)}
+
+/* Event card */
+.ev-card{background:var(--card-el);border:1px solid var(--border);border-radius:12px;
+  padding:12px 14px;margin-bottom:4px;cursor:pointer;position:relative;
+  overflow:hidden;transition:all 0.3s ease}
+.ev-card:hover{background:var(--card-h);border-color:var(--border2)}
+.ev-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;
+  border-radius:3px 0 0 3px}
+.ev-card.layer-science::before{background:var(--c-blue)}
+.ev-card.layer-decisions::before{background:var(--c-pink)}
+.ev-card.layer-world::before{background:var(--c-green)}
+.ev-caret{position:absolute;top:12px;right:12px;width:20px;height:20px;
+  display:flex;align-items:center;justify-content:center;
+  transition:transform 0.35s cubic-bezier(0.16,1,0.3,1)}
+.ev-caret svg{width:14px;height:14px;stroke:var(--text3);stroke-width:2;
+  fill:none;stroke-linecap:round;stroke-linejoin:round}
+.ev-card:hover .ev-caret svg{stroke:var(--text2)}
+.ev-card.expanded .ev-caret{transform:rotate(180deg)}
+.ev-date{font-family:var(--f-m);font-size:0.62rem;color:var(--text3);
+  letter-spacing:0.08em;margin-bottom:3px}
+.ev-title{font-family:var(--f-d);font-size:0.94rem;font-weight:400;
+  line-height:1.35;color:var(--text);padding-right:24px}
+.ev-accordion-body{max-height:0;overflow:hidden;
+  transition:max-height 0.4s cubic-bezier(0.16,1,0.3,1),opacity 0.3s ease;opacity:0}
+.ev-card.expanded .ev-accordion-body{max-height:300px;opacity:1}
+.ev-summary{font-size:0.8rem;color:var(--text2);line-height:1.75;margin-top:10px;
+  padding-top:10px;border-top:1px solid var(--border)}
+.ev-tags{display:flex;gap:5px;margin-top:8px;flex-wrap:wrap}
+.ev-tag{font-family:var(--f-m);font-size:0.62rem;letter-spacing:0.06em;
+  padding:2px 8px;border-radius:8px;display:inline-block}
+.ev-tag.blue{background:var(--c-blue-d);color:var(--c-blue)}
+.ev-tag.green{background:var(--c-green-d);color:var(--c-green)}
+.ev-tag.pink{background:var(--c-pink-d);color:var(--c-pink)}
+.ev-tag.cred{background:rgba(200,168,126,0.1);color:var(--accent)}
+
+.demo-label{text-align:right;padding:8px 20px 12px;
+  font-family:var(--f-m);font-size:0.68rem;color:var(--text3);letter-spacing:0.1em}
+
+/* Insight panel */
+.demo-insight{padding:18px 22px;border-radius:0 0 16px 16px;
+  background:rgba(200,168,126,0.04);border-top:1px solid var(--border);
+  transition:all 0.5s ease}
+.demo-insight.hidden{display:none}
+.demo-insight-title{font-family:var(--f-m);font-size:0.62rem;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.demo-insight-text{font-size:0.88rem;color:var(--text2);line-height:1.8}
+.demo-insight-text strong{color:var(--text);font-weight:500}
+
+/* WAITLIST */
+.hero-wl{margin-top:40px;display:flex;flex-direction:column;align-items:center;
+  opacity:0;animation:hf 1.3s ease forwards 0.85s}
+.wl-note{font-size:0.86rem;color:var(--accent);letter-spacing:0.04em;margin-bottom:18px}
+.wl-form{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.wl-input{font-family:var(--f-b);font-size:0.86rem;color:var(--text);
+  background:var(--card);border:1px solid var(--border2);border-radius:8px;
+  padding:14px 18px;width:min(320px,72vw);outline:none;transition:border-color 0.3s}
+.wl-input::placeholder{color:var(--text3)}
+.wl-input:focus{border-color:var(--accent)}
+.wl-btn{font-family:var(--f-b);font-size:0.82rem;font-weight:500;letter-spacing:0.06em;
+  color:var(--bg);background:var(--accent);padding:14px 28px;border-radius:8px;
+  border:none;cursor:pointer;transition:all 0.3s;white-space:nowrap}
+.wl-btn:hover{background:#D4B88E;transform:translateY(-1px);box-shadow:0 10px 36px rgba(200,168,126,0.2)}
+.wl-done{display:none;font-size:0.88rem;color:var(--accent);line-height:1.7;
+  padding:16px 28px;border:1px solid var(--border2);border-radius:8px;background:var(--accent-soft)}
+.wl-alt{font-size:0.78rem;color:var(--text2);text-decoration:none;margin-top:20px;
+  border-bottom:1px solid var(--border2);padding-bottom:2px;transition:color 0.3s}
+.wl-alt:hover{color:var(--text)}
+.final-wl{display:flex;flex-direction:column;align-items:center}
 
 /* FEATURES */
 .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
@@ -291,7 +368,7 @@ footer{border-top:1px solid var(--border);padding:48px 24px;background:var(--bg)
       <a href="#features" class="nav-link">機能</a>
       <a href="#pricing" class="nav-link">料金</a>
       <a href="#" class="nav-cta-s">ログイン</a>
-      <a href="#" class="nav-cta">Chronosを試す</a>
+      <a href="#waitlist" class="nav-cta">ウェイトリストに登録</a>
     </div>
   </div>
 </nav>
@@ -303,9 +380,14 @@ footer{border-top:1px solid var(--border);padding:48px 24px;background:var(--bg)
     複数の歴史を同じ時間軸に重ねて、<br>
     ひとつでは見えなかった文脈を、発見する。
   </p>
-  <div class="hero-actions">
-    <a href="#" class="btn-primary">Chronosを試す</a>
-    <a href="#demo" class="btn-secondary">どんな体験か見る</a>
+  <div class="hero-wl">
+    <p class="wl-note">まもなく公開。最初の発見者になりませんか。</p>
+    <form class="wl-form" onsubmit="wlSubmit(event,this)">
+      <input type="email" class="wl-input" placeholder="メールアドレス" aria-label="メールアドレス" required>
+      <button type="submit" class="wl-btn">ウェイトリストに登録</button>
+    </form>
+    <p class="wl-done">登録ありがとうございます。公開時にご連絡します。</p>
+    <a href="#demo" class="wl-alt">まずはどんな体験か見る</a>
   </div>
   <div class="hero-scroll"><span></span></div>
 </section>
@@ -518,51 +600,237 @@ footer{border-top:1px solid var(--border);padding:48px 24px;background:var(--bg)
     <div class="reveal">
       <p class="section-label">Experience</p>
       <h2 class="section-h">レイヤーをON/OFFして、<br>文脈の変化を体験する。</h2>
-      <p class="section-p">タップするだけで、見える景色が変わる。</p>
+      <p class="section-p">チップをON/OFFしてみてください。同じ時間軸に別の視点を重ねると、出来事の意味が変わります。</p>
     </div>
     <div class="demo-container reveal d2">
       <div class="demo-window">
         <div class="demo-toolbar">
-          <div class="demo-toolbar-title">モバイル革命の全体像</div>
+          <div class="demo-toolbar-title">宇宙開発の舞台裏</div>
           <div class="demo-chips">
-            <div class="demo-chip active" data-l="iphone" onclick="toggleDemo('iphone',this)"><span class="dc-dot" style="background:var(--c-blue)"></span>iPhone</div>
-            <div class="demo-chip active" data-l="android" onclick="toggleDemo('android',this)"><span class="dc-dot" style="background:var(--c-green)"></span>Android</div>
-            <div class="demo-chip active" data-l="industry" onclick="toggleDemo('industry',this)"><span class="dc-dot" style="background:var(--c-pink)"></span>業界動向</div>
+            <div class="demo-chip active" data-l="science" onclick="toggleDemo('science',this)"><span class="dc-dot" style="background:var(--c-blue)"></span>技術</div>
+            <div class="demo-chip active" data-l="decisions" onclick="toggleDemo('decisions',this)"><span class="dc-dot" style="background:var(--c-pink)"></span>人の決断</div>
+            <div class="demo-chip active" data-l="world" onclick="toggleDemo('world',this)"><span class="dc-dot" style="background:var(--c-green)"></span>社会の動き</div>
           </div>
         </div>
-        <div class="demo-body">
-          <div class="demo-axis"></div>
-          <div class="demo-event visible" data-dl="iphone">
-            <div class="de-dot blue"></div>
-            <div><div class="de-year">2007.01</div><div class="de-title">Steve Jobs、iPhoneを発表</div><span class="de-tag blue">iPhone</span></div>
+        <div class="demo-body" id="demoBody">
+
+          <!-- 1957 -->
+          <div class="tl-row" data-dl="world">
+            <div class="tl-axis"><div class="axis-dot world"></div></div>
+            <div class="tl-content">
+              <div class="ev-card layer-world" onclick="toggleEvCard(this)">
+                <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+                <div class="ev-date">1957</div>
+                <div class="ev-title">ソ連、スプートニク打ち上げ成功</div>
+                <div class="ev-accordion-body">
+                  <div class="ev-summary">世界初の人工衛星。わずか直径58cmの金属球が、アメリカを激震させた。「宇宙でソ連に負けている」という恐怖が、後のNASA設立と巨額予算の根拠になった。</div>
+                  <div class="ev-tags"><span class="ev-tag green">社会の動き</span><span class="ev-tag cred">✓ 確認済み</span></div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="demo-event visible" data-dl="android">
-            <div class="de-dot green"></div>
-            <div><div class="de-year">2007.11</div><div class="de-title">Google、Android SDKを発表</div><span class="de-tag green">Android</span></div>
+
+          <!-- 1958 -->
+          <div class="tl-row" data-dl="decisions">
+            <div class="tl-axis"><div class="axis-dot decisions"></div></div>
+            <div class="tl-content">
+              <div class="ev-card layer-decisions" onclick="toggleEvCard(this)">
+                <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+                <div class="ev-date">1958</div>
+                <div class="ev-title">NASA設立 — 宇宙開発を国家事業に</div>
+                <div class="ev-accordion-body">
+                  <div class="ev-summary">アイゼンハワー大統領がスプートニク・ショックへの対抗策として設立。軍の各プロジェクトを統合し、宇宙開発を「国家の威信」として一本化した。</div>
+                  <div class="ev-tags"><span class="ev-tag pink">人の決断</span><span class="ev-tag cred">✓ 確認済み</span></div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="demo-event visible" data-dl="iphone">
-            <div class="de-dot blue"></div>
-            <div><div class="de-year">2008.07</div><div class="de-title">App Store開始</div><span class="de-tag blue">iPhone</span></div>
+
+          <!-- Year separator: 1960s -->
+          <div class="tl-row tl-row-year">
+            <div class="tl-axis"><div style="margin-top:22px"></div></div>
+            <div class="tl-content">
+              <div class="tl-year">
+                <div class="tl-year-text">1960s</div>
+                <div class="tl-year-line"></div>
+              </div>
+            </div>
           </div>
-          <div class="demo-event visible" data-dl="android">
-            <div class="de-dot green"></div>
-            <div><div class="de-year">2008.09</div><div class="de-title">初のAndroid端末 HTC Dream</div><span class="de-tag green">Android</span></div>
+
+          <!-- 1961 -->
+          <div class="tl-row" data-dl="decisions">
+            <div class="tl-axis"><div class="axis-dot decisions"></div></div>
+            <div class="tl-content">
+              <div class="ev-card layer-decisions" onclick="toggleEvCard(this)">
+                <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+                <div class="ev-date">1961.05</div>
+                <div class="ev-title">ケネディ「10年以内に月へ」宣言</div>
+                <div class="ev-accordion-body">
+                  <div class="ev-summary">就任わずか4ヶ月の大統領が議会で「この10年が終わる前に人間を月に送り、安全に帰還させる」と演説。当時NASAには実現の技術も計画もなかった。政治的な賭けが科学を動かした瞬間。</div>
+                  <div class="ev-tags"><span class="ev-tag pink">人の決断</span><span class="ev-tag cred">✓ 確認済み</span></div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="demo-event visible" data-dl="industry">
-            <div class="de-dot pink"></div>
-            <div><div class="de-year">2008.09</div><div class="de-title">スマートフォン市場の二強構造へ</div><span class="de-tag pink">業界動向</span></div>
+
+          <!-- 1965 -->
+          <div class="tl-row" data-dl="science">
+            <div class="tl-axis"><div class="axis-dot science"></div></div>
+            <div class="tl-content">
+              <div class="ev-card layer-science" onclick="toggleEvCard(this)">
+                <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+                <div class="ev-date">1965</div>
+                <div class="ev-title">ジェミニ計画で船外活動に成功</div>
+                <div class="ev-accordion-body">
+                  <div class="ev-summary">月に行く前に「宇宙で作業できるか」を確かめる必要があった。ランデブー、ドッキング、船外活動——月面着陸に必要な技術を一つずつ検証した、地道な積み重ねの時代。</div>
+                  <div class="ev-tags"><span class="ev-tag blue">技術</span><span class="ev-tag cred">✓ 確認済み</span></div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="demo-event visible" data-dl="iphone">
-            <div class="de-dot blue"></div>
-            <div><div class="de-year">2010.06</div><div class="de-title">iPhone 4 — Retina Display</div><span class="de-tag blue">iPhone</span></div>
+
+          <!-- 1968 -->
+          <div class="tl-row" data-dl="science">
+            <div class="tl-axis"><div class="axis-dot science"></div></div>
+            <div class="tl-content">
+              <div class="ev-card layer-science" onclick="toggleEvCard(this)">
+                <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+                <div class="ev-date">1968.12</div>
+                <div class="ev-title">アポロ8号、初の月周回飛行</div>
+                <div class="ev-accordion-body">
+                  <div class="ev-summary">人類が初めて地球の重力圏を離れ、月を周回して帰還。このとき撮影された「地球の出」の写真は、人類の宇宙観を一変させた。ケネディの期限まで残り1年。</div>
+                  <div class="ev-tags"><span class="ev-tag blue">技術</span><span class="ev-tag cred">✓ 確認済み</span></div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="demo-event visible" data-dl="industry">
-            <div class="de-dot pink"></div>
-            <div><div class="de-year">2013.12</div><div class="de-title">世界スマホ出荷10億台突破</div><span class="de-tag pink">業界動向</span></div>
+
+          <!-- 1969 -->
+          <div class="tl-row" data-dl="world">
+            <div class="tl-axis"><div class="axis-dot world"></div></div>
+            <div class="tl-content">
+              <div class="ev-card layer-world" onclick="toggleEvCard(this)">
+                <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+                <div class="ev-date">1969.07</div>
+                <div class="ev-title">アポロ11号、人類初の月面着陸</div>
+                <div class="ev-accordion-body">
+                  <div class="ev-summary">ケネディの宣言から8年。世界中の6億人がテレビで見守る中、アームストロングが月面に降り立った。「一人の人間にとっては小さな一歩だが、人類にとっては大きな飛躍だ。」</div>
+                  <div class="ev-tags"><span class="ev-tag green">社会の動き</span><span class="ev-tag cred">✓ 確認済み</span></div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="demo-label">レイヤーをタップして体験 →</div>
+
+          <!-- Year separator: 1990s -->
+          <div class="tl-row tl-row-year">
+            <div class="tl-axis"><div style="margin-top:22px"></div></div>
+            <div class="tl-content">
+              <div class="tl-year">
+                <div class="tl-year-text">1990s</div>
+                <div class="tl-year-line"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 1990 -->
+          <div class="tl-row" data-dl="science">
+            <div class="tl-axis"><div class="axis-dot science"></div></div>
+            <div class="tl-content">
+              <div class="ev-card layer-science" onclick="toggleEvCard(this)">
+                <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+                <div class="ev-date">1990</div>
+                <div class="ev-title">ハッブル宇宙望遠鏡を打ち上げ</div>
+                <div class="ev-accordion-body">
+                  <div class="ev-summary">月面着陸から20年、宇宙開発の目的は「行く」から「見る」へ。大気圏外からの観測で130億光年先の銀河を捉え、宇宙の年齢推定を可能にした。</div>
+                  <div class="ev-tags"><span class="ev-tag blue">技術</span><span class="ev-tag cred">✓ 確認済み</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Year separator: 2000s -->
+          <div class="tl-row tl-row-year">
+            <div class="tl-axis"><div style="margin-top:22px"></div></div>
+            <div class="tl-content">
+              <div class="tl-year">
+                <div class="tl-year-text">2000s</div>
+                <div class="tl-year-line"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2002 -->
+          <div class="tl-row" data-dl="decisions">
+            <div class="tl-axis"><div class="axis-dot decisions"></div></div>
+            <div class="tl-content">
+              <div class="ev-card layer-decisions" onclick="toggleEvCard(this)">
+                <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+                <div class="ev-date">2002</div>
+                <div class="ev-title">イーロン・マスク、SpaceXを設立</div>
+                <div class="ev-accordion-body">
+                  <div class="ev-summary">国家事業だった宇宙開発を、一人の起業家が「民間ビジネス」に変えようとした。ロケットの再利用で打ち上げコストを100分の1にするという、当時は無謀とされた構想。</div>
+                  <div class="ev-tags"><span class="ev-tag pink">人の決断</span><span class="ev-tag cred">✓ 確認済み</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Year separator: 2020s -->
+          <div class="tl-row tl-row-year">
+            <div class="tl-axis"><div style="margin-top:22px"></div></div>
+            <div class="tl-content">
+              <div class="tl-year">
+                <div class="tl-year-text">2020s</div>
+                <div class="tl-year-line"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2020 -->
+          <div class="tl-row" data-dl="science">
+            <div class="tl-axis"><div class="axis-dot science"></div></div>
+            <div class="tl-content">
+              <div class="ev-card layer-science" onclick="toggleEvCard(this)">
+                <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+                <div class="ev-date">2020.05</div>
+                <div class="ev-title">民間初の有人宇宙飛行に成功</div>
+                <div class="ev-accordion-body">
+                  <div class="ev-summary">SpaceXのCrew Dragonが国際宇宙ステーションへ。かつて国家の威信だった有人宇宙飛行を、民間企業が実現。宇宙は「国のもの」から「みんなのもの」に変わりはじめた。</div>
+                  <div class="ev-tags"><span class="ev-tag blue">技術</span><span class="ev-tag cred">✓ 確認済み</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="demo-label">レイヤーをタップして体験 →</div>
+
+        <!-- INSIGHT — レイヤーを重ねて見える発見 -->
+        <div class="demo-insight" id="demoInsight">
+          <div class="demo-insight-title">💡 発見</div>
+          <div class="demo-insight-text">
+            <strong>宇宙開発の転換点は、技術ではなく「誰かの決断」だった。</strong><br>スプートニク → NASA設立 → ケネディ宣言 → 月面着陸。そしてマスク → 民間飛行。レイヤーを重ねると、その構造が見えてくる。
+          </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORIGIN STORY -->
+<section>
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Origin</p>
+      <div class="p-quote">
+        ノートに手書きで年表を作っていた。<br>
+        中原中也とランボーが同い年だったこと。<br>
+        中也が第二次世界大戦を知らないまま亡くなったこと。<br>
+        ——並べてはじめて見える、静かな発見があった。
+      </div>
+      <p class="p-context">
+        でも手書きは限界がある。ひとつ追加するだけでレイアウトが崩れる。デジタルツールを探しても、あるのはExcelの手作業か、2012年設計の古いウィジェットだけだった。——「年表を作ること」自体に価値があるのに、それを助けてくれるツールがない。Chronosは、その不満から生まれました。
+      </p>
     </div>
   </div>
 </section>
@@ -582,8 +850,8 @@ footer{border-top:1px solid var(--border);padding:48px 24px;background:var(--bg)
       </div>
       <div class="f-card reveal d1">
         <div class="f-icon" style="background:var(--c-green-d)">💡</div>
-        <div class="f-title">AIが年表の土台をつくる</div>
-        <div class="f-desc">テーマを入れるだけ。AIが年表の土台をつくる。あとは気になるところを調べて、自分だけの年表に。</div>
+        <div class="f-title">AIが年表の下書きをつくる</div>
+        <div class="f-desc">テーマを入れるだけ。AIが下書きをつくり、あなたが仕上げる。気になるところを調べて、自分だけの年表に。</div>
       </div>
       <div class="f-card reveal d2">
         <div class="f-icon" style="background:var(--c-pink-d)">✓</div>
@@ -697,12 +965,12 @@ footer{border-top:1px solid var(--border);padding:48px 24px;background:var(--bg)
           <li>共有リンクの発行</li>
           <li>マイページ</li>
         </ul>
-        <a href="#" class="pr-btn pr-btn-free">Chronosを試す</a>
+        <a href="#waitlist" class="pr-btn pr-btn-free">ウェイトリストに登録</a>
       </div>
       <div class="pr-card pro">
         <div class="pr-name">Pro</div>
         <div class="pr-price">¥800<span style="font-family:var(--f-b);font-size:0.85rem;color:var(--text2);font-weight:300"> /月</span></div>
-        <div class="pr-period">年額 ¥6,800（2ヶ月分お得）</div>
+        <div class="pr-period">年額 ¥6,800（月あたり¥567）</div>
         <ul class="pr-features">
           <li>年表を無制限に作成</li>
           <li>AIによる年表生成 無制限</li>
@@ -712,21 +980,24 @@ footer{border-top:1px solid var(--border);padding:48px 24px;background:var(--bg)
           <li>すべてのテンプレート</li>
           <li>優先サポート</li>
         </ul>
-        <a href="#" class="pr-btn pr-btn-pro">Proを始める</a>
+        <a href="#waitlist" class="pr-btn pr-btn-pro">ウェイトリストに登録</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FINAL CTA -->
-<section class="final-cta">
+<!-- FINAL CTA / WAITLIST -->
+<section class="final-cta" id="waitlist">
   <div class="container">
     <div class="reveal">
-      <h2 class="final-h">すべての出来事には、<br>文脈がある。</h2>
-      <p class="final-sub">あなたの興味を、年表にしてみませんか。</p>
-      <div class="final-actions">
-        <a href="#" class="btn-primary">Chronosを試す</a>
-        <a href="#demo" class="btn-secondary">デモを体験する</a>
+      <h2 class="final-h">まもなく公開。<br>最初の発見者になりませんか。</h2>
+      <p class="final-sub">メールアドレスを登録すると、公開時にご連絡します。</p>
+      <div class="final-wl">
+        <form class="wl-form" onsubmit="wlSubmit(event,this)">
+          <input type="email" class="wl-input" placeholder="メールアドレス" aria-label="メールアドレス" required>
+          <button type="submit" class="wl-btn">ウェイトリストに登録</button>
+        </form>
+        <p class="wl-done">登録ありがとうございます。公開時にご連絡します。</p>
       </div>
     </div>
   </div>
@@ -763,7 +1034,7 @@ function filterCards(cat,btn){
 }
 
 // Demo layer toggle
-const demoActive=new Set(['iphone','android','industry']);
+const demoActive=new Set(['science','decisions','world']);
 function toggleDemo(layer,chip){
   if(demoActive.has(layer)){
     if(demoActive.size<=1)return;
@@ -773,13 +1044,40 @@ function toggleDemo(layer,chip){
     demoActive.add(layer);
     chip.classList.add('active');chip.classList.remove('inactive');
   }
-  document.querySelectorAll('.demo-event').forEach(ev=>{
-    if(demoActive.has(ev.dataset.dl)){
-      ev.classList.remove('hidden');ev.classList.add('visible');
+  document.querySelectorAll('.tl-row[data-dl]').forEach(row=>{
+    if(demoActive.has(row.dataset.dl)){
+      row.classList.remove('hidden-layer');
     }else{
-      ev.classList.remove('visible');ev.classList.add('hidden');
+      row.classList.add('hidden-layer');
+      row.querySelector('.ev-card')?.classList.remove('expanded');
     }
   });
+  const insight=document.getElementById('demoInsight');
+  if(insight){
+    if(demoActive.has('world')&&demoActive.has('decisions')&&demoActive.has('science')){
+      insight.classList.remove('hidden');
+    }else{
+      insight.classList.add('hidden');
+    }
+  }
+}
+
+// Event card accordion
+function toggleEvCard(card){
+  if(card.classList.contains('expanded')){
+    card.classList.remove('expanded');
+  }else{
+    document.querySelectorAll('.ev-card.expanded').forEach(c=>c.classList.remove('expanded'));
+    card.classList.add('expanded');
+  }
+}
+
+// Waitlist form (mock — 実送信なし)
+function wlSubmit(e,form){
+  e.preventDefault();
+  form.style.display='none';
+  const done=form.parentElement.querySelector('.wl-done');
+  if(done)done.style.display='block';
 }
 </script>
 </body>

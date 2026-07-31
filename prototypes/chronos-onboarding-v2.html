@@ -168,7 +168,9 @@ body{font-family:var(--f-body);color:var(--text);-webkit-font-smoothing:antialia
 <div class="ob-step active" id="step1">
   <div class="ob-card">
     <div class="ob-card-body">
-      <div class="ob-icon">✦</div>
+      <div style="display:flex;justify-content:center;padding:28px 0;margin-bottom:4px">
+        <img src="assets/chronos-logo.svg" alt="Chronos" style="height:52px;width:auto">
+      </div>
       <div class="ob-title">ようこそ、<em>Chronos</em>へ</div>
       <div class="ob-desc">AIがあなたの知りたいテーマを年表にします。<br>レイヤーを重ねて、出来事の文脈を発見しましょう。</div>
 
@@ -309,7 +311,7 @@ body{font-family:var(--f-body);color:var(--text);-webkit-font-smoothing:antialia
 <div class="ob-step" id="step6">
   <div class="gen-complete" id="genComplete" style="display:block;text-align:center;max-width:440px;width:100%">
     <div class="gen-complete-icon">🎉</div>
-    <div class="gen-complete-title">年表が完成しました！</div>
+    <div class="gen-complete-title">年表が完成しました</div>
     <div style="font-size:14px;color:var(--text2);margin-bottom:4px">テーマ</div>
     <div class="gen-theme" id="completeTheme" style="margin-bottom:16px">Appleの歴史</div>
 
@@ -453,7 +455,7 @@ function startGeneration() {
     } else {
       clearInterval(eventInterval);
       clearInterval(statusInterval);
-      document.getElementById('genStatusText').textContent = '完了！';
+      document.getElementById('genStatusText').textContent = '完了';
       document.getElementById('genStatusFill').style.width = '100%';
       document.getElementById('progressFill').style.width = '100%';
 

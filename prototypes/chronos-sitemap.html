@@ -70,9 +70,8 @@ body{font-family:"DM Sans",sans-serif;color:#E8E4DE;-webkit-font-smoothing:antia
   position:absolute;top:10px;right:12px;font-family:'JetBrains Mono',monospace;
   font-size:10px;letter-spacing:0.06em;padding:3px 8px;border-radius:6px;
 }
-.badge-new{background:rgba(123,198,126,0.12);color:#7BC67E}
-.badge-prev{background:rgba(91,155,213,0.12);color:#5B9BD5}
-.badge-both{background:rgba(200,168,126,0.12);color:#C8A87E}
+.badge-current{background:rgba(200,168,126,0.14);color:#C8A87E}
+.badge-archive{background:rgba(90,87,84,0.22);color:#8A8680}
 
 /* Arrow connector */
 .flow-arrow{
@@ -107,7 +106,7 @@ body{font-family:"DM Sans",sans-serif;color:#E8E4DE;-webkit-font-smoothing:antia
 <div class="doc-header">
   <div class="doc-brand"><img src="assets/chronos-logo.svg" alt="Chronos" style="height:34px;width:auto;display:block"></div>
   <div class="doc-subtitle">Design System Reference</div>
-  <div class="doc-date">Last updated: 2026.02.12</div>
+  <div class="doc-date">Last updated: 2026.07.31</div>
 </div>
 
 <!-- ===== 1. COLOR PALETTE ===== -->
@@ -221,9 +220,8 @@ body{font-family:"DM Sans",sans-serif;color:#E8E4DE;-webkit-font-smoothing:antia
   <div class="section-title">サイトマップ</div>
 
   <div class="legend">
-    <div class="legend-item"><div class="legend-dot" style="background:#7BC67E"></div>今回セッション新規</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#5B9BD5"></div>以前のセッションで作成済</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#C8A87E"></div>今回更新あり</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#C8A87E"></div>現行 — 実装の正とする版</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#5A5754"></div>アーカイブ — 旧版・参照のみ</div>
   </div>
 
   <div class="sitemap">
@@ -233,13 +231,12 @@ body{font-family:"DM Sans",sans-serif;color:#E8E4DE;-webkit-font-smoothing:antia
       <div class="flow-phase">Phase 1 — 集客</div>
       <div class="flow-nodes">
         <div class="flow-node">
-          <div class="flow-node-badge badge-both">更新</div>
+          <div class="flow-node-badge badge-current">現行</div>
           <div class="flow-node-title">ランディングページ</div>
-          <div class="flow-node-file">chronos-lp.html</div>
-          <div class="flow-node-desc">機能訴求型LP。Hero → デモ年表 → 機能一覧 → 使い方 → レイヤーデモ → 料金 → CTA</div>
+          <div class="flow-node-file">chronos-lp-v3.html</div>
+          <div class="flow-node-desc">LP最新版（v3）。Hero → デモ年表 → 機能一覧 → 使い方 → レイヤーデモ → 料金 → CTA。旧版はアーカイブ参照</div>
         </div>
         <div class="flow-node">
-          <div class="flow-node-badge badge-prev">以前</div>
           <div class="flow-node-title">OGP / SNSシェア</div>
           <div class="flow-node-file">chronos-ogp-templates.html</div>
           <div class="flow-node-desc">OGPカードテンプレート</div>
@@ -254,7 +251,6 @@ body{font-family:"DM Sans",sans-serif;color:#E8E4DE;-webkit-font-smoothing:antia
       <div class="flow-phase">Phase 2 — 認証</div>
       <div class="flow-nodes">
         <div class="flow-node">
-          <div class="flow-node-badge badge-new">新規</div>
           <div class="flow-node-title">サインアップ / ログイン</div>
           <div class="flow-node-file">chronos-auth.html</div>
           <div class="flow-node-desc">1画面タブ切替。Google / Apple / マジックリンク（メール）。パスワードレス</div>
@@ -269,7 +265,7 @@ body{font-family:"DM Sans",sans-serif;color:#E8E4DE;-webkit-font-smoothing:antia
       <div class="flow-phase">Phase 3 — オンボーディング</div>
       <div class="flow-nodes">
         <div class="flow-node">
-          <div class="flow-node-badge badge-new">新規</div>
+          <div class="flow-node-badge badge-current">現行</div>
           <div class="flow-node-title">オンボーディング</div>
           <div class="flow-node-file">chronos-onboarding-v2.html</div>
           <div class="flow-node-desc">Welcome → ユーザーネーム設定 → 興味カテゴリ（12ジャンル）→ 初回AI年表生成 → 完成画面</div>
@@ -290,7 +286,6 @@ body{font-family:"DM Sans",sans-serif;color:#E8E4DE;-webkit-font-smoothing:antia
       <div class="flow-phase">Phase 4 — メインアプリ</div>
       <div class="flow-nodes">
         <div class="flow-node">
-          <div class="flow-node-badge badge-prev">以前</div>
           <div class="flow-node-title">マイページ</div>
           <div class="flow-node-file">chronos-screens.html</div>
           <div class="flow-node-desc">年表一覧・Pro課金導線・設定</div>
@@ -301,31 +296,49 @@ body{font-family:"DM Sans",sans-serif;color:#E8E4DE;-webkit-font-smoothing:antia
           </div>
         </div>
         <div class="flow-node">
-          <div class="flow-node-badge badge-prev">以前</div>
           <div class="flow-node-title">年表作成フロー</div>
           <div class="flow-node-file">chronos-creation-flow.html</div>
-          <div class="flow-node-desc">テーマ入力 → AI生成 → 編集</div>
+          <div class="flow-node-desc">テーマ入力 → AIが下書きを生成 → 編集</div>
         </div>
         <div class="flow-node">
-          <div class="flow-node-badge badge-prev">以前</div>
-          <div class="flow-node-title">年表閲覧（作成者）</div>
-          <div class="flow-node-file">chronos-v3-multilayer.html</div>
-          <div class="flow-node-desc">マルチレイヤータイムライン。レイヤーON/OFF・編集ボタン付き</div>
+          <div class="flow-node-title">年表閲覧・編集（作成者）</div>
+          <div class="flow-node-file">chronos-viewer.html + 編集モード</div>
+          <div class="flow-node-desc">独立した作成者画面は作らず「viewer + 編集モード」で対応する方針。旧作成者ビュー（chronos-v3-multilayer.html）はアーカイブ</div>
         </div>
       </div>
     </div>
 
-    <div class="flow-arrow">年表を公開 → 共有URLが生成</div>
+    <div class="flow-arrow">年表を公開（public / unlisted）→ Explore・共有URLに掲載</div>
+
+    <!-- Phase: 発見（Explore） -->
+    <div class="flow-section">
+      <div class="flow-phase">Phase 5 — 発見（Explore）</div>
+      <div class="flow-nodes">
+        <div class="flow-node">
+          <div class="flow-node-badge badge-current">現行</div>
+          <div class="flow-node-title">年表を探す（Explore）</div>
+          <div class="flow-node-file">chronos-explore.html</div>
+          <div class="flow-node-desc">公開年表の一覧・発見（v2）。カテゴリ6種 × 検索で絞り込み、カード / リスト表示切替</div>
+          <div class="sub-pages">
+            <div class="sub-page">カテゴリフィルタ（テクノロジー / 歴史・政治 / カルチャー / 科学・自然 / ビジネス / 個人・ライフ）</div>
+            <div class="sub-page">年表を開く → viewer で閲覧</div>
+            <div class="sub-page">いいね ♡ / ブックマーク 🔖</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-arrow">気になる年表を開く → viewer で閲覧 → いいね / ブックマーク</div>
 
     <!-- Phase: 共有・公開 -->
     <div class="flow-section">
-      <div class="flow-phase">Phase 5 — 共有・公開</div>
+      <div class="flow-phase">Phase 6 — 共有・公開</div>
       <div class="flow-nodes">
         <div class="flow-node">
-          <div class="flow-node-badge badge-new">新規</div>
-          <div class="flow-node-title">年表閲覧（公開ビュー）</div>
+          <div class="flow-node-badge badge-current">現行</div>
+          <div class="flow-node-title">年表閲覧（viewer）</div>
           <div class="flow-node-file">chronos-viewer.html</div>
-          <div class="flow-node-desc">シェアされた側の閲覧画面。レイヤーON/OFF・詳細モーダル・共有シート・CTA固定フッター</div>
+          <div class="flow-node-desc">年表閲覧の正。レイヤーON/OFF・詳細モーダル・共有シート・CTA固定フッター。期間レーン表現（chronos-period-lanes.html）は viewer へ統合予定</div>
           <div class="sub-pages">
             <div class="sub-page">作成者プロフィール表示</div>
             <div class="sub-page">点イベント + 線イベント（期間）</div>
@@ -334,7 +347,6 @@ body{font-family:"DM Sans",sans-serif;color:#E8E4DE;-webkit-font-smoothing:antia
           </div>
         </div>
         <div class="flow-node">
-          <div class="flow-node-badge badge-prev">以前</div>
           <div class="flow-node-title">共有・埋め込みUI</div>
           <div class="flow-node-file">chronos-share-embed.html</div>
           <div class="flow-node-desc">OGPカード・埋め込みウィジェット・公開ページのプレゼン</div>
@@ -344,27 +356,51 @@ body{font-family:"DM Sans",sans-serif;color:#E8E4DE;-webkit-font-smoothing:antia
 
     <div class="flow-arrow">未ログインユーザーがCTAクリック → Phase 2 へ</div>
 
-    <!-- Phase: 実験・その他 -->
+    <!-- Archive -->
     <div class="flow-section">
-      <div class="flow-phase">Other — UI実験・素材</div>
+      <div class="flow-phase">Archive — アーカイブ（旧版・参照のみ）</div>
       <div class="flow-nodes">
         <div class="flow-node">
-          <div class="flow-node-badge badge-prev">以前</div>
-          <div class="flow-node-title">期間レーンUI</div>
-          <div class="flow-node-file">chronos-period-lanes.html</div>
-          <div class="flow-node-desc">レーン形式の期間イベント表現</div>
+          <div class="flow-node-badge badge-archive">アーカイブ</div>
+          <div class="flow-node-title">年表UI 旧版</div>
+          <div class="flow-node-desc">閲覧は chronos-viewer.html に一本化。期間レーン表現は viewer へ統合予定</div>
+          <div class="sub-pages">
+            <div class="sub-page">chronos.html（v1）</div>
+            <div class="sub-page">chronos-v2.html</div>
+            <div class="sub-page">chronos-v3-multilayer.html（旧・作成者ビュー）</div>
+            <div class="sub-page">chronos-period-lanes.html（期間レーンUI）</div>
+            <div class="sub-page">chronos-period-ui.html（期間バーUI）</div>
+          </div>
         </div>
         <div class="flow-node">
-          <div class="flow-node-badge badge-prev">以前</div>
-          <div class="flow-node-title">期間バーUI</div>
-          <div class="flow-node-file">chronos-period-ui.html</div>
-          <div class="flow-node-desc">バー形式の期間イベント表現</div>
+          <div class="flow-node-badge badge-archive">アーカイブ</div>
+          <div class="flow-node-title">LP 旧版</div>
+          <div class="flow-node-desc">現行は chronos-lp-v3.html</div>
+          <div class="sub-pages">
+            <div class="sub-page">chronos-lp.html</div>
+            <div class="sub-page">chronos-lp-v2.html</div>
+            <div class="sub-page">chronos-lp-brand.html</div>
+            <div class="sub-page">chronos-lp-launch.html</div>
+          </div>
         </div>
         <div class="flow-node">
-          <div class="flow-node-badge badge-prev">以前</div>
-          <div class="flow-node-title">ロゴ検討</div>
-          <div class="flow-node-file">chronos-logo-v2.html</div>
-          <div class="flow-node-desc">ロゴバリエーション</div>
+          <div class="flow-node-badge badge-archive">アーカイブ</div>
+          <div class="flow-node-title">オンボーディング 旧版</div>
+          <div class="flow-node-desc">現行は chronos-onboarding-v2.html</div>
+          <div class="sub-pages">
+            <div class="sub-page">chronos-onboarding.html（v1）</div>
+          </div>
+        </div>
+        <div class="flow-node">
+          <div class="flow-node-badge badge-archive">アーカイブ</div>
+          <div class="flow-node-title">ロゴ・フォント検討</div>
+          <div class="flow-node-desc">確定ロゴは assets/chronos-logo.svg（グラデーション円シンボル + 白ワードマーク）</div>
+          <div class="sub-pages">
+            <div class="sub-page">chronos-logo-v2.html（Erode + Timeline Dot 旧案）</div>
+            <div class="sub-page">chronos-logo-exploration.html</div>
+            <div class="sub-page">chronos-font-compare.html</div>
+            <div class="sub-page">chronos-font-gothic.html</div>
+          </div>
         </div>
       </div>
     </div>

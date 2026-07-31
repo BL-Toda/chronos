@@ -15,10 +15,8 @@
 ## ディレクトリ構成
 
 - `prototypes/` — 単一HTMLのUIプロトタイプ（各画面が独立して動作）
-  - `chronos-explore.html` — 年表一覧（Explore）**← 現在の作業対象、v2**
-  - `chronos-viewer.html` / `chronos-screens.html` — 年表ビューア・主要画面
-  - `chronos-lp-v2.html` — LP最新版
-  - `chronos-logo-v2.html` — ロゴ探索版（Erode + Timeline Dot、旧案）
+  - **現行版（2026-07-31確定）**: Explore=`chronos-explore.html`(v2・作業対象) / 閲覧の正=`chronos-viewer.html`（作成者ビューは「viewer+編集モード」方針、独立画面なし） / LP=`chronos-lp-v3.html` / オンボーディング=`chronos-onboarding-v2.html` / 主要画面=`chronos-screens.html`
+  - **アーカイブ**: chronos.html, chronos-v2, chronos-v3-multilayer, period-lanes, period-ui, onboarding(v1), lp, lp-v2, lp-brand, lp-launch, logo系2種, font系2種（参照時は歴史資料として扱う）
 - `assets/chronos-logo.svg` — **確定ロゴ原本**（グラデーション円シンボル+白ワードマーク、5.7MB）
   - 配信用軽量版: `prototypes/assets/chronos-logo.svg`（埋め込みテクスチャを800pxに縮小、68KB）
   - シンボル単体: `assets/chronos-symbol.svg`（原本）/ `prototypes/assets/chronos-symbol.svg`（軽量版）
@@ -33,8 +31,9 @@
 ## デザイントークン（全ページ共通・厳守）
 
 - カラー: bg `#0A0A0C` / card `#16161A` / accent `#C8A87E` (Warm Gold) / text `#E8E4DE` / text2 `#8A8680`
-- レイヤーカラー: Blue `#5B9BD5` / Green `#7BC67E` / Pink `#D4849A` / Gold `#C8B87E` / Purple `#9E7EC8`
-- カテゴリカラー: 青 / ピンク / ゴールド / グリーン / オレンジ / パープル（explore参照）
+- レイヤーカラー（7色・確定）: Blue `#5B9BD5` / Green `#7BC67E` / Pink `#D4849A` / Gold `#C8B87E` / Purple `#9E7EC8` / Teal `#5BBCB4` / Orange `#D4A05A`
+- カテゴリマスタ（6種・確定）: テクノロジー / 歴史・政治 / カルチャー / 科学・自然 / ビジネス / 個人・ライフ（色はexplore実装値を正とする）
+- AI機能の呼称は「下書き」に統一。プラン正本: Free=生成月3回+Assist月10回 / Pro=¥800月・¥6,800年（「◯ヶ月分お得」表記は使わない）
 - フォント: 見出し **Erode**（Fontshare, Medium 500, letter-spacing +8〜12px）/ 本文 **DM Sans** / 数値 **JetBrains Mono**
 - トーン: 北欧的・静か・余白重視。コピーに「!」は使わない
 
@@ -47,12 +46,17 @@
 3. ブックマークはローカル状態管理し、マイページにブックマークタブを追加
 4. コンテナのmax-widthを撤廃し、フルード全幅レイアウトに（グリッドは `auto-fill/minmax`、ビューポート連動カラム数）
 
-## DB設計メモ（docs/chronos-prelaunch-package.docx より）
+## DB・API設計（正: docs/chronos-spec-v2-addendum.md）
 
-- likes: `(user_id, timeline_id)` 複合PK、timelinesに `like_count` キャッシュ
-- bookmarks: **未定義** → likesと同構造で新規追加想定
-- 公開設定: public / unlisted / private + `share_id`
-- マイページ: `chronos.app/@username`
+2026-07-31の全体レビューと意思決定（docs/chronos-decisions-draft-20260731.md、全項目確定済み）を反映した
+**仕様補遺 v2 = docs/chronos-spec-v2-addendum.md が実装時の正**。docx原本はv1参照。要点:
+
+- events: `end_date`+`event_type('point','period')`+`summary/detail` 2階層
+- bookmarks/reports 新設、timelines に language・年代キャッシュ・bookmark_count・cover_seed
+- 公開設定: public / unlisted / private + `share_id`（「下書き」ステータスは作らない。デフォルト非公開）
+- 認証: Google/Apple OAuthのみ（マジックリンク不採用）
+- マイページ（私的ダッシュボード）と公開プロフィール `chronos.app/@username` は別画面
+- 再実装方針: Next.js(App Router) + Supabase + Cloudflare の一体型。LPはFramer移行を検討中
 
 ## 規約
 
