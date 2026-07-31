@@ -34,9 +34,11 @@ export default {
     const url = new URL(req.url);
     const path = url.pathname;
 
-    // 認証不要なルート（ログイン処理）
+    // 認証不要なルート（ログイン処理・共通アセット）
     if (path === "/login" && req.method === "POST") return handleLogin(req, env);
     if (path === "/logout" && req.method === "POST") return handleLogout();
+    // ロゴ等の共通アセットはログイン画面でも使うため認証の外に置く
+    if (path.startsWith("/assets/") && req.method === "GET") return env.ASSETS.fetch(req);
 
     // ここから先はログイン必須（関係者だけ）
     const authed = await isAuthed(req, env);
@@ -189,8 +191,8 @@ ${FONT_LINKS}
 <style>${BASE_CSS}
 .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
 .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:48px 40px;width:100%;max-width:400px}
-.logo{font-size:22px;letter-spacing:10px;color:var(--text);margin:0 0 6px;display:flex;align-items:center;gap:10px}
-.logo .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex-shrink:0}
+/* ロゴはSVGがぴったりサイズのため、高さの50%を上下左右のアイソレーション（余白）として確保する */
+.logo{display:block;height:36px;width:auto;margin:18px 18px 50px 0}
 p.sub{color:var(--text2);font-size:13px;margin:0 0 32px}
 label{display:block;font-size:12px;color:var(--text2);letter-spacing:.08em;margin-bottom:10px}
 input{width:100%;padding:13px 15px;border:1px solid var(--border);border-radius:10px;font-size:15px;
@@ -202,7 +204,7 @@ button{width:100%;margin-top:24px;padding:13px;border:none;border-radius:10px;ba
 button:hover{opacity:.88}
 </style></head><body>
 <div class="wrap"><form class="card" method="POST" action="/login">
-<h1 class="logo serif">CHRONOS<span class="dot"></span></h1>
+<img class="logo" src="/assets/chronos-logo.svg" alt="Chronos">
 <p class="sub">関係者専用のプロトタイプ確認ページです。共有パスワードを入力してください。</p>
 <label for="password">SHARED PASSWORD</label>
 <input id="password" name="password" type="password" autocomplete="current-password" autofocus required>
@@ -235,11 +237,12 @@ function indexPage(): string {
 ${FONT_LINKS}
 <style>${BASE_CSS}
 .container{max-width:880px;margin:0 auto;padding:32px 24px 96px}
-header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 0 24px;
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0 32px;
   margin-bottom:28px;border-bottom:1px solid var(--border)}
-.logo{font-size:18px;letter-spacing:9px;margin:0;display:flex;align-items:center;gap:9px}
-.logo .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
-.logo small{font-size:11px;letter-spacing:.06em;color:var(--text2);font-family:"DM Sans",sans-serif;margin-left:6px}
+/* ロゴのアイソレーション：高さの50%以上を周囲に確保（headerのpadding/gapで担保） */
+.brand{display:flex;align-items:center;gap:14px;margin:0}
+.brand img{display:block;height:26px;width:auto}
+.brand small{font-size:11px;letter-spacing:.06em;color:var(--text2);margin-left:13px}
 .logout{background:none;border:1px solid var(--border);border-radius:8px;color:var(--text2);
   font-size:12px;font-family:inherit;padding:7px 14px;cursor:pointer;transition:.15s}
 .logout:hover{border-color:var(--accent);color:var(--text)}
@@ -262,7 +265,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;pa
 </style></head><body>
 <div class="container">
 <header>
-  <h1 class="logo serif">CHRONOS<span class="dot"></span><small>Prototypes</small></h1>
+  <h1 class="brand"><img src="/assets/chronos-logo.svg" alt="Chronos"><small>Prototypes</small></h1>
   <form method="POST" action="/logout"><button class="logout" type="submit">ログアウト</button></form>
 </header>
 <div class="toolbar">

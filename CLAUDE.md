@@ -16,7 +16,10 @@
   - `chronos-explore.html` — 年表一覧（Explore）**← 現在の作業対象、v2**
   - `chronos-viewer.html` / `chronos-screens.html` — 年表ビューア・主要画面
   - `chronos-lp-v2.html` — LP最新版
-  - `chronos-logo-v2.html` — ロゴ確定版（Erode + Timeline Dot）
+  - `chronos-logo-v2.html` — ロゴ探索版（Erode + Timeline Dot、旧案）
+- `assets/chronos-logo.svg` — **確定ロゴ原本**（グラデーション円シンボル+白ワードマーク、5.7MB）
+  - 配信用軽量版: `prototypes/assets/chronos-logo.svg`（埋め込みテクスチャを800pxに縮小、68KB）
+  - SVGはロゴぴったりのサイズのため、設置時はロゴ高さの50%以上のアイソレーションを確保する
   - `chronos-design-system.html` — デザインシステム一覧
 - `docs/` — 仕様書・ブランドガイドライン・収支（docx/xlsx）
   - `chronos-brand-guidelines-v3.docx` — ブランドガイドライン最新版
