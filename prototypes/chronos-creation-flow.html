@@ -19,6 +19,7 @@
   --c-green:#7BC67E; --c-green-dim:rgba(123,198,126,0.12);
   --c-pink:#D4849A; --c-pink-dim:rgba(212,132,154,0.12); --c-pink-bar:rgba(212,132,154,0.22);
   --c-teal:#5BBCB4; --c-teal-dim:rgba(91,188,180,0.12); --c-teal-bar:rgba(91,188,180,0.22);
+  --c-gold:#C8B87E; --c-gold-dim:rgba(200,184,126,0.12);
   --f-display:'Erode',serif; --f-body:'DM Sans',sans-serif; --f-mono:'JetBrains Mono',monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -284,10 +285,17 @@ body{font-family:var(--f-body);background:var(--bg);color:var(--text);
   position:fixed;bottom:0;left:0;right:0;z-index:95;
   background:var(--bg2);border-top:1px solid var(--border2);
   border-radius:16px 16px 0 0;
-  padding:16px 20px 28px;max-width:600px;margin:0 auto;
+  padding:16px 20px 24px;max-width:600px;margin:0 auto;
   transform:translateY(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);
+  display:flex;flex-direction:column;max-height:calc(100dvh - 70px);
 }
 .s4-edit-panel.open{transform:translateY(0)}
+.s4-overlay{
+  position:fixed;inset:0;z-index:94;background:rgba(10,10,12,0.55);
+  opacity:0;pointer-events:none;transition:opacity 0.35s ease;
+}
+.s4-overlay.show{opacity:1;pointer-events:auto}
+.s4-edit-scroll{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding-bottom:2px}
 .s4-edit-handle{
   width:32px;height:4px;border-radius:2px;background:var(--text3);opacity:0.3;
   margin:0 auto 14px;
@@ -368,6 +376,176 @@ body{font-family:var(--f-body);background:var(--bg);color:var(--text);
 .s4-ai-btn.accept{background:var(--accent-dim);color:var(--accent);border:1px solid rgba(200,168,126,0.2)}
 .s4-ai-btn.dismiss{background:transparent;color:var(--text3);border:1px solid var(--border)}
 
+/* ===== EDIT PANEL: SECTIONS (layer / credibility / sources) ===== */
+.s4-section{margin-top:6px;padding-top:14px;border-top:1px solid var(--border)}
+.s4-section-label{
+  font-family:var(--f-mono);font-size:0.56rem;letter-spacing:0.14em;
+  color:var(--text3);margin-bottom:8px;
+}
+
+.s4-layer-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.s4-layer-chip{
+  display:flex;align-items:center;gap:7px;font-size:0.72rem;padding:8px 14px;
+  border-radius:16px;border:1px solid var(--border);background:transparent;
+  color:var(--text2);cursor:pointer;font-family:var(--f-body);transition:all 0.25s;
+}
+.s4-layer-chip:hover{border-color:var(--border2)}
+.s4-layer-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.s4-layer-chip[data-layer="blue"] .s4-layer-dot{background:var(--c-blue)}
+.s4-layer-chip[data-layer="pink"] .s4-layer-dot{background:var(--c-pink)}
+.s4-layer-chip[data-layer="teal"] .s4-layer-dot{background:var(--c-teal)}
+.s4-layer-chip.selected[data-layer="blue"]{background:var(--c-blue-dim);color:var(--c-blue);border-color:rgba(91,155,213,0.4)}
+.s4-layer-chip.selected[data-layer="pink"]{background:var(--c-pink-dim);color:var(--c-pink);border-color:rgba(212,132,154,0.4)}
+.s4-layer-chip.selected[data-layer="teal"]{background:var(--c-teal-dim);color:var(--c-teal);border-color:rgba(91,188,180,0.4)}
+
+.s4-cred-seg{
+  display:flex;border:1px solid var(--border);border-radius:10px;overflow:hidden;
+  margin-bottom:8px;
+}
+.s4-cred-btn{
+  flex:1;padding:10px 4px;font-size:0.72rem;background:transparent;border:none;
+  color:var(--text3);cursor:pointer;font-family:var(--f-body);transition:all 0.25s;
+  display:flex;align-items:center;justify-content:center;gap:5px;
+}
+.s4-cred-btn+.s4-cred-btn{border-left:1px solid var(--border)}
+.s4-cred-btn:hover{color:var(--text2)}
+.s4-cred-btn.selected[data-cred="verified"]{background:var(--c-green-dim);color:var(--c-green)}
+.s4-cred-btn.selected[data-cred="disputed"]{background:var(--c-gold-dim);color:var(--c-gold)}
+.s4-cred-btn.selected[data-cred="unverified"]{background:rgba(138,134,128,0.14);color:var(--text2)}
+.s4-cred-mark{font-family:var(--f-mono);font-size:0.72rem}
+.s4-cred-note{font-size:0.78rem}
+
+.s4-source-row{display:flex;gap:6px;margin-bottom:8px;align-items:center}
+.s4-source-row .s4-edit-input{margin-bottom:0;font-size:0.78rem;padding:10px 12px}
+.s4-source-url{flex:1.25}
+.s4-source-title{flex:1}
+.s4-source-del{
+  width:36px;height:38px;flex-shrink:0;border-radius:8px;border:1px solid var(--border);
+  background:transparent;color:var(--text3);cursor:pointer;font-size:1rem;line-height:1;
+  transition:all 0.25s;font-family:var(--f-body);
+}
+.s4-source-del:hover{color:var(--c-pink);border-color:rgba(212,132,154,0.4)}
+.s4-source-add{
+  font-size:0.7rem;padding:8px 14px;border-radius:10px;margin-bottom:12px;
+  border:1px dashed var(--border2);background:transparent;color:var(--text2);
+  cursor:pointer;font-family:var(--f-body);transition:all 0.25s;
+}
+.s4-source-add:hover{color:var(--accent);border-color:rgba(200,168,126,0.4);background:var(--accent-glow)}
+
+/* ===== STEP 5: PUBLISH SETTINGS ===== */
+.s5-wrap{
+  flex:1;display:flex;flex-direction:column;justify-content:center;
+  padding:32px 20px 60px;max-width:520px;margin:0 auto;width:100%;
+  animation:fadeUp 0.6s ease;
+}
+.s5-title{
+  font-family:var(--f-display);font-size:1.6rem;font-weight:400;
+  color:var(--text-h);text-align:center;margin-bottom:8px;
+}
+.s5-sub{font-size:0.78rem;color:var(--text2);text-align:center;margin-bottom:28px;line-height:1.6}
+
+.s5-cards{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+.s5-card{
+  display:flex;align-items:flex-start;gap:14px;text-align:left;width:100%;
+  padding:16px 18px;border-radius:14px;background:var(--bg-card);
+  border:1px solid var(--border);cursor:pointer;font-family:var(--f-body);
+  color:var(--text2);transition:all 0.25s;
+}
+.s5-card:hover{background:var(--bg-card-h);border-color:var(--border2)}
+.s5-card.selected{border-color:var(--accent);background:var(--accent-glow)}
+.s5-radio{
+  width:18px;height:18px;border-radius:50%;border:1.5px solid var(--text3);
+  flex-shrink:0;margin-top:2px;position:relative;transition:border-color 0.25s;
+}
+.s5-card.selected .s5-radio{border-color:var(--accent)}
+.s5-radio::after{
+  content:'';position:absolute;inset:3.5px;border-radius:50%;background:var(--accent);
+  transform:scale(0);transition:transform 0.25s cubic-bezier(0.16,1,0.3,1);
+}
+.s5-card.selected .s5-radio::after{transform:scale(1)}
+.s5-card-name{font-size:0.9rem;font-weight:500;color:var(--text-h);margin-bottom:3px}
+.s5-card.selected .s5-card-name{color:var(--accent)}
+.s5-card-desc{font-size:0.72rem;color:var(--text2);line-height:1.5}
+
+.s5-share{
+  max-height:0;overflow:hidden;opacity:0;
+  transition:max-height 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease;
+  margin-bottom:0;
+}
+.s5-share.show{max-height:140px;opacity:1;margin-bottom:18px}
+.s5-share-inner{
+  padding:14px 16px;border-radius:12px;background:var(--bg-card);
+  border:1px solid var(--border);
+}
+.s5-share-label{
+  font-family:var(--f-mono);font-size:0.56rem;letter-spacing:0.14em;
+  color:var(--text3);margin-bottom:8px;
+}
+.s5-share-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.s5-share-url{
+  flex:1;min-width:0;font-family:var(--f-mono);font-size:0.78rem;color:var(--text);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.s5-copy{
+  font-size:0.68rem;padding:8px 14px;border-radius:9px;flex-shrink:0;
+  border:1px solid var(--border2);background:transparent;color:var(--accent);
+  cursor:pointer;font-family:var(--f-body);transition:all 0.25s;
+}
+.s5-copy:hover{background:var(--accent-dim)}
+.s5-save{
+  width:100%;padding:16px;font-size:0.9rem;font-weight:500;font-family:var(--f-body);
+  background:var(--accent);color:var(--bg);border:none;border-radius:14px;
+  cursor:pointer;transition:all 0.3s;letter-spacing:0.03em;
+}
+.s5-save:hover{filter:brightness(1.1);transform:translateY(-1px)}
+
+/* Done state */
+.s5-done{
+  display:none;flex-direction:column;align-items:center;text-align:center;
+  animation:fadeUp 0.6s ease;
+}
+.s5-done.show{display:flex}
+.s5-done-icon{
+  width:52px;height:52px;border-radius:50%;border:1.5px solid var(--c-green);
+  background:var(--c-green-dim);color:var(--c-green);font-size:1.3rem;
+  display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+}
+.s5-done-title{
+  font-family:var(--f-display);font-size:1.6rem;font-weight:400;
+  color:var(--text-h);margin-bottom:8px;
+}
+.s5-done-desc{font-size:0.78rem;color:var(--text2);line-height:1.6;margin-bottom:28px}
+.s5-done-links{display:flex;flex-direction:column;gap:10px;width:100%;max-width:320px}
+.s5-link-primary{
+  display:block;padding:14px;font-size:0.85rem;font-weight:500;
+  background:var(--accent);color:var(--bg);border-radius:12px;text-decoration:none;
+  transition:all 0.3s;
+}
+.s5-link-primary:hover{filter:brightness(1.1)}
+.s5-link-secondary{
+  display:block;padding:14px;font-size:0.85rem;color:var(--text2);
+  border:1px solid var(--border);border-radius:12px;text-decoration:none;
+  transition:all 0.3s;
+}
+.s5-link-secondary:hover{border-color:var(--border2);color:var(--text)}
+
+/* Toast */
+.toast{
+  position:fixed;bottom:36px;left:50%;transform:translateX(-50%) translateY(10px);
+  background:var(--bg-card);border:1px solid var(--border2);color:var(--text);
+  font-size:0.75rem;padding:10px 20px;border-radius:10px;z-index:200;
+  opacity:0;pointer-events:none;transition:all 0.3s ease;font-family:var(--f-body);
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* Credibility tag colors on cards */
+.s3-ev-tag.cred.v{background:var(--c-green-dim);color:var(--c-green)}
+.s3-ev-tag.cred.d{background:var(--c-gold-dim);color:var(--c-gold)}
+
+/* ===== A11Y ===== */
+button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.s4-edit-input:focus-visible,.s4-edit-textarea:focus-visible,.s1-input:focus-visible{outline:none}
+
 /* ===== RESPONSIVE ===== */
 @media(min-width:768px){
   .s1-title{font-size:2.2rem}
@@ -395,6 +573,8 @@ body{font-family:var(--f-body);background:var(--bg);color:var(--text);
   <div class="step-dot" data-step="3"></div>
   <div class="step-line"></div>
   <div class="step-dot" data-step="4"></div>
+  <div class="step-line"></div>
+  <div class="step-dot" data-step="5"></div>
 </div>
 
 <!-- ===== STEP 1: THEME INPUT ===== -->
@@ -619,58 +799,164 @@ body{font-family:var(--f-body);background:var(--bg);color:var(--text);
     <div class="s3-timeline" id="s4Timeline" style="padding-bottom:120px">
       <!-- Cloned from s3 via JS -->
     </div>
+
+    <div class="s3-actions">
+      <button class="s3-btn-primary" onclick="goToPublish()">公開設定へ</button>
+    </div>
   </div>
 
   <!-- Edit panel -->
-  <div class="s4-edit-panel" id="editPanel">
+  <div class="s4-overlay" id="editOverlay" onclick="closeEdit()"></div>
+  <div class="s4-edit-panel" id="editPanel" role="dialog" aria-modal="true" aria-label="イベント編集">
     <div class="s4-edit-handle"></div>
 
-    <!-- Event type toggle -->
-    <div class="s4-type-toggle">
-      <button class="s4-type-btn active" id="typePoint" onclick="setEventType('point')">
-        <div class="s4-type-icon-dot"></div>
-        点イベント
-      </button>
-      <button class="s4-type-btn" id="typePeriod" onclick="setEventType('period')">
-        <div class="s4-type-icon-bar"></div>
-        期間イベント
-      </button>
-    </div>
+    <div class="s4-edit-scroll">
+      <!-- Event type toggle -->
+      <div class="s4-type-toggle">
+        <button class="s4-type-btn active" id="typePoint" onclick="setEventType('point')">
+          <div class="s4-type-icon-dot"></div>
+          点イベント
+        </button>
+        <button class="s4-type-btn" id="typePeriod" onclick="setEventType('period')">
+          <div class="s4-type-icon-bar"></div>
+          期間イベント
+        </button>
+      </div>
 
-    <div class="s4-edit-label">タイトル</div>
-    <input class="s4-edit-input" id="editTitle" placeholder="イベント名">
+      <div class="s4-edit-label">タイトル</div>
+      <input class="s4-edit-input" id="editTitle" placeholder="イベント名">
 
-    <div class="s4-edit-label" id="dateLabelText">日付</div>
-    <div class="s4-date-row">
-      <input class="s4-edit-input" id="editDate" placeholder="例: 2007.01" style="margin-bottom:0">
-    </div>
-
-    <!-- End date (period only) -->
-    <div class="s4-end-date-wrap" id="endDateWrap">
-      <div class="s4-edit-label">終了日</div>
+      <div class="s4-edit-label" id="dateLabelText">日付</div>
       <div class="s4-date-row">
-        <input class="s4-edit-input" id="editDateEnd" placeholder="例: 2024.12" style="margin-bottom:0">
+        <input class="s4-edit-input" id="editDate" placeholder="例: 2007.01" style="margin-bottom:0">
+      </div>
+
+      <!-- End date (period only) -->
+      <div class="s4-end-date-wrap" id="endDateWrap">
+        <div class="s4-edit-label">終了日</div>
+        <div class="s4-date-row">
+          <input class="s4-edit-input" id="editDateEnd" placeholder="例: 2024.12" style="margin-bottom:0">
+        </div>
+      </div>
+
+      <div class="s4-edit-label">説明</div>
+      <textarea class="s4-edit-textarea" id="editDesc" placeholder="出来事の概要" style="margin-bottom:4px"></textarea>
+
+      <!-- AI Suggest -->
+      <div class="s4-ai-suggest" id="aiSuggest">
+        <div class="s4-ai-label">AI SUGGEST</div>
+        <div class="s4-ai-text" id="aiSuggestText">このイベントの背景：Apple は 2007 年以前から Project Purple としてスマートフォン開発を秘密裏に進めていた。</div>
+        <div class="s4-ai-actions">
+          <button class="s4-ai-btn accept" onclick="acceptSuggestion()">反映する</button>
+          <button class="s4-ai-btn dismiss" onclick="dismissSuggestion()">無視</button>
+        </div>
+      </div>
+
+      <!-- Layer assignment -->
+      <div class="s4-section">
+        <div class="s4-section-label">レイヤー</div>
+        <div class="s4-layer-chips" id="layerChips" role="radiogroup" aria-label="レイヤー割当">
+          <button class="s4-layer-chip" data-layer="blue" role="radio" aria-checked="false" onclick="selectLayer('blue')">
+            <span class="s4-layer-dot"></span>製品
+          </button>
+          <button class="s4-layer-chip" data-layer="pink" role="radio" aria-checked="false" onclick="selectLayer('pink')">
+            <span class="s4-layer-dot"></span>ビジネス
+          </button>
+          <button class="s4-layer-chip" data-layer="teal" role="radio" aria-checked="false" onclick="selectLayer('teal')">
+            <span class="s4-layer-dot"></span>技術革新
+          </button>
+        </div>
+      </div>
+
+      <!-- Credibility -->
+      <div class="s4-section">
+        <div class="s4-section-label">信憑性</div>
+        <div class="s4-cred-seg" id="credSeg" role="radiogroup" aria-label="信憑性">
+          <button class="s4-cred-btn" data-cred="verified" role="radio" aria-checked="false" onclick="selectCred('verified')">
+            <span class="s4-cred-mark">✓</span>確認済み
+          </button>
+          <button class="s4-cred-btn" data-cred="disputed" role="radio" aria-checked="false" onclick="selectCred('disputed')">
+            <span class="s4-cred-mark">〜</span>諸説あり
+          </button>
+          <button class="s4-cred-btn" data-cred="unverified" role="radio" aria-checked="false" onclick="selectCred('unverified')">
+            <span class="s4-cred-mark">?</span>未検証
+          </button>
+        </div>
+        <input class="s4-edit-input s4-cred-note" id="credNote" placeholder="例: 出典により日付が異なる" style="margin-bottom:14px">
+      </div>
+
+      <!-- Sources -->
+      <div class="s4-section">
+        <div class="s4-section-label">出典</div>
+        <div id="sourceList"></div>
+        <button class="s4-source-add" onclick="addSourceRow()">+ 出典を追加</button>
       </div>
     </div>
 
-    <div class="s4-edit-label">説明</div>
-    <textarea class="s4-edit-textarea" id="editDesc" placeholder="出来事の概要"></textarea>
-    <div class="s4-edit-row">
+    <div class="s4-edit-row" style="margin-top:12px">
       <button class="s4-edit-cancel" onclick="closeEdit()">キャンセル</button>
       <button class="s4-edit-save" onclick="saveEdit()">保存</button>
     </div>
+  </div>
+</div>
 
-    <!-- AI Suggest -->
-    <div class="s4-ai-suggest" id="aiSuggest">
-      <div class="s4-ai-label">AI SUGGEST</div>
-      <div class="s4-ai-text" id="aiSuggestText">このイベントの背景：Apple は 2007 年以前から Project Purple としてスマートフォン開発を秘密裏に進めていた。</div>
-      <div class="s4-ai-actions">
-        <button class="s4-ai-btn accept" onclick="acceptSuggestion()">反映する</button>
-        <button class="s4-ai-btn dismiss" onclick="dismissSuggestion()">無視</button>
+<!-- ===== STEP 5: PUBLISH SETTINGS ===== -->
+<div class="screen" id="screen5">
+  <div class="s5-wrap">
+    <div id="s5Main">
+      <h2 class="s5-title">公開設定</h2>
+      <p class="s5-sub">この年表を誰に見せるかを選べます。あとからいつでも変更できます。</p>
+
+      <div class="s5-cards" role="radiogroup" aria-label="公開範囲">
+        <button class="s5-card" data-vis="public" role="radio" aria-checked="false" onclick="selectVisibility('public')">
+          <span class="s5-radio"></span>
+          <span>
+            <span class="s5-card-name" style="display:block">公開</span>
+            <span class="s5-card-desc" style="display:block">誰でも閲覧でき、Exploreに掲載されます</span>
+          </span>
+        </button>
+        <button class="s5-card" data-vis="unlisted" role="radio" aria-checked="false" onclick="selectVisibility('unlisted')">
+          <span class="s5-radio"></span>
+          <span>
+            <span class="s5-card-name" style="display:block">限定公開</span>
+            <span class="s5-card-desc" style="display:block">URLを知っている人だけが閲覧できます</span>
+          </span>
+        </button>
+        <button class="s5-card selected" data-vis="private" role="radio" aria-checked="true" onclick="selectVisibility('private')">
+          <span class="s5-radio"></span>
+          <span>
+            <span class="s5-card-name" style="display:block">非公開</span>
+            <span class="s5-card-desc" style="display:block">自分だけが閲覧できます</span>
+          </span>
+        </button>
+      </div>
+
+      <div class="s5-share" id="shareBlock" aria-hidden="true">
+        <div class="s5-share-inner">
+          <div class="s5-share-label">共有URL</div>
+          <div class="s5-share-row">
+            <div class="s5-share-url" id="shareUrl">chronos.app/t/smartphone-history</div>
+            <button class="s5-copy" onclick="copyShareUrl()">リンクをコピー</button>
+          </div>
+        </div>
+      </div>
+
+      <button class="s5-save" onclick="savePublish()">この設定で保存</button>
+    </div>
+
+    <div class="s5-done" id="s5Done">
+      <div class="s5-done-icon">✓</div>
+      <h2 class="s5-done-title">保存しました</h2>
+      <p class="s5-done-desc" id="s5DoneDesc">この年表は非公開です。自分だけが閲覧できます。</p>
+      <div class="s5-done-links">
+        <a class="s5-link-primary" href="chronos-viewer.html">年表を見る</a>
+        <a class="s5-link-secondary" href="chronos-screens.html">マイページへ</a>
       </div>
     </div>
   </div>
 </div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
 let currentStep = 1;
@@ -794,6 +1080,52 @@ function setEventType(type) {
 
 // ===== STEP 4: EDIT =====
 let editingCard = null;
+let currentLayer = 'blue';
+let currentCred = 'unverified';
+
+const layerNames = { blue: '製品', pink: 'ビジネス', teal: '技術革新' };
+const credLabels = { verified: '✓ 確認済み', disputed: '〜 諸説あり', unverified: '? 未検証' };
+
+function selectLayer(layer) {
+  currentLayer = layer;
+  document.querySelectorAll('#layerChips .s4-layer-chip').forEach(c => {
+    const on = c.dataset.layer === layer;
+    c.classList.toggle('selected', on);
+    c.setAttribute('aria-checked', on);
+  });
+}
+
+function selectCred(cred) {
+  currentCred = cred;
+  document.querySelectorAll('#credSeg .s4-cred-btn').forEach(b => {
+    const on = b.dataset.cred === cred;
+    b.classList.toggle('selected', on);
+    b.setAttribute('aria-checked', on);
+  });
+}
+
+// ===== SOURCES =====
+function addSourceRow(url, title) {
+  const row = document.createElement('div');
+  row.className = 's4-source-row';
+  row.innerHTML =
+    '<input class="s4-edit-input s4-source-url" placeholder="https://..." value="' + (url || '') + '">' +
+    '<input class="s4-edit-input s4-source-title" placeholder="出典タイトル" value="' + (title || '') + '">' +
+    '<button class="s4-source-del" aria-label="この出典を削除" title="削除">×</button>';
+  row.querySelector('.s4-source-del').addEventListener('click', () => row.remove());
+  document.getElementById('sourceList').appendChild(row);
+}
+
+function resetSources() {
+  document.getElementById('sourceList').innerHTML = '';
+  addSourceRow();
+}
+
+function openPanel() {
+  document.getElementById('editPanel').classList.add('open');
+  document.getElementById('editOverlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
 
 function openEdit(card) {
   editingCard = card;
@@ -805,11 +1137,32 @@ function openEdit(card) {
   document.getElementById('editDate').value = date ? date.textContent : '';
   document.getElementById('editDesc').value = summary ? summary.textContent : '';
   document.getElementById('editDateEnd').value = '';
+  document.getElementById('credNote').value = '';
 
   // Default to point for existing events
   setEventType('point');
 
-  document.getElementById('editPanel').classList.add('open');
+  // Infer layer from the event's color class
+  const ev = card.closest('.s3-ev');
+  let layer = 'blue';
+  if (ev) {
+    if (ev.classList.contains('clr-pink')) layer = 'pink';
+    else if (ev.classList.contains('clr-teal')) layer = 'teal';
+  }
+  selectLayer(layer);
+
+  // Infer credibility from the card tag
+  const credTag = card.querySelector('.s3-ev-tag.cred');
+  let cred = 'unverified';
+  if (credTag) {
+    const t = credTag.textContent.trim();
+    if (t.startsWith('✓')) cred = 'verified';
+    else if (t.startsWith('〜')) cred = 'disputed';
+  }
+  selectCred(cred);
+
+  resetSources();
+  openPanel();
 
   // Show AI suggest after a delay
   setTimeout(() => {
@@ -819,12 +1172,14 @@ function openEdit(card) {
 
 function closeEdit() {
   document.getElementById('editPanel').classList.remove('open');
+  document.getElementById('editOverlay').classList.remove('show');
   document.getElementById('aiSuggest').classList.remove('show');
+  document.body.style.overflow = '';
   editingCard = null;
 }
 
 function saveEdit() {
-  if (!editingCard) return;
+  if (!editingCard) { closeEdit(); return; }
   const title = editingCard.querySelector('.s3-ev-title');
   const date = editingCard.querySelector('.s3-ev-date');
   const summary = editingCard.querySelector('.s3-ev-summary');
@@ -833,12 +1188,33 @@ function saveEdit() {
   if (date) date.textContent = document.getElementById('editDate').value;
   if (summary) summary.textContent = document.getElementById('editDesc').value;
 
+  // Apply layer assignment (color + tag)
+  const ev = editingCard.closest('.s3-ev');
+  if (ev) {
+    ev.classList.remove('clr-blue', 'clr-pink', 'clr-teal');
+    ev.classList.add('clr-' + currentLayer);
+  }
+  const layerTag = editingCard.querySelector('.s3-ev-tag.layer');
+  if (layerTag) layerTag.textContent = layerNames[currentLayer];
+
+  // Apply credibility
+  const credTag = editingCard.querySelector('.s3-ev-tag.cred');
+  if (credTag) {
+    credTag.textContent = credLabels[currentCred];
+    credTag.classList.remove('v', 'd');
+    if (currentCred === 'verified') credTag.classList.add('v');
+    if (currentCred === 'disputed') credTag.classList.add('d');
+    const note = document.getElementById('credNote').value.trim();
+    if (note) credTag.title = note; else credTag.removeAttribute('title');
+  }
+
   // Flash the card
-  editingCard.style.borderColor = 'rgba(200,168,126,0.4)';
-  editingCard.style.boxShadow = '0 0 0 1px rgba(200,168,126,0.15), 0 4px 16px rgba(0,0,0,0.3)';
+  const card = editingCard;
+  card.style.borderColor = 'rgba(200,168,126,0.4)';
+  card.style.boxShadow = '0 0 0 1px rgba(200,168,126,0.15), 0 4px 16px rgba(0,0,0,0.3)';
   setTimeout(() => {
-    editingCard.style.borderColor = '';
-    editingCard.style.boxShadow = '';
+    card.style.borderColor = '';
+    card.style.boxShadow = '';
   }, 800);
 
   closeEdit();
@@ -850,8 +1226,78 @@ function showAddEvent() {
   document.getElementById('editDate').value = '';
   document.getElementById('editDateEnd').value = '';
   document.getElementById('editDesc').value = '';
+  document.getElementById('credNote').value = '';
   setEventType('point');
-  document.getElementById('editPanel').classList.add('open');
+  selectLayer('blue');
+  selectCred('unverified');
+  resetSources();
+  openPanel();
+}
+
+// Esc closes the edit panel
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && document.getElementById('editPanel').classList.contains('open')) {
+    closeEdit();
+  }
+});
+
+// ===== STEP 5: PUBLISH SETTINGS =====
+let visibility = 'private';
+const shareUrls = {
+  public: 'chronos.app/t/smartphone-history',
+  unlisted: 'chronos.app/s/x7Kp2mQ'
+};
+const visDescriptions = {
+  public: 'この年表は公開されています。誰でも閲覧でき、Exploreに掲載されます。',
+  unlisted: 'この年表は限定公開です。URLを知っている人だけが閲覧できます。',
+  private: 'この年表は非公開です。自分だけが閲覧できます。'
+};
+
+function goToPublish() {
+  closeEdit();
+  document.getElementById('s5Main').style.display = '';
+  document.getElementById('s5Done').classList.remove('show');
+  goToStep(5);
+}
+
+function selectVisibility(vis) {
+  visibility = vis;
+  document.querySelectorAll('.s5-card').forEach(c => {
+    const on = c.dataset.vis === vis;
+    c.classList.toggle('selected', on);
+    c.setAttribute('aria-checked', on);
+  });
+  const shareBlock = document.getElementById('shareBlock');
+  const hasUrl = vis !== 'private';
+  shareBlock.classList.toggle('show', hasUrl);
+  shareBlock.setAttribute('aria-hidden', !hasUrl);
+  if (hasUrl) document.getElementById('shareUrl').textContent = shareUrls[vis];
+}
+
+function copyShareUrl() {
+  const url = 'https://' + document.getElementById('shareUrl').textContent;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url)
+      .then(() => showToast('リンクをコピーしました'))
+      .catch(() => showToast('コピーできませんでした'));
+  } else {
+    showToast('コピーできませんでした');
+  }
+}
+
+let toastTimer = null;
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+}
+
+function savePublish() {
+  document.getElementById('s5DoneDesc').textContent = visDescriptions[visibility];
+  document.getElementById('s5Main').style.display = 'none';
+  document.getElementById('s5Done').classList.add('show');
 }
 
 function acceptSuggestion() {

@@ -10,6 +10,7 @@
     "chronos-creation-flow.html": { "name": "年表作成フロー", "group": "アプリ画面" },
     "chronos-share-embed.html": { "name": "共有・埋め込みUI", "group": "アプリ画面" },
     "chronos-avatars.html": { "name": "アバター案", "group": "アプリ画面" },
+    "chronos-profile.html": { "name": "公開プロフィール @username（新規）", "group": "アプリ画面" },
     "chronos-lp-v3.html": { "name": "LP（現行）", "group": "LP" },
     "chronos-design-system.html": { "name": "デザインシステム", "group": "ドキュメント" },
     "chronos-sitemap.html": { "name": "サイトマップ・画面遷移", "group": "ドキュメント" },

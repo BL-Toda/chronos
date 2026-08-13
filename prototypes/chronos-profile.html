@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>Chronos — @toda</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link href="https://api.fontshare.com/v2/css?f[]=erode@300,400,500,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0A0A0C;--bg2:#111114;--bg-card:#16161A;
+  --accent:#C8A87E;--accent-dim:rgba(200,168,126,0.13);
+  --text:#E8E4DE;--text-h:#F5F2ED;--text2:#8A8680;--text3:#5A5754;
+  --border:rgba(200,168,126,0.1);--border2:rgba(200,168,126,0.22);
+  --line:rgba(200,168,126,0.15);
+  --c-blue:#5B9BD5;--c-blue-d:rgba(91,155,213,0.12);
+  --c-green:#7BC67E;--c-green-d:rgba(123,198,126,0.12);
+  --c-pink:#D4849A;--c-pink-d:rgba(212,132,154,0.12);
+  --c-teal:#5BBCB4;
+  --c-gold:#C8B87E;--c-gold-d:rgba(200,184,126,0.12);
+  --c-purple:#9E7EC8;--c-purple-d:rgba(158,126,200,0.12);
+  --c-orange:#D4A05A;--c-orange-d:rgba(212,160,90,0.12);
+  --f-d:'Erode','Shippori Mincho',serif;
+  --f-b:'DM Sans',sans-serif;
+  --f-m:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg);color-scheme:dark}
+html{overflow-x:clip}
+body{font-family:var(--f-b);color:var(--text);min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+  display:flex;flex-direction:column}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;letter-spacing:inherit}
+:focus-visible{outline:1.5px solid var(--accent);outline-offset:2px;border-radius:4px}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== HEADER ===== */
+.hdr{position:sticky;top:0;z-index:100;background:rgba(10,10,12,0.88);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);padding:0 24px;height:100px;
+  display:flex;align-items:center;justify-content:space-between}
+.hdr-brand img{height:40px;width:auto;display:block}
+.hdr-nav{display:flex;align-items:center;gap:20px}
+.hdr-nav a{font-size:13px;color:var(--text2);text-decoration:none;transition:color 0.2s}
+.hdr-nav a:hover{color:var(--text)}
+.hdr-burger{display:none;width:40px;height:40px;align-items:center;justify-content:center;border-radius:8px}
+.hdr-burger svg{width:20px;height:20px;stroke:var(--text2);stroke-width:2;fill:none;stroke-linecap:round}
+.hdr-burger:hover svg{stroke:var(--text)}
+
+/* Mobile menu panel */
+.menu-panel{position:fixed;top:100px;left:0;right:0;z-index:300;background:var(--bg2);
+  border-bottom:1px solid var(--border);padding:8px 24px 16px;display:none;flex-direction:column}
+body.menu-open .menu-panel{display:flex}
+.menu-panel a{padding:15px 4px;font-size:14px;color:var(--text);text-decoration:none;
+  border-bottom:1px solid var(--border);letter-spacing:0.04em}
+.menu-panel a:last-child{border-bottom:none}
+.overlay{position:fixed;inset:0;background:rgba(10,10,12,0.6);backdrop-filter:blur(2px);
+  opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;z-index:250}
+body.menu-open .overlay{opacity:1;visibility:visible}
+
+/* ===== PAGE ===== */
+.page{width:100%;max-width:1200px;margin:0 auto;padding:56px 32px 80px;flex:1}
+
+/* ===== PROFILE HEADER ===== */
+.profile{display:flex;align-items:center;gap:28px;margin-bottom:56px;
+  animation:fadeUp 0.5s ease both}
+.profile-avatar{width:96px;height:96px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--accent-dim);border:1px solid var(--border2);
+  font-family:var(--f-d);font-size:36px;font-weight:400;color:var(--accent)}
+.profile-body{min-width:0}
+.profile-name-row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.profile-name{font-family:var(--f-d);font-size:28px;font-weight:500;
+  letter-spacing:0.08em;color:var(--text-h)}
+.profile-handle{font-family:var(--f-m);font-size:13px;color:var(--text2);letter-spacing:0.04em}
+.profile-bio{font-size:13px;color:var(--text2);line-height:1.7;margin-top:8px}
+.profile-stats{display:flex;align-items:center;gap:24px;margin-top:14px}
+.stat{display:flex;align-items:baseline;gap:7px}
+.stat-num{font-family:var(--f-m);font-size:16px;color:var(--text)}
+.stat-label{font-size:11px;color:var(--text2)}
+.stat-sep{width:1px;height:14px;background:var(--border);align-self:center}
+
+/* ===== SECTION ===== */
+.section-head{display:flex;align-items:baseline;gap:12px;margin-bottom:20px;
+  padding-bottom:12px;border-bottom:1px solid var(--border)}
+.section-title{font-family:var(--f-d);font-size:16px;font-weight:500;
+  letter-spacing:0.14em;color:var(--text-h)}
+.section-count{font-family:var(--f-m);font-size:11px;color:var(--text2)}
+
+/* ===== GRID (explore v3系カード) ===== */
+.tl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:22px;
+  animation:fadeUp 0.5s ease 0.08s both}
+.tl-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;
+  overflow:hidden;cursor:pointer;transition:all 0.3s ease;
+  text-decoration:none;color:inherit}
+.tl-card:hover{border-color:var(--border2);transform:translateY(-3px);
+  box-shadow:0 8px 32px rgba(0,0,0,0.25)}
+.tl-card-cover{aspect-ratio:16/8;position:relative;overflow:hidden;
+  border-bottom:1px solid var(--border);background:var(--bg2)}
+.tl-card-cover svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.tl-card-body{padding:14px 14px 12px}
+.tl-card-cat{font-family:var(--f-m);font-size:9px;letter-spacing:0.1em;
+  text-transform:uppercase;margin-bottom:4px}
+.tl-card-title{font-family:var(--f-d);font-size:16px;font-weight:400;
+  line-height:1.3;margin-bottom:4px;color:var(--text-h)}
+.tl-card-desc{font-size:11px;color:var(--text2);line-height:1.5;margin-bottom:10px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tl-card-meta{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.tl-card-events{font-family:var(--f-m);font-size:10px;color:var(--text2)}
+.act-btn{display:inline-flex;align-items:center;gap:4px;padding:4px 7px;border-radius:8px;
+  font-family:var(--f-m);font-size:10px;color:var(--text2);transition:all 0.2s;
+  position:relative;z-index:2}
+.act-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round;transition:fill 0.2s}
+.act-btn:hover{background:rgba(200,168,126,0.08);color:var(--text)}
+.act-btn.on{color:var(--accent)}
+.act-btn.on svg{fill:var(--accent)}
+
+/* ===== EMPTY ===== */
+.empty-state{display:none;text-align:center;padding:72px 20px}
+.empty-icon{width:44px;height:44px;margin:0 auto 16px;stroke:var(--text2);
+  fill:none;stroke-width:1.5;stroke-linecap:round}
+.empty-title{font-family:var(--f-d);font-size:17px;font-weight:300;
+  letter-spacing:0.06em;color:var(--text2);margin-bottom:8px}
+.empty-desc{font-size:12px;color:var(--text3);line-height:1.7}
+body.is-empty .tl-grid{display:none}
+body.is-empty .empty-state{display:block}
+body.is-empty .section-count{display:none}
+
+/* ===== FOOTER ===== */
+.ftr{border-top:1px solid var(--border);padding:28px 32px;
+  display:flex;align-items:center;justify-content:center;gap:12px}
+.ftr img{height:18px;width:auto;display:block;opacity:0.85}
+.ftr span{font-size:11px;color:var(--text3);letter-spacing:0.06em}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:540px){
+  .hdr{padding:0 16px}
+  .hdr-nav{gap:12px}
+  .hdr-nav a{display:none}
+  .hdr-burger{display:inline-flex}
+  .page{padding:36px 16px 64px}
+}
+@media(max-width:400px){
+  .profile{flex-direction:column;align-items:flex-start;gap:18px;margin-bottom:40px}
+  .profile-avatar{width:80px;height:80px;font-size:30px}
+  .tl-grid{grid-template-columns:1fr;gap:16px}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-brand"><a href="chronos-explore.html" aria-label="Chronos" style="display:block"><img src="assets/chronos-logo.svg" alt="Chronos"></a></div>
+  <nav class="hdr-nav">
+    <a href="chronos-screens.html">マイページ</a>
+    <a href="chronos-explore.html">年表を探す</a>
+    <a href="#">年表をつくる</a>
+    <button type="button" class="hdr-burger" id="menuBtn" aria-label="メニュー" aria-expanded="false">
+      <svg viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+  </nav>
+</header>
+
+<!-- Mobile menu panel -->
+<div class="menu-panel" id="menuPanel" role="dialog" aria-label="メニュー">
+  <a href="chronos-screens.html">マイページ</a>
+  <a href="chronos-explore.html">年表を探す</a>
+  <a href="#">年表をつくる</a>
+</div>
+<div class="overlay" id="overlay"></div>
+
+<main class="page">
+
+  <!-- PROFILE HEADER -->
+  <section class="profile">
+    <div class="profile-avatar" aria-hidden="true">T</div>
+    <div class="profile-body">
+      <div class="profile-name-row">
+        <h1 class="profile-name">Toda</h1>
+        <span class="profile-handle">@toda</span>
+      </div>
+      <p class="profile-bio">テクノロジーと歴史の交差点を年表でたどっています。</p>
+      <div class="profile-stats">
+        <div class="stat"><span class="stat-num" id="statCount">4</span><span class="stat-label">公開年表</span></div>
+        <div class="stat-sep" aria-hidden="true"></div>
+        <div class="stat"><span class="stat-num" id="statLikes">12,400</span><span class="stat-label">総いいね</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLIC TIMELINES -->
+  <div class="section-head">
+    <h2 class="section-title">公開年表</h2>
+    <span class="section-count" id="sectionCount">4</span>
+  </div>
+
+  <div class="tl-grid" id="grid"></div>
+
+  <div class="empty-state">
+    <svg class="empty-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+    <div class="empty-title">公開されている年表はまだありません。</div>
+    <div class="empty-desc">公開された年表は、ここに表示されます。</div>
+  </div>
+
+</main>
+
+<footer class="ftr">
+  <img src="assets/chronos-logo.svg" alt="Chronos">
+  <span>— Every event has context.</span>
+</footer>
+
+<script>
+// ===== SEEDED RANDOM(exploreと同一ロジック: 同じタイトルなら同じカバー) =====
+function hashStr(s){let h=5381;for(let i=0;i<s.length;i++){h=(((h<<5)+h)+s.charCodeAt(i))>>>0}return h}
+function mulberry32(a){return function(){a|=0;a=(a+0x6D2B79F5)|0;let t=Math.imul(a^(a>>>15),1|a);t=(t+Math.imul(t^(t>>>7),61|t))^t;return((t^(t>>>14))>>>0)/4294967296}}
+function hexToRgba(hex,a){const n=parseInt(hex.slice(1),16);return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${a.toFixed(3)})`}
+
+// ===== DATA(@todaの公開年表 4件) =====
+const CAT_META={
+  tech:{name:'テクノロジー',color:'var(--c-blue)',hex:'#5B9BD5'},
+  history:{name:'歴史・政治',color:'var(--c-pink)',hex:'#D4849A'},
+  culture:{name:'カルチャー',color:'var(--c-gold)',hex:'#C8B87E'},
+  science:{name:'科学・自然',color:'var(--c-green)',hex:'#7BC67E'}
+};
+const TIMELINES=[
+  {cat:'tech',title:'AI革命の全体像 2020–2026',desc:'技術の進化を複数レイヤーで俯瞰する年表。',likes:4820,events:64},
+  {cat:'history',title:'宇宙開発の舞台裏',desc:'複数の視点を重ねて読み解く歴史年表。',likes:3260,events:48},
+  {cat:'tech',title:'半導体戦争の50年',desc:'地政学と技術のせめぎ合いを重ねた年表。',likes:2840,events:52},
+  {cat:'science',title:'気候変動の100年',desc:'科学の発見と社会への影響を重ねた年表。',likes:1480,events:37}
+].map(t=>{
+  const seed=hashStr(t.cat+'|'+t.title);
+  return {...t,seed,id:t.cat+'-'+seed.toString(36),pattern:seed%6,
+    catName:CAT_META[t.cat].name,catColor:CAT_META[t.cat].color,catHex:CAT_META[t.cat].hex};
+});
+
+// ===== GENERATIVE COVERS(explore v3の簡略移植・シード決定論) =====
+const VBW=320,VBH=180;
+function pMesh(rng,c,uid){
+  let defs='',body='';
+  for(let i=0;i<4;i++){
+    const gid=uid+'m'+i;
+    const cx=(rng()*VBW).toFixed(1),cy=(rng()*VBH).toFixed(1),r=(80+rng()*130).toFixed(1);
+    defs+=`<radialGradient id="${gid}"><stop offset="0%" stop-color="${c(0.16+rng()*0.18)}"/><stop offset="100%" stop-color="${c(0)}"/></radialGradient>`;
+    body+=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="url(#${gid})"/>`;
+  }
+  return `<defs>${defs}</defs>${body}`;
+}
+function pWaves(rng,c){
+  let body='';
+  for(let i=0;i<4;i++){
+    const y=42+i*38+rng()*14,amp=9+rng()*15,ph=rng()*6.28,fr=40+rng()*26;
+    let d=`M0 ${y.toFixed(1)}`;
+    for(let x=0;x<=VBW;x+=16)d+=` L${x} ${(y+Math.sin(x/fr+ph)*amp).toFixed(1)}`;
+    d+=` L${VBW} ${VBH+20} L0 ${VBH+20} Z`;
+    body+=`<path d="${d}" fill="${c(0.05+i*0.045)}"/>`;
+  }
+  return body;
+}
+function pDotsGrid(rng,c){
+  let body='';const ox=rng()*12,oy=rng()*12;
+  for(let y=10;y<VBH;y+=24)for(let x=10;x<VBW;x+=24){
+    body+=`<circle cx="${(x+ox).toFixed(1)}" cy="${(y+oy).toFixed(1)}" r="${(0.9+rng()*1.9).toFixed(1)}" fill="${c(0.12+rng()*0.22)}"/>`;
+  }
+  return body;
+}
+function pContour(rng,c){
+  const cx=(70+rng()*180).toFixed(1),cy=(35+rng()*110).toFixed(1);let body='';
+  const bw=20+rng()*8,bh=12+rng()*5,rot=(rng()*24-12).toFixed(1);
+  for(let i=1;i<=8;i++){
+    body+=`<ellipse cx="${cx}" cy="${cy}" rx="${(i*bw).toFixed(1)}" ry="${(i*bh).toFixed(1)}" transform="rotate(${rot} ${cx} ${cy})" fill="none" stroke="${c(Math.max(0.08,0.3-i*0.026))}" stroke-width="1"/>`;
+  }
+  return body;
+}
+function pAurora(rng,c,uid){
+  let defs='',body='';
+  for(let i=0;i<3;i++){
+    const gid=uid+'a'+i;
+    defs+=`<linearGradient id="${gid}" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${c(0)}"/><stop offset="50%" stop-color="${c(0.13+rng()*0.15)}"/><stop offset="100%" stop-color="${c(0)}"/></linearGradient>`;
+    const x=(rng()*VBW-40).toFixed(1),w=(90+rng()*130).toFixed(1),sk=(rng()*44-22).toFixed(1);
+    body+=`<rect x="${x}" y="-40" width="${w}" height="${VBH+80}" fill="url(#${gid})" transform="skewX(${sk})"/>`;
+  }
+  return `<defs>${defs}</defs>${body}`;
+}
+function pGeo(rng,c){
+  let body='';const s=32;
+  for(let x=0;x<=VBW;x+=s)body+=`<line x1="${x}" y1="0" x2="${x}" y2="${VBH}" stroke="${c(0.09)}" stroke-width="1"/>`;
+  for(let y=0;y<=VBH;y+=s)body+=`<line x1="0" y1="${y}" x2="${VBW}" y2="${y}" stroke="${c(0.09)}" stroke-width="1"/>`;
+  for(let i=0;i<6;i++){
+    const gx=Math.floor(rng()*10)*s,gy=Math.floor(rng()*6)*s;
+    if(rng()<0.5)body+=`<rect x="${gx}" y="${gy}" width="${s}" height="${s}" fill="${c(0.1+rng()*0.16)}"/>`;
+    else body+=`<path d="M${gx} ${gy+s} L${gx+s} ${gy+s} L${gx+s} ${gy} Z" fill="${c(0.12+rng()*0.16)}"/>`;
+  }
+  return body;
+}
+const PATTERNS=[pMesh,pWaves,pDotsGrid,pContour,pAurora,pGeo];
+function coverSVG(item){
+  const rng=mulberry32(item.seed+7);
+  const c=a=>hexToRgba(item.catHex,a);
+  const uid='p'+item.seed.toString(36);
+  const inner=PATTERNS[item.pattern](rng,c,uid);
+  return `<svg viewBox="0 0 ${VBW} ${VBH}" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">`+
+    `<rect width="${VBW}" height="${VBH}" fill="${c(0.05)}"/>${inner}</svg>`;
+}
+
+// ===== LIKE(localStorageスキーマはexplore/viewerと共有) =====
+const LS_LIKES='chronos_likes_v1';
+function loadJSON(key,fallback){try{const v=JSON.parse(localStorage.getItem(key));return v==null?fallback:v}catch(e){return fallback}}
+let likedIds=new Set(loadJSON(LS_LIKES,[]));
+function persist(){localStorage.setItem(LS_LIKES,JSON.stringify([...likedIds]))}
+
+const ICON_HEART='<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>';
+
+// ===== RENDER =====
+function renderCard(item){
+  const liked=likedIds.has(item.id);
+  return `<a class="tl-card" href="chronos-viewer.html">
+    <div class="tl-card-cover">${coverSVG(item)}</div>
+    <div class="tl-card-body">
+      <div class="tl-card-cat" style="color:${item.catColor}">${item.catName}</div>
+      <div class="tl-card-title">${item.title}</div>
+      <div class="tl-card-desc">${item.desc}</div>
+      <div class="tl-card-meta">
+        <span class="tl-card-events">${item.events} events</span>
+        <button type="button" class="act-btn${liked?' on':''}" data-id="${item.id}" aria-pressed="${liked}" aria-label="いいね">${ICON_HEART}<span class="act-num">${(item.likes+(liked?1:0)).toLocaleString()}</span></button>
+      </div>
+    </div>
+  </a>`;
+}
+
+const params=new URLSearchParams(location.search);
+const isEmpty=params.get('empty')==='1';
+if(isEmpty){
+  document.body.classList.add('is-empty');
+  document.getElementById('statCount').textContent='0';
+  document.getElementById('statLikes').textContent='0';
+}else{
+  document.getElementById('grid').innerHTML=TIMELINES.map(renderCard).join('');
+}
+
+// like toggle(カードは<a>のため委譲+preventDefault)
+document.addEventListener('click',e=>{
+  const btn=e.target.closest('.act-btn');
+  if(!btn)return;
+  e.preventDefault();e.stopPropagation();
+  const item=TIMELINES.find(t=>t.id===btn.dataset.id);
+  if(!item)return;
+  if(likedIds.has(item.id))likedIds.delete(item.id);else likedIds.add(item.id);
+  persist();
+  const on=likedIds.has(item.id);
+  btn.classList.toggle('on',on);
+  btn.setAttribute('aria-pressed',on);
+  btn.querySelector('.act-num').textContent=(item.likes+(on?1:0)).toLocaleString();
+});
+
+// ===== MOBILE MENU =====
+const menuBtn=document.getElementById('menuBtn');
+function closeMenu(){document.body.classList.remove('menu-open');menuBtn.setAttribute('aria-expanded','false')}
+menuBtn.addEventListener('click',()=>{
+  const open=document.body.classList.toggle('menu-open');
+  menuBtn.setAttribute('aria-expanded',open);
+});
+document.getElementById('overlay').addEventListener('click',closeMenu);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+</script>
+</body>
+</html>

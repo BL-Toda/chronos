@@ -42,9 +42,15 @@
 `chronos-explore.html` はv3実装済み: 生成型カバー画像（シード決定論・カテゴリカラー6パターン）/ ♡🔖ボタン+カウント（カード・リスト両対応）/ フルード全幅グリッド / モバイル導線（ボトムシート型フィルタ+ハンバーガー）/ a11y（button化・focus-visible・コントラスト是正）。
 ソーシャル状態はlocalStorageで画面間連携: `chronos_likes_v1`（id配列）/ `chronos_bookmarks_v1`（`{id,title,desc,cat,catName,likes}`配列）。マイページ（screens）にブックマークタブ、viewerにいいねボタン実装済み。
 
+## 公開系UX — 完了（2026-08-01）
+
+spec-v2-addendum の公開系UIを実装済み:
+- creation-flow: Step 5「公開設定」（公開/限定公開/非公開の3択+共有URL発行+コピー、デフォルト非公開）、イベント編集パネル拡張（レイヤー割当チップ・信憑性3択+補足メモ・出典リスト）
+- screens: 年表カードに公開設定モーダル（バッジ「公開中/限定公開/非公開」3種に統一、「下書き」文言廃止）
+- `chronos-profile.html` 新規: 公開プロフィール @username（explore v3とカバー生成・いいね状態を共有。`?empty=1` で空状態）
+
 ## 次の実装候補
 
-- 公開系UXのデザイン（公開設定モーダル・イベント編集パネル拡張・公開プロフィール @username）→ 仕様は docs/chronos-spec-v2-addendum.md
 - Next.js + Supabase + Cloudflare の雛形構築（再実装方針）
 - LPのFramer移行検討
 
