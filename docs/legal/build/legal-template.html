@@ -169,7 +169,6 @@ footer.site{border-top:1px solid var(--border);padding:48px 32px 56px;background
       <li><a href="#terms" data-doc="terms">利用規約</a></li>
       <li><a href="#privacy" data-doc="privacy">プライバシーポリシー</a></li>
       <li><a href="#tokushoho" data-doc="tokushoho">特定商取引法に基づく表記</a></li>
-      <li><a href="#content" data-doc="content">コンテンツポリシー</a></li>
     </ul>
     <div class="toc-desk">
       <div class="side-label">目次</div>
@@ -181,9 +180,6 @@ footer.site{border-top:1px solid var(--border);padding:48px 32px 56px;background
       </ul>
       <ul class="toc" id="toc-tokushoho" data-doc="tokushoho" hidden>
 <!--TOC:tokushoho-->
-      </ul>
-      <ul class="toc" id="toc-content" data-doc="content" hidden>
-<!--TOC:content-->
       </ul>
     </div>
     <div class="side-mobile">
@@ -227,17 +223,6 @@ footer.site{border-top:1px solid var(--border);padding:48px 32px 56px;background
       </div>
 <!--BODY:tokushoho-->
     </article>
-
-    <article class="doc" id="doc-content" data-doc="content" data-title="コンテンツポリシーおよび通知・措置の手続">
-      <div class="doc-eyebrow">Content Policy</div>
-      <h1>コンテンツポリシーおよび通知・措置の手続</h1>
-      <div class="notice" role="note">
-        <span class="notice-item">最終更新: 2026年8月17日</span>
-        <!--EFFECTIVE:content-->
-        <span class="notice-draft">本文書はドラフトです。公開前に弁護士の確認を要します。</span>
-      </div>
-<!--BODY:content-->
-    </article>
   </main>
 </div>
 
@@ -256,7 +241,7 @@ footer.site{border-top:1px solid var(--border);padding:48px 32px 56px;background
 <script>
 (function(){
   'use strict';
-  var DOCS=['terms','privacy','tokushoho','content'];
+  var DOCS=['terms','privacy','tokushoho'];
   var current=null;
   var docLinks=Array.prototype.slice.call(document.querySelectorAll('#docs a'));
   var mobileList=document.getElementById('toc-mobile-list');

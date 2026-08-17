@@ -192,7 +192,6 @@ const docs={
   terms: build('terms.md',{key:'terms',role:b=> b.level===1?'title': b.level===2?'part': b.level===3?'section':'sub'}),
   privacy: build('privacy.md',{key:'privacy',dropToc:true, role:b=> b.level===1?'part': b.level===2?'section':'sub'}),
   tokushoho: build('tokushoho.md',{key:'tokushoho',prependSection:'表記事項',role:b=> b.level===1?'title': b.level===2?'section':'sub'}),
-  content: build('content-policy.md',{key:'content',role:b=> b.level===1?'title': b.level===2?'section':'sub'}),
 };
 // title-role for privacy: first h1 was stripped as title already; remaining h1 = parts. ok.
 
