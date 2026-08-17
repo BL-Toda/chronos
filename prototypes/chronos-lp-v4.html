@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chronos — Every event has context.</title>
+<meta name="description" content="複数の年表を同じ時間軸に重ねて、文脈を浮かび上がらせる。AIが下書きをつくり、あなたが仕上げる年表作成・共有プラットフォーム。">
+<link rel="canonical" href="https://chronos.app/">
+<meta property="og:title" content="Chronos — Every event has context.">
+<meta property="og:description" content="複数の年表を同じ時間軸に重ねて、文脈を浮かび上がらせる。AIが下書きをつくり、あなたが仕上げる年表プラットフォーム。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chronos.app/">
+<meta property="og:site_name" content="Chronos">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://chronos.app/assets/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=erode@400,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400&family=Shippori+Mincho:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0A0C;--bg2:#0E0E11;--card:#16161A;--card-el:#1E1E24;
+  --accent:#C8A87E;--accent-soft:rgba(200,168,126,0.10);--accent-med:rgba(200,168,126,0.18);
+  --text:#E8E4DE;--text-h:#F5F2ED;--text2:#9A9590;--text3:#7A7570;
+  --border:rgba(200,168,126,0.10);--border2:rgba(200,168,126,0.20);
+  --c-blue:#5B9BD5;--c-green:#7BC67E;--c-pink:#D4849A;--c-gold:#C8B87E;--c-purple:#9E7EC8;--c-teal:#5BBCB4;--c-orange:#D4A05A;
+  --c-blue-d:rgba(91,155,213,0.12);--c-green-d:rgba(123,198,126,0.12);--c-pink-d:rgba(212,132,154,0.12);--c-gold-d:rgba(200,184,126,0.12);
+  --c-purple-d:rgba(158,126,200,0.12);--c-teal-d:rgba(91,188,180,0.12);--c-orange-d:rgba(212,160,90,0.12);
+  --f-d:'Erode','Shippori Mincho',serif;--f-b:'DM Sans',sans-serif;--f-m:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;background:var(--bg);color-scheme:dark;scroll-padding-top:110px}
+body{font-family:var(--f-b);background:var(--bg);color:var(--text);overflow-x:hidden;font-weight:400;line-height:1.7}
+img,svg{display:block;max-width:100%}
+button{font-family:inherit;font-size:inherit;color:inherit;background:none;border:none;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.container{max-width:1040px;margin:0 auto;padding:0 24px}
+.section{padding:100px 0}
+.section.alt{background:var(--bg2)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.9s var(--ease),transform 0.9s var(--ease)}
+.reveal.v{opacity:1;transform:translateY(0)}
+.d1{transition-delay:0.08s}.d2{transition-delay:0.16s}.d3{transition-delay:0.24s}.d4{transition-delay:0.32s}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{animation-duration:0.01ms !important;transition-duration:0.01ms !important}}
+
+/* type */
+.label{font-family:var(--f-m);font-size:0.68rem;letter-spacing:0.28em;color:var(--accent);text-transform:uppercase;margin-bottom:22px}
+h1,h2,h3{font-family:var(--f-d);font-weight:500;color:var(--text-h);font-style:normal}
+h2{font-size:clamp(1.55rem,3vw,2.15rem);letter-spacing:0.08em;line-height:1.5;margin-bottom:22px}
+.lead{font-size:1.02rem;color:var(--text2);line-height:1.95;max-width:640px;font-weight:300}
+.sec-head{margin-bottom:56px}
+.center{text-align:center}
+.center .lead{margin:0 auto}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,12,0.74);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1040px;margin:0 auto;padding:0 24px;height:100px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;padding:20px 0}
+.nav-logo img{height:40px;width:auto}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-link{font-size:0.8rem;color:var(--text2);text-decoration:none;letter-spacing:0.05em;transition:color 0.3s;padding:6px 0}
+.nav-link:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 24px;border-radius:6px;font-size:0.82rem;font-weight:500;letter-spacing:0.06em;text-decoration:none;transition:background 0.3s,color 0.3s,transform 0.3s,border-color 0.3s;white-space:nowrap}
+.btn-primary{background:var(--accent);color:var(--bg)}
+.btn-primary:hover{background:#D4B88E;transform:translateY(-1px)}
+.btn-ghost{border:1px solid var(--border2);color:var(--text)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.nav-cta{min-height:40px;padding:0 20px;font-size:0.76rem}
+
+/* hero */
+.hero{padding:180px 0 110px;position:relative}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 45% at 50% 25%,rgba(200,168,126,0.05),transparent 70%);pointer-events:none}
+.hero-inner{position:relative;text-align:center;max-width:760px;margin:0 auto}
+.hero h1{font-size:clamp(2.4rem,6vw,4.2rem);font-style:italic;font-weight:400;letter-spacing:0.02em;line-height:1.2;color:var(--text-h);margin-bottom:34px}
+.hero-lead{font-size:clamp(1.05rem,2vw,1.28rem);color:var(--text);line-height:1.9;font-weight:300;margin-bottom:14px}
+.hero-sub{font-size:0.94rem;color:var(--text2);line-height:1.9;font-weight:300}
+.hero-preview{margin:60px auto 56px;max-width:720px;padding:28px 28px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px}
+.hero-preview svg{width:100%;height:auto;overflow:visible}
+.hp-lane-label{font-family:var(--f-b);font-size:11px;fill:var(--text2);letter-spacing:0.04em}
+.hp-year{font-family:var(--f-m);font-size:10px;fill:var(--text3);letter-spacing:0.04em}
+.hp-axis{stroke:rgba(200,168,126,0.22);stroke-width:1}
+.hp-grid{stroke:rgba(200,168,126,0.06);stroke-width:1}
+.hp-lane{stroke:rgba(255,255,255,0.05);stroke-width:1}
+.hp-item{opacity:0;animation:hpin 1.2s var(--ease) forwards}
+@keyframes hpin{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.hp-caption{margin-top:16px;font-family:var(--f-m);font-size:0.66rem;letter-spacing:0.14em;color:var(--text3);text-transform:uppercase;text-align:right}
+.hero-note{font-size:0.78rem;color:var(--text2);letter-spacing:0.04em;margin-bottom:16px}
+.hero-more{display:inline-block;margin-top:34px;font-size:0.8rem;color:var(--text2);text-decoration:none;letter-spacing:0.06em;padding:6px 2px;transition:color 0.3s}
+.hero-more:hover{color:var(--accent)}
+
+/* waitlist form */
+.wl{max-width:480px;margin:0 auto}
+.wl-form{display:flex;gap:10px}
+.wl-form input{flex:1;min-width:0;height:48px;padding:0 16px;background:var(--card);border:1px solid var(--border2);border-radius:6px;color:var(--text);font-family:var(--f-b);font-size:0.9rem;transition:border-color 0.3s}
+.wl-form input::placeholder{color:var(--text3)}
+.wl-form input:focus{outline:none;border-color:var(--accent)}
+.wl-form input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wl-form .btn{height:48px}
+.wl-consent{margin-top:12px;font-size:0.72rem;color:var(--text2);letter-spacing:0.02em}
+.wl-consent a{color:var(--text2);text-decoration:underline;text-underline-offset:3px;transition:color 0.3s}
+.wl-consent a:hover{color:var(--accent)}
+.wl-error{margin-top:10px;font-size:0.76rem;color:var(--c-orange);min-height:1.2em;display:none}
+.wl-error.on{display:block}
+.wl-done{display:none;padding:26px 24px;background:var(--card);border:1px solid var(--border2);border-radius:10px;text-align:center;animation:hpin 0.8s var(--ease)}
+.wl.done .wl-form,.wl.done .wl-consent,.wl.done .wl-error{display:none}
+.wl.done .wl-done{display:block}
+.wl-done-title{font-family:var(--f-d);font-size:1.05rem;letter-spacing:0.08em;color:var(--text-h);margin-bottom:6px;display:flex;align-items:center;justify-content:center;gap:10px}
+.wl-done-title svg{width:18px;height:18px;stroke:var(--c-green)}
+.wl-done-sub{font-size:0.82rem;color:var(--text2);margin-bottom:18px}
+.wl-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.wl-actions .btn{min-height:40px;padding:0 18px;font-size:0.78rem}
+
+/* problem */
+.prose{max-width:640px}
+.prose p{color:var(--text2);font-weight:300;line-height:2;margin-bottom:18px;font-size:0.98rem}
+.prose p strong{color:var(--text);font-weight:400}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+.mini{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:26px 24px}
+.mini .ico{width:36px;height:36px;border-radius:8px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.mini .ico svg{width:18px;height:18px;stroke:var(--accent)}
+.mini h3{font-size:1rem;letter-spacing:0.08em;margin-bottom:8px}
+.mini p{font-size:0.84rem;color:var(--text2);line-height:1.8}
+.ico svg,.step-ico svg,.tag-ico svg{fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* demo */
+.demo-wrap{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.demo-top{padding:22px 26px;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:14px}
+.demo-guide{font-size:0.82rem;color:var(--text2)}
+.chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:9px;min-height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--border2);background:transparent;color:var(--text2);font-size:0.82rem;letter-spacing:0.02em;transition:all 0.3s var(--ease)}
+.chip .dot{width:9px;height:9px;border-radius:50%;background:var(--lc);opacity:0.45;transition:opacity 0.3s,box-shadow 0.3s}
+.chip:hover{border-color:var(--lc);color:var(--text)}
+.chip[aria-pressed="true"]{background:var(--lcd);border-color:var(--lc);color:var(--text-h)}
+.chip[aria-pressed="true"] .dot{opacity:1;box-shadow:0 0 0 3px var(--lcd)}
+.chip-count{font-family:var(--f-m);font-size:0.68rem;color:var(--text2)}
+.demo-body{padding:14px 26px 26px}
+.tl{list-style:none;position:relative}
+.tl-sep{display:flex;align-items:center;gap:14px;padding:22px 0 10px;font-family:var(--f-m);font-size:0.68rem;letter-spacing:0.22em;color:var(--text2)}
+.tl-sep::after{content:"";flex:1;height:1px;background:var(--border)}
+.tl-sep[hidden]{display:none}
+.ev{margin:6px 0;border-left:2px solid var(--lc);background:var(--card-el);border-radius:0 8px 8px 0;overflow:hidden;transition:opacity 0.6s var(--ease),transform 0.6s var(--ease)}
+.ev.enter{opacity:0;transform:translateY(8px)}
+.ev[hidden]{display:none}
+.ev-btn{width:100%;display:grid;grid-template-columns:78px 1fr auto auto;align-items:center;gap:14px;padding:13px 16px;text-align:left;min-height:52px}
+.ev-btn:focus-visible{outline-offset:-2px}
+.ev-year{font-family:var(--f-m);font-size:0.76rem;color:var(--text2);letter-spacing:0.04em}
+.ev-title{font-size:0.9rem;color:var(--text);line-height:1.5}
+.ev-layer{font-size:0.66rem;letter-spacing:0.06em;color:var(--lc);white-space:nowrap}
+.ev-caret{width:14px;height:14px;stroke:var(--text2);fill:none;stroke-width:1.5;transition:transform 0.3s}
+.ev-btn[aria-expanded="true"] .ev-caret{transform:rotate(180deg)}
+.ev-detail{padding:0 16px 14px 108px;font-size:0.82rem;color:var(--text2);line-height:1.8}
+.ev-detail[hidden]{display:none}
+.tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-m);font-size:0.66rem;letter-spacing:0.04em;padding:3px 9px;border-radius:4px;border:1px solid;margin-top:8px}
+.tag-ok{color:var(--c-green);border-color:rgba(123,198,126,0.35);background:var(--c-green-d)}
+.tag-mix{color:var(--c-gold);border-color:rgba(200,184,126,0.35);background:var(--c-gold-d)}
+.tag-un{color:var(--text2);border-color:var(--border2);background:rgba(255,255,255,0.03)}
+.discover{margin-top:20px;border:1px solid var(--accent-med);background:linear-gradient(135deg,rgba(200,168,126,0.08),rgba(200,168,126,0.02));border-radius:10px;padding:22px 24px;display:none;animation:disc 0.9s var(--ease)}
+.discover.on{display:block}
+@keyframes disc{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.discover-label{font-family:var(--f-m);font-size:0.64rem;letter-spacing:0.26em;color:var(--accent);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.discover-label svg{width:14px;height:14px;stroke:var(--accent);fill:none;stroke-width:1.5}
+.discover p{font-size:0.9rem;color:var(--text);line-height:1.9}
+.discover p strong{color:var(--text-h);font-weight:500}
+.hint{margin-top:18px;font-size:0.78rem;color:var(--text2);letter-spacing:0.04em;display:flex;align-items:center;gap:8px;transition:opacity 0.5s}
+.hint.off{display:none}
+.hint .hdots{display:inline-flex;gap:5px}
+.hint .hdots i{width:7px;height:7px;border-radius:50%;background:var(--text3);opacity:0.5}
+.hint .hdots i.on{opacity:1;background:var(--accent)}
+
+/* how */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.step{position:relative;padding:28px 22px;background:var(--card);border:1px solid var(--border);border-radius:10px}
+.step-num{font-family:var(--f-m);font-size:0.68rem;color:var(--accent);letter-spacing:0.2em;margin-bottom:18px}
+.step-ico{width:38px;height:38px;border-radius:8px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.step-ico svg{width:19px;height:19px;stroke:var(--accent)}
+.step h3{font-size:0.98rem;letter-spacing:0.03em;line-height:1.6;margin-bottom:8px}
+.step p{font-size:0.82rem;color:var(--text2);line-height:1.8}
+
+/* trust */
+.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.tags-demo{display:flex;flex-direction:column;gap:12px}
+.tag-row{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;padding:18px 20px;background:var(--card);border:1px solid var(--border);border-radius:10px}
+.tag-row .tag{margin-top:2px;font-size:0.72rem;padding:5px 11px}
+.tag-row h3{font-size:0.92rem;letter-spacing:0.06em;margin-bottom:4px}
+.tag-row p{font-size:0.8rem;color:var(--text2);line-height:1.75}
+.trust-quote{margin-top:28px;padding-left:18px;border-left:2px solid var(--accent);font-family:var(--f-d);font-size:1.12rem;letter-spacing:0.06em;color:var(--text-h);line-height:1.8}
+.src-box{margin-top:22px;padding:16px 18px;background:var(--card-el);border-radius:8px;border:1px solid var(--border)}
+.src-box .src-l{font-family:var(--f-m);font-size:0.62rem;letter-spacing:0.2em;color:var(--text2);text-transform:uppercase;margin-bottom:8px}
+.src-box ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.src-box li{font-size:0.8rem;color:var(--text2);display:flex;gap:10px;align-items:baseline}
+.src-box li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;position:relative;top:-2px}
+.src-box li span{color:var(--text)}
+
+/* use cases */
+.uc{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:28px 26px}
+.uc .dots{display:flex;gap:6px;margin-bottom:22px}
+.uc .dots i{width:9px;height:9px;border-radius:50%}
+.uc .uc-k{font-family:var(--f-m);font-size:0.64rem;letter-spacing:0.22em;color:var(--accent);text-transform:uppercase;margin-bottom:10px}
+.uc h3{font-size:1.04rem;letter-spacing:0.03em;line-height:1.6;margin-bottom:10px}
+.uc p{font-size:0.84rem;color:var(--text2);line-height:1.8}
+
+/* pricing */
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:760px;margin:0 auto}
+.plan{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:34px 30px;display:flex;flex-direction:column}
+.plan.pro{border-color:var(--border2);background:linear-gradient(180deg,rgba(200,168,126,0.06),var(--card) 40%)}
+.plan-name{font-family:var(--f-d);font-size:1.15rem;letter-spacing:0.14em;color:var(--text-h);margin-bottom:6px;display:flex;align-items:center;gap:12px}
+.plan-badge{font-family:var(--f-m);font-size:0.6rem;letter-spacing:0.16em;color:var(--accent);border:1px solid var(--accent-med);padding:3px 8px;border-radius:4px}
+.plan-price{font-family:var(--f-m);font-size:1.9rem;color:var(--text-h);letter-spacing:-0.01em;margin:10px 0 2px}
+.plan-price small{font-size:0.8rem;color:var(--text2);letter-spacing:0.04em;margin-left:6px}
+.plan-annual{font-size:0.78rem;color:var(--text2);margin-bottom:22px;min-height:1.4em}
+.plan ul{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:30px;flex:1}
+.plan li{font-size:0.86rem;color:var(--text);display:flex;gap:10px;align-items:baseline}
+.plan li svg{width:14px;height:14px;stroke:var(--accent);fill:none;stroke-width:1.5;flex:none;position:relative;top:2px}
+.plan .btn{width:100%}
+.plan-note{text-align:center;margin-top:22px;font-size:0.76rem;color:var(--text2)}
+
+/* waitlist section */
+.wl-sec .lead{margin-bottom:38px}
+
+/* footer */
+footer{padding:64px 0 40px;border-top:1px solid var(--border)}
+.foot-top{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:26px}
+.foot-brand{display:flex;align-items:center;gap:14px}
+.foot-brand img{height:18px;width:auto}
+.foot-tag{font-family:var(--f-d);font-size:0.86rem;letter-spacing:0.08em;color:var(--text2);font-style:normal}
+.foot-links{display:flex;gap:26px;flex-wrap:wrap}
+.foot-links a{font-size:0.78rem;color:var(--text2);text-decoration:none;letter-spacing:0.04em;padding:4px 0;transition:color 0.3s}
+.foot-links a:hover{color:var(--text)}
+.foot-copy{font-family:var(--f-m);font-size:0.68rem;color:var(--text2);letter-spacing:0.08em}
+.foot-legal{margin-top:36px;padding-top:26px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:6px}
+.foot-legal details{border-radius:6px}
+.foot-legal summary{cursor:pointer;font-size:0.76rem;color:var(--text2);letter-spacing:0.04em;padding:8px 4px;list-style:none;display:flex;align-items:center;gap:8px}
+.foot-legal summary::-webkit-details-marker{display:none}
+.foot-legal summary::before{content:"";width:6px;height:6px;border-right:1px solid var(--text2);border-bottom:1px solid var(--text2);transform:rotate(-45deg);transition:transform 0.3s}
+.foot-legal details[open] summary::before{transform:rotate(45deg)}
+.foot-legal details p{font-size:0.78rem;color:var(--text2);padding:4px 4px 12px 18px}
+
+/* toast */
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--card-el);border:1px solid var(--border2);color:var(--text);padding:12px 20px;border-radius:8px;font-size:0.82rem;opacity:0;pointer-events:none;transition:opacity 0.4s,transform 0.4s var(--ease);z-index:200}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* responsive */
+@media (max-width:860px){
+  .cards3,.steps{grid-template-columns:1fr 1fr}
+  .trust-grid{grid-template-columns:1fr;gap:40px}
+}
+@media (max-width:640px){
+  .section{padding:72px 0}
+  .hero{padding:150px 0 80px}
+  .nav-links .nav-link{display:none}
+  .nav-inner{height:100px}
+  .nav-cta{padding:0 14px;font-size:0.72rem;letter-spacing:0.02em}
+  .hp-lane-label{font-size:16px}.hp-year{font-size:15px}
+  .cards3,.steps,.plans{grid-template-columns:1fr}
+  .hero-preview{padding:18px 14px 12px}
+  .wl-form{flex-direction:column}
+  .wl-form .btn{width:100%}
+  .demo-top{padding:18px 16px}
+  .demo-body{padding:10px 14px 18px}
+  .ev-btn{grid-template-columns:1fr auto;grid-template-areas:"year layer" "title caret";gap:6px 12px;padding:12px 14px}
+  .ev-year{grid-area:year}.ev-title{grid-area:title}.ev-layer{grid-area:layer}.ev-caret{grid-area:caret;align-self:center}
+  .ev-detail{padding:0 14px 14px 14px}
+  .sec-head{margin-bottom:40px}
+  .foot-top{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="メイン">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#top" aria-label="Chronos ホーム"><img src="assets/chronos-logo.svg" alt="Chronos"></a>
+    <div class="nav-links">
+      <a class="nav-link" href="#demo">体験する</a>
+      <a class="nav-link" href="#how">仕組み</a>
+      <a class="nav-link" href="#pricing">料金</a>
+      <a class="btn btn-primary nav-cta" href="#waitlist">ウェイトリストに登録</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+
+<!-- 1. HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <h1 class="reveal">Every event has context.</h1>
+      <p class="hero-lead reveal d1">複数の年表を、同じ時間軸に。<br>ひとつでは見えなかった文脈が、浮かび上がる。</p>
+      <p class="hero-sub reveal d2">AIが下書きをつくり、あなたが仕上げる。重ねて、共有する年表プラットフォーム。</p>
+
+      <div class="hero-preview reveal d3" aria-label="3つのレイヤーが同じ時間軸に重なるプレビュー" role="img">
+        <svg viewBox="0 0 720 236" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- grid -->
+          <g class="hp-grid">
+            <line x1="180" y1="20" x2="180" y2="200"/><line x1="270" y1="20" x2="270" y2="200"/><line x1="360" y1="20" x2="360" y2="200"/>
+            <line x1="450" y1="20" x2="450" y2="200"/><line x1="540" y1="20" x2="540" y2="200"/><line x1="630" y1="20" x2="630" y2="200"/>
+          </g>
+          <!-- lanes -->
+          <g class="hp-lane"><line x1="120" y1="56" x2="710" y2="56"/><line x1="120" y1="112" x2="710" y2="112"/><line x1="120" y1="168" x2="710" y2="168"/></g>
+          <!-- lane labels -->
+          <text class="hp-lane-label" x="10" y="60">技術</text>
+          <text class="hp-lane-label" x="10" y="116">人の決断</text>
+          <text class="hp-lane-label" x="10" y="172">社会の動き</text>
+          <!-- axis -->
+          <line class="hp-axis" x1="120" y1="200" x2="710" y2="200"/>
+          <g class="hp-year">
+            <text x="180" y="222" text-anchor="middle">1950</text><text x="270" y="222" text-anchor="middle">1960</text>
+            <text x="360" y="222" text-anchor="middle">1970</text><text x="450" y="222" text-anchor="middle">1980</text>
+            <text x="540" y="222" text-anchor="middle">1990</text><text x="630" y="222" text-anchor="middle">2000</text>
+          </g>
+          <!-- Blue: technology -->
+          <g fill="#5B9BD5" stroke="#5B9BD5">
+            <circle class="hp-item" style="animation-delay:.5s" cx="243" cy="56" r="4" stroke="none"/>
+            <circle class="hp-item" style="animation-delay:.6s" cx="279" cy="56" r="4" stroke="none"/>
+            <rect class="hp-item" style="animation-delay:.7s" x="306" y="52" width="46" height="8" rx="4" opacity="0.6" stroke="none"/>
+            <circle class="hp-item" style="animation-delay:.8s" cx="540" cy="56" r="4" stroke="none"/>
+            <circle class="hp-item" style="animation-delay:.9s" cx="694" cy="56" r="4" stroke="none"/>
+          </g>
+          <!-- Pink: decisions -->
+          <g fill="#D4849A">
+            <circle class="hp-item" style="animation-delay:1.1s" cx="252" cy="112" r="4"/>
+            <circle class="hp-item" style="animation-delay:1.2s" cx="283" cy="112" r="4"/>
+            <circle class="hp-item" style="animation-delay:1.3s" cx="648" cy="112" r="4"/>
+          </g>
+          <!-- Teal: society -->
+          <g fill="#5BBCB4">
+            <rect class="hp-item" style="animation-delay:1.5s" x="250" y="164" width="30" height="8" rx="4" opacity="0.6"/>
+            <rect class="hp-item" style="animation-delay:1.6s" x="300" y="164" width="60" height="8" rx="4" opacity="0.6"/>
+            <circle class="hp-item" style="animation-delay:1.7s" cx="694" cy="168" r="4"/>
+          </g>
+          <!-- vertical link at 1961 -->
+          <line class="hp-item" style="animation-delay:2s" x1="281" y1="46" x2="281" y2="178" stroke="rgba(200,168,126,0.45)" stroke-width="1" stroke-dasharray="2 3"/>
+          <text class="hp-item hp-year" style="animation-delay:2.1s;fill:#C8A87E" x="288" y="40">1961</text>
+        </svg>
+        <div class="hp-caption">3 layers / 1 timeline</div>
+      </div>
+
+      <div class="reveal d3">
+        <p class="hero-note">まもなく公開。最初の発見者になりませんか。</p>
+        <div class="wl" data-wl>
+          <form class="wl-form" novalidate>
+            <label class="sr" for="wl-email-hero" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">メールアドレス</label>
+            <input id="wl-email-hero" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+            <button type="submit" class="btn btn-primary">ウェイトリストに登録</button>
+          </form>
+          <p class="wl-error" role="alert"></p>
+          <p class="wl-consent">登録により <a href="#privacy">プライバシーポリシー</a> に同意したものとします</p>
+          <div class="wl-done" role="status"></div>
+        </div>
+        <a class="hero-more" href="#demo">まずは体験する ↓</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. PROBLEM -->
+<section class="section alt" id="why">
+  <div class="container">
+    <div class="reveal">
+      <div class="label">Why</div>
+      <h2>一本の年表では、文脈は見えない。</h2>
+    </div>
+    <div class="prose reveal d1">
+      <p>歴史の年表、企業の沿革、技術の変遷。どれも一本の線に並べれば整って見える。けれど、ある出来事がなぜその年に起きたのかは、別の線を横に置いたときにはじめて分かる。</p>
+      <p>私たちChronosチームがこのサービスをつくったのは、その<strong>「横に置く」作業</strong>が、驚くほど不便だったからだ。年表は世の中にいくらでもある。重ねられる年表は、ほとんどない。</p>
+    </div>
+    <div class="cards3">
+      <div class="mini reveal d1">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h12M3 17h15"/><path d="M19 15l2 2-2 2"/></svg></div>
+        <h3>並べられない</h3>
+        <p>年表ごとに軸も粒度もばらばらで、同じ時間軸に重ねて比べる手段がない。</p>
+      </div>
+      <div class="mini reveal d2">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.5 8-8 9-4.5-1-8-4.5-8-9V6z"/><path d="M12 9v4"/><circle cx="12" cy="16.5" r="0.5"/></svg></div>
+        <h3>信じていいか分からない</h3>
+        <p>出典が添えられていない年表は、どこまで確かめられた情報なのか判断できない。</p>
+      </div>
+      <div class="mini reveal d3">
+        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.6M8.2 13.2l7.6 4.6"/></svg></div>
+        <h3>共有しづらい</h3>
+        <p>画像や表計算で渡した年表は、受け取った側が重ねたり、続きを足したりできない。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. DEMO -->
+<section class="section" id="demo">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="label">Experience</div>
+      <h2>レイヤーを重ねると、見えてくる。</h2>
+      <p class="lead">題材は宇宙開発。ひとつの年表を、3つの視点で読み直す。</p>
+    </div>
+
+    <div class="demo-wrap reveal d1">
+      <div class="demo-top">
+        <p class="demo-guide" id="demo-guide">チップを押して、レイヤーを足してみてください。</p>
+        <div class="chips" role="group" aria-labelledby="demo-guide">
+          <button type="button" class="chip" data-layer="tech" aria-pressed="true" style="--lc:var(--c-blue);--lcd:var(--c-blue-d)"><span class="dot"></span>技術<span class="chip-count" data-count="tech"></span></button>
+          <button type="button" class="chip" data-layer="decision" aria-pressed="false" style="--lc:var(--c-pink);--lcd:var(--c-pink-d)"><span class="dot"></span>人の決断<span class="chip-count" data-count="decision"></span></button>
+          <button type="button" class="chip" data-layer="society" aria-pressed="false" style="--lc:var(--c-teal);--lcd:var(--c-teal-d)"><span class="dot"></span>社会の動き<span class="chip-count" data-count="society"></span></button>
+        </div>
+      </div>
+      <div class="demo-body">
+        <ol class="tl" id="tl" aria-live="polite"></ol>
+        <div class="discover" id="discover" role="status">
+          <div class="discover-label"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>発見</div>
+          <p><strong>1961年、ガガーリンの飛行の6週間後に、ケネディは月着陸を宣言した。</strong>技術の一歩が政治の決断を呼び、社会の熱がNASAの予算を連邦予算の4%超まで押し上げていく。3つの層を重ねると、この連鎖が一本の線として見えてくる。</p>
+        </div>
+        <p class="hint" id="hint"><span class="hdots" aria-hidden="true"><i></i><i></i><i></i></span><span id="hint-text"></span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. HOW -->
+<section class="section alt" id="how">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="label">How</div>
+      <h2>AIは下書きまで。仕上げるのは、あなた。</h2>
+      <p class="lead">テーマを渡せば、数分で年表の骨格ができる。そこから先は、確かめて、重ねて、渡すだけ。</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <div class="step-ico"><svg viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M6 16l9.5-9.5a2.1 2.1 0 013 3L9 19H6z"/></svg></div>
+        <h3>テーマを入れる</h3>
+        <p>「日本のインターネット史」でも「祖父の生涯」でも。一行で足りる。</p>
+      </div>
+      <div class="step reveal d1">
+        <div class="step-num">02</div>
+        <div class="step-ico"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.6L18.5 9l-4.7 1.4L12 15l-1.8-4.6L5.5 9l4.7-1.4z"/><path d="M19 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></div>
+        <h3>AIが下書きをつくる</h3>
+        <p>主要な出来事を年代順に並べた骨格を提示。すべて「未検証」の状態から始まる。</p>
+      </div>
+      <div class="step reveal d2">
+        <div class="step-num">03</div>
+        <div class="step-ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/><path d="M8.5 11l1.8 1.8L14 9.5"/></svg></div>
+        <h3>出典と信憑性を確かめて仕上げる</h3>
+        <p>出典を添え、確認済み・諸説あり・未検証を付ける。あなたの判断が年表の価値になる。</p>
+      </div>
+      <div class="step reveal d3">
+        <div class="step-num">04</div>
+        <div class="step-ico"><svg viewBox="0 0 24 24"><path d="M4 8h16M4 12h16M4 16h16"/><circle cx="8" cy="8" r="1.5" fill="#C8A87E" stroke="none"/><circle cx="14" cy="12" r="1.5" fill="#C8A87E" stroke="none"/><circle cx="11" cy="16" r="1.5" fill="#C8A87E" stroke="none"/></svg></div>
+        <h3>レイヤーを重ねて共有する</h3>
+        <p>他の年表を同じ軸に重ね、URLひとつで公開・限定公開。受け取った人も重ねられる。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. TRUST -->
+<section class="section" id="trust">
+  <div class="container">
+    <div class="trust-grid">
+      <div class="reveal">
+        <div class="label">Trust</div>
+        <h2>AIの下書きは、『未検証』から始まる。</h2>
+        <p class="lead">Chronosの出来事には、信憑性の段階と出典が必ず付く。AIが並べた一行は、あなたが確かめるまで「未検証」のまま。段階を上げられるのは、人だけだ。</p>
+        <p class="trust-quote">AIの出力を、そのまま真実として並べない。</p>
+        <div class="src-box">
+          <div class="src-l">出典の例</div>
+          <ul>
+            <li><span>NASA History Office — Project Apollo: A Retrospective Analysis</span></li>
+            <li><span>国立国会図書館デジタルコレクション</span></li>
+            <li><span>一次資料のURL、書籍のページ番号、取材メモ</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="tags-demo reveal d1">
+        <div class="tag-row">
+          <span class="tag tag-ok">✓ 確認済み</span>
+          <div><h3>一次資料や複数の信頼できる出典で裏づけられた</h3><p>作成者が出典を添えて確認した出来事。閲覧者は出典をたどれる。</p></div>
+        </div>
+        <div class="tag-row">
+          <span class="tag tag-mix">〜 諸説あり</span>
+          <div><h3>出典によって記述が分かれる</h3><p>日付や数値、評価が資料ごとに異なる。補足メモで違いを併記できる。</p></div>
+        </div>
+        <div class="tag-row">
+          <span class="tag tag-un">? 未検証</span>
+          <div><h3>AIの下書きのまま、まだ確かめていない</h3><p>すべての下書きの初期状態。公開しても、未検証であることは隠さない。</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. USE CASES -->
+<section class="section alt" id="usecases">
+  <div class="container">
+    <div class="sec-head reveal center">
+      <div class="label">Use cases</div>
+      <h2>あなたなら、何を重ねますか。</h2>
+    </div>
+    <div class="cards3" style="margin-top:0">
+      <div class="uc reveal">
+        <div class="dots" aria-hidden="true"><i style="background:var(--c-blue)"></i><i style="background:var(--c-orange)"></i></div>
+        <div class="uc-k">Education</div>
+        <h3>教育 — 世界史と日本史を同じ軸で</h3>
+        <p>教科書では別々の章に分かれる出来事を横に置く。生徒が「同じ頃、海の向こうでは」を自分で見つける。</p>
+      </div>
+      <div class="uc reveal d1">
+        <div class="dots" aria-hidden="true"><i style="background:var(--c-purple)"></i><i style="background:var(--c-gold)"></i><i style="background:var(--c-green)"></i></div>
+        <div class="uc-k">Research / Work</div>
+        <h3>研究・仕事 — 業界の動きと自社の意思決定</h3>
+        <p>市場の変化、競合の発表、社内の決定を重ねる。振り返りの資料が、次の判断の根拠になる。</p>
+      </div>
+      <div class="uc reveal d2">
+        <div class="dots" aria-hidden="true"><i style="background:var(--c-pink)"></i><i style="background:var(--c-teal)"></i></div>
+        <div class="uc-k">Personal</div>
+        <h3>個人史 — 家族の出来事と時代の空気</h3>
+        <p>祖父母の引っ越しや転職の年に、世の中で何が起きていたか。家族の記憶に、時代の文脈を添える。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. PRICING -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="sec-head reveal center">
+      <div class="label">Pricing</div>
+      <h2>公開時は、Freeからはじめられる。</h2>
+      <p class="lead">まずは無料で。重ねる年表が増えたら、Proへ。</p>
+    </div>
+    <div class="plans">
+      <div class="plan reveal">
+        <div class="plan-name">Free</div>
+        <div class="plan-price">¥0</div>
+        <div class="plan-annual">ずっと無料</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg>年表 2つ</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg>AI下書き 月3回</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg>AIアシスト 月10回</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg>JPEG書き出し</li>
+        </ul>
+        <a class="btn btn-ghost" href="#waitlist">ウェイトリストに登録</a>
+      </div>
+      <div class="plan pro reveal d1">
+        <div class="plan-name">Pro <span class="plan-badge">RECOMMENDED</span></div>
+        <div class="plan-price">¥800<small>/月</small></div>
+        <div class="plan-annual">年額 ¥6,800（月あたり ¥567）</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg>年表 無制限</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg>AI下書き・アシスト 無制限</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg>PNG高解像度書き出し</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg>埋め込み</li>
+        </ul>
+        <a class="btn btn-primary" href="#waitlist">ウェイトリストに登録</a>
+      </div>
+    </div>
+    <p class="plan-note">価格は公開時点の予定。変更がある場合はウェイトリスト登録者に先にお知らせする。</p>
+  </div>
+</section>
+
+<!-- 8. WAITLIST -->
+<section class="section alt wl-sec" id="waitlist">
+  <div class="container">
+    <div class="sec-head reveal center" style="margin-bottom:0">
+      <div class="label">Waitlist</div>
+      <h2>まもなく公開。最初の発見者になりませんか。</h2>
+      <p class="lead">公開のお知らせと、先行招待をメールでお送りする。</p>
+    </div>
+    <div class="wl reveal d1" data-wl>
+      <form class="wl-form" novalidate>
+        <label for="wl-email-foot" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">メールアドレス</label>
+        <input id="wl-email-foot" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+        <button type="submit" class="btn btn-primary">ウェイトリストに登録</button>
+      </form>
+      <p class="wl-error" role="alert"></p>
+      <p class="wl-consent">登録により <a href="#privacy">プライバシーポリシー</a> に同意したものとします</p>
+      <div class="wl-done" role="status"></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- 9. FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="assets/chronos-logo.svg" alt="Chronos">
+        <span class="foot-tag">Every event has context.</span>
+      </div>
+      <div class="foot-links">
+        <a href="#privacy">プライバシーポリシー</a>
+        <a href="#terms">利用規約</a>
+        <a href="#company">運営者</a>
+        <a href="#" rel="noopener">X</a>
+      </div>
+    </div>
+    <div class="foot-copy">© 2026 Chronos</div>
+    <div class="foot-legal">
+      <details id="privacy"><summary>プライバシーポリシー</summary><p>準備中 — 公開時に正式版を掲載します。</p></details>
+      <details id="terms"><summary>利用規約</summary><p>準備中 — 公開時に正式版を掲載します。</p></details>
+      <details id="company"><summary>運営者</summary><p>準備中 — 公開時に正式版を掲載します。</p></details>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---------- reveal ---------- */
+  var reveals=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target);}});},{threshold:0.08,rootMargin:'0px 0px -6% 0px'});
+    reveals.forEach(function(el){io.observe(el);});
+  }else{reveals.forEach(function(el){el.classList.add('v');});}
+
+  /* ---------- toast ---------- */
+  var toastEl=document.getElementById('toast'),toastT;
+  function toast(msg){toastEl.textContent=msg;toastEl.classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){toastEl.classList.remove('on');},2600);}
+
+  /* ---------- demo ---------- */
+  var LAYERS={
+    tech:{name:'技術',color:'var(--c-blue)'},
+    decision:{name:'人の決断',color:'var(--c-pink)'},
+    society:{name:'社会の動き',color:'var(--c-teal)'}
+  };
+  var CRED={
+    ok:{cls:'tag-ok',label:'✓ 確認済み'},
+    mix:{cls:'tag-mix',label:'〜 諸説あり'},
+    un:{cls:'tag-un',label:'? 未検証'}
+  };
+  var EVENTS=[
+    {y:1957.10,year:'1957.10',dec:'1950s',layer:'tech',cred:'ok',title:'ソ連、スプートニク1号を打ち上げ',detail:'世界初の人工衛星。直径58cmの金属球が軌道を回ったことで、宇宙開発は国家間の競争になった。'},
+    {y:1958.07,year:'1958.07',dec:'1950s',layer:'decision',cred:'ok',title:'アイゼンハワー、NASAを設立',detail:'軍に分散していた宇宙計画を民間機関へ統合。宇宙開発を国家事業として一本化する決断だった。'},
+    {y:1958.09,year:'1958.09',dec:'1950s',layer:'society',cred:'ok',title:'国防教育法が成立、理数教育へ投資',detail:'スプートニク・ショックを受け、科学・数学・外国語教育に連邦資金を投じる法律が成立。世論の危機感が教育政策を動かした。'},
+    {y:1961.04,year:'1961.04',dec:'1960s',layer:'tech',cred:'ok',title:'ガガーリン、人類初の有人宇宙飛行',detail:'ボストーク1号で地球を1周。有人飛行でもソ連が先行したことが、米国の次の一手を急がせた。'},
+    {y:1961.05,year:'1961.05',dec:'1960s',layer:'decision',cred:'ok',title:'ケネディ、「10年以内に月へ」と議会で演説',detail:'ガガーリンの飛行から6週間後。当時のNASAに月着陸の技術も計画もない中での、政治的な賭けだった。'},
+    {y:1966,year:'1966',dec:'1960s',layer:'society',cred:'un',title:'NASA予算が連邦予算の4%超に',detail:'アポロ計画への支持が予算のピークをつくった。この数値はAIの下書きのままで、出典は未確認。'},
+    {y:1969.07,year:'1969.07',dec:'1960s',layer:'tech',cred:'ok',title:'アポロ11号、人類初の月面着陸',detail:'ケネディの宣言から8年。アームストロングとオルドリンが月面に立ち、期限内に目標を達成した。'},
+    {y:1990.04,year:'1990.04',dec:'1990s',layer:'tech',cred:'ok',title:'ハッブル宇宙望遠鏡を打ち上げ',detail:'宇宙開発の目的が「行く」から「見る」へ。大気の外からの観測が、宇宙の年齢推定を可能にした。'},
+    {y:2002.03,year:'2002',dec:'2000s',layer:'decision',cred:'mix',title:'イーロン・マスク、SpaceXを設立',detail:'ロケット再利用で打上げコストを大幅に下げる構想。初期に掲げた削減幅の数値は資料によって異なる。'},
+    {y:2020.05,year:'2020.05',dec:'2020s',layer:'tech',cred:'ok',title:'Crew Dragon、民間初の有人宇宙飛行',detail:'SpaceXの宇宙船が国際宇宙ステーションへ。国家の事業だった有人飛行を、民間企業が担うようになった。'},
+    {y:2021.07,year:'2021.07',dec:'2020s',layer:'society',cred:'ok',title:'民間宇宙旅行が相次ぎ、宇宙が「体験」に',detail:'Virgin GalacticとBlue Originが創業者を乗せて飛行。宇宙は国の威信から、個人が体験を語る対象へ変わった。'}
+  ];
+  var DECADES=['1950s','1960s','1990s','2000s','2020s'];
+  var active={tech:true,decision:false,society:false};
+  var tl=document.getElementById('tl');
+  var discover=document.getElementById('discover');
+  var hint=document.getElementById('hint');
+  var hintText=document.getElementById('hint-text');
+  var hintDots=hint.querySelectorAll('.hdots i');
+  var svgCaret='<svg class="ev-caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
+
+  // build DOM once
+  var evEls={};
+  DECADES.forEach(function(dec){
+    var sep=document.createElement('li');
+    sep.className='tl-sep';sep.dataset.dec=dec;sep.textContent=dec;sep.setAttribute('aria-hidden','true');
+    tl.appendChild(sep);
+    EVENTS.filter(function(e){return e.dec===dec;}).sort(function(a,b){return a.y-b.y;}).forEach(function(e,i){
+      var idx=EVENTS.indexOf(e);
+      var li=document.createElement('li');
+      li.className='ev';li.dataset.layer=e.layer;li.dataset.dec=dec;
+      li.style.setProperty('--lc',LAYERS[e.layer].color);
+      var did='ev-d-'+idx;
+      li.innerHTML='<button type="button" class="ev-btn" aria-expanded="false" aria-controls="'+did+'">'+
+        '<span class="ev-year">'+e.year+'</span><span class="ev-title">'+e.title+'</span>'+
+        '<span class="ev-layer">'+LAYERS[e.layer].name+'</span>'+svgCaret+'</button>'+
+        '<div class="ev-detail" id="'+did+'" hidden>'+e.detail+'<br><span class="tag '+CRED[e.cred].cls+'">'+CRED[e.cred].label+'</span></div>';
+      var btn=li.querySelector('.ev-btn'),det=li.querySelector('.ev-detail');
+      btn.addEventListener('click',function(){var open=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!open));det.hidden=open;});
+      tl.appendChild(li);
+      evEls[idx]=li;
+    });
+  });
+  // counts
+  Object.keys(LAYERS).forEach(function(k){
+    var n=EVENTS.filter(function(e){return e.layer===k;}).length;
+    document.querySelector('[data-count="'+k+'"]').textContent=n;
+  });
+
+  function render(changed){
+    tl.querySelectorAll('.ev').forEach(function(li){
+      var on=active[li.dataset.layer];
+      if(on&&li.hidden){
+        li.hidden=false;
+        if(changed===li.dataset.layer){li.classList.add('enter');requestAnimationFrame(function(){requestAnimationFrame(function(){li.classList.remove('enter');});});}
+      }else if(!on&&!li.hidden){li.hidden=true;}
+    });
+    tl.querySelectorAll('.tl-sep').forEach(function(sep){
+      var has=EVENTS.some(function(e){return e.dec===sep.dataset.dec&&active[e.layer];});
+      sep.hidden=!has;
+    });
+    var n=Object.keys(active).filter(function(k){return active[k];}).length;
+    hintDots.forEach(function(d,i){d.classList.toggle('on',i<n);});
+    if(n===3){discover.classList.add('on');hint.classList.add('off');}
+    else{
+      discover.classList.remove('on');hint.classList.remove('off');
+      hintText.textContent=n===0?'レイヤーを1つ以上選ぶと、年表が表示される':'あと'+(3-n)+'層で、つながりが見える';
+    }
+  }
+  document.querySelectorAll('.chip').forEach(function(chip){
+    chip.addEventListener('click',function(){
+      var k=chip.dataset.layer;active[k]=!active[k];
+      chip.setAttribute('aria-pressed',String(active[k]));
+      render(active[k]?k:null);
+    });
+  });
+  tl.querySelectorAll('.ev').forEach(function(li){li.hidden=true;});
+  render(null);
+
+  /* ---------- waitlist ---------- */
+  var KEY='chronos_waitlist_v1';
+  var wls=document.querySelectorAll('[data-wl]');
+  function doneHTML(){
+    return '<div class="wl-done-title"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>登録ありがとうございます。</div>'+
+      '<p class="wl-done-sub">公開時にご連絡します。</p>'+
+      '<div class="wl-actions"><a class="btn btn-ghost" href="#" rel="noopener">Xで進捗を追う</a><button type="button" class="btn btn-ghost" data-share>友人に共有する</button></div>';
+  }
+  function markDone(){
+    wls.forEach(function(w){
+      if(w.classList.contains('done'))return;
+      w.classList.add('done');
+      w.querySelector('.wl-done').innerHTML=doneHTML();
+      w.querySelector('[data-share]').addEventListener('click',share);
+    });
+  }
+  function share(){
+    var url=location.href.split('#')[0];
+    var data={title:'Chronos — Every event has context.',text:'複数の年表を同じ時間軸に重ねる、Chronos。',url:url};
+    if(navigator.share){navigator.share(data).catch(function(){});}
+    else if(navigator.clipboard){navigator.clipboard.writeText(url).then(function(){toast('URLをコピーしました');},function(){toast('コピーできませんでした');});}
+    else{toast('URL: '+url);}
+  }
+  var stored=null;
+  try{stored=localStorage.getItem(KEY);}catch(e){}
+  if(stored){markDone();}
+  wls.forEach(function(w){
+    var form=w.querySelector('.wl-form'),input=form.querySelector('input'),err=w.querySelector('.wl-error');
+    form.addEventListener('submit',function(ev){
+      ev.preventDefault();
+      var v=input.value.trim();
+      if(!v||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){err.textContent='メールアドレスの形式を確認してください';err.classList.add('on');input.focus();return;}
+      err.classList.remove('on');err.textContent='';
+      try{localStorage.setItem(KEY,JSON.stringify({email:v,at:new Date().toISOString()}));}catch(e){}
+      markDone();
+      var status=w.querySelector('.wl-done');
+      if(status)status.setAttribute('tabindex','-1'),status.focus({preventScroll:true});
+    });
+    input.addEventListener('input',function(){if(err.classList.contains('on')){err.classList.remove('on');}});
+  });
+})();
+</script>
+</body>
+</html>
