@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>法務情報 — Chronos</title>
+<meta name="description" content="Chronos の利用規約、プライバシーポリシー、特定商取引法に基づく表記。">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=erode@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400&family=Shippori+Mincho:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0A0C;--bg2:#0E0E11;--card:#16161A;
+  --accent:#C8A87E;--accent-soft:rgba(200,168,126,0.10);--accent-med:rgba(200,168,126,0.18);
+  --text:#E8E4DE;--text-h:#F5F2ED;--text2:#9A9590;--text3:#7A7570;
+  --border:rgba(200,168,126,0.10);--border2:rgba(200,168,126,0.20);
+  --f-d:'Erode','Shippori Mincho',serif;--f-b:'DM Sans',sans-serif;--f-m:'JetBrains Mono',monospace;
+  --hdr:100px;--side:248px;--ease:cubic-bezier(0.16,1,0.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;background:var(--bg);color-scheme:dark;scroll-padding-top:calc(var(--hdr) + 24px)}
+body{font-family:var(--f-b);background:var(--bg);color:var(--text);font-weight:400;line-height:1.85;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+button{font-family:inherit;font-size:inherit;color:inherit;background:none;border:none;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* header */
+header.site{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,12,0.78);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.hdr-inner{max-width:1200px;margin:0 auto;padding:0 32px;height:var(--hdr);display:flex;align-items:center;justify-content:space-between}
+.hdr-logo{display:flex;align-items:center;padding:20px 0}
+.hdr-logo img{height:40px;width:auto}
+.hdr-back{font-size:0.78rem;color:var(--text2);text-decoration:none;letter-spacing:0.06em;transition:color .3s;padding:8px 0}
+.hdr-back:hover{color:var(--text)}
+
+/* layout */
+.wrap{max-width:1200px;margin:0 auto;padding:calc(var(--hdr) + 56px) 32px 96px;display:grid;grid-template-columns:var(--side) minmax(0,1fr);gap:64px;align-items:start}
+aside.side{position:sticky;top:calc(var(--hdr) + 40px);max-height:calc(100vh - var(--hdr) - 64px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border2) transparent;padding-right:8px}
+.side-label{font-family:var(--f-m);font-size:0.62rem;letter-spacing:0.18em;color:var(--text3);text-transform:uppercase;margin-bottom:14px}
+.docs{list-style:none;display:flex;flex-direction:column;gap:2px;margin-bottom:36px}
+.docs a{display:block;padding:9px 12px;border-radius:6px;font-size:0.86rem;color:var(--text2);text-decoration:none;transition:color .25s,background .25s;border-left:2px solid transparent}
+.docs a:hover{color:var(--text)}
+.docs a[aria-current="page"]{color:var(--text-h);background:var(--accent-soft);border-left-color:var(--accent)}
+.toc{list-style:none;border-left:1px solid var(--border);display:flex;flex-direction:column}
+.toc[hidden]{display:none}
+.toc li{margin:0}
+.toc a{display:block;padding:6px 0 6px 14px;margin-left:-1px;border-left:1px solid transparent;font-size:0.76rem;line-height:1.55;color:var(--text3);text-decoration:none;transition:color .25s,border-color .25s}
+.toc a:hover{color:var(--text)}
+.toc a.active{color:var(--accent);border-left-color:var(--accent)}
+.side-mobile{display:none}
+
+/* content */
+main.content{max-width:740px;min-width:0}
+article.doc{display:none}
+article.doc.is-active{display:block;animation:fade .5s var(--ease)}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.doc-eyebrow{font-family:var(--f-m);font-size:0.66rem;letter-spacing:0.18em;color:var(--accent);text-transform:uppercase;margin-bottom:18px}
+.doc h1{font-family:var(--f-d);font-weight:500;font-size:clamp(1.7rem,3vw,2.3rem);letter-spacing:0.08em;line-height:1.35;color:var(--text-h);margin-bottom:24px}
+.doc h1 .en{display:block;font-size:0.5em;letter-spacing:0.22em;color:var(--text3);margin-top:8px;font-family:var(--f-m);text-transform:uppercase}
+.notice{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;padding:14px 18px;border:1px solid var(--border);border-radius:8px;background:var(--bg2);margin-bottom:48px;font-size:0.78rem;color:var(--text2);line-height:1.7}
+.notice .notice-item{font-family:var(--f-m);font-size:0.72rem;letter-spacing:0.04em;color:var(--text2)}
+.notice .notice-draft{flex-basis:100%;color:var(--text3)}
+.notice .notice-draft::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:.7;margin-right:9px;vertical-align:middle;position:relative;top:-1px}
+
+.doc p{margin:0 0 1.15em}
+.doc p:last-child{margin-bottom:0}
+.doc>p,.doc>ul,.doc>ol,.doc>.tbl,.doc>blockquote{margin-bottom:1.3em}
+.doc h2{font-family:var(--f-d);font-weight:500;font-size:1.32rem;letter-spacing:0.08em;line-height:1.5;color:var(--text-h);margin:64px 0 22px;padding-top:24px;border-top:1px solid var(--border);scroll-margin-top:calc(var(--hdr) + 24px)}
+.doc h2 .num,.doc h3 .num{font-family:var(--f-m);font-weight:400;letter-spacing:0.06em;color:var(--accent);font-size:0.72em;margin-right:0.35em;vertical-align:baseline}
+.doc h3{font-family:var(--f-b);font-weight:500;font-size:0.98rem;letter-spacing:0.02em;color:var(--text-h);margin:36px 0 12px}
+.doc h3 .num{font-size:0.82em}
+.part-label{font-family:var(--f-m);font-size:0.64rem;letter-spacing:0.2em;color:var(--text3);text-transform:uppercase;margin:96px 0 -40px;padding-bottom:10px;position:relative}
+.part-label::before{content:"";display:inline-block;width:18px;height:1px;background:var(--accent);opacity:.7;margin-right:12px;vertical-align:middle}
+.part-label:first-child{margin-top:0}
+.doc ul,.doc ol{padding-left:1.6em}
+.doc li{margin:0 0 .55em}
+.doc li>p{margin-bottom:.35em}
+.doc li>ul,.doc li>ol{margin:.4em 0 .8em}
+.doc li>.tbl{margin:.6em 0 1em}
+.doc ol{list-style:none;counter-reset:item;padding-left:2.4em}
+.doc ol>li{counter-increment:item;position:relative}
+.doc ol>li::before{content:counter(item) ".";position:absolute;left:-2.4em;width:2em;text-align:right;font-family:var(--f-m);font-size:0.78em;color:var(--accent);top:.32em;letter-spacing:0.02em}
+.doc ul{list-style:none;padding-left:1.4em}
+.doc ul>li{position:relative}
+.doc ul>li::before{content:"";position:absolute;left:-1.1em;top:.85em;width:5px;height:1px;background:var(--text3)}
+.doc strong{font-weight:500;color:var(--text-h)}
+.doc code{font-family:var(--f-m);font-size:0.86em;color:var(--text);background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:4px;padding:0 5px}
+.doc a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-med);transition:border-color .25s;word-break:break-all}
+.doc a:hover{border-bottom-color:var(--accent)}
+.doc blockquote{border-left:2px solid var(--border2);padding:4px 0 4px 18px;color:var(--text2)}
+.todo{display:inline;-webkit-box-decoration-break:clone;box-decoration-break:clone;font-family:var(--f-m);font-size:0.68em;letter-spacing:0.02em;line-height:1.5;color:var(--text2);background:rgba(154,149,144,0.08);border:1px solid rgba(154,149,144,0.22);border-radius:4px;padding:1px 6px;margin:0 2px;vertical-align:baseline;position:relative;top:-1px}
+.todo-soft{color:var(--text3);border-style:dashed}
+
+/* tables */
+.tbl{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:8px;background:var(--bg2);scrollbar-width:thin;scrollbar-color:var(--border2) transparent}
+.tbl table{border-collapse:collapse;width:100%;min-width:520px;font-size:0.82rem;line-height:1.7}
+.tbl th,.tbl td{text-align:left;vertical-align:top;padding:11px 14px;border-bottom:1px solid var(--border)}
+.tbl th{font-family:var(--f-m);font-weight:400;font-size:0.68rem;letter-spacing:0.08em;color:var(--text2);white-space:nowrap;background:rgba(200,168,126,0.04)}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td:first-child{color:var(--text-h);font-weight:500;min-width:7em}
+.tbl td{min-width:9em}
+.tbl td .todo{font-size:0.78em}
+.tbl code{white-space:nowrap}
+
+/* footer */
+footer.site{border-top:1px solid var(--border);padding:48px 32px 56px;background:var(--bg2)}
+.foot-inner{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px}
+.foot-brand{display:flex;align-items:center;gap:20px}
+.foot-brand img{height:26px;width:auto;opacity:.9}
+.foot-tag{font-family:var(--f-d);font-size:0.86rem;letter-spacing:0.14em;color:var(--text2)}
+.foot-copy{font-family:var(--f-m);font-size:0.68rem;letter-spacing:0.08em;color:var(--text3)}
+
+/* to top */
+.totop{position:fixed;right:24px;bottom:24px;width:40px;height:40px;border-radius:50%;border:1px solid var(--border2);background:rgba(22,22,26,0.9);color:var(--text2);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s,color .3s;z-index:50}
+.totop.show{opacity:1;pointer-events:auto}
+.totop:hover{color:var(--text-h)}
+
+@media (max-width:900px){
+  .hdr-inner{padding:0 20px}
+  .wrap{display:block;padding:calc(var(--hdr) + 24px) 20px 72px}
+  aside.side{position:static;max-height:none;overflow:visible;padding-right:0;margin:0 -20px 32px}
+  .side-label{display:none}
+  .docs{flex-direction:row;gap:0;overflow-x:auto;scrollbar-width:none;padding:0 20px;border-bottom:1px solid var(--border);margin-bottom:16px}
+  .docs::-webkit-scrollbar{display:none}
+  .docs a{white-space:nowrap;border-left:none;border-bottom:2px solid transparent;border-radius:0;padding:12px 14px 12px;font-size:0.82rem;background:none}
+  .docs a[aria-current="page"]{background:none;border-bottom-color:var(--accent)}
+  .toc-desk{display:none}
+  .side-mobile{display:block;padding:0 20px}
+  .side-mobile details{border:1px solid var(--border);border-radius:8px;background:var(--bg2)}
+  .side-mobile summary{list-style:none;cursor:pointer;padding:12px 16px;font-size:0.8rem;color:var(--text2);display:flex;justify-content:space-between;align-items:center;letter-spacing:0.04em}
+  .side-mobile summary::-webkit-details-marker{display:none}
+  .side-mobile summary::after{content:"";width:7px;height:7px;border-right:1px solid var(--text3);border-bottom:1px solid var(--text3);transform:rotate(45deg);transition:transform .3s;margin-right:4px}
+  .side-mobile details[open] summary::after{transform:rotate(-135deg)}
+  .side-mobile .toc{border-left:none;padding:4px 16px 12px}
+  .side-mobile .toc a{border-left:none;padding:7px 0;margin:0;font-size:0.8rem}
+  .doc h1{font-size:1.5rem}
+  .doc h2{margin-top:52px;font-size:1.18rem}
+  .part-label{margin-top:72px}
+  .foot-inner{flex-direction:column;align-items:flex-start}
+  footer.site{padding:40px 20px 48px}
+  .totop{right:16px;bottom:16px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="hdr-inner">
+    <a class="hdr-logo" href="chronos-lp-v4.html" aria-label="Chronos ホーム"><img src="assets/chronos-logo.svg" alt="Chronos"></a>
+    <a class="hdr-back" href="chronos-lp-v4.html">← LPに戻る</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <aside class="side" aria-label="文書ナビゲーション">
+    <div class="side-label">Legal</div>
+    <ul class="docs" id="docs">
+      <li><a href="#terms" data-doc="terms">利用規約</a></li>
+      <li><a href="#privacy" data-doc="privacy">プライバシーポリシー</a></li>
+      <li><a href="#tokushoho" data-doc="tokushoho">特定商取引法に基づく表記</a></li>
+      <li><a href="#content" data-doc="content">コンテンツポリシー</a></li>
+    </ul>
+    <div class="toc-desk">
+      <div class="side-label">目次</div>
+      <ul class="toc" id="toc-terms" data-doc="terms">
+<!--TOC:terms-->
+      </ul>
+      <ul class="toc" id="toc-privacy" data-doc="privacy" hidden>
+<!--TOC:privacy-->
+      </ul>
+      <ul class="toc" id="toc-tokushoho" data-doc="tokushoho" hidden>
+<!--TOC:tokushoho-->
+      </ul>
+      <ul class="toc" id="toc-content" data-doc="content" hidden>
+<!--TOC:content-->
+      </ul>
+    </div>
+    <div class="side-mobile">
+      <details id="toc-mobile">
+        <summary><span id="toc-mobile-label">目次</span></summary>
+        <ul class="toc" id="toc-mobile-list"></ul>
+      </details>
+    </div>
+  </aside>
+
+  <main class="content" id="content">
+    <article class="doc" id="doc-terms" data-doc="terms" data-title="利用規約">
+      <div class="doc-eyebrow">Terms of Service</div>
+      <h1>利用規約</h1>
+      <div class="notice" role="note">
+        <span class="notice-item">最終更新: 2026年8月17日</span>
+        <!--EFFECTIVE:terms-->
+        <span class="notice-draft">本文書はドラフトです。公開前に弁護士の確認を要します。</span>
+      </div>
+<!--BODY:terms-->
+    </article>
+
+    <article class="doc" id="doc-privacy" data-doc="privacy" data-title="プライバシーポリシー">
+      <div class="doc-eyebrow">Privacy Policy</div>
+      <h1>プライバシーポリシー</h1>
+      <div class="notice" role="note">
+        <span class="notice-item">最終更新: 2026年8月17日</span>
+        <!--EFFECTIVE:privacy-->
+        <span class="notice-draft">本文書はドラフトです。公開前に弁護士の確認を要します。</span>
+      </div>
+<!--BODY:privacy-->
+    </article>
+
+    <article class="doc" id="doc-tokushoho" data-doc="tokushoho" data-title="特定商取引法に基づく表記">
+      <div class="doc-eyebrow">Legal Notice</div>
+      <h1>特定商取引法に基づく表記</h1>
+      <div class="notice" role="note">
+        <span class="notice-item">最終更新: 2026年8月17日</span>
+        <!--EFFECTIVE:tokushoho-->
+        <span class="notice-draft">本文書はドラフトです。公開前に弁護士の確認を要します。</span>
+      </div>
+<!--BODY:tokushoho-->
+    </article>
+
+    <article class="doc" id="doc-content" data-doc="content" data-title="コンテンツポリシーおよび通知・措置の手続">
+      <div class="doc-eyebrow">Content Policy</div>
+      <h1>コンテンツポリシーおよび通知・措置の手続</h1>
+      <div class="notice" role="note">
+        <span class="notice-item">最終更新: 2026年8月17日</span>
+        <!--EFFECTIVE:content-->
+        <span class="notice-draft">本文書はドラフトです。公開前に弁護士の確認を要します。</span>
+      </div>
+<!--BODY:content-->
+    </article>
+  </main>
+</div>
+
+<footer class="site">
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <img src="assets/chronos-logo.svg" alt="Chronos">
+      <span class="foot-tag">Every event has context.</span>
+    </div>
+    <div class="foot-copy">© 2026 babel, inc.</div>
+  </div>
+</footer>
+
+<button class="totop" id="totop" aria-label="ページ上部へ">↑</button>
+
+<script>
+(function(){
+  'use strict';
+  var DOCS=['terms','privacy','tokushoho','content'];
+  var current=null;
+  var docLinks=Array.prototype.slice.call(document.querySelectorAll('#docs a'));
+  var mobileList=document.getElementById('toc-mobile-list');
+  var mobileDetails=document.getElementById('toc-mobile');
+  var mobileLabel=document.getElementById('toc-mobile-label');
+  var observer=null;
+
+  function parseHash(){
+    var h=location.hash.replace(/^#/,'');
+    try{h=decodeURIComponent(h);}catch(e){}
+    var parts=h.split('/');
+    var doc=DOCS.indexOf(parts[0])>=0?parts[0]:'terms';
+    return {doc:doc, section:parts[1]||''};
+  }
+
+  function setDoc(doc){
+    if(current===doc) return;
+    current=doc;
+    DOCS.forEach(function(d){
+      var art=document.getElementById('doc-'+d);
+      art.classList.toggle('is-active',d===doc);
+      var toc=document.getElementById('toc-'+d);
+      toc.hidden=(d!==doc);
+    });
+    docLinks.forEach(function(a){
+      if(a.getAttribute('data-doc')===doc) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
+    });
+    var title=document.getElementById('doc-'+doc).getAttribute('data-title');
+    document.title=title+' — Chronos';
+    // mobile toc clone
+    mobileList.innerHTML=document.getElementById('toc-'+doc).innerHTML;
+    mobileLabel.textContent='目次';
+    mobileDetails.open=false;
+    setupSpy();
+  }
+
+  function setupSpy(){
+    if(observer) observer.disconnect();
+    var art=document.getElementById('doc-'+current);
+    var heads=Array.prototype.slice.call(art.querySelectorAll('h2[id]'));
+    if(!('IntersectionObserver' in window)||!heads.length) return;
+    var visible={};
+    observer=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){visible[en.target.id]=en.isIntersecting;});
+      var first=null;
+      for(var i=0;i<heads.length;i++){ if(visible[heads[i].id]){first=heads[i];break;} }
+      if(!first){
+        // none visible: pick last heading above viewport
+        var top=window.scrollY+140;
+        for(var j=heads.length-1;j>=0;j--){ if(heads[j].offsetTop<=top){first=heads[j];break;} }
+      }
+      if(first) markActive(first.id);
+    },{rootMargin:'-120px 0px -60% 0px',threshold:0});
+    heads.forEach(function(h){observer.observe(h);});
+  }
+
+  function markActive(domId){
+    var target=domId.replace(current+'-','');
+    var links=document.querySelectorAll('.toc a[data-target]');
+    Array.prototype.forEach.call(links,function(a){
+      a.classList.toggle('active',a.getAttribute('data-target')===target);
+    });
+    var active=document.querySelector('#toc-'+current+' a.active');
+    if(active){
+      var side=document.querySelector('aside.side');
+      var r=active.getBoundingClientRect(), s=side.getBoundingClientRect();
+      if(r.top<s.top+40||r.bottom>s.bottom-40){ active.scrollIntoView({block:'center',behavior:'smooth'}); }
+    }
+    if(mobileLabel){
+      var t=document.querySelector('#toc-'+current+' a.active');
+      mobileLabel.textContent=t?('目次 · '+t.textContent):'目次';
+    }
+  }
+
+  function scrollToSection(section, smooth){
+    var el=section?document.getElementById(current+'-'+section):null;
+    if(el){
+      var y=el.getBoundingClientRect().top+window.scrollY-124;
+      window.scrollTo({top:y,behavior:smooth?'smooth':'auto'});
+    } else {
+      window.scrollTo({top:0,behavior:'auto'});
+    }
+  }
+
+  function route(smooth){
+    var st=parseHash();
+    var changed=(st.doc!==current);
+    setDoc(st.doc);
+    if(st.section){ scrollToSection(st.section, smooth && !changed); }
+    else if(changed){ window.scrollTo({top:0,behavior:'auto'}); }
+  }
+
+  window.addEventListener('hashchange',function(){route(true);});
+  // intercept in-page toc clicks so mobile details closes
+  mobileList.addEventListener('click',function(e){ if(e.target.tagName==='A'){ mobileDetails.open=false; } });
+
+  var totop=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ totop.classList.toggle('show',window.scrollY>600); },{passive:true});
+  totop.addEventListener('click',function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+
+  if(!location.hash){ history.replaceState(null,'','#terms'); }
+  if('scrollRestoration' in history) history.scrollRestoration='manual';
+  route(false);
+})();
+</script>
+</body>
+</html>

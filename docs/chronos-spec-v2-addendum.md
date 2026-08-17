@@ -92,7 +92,7 @@ CREATE TABLE reports (
 - 初回ログイン後に `/api/users/setup`（username設定）へ誘導する画面を新設
 
 ### サポート
-- 問い合わせフォームは廃止し `support@` メールリンクに簡素化（/api/support は作らない）
+- 問い合わせフォームは廃止し `contact@chronos.tech` メールリンクに簡素化（/api/support は作らない）
 
 ## 3. プラン正本（spec-update-layers を正とし本補遺で確定）
 
