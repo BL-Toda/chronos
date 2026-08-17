@@ -173,14 +173,14 @@ Phase 1 の要件はローンチのブロッカーであり、未実装のまま
 
 要件
 - `consents` テーブルを新設する（DDL は §12）。1レコード=1文書1バージョンへの1回の同意。
-  - `doc_type`: `terms | privacy | content_policy | cookie_analytics | marketing_email | age_16 | adult_18 | ai_training_change`（将来の方針変更用）
+  - `doc_type`: `terms | privacy | content_policy | cookie_analytics | marketing_email | age_band | guardian_consent | adult_18 | ai_training_change`（将来の方針変更用）
   - `doc_version`（`legal_document_versions.version` を参照）、`language`（同意時に表示していた版の言語）、`accepted_at`、`revoked_at`、`method`（`signup | reconsent | settings | checkout | banner`）、`user_agent`、`ip_hash`（ソルト付きハッシュ、生IPは保存しない）
 - 登録時は terms / privacy / content_policy への同意を1つのチェックボックスで取得してよいが、それぞれ独立した consents 行として保存する（文書ごとにバージョンが進むため）。文書名は個別リンクにする。
 - 「同意する」を押す前に、各文書の全文がアプリ内で閲覧できる（外部遷移でも可だが新規タブ）。
 - 規約12条の改定時、効力発生日以降の初回ログインで再同意画面を出し `method='reconsent'` で記録する（R-59）。
 
 受入基準
-- 登録完了後に consents に terms/privacy/content_policy/age_16 の4行が同一 accepted_at で存在し、doc_version が公開中の最新版と一致する。
+- 登録完了後に consents に terms/privacy/age_band（未成年は guardian_consent も）の行が同一 accepted_at で存在し、doc_version が公開中の最新版と一致する。
 - 同意チェックなしで setup API を叩くと 422。
 - consents 行は UPDATE 禁止（RLS/トリガ）で、撤回は revoked_at の追記のみで表現される。
 
@@ -1217,7 +1217,7 @@ CREATE TABLE consents (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   doc_type TEXT NOT NULL CHECK (doc_type IN ('terms','privacy','content_policy',
-    'cookie_analytics','marketing_email','age_16','adult_18','ai_training_change')),
+    'cookie_analytics','marketing_email','age_band','guardian_consent','adult_18','ai_training_change')),
   doc_version TEXT NOT NULL,
   language TEXT NOT NULL,
   accepted_at TIMESTAMPTZ NOT NULL DEFAULT now(),
