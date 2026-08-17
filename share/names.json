@@ -13,6 +13,7 @@
     "chronos-profile.html": { "name": "公開プロフィール @username（新規）", "group": "アプリ画面" },
     "chronos-lp-v4.html": { "name": "LP v4（新規・ゼロから再設計・レビュー中）", "group": "LP" },
     "chronos-lp-v3.html": { "name": "LP v3（前版・参照用）", "group": "LP" },
+    "chronos-legal.html": { "name": "法務ページ（利用規約・プライバシーポリシー・特商法）", "group": "ドキュメント" },
     "chronos-design-system.html": { "name": "デザインシステム", "group": "ドキュメント" },
     "chronos-sitemap.html": { "name": "サイトマップ・画面遷移", "group": "ドキュメント" },
     "chronos-tech-overview.html": { "name": "技術構成メモ", "group": "ドキュメント" },

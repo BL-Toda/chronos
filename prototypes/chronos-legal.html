@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>法務情報 — Chronos</title>
+<meta name="description" content="Chronos の利用規約、プライバシーポリシー、特定商取引法に基づく表記。">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=erode@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400&family=Shippori+Mincho:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0A0C;--bg2:#0E0E11;--card:#16161A;
+  --accent:#C8A87E;--accent-soft:rgba(200,168,126,0.10);--accent-med:rgba(200,168,126,0.18);
+  --text:#E8E4DE;--text-h:#F5F2ED;--text2:#9A9590;--text3:#7A7570;
+  --border:rgba(200,168,126,0.10);--border2:rgba(200,168,126,0.20);
+  --f-d:'Erode','Shippori Mincho',serif;--f-b:'DM Sans',sans-serif;--f-m:'JetBrains Mono',monospace;
+  --hdr:100px;--side:248px;--ease:cubic-bezier(0.16,1,0.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;background:var(--bg);color-scheme:dark;scroll-padding-top:calc(var(--hdr) + 24px)}
+body{font-family:var(--f-b);background:var(--bg);color:var(--text);font-weight:400;line-height:1.85;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+button{font-family:inherit;font-size:inherit;color:inherit;background:none;border:none;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* header */
+header.site{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,12,0.78);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.hdr-inner{max-width:1200px;margin:0 auto;padding:0 32px;height:var(--hdr);display:flex;align-items:center;justify-content:space-between}
+.hdr-logo{display:flex;align-items:center;padding:20px 0}
+.hdr-logo img{height:40px;width:auto}
+.hdr-back{font-size:0.78rem;color:var(--text2);text-decoration:none;letter-spacing:0.06em;transition:color .3s;padding:8px 0}
+.hdr-back:hover{color:var(--text)}
+
+/* layout */
+.wrap{max-width:1200px;margin:0 auto;padding:calc(var(--hdr) + 56px) 32px 96px;display:grid;grid-template-columns:var(--side) minmax(0,1fr);gap:64px;align-items:start}
+aside.side{position:sticky;top:calc(var(--hdr) + 40px);max-height:calc(100vh - var(--hdr) - 64px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border2) transparent;padding-right:8px}
+.side-label{font-family:var(--f-m);font-size:0.62rem;letter-spacing:0.18em;color:var(--text3);text-transform:uppercase;margin-bottom:14px}
+.docs{list-style:none;display:flex;flex-direction:column;gap:2px;margin-bottom:36px}
+.docs a{display:block;padding:9px 12px;border-radius:6px;font-size:0.86rem;color:var(--text2);text-decoration:none;transition:color .25s,background .25s;border-left:2px solid transparent}
+.docs a:hover{color:var(--text)}
+.docs a[aria-current="page"]{color:var(--text-h);background:var(--accent-soft);border-left-color:var(--accent)}
+.toc{list-style:none;border-left:1px solid var(--border);display:flex;flex-direction:column}
+.toc[hidden]{display:none}
+.toc li{margin:0}
+.toc a{display:block;padding:6px 0 6px 14px;margin-left:-1px;border-left:1px solid transparent;font-size:0.76rem;line-height:1.55;color:var(--text3);text-decoration:none;transition:color .25s,border-color .25s}
+.toc a:hover{color:var(--text)}
+.toc a.active{color:var(--accent);border-left-color:var(--accent)}
+.side-mobile{display:none}
+
+/* content */
+main.content{max-width:740px;min-width:0}
+article.doc{display:none}
+article.doc.is-active{display:block;animation:fade .5s var(--ease)}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.doc-eyebrow{font-family:var(--f-m);font-size:0.66rem;letter-spacing:0.18em;color:var(--accent);text-transform:uppercase;margin-bottom:18px}
+.doc h1{font-family:var(--f-d);font-weight:500;font-size:clamp(1.7rem,3vw,2.3rem);letter-spacing:0.08em;line-height:1.35;color:var(--text-h);margin-bottom:24px}
+.doc h1 .en{display:block;font-size:0.5em;letter-spacing:0.22em;color:var(--text3);margin-top:8px;font-family:var(--f-m);text-transform:uppercase}
+.notice{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;padding:14px 18px;border:1px solid var(--border);border-radius:8px;background:var(--bg2);margin-bottom:48px;font-size:0.78rem;color:var(--text2);line-height:1.7}
+.notice .notice-item{font-family:var(--f-m);font-size:0.72rem;letter-spacing:0.04em;color:var(--text2)}
+.notice .notice-draft{flex-basis:100%;color:var(--text3)}
+.notice .notice-draft::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:.7;margin-right:9px;vertical-align:middle;position:relative;top:-1px}
+
+.doc p{margin:0 0 1.15em}
+.doc p:last-child{margin-bottom:0}
+.doc>p,.doc>ul,.doc>ol,.doc>.tbl,.doc>blockquote{margin-bottom:1.3em}
+.doc h2{font-family:var(--f-d);font-weight:500;font-size:1.32rem;letter-spacing:0.08em;line-height:1.5;color:var(--text-h);margin:64px 0 22px;padding-top:24px;border-top:1px solid var(--border);scroll-margin-top:calc(var(--hdr) + 24px)}
+.doc h2 .num,.doc h3 .num{font-family:var(--f-m);font-weight:400;letter-spacing:0.06em;color:var(--accent);font-size:0.72em;margin-right:0.35em;vertical-align:baseline}
+.doc h3{font-family:var(--f-b);font-weight:500;font-size:0.98rem;letter-spacing:0.02em;color:var(--text-h);margin:36px 0 12px}
+.doc h3 .num{font-size:0.82em}
+.part-label{font-family:var(--f-m);font-size:0.64rem;letter-spacing:0.2em;color:var(--text3);text-transform:uppercase;margin:96px 0 -40px;padding-bottom:10px;position:relative}
+.part-label::before{content:"";display:inline-block;width:18px;height:1px;background:var(--accent);opacity:.7;margin-right:12px;vertical-align:middle}
+.part-label:first-child{margin-top:0}
+.doc ul,.doc ol{padding-left:1.6em}
+.doc li{margin:0 0 .55em}
+.doc li>p{margin-bottom:.35em}
+.doc li>ul,.doc li>ol{margin:.4em 0 .8em}
+.doc li>.tbl{margin:.6em 0 1em}
+.doc ol{list-style:none;counter-reset:item;padding-left:2.4em}
+.doc ol>li{counter-increment:item;position:relative}
+.doc ol>li::before{content:counter(item) ".";position:absolute;left:-2.4em;width:2em;text-align:right;font-family:var(--f-m);font-size:0.78em;color:var(--accent);top:.32em;letter-spacing:0.02em}
+.doc ul{list-style:none;padding-left:1.4em}
+.doc ul>li{position:relative}
+.doc ul>li::before{content:"";position:absolute;left:-1.1em;top:.85em;width:5px;height:1px;background:var(--text3)}
+.doc strong{font-weight:500;color:var(--text-h)}
+.doc code{font-family:var(--f-m);font-size:0.86em;color:var(--text);background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:4px;padding:0 5px}
+.doc a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-med);transition:border-color .25s;word-break:break-all}
+.doc a:hover{border-bottom-color:var(--accent)}
+.doc blockquote{border-left:2px solid var(--border2);padding:4px 0 4px 18px;color:var(--text2)}
+.todo{display:inline;-webkit-box-decoration-break:clone;box-decoration-break:clone;font-family:var(--f-m);font-size:0.68em;letter-spacing:0.02em;line-height:1.5;color:var(--text2);background:rgba(154,149,144,0.08);border:1px solid rgba(154,149,144,0.22);border-radius:4px;padding:1px 6px;margin:0 2px;vertical-align:baseline;position:relative;top:-1px}
+.todo-soft{color:var(--text3);border-style:dashed}
+
+/* tables */
+.tbl{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:8px;background:var(--bg2);scrollbar-width:thin;scrollbar-color:var(--border2) transparent}
+.tbl table{border-collapse:collapse;width:100%;min-width:520px;font-size:0.82rem;line-height:1.7}
+.tbl th,.tbl td{text-align:left;vertical-align:top;padding:11px 14px;border-bottom:1px solid var(--border)}
+.tbl th{font-family:var(--f-m);font-weight:400;font-size:0.68rem;letter-spacing:0.08em;color:var(--text2);white-space:nowrap;background:rgba(200,168,126,0.04)}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td:first-child{color:var(--text-h);font-weight:500;min-width:7em}
+.tbl td{min-width:9em}
+.tbl td .todo{font-size:0.78em}
+.tbl code{white-space:nowrap}
+
+/* footer */
+footer.site{border-top:1px solid var(--border);padding:48px 32px 56px;background:var(--bg2)}
+.foot-inner{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px}
+.foot-brand{display:flex;align-items:center;gap:20px}
+.foot-brand img{height:26px;width:auto;opacity:.9}
+.foot-tag{font-family:var(--f-d);font-size:0.86rem;letter-spacing:0.14em;color:var(--text2)}
+.foot-copy{font-family:var(--f-m);font-size:0.68rem;letter-spacing:0.08em;color:var(--text3)}
+
+/* to top */
+.totop{position:fixed;right:24px;bottom:24px;width:40px;height:40px;border-radius:50%;border:1px solid var(--border2);background:rgba(22,22,26,0.9);color:var(--text2);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s,color .3s;z-index:50}
+.totop.show{opacity:1;pointer-events:auto}
+.totop:hover{color:var(--text-h)}
+
+@media (max-width:900px){
+  .hdr-inner{padding:0 20px}
+  .wrap{display:block;padding:calc(var(--hdr) + 24px) 20px 72px}
+  aside.side{position:static;max-height:none;overflow:visible;padding-right:0;margin:0 -20px 32px}
+  .side-label{display:none}
+  .docs{flex-direction:row;gap:0;overflow-x:auto;scrollbar-width:none;padding:0 20px;border-bottom:1px solid var(--border);margin-bottom:16px}
+  .docs::-webkit-scrollbar{display:none}
+  .docs a{white-space:nowrap;border-left:none;border-bottom:2px solid transparent;border-radius:0;padding:12px 14px 12px;font-size:0.82rem;background:none}
+  .docs a[aria-current="page"]{background:none;border-bottom-color:var(--accent)}
+  .toc-desk{display:none}
+  .side-mobile{display:block;padding:0 20px}
+  .side-mobile details{border:1px solid var(--border);border-radius:8px;background:var(--bg2)}
+  .side-mobile summary{list-style:none;cursor:pointer;padding:12px 16px;font-size:0.8rem;color:var(--text2);display:flex;justify-content:space-between;align-items:center;letter-spacing:0.04em}
+  .side-mobile summary::-webkit-details-marker{display:none}
+  .side-mobile summary::after{content:"";width:7px;height:7px;border-right:1px solid var(--text3);border-bottom:1px solid var(--text3);transform:rotate(45deg);transition:transform .3s;margin-right:4px}
+  .side-mobile details[open] summary::after{transform:rotate(-135deg)}
+  .side-mobile .toc{border-left:none;padding:4px 16px 12px}
+  .side-mobile .toc a{border-left:none;padding:7px 0;margin:0;font-size:0.8rem}
+  .doc h1{font-size:1.5rem}
+  .doc h2{margin-top:52px;font-size:1.18rem}
+  .part-label{margin-top:72px}
+  .foot-inner{flex-direction:column;align-items:flex-start}
+  footer.site{padding:40px 20px 48px}
+  .totop{right:16px;bottom:16px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="hdr-inner">
+    <a class="hdr-logo" href="chronos-lp-v4.html" aria-label="Chronos ホーム"><img src="assets/chronos-logo.svg" alt="Chronos"></a>
+    <a class="hdr-back" href="chronos-lp-v4.html">← LPに戻る</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <aside class="side" aria-label="文書ナビゲーション">
+    <div class="side-label">Legal</div>
+    <ul class="docs" id="docs">
+      <li><a href="#terms" data-doc="terms">利用規約</a></li>
+      <li><a href="#privacy" data-doc="privacy">プライバシーポリシー</a></li>
+      <li><a href="#tokushoho" data-doc="tokushoho">特定商取引法に基づく表記</a></li>
+    </ul>
+    <div class="toc-desk">
+      <div class="side-label">目次</div>
+      <ul class="toc" id="toc-terms" data-doc="terms">
+<li><a href="#terms/第1条" data-target="第1条">第1条（適用・定義）</a></li>
+<li><a href="#terms/第2条" data-target="第2条">第2条（年齢・アカウント）</a></li>
+<li><a href="#terms/第3条" data-target="第3条">第3条（ユーザーコンテンツ）</a></li>
+<li><a href="#terms/第4条" data-target="第4条">第4条（AI下書き・AIアシスト）</a></li>
+<li><a href="#terms/第5条" data-target="第5条">第5条（禁止事項）</a></li>
+<li><a href="#terms/第6条" data-target="第6条">第6条（通報・モデレーション）</a></li>
+<li><a href="#terms/第7条" data-target="第7条">第7条（料金・支払い）</a></li>
+<li><a href="#terms/第8条" data-target="第8条">第8条（Chronosの知的財産）</a></li>
+<li><a href="#terms/第9条" data-target="第9条">第9条（サービスの変更・中断・終了）</a></li>
+<li><a href="#terms/第10条" data-target="第10条">第10条（免責・責任制限）</a></li>
+<li><a href="#terms/第11条" data-target="第11条">第11条（アカウントの停止・削除）</a></li>
+<li><a href="#terms/第12条" data-target="第12条">第12条（規約の変更）</a></li>
+<li><a href="#terms/第13条" data-target="第13条">第13条（通知方法・連絡先）</a></li>
+<li><a href="#terms/第14条" data-target="第14条">第14条（準拠法・管轄・言語優先）</a></li>
+<li><a href="#terms/第15条" data-target="第15条">第15条（その他）</a></li>
+<li><a href="#terms/付則a-eu-eea居住者向けの特則" data-target="付則a-eu-eea居住者向けの特則">付則A — EU/EEA居住者向けの特則</a></li>
+<li><a href="#terms/付則b-韓国居住者向けの特則" data-target="付則b-韓国居住者向けの特則">付則B — 韓国居住者向けの特則</a></li>
+<li><a href="#terms/付則c-台湾居住者向けの特則" data-target="付則c-台湾居住者向けの特則">付則C — 台湾居住者向けの特則</a></li>
+<li><a href="#terms/付則d-米国" data-target="付則d-米国">付則D — 米国（カリフォルニア州）居住者向けの特則</a></li>
+<li><a href="#terms/todo-一覧" data-target="todo-一覧">[TODO] 一覧</a></li>
+      </ul>
+      <ul class="toc" id="toc-privacy" data-doc="privacy" hidden>
+<li><a href="#privacy/1-はじめに-事業者情報" data-target="1-はじめに-事業者情報">1. はじめに・事業者情報</a></li>
+<li><a href="#privacy/2-適用範囲-年齢" data-target="2-適用範囲-年齢">2. 適用範囲・年齢</a></li>
+<li><a href="#privacy/3-取得する情報" data-target="3-取得する情報">3. 取得する情報</a></li>
+<li><a href="#privacy/4-利用目的" data-target="4-利用目的">4. 利用目的</a></li>
+<li><a href="#privacy/5-ai機能におけるデータの取り扱い" data-target="5-ai機能におけるデータの取り扱い">5. AI機能におけるデータの取り扱い</a></li>
+<li><a href="#privacy/6-委託-第三者提供-サブプロセッサ一覧" data-target="6-委託-第三者提供-サブプロセッサ一覧">6. 委託・第三者提供・サブプロセッサ一覧</a></li>
+<li><a href="#privacy/7-国外移転" data-target="7-国外移転">7. 国外移転</a></li>
+<li><a href="#privacy/8-cookie-localstorage-アクセス解析" data-target="8-cookie-localstorage-アクセス解析">8. Cookie・localStorage・アクセス解析</a></li>
+<li><a href="#privacy/9-公開される情報" data-target="9-公開される情報">9. 公開される情報</a></li>
+<li><a href="#privacy/10-保存期間と削除" data-target="10-保存期間と削除">10. 保存期間と削除</a></li>
+<li><a href="#privacy/11-安全管理措置" data-target="11-安全管理措置">11. 安全管理措置</a></li>
+<li><a href="#privacy/12-ユーザーの権利と行使方法" data-target="12-ユーザーの権利と行使方法">12. ユーザーの権利と行使方法</a></li>
+<li><a href="#privacy/13-子どもの利用" data-target="13-子どもの利用">13. 子どもの利用</a></li>
+<li><a href="#privacy/14-改定" data-target="14-改定">14. 改定</a></li>
+<li><a href="#privacy/15-お問い合わせ" data-target="15-お問い合わせ">15. お問い合わせ</a></li>
+<li><a href="#privacy/付則a-eu-eea-にお住まいの方" data-target="付則a-eu-eea-にお住まいの方">付則A EU/EEA にお住まいの方（GDPR）</a></li>
+<li><a href="#privacy/付則b-韓国にお住まいの方" data-target="付則b-韓国にお住まいの方">付則B 韓国にお住まいの方（個人情報保護法・PIPA）</a></li>
+<li><a href="#privacy/付則c-台湾にお住まいの方" data-target="付則c-台湾にお住まいの方">付則C 台湾にお住まいの方（個人資料保護法・PDPA）</a></li>
+<li><a href="#privacy/付則d-米国カリフォルニア州にお住まいの方" data-target="付則d-米国カリフォルニア州にお住まいの方">付則D 米国カリフォルニア州にお住まいの方（CCPA/CPRA）</a></li>
+<li><a href="#privacy/用語" data-target="用語">用語</a></li>
+<li><a href="#privacy/改定履歴" data-target="改定履歴">改定履歴</a></li>
+<li><a href="#privacy/todo-一覧" data-target="todo-一覧">[TODO] 一覧（公開前に確定・確認する事項）</a></li>
+      </ul>
+      <ul class="toc" id="toc-tokushoho" data-doc="tokushoho" hidden>
+<li><a href="#tokushoho/表記事項" data-target="表記事項">表記事項</a></li>
+<li><a href="#tokushoho/付記" data-target="付記">付記</a></li>
+      </ul>
+    </div>
+    <div class="side-mobile">
+      <details id="toc-mobile">
+        <summary><span id="toc-mobile-label">目次</span></summary>
+        <ul class="toc" id="toc-mobile-list"></ul>
+      </details>
+    </div>
+  </aside>
+
+  <main class="content" id="content">
+    <article class="doc" id="doc-terms" data-doc="terms" data-title="利用規約">
+      <div class="doc-eyebrow">Terms of Service</div>
+      <h1>利用規約</h1>
+      <div class="notice" role="note">
+        <span class="notice-item">最終更新: 2026年8月17日</span>
+        
+        <span class="notice-draft">本文書はドラフトです。公開前に弁護士の確認を要します。</span>
+      </div>
+<p>Chronos（クロノス）は、複数のレイヤーで文脈を重ねながら年表を作成し、共有するためのWebサービスです。本規約は、Chronosをご利用いただくうえでの約束ごとをまとめたものです。できるだけ平易な言葉で書いていますが、内容は法的な合意です。ご利用の前にお読みください。</p>
+<p>本規約は「共通本文」（第1条〜第15条）と、お住まいの地域ごとに適用される「地域別付則」（付則A〜D）で構成されています。地域別付則が共通本文と異なる定めをしている場合、その地域にお住まいの方には付則の定めが優先します。</p>
+
+<div class="part-label">共通本文</div>
+<h2 id="terms-第1条"><span class="num">第1条</span>（適用・定義）</h2>
+<ol><li><p>本規約は、babel, inc.（以下「当社」）が提供する年表作成・共有サービス「Chronos」（ウェブサイト、埋め込み表示、書き出し機能、AI機能、これらに付随するすべての機能を含み、以下「本サービス」といいます）の利用条件を定めるものです。</p></li><li><p>本規約は、本サービスを利用するすべての方（以下「ユーザー」）と当社との間に適用されます。アカウントを作成せずに公開年表や限定公開年表を閲覧する方（以下「閲覧者」）にも、閲覧に関する範囲で本規約が適用されます。</p></li><li><p>当社が本サービス上で別途定めるガイドライン、ヘルプ、料金表示、プライバシーポリシー（以下「個別規定」）は、本規約の一部を構成します。本規約と個別規定の内容が異なる場合、個別規定に特段の定めがない限り、本規約が優先します。</p></li><li><p>本規約で使用する用語の意味は次のとおりです。</p><ul><li><p><strong>年表</strong>: ユーザーが本サービス上で作成するタイムライン。タイトル、説明、カテゴリ、レイヤー、イベント、公開設定などを含みます。</p></li><li><p><strong>イベント</strong>: 年表を構成する個々の出来事。日付（または期間）、要約、詳細、信憑性、出典、割り当てられたレイヤーなどを含みます。</p></li><li><p><strong>レイヤー</strong>: 年表の中で、イベントを文脈ごとに重ねて表示するための区分。</p></li><li><p><strong>ユーザーコンテンツ</strong>: ユーザーが本サービスに投稿・作成・アップロードする年表、イベント、レイヤー、テキスト、出典情報、プロフィール情報、その他一切の情報。AI下書きをユーザーが編集・採用した内容も含みます。</p></li><li><p><strong>AI下書き</strong>: ユーザーの入力をもとに、AIが年表やイベントの草案を生成する機能。</p></li><li><p><strong>AIアシスト</strong>: 既存の年表やイベントの編集・補完・整形をAIが手伝う機能。</p></li><li><p><strong>公開設定</strong>: 年表ごとに設定できる「公開」「限定公開」「非公開」の3つの状態（第3条第4項）。</p></li><li><p><strong>Explore</strong>: 公開年表を一覧・検索・閲覧できる、本サービス内の発見機能。</p></li><li><p><strong>Free / Pro</strong>: 本サービスのプラン。内容は第7条に定めます。</p></li></ul></li><li><p>本サービスの正式提供に先立ち、当社はウェイトリスト（メールアドレスの事前登録）を受け付けることがあります。ウェイトリストへの登録は、本サービスへの案内を受け取ることへの同意であり、アカウントの作成やサービスの提供開始を保証するものではありません。登録されたメールアドレスの取り扱いはプライバシーポリシーに従います。</p></li></ol>
+<h2 id="terms-第2条"><span class="num">第2条</span>（年齢・アカウント）</h2>
+<ol><li><p>本サービスは、16歳以上の方が利用できます。16歳未満の方はアカウントを作成できません。当社が16歳未満であると判断した場合、アカウントを停止または削除することがあります。</p></li><li><p>アカウントの作成には、GoogleアカウントまたはAppleアカウントによるログイン（OAuth）が必要です。当社はメールアドレスとパスワードによる認証を提供していません。ログインに使用する外部アカウントの管理は、それぞれのサービスの規約に従い、ユーザーの責任で行ってください。</p></li><li><p>ユーザー名は、半角英数字およびアンダースコア（_）で構成し、他のユーザーと重複しないものを設定してください。次に該当するユーザー名は設定できず、当社の判断で変更または削除することがあります。</p><ul><li><p>他人、他社、公的機関などになりすます、または誤認させるもの</p></li><li><p>商標や著名な名称を無断で使用するもの</p></li><li><p>公序良俗に反するもの、差別的なもの</p></li><li><p>当社が本サービスの運営上予約している名称（例: <code>chronos</code>, <code>admin</code>, <code>support</code>）</p></li></ul></li><li><p>ユーザー名は、公開プロフィール（<code>chronos.app/@ユーザー名</code> 形式のURL <span class="todo">[TODO: 正式ドメイン確定後に差し替え]</span>）や公開年表の作成者表示に使用されます。</p></li><li><p>アカウントは本人のみが利用できます。第三者への譲渡、貸与、共有はできません。</p></li><li><p>ユーザーは、自身のアカウントで行われた行為について責任を負います。ログインに使用している外部アカウントが不正に利用された疑いがある場合は、速やかに当該サービスでの対応を行うとともに、当社に連絡してください。</p></li><li><p>1人のユーザーが複数のアカウントを作成すること（プランの利用回数制限を回避する目的での作成を含みます）は禁止します。</p></li></ol>
+<h2 id="terms-第3条"><span class="num">第3条</span>（ユーザーコンテンツ）</h2>
+<ol><li><p><strong>著作権はユーザーに帰属します。</strong> ユーザーコンテンツの著作権その他の知的財産権は、ユーザー（またはユーザーにその利用を許諾した権利者）に留保されます。当社がユーザーコンテンツの権利を取得することはありません。</p></li><li><p><strong>当社へのライセンス。</strong> 本サービスを運営し、ユーザーが選んだ公開設定に従ってユーザーコンテンツを届けるために、ユーザーは当社に対し、ユーザーコンテンツを以下の目的の範囲で利用する、世界的、非独占的、無償の権利（サブライセンス可。ただし本項の目的を達成するために必要な業務委託先・インフラ提供者への再許諾に限ります）を許諾します。</p><ul><li><p>本サービス上での保存、複製、表示、送信、配信</p></li><li><p>閲覧に必要な形式変換（画面サイズや表示形式に合わせた調整、要約表示など）</p></li><li><p>サムネイル、カバー画像、OGP画像（SNS等でURLを共有した際に表示されるプレビュー画像）の生成と配信</p></li><li><p>検索・フィルタ・並べ替えなど、本サービス内で年表を見つけやすくするための処理</p></li><li><p>公開年表について、Exploreその他の本サービス内の一覧・おすすめ・公開プロフィールへの掲載</p></li><li><p>公開年表および限定公開年表について、埋め込み機能（iframe等）による外部サイトでの表示、および書き出し機能による画像ファイルの生成</p></li><li><p>バックアップ、障害復旧、セキュリティ確保のための複製</p></li></ul></li><li><p>前項のライセンスは、ユーザーコンテンツが本サービス上に存在する間、および削除後の合理的な期間（第11条に定めるバックアップ消去期間を含みます）継続します。当社は、本サービスの運営以外の目的（たとえば、ユーザーコンテンツ自体を第三者に販売すること）でユーザーコンテンツを利用しません。当社がAIモデルの学習にユーザーコンテンツを利用する場合の条件はプライバシーポリシーに定めます。<span class="todo">[TODO: AI学習利用の方針を確定（現時点では「利用しない」を想定）]</span></p></li><li><p><strong>公開設定。</strong> ユーザーは、年表ごとに次のいずれかの公開設定を選べます。新しく作成した年表の初期状態は「非公開」です。ユーザーが自ら変更しない限り、年表が他の人の目に触れることはありません。</p><ul><li><p><strong>公開</strong>: 誰でも閲覧できます。Exploreや公開プロフィールに掲載され、検索エンジンにインデックスされることがあります。他のユーザーによる「いいね」やブックマークの対象となり、埋め込み・書き出し・OGP画像生成の対象になります。</p></li><li><p><strong>限定公開</strong>: 共有URLを知っている人であれば、アカウントの有無を問わず誰でも閲覧できます。Exploreや公開プロフィールには掲載されず、当社は検索エンジンにインデックスされないよう合理的な措置をとりますが、URLが第三者に転送・転載された場合の閲覧を防ぐことはできません。埋め込み・OGP画像生成の対象になります。</p></li><li><p><strong>非公開</strong>: 作成者本人のみが閲覧・編集できます。当社の運営担当者は、法令上の義務の履行、障害対応、通報への対応、セキュリティ上の必要がある場合を除き、非公開年表の内容を閲覧しません。</p></li></ul></li><li><p><strong>限定公開URLの性質。</strong> 限定公開URLは、推測しにくい識別子を含みますが、認証を伴うものではありません。限定公開URLを共有した相手がさらに他の人に共有することを、当社は制御できません。機微な情報を含む年表を限定公開する場合は、その点をご理解のうえ、共有先を慎重に選んでください。当社は、限定公開URLが意図しない範囲に拡散したことによる損害について、当社の故意または重過失による場合を除き、責任を負いません。</p></li><li><p><strong>公開設定の変更と取り消し。</strong> ユーザーはいつでも公開設定を変更できます。「公開」または「限定公開」から「非公開」に戻した場合、以降の新たな閲覧、埋め込み表示、OGP画像の生成は停止しますが、変更前に第三者が保存・スクリーンショット・キャッシュした内容、検索エンジンやSNSのキャッシュに残った内容を当社が消去することはできません。</p></li><li><p><strong>他のユーザーによる利用。</strong> 公開年表は、他のユーザーが閲覧し、「いいね」やブックマークをし、URLをSNS等で共有することができます。これらは年表への参照であり、内容の複製や改変を許諾するものではありません。他のユーザーの年表を自分の作品として再投稿する、無断で内容を複製して別の年表を作成するなどの行為は禁止します（第5条）。</p></li><li><p><strong>ユーザーの表明保証。</strong> ユーザーは、自らが投稿するユーザーコンテンツについて、次のことを表明し保証します。</p><ul><li><p>投稿に必要な権利（著作権、または権利者からの許諾）を有していること</p></li><li><p>第三者の著作権、商標権、肖像権、プライバシー、名誉その他の権利を侵害しないこと</p></li><li><p>法令および本規約に違反しないこと</p></li></ul></li><li><p><strong>正確性の責任。</strong> 公開年表および限定公開年表に含まれる情報の正確性については、作成者であるユーザーが責任を負います。当社は、ユーザーコンテンツの内容を事前に審査する義務を負わず、その正確性、完全性、適法性を保証しません。信憑性の表示（「確認済み」「諸説あり」「未検証」）は作成者の自己申告であり、当社による検証を意味しません。</p></li><li><p><strong>バックアップ。</strong> 当社は本サービスの安定運用のために合理的なバックアップを行いますが、ユーザーコンテンツの保全を保証するものではありません。大切な年表は、書き出し機能などを用いてユーザー自身でも保管してください。</p></li></ol>
+<h2 id="terms-第4条"><span class="num">第4条</span>（AI下書き・AIアシスト）</h2>
+<ol><li><p>本サービスは、AI下書きおよびAIアシスト（以下あわせて「AI機能」）を提供します。AI機能は、Anthropic, PBC（以下「Anthropic」）が提供するClaude APIを利用して実現しています。</p></li><li><p><strong>未検証フラグ。</strong> AI下書きによって生成されたイベントには、初期状態で「未検証」の信憑性フラグが付与されます。これは、その内容がまだ誰にも確認されていないことを示すものです。ユーザーは、内容を確認したうえで信憑性フラグを変更し、必要に応じて出典を追加してください。</p></li><li><p><strong>正確性の非保証。</strong> AI機能の出力は、事実と異なる内容、古い情報、日付の誤り、実在しない出典、偏った記述などを含むことがあります。当社およびAnthropicは、AI機能の出力の正確性、完全性、最新性、特定目的への適合性を保証しません。AI機能の出力を、医療、法律、金融、安全に関わる判断など、誤りが重大な結果をもたらす用途にそのまま利用しないでください。</p></li><li><p><strong>仕上げる責任はユーザーにあります。</strong> AI機能の出力はあくまで「下書き」です。それを確認・修正し、自分の年表として公開または共有するかどうかを決めるのはユーザーです。AI下書きを編集・採用した内容はユーザーコンテンツとして扱われ、その内容についてはユーザーが責任を負います。</p></li><li><p><strong>入力の送信。</strong> AI機能を利用する際、ユーザーが入力したプロンプト、対象となる年表やイベントの内容、その他AI機能の動作に必要な情報は、処理のためにAnthropicのサーバーに送信されます。当社は、Anthropicとの契約において、送信された入力がAnthropicのモデル学習に利用されないよう定めています。<span class="todo">[TODO: Anthropic商用利用規約に基づく学習不使用条件を法務で確認し、表現を確定]</span> 送信される情報の詳細と保存期間はプライバシーポリシーに定めます。第三者の個人情報や機密情報をAI機能に入力する場合は、ユーザー自身の責任で必要な同意や権限を確保してください。</p></li><li><p><strong>第三者の権利物。</strong> AI機能の出力には、意図せず既存の著作物や第三者の権利に関わる表現が含まれる可能性があります。ユーザーは、AI機能の出力を公開・共有する前に、そのような内容が含まれていないか確認する責任を負います。当社は、AI機能の出力に含まれる第三者の権利物に起因する紛争について、当社の故意または重過失による場合を除き、責任を負いません。</p></li><li><p><strong>利用回数の制限。</strong> AI機能の利用回数は、プランごとに制限されます（Freeプラン: AI下書き月3回、AIアシスト月10回。Proプラン: 制限なし。ただし第8項の場合を除きます）。回数は毎月の起算日にリセットされます。起算日と残回数はアプリ内で確認できます。</p></li><li><p><strong>公正な利用。</strong> Proプランにおいても、通常の個人利用の範囲を著しく超える利用、自動化された大量リクエスト、AI機能の出力を機械的に収集して再配布する行為などは、公正な利用の範囲を超えるものとして、当社は一時的に利用を制限したり、事前に通知のうえ回数上限を設けたりすることがあります。</p></li><li><p><strong>AI機能の変更。</strong> 当社は、利用するAIモデルやプロバイダーの変更、AI機能の仕様変更、機能の追加・終了を行うことがあります。ユーザーの利用体験に大きな影響がある変更は、合理的な方法で事前に案内するよう努めます。</p></li></ol>
+<h2 id="terms-第5条"><span class="num">第5条</span>（禁止事項）</h2>
+<p>ユーザーは、本サービスの利用にあたり、次の行為をしてはなりません。</p>
+<ol><li><p>法令または公序良俗に違反する行為、犯罪行為に関連する行為</p></li><li><p>他者の著作権、商標権、肖像権、プライバシー、名誉、信用その他の権利を侵害する行為</p></li><li><p>虚偽の情報を意図的に拡散する行為。特に、事実であるかのように装って捏造した出来事を公開する行為</p></li><li><p>差別的、誹謗中傷的、暴力的、性的に露骨な、またはハラスメントに該当する内容を投稿する行為</p></li><li><p>他者の個人情報（氏名、住所、連絡先、所属、顔写真、その他特定の個人を識別できる情報）を、本人の同意なく掲載する行為。歴史上の人物や公人の公的な活動に関する記述はこれに含まれませんが、その場合も名誉毀損やプライバシー侵害に当たらないよう配慮してください</p></li><li><p>他人、他社、公的機関、当社になりすます行為、または関係があると誤認させる行為</p></li><li><p>スクレイピング、クローリング、ボット、スクリプトその他の自動化された手段により、当社が明示的に許可した方法（公開年表の埋め込みや、当社が提供するAPI等）以外で本サービスにアクセスし、またはコンテンツを収集する行為</p></li><li><p>本サービスまたはその一部をリバースエンジニアリング、逆コンパイル、逆アセンブルする行為、ソースコードを抽出しようとする行為</p></li><li><p>本サービスのサーバーやネットワークに過度な負荷をかける行為、不正アクセス、脆弱性の悪用、マルウェアの送信、その他本サービスの運営を妨害する行為</p></li><li><p>本サービスまたは本サービス上のコンテンツ（他のユーザーの公開年表を含みます）を、当社または権利者の許諾なく、商用目的で複製・再配布・転売する行為。ユーザーが自ら作成した年表を自身の商用サイトに埋め込む、書き出した画像を自身の資料に用いる、といった通常の利用はこれに含まれません</p></li><li><p>通報制度を濫用する行為。虚偽の通報、嫌がらせ目的の通報、同一の内容に対する大量の通報など</p></li><li><p>プランの利用回数制限や機能制限を、複数アカウントの作成、技術的手段その他の方法により回避する行為</p></li><li><p>当社が提供する認証情報や共有URLを不正に取得・利用する行為</p></li><li><p>反社会的勢力への利益供与、またはこれに準ずる行為</p></li><li><p>その他、当社が本サービスの趣旨に照らして不適切と合理的に判断する行為</p></li></ol>
+<h2 id="terms-第6条"><span class="num">第6条</span>（通報・モデレーション）</h2>
+<ol><li><p><strong>通報導線。</strong> ユーザーおよび閲覧者は、本規約に違反すると考えられる年表を、年表画面の通報ボタンから、または第13条の連絡先へのメールにより通報できます。通報にあたっては、理由をできるだけ具体的に記載してください。</p></li><li><p><strong>当社の対応。</strong> 当社は、通報の有無にかかわらず、ユーザーコンテンツが本規約または法令に違反する、または違反するおそれがあると合理的に判断した場合、事前の通知なく、次の措置をとることができます。</p><ul><li><p>該当する年表の公開設定を「非公開」に変更すること</p></li><li><p>該当する年表またはイベントを削除すること</p></li><li><p>Exploreや公開プロフィールへの掲載を停止すること</p></li><li><p>埋め込み表示やOGP画像の生成を停止すること</p></li><li><p>該当するユーザーのアカウントを一時停止または削除すること（第11条）</p></li><li><p>法令に基づき、捜査機関その他の公的機関に情報を提供すること</p></li></ul></li><li><p><strong>審査義務の不存在。</strong> 当社は、すべてのユーザーコンテンツを監視・審査する義務を負いません。通報を受けた場合でも、当社が措置をとるかどうかは、当社の合理的な判断によります。</p></li><li><p><strong>通知と異議申立。</strong> 当社が前項の措置をとった場合、緊急を要する場合、法令上通知が禁じられている場合、または通知が本サービスの安全を損なう場合を除き、可能な範囲で当該ユーザーに措置の内容と理由を通知します。ユーザーは、通知を受けた日から <span class="todo">[TODO: 期間、例: 14日]</span> 以内に、第13条の連絡先を通じて異議を申し立てることができます。当社は、異議の内容を検討し、合理的な期間内に結果を回答するよう努めます。</p></li><li><p><strong>通報者の保護。</strong> 当社は、通報者の情報を、法令に基づく場合を除き、通報対象のユーザーに開示しません。</p></li><li><p><strong>免責。</strong> 当社は、本条に基づく措置によりユーザーに生じた損害について、当社の故意または重過失による場合を除き、責任を負いません。</p></li></ol>
+<h2 id="terms-第7条"><span class="num">第7条</span>（料金・支払い）</h2>
+<ol><li><p><strong>プラン。</strong> 本サービスには、無料の「Free」プランと、有料の「Pro」プランがあります。各プランの内容は次のとおりです。最新の内容と価格は、本サービス内の料金ページに表示します。</p><div class="tbl"><table><thead><tr><th></th><th>Free</th><th>Pro</th></tr></thead><tbody><tr><td>年表数</td><td>2つまで</td><td>無制限</td></tr><tr><td>AI下書き</td><td>月3回</td><td>無制限（第4条第8項の公正な利用の範囲内）</td></tr><tr><td>AIアシスト</td><td>月10回</td><td>無制限（同上）</td></tr><tr><td>書き出し</td><td>JPEG（透かし付き）</td><td>PNG高解像度</td></tr><tr><td>埋め込み</td><td>—</td><td>○</td></tr><tr><td>価格</td><td>¥0</td><td>¥800/月 または ¥6,800/年</td></tr></tbody></table></div></li><li><p><strong>表示価格。</strong> 表示価格は日本円で、<span class="todo">[TODO: 税込 / 税抜 の別を確定。日本の消費者向け表示は総額表示義務あり]</span>。当社が海外の決済通貨での支払いを提供する場合、決済時に表示される金額と通貨に従います。為替レートや決済事業者・カード会社が課す手数料は、ユーザーの負担となります。</p></li><li><p><strong>決済。</strong> 支払いは、当社が利用する決済事業者Stripe, Inc.およびその関連会社（以下「Stripe」）を通じて、クレジットカードその他Stripeが対応する方法で行います。当社はカード番号などの決済情報を直接保持しません。決済情報の取り扱いはStripeの規約およびプライバシーポリシーに従います。</p></li><li><p><strong>自動更新。</strong> 月額プランは1ヶ月ごと、年額プランは12ヶ月ごとに、ユーザーが解約するまで自動的に更新され、更新日にその時点の料金が請求されます。当社は、年額プランの更新前に、更新日と金額をメールで事前に案内します。<span class="todo">[TODO: 事前案内のタイミング、例: 更新の30日前と7日前]</span></p></li><li><p><strong>解約。</strong> ユーザーは、アプリ内の設定画面またはStripeの顧客ポータルからいつでも解約できます。解約後も、支払い済みの期間の終了日までProプランの機能を利用でき、期間終了後にFreeプランへ移行します。Freeプランの上限（年表2つなど）を超えている場合、既存の年表は削除されませんが、閲覧・編集や新規作成に制限がかかることがあります。制限の内容はアプリ内で案内します。</p></li><li><p><strong>返金。</strong> 支払い済みの料金は、法令に定めがある場合、または当社が個別に認めた場合を除き、返金しません。年額プランを期間の途中で解約した場合も、残りの期間分の返金は行いません。お住まいの地域の付則（付則A〜D）に返金に関する定めがある場合は、その定めが優先します。</p></li><li><p><strong>価格変更。</strong> 当社は、料金を変更することがあります。値上げを行う場合、少なくとも30日前までに、メールおよびアプリ内通知でお知らせします。新しい料金は、通知後に到来する最初の更新日から適用されます。値上げに同意いただけない場合は、更新日の前に解約することで、新しい料金の請求を受けずに済みます。値下げは事前通知なく行うことがあります。</p></li><li><p><strong>支払いの不履行。</strong> 決済が失敗した場合、当社（またはStripe）は再試行を行い、ユーザーに通知します。合理的な期間内に決済が完了しない場合、当社はProプランの機能を停止し、Freeプランへ移行させることがあります。</p></li><li><p><strong>無料トライアル・キャンペーン。</strong> 当社が無料トライアルや割引を提供する場合、その条件は個別に案内します。トライアル期間の終了後は、ユーザーが期間中に解約しない限り、案内した料金が請求されます。</p></li><li><p><strong>請求書・領収書。</strong> 支払いの記録は、Stripeの顧客ポータルまたはアプリ内から確認・取得できます。</p></li></ol>
+<h2 id="terms-第8条"><span class="num">第8条</span>（Chronosの知的財産）</h2>
+<ol><li><p>本サービスを構成するソフトウェア、プログラム、デザイン、ユーザーインターフェース、ロゴ、シンボル、ワードマーク、フォント指定、配色、文章、画像、動画、音声、その他一切のコンテンツおよびそれらに関する知的財産権は、ユーザーコンテンツを除き、当社または当社にライセンスを許諾する第三者に帰属します。</p></li><li><p>当社が年表のために自動生成するカバー画像、サムネイル、OGP画像などのビジュアル素材（以下「生成ビジュアル」）のうち、当社のデザインシステムに基づいて生成される装飾的部分の権利は当社に帰属します。ユーザーは、自身の年表を紹介・共有する目的で、生成ビジュアルを本サービスが提供する方法（URL共有、埋め込み、書き出し）により利用できます。生成ビジュアルに含まれるユーザーコンテンツ由来の部分（タイトル、イベント名など）の権利はユーザーに留保されます。</p></li><li><p>「Chronos」の名称、ロゴ、シンボルは当社の商標または商号です。当社の事前の書面による許諾なく、これらを使用することはできません。ただし、本サービスへのリンクや、「Chronosで作成」といった事実の記述のためにテキストで名称を使用することは差し支えありません。</p></li><li><p>本規約は、ユーザーに対し、本サービスを本規約に従って利用するための限定的、非独占的、譲渡不能なライセンスを許諾するものであり、それ以外の権利を許諾するものではありません。</p></li><li><p>ユーザーが本サービスに関する提案、フィードバック、改善案を当社に提供した場合、当社はそれらを対価なく自由に利用できるものとします。</p></li></ol>
+<h2 id="terms-第9条"><span class="num">第9条</span>（サービスの変更・中断・終了）</h2>
+<ol><li><p>当社は、本サービスの内容、機能、仕様、デザインを、ユーザーへの事前の通知なく変更することがあります。ただし、ユーザーの利用体験に大きな影響がある変更については、合理的な方法で事前に案内するよう努めます。</p></li><li><p>当社は、次の場合、本サービスの全部または一部の提供を一時的に中断することがあります。</p><ul><li><p>システムの保守点検、更新を行う場合</p></li><li><p>火災、停電、天災地変、感染症の流行、戦争、テロ、暴動などの不可抗力により運営が困難になった場合</p></li><li><p>通信回線、クラウドインフラ、外部サービス（認証プロバイダー、決済事業者、AIプロバイダー等）に障害が発生した場合</p></li><li><p>セキュリティ上の緊急対応が必要な場合</p></li><li><p>その他、当社が中断を必要と合理的に判断した場合</p></li></ul></li><li><p>当社は、事業上の判断により、本サービスの全部または一部を終了することがあります。終了する場合、当社は少なくとも <span class="todo">[TODO: 期間、例: 60日]</span> 前までに、メールおよびアプリ内通知でお知らせします。</p></li><li><p><strong>データエクスポートの機会。</strong> 本サービスを終了する場合、当社は、終了日までの間、ユーザーが自身のユーザーコンテンツを書き出し（画像形式または構造化データ形式 <span class="todo">[TODO: エクスポート形式（JSON等）を確定]</span>）できる機会を提供するよう努めます。有料プランの利用者に対しては、終了日以降の未経過期間に対応する料金を返金します。</p></li><li><p>当社は、本条に基づく変更、中断、終了によりユーザーに生じた損害について、当社の故意または重過失による場合を除き、責任を負いません。</p></li></ol>
+<h2 id="terms-第10条"><span class="num">第10条</span>（免責・責任制限）</h2>
+<ol><li><p><strong>現状有姿。</strong> 本サービスは「現状有姿（as is）」および「提供可能な範囲（as available）」で提供されます。当社は、本サービスが中断なく、エラーなく、安全に動作すること、ユーザーの特定の目的に適合すること、ユーザーコンテンツやAI機能の出力が正確・完全であることについて、明示または黙示を問わず、いかなる保証もしません。</p></li><li><p><strong>ユーザー間および第三者との紛争。</strong> ユーザーコンテンツに起因してユーザー間または第三者との間で生じた紛争は、当事者間の責任と費用で解決するものとし、当社は、当社の故意または重過失による場合を除き、これに関与せず、責任を負いません。ユーザーの本規約違反により当社が第三者から請求を受けた場合、ユーザーはこれによって当社に生じた損害（合理的な弁護士費用を含みます）を補償するものとします。</p></li><li><p><strong>責任の上限。</strong> 当社が本サービスに関してユーザーに対して損害賠償責任を負う場合、その責任は、当社の故意または重過失による場合を除き、ユーザーに現実に生じた直接かつ通常の損害に限られ、その上限は、損害の原因となった事由が生じた時点から遡って12ヶ月間にユーザーが当社に支払った料金の総額、または <span class="todo">[TODO: 一定額、例: ¥10,000]</span> のいずれか高い方とします。当社は、逸失利益、間接損害、特別損害、結果損害、データの喪失（ユーザーが第3条第10項に従って保管していれば防げたもの）については責任を負いません。</p></li><li><p><strong>強行規定との関係。</strong> 本条の定めは、消費者契約法その他の消費者保護に関する法令の強行規定によって認められないものについては適用されません。ユーザーが消費者として本サービスを利用する場合、当社の責任を免除または制限する本規約の定めは、適用される法令が許容する範囲でのみ効力を有します。当社の故意または重過失による損害、および当社の債務不履行または不法行為により生じた生命・身体への損害については、本条による免除・制限は適用されません。</p></li></ol>
+<h2 id="terms-第11条"><span class="num">第11条</span>（アカウントの停止・削除）</h2>
+<ol><li><p><strong>当社による停止・削除。</strong> 当社は、ユーザーが次のいずれかに該当する場合、事前の通知なく、アカウントの一時停止、機能制限、またはアカウントの削除を行うことができます。</p><ul><li><p>本規約に違反した場合</p></li><li><p>登録情報や年齢に関して虚偽の申告があった場合</p></li><li><p>料金の支払いを怠った場合</p></li><li><p>最終ログインから <span class="todo">[TODO: 期間、例: 24ヶ月]</span> 以上利用がなく、事前の通知に応答がない場合</p></li><li><p>当社が本サービスの運営上、アカウントの継続を適当でないと合理的に判断した場合</p></li></ul></li><li><p><strong>通知と異議。</strong> 一時停止または削除を行った場合、第6条第4項に準じて、可能な範囲で理由を通知し、異議申立の機会を提供します。</p></li><li><p><strong>ユーザーによる削除。</strong> ユーザーは、アプリ内の設定画面からいつでもアカウントを削除できます。削除により、ユーザーコンテンツ、いいね、ブックマーク、プロフィール情報などが本サービスから見えなくなります。Proプランを利用中の場合は、削除の前に解約が完了している必要があります。削除後の返金は第7条第6項に従います。</p></li><li><p><strong>データの消去期間。</strong> アカウントの削除後、当社は、ユーザーのデータを30日以内に本番環境から物理的に削除します。バックアップに含まれるデータは、バックアップの世代交代により最長90日で消滅します。ただし、法令上保存義務のあるデータ（取引記録など）、および紛争解決や当社の権利保全のために必要なデータは、その目的に必要な期間保持することがあります。詳細はプライバシーポリシーに定めます。</p></li><li><p><strong>削除の不可逆性。</strong> 削除されたデータは復元できません。削除の前に、必要な年表を書き出し機能などで保存してください。</p></li><li><p><strong>削除後の残存。</strong> 他のユーザーの年表への「いいね」やブックマークのカウント、公開年表への埋め込みやOGP画像を第三者が保存したもの、検索エンジンやSNSのキャッシュに残った内容は、当社の管理外であり、削除の対象に含まれません。</p></li></ol>
+<h2 id="terms-第12条"><span class="num">第12条</span>（規約の変更）</h2>
+<ol><li><p>当社は、法令の範囲内で本規約を変更することがあります。</p></li><li><p><strong>重要な変更。</strong> ユーザーの権利や義務に実質的な影響を及ぼす変更（料金の値上げ、ライセンス範囲の拡大、責任制限の強化、禁止事項の重大な追加など）を行う場合、当社は、変更の効力発生日の少なくとも30日前までに、登録されたメールアドレスへの送信およびアプリ内通知により、変更内容と効力発生日をお知らせします。</p></li><li><p><strong>軽微な変更。</strong> 誤記の修正、表現の明確化、法令改正への対応、ユーザーに有利な変更などの軽微な変更は、アプリ内での掲示により行うことがあります。この場合、掲示の時点で効力が生じます。</p></li><li><p><strong>同意。</strong> 効力発生日以降にユーザーが本サービスを利用した場合、変更後の規約に同意したものとみなします。変更に同意いただけない場合は、効力発生日までにアカウントを削除してください。有料プランの利用者が重要な変更に同意せずに解約する場合、当社は未経過期間分の料金を返金します。</p></li><li><p>本規約の最新版は、常に本サービス内で確認できます。変更履歴は当社のウェブサイトに掲載します。</p></li></ol>
+<h2 id="terms-第13条"><span class="num">第13条</span>（通知方法・連絡先）</h2>
+<ol><li><p><strong>当社からの通知。</strong> 当社からユーザーへの通知は、登録されたメールアドレスへの送信、アプリ内通知、または本サービス上での掲示のいずれか、もしくは複数の方法で行います。メールによる通知は、当社が送信した時点で到達したものとみなします。ユーザーは、ログインに使用する外部アカウントのメールアドレスが受信可能な状態にあることを確認してください。</p></li><li><p><strong>ユーザーからの連絡。</strong> 本規約、本サービス、通報、異議申立、その他のお問い合わせは、次の連絡先までメールでお願いします。</p><p>babel, inc.<br>Tokyo, Japan<br>Email: contact@chronos.tech</p></li><li><p>当社は、お問い合わせに合理的な期間内に回答するよう努めますが、すべてのお問い合わせに回答することを保証するものではありません。</p></li></ol>
+<h2 id="terms-第14条"><span class="num">第14条</span>（準拠法・管轄・言語優先）</h2>
+<ol><li><p><strong>準拠法。</strong> 本規約は、日本法に準拠し、日本法に従って解釈されます。ただし、付則A〜Dに別段の定めがある場合、およびユーザーの居住国の強行法規が適用される場合はこの限りではありません。</p></li><li><p><strong>管轄。</strong> 本規約または本サービスに関して当社とユーザーとの間に紛争が生じた場合、東京地方裁判所を第一審の専属的合意管轄裁判所とします。ただし、付則Aに定めるEU/EEA居住者については、同付則の定めに従います。</p></li><li><p><strong>言語優先。</strong> 本規約の原本は日本語です。当社は参考のために英語その他の言語への翻訳版を提供することがありますが、翻訳版と日本語版との間に相違や矛盾がある場合は、法令が別段の定めをしている場合を除き、日本語版が優先します。</p></li><li><p><strong>話し合いによる解決。</strong> 紛争が生じた場合、当社とユーザーは、まず誠実に話し合いによる解決を試みるものとします。</p></li></ol>
+<h2 id="terms-第15条"><span class="num">第15条</span>（その他）</h2>
+<ol><li><p><strong>分離可能性。</strong> 本規約のいずれかの条項が、法令により無効または執行不能と判断された場合でも、その他の条項は引き続き有効に存続します。無効または執行不能とされた条項は、その趣旨に最も近い有効な内容に置き換えられたものとして解釈されます。</p></li><li><p><strong>譲渡禁止。</strong> ユーザーは、当社の事前の書面による承諾なく、本規約上の地位または本規約に基づく権利義務を第三者に譲渡、移転、担保設定することはできません。当社は、本サービスに関する事業を第三者に譲渡する場合（合併、会社分割、事業譲渡を含みます）、本規約上の地位、権利義務、ユーザーの登録情報およびユーザーコンテンツを当該第三者に承継させることができるものとし、ユーザーはこれにあらかじめ同意します。この場合、当社は事前にユーザーに通知します。</p></li><li><p><strong>完全合意。</strong> 本規約（個別規定および適用される付則を含みます）は、本サービスの利用に関する当社とユーザーとの間の完全な合意を構成し、これに先立つ口頭または書面による合意、表明、了解に優先します。</p></li><li><p><strong>権利不放棄。</strong> 当社が本規約のいずれかの条項に基づく権利を行使しなかったとしても、その権利を放棄したものとはみなされません。</p></li><li><p><strong>存続条項。</strong> 本規約の終了後も、その性質上存続すべき条項（第3条第2項・第3項のライセンス、第8条、第10条、第11条第4項〜第6項、第14条、第15条など）は引き続き効力を有します。</p></li><li><p><strong>見出し。</strong> 各条の見出しは参照の便宜のためのものであり、条項の解釈に影響を与えません。</p></li></ol>
+
+<div class="part-label">地域別付則</div>
+<p>以下の付則は、ユーザーの居住地（通常の居所がある国または地域）を基準に適用されます。付則と共通本文が異なる定めをしている場合、該当する地域に居住するユーザーには付則の定めが優先します。複数の付則に該当する場合は、居住地に対応する付則のみが適用されます。</p>
+<h2 id="terms-付則a-eu-eea居住者向けの特則"><span class="num">付則A</span> — EU/EEA居住者向けの特則</h2>
+<p>本付則は、欧州連合（EU）または欧州経済領域（EEA）の加盟国に居住し、事業または職業の目的外で本サービスを利用する消費者に適用されます。</p>
+<ol><li><p><strong>強行法規の保護。</strong> 共通本文第14条にかかわらず、本規約は、あなたの居住国の消費者保護に関する強行法規によってあなたに与えられる保護を奪うものではありません。日本法の選択は、居住国の強行法規により認められる範囲でのみ効力を有します。</p></li><li><p><strong>裁判所。</strong> あなたは、当社に対する訴訟を、東京地方裁判所に加えて、あなたの居住国の管轄裁判所に提起することができます。当社があなたに対して訴訟を提起する場合は、あなたの居住国の裁判所においてのみ行います。</p></li><li><p><strong>14日間の撤回権。</strong> 消費者権利指令（2011/83/EU）に基づき、あなたは、Proプランの契約日から14日以内であれば、理由を示すことなく契約を撤回する権利を有します。撤回を希望する場合は、第13条の連絡先に、撤回の意思を明確に示すメール（氏名またはユーザー名、契約日、撤回の意思を含むもの）を送付してください。撤回が受理された場合、当社は撤回の通知を受けてから14日以内に、支払い済みの料金を返金します。</p></li><li><p><strong>撤回権の消滅への同意。</strong> Proプランの購入時、あなたは、決済完了後ただちにProの機能（デジタルコンテンツおよびデジタルサービス）の提供が開始されることに明示的に同意し、それにより14日間の撤回権を失うことを了承する旨を確認します。当社は、この同意を決済画面で個別に取得します。<span class="todo">[TODO: 決済画面に明示的同意チェックボックスを実装すること]</span> 撤回権の消滅前にサービス提供が開始され、撤回期間中に撤回する場合、既に提供されたサービスに相当する金額を差し引いた残額を返金します。</p></li><li><p><strong>適合性の保証。</strong> デジタルコンテンツ・デジタルサービス指令（2019/770/EU）に基づき、当社は本サービスが契約に適合するものであることについて、あなたの居住国の法令に定める法定保証を負います。共通本文第10条第1項の「現状有姿」の定めは、この法定保証を制限するものではありません。</p></li><li><p><strong>責任制限の限界。</strong> 共通本文第10条第3項の責任制限は、あなたの居住国の消費者保護法により認められる範囲でのみ適用されます。当社の故意または重過失、生命・身体・健康への損害、契約の本質的義務（Kardinalpflichten）の違反による損害については、責任制限は適用されません。</p></li><li><p><strong>オンライン紛争解決（ODR）。</strong> 欧州委員会は、オンライン紛争解決のためのプラットフォーム（<a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a>）を提供しています。<span class="todo">[TODO: ODRプラットフォームは2025年7月に廃止された旨の情報があるため、最新の状況を確認し、廃止済みであれば本項を削除または各国ADR機関への言及に置き換える]</span> 当社は、消費者仲裁機関における紛争解決手続に参加する義務を負わず、参加する意思もありません。ただし、当社は話し合いによる解決に誠実に応じます。</p></li><li><p><strong>価格変更・規約変更。</strong> 共通本文第7条第7項および第12条にかかわらず、あなたに不利な変更については、あなたが変更を拒否し、契約を無償で解除する権利を有する旨を、通知に明記します。</p></li><li><p><strong>EU代表者。</strong> <span class="todo">[TODO: GDPR第27条に基づくEU代表者の指定要否、およびデジタルサービス法（DSA）上の法定代理人の要否を確認。必要であればここに名称・連絡先を記載]</span></p></li><li><p><strong>言語。</strong> 本付則が適用される場合、当社は英語版の規約を参考として提供します。日本語版と英語版の間に相違がある場合、居住国の強行法規により認められる範囲で日本語版が優先します。</p></li></ol>
+<h2 id="terms-付則b-韓国居住者向けの特則"><span class="num">付則B</span> — 韓国居住者向けの特則</h2>
+<p>本付則は、大韓民国に居住し、消費者として本サービスを利用するユーザーに適用されます。</p>
+<ol><li><p><strong>消費者保護法令の適用。</strong> 本規約は、「電子商取引等における消費者保護に関する法律」（電子商取引法）、「約款の規制に関する法律」、「コンテンツ産業振興法」その他大韓民国の消費者保護に関する強行法規によってあなたに与えられる権利を制限しません。共通本文と当該法令が矛盾する場合、当該法令が優先します。</p></li><li><p><strong>請約撤回（クーリングオフ）。</strong> 電子商取引法に基づき、あなたは、Proプランの契約日または利用可能となった日から、関係法令の定める期間内に、契約の申込みを撤回することができます。ただし、デジタルコンテンツの提供が開始された場合の請約撤回の制限については、同法の定めに従います。当社は、提供開始により請約撤回が制限される場合、その旨を決済画面で事前に表示し、あなたの同意を得ます。<span class="todo">[TODO: 決済画面での表示と同意取得の実装]</span></p></li><li><p><strong>清算・返金。</strong> 契約の解除または請約撤回に伴う清算および返金は、電子商取引法および関係法令の定めるところにより行います。返金の期限、方法、控除できる金額は、関係法令の定めによります。共通本文第7条第6項の「返金しない」旨の定めは、関係法令が返金を義務付ける場合には適用されません。</p></li><li><p><strong>事業者情報の表示。</strong> 電子商取引法に基づき、当社は、商号、代表者名、住所、連絡先、通信販売業の申告番号（該当する場合）等を本サービス上に表示します。<span class="todo">[TODO: 韓国向け通信販売業申告の要否を確認]</span></p></li><li><p><strong>裁判所・準拠法。</strong> 共通本文第14条にかかわらず、大韓民国の国際私法および消費者保護法令により、あなたが居住国の裁判所に訴えを提起する権利、および居住国の強行法規の保護を受ける権利は妨げられません。</p></li><li><p><strong>言語。</strong> 当社は韓国語版の規約を参考として提供することがあります。日本語版との相違については、関係法令により認められる範囲で日本語版が優先します。</p></li></ol>
+<h2 id="terms-付則c-台湾居住者向けの特則"><span class="num">付則C</span> — 台湾居住者向けの特則</h2>
+<p>本付則は、台湾に居住し、消費者として本サービスを利用するユーザーに適用されます。</p>
+<ol><li><p><strong>消費者保護法の適用。</strong> 本規約は、台湾の「消費者保護法」およびその施行細則、「通訊交易解除權合理例外情事適用準則」その他の消費者保護に関する強行法規によってあなたに与えられる権利を制限しません。共通本文と当該法令が矛盾する場合、当該法令が優先します。</p></li><li><p><strong>通訊交易における解除権。</strong> 消費者保護法第19条に基づき、あなたは、Proプランの契約について、法令の定める期間内（原則としてサービス提供開始または契約締結から7日以内）に、理由を示すことなく契約を解除する権利を有します。ただし、「通訊交易解除權合理例外情事適用準則」に基づき、オンラインで提供されるデジタルコンテンツまたはサービスであって、あなたの事前同意を得て提供が開始されたものについては、解除権の例外が適用されることがあります。当社は、該当する場合、その旨を決済画面で事前に表示し、あなたの同意を得ます。<span class="todo">[TODO: 決済画面での表示と同意取得の実装。解除権の例外適用可否を台湾法弁護士に確認]</span></p></li><li><p><strong>返金。</strong> 解除権の行使に伴う返金は、消費者保護法および関係法令の定めるところにより行います。共通本文第7条第6項の定めは、関係法令が返金を義務付ける場合には適用されません。</p></li><li><p><strong>定型化契約。</strong> 本規約は消費者保護法上の定型化契約に該当します。本規約の条項のうち、消費者に対して著しく不公平な条項は、同法に基づき無効となる場合があります。当社は、本規約をあなたが合理的に確認できる期間、本サービス上に掲示します。</p></li><li><p><strong>裁判所・準拠法。</strong> 共通本文第14条にかかわらず、あなたが台湾の裁判所に訴えを提起する権利、および台湾の強行法規の保護を受ける権利は妨げられません。</p></li><li><p><strong>言語。</strong> 当社は繁体字中国語版の規約を参考として提供することがあります。日本語版との相違については、関係法令により認められる範囲で日本語版が優先します。</p></li></ol>
+<h2 id="terms-付則d-米国"><span class="num">付則D</span> — 米国（カリフォルニア州）居住者向けの特則</h2>
+<p>本付則は、アメリカ合衆国カリフォルニア州に居住するユーザーに適用されます。米国の他の州に居住するユーザーについても、その州の消費者保護法が本付則と同様の権利を定める場合、それに従います。</p>
+<ol><li><p><strong>準拠法との関係。</strong> 本規約は日本法に準拠しますが、この準拠法の選択は、カリフォルニア州法その他あなたに適用される消費者保護法によって放棄できない権利や保護を制限するものではありません。</p></li><li><p><strong>仲裁条項の不採用。</strong> 本規約には、強制仲裁条項やクラスアクション放棄条項は含まれません。あなたは、適用される法令に基づき、裁判所において救済を求めることができます。</p></li><li><p><strong>自動更新の開示。</strong> カリフォルニア州自動更新法（Cal. Bus. &amp; Prof. Code §17600以下）に基づき、当社は、Proプランの購入前に、自動更新の条件（更新周期、料金、解約方法）を明確かつ目立つ形で表示し、あなたの明示的な同意を得ます。当社は、購入後に確認メールを送付し、また、オンラインで購入した契約はオンライン（アプリ内またはStripe顧客ポータル）で解約できるようにします。<span class="todo">[TODO: 決済画面での開示と同意取得、確認メールの実装]</span></p></li><li><p><strong>返金・解約。</strong> 共通本文第7条第6項にかかわらず、カリフォルニア州法があなたに返金を受ける権利を認める場合、当社はそれに従います。</p></li><li><p><strong>保証の否認と責任制限。</strong> 共通本文第10条の保証否認および責任制限は、適用される法令が許容する最大限の範囲で適用されます。一部の州では、黙示の保証の排除や、付随的損害・結果損害の制限を認めていないため、それらの制限があなたに適用されない場合があります。</p></li><li><p><strong>カリフォルニア州民法典第1789.3条に基づく通知。</strong> カリフォルニア州の消費者は、カリフォルニア州消費者庁の消費者サービス部門の苦情支援ユニット（Complaint Assistance Unit of the Division of Consumer Services of the California Department of Consumer Affairs）に対し、書面（1625 North Market Blvd., Suite N 112, Sacramento, CA 95834）または電話（(800) 952-5210）で連絡することができます。本サービスの提供者は babel, inc.（Tokyo, Japan、contact@chronos.tech）です。</p></li><li><p><strong>プライバシー。</strong> カリフォルニア州消費者プライバシー法（CCPA/CPRA）に基づくあなたの権利については、プライバシーポリシーに定めます。<span class="todo">[TODO: CCPA適用閾値の該当性を確認]</span></p></li><li><p><strong>言語。</strong> 当社は英語版の規約を参考として提供します。日本語版との相違については、適用される法令により認められる範囲で日本語版が優先します。</p></li></ol>
+
+<div class="part-label">付記</div>
+<ul><li><p><strong>最終更新日</strong>: 2026年8月17日</p></li><li><p><strong>施行日</strong>: <span class="todo">[TODO: サービス正式提供開始日]</span></p></li><li><p>本文書はドラフトであり、法的助言ではありません。公開前に、日本、EU/EEA、韓国、台湾、米国（カリフォルニア州）それぞれの弁護士による確認を要します。</p></li><li><p>本文書中の角括弧付き <span class="todo">[TODO]</span> は未確定事項です。公開前にすべて解消してください。</p></li></ul>
+<h2 id="terms-todo-一覧"><span class="todo">[TODO]</span> 一覧</h2>
+<div class="tbl"><table><thead><tr><th>箇所</th><th>内容</th></tr></thead><tbody><tr><td>第2条第4項</td><td>公開プロフィールURLの正式ドメイン</td></tr><tr><td>第3条第3項</td><td>ユーザーコンテンツのAI学習利用方針（利用しない想定）</td></tr><tr><td>第4条第5項</td><td>Anthropic商用利用規約に基づく学習不使用条件の確認と表現確定</td></tr><tr><td>第6条第4項</td><td>異議申立の期間（例: 14日）</td></tr><tr><td>第7条第2項</td><td>価格の税込/税抜表示の確定（日本の総額表示義務）</td></tr><tr><td>第7条第4項</td><td>年額プラン更新前の事前案内タイミング</td></tr><tr><td>第9条第3項</td><td>サービス終了時の事前通知期間（例: 60日）</td></tr><tr><td>第9条第4項</td><td>データエクスポートの形式（JSON等）</td></tr><tr><td>第10条第3項</td><td>責任上限の具体額（例: ¥10,000）</td></tr><tr><td>第11条第1項</td><td>休眠アカウントの判定期間（例: 24ヶ月）</td></tr><tr><td>付則A第4項</td><td>EU向け決済画面での撤回権消滅への明示的同意チェックボックス</td></tr><tr><td>付則A第7項</td><td>EU ODRプラットフォームの廃止状況の確認と条項の要否</td></tr><tr><td>付則A第9項</td><td>GDPR第27条EU代表者・DSA法定代理人の要否と記載</td></tr><tr><td>付則B第2項</td><td>韓国向け決済画面での請約撤回制限の表示と同意取得</td></tr><tr><td>付則B第4項</td><td>韓国通信販売業申告の要否</td></tr><tr><td>付則C第2項</td><td>台湾向け決済画面での解除権例外の表示と同意取得、例外適用可否の確認</td></tr><tr><td>付則D第3項</td><td>カリフォルニア自動更新法に基づく開示・同意・確認メールの実装</td></tr><tr><td>付則D第7項</td><td>CCPA適用閾値の該当性</td></tr><tr><td>付記</td><td>施行日</td></tr><tr><td>各付則</td><td>各国の返金・撤回の具体日数は「関係法令の定めによる」としており、確定値は各国弁護士確認後に反映</td></tr></tbody></table></div>
+    </article>
+
+    <article class="doc" id="doc-privacy" data-doc="privacy" data-title="プライバシーポリシー">
+      <div class="doc-eyebrow">Privacy Policy</div>
+      <h1>プライバシーポリシー</h1>
+      <div class="notice" role="note">
+        <span class="notice-item">最終更新: 2026年8月17日</span>
+        <span class="notice-item">発効日: <span class="todo">[TODO: 公開日を確定]</span></span>
+        <span class="notice-draft">本文書はドラフトです。公開前に弁護士の確認を要します。</span>
+      </div>
+
+
+<div class="part-label">共通本文</div>
+<h2 id="privacy-1-はじめに-事業者情報"><span class="num">1.</span> はじめに・事業者情報</h2>
+<p>babel, inc.（以下「当社」）は、年表作成・共有サービス「Chronos」（ウェブサイト、アプリケーション、埋め込みウィジェット、関連するメール配信を含み、以下「本サービス」）を提供しています。</p>
+<p>本ポリシーは、当社が本サービスに関してどのような個人情報を取得し、どのように利用・保管・共有し、ユーザーがどのような権利を持つかを説明するものです。</p>
+<div class="tbl"><table><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>事業者名</td><td>babel, inc.</td></tr><tr><td>所在地</td><td>東京都 <span class="todo">[TODO: 住所を確定]</span></td></tr><tr><td>個人情報の取扱いに関する窓口</td><td>contact@chronos.tech</td></tr><tr><td>データ保護責任者（DPO）</td><td>当面設置しません <span class="todo">[TODO: GDPR第37条・韓国PIPA上の要否を確認]</span></td></tr><tr><td>EU域内代表者</td><td>当面設置しません <span class="todo">[TODO: GDPR第27条上の要否を確認]</span></td></tr></tbody></table></div>
+<p>本ポリシーの原本は日本語です。翻訳版と日本語版の間に相違がある場合は、日本語版が優先します。</p>
+<h2 id="privacy-2-適用範囲-年齢"><span class="num">2.</span> 適用範囲・年齢</h2>
+<h3><span class="num">2.1</span> 適用範囲</h3>
+<p>本ポリシーは、本サービスを閲覧・利用するすべての方（アカウントを作成しない閲覧者、ウェイトリストに登録した方を含む）に適用されます。</p>
+<p>本サービスから外部サービス（出典として登録されたURL、Stripe の決済ページ、Google / Apple のログイン画面など）に移動した後の情報の取扱いは、各サービスのプライバシーポリシーに従います。</p>
+<h3><span class="num">2.2</span> 年齢</h3>
+<p>本サービスは16歳以上の方を対象としています。当社は、16歳未満の方の個人情報を意図して取得しません。詳細は「13. 子どもの利用」をご覧ください。</p>
+<h2 id="privacy-3-取得する情報"><span class="num">3.</span> 取得する情報</h2>
+<p>当社は、以下の情報を取得します。「取得方法」の分類は次のとおりです。</p>
+<ul><li><p><strong>ユーザー提供</strong>: ユーザーが入力・アップロード・送信する情報</p></li><li><p><strong>自動取得</strong>: 本サービスの利用に伴い技術的に生成・記録される情報</p></li><li><p><strong>第三者から取得</strong>: 外部サービス（OAuthプロバイダ・決済事業者など）から受け取る情報</p></li></ul>
+<div class="tbl"><table><thead><tr><th>#</th><th>情報の種類</th><th>具体的な項目</th><th>取得方法</th><th>取得のタイミング</th></tr></thead><tbody><tr><td>3-1</td><td>アカウント情報（OAuth由来）</td><td>メールアドレス、表示名、プロバイダ側の利用者識別子（Google / Apple のユーザーID）</td><td>第三者から取得</td><td>Google または Apple でログインしたとき</td></tr><tr><td>3-2</td><td>プロフィール情報</td><td>ユーザー名（@username）、表示名、自己紹介、アバター画像</td><td>ユーザー提供</td><td>初回設定時・プロフィール編集時</td></tr><tr><td>3-3</td><td>ユーザーコンテンツ</td><td>年表（タイトル・説明・カテゴリ・言語・レイヤー名）、イベント（日付・期間・要約・本文）、出典（URL・タイトル）、信憑性の区分と補足メモ</td><td>ユーザー提供</td><td>年表・イベントを作成・編集したとき</td></tr><tr><td>3-4</td><td>ソーシャル操作</td><td>いいね、ブックマークの対象と日時</td><td>ユーザー提供</td><td>いいね・ブックマークしたとき</td></tr><tr><td>3-5</td><td>公開設定</td><td>年表の公開状態（公開 / 限定公開 / 非公開）、共有用ID（share_id）、共有URL</td><td>ユーザー提供・自動取得</td><td>公開設定を変更したとき</td></tr><tr><td>3-6</td><td>通報内容</td><td>通報対象の年表、通報理由、通報者（ログイン時のみ）、日時</td><td>ユーザー提供</td><td>通報を送信したとき</td></tr><tr><td>3-7</td><td>決済関連情報</td><td>Stripe 顧客ID、契約プラン、契約状態、請求・支払履歴。<strong>カード番号・有効期限・セキュリティコードは Stripe が直接取り扱い、当社は保持しません</strong></td><td>第三者から取得</td><td>Pro プランを購入・変更・解約したとき</td></tr><tr><td>3-8</td><td>AI機能への入力</td><td>AI下書き生成に入力したテーマ・条件、AI Edit Assist に入力した編集指示、その対象となる年表・イベントの内容</td><td>ユーザー提供</td><td>AI機能を利用したとき</td></tr><tr><td>3-9</td><td>問い合わせ内容</td><td>メールアドレス、氏名（任意）、問い合わせ本文、添付ファイル</td><td>ユーザー提供</td><td>contact@chronos.tech に連絡したとき</td></tr><tr><td>3-10</td><td>アクセスログ・端末情報</td><td>IPアドレス、ユーザーエージェント、OS・ブラウザの種類、画面サイズ、参照元URL、アクセス日時、閲覧・操作したページやAPI、エラー情報</td><td>自動取得</td><td>本サービスにアクセスしたとき</td></tr><tr><td>3-11</td><td>Cookie・localStorage</td><td>認証セッション、UI状態（いいね・ブックマーク・ウェイトリスト登録状態など）、同意状態、アクセス解析用の識別子（同意した場合のみ）</td><td>自動取得</td><td>本サービスを利用したとき（詳細は第8節）</td></tr><tr><td>3-12</td><td>ウェイトリスト登録メール</td><td>メールアドレス、登録日時、登録元ページ</td><td>ユーザー提供</td><td>ローンチ前にウェイトリストへ登録したとき</td></tr><tr><td>3-13</td><td>通知に関する情報</td><td>いいね通知・システム通知の内容、既読状態</td><td>自動取得</td><td>通知が発生したとき</td></tr></tbody></table></div>
+<p>当社は、実名、住所、電話番号、政府発行の身分証番号、および要配慮個人情報（人種・信条・病歴など）を取得する項目を設けていません。ユーザーコンテンツやプロフィールにこれらの情報を自ら記載した場合、その情報は「ユーザーコンテンツ」または「プロフィール情報」として取り扱われます。</p>
+<h2 id="privacy-4-利用目的"><span class="num">4.</span> 利用目的</h2>
+<p>当社は、取得した情報を以下の目的で利用します。表の右列は主に利用する情報の番号（第3節）です。</p>
+<div class="tbl"><table><thead><tr><th>#</th><th>利用目的</th><th>主に利用する情報</th></tr></thead><tbody><tr><td>4-1</td><td>本サービスの提供・運営（年表の作成・保存・表示・共有・書き出し・埋め込み）</td><td>3-1, 3-2, 3-3, 3-4, 3-5, 3-11</td></tr><tr><td>4-2</td><td>アカウントの作成・認証・本人確認・セッション維持</td><td>3-1, 3-10, 3-11</td></tr><tr><td>4-3</td><td>有料プランの課金・請求・契約管理・プラン制限の適用</td><td>3-1, 3-7</td></tr><tr><td>4-4</td><td>AI下書き生成・AI Edit Assist の提供と利用回数の管理</td><td>3-3, 3-8</td></tr><tr><td>4-5</td><td>通知の配信（いいね通知・システム通知・重要なお知らせ）</td><td>3-1, 3-4, 3-13</td></tr><tr><td>4-6</td><td>不正利用・スパム・規約違反・セキュリティ侵害の検知と防止</td><td>3-1, 3-3, 3-6, 3-10, 3-11</td></tr><tr><td>4-7</td><td>通報への対応と、必要な場合の公開状態の変更</td><td>3-3, 3-5, 3-6</td></tr><tr><td>4-8</td><td>本サービスの利用状況の分析、機能の改善・新機能の開発</td><td>3-3（統計化したもの）, 3-4, 3-10, 3-11</td></tr><tr><td>4-9</td><td>問い合わせ・権利行使の請求への対応</td><td>3-1, 3-9</td></tr><tr><td>4-10</td><td>ローンチのご案内・ウェイトリスト登録者への告知</td><td>3-12</td></tr><tr><td>4-11</td><td>法令の遵守、紛争対応、当社の権利の保全</td><td>全般（必要な範囲）</td></tr></tbody></table></div>
+<p>当社は、上記の目的の達成に必要な範囲を超えて個人情報を利用しません。目的を変更する場合は、変更前の目的と関連性があると合理的に認められる範囲で行い、第14節に従ってお知らせします。</p>
+<p>当社は、ユーザーの個人情報を第三者に販売しません。また、行動ターゲティング広告のためにユーザーの情報を利用・提供しません。</p>
+<h2 id="privacy-5-ai機能におけるデータの取り扱い"><span class="num">5.</span> AI機能におけるデータの取り扱い</h2>
+<p>本サービスには、年表の「下書き」を自動生成する機能（AI下書き）と、既存の年表・イベントの編集を支援する機能（AI Edit Assist。以下あわせて「AI機能」）があります。AI機能に関するデータの取扱いは次のとおりです。</p>
+<h3><span class="num">5.1</span> 送信されるデータ</h3>
+<p>AI機能を利用すると、ユーザーが入力したテーマ・条件・編集指示と、処理に必要な範囲の年表・イベントの内容（タイトル・日付・要約・本文・出典・信憑性メモなど）が、当社のサーバーを経由して Anthropic, PBC（米国）が提供する Claude API に送信されます。</p>
+<p>AI機能を利用しない限り、ユーザーコンテンツが Anthropic に送信されることはありません。また、当社は、AI機能の処理に不要な情報（メールアドレス、Stripe 顧客ID、IPアドレスなど）を Claude API に送信しません。</p>
+<h3><span class="num">5.2</span> モデルの学習に使用されないこと</h3>
+<p>Anthropic の API 利用条件では、API を通じて送信されたデータは Anthropic のモデルの学習に使用されないとされています。当社は、この条件を前提として Anthropic を利用しています。<br><span class="todo">[TODO: 公開前に Anthropic の最新の Commercial Terms / Usage Policy / Data Retention 条件を再確認し、保持期間（例: 不正利用監視のための一時保持）についても本節に反映する]</span></p>
+<h3><span class="num">5.3</span> 生成結果の性質と「未検証」フラグ</h3>
+<p>AI機能の出力は、あくまで「下書き」であり、内容の正確性は保証されません。AI機能が生成したイベントには、信憑性の区分として「未検証（unverified）」が初期値として設定されます。ユーザーは公開前に内容を確認し、必要に応じて出典を追加し、信憑性の区分を変更することができます。</p>
+<h3><span class="num">5.4</span> ユーザーコンテンツの帰属と当社による利用</h3>
+<p>AI機能で生成された下書きを含め、年表・イベントなどのユーザーコンテンツはユーザーの管理下に置かれます。当社は、ユーザーコンテンツを当社独自の機械学習モデルの学習に使用しません。当社が Anthropic 以外のAI事業者を新たに利用する場合は、第6節のサブプロセッサ一覧を更新し、第14節に従ってお知らせします。</p>
+<h3><span class="num">5.5</span> 利用回数の記録</h3>
+<p>AI機能の利用回数（Free プランの月間上限の管理に必要な範囲）を、アカウントに紐づけて記録します。</p>
+<h2 id="privacy-6-委託-第三者提供-サブプロセッサ一覧"><span class="num">6.</span> 委託・第三者提供・サブプロセッサ一覧</h2>
+<h3><span class="num">6.1</span> 委託（サブプロセッサ）</h3>
+<p>当社は、本サービスの提供に必要な範囲で、以下の事業者に個人情報の取扱いを委託しています。委託先は、当社の指示に基づいてのみ個人情報を取り扱い、当社は契約その他により委託先を監督します。</p>
+<div class="tbl"><table><thead><tr><th>事業者</th><th>用途</th><th>取り扱う主な情報</th><th>所在国 / 処理地域</th></tr></thead><tbody><tr><td>Supabase, Inc.</td><td>データベース、認証基盤、ストレージ</td><td>3-1〜3-8, 3-13（本サービスのデータ全般）</td><td>米国法人。データは東京リージョンに保管する想定 <span class="todo">[TODO: リージョン確定・サポートアクセス時の越境有無を確認]</span></td></tr><tr><td>Cloudflare, Inc.</td><td>ホスティング、CDN、DDoS対策、エッジ処理</td><td>3-10, 3-11、配信するコンテンツ</td><td>米国法人。グローバルネットワーク（アクセス元に近い拠点で処理）</td></tr><tr><td>Stripe, Inc.（および Stripe Payments Japan 等の関連会社）</td><td>決済処理、サブスクリプション管理、請求書発行</td><td>メールアドレス、3-7</td><td>米国</td></tr><tr><td>Anthropic, PBC</td><td>AI機能（Claude API）</td><td>3-8 とその処理に必要な 3-3 の内容</td><td>米国</td></tr><tr><td>Google LLC</td><td>Google アカウントによるログイン（OAuth）、Google Analytics 4（同意した場合のみ）</td><td>ログイン: 3-1 / GA4: 3-10, 3-11（匿名化されたIP、閲覧イベント）</td><td>米国</td></tr><tr><td>Apple Inc.</td><td>Apple ID によるログイン（Sign in with Apple）</td><td>3-1</td><td>米国</td></tr><tr><td>メール配信サービス <span class="todo">[TODO: 選定]</span></td><td>通知メール、ウェイトリスト告知、重要なお知らせの配信</td><td>メールアドレス、表示名、配信内容</td><td><span class="todo">[TODO]</span></td></tr></tbody></table></div>
+<p>サブプロセッサの追加・変更を行う場合は、本ポリシーを更新し、重要な変更については第14節に従ってお知らせします。</p>
+<h3><span class="num">6.2</span> 第三者提供</h3>
+<p>当社は、以下の場合を除き、ユーザーの個人情報を第三者に提供しません。</p>
+<ol><li><p>ユーザーの同意がある場合</p></li><li><p>法令に基づく場合（裁判所・警察・行政機関からの適法な要請への対応など）</p></li><li><p>人の生命、身体または財産の保護のために必要で、本人の同意を得ることが困難な場合</p></li><li><p>合併、会社分割、事業譲渡その他の事由により事業が承継される場合（承継先は本ポリシーに従います。事前にお知らせします）</p></li></ol>
+<p>なお、ユーザーが自ら「公開」または「限定公開」に設定した情報が第三者に閲覧されることは、第三者提供ではなく、ユーザー自身による公開です（第9節）。</p>
+<h3><span class="num">6.3</span> 統計情報</h3>
+<p>当社は、個人を識別できないよう加工した統計情報（カテゴリ別の年表数、機能の利用率など）を作成し、サービス改善や公表に利用することがあります。</p>
+<h2 id="privacy-7-国外移転"><span class="num">7.</span> 国外移転</h2>
+<h3><span class="num">7.1</span> 移転の概要</h3>
+<p>第6節のとおり、当社は米国に所在する事業者（Supabase, Cloudflare, Stripe, Anthropic, Google, Apple）に個人情報の取扱いを委託しています。また、Cloudflare のネットワークはグローバルに分散しており、アクセス元に近い国・地域で処理が行われることがあります。</p>
+<h3><span class="num">7.2</span> 日本の個人情報保護法に基づく説明</h3>
+<p>日本の個人情報保護法（第28条）に基づき、外国にある第三者への提供に関して以下をお知らせします。</p>
+<div class="tbl"><table><thead><tr><th>事項</th><th>内容</th></tr></thead><tbody><tr><td>移転先の国・地域</td><td>米国（主）。Cloudflare については処理拠点が世界各国に及びます</td></tr><tr><td>移転先の国の個人情報保護制度</td><td>米国には、包括的な連邦レベルの個人情報保護法はなく、分野別・州別の法律により保護されています。個人情報保護委員会が公表する「外国における個人情報の保護に関する制度等の調査」（米国）を参照してください。</td></tr><tr><td>移転先が講ずる措置</td><td>各事業者は、OECDプライバシーガイドライン8原則に対応する措置を講じ、当社との間で個人情報の取扱いに関するデータ処理契約（DPA）を締結しています。<span class="todo">[TODO: 各社DPAの締結・受諾を確認]</span></td></tr><tr><td>当社が講ずる措置</td><td>委託契約による目的外利用の禁止、アクセス制御、通信・保存時の暗号化、委託先の定期的な確認</td></tr></tbody></table></div>
+<h3><span class="num">7.3</span> EU/EEA・英国等からの移転</h3>
+<p>EU/EEA・英国・スイス等にお住まいの方の個人情報を日本および米国に移転する場合の根拠は、付則Aに記載します。</p>
+<h2 id="privacy-8-cookie-localstorage-アクセス解析"><span class="num">8.</span> Cookie・localStorage・アクセス解析</h2>
+<h3><span class="num">8.1</span> Cookie と localStorage の一覧</h3>
+<div class="tbl"><table><thead><tr><th>種類</th><th>名称・例</th><th>目的</th><th>必須 / 任意</th><th>保存期間の目安</th></tr></thead><tbody><tr><td>認証セッション（Cookie）</td><td>Supabase Auth のセッション・リフレッシュトークン</td><td>ログイン状態の維持、CSRF対策</td><td>必須</td><td>セッション終了またはログアウトまで（リフレッシュトークンは最長30日 <span class="todo todo-soft">[推奨値]</span>）</td></tr><tr><td>同意状態（Cookie / localStorage）</td><td><code>chronos_consent</code> <span class="todo">[TODO: 実装名]</span></td><td>Cookie同意バナーの選択内容の記憶</td><td>必須</td><td>12ヶ月</td></tr><tr><td>UI状態（localStorage）</td><td><code>chronos_likes_v1</code>, <code>chronos_bookmarks_v1</code>, ウェイトリスト登録状態など</td><td>いいね・ブックマークの表示、登録済みの表示、テーマなど画面状態の保持</td><td>必須（機能提供上必要）</td><td>ユーザーがブラウザデータを削除するまで</td></tr><tr><td>アクセス解析（Cookie）</td><td>Google Analytics 4（<code>_ga</code>, <code>_ga_*</code>）</td><td>利用状況の分析・改善</td><td>任意（同意ベース）</td><td>最長2年（Google の設定による）</td></tr><tr><td>決済（Cookie）</td><td>Stripe が設定する不正防止用 Cookie</td><td>決済時の不正防止</td><td>必須（決済ページのみ）</td><td>Stripe のポリシーによる</td></tr><tr><td>セキュリティ（Cookie）</td><td>Cloudflare が設定する Cookie（<code>__cf_bm</code> 等）</td><td>ボット対策・セキュリティ</td><td>必須</td><td>最長30分程度</td></tr></tbody></table></div>
+<p>localStorage の UI 状態は、ログインしていない閲覧者についてもブラウザ内に保存されますが、当社のサーバーには送信されません（ログイン後に同期される場合を除きます）。</p>
+<h3><span class="num">8.2</span> Google Analytics 4 と同意</h3>
+<p>当社は、本サービスの利用状況を把握するために Google Analytics 4（GA4）を利用します。GA4 に関する取扱いは次のとおりです。</p>
+<ul><li><p>初回訪問時に表示される同意バナーで「同意する」を選択するまで、GA4 のタグは読み込まれず、データは送信されません</p></li><li><p>GA4 では IP アドレスは匿名化（Google 側で保存されない）され、当社は個人を特定できる形で解析データを利用しません</p></li><li><p>同意はいつでも撤回できます。フッターの「Cookie設定」から選択を変更してください</p></li><li><p>Google によるデータの取扱いは、Google のプライバシーポリシーおよび「Google のサービスを使用するサイトやアプリから収集した情報の Google による使用」をご確認ください</p></li><li><p>Google Analytics オプトアウト アドオン（<a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">https://tools.google.com/dlpage/gaoptout</a>）を利用してブラウザ全体で無効化することもできます</p></li></ul>
+<h3><span class="num">8.3</span> ブラウザ設定による制御</h3>
+<p>ブラウザの設定により Cookie の受け入れを拒否したり削除したりできます。ただし、必須の Cookie を無効化すると、ログインなど本サービスの一部機能が利用できなくなります。</p>
+<h2 id="privacy-9-公開される情報"><span class="num">9.</span> 公開される情報</h2>
+<p>本サービスは年表を共有するためのサービスです。以下の情報は、ユーザーの設定に応じて第三者が閲覧できます。</p>
+<div class="tbl"><table><thead><tr><th>情報</th><th>誰が閲覧できるか</th></tr></thead><tbody><tr><td>「公開」に設定した年表（イベント・レイヤー・出典・信憑性メモ・いいね数・ブックマーク数を含む）</td><td>すべての人（ログイン不要）。Explore に掲載され、検索エンジンやSNSのプレビュー（OGP画像を含む）に取得・表示されることがあります</td></tr><tr><td>「限定公開」に設定した年表</td><td>共有URLを知っている人。Explore・公開プロフィールには掲載されず、検索エンジンにインデックスされないよう設定しますが、URLが転送された場合は閲覧を防げません</td></tr><tr><td>「非公開」の年表</td><td>本人のみ（初期設定）</td></tr><tr><td>公開プロフィール（<code>chronos.app/@username</code>）: ユーザー名、表示名、自己紹介、アバター、公開年表の一覧といいね数</td><td>すべての人</td></tr><tr><td>埋め込みウィジェット（Pro）</td><td>埋め込み先のページを閲覧する人</td></tr></tbody></table></div>
+<p>公開設定を「非公開」に戻した後も、検索エンジンのキャッシュや第三者が保存したコピー、埋め込み先の表示が一定期間残ることがあります。メールアドレス、Stripe 顧客ID、いいね・ブックマークした年表の一覧、AI機能への入力内容は公開されません。</p>
+<h2 id="privacy-10-保存期間と削除"><span class="num">10.</span> 保存期間と削除</h2>
+<p>当社は、利用目的に必要な期間に限り個人情報を保存します。主な保存期間は次のとおりです。</p>
+<div class="tbl"><table><thead><tr><th>情報</th><th>保存期間</th></tr></thead><tbody><tr><td>アカウント情報・プロフィール・ユーザーコンテンツ・ソーシャル操作・公開設定・通知</td><td>アカウントが存在する間。アカウント削除の請求時に即時に論理削除（表示・アクセス不能化）し、30日以内に本番データベースから物理削除します。バックアップは最長90日で消滅します</td></tr><tr><td>アクセスログ・IPアドレス・端末情報</td><td>取得から12ヶ月</td></tr><tr><td>ウェイトリスト登録メール</td><td>本サービス公開後6ヶ月、または配信停止の請求時のいずれか早い時点</td></tr><tr><td>決済・取引記録（Stripe 顧客ID、プラン、請求履歴）</td><td>アカウント削除後も、税法・商法等の法令上の保存義務期間（最長10年）保存します</td></tr><tr><td>通報記録</td><td>対応完了後3年</td></tr><tr><td>問い合わせ記録</td><td>対応完了後2年 <span class="todo todo-soft">[推奨値]</span></td></tr><tr><td>AI機能への入力・出力</td><td>当社側では、生成された下書きがユーザーコンテンツとして保存されるほかは、処理ログを最長30日保存します <span class="todo todo-soft">[推奨値]</span>。Anthropic 側の保持は第5.2節の <span class="todo">[TODO]</span> を参照</td></tr><tr><td>GA4 の解析データ</td><td>Google 側で14ヶ月（当社の設定値）<span class="todo todo-soft">[推奨値]</span></td></tr></tbody></table></div>
+<p>上記期間の経過後、当社は当該情報を削除または個人を識別できない形に加工します。法令上の義務、紛争対応、不正利用の防止のために必要な場合は、必要な範囲で保存期間を延長することがあります。</p>
+<p>アカウントの削除は、アプリ内の設定画面から行えます。削除すると、公開していた年表もあわせて削除されます。</p>
+<h2 id="privacy-11-安全管理措置"><span class="num">11.</span> 安全管理措置</h2>
+<p>当社は、個人情報の漏えい、滅失、毀損の防止その他の安全管理のため、以下の措置を講じます。</p>
+<ul><li><p><strong>組織的措置</strong>: 個人情報の取扱いに関する責任者の設置、取扱い状況の点検、漏えい等事案発生時の対応手順の整備</p></li><li><p><strong>人的措置</strong>: 役職員に対する秘密保持義務の徹底と教育</p></li><li><p><strong>物理的措置</strong>: 業務用端末の管理、盗難・紛失時の対応手順の整備。データはクラウド事業者（Supabase・Cloudflare）の管理するデータセンターに保管</p></li><li><p><strong>技術的措置</strong>: 通信の暗号化（TLS）、保存データの暗号化、行レベルセキュリティ（RLS）によるアクセス制御、最小権限の原則によるアクセス権限管理、多要素認証による管理コンソールの保護、ログの監視</p></li><li><p><strong>外的環境の把握</strong>: 委託先が所在する国の制度を把握したうえでの安全管理措置（第7節）</p></li></ul>
+<p>漏えい等が発生し、ユーザーの権利利益を害するおそれが大きい場合には、法令に従い、個人情報保護委員会への報告と本人への通知を行います。</p>
+<h2 id="privacy-12-ユーザーの権利と行使方法"><span class="num">12.</span> ユーザーの権利と行使方法</h2>
+<h3><span class="num">12.1</span> 行使できる権利</h3>
+<p>ユーザーは、当社が保有する自身の個人情報について、以下を求めることができます。</p>
+<div class="tbl"><table><thead><tr><th>権利</th><th>内容</th></tr></thead><tbody><tr><td>利用目的の通知・開示</td><td>当社が保有する自身の個人情報の内容と利用目的の開示。第三者提供記録の開示を含みます</td></tr><tr><td>訂正・追加・削除</td><td>内容が事実でない場合の訂正・追加・削除</td></tr><tr><td>利用停止・消去</td><td>目的外利用、不正取得、不要になった場合、権利利益を害するおそれがある場合等の利用停止・消去</td></tr><tr><td>第三者提供の停止</td><td>第三者への提供の停止</td></tr><tr><td>同意の撤回</td><td>GA4 等、同意に基づく処理についての撤回（第8.2節）</td></tr><tr><td>アカウント削除</td><td>設定画面からいつでも削除できます（第10節）</td></tr></tbody></table></div>
+<h3><span class="num">12.2</span> 行使方法</h3>
+<ul><li><p><strong>アプリ内</strong>: プロフィール・公開設定・年表の編集や削除、アカウント削除、Cookie設定の変更は、設定画面から直接行えます</p></li><li><p><strong>メール</strong>: 上記で対応できない請求は、contact@chronos.tech に、件名に「個人情報に関する請求」と記載してご連絡ください</p></li></ul>
+<h3><span class="num">12.3</span> 本人確認</h3>
+<p>なりすましによる開示等を防ぐため、原則として、本サービスに登録されたメールアドレスからの送信、またはログイン済みの状態での請求をもって本人確認を行います。必要に応じて追加の確認をお願いすることがあります。代理人による請求の場合は、委任状等の確認書類の提出をお願いします。</p>
+<h3><span class="num">12.4</span> 対応期限と費用</h3>
+<p>原則として、請求を受け付けてから <strong>30日以内</strong> に対応または回答します（付則で別途定める地域はその期間によります）。請求が複雑な場合や多数の場合は、理由を通知したうえで合理的な範囲で延長することがあります。開示等の手数料は原則無料です。法令上の理由により請求に応じられない場合は、その旨と理由をお知らせします。</p>
+<h2 id="privacy-13-子どもの利用"><span class="num">13.</span> 子どもの利用</h2>
+<p>本サービスは16歳以上の方を対象としており、16歳未満の方はアカウントを作成できません。当社は、16歳未満の方の個人情報を意図して取得しません。</p>
+<p>16歳未満の方の情報を取得していたことが判明した場合、当社は速やかに当該アカウントと個人情報を削除します。保護者の方で、お子様が本サービスに情報を提供したと思われる場合は、contact@chronos.tech までご連絡ください。</p>
+<h2 id="privacy-14-改定"><span class="num">14.</span> 改定</h2>
+<p>当社は、法令の変更やサービス内容の変更に応じて本ポリシーを改定することがあります。</p>
+<ul><li><p>軽微な変更（表記の修正、連絡先の変更、サブプロセッサの同一機能内での変更など）は、本ページの更新をもって効力を生じます</p></li><li><p><strong>重要な変更</strong>（新たな利用目的の追加、取得する情報の種類の追加、第三者提供の追加、AI機能に関する取扱いの変更など）は、効力発生の <strong>30日前まで</strong> に、登録メールアドレスへの通知とアプリ内通知でお知らせします。同意が必要な変更については、あらためて同意を求めます</p></li></ul>
+<p>改定履歴は本ページ末尾に記載します。</p>
+<h2 id="privacy-15-お問い合わせ"><span class="num">15.</span> お問い合わせ</h2>
+<p>本ポリシーに関するご質問、権利行使の請求、苦情は、以下までご連絡ください。</p>
+<p>babel, inc.<br>東京都 <span class="todo">[TODO: 住所]</span><br>メール: contact@chronos.tech</p>
+<p>日本の個人情報保護委員会（<a href="https://www.ppc.go.jp/" target="_blank" rel="noopener">https://www.ppc.go.jp/</a>）に相談・申出を行うこともできます。</p>
+
+<div class="part-label">地域別付則</div>
+<p>以下の付則は、居住地に応じて共通本文に追加して適用されます。付則と共通本文が抵触する場合、その地域にお住まいの方については付則が優先します。</p>
+<h2 id="privacy-付則a-eu-eea-にお住まいの方"><span class="num">付則A</span> EU/EEA にお住まいの方（GDPR）</h2>
+<p>本付則は、EU/EEA（および同等の法制を持つ英国・スイス）にお住まいの方に適用されます。当社は、本サービスに関する個人データの「管理者（controller）」です。</p>
+<h3><span class="num">A.1</span> 処理の法的根拠</h3>
+<div class="tbl"><table><thead><tr><th>処理目的（第4節）</th><th>主な個人データ</th><th>法的根拠（GDPR第6条第1項）</th></tr></thead><tbody><tr><td>4-1 サービス提供・運営</td><td>3-1〜3-5, 3-11</td><td>(b) 契約の履行</td></tr><tr><td>4-2 認証・セッション維持</td><td>3-1, 3-10, 3-11</td><td>(b) 契約の履行</td></tr><tr><td>4-3 課金・請求</td><td>3-1, 3-7</td><td>(b) 契約の履行、(c) 法的義務（会計・税務）</td></tr><tr><td>4-4 AI機能の提供</td><td>3-3, 3-8</td><td>(b) 契約の履行（ユーザーの操作により開始される機能）</td></tr><tr><td>4-5 通知配信（いいね通知・システム通知）</td><td>3-1, 3-13</td><td>(b) 契約の履行、(f) 正当な利益（サービスの円滑な運営）。いいね通知は設定で停止できます</td></tr><tr><td>4-6 不正防止・セキュリティ</td><td>3-1, 3-6, 3-10, 3-11</td><td>(f) 正当な利益（サービスとユーザーの保護）、(c) 法的義務</td></tr><tr><td>4-7 通報対応</td><td>3-3, 3-5, 3-6</td><td>(f) 正当な利益（安全なコミュニティの維持）、(c) 法的義務</td></tr><tr><td>4-8 分析・改善（GA4）</td><td>3-10, 3-11</td><td>(a) 同意</td></tr><tr><td>4-8 分析・改善（サーバーログ・統計）</td><td>3-10、統計化したデータ</td><td>(f) 正当な利益（サービスの改善・安定運用）</td></tr><tr><td>4-9 問い合わせ・権利行使対応</td><td>3-1, 3-9</td><td>(b) 契約の履行、(c) 法的義務、(f) 正当な利益</td></tr><tr><td>4-10 ウェイトリスト告知</td><td>3-12</td><td>(a) 同意（登録時。いつでも配信停止できます）</td></tr><tr><td>4-11 法令遵守・紛争対応</td><td>必要な範囲</td><td>(c) 法的義務、(f) 正当な利益</td></tr></tbody></table></div>
+<p>正当な利益に基づく処理については、当社は利益衡量（LIA）を実施し、ユーザーの権利・自由が優先しないことを確認しています。詳細は請求により提供します。</p>
+<h3><span class="num">A.2</span> データ主体の権利</h3>
+<p>GDPR に基づき、以下の権利を有します。行使方法は第12.2節のとおりで、当社は請求受領から <strong>1ヶ月以内</strong>（複雑な場合はさらに2ヶ月延長可）に対応します。</p>
+<ul><li><p>アクセス権（第15条）</p></li><li><p>訂正権（第16条）</p></li><li><p>消去権・忘れられる権利（第17条）</p></li><li><p>処理の制限権（第18条）</p></li><li><p>データポータビリティ権（第20条）: 提供したデータを構造化された機械可読形式（JSON等）で受け取る権利 <span class="todo">[TODO: エクスポート機能の実装]</span></p></li><li><p>異議申立権（第21条）: 正当な利益に基づく処理への異議。ダイレクトマーケティング目的の処理には無条件で異議を申し立てられます</p></li><li><p>自動化された意思決定・プロファイリングの対象とならない権利（第22条）: 当社は、法的効果または同様の重大な影響を及ぼす自動化のみによる意思決定を行っていません</p></li><li><p>同意の撤回（第7条第3項）: 撤回前の処理の適法性には影響しません</p></li></ul>
+<h3><span class="num">A.3</span> 監督機関への苦情申立権</h3>
+<p>お住まいの国、勤務地、または侵害があったと考える場所の監督機関に苦情を申し立てる権利があります。EU各国の監督機関の一覧は欧州データ保護会議（EDPB）のウェブサイトで確認できます。まずは contact@chronos.tech へのご相談も歓迎します。</p>
+<h3><span class="num">A.4</span> EU域外への移転</h3>
+<div class="tbl"><table><thead><tr><th>移転先</th><th>根拠</th></tr></thead><tbody><tr><td>日本（当社）</td><td>欧州委員会の十分性認定決定（2019年1月23日）。当社は個人情報保護委員会の「補完的ルール」を遵守します</td></tr><tr><td>米国（Supabase, Cloudflare, Stripe, Anthropic, Google, Apple）</td><td>各事業者が EU-U.S. Data Privacy Framework（DPF）に認証されている場合はDPF、それ以外の場合は欧州委員会の標準契約条項（SCC）およびDPAによります <span class="todo">[TODO: 事業者ごとにDPF認証の有無を確認し、SCC締結状況を記録する]</span></td></tr><tr><td>その他の国（Cloudflare のネットワーク経由）</td><td>SCC</td></tr></tbody></table></div>
+<p>移転の保護措置の写しは、contact@chronos.tech への請求により提供します。</p>
+<h3><span class="num">A.5</span> 保存期間</h3>
+<p>第10節のとおりです。</p>
+<h3><span class="num">A.6</span> DPO・EU域内代表者</h3>
+<p>当社は現時点でDPOおよびEU域内代表者を選任していません。<span class="todo">[TODO: GDPR第27条（EU域内のデータ主体への大規模でない・偶発的でない提供）および第37条の要件を弁護士と確認し、必要な場合は選任して本節に氏名・連絡先を記載する]</span></p>
+<h2 id="privacy-付則b-韓国にお住まいの方"><span class="num">付則B</span> 韓国にお住まいの方（個人情報保護法・PIPA）</h2>
+<p>本付則は、大韓民国にお住まいの方に適用されます。</p>
+<h3><span class="num">B.1</span> 収集項目・目的・保存期間</h3>
+<div class="tbl"><table><thead><tr><th>区分</th><th>収集項目</th><th>収集・利用目的</th><th>保存期間</th></tr></thead><tbody><tr><td>必須（会員登録）</td><td>メールアドレス、表示名、OAuthプロバイダ識別子</td><td>会員識別・認証、サービス提供、通知</td><td>退会後30日以内に削除（バックアップは最長90日）</td></tr><tr><td>必須（プロフィール）</td><td>ユーザー名</td><td>公開プロフィールの識別</td><td>同上</td></tr><tr><td>任意（プロフィール）</td><td>自己紹介、アバター</td><td>プロフィール表示</td><td>同上</td></tr><tr><td>必須（サービス利用）</td><td>年表・イベント・出典・信憑性メモ、いいね・ブックマーク、公開設定</td><td>サービス提供</td><td>同上</td></tr><tr><td>必須（有料サービス）</td><td>Stripe 顧客ID、プラン、請求履歴</td><td>課金・請求・契約管理</td><td>電子商取引等における消費者保護に関する法律等に基づく期間（契約・決済記録5年、消費者不満・紛争処理記録3年）。日本法上の義務により最長10年</td></tr><tr><td>必須（AI機能）</td><td>入力したテーマ・編集指示</td><td>AI下書き・AI Edit Assist の提供</td><td>処理ログ最長30日</td></tr><tr><td>任意（通報・問い合わせ）</td><td>通報内容、問い合わせ内容</td><td>通報対応、問い合わせ対応</td><td>通報: 対応完了後3年 / 問い合わせ: 対応完了後2年</td></tr><tr><td>自動収集</td><td>IPアドレス、Cookie、端末情報、アクセス記録</td><td>不正防止、サービス改善</td><td>12ヶ月（通信秘密保護法上の接続記録は3ヶ月以上保存）</td></tr><tr><td>任意（ローンチ前）</td><td>ウェイトリスト登録メール</td><td>ローンチ告知</td><td>公開後6ヶ月または配信停止時</td></tr></tbody></table></div>
+<p>必須項目の提供に同意しない場合、会員登録または該当機能を利用できません。任意項目の提供に同意しなくても、その他のサービスは利用できます。</p>
+<h3><span class="num">B.2</span> 第三者提供</h3>
+<p>当社は、本人の同意または法令の根拠なく個人情報を第三者に提供しません（第6.2節）。</p>
+<h3><span class="num">B.3</span> 処理の委託</h3>
+<div class="tbl"><table><thead><tr><th>受託者</th><th>委託業務の内容</th></tr></thead><tbody><tr><td>Supabase, Inc.</td><td>データベース・認証基盤の運用</td></tr><tr><td>Cloudflare, Inc.</td><td>ホスティング・CDN・セキュリティ</td></tr><tr><td>Stripe, Inc.</td><td>決済処理・請求</td></tr><tr><td>Anthropic, PBC</td><td>AI機能の処理</td></tr><tr><td>Google LLC / Apple Inc.</td><td>ログイン認証（OAuth）。Google はアクセス解析（同意時）</td></tr><tr><td>メール配信サービス <span class="todo">[TODO: 選定]</span></td><td>メール配信</td></tr></tbody></table></div>
+<h3><span class="num">B.4</span> 個人情報の国外移転</h3>
+<p>個人情報保護法第28条の8に基づき、以下をお知らせします。国外移転に同意しない場合、本サービスを利用できません（サービスの提供に不可欠なため）。</p>
+<div class="tbl"><table><thead><tr><th>事項</th><th>内容</th></tr></thead><tbody><tr><td>移転される項目</td><td>B.1 の各項目（各受託者の業務に必要な範囲）</td></tr><tr><td>移転先の国</td><td>日本（当社）、米国（Supabase, Cloudflare, Stripe, Anthropic, Google, Apple）、Cloudflare のネットワーク所在国</td></tr><tr><td>移転の時期・方法</td><td>サービス利用時に、暗号化された通信によりネットワーク経由で随時</td></tr><tr><td>移転を受ける者</td><td>当社（babel, inc.、contact@chronos.tech）および B.3 の各受託者</td></tr><tr><td>利用目的</td><td>第4節の目的</td></tr><tr><td>保有・利用期間</td><td>B.1 の保存期間</td></tr><tr><td>移転を拒否する方法</td><td>contact@chronos.tech への連絡（拒否した場合、サービスは利用できません）</td></tr></tbody></table></div>
+<h3><span class="num">B.5</span> 個人情報保護責任者</h3>
+<div class="tbl"><table><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>氏名</td><td><span class="todo">[TODO]</span></td></tr><tr><td>役職</td><td><span class="todo">[TODO]</span></td></tr><tr><td>連絡先</td><td>contact@chronos.tech</td></tr></tbody></table></div>
+<h3><span class="num">B.6</span> 情報主体の権利</h3>
+<p>閲覧、訂正・削除、処理停止、同意撤回を請求できます。請求は contact@chronos.tech または設定画面から行え、当社は10日以内に対応します。法定代理人による請求も可能です。</p>
+<h3><span class="num">B.7</span> 14歳未満の児童</h3>
+<p>当社は14歳未満の児童の個人情報を収集しません（本サービスは16歳以上を対象としています）。</p>
+<h3><span class="num">B.8</span> 破棄手続き・方法</h3>
+<p>保有期間の経過または処理目的の達成後、遅滞なく破棄します。電子ファイルは復元不可能な方法で削除し、紙媒体は裁断または焼却します。法令により保存が必要な情報は、別のデータベースまたは保管場所に分離して保管します。</p>
+<h3><span class="num">B.9</span> 権益侵害の救済</h3>
+<p>個人情報侵害申告センター（privacy.kisa.or.kr、局番なし118）、個人情報紛争調停委員会（kopico.go.kr、1833-6972）、大検察庁サイバー捜査課（spo.go.kr、1301）、警察庁サイバー捜査局（ecrm.cyber.go.kr、182）に相談できます。</p>
+<h2 id="privacy-付則c-台湾にお住まいの方"><span class="num">付則C</span> 台湾にお住まいの方（個人資料保護法・PDPA）</h2>
+<p>本付則は、台湾にお住まいの方に、個人資料保護法第8条に基づく告知事項を記載します。</p>
+<div class="tbl"><table><thead><tr><th>告知事項</th><th>内容</th></tr></thead><tbody><tr><td>非公務機関の名称</td><td>babel, inc.（日本・東京）</td></tr><tr><td>収集の目的</td><td>第4節に記載の目的（法務部公告の特定目的コード: 090 消費者・顧客管理およびサービス、135 情報（通信）サービス、148 ネットワークショッピングおよびその他電子商取引サービス、157 調査・統計および研究分析、181 その他の登録事業に基づく業務、およびその他該当するもの <span class="todo">[TODO: 弁護士とコード確認]</span>）</td></tr><tr><td>個人資料の類別</td><td>C001 識別個人者（メールアドレス、ユーザー名、OAuth識別子、IPアドレス）、C002 識別財務者（Stripe 顧客ID・請求履歴）、C011 個人描述（自己紹介・アバター）、C132 未分類の資料（ユーザーコンテンツ、AI機能への入力、通報・問い合わせ内容）</td></tr><tr><td>利用の期間</td><td>第10節に記載の保存期間</td></tr><tr><td>利用の地域</td><td>日本、米国、および第6・7節に記載の受託者の処理地域</td></tr><tr><td>利用の対象</td><td>当社および第6.1節の受託者。第6.2節の場合の法令上の機関</td></tr><tr><td>利用の方法</td><td>自動化された機器またはその他の非自動化の方法による、電子的な収集・処理・利用および国際伝送</td></tr></tbody></table></div>
+<p><strong>本人の権利（第3条）</strong>: 査詢または閲覧の請求、複製本の作成請求、補充または訂正の請求、収集・処理・利用の停止の請求、削除の請求。行使方法は第12.2節のとおりで、当社は査詢・閲覧・複製については15日以内、その他については30日以内に対応します（法令に基づきさらに延長することがあります）。</p>
+<p><strong>提供しない場合の影響</strong>: 必須項目（アカウント情報、ユーザー名、決済情報）を提供しない場合、アカウントの作成、該当機能の利用、有料プランの契約ができません。任意項目を提供しなくても、その他の機能は利用できます。</p>
+<h2 id="privacy-付則d-米国カリフォルニア州にお住まいの方"><span class="num">付則D</span> 米国カリフォルニア州にお住まいの方（CCPA/CPRA）</h2>
+<p>本付則は、カリフォルニア州の消費者に適用されます。<span class="todo">[TODO: 当社が CCPA の適用基準（年間総収入・処理件数等）を満たすかを確認。満たさない場合も本付則を任意に遵守する方針とする]</span></p>
+<h3><span class="num">D.1</span> 収集する個人情報のカテゴリ（過去12ヶ月）</h3>
+<div class="tbl"><table><thead><tr><th>CCPA上のカテゴリ</th><th>該当する情報（第3節）</th><th>収集するか</th><th>収集元</th><th>開示先（業務目的）</th></tr></thead><tbody><tr><td>識別子</td><td>メールアドレス、ユーザー名、表示名、OAuth識別子、IPアドレス、Stripe 顧客ID</td><td>はい</td><td>本人、OAuthプロバイダ、Stripe</td><td>サービス提供者（第6.1節）</td></tr><tr><td>カリフォルニア州民法上の顧客記録情報</td><td>メールアドレス、請求履歴</td><td>はい</td><td>本人、Stripe</td><td>サービス提供者</td></tr><tr><td>商業情報</td><td>プラン、購入・契約履歴</td><td>はい</td><td>本人、Stripe</td><td>サービス提供者</td></tr><tr><td>インターネット・ネットワーク活動情報</td><td>アクセスログ、閲覧・操作履歴、Cookie</td><td>はい</td><td>自動取得</td><td>サービス提供者（GA4 は同意時）</td></tr><tr><td>地理位置情報</td><td>IPアドレスから推定される概略の地域（都市レベル）</td><td>はい（精密な位置情報は収集しません）</td><td>自動取得</td><td>サービス提供者</td></tr><tr><td>音声・視覚情報</td><td>アバター画像</td><td>はい（任意）</td><td>本人</td><td>サービス提供者</td></tr><tr><td>推論情報</td><td>収集しません</td><td>いいえ</td><td>—</td><td>—</td></tr><tr><td>機微な個人情報</td><td>収集しません（アカウントのログイン認証情報は OAuth により当社では保持しません）</td><td>いいえ</td><td>—</td><td>—</td></tr><tr><td>ユーザーが自ら提供するその他の情報</td><td>年表・イベント・出典・信憑性メモ、AI機能への入力、通報・問い合わせ内容</td><td>はい</td><td>本人</td><td>サービス提供者（AI機能は Anthropic）</td></tr></tbody></table></div>
+<p>収集の目的は第4節、保存期間は第10節のとおりです。</p>
+<h3><span class="num">D.2</span> 販売・共有を行わないこと</h3>
+<p>当社は、過去12ヶ月間に個人情報を「販売」しておらず、クロスコンテキスト行動広告のために「共有」もしていません。今後も行う予定はありません。また、16歳未満の消費者の個人情報を販売・共有していることを認識していません。</p>
+<h3><span class="num">D.3</span> カリフォルニア州の消費者の権利</h3>
+<ul><li><p><strong>知る権利</strong>: 収集した個人情報のカテゴリ・具体的内容、収集元、収集目的、開示先のカテゴリを知る権利</p></li><li><p><strong>削除権</strong>: 収集した個人情報の削除を求める権利（法令上の例外を除く）</p></li><li><p><strong>訂正権</strong>: 不正確な個人情報の訂正を求める権利</p></li><li><p><strong>販売・共有をオプトアウトする権利</strong>: 当社は販売・共有を行っていないため、該当しません</p></li><li><p><strong>機微な個人情報の利用を制限する権利</strong>: 当社は機微な個人情報を収集していないため、該当しません</p></li><li><p><strong>差別されない権利</strong>: 権利を行使したことを理由に、サービスの拒否、価格・品質の差別を受けない権利</p></li></ul>
+<h3><span class="num">D.4</span> 行使方法</h3>
+<p>contact@chronos.tech に件名「California Privacy Request」でご連絡いただくか、設定画面（削除・訂正）から行えます。当社は10営業日以内に受領を確認し、45日以内に対応します（必要な場合はさらに45日延長し、その旨を通知します）。本人確認は、登録メールアドレスからの送信またはログイン状態により行います。権限を与えられた代理人による請求の場合、書面による委任の証明を求めます。</p>
+<h3><span class="num">D.5</span> Do Not Track・Global Privacy Control</h3>
+<p>当社は、個人情報を販売・共有していないため、Global Privacy Control（GPC）信号を受信した場合、その信号を販売・共有のオプトアウト要求として扱いますが、実質的な処理の変更は生じません。GPC信号を受信した場合、GA4 の同意が未取得の状態を維持します <span class="todo todo-soft">[推奨値]</span>。ブラウザの「Do Not Track」信号については、業界標準が確立していないため、現時点では応答していません。</p>
+<h3><span class="num">D.6</span> Shine the Light</h3>
+<p>当社は、第三者のダイレクトマーケティング目的で個人情報を開示していません。</p>
+
+<div class="part-label">巻末</div>
+<h2 id="privacy-用語">用語</h2>
+<ul><li><p><strong>個人情報</strong>: 生存する個人に関する情報であって、特定の個人を識別できるもの（他の情報と容易に照合できるものを含む）。付則においては、各地域の法令上の「個人データ」「個人資料」等を含みます</p></li><li><p><strong>ユーザーコンテンツ</strong>: ユーザーが本サービスで作成・投稿する年表、イベント、レイヤー、出典、信憑性メモなど</p></li><li><p><strong>AI機能</strong>: AI下書き生成および AI Edit Assist</p></li><li><p><strong>サブプロセッサ / 受託者</strong>: 当社の指示に基づき個人情報を取り扱う外部事業者</p></li></ul>
+<h2 id="privacy-改定履歴">改定履歴</h2>
+<div class="tbl"><table><thead><tr><th>日付</th><th>内容</th></tr></thead><tbody><tr><td>2026-08-17</td><td>初版ドラフト作成</td></tr></tbody></table></div>
+<h2 id="privacy-todo-一覧"><span class="todo">[TODO]</span> 一覧（公開前に確定・確認する事項）</h2>
+<div class="tbl"><table><thead><tr><th>#</th><th>箇所</th><th>内容</th></tr></thead><tbody><tr><td>1</td><td>冒頭</td><td>発効日の確定</td></tr><tr><td>2</td><td>第1節・第15節</td><td>事業者の所在地（住所）の記載</td></tr><tr><td>3</td><td>第1節・付則A.6</td><td>DPO（GDPR第37条・韓国PIPA）およびEU域内代表者（GDPR第27条）の要否確認。必要な場合は選任・記載</td></tr><tr><td>4</td><td>第5.2節・第10節</td><td>Anthropic の最新の Commercial Terms / Usage Policy / データ保持条件の再確認（学習不使用・保持期間）</td></tr><tr><td>5</td><td>第6.1節・第7.2節</td><td>Supabase のリージョン（東京）確定と、サポートアクセス等による越境の有無確認</td></tr><tr><td>6</td><td>第6.1節・付則B.3</td><td>メール配信サービスの選定と所在国の記載</td></tr><tr><td>7</td><td>第7.2節</td><td>各サブプロセッサとのDPA締結・受諾状況の確認</td></tr><tr><td>8</td><td>第8.1節</td><td>同意状態を保存する Cookie / localStorage の実装名の確定</td></tr><tr><td>9</td><td>付則A.2</td><td>データポータビリティ対応のためのエクスポート機能（JSON等）の実装</td></tr><tr><td>10</td><td>付則A.4</td><td>米国事業者ごとの EU-U.S. DPF 認証有無の確認、SCC締結状況の記録</td></tr><tr><td>11</td><td>付則B.5</td><td>韓国PIPA上の個人情報保護責任者の氏名・役職の記載</td></tr><tr><td>12</td><td>付則C</td><td>台湾法務部公告の特定目的コード・個人資料類別コードの弁護士確認</td></tr><tr><td>13</td><td>付則D 冒頭</td><td>CCPA の適用基準該当性の確認</td></tr><tr><td>14</td><td>全体</td><td>日本・EU/EEA・韓国・台湾・カリフォルニア州の弁護士によるレビュー</td></tr><tr><td>15</td><td>全体</td><td>翻訳版（英語ほか）作成後の整合確認（日本語版優先の明記）</td></tr></tbody></table></div>
+<p><strong>推奨値として仮置きした項目</strong>（確定事項に含まれず、本ドラフトで補ったもの）: 問い合わせ記録の保存期間（対応完了後2年）、リフレッシュトークンの有効期間（最長30日）、同意状態Cookieの保存期間（12ヶ月）、AI機能処理ログの当社側保存期間（最長30日）、GA4 のデータ保持期間（14ヶ月）、権利行使の対応期限（共通30日 / GDPR 1ヶ月 / 韓国10日 / 台湾15日・30日 / カリフォルニア45日）、GPC信号受信時のGA4非発火。</p>
+    </article>
+
+    <article class="doc" id="doc-tokushoho" data-doc="tokushoho" data-title="特定商取引法に基づく表記">
+      <div class="doc-eyebrow">Legal Notice</div>
+      <h1>特定商取引法に基づく表記</h1>
+      <div class="notice" role="note">
+        <span class="notice-item">最終更新: 2026年8月17日</span>
+        
+        <span class="notice-draft">本文書はドラフトです。公開前に弁護士の確認を要します。</span>
+      </div>
+<p>本ページは、特定商取引に関する法律第11条に基づき、Chronos の有料プラン（Pro）に関する事項を表示するものです。</p>
+<h2 id="tokushoho-表記事項">表記事項</h2>
+<div class="tbl"><table><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>販売事業者名</td><td>babel, inc.（株式会社バベル）<span class="todo">[TODO: 登記上の正式商号を確認]</span></td></tr><tr><td>運営責任者</td><td><span class="todo">[TODO: 代表者または運営責任者の氏名]</span></td></tr><tr><td>所在地</td><td>Tokyo, Japan — <span class="todo">[TODO: 郵便番号・番地・建物名まで記載]</span><br>※ 個人事業主等で住所非公開とする場合は「請求があれば遅滞なく開示します」と記載可。法人の場合は原則として記載が必要</td></tr><tr><td>電話番号</td><td><span class="todo">[TODO: 電話番号]</span><br>※ 「請求があれば遅滞なく開示します」との記載に代えることも可。その場合は請求方法（メール）を明記</td></tr><tr><td>メールアドレス</td><td>contact@chronos.tech</td></tr><tr><td>販売URL</td><td><span class="todo">[TODO: 正式ドメイン、例: <a href="https://chronos.app]</span>" target="_blank" rel="noopener">https://chronos.app]</a></td></tr><tr><td>販売価格</td><td>Proプラン<br>・月額: ¥800 / 月<br>・年額: ¥6,800 / 年<br><span class="todo">[TODO: 税込 / 税抜の別を確定。消費者向け価格は総額表示（税込）が必要。表示例: 「¥800（税込）」]</span></td></tr><tr><td>販売価格以外にお客様が負担する費用</td><td>本サービスの利用に必要なインターネット接続料金、通信料金、端末費用はお客様の負担となります。<br>海外発行カード等で決済する場合、カード会社・決済事業者が課す為替手数料等が発生することがあります。</td></tr><tr><td>支払方法</td><td>クレジットカード（Visa / Mastercard / American Express / JCB <span class="todo">[TODO: Stripe設定で有効化する対応ブランドを確認]</span>）<br>決済は Stripe, Inc. の決済システムを利用します。当社はカード番号を保持しません。</td></tr><tr><td>支払時期</td><td>・初回: 購入手続き完了時にお支払いいただきます。<br>・以降: 月額プランは毎月、年額プランは毎年、契約日に対応する日に自動的に決済されます（自動更新）。<br>・カード会社への請求時期は、各カード会社の締め日・支払日によります。</td></tr><tr><td>サービス提供時期</td><td>決済完了後、ただちにProプランの機能をご利用いただけます。</td></tr><tr><td>契約期間・自動更新・解約</td><td>・月額プランは1ヶ月ごと、年額プランは12ヶ月ごとに自動更新されます。<br>・解約は、アプリ内の設定画面または Stripe 顧客ポータルからいつでも行えます。解約後も、支払い済みの期間の終了日までProプランをご利用いただけます。<br>・次回更新日の前日までに解約手続きが完了した場合、次回以降の請求は発生しません。</td></tr><tr><td>返品・キャンセル</td><td>本サービスはインターネットを通じて提供されるデジタルサービスであり、その性質上、決済完了後の返品・返金・キャンセルは原則としてお受けできません。年額プランを期間の途中で解約した場合も、残りの期間分の返金は行いません。<br>ただし、法令に定めがある場合、または当社が個別に認めた場合はこの限りではありません。海外にお住まいの方には、利用規約の地域別付則（EU/EEA、韓国、台湾、米国カリフォルニア州）に基づく返金・撤回の定めが優先して適用されることがあります。</td></tr><tr><td>動作環境</td><td>・最新版の主要ブラウザ（Google Chrome / Safari / Microsoft Edge / Firefox）<span class="todo">[TODO: サポート対象バージョンの方針を確定]</span><br>・JavaScript および Cookie が有効であること<br>・ログインには Google アカウントまたは Apple アカウントが必要です<br>・スマートフォンでは、iOS Safari / Android Chrome の最新版を推奨します<br>・埋め込み機能は、iframe の表示が許可されている環境で動作します</td></tr><tr><td>提供内容（Proプラン）</td><td>年表数無制限 / AI下書き・AIアシスト無制限（利用規約第4条第8項の公正な利用の範囲内）/ PNG高解像度書き出し / 埋め込み機能。詳細は利用規約第7条および料金ページをご確認ください。</td></tr><tr><td>特別条件</td><td>無料トライアルや割引キャンペーンを実施する場合、その条件は個別に案内します。トライアル期間終了後は、期間中に解約されない限り、案内した料金が請求されます。</td></tr><tr><td>お問い合わせ</td><td>contact@chronos.tech<br>※ 問い合わせは原則としてメールで受け付けます。</td></tr></tbody></table></div>
+
+<h2 id="tokushoho-付記">付記</h2>
+<ul><li><p>本ページはドラフト（雛形）であり、法的助言ではありません。公開前に弁護士または行政書士等の確認を要します。</p></li><li><p>角括弧付き <span class="todo">[TODO]</span> は未確定事項です。公開前にすべて解消してください。</p></li><li><p>表示義務のある事項は、購入手続き画面（決済画面）から1クリック以内で到達できる場所にリンクを設置してください。</p></li></ul>
+<h3><span class="todo">[TODO]</span> 一覧</h3>
+<div class="tbl"><table><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>販売事業者名</td><td>登記上の正式商号（日本語表記）の確認</td></tr><tr><td>運営責任者</td><td>氏名</td></tr><tr><td>所在地</td><td>郵便番号・番地・建物名</td></tr><tr><td>電話番号</td><td>番号、または「請求があれば開示」方式の採否</td></tr><tr><td>販売URL</td><td>正式ドメイン</td></tr><tr><td>販売価格</td><td>税込/税抜表示の確定（総額表示義務）</td></tr><tr><td>支払方法</td><td>Stripeで有効化するカードブランド</td></tr><tr><td>動作環境</td><td>サポート対象ブラウザバージョンの方針</td></tr></tbody></table></div>
+    </article>
+  </main>
+</div>
+
+<footer class="site">
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <img src="assets/chronos-logo.svg" alt="Chronos">
+      <span class="foot-tag">Every event has context.</span>
+    </div>
+    <div class="foot-copy">© 2026 babel, inc.</div>
+  </div>
+</footer>
+
+<button class="totop" id="totop" aria-label="ページ上部へ">↑</button>
+
+<script>
+(function(){
+  'use strict';
+  var DOCS=['terms','privacy','tokushoho'];
+  var current=null;
+  var docLinks=Array.prototype.slice.call(document.querySelectorAll('#docs a'));
+  var mobileList=document.getElementById('toc-mobile-list');
+  var mobileDetails=document.getElementById('toc-mobile');
+  var mobileLabel=document.getElementById('toc-mobile-label');
+  var observer=null;
+
+  function parseHash(){
+    var h=location.hash.replace(/^#/,'');
+    try{h=decodeURIComponent(h);}catch(e){}
+    var parts=h.split('/');
+    var doc=DOCS.indexOf(parts[0])>=0?parts[0]:'terms';
+    return {doc:doc, section:parts[1]||''};
+  }
+
+  function setDoc(doc){
+    if(current===doc) return;
+    current=doc;
+    DOCS.forEach(function(d){
+      var art=document.getElementById('doc-'+d);
+      art.classList.toggle('is-active',d===doc);
+      var toc=document.getElementById('toc-'+d);
+      toc.hidden=(d!==doc);
+    });
+    docLinks.forEach(function(a){
+      if(a.getAttribute('data-doc')===doc) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
+    });
+    var title=document.getElementById('doc-'+doc).getAttribute('data-title');
+    document.title=title+' — Chronos';
+    // mobile toc clone
+    mobileList.innerHTML=document.getElementById('toc-'+doc).innerHTML;
+    mobileLabel.textContent='目次';
+    mobileDetails.open=false;
+    setupSpy();
+  }
+
+  function setupSpy(){
+    if(observer) observer.disconnect();
+    var art=document.getElementById('doc-'+current);
+    var heads=Array.prototype.slice.call(art.querySelectorAll('h2[id]'));
+    if(!('IntersectionObserver' in window)||!heads.length) return;
+    var visible={};
+    observer=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){visible[en.target.id]=en.isIntersecting;});
+      var first=null;
+      for(var i=0;i<heads.length;i++){ if(visible[heads[i].id]){first=heads[i];break;} }
+      if(!first){
+        // none visible: pick last heading above viewport
+        var top=window.scrollY+140;
+        for(var j=heads.length-1;j>=0;j--){ if(heads[j].offsetTop<=top){first=heads[j];break;} }
+      }
+      if(first) markActive(first.id);
+    },{rootMargin:'-120px 0px -60% 0px',threshold:0});
+    heads.forEach(function(h){observer.observe(h);});
+  }
+
+  function markActive(domId){
+    var target=domId.replace(current+'-','');
+    var links=document.querySelectorAll('.toc a[data-target]');
+    Array.prototype.forEach.call(links,function(a){
+      a.classList.toggle('active',a.getAttribute('data-target')===target);
+    });
+    var active=document.querySelector('#toc-'+current+' a.active');
+    if(active){
+      var side=document.querySelector('aside.side');
+      var r=active.getBoundingClientRect(), s=side.getBoundingClientRect();
+      if(r.top<s.top+40||r.bottom>s.bottom-40){ active.scrollIntoView({block:'center',behavior:'smooth'}); }
+    }
+    if(mobileLabel){
+      var t=document.querySelector('#toc-'+current+' a.active');
+      mobileLabel.textContent=t?('目次 · '+t.textContent):'目次';
+    }
+  }
+
+  function scrollToSection(section, smooth){
+    var el=section?document.getElementById(current+'-'+section):null;
+    if(el){
+      var y=el.getBoundingClientRect().top+window.scrollY-124;
+      window.scrollTo({top:y,behavior:smooth?'smooth':'auto'});
+    } else {
+      window.scrollTo({top:0,behavior:'auto'});
+    }
+  }
+
+  function route(smooth){
+    var st=parseHash();
+    var changed=(st.doc!==current);
+    setDoc(st.doc);
+    if(st.section){ scrollToSection(st.section, smooth && !changed); }
+    else if(changed){ window.scrollTo({top:0,behavior:'auto'}); }
+  }
+
+  window.addEventListener('hashchange',function(){route(true);});
+  // intercept in-page toc clicks so mobile details closes
+  mobileList.addEventListener('click',function(e){ if(e.target.tagName==='A'){ mobileDetails.open=false; } });
+
+  var totop=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ totop.classList.toggle('show',window.scrollY>600); },{passive:true});
+  totop.addEventListener('click',function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+
+  if(!location.hash){ history.replaceState(null,'','#terms'); }
+  if('scrollRestoration' in history) history.scrollRestoration='manual';
+  route(false);
+})();
+</script>
+</body>
+</html>
