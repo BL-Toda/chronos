@@ -1,0 +1,413 @@
+{
+  "slug": "business-japan-unicorns",
+  "title": "日本発ユニコーンの軌跡",
+  "description": "2010年代から2020年代の日本スタートアップを、企業と資金調達・制度と市場・技術とトレンドの3層で追う。評価額の報道と政策の動きを重ねると、ブームの背景が見えてくる。",
+  "category": "business",
+  "language": "ja",
+  "start_year": 2010,
+  "end_year": 2024,
+  "layers": [
+    {
+      "name": "企業と資金調達",
+      "color": "orange"
+    },
+    {
+      "name": "制度と市場",
+      "color": "teal"
+    },
+    {
+      "name": "技術とトレンド",
+      "color": "blue"
+    }
+  ],
+  "events": [
+    {
+      "date": "2010-01-01",
+      "precision": "year",
+      "end_date": "2015-12-31",
+      "type": "period",
+      "layer": "技術とトレンド",
+      "title": "スマートフォン普及期",
+      "summary": "総務省調査でスマートフォンの世帯保有率は2010年の約1割から2015年には7割超へ急伸した。",
+      "detail": "iPhoneのソフトバンク独占販売終了とAndroid端末の拡大を背景に、日本の生活者は数年で常時接続の端末を手にした。この普及が、2013年に創業するメルカリなど「スマホ前提」のサービスの土台となる。同時期の制度面では2013年の日本再興戦略が開業率目標を掲げており、需要側と政策側の条件が並行して整った。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "総務省 通信利用動向調査",
+          "url": "https://www.soumu.go.jp/johotsusintokei/statistics/statistics05.html"
+        }
+      ]
+    },
+    {
+      "date": "2013-02-01",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "企業と資金調達",
+      "title": "メルカリ創業（当時コウゾウ）",
+      "summary": "山田進太郎らが株式会社コウゾウを設立。同年7月にフリマアプリ「メルカリ」を公開し、スマホ完結の個人間取引を広げた。",
+      "detail": "創業年の日本はスマートフォン普及期の真っ只中にあり、写真を撮って出品するという操作がそのまま「スマホ前提」の設計に結びついた。同じ2013年6月には政府が日本再興戦略を閣議決定し、開業率の引き上げを掲げている。企業側の挑戦と政策側の号令が同じ年に始まった点は、後年の資金流入を読む上で重要である。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "株式会社メルカリ 会社概要",
+          "url": "https://about.mercari.com/"
+        },
+        {
+          "title": "Wikipedia: Mercari",
+          "url": "https://en.wikipedia.org/wiki/Mercari"
+        }
+      ]
+    },
+    {
+      "date": "2013-06-14",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と市場",
+      "title": "日本再興戦略を閣議決定",
+      "summary": "成長戦略として開業率10%台を目標に掲げ、ベンチャー支援や規制改革を成長政策の柱に据えた。",
+      "detail": "アベノミクス「三本の矢」の三本目にあたる成長戦略で、開業率・廃業率を米英並みの10%台にする目標が明記された。同年はメルカリ創業やスマホ普及の加速と重なり、政策と市場の機運が同期している。この目標自体は達成されず、開業率は5%前後にとどまったが、以降のJ-Startupや育成5か年計画に続く政策系譜の起点となった。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "首相官邸: 日本再興戦略 -JAPAN is BACK-",
+          "url": "https://www.kantei.go.jp/jp/singi/keizaisaisei/pdf/saikou_jpn.pdf"
+        }
+      ]
+    },
+    {
+      "date": "2014-03-26",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "企業と資金調達",
+      "title": "Preferred Networks 設立",
+      "summary": "西川徹・岡野原大輔らがPreferred Infrastructureから分社する形でPFNを設立。深層学習の産業応用に特化した。",
+      "detail": "研究者主導のスタートアップで、設立の翌2015年には自社の深層学習フレームワークChainerを公開する。学術発の技術と大企業の資本を結びつける方針は、2017年のトヨタからの大型出資に結実した。同時期の制度面では公的な支援策は限られており、事業会社との資本提携が国内AIスタートアップの主要な資金源になった。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Preferred Networks 会社概要",
+          "url": "https://www.preferred.jp/ja/"
+        },
+        {
+          "title": "Wikipedia: Preferred Networks",
+          "url": "https://en.wikipedia.org/wiki/Preferred_Networks"
+        }
+      ]
+    },
+    {
+      "date": "2015-06-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術とトレンド",
+      "title": "深層学習フレームワークChainer公開",
+      "summary": "PFNがChainerをオープンソースとして公開。国産の深層学習基盤として研究者や企業に広がった。",
+      "detail": "Define-by-Runと呼ばれる動的計算グラフの設計はのちのPyTorchにも影響を与えたとされる。2016年の囲碁AIの話題化とともに国内でもAIブームが加速し、AIを掲げるスタートアップへの投資が増えた。PFNは2019年12月にChainerの開発終了とPyTorchへの移行を発表しており、国産基盤の限界と国際標準化の流れを示す出来事でもある。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Chainer",
+          "url": "https://en.wikipedia.org/wiki/Chainer"
+        }
+      ]
+    },
+    {
+      "date": "2016-03-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "企業と資金調達",
+      "title": "メルカリ、評価額1,000億円超と報道",
+      "summary": "メルカリが約84億円の資金調達を実施。企業評価額は1,000億円を超えたと報じられ、「日本初のユニコーン」と呼ばれた。",
+      "detail": "非上場のまま評価額10億ドル超に達したとされ、日本のスタートアップ資金調達が数十億円単位から百億円単位へ移る象徴となった。同年は制度面で大きな動きは少なく、民間の大型調達が先行した形である。ただし評価額は各社が公表した数値ではなく報道ベースであり、「日本初」の呼称もPFNなどとの比較で見解が分かれる。",
+      "credibility": "disputed",
+      "credibility_note": "評価額は非公表で報道による推計値。「日本初のユニコーン」の呼称もPFNとの比較で報道により見解が異なる。",
+      "sources": [
+        {
+          "title": "日本経済新聞 報道（2016年3月、メルカリの資金調達）",
+          "url": null
+        },
+        {
+          "title": "Wikipedia: Mercari",
+          "url": "https://en.wikipedia.org/wiki/Mercari"
+        }
+      ]
+    },
+    {
+      "date": "2017-08-04",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "企業と資金調達",
+      "title": "トヨタがPFNに105億円を追加出資",
+      "summary": "トヨタ自動車がPreferred Networksへ約105億円の追加出資を発表。事業会社による国内AI企業への大型投資となった。",
+      "detail": "自動運転やモビリティ分野での協業強化が目的とされ、国内では独立系VCよりも事業会社（CVC）が大型ラウンドを担う構図を象徴した。技術レイヤーではChainerの普及やAIブームが背景にあり、翌2018年には政府がJ-Startupを開始する。PFNはこの出資以降、企業評価額が国内最大級と報じられるようになった。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "トヨタ自動車 ニュースリリース（2017年8月）",
+          "url": null
+        },
+        {
+          "title": "Wikipedia: Preferred Networks",
+          "url": "https://en.wikipedia.org/wiki/Preferred_Networks"
+        }
+      ]
+    },
+    {
+      "date": "2018-06-11",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と市場",
+      "title": "経済産業省がJ-Startupを開始",
+      "summary": "経産省とJETRO等が有望スタートアップを選定し、官民で集中支援するJ-Startupプログラムを開始した。",
+      "detail": "初回選定92社にはメルカリやPFNが含まれ、政府がスタートアップを名指しで支援する初の枠組みとなった。開始から1週間後にはメルカリが東証マザーズに上場しており、政策と市場の節目が重なった月である。技術面ではこの年の秋にPayPayがサービスを開始し、キャッシュレス分野への注目も高まっていた。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "J-Startup 公式サイト",
+          "url": "https://www.j-startup.go.jp/"
+        }
+      ]
+    },
+    {
+      "date": "2018-06-19",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "企業と資金調達",
+      "title": "メルカリが東証マザーズに上場",
+      "summary": "メルカリが東証マザーズに上場。初値は公開価格3,000円を大きく上回る5,000円で、時価総額は7,000億円規模と報じられた。",
+      "detail": "国内スタートアップとして異例の規模のIPOで、未上場段階で大型調達を重ねてから上場する米国型の経路が日本でも成立することを示した。同月にはJ-Startupが始動し、上場後の海外展開や暗号資産事業への挑戦も注目された。市場レイヤーでは2022年の東証再編で「グロース市場」が生まれるまで、マザーズが新興企業の主要な出口であった。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "株式会社メルカリ IR情報",
+          "url": "https://about.mercari.com/"
+        },
+        {
+          "title": "日本取引所グループ 新規上場会社情報",
+          "url": "https://www.jpx.co.jp/"
+        }
+      ]
+    },
+    {
+      "date": "2018-10-05",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術とトレンド",
+      "title": "PayPayがサービス開始",
+      "summary": "ソフトバンクとヤフーの合弁PayPayがQRコード決済を開始。12月の「100億円あげちゃうキャンペーン」で一気に認知を得た。",
+      "detail": "スマートフォンの普及を前提に、少額決済のデジタル化が加速した。翌2019年10月には政府のキャッシュレス・ポイント還元事業が始まり、民間の投資合戦と公的なインセンティブが同時に働く形でキャッシュレス比率が上昇する。決済データを起点とした金融サービスの拡張は、後のPaidyへの大型買収にも通じるトレンドである。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: PayPay",
+          "url": "https://en.wikipedia.org/wiki/PayPay"
+        }
+      ]
+    },
+    {
+      "date": "2019-10-01",
+      "precision": "day",
+      "end_date": "2020-06-30",
+      "type": "period",
+      "layer": "制度と市場",
+      "title": "キャッシュレス・ポイント還元事業",
+      "summary": "消費税率引き上げに合わせ、中小店舗でのキャッシュレス決済に最大5%を還元する国の事業が9か月間実施された。",
+      "detail": "PayPayをはじめとするコード決済各社の顧客獲得競争と時期が重なり、決済スタートアップの利用者数が急増した。事業終了直前の2020年春には新型コロナの緊急事態宣言が出され、非接触決済の需要がさらに高まる。政策・技術・社会情勢が同じ方向に働いた稀な期間である。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "経済産業省 キャッシュレス・ポイント還元事業",
+          "url": "https://cashless.go.jp/"
+        }
+      ]
+    },
+    {
+      "date": "2020-04-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と市場",
+      "title": "オープンイノベーション促進税制の創設",
+      "summary": "事業会社がスタートアップへ一定額以上出資した場合に所得控除を認める税制が2020年度税制改正で創設された。",
+      "detail": "CVCによる出資を後押しする狙いで、トヨタとPFNのような事業会社主導の資金供給を制度面から支える意味を持った。同月には新型コロナの緊急事態宣言が発出され、対面事業のスタートアップは打撃を受ける一方、リモートワーク関連の需要が拡大した。制度の設計時と施行時で市場環境が大きく変わった例である。",
+      "credibility": "unverified",
+      "credibility_note": "2020年度税制改正で創設された点は確かだが、適用開始日や出資要件の細部は法令原文で未確認。",
+      "sources": [
+        {
+          "title": "経済産業省 オープンイノベーション促進税制",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2020-04-07",
+      "precision": "day",
+      "end_date": "2020-05-25",
+      "type": "period",
+      "layer": "技術とトレンド",
+      "title": "緊急事態宣言とリモートワークの急拡大",
+      "summary": "新型コロナで初の緊急事態宣言が発出。在宅勤務やオンライン化が急速に広がり、SaaSやEC関連の需要が伸びた。",
+      "detail": "労務のクラウド化を進めるSmartHRやオンライン診療、決済など非対面領域のスタートアップに追い風となり、翌2021年の大型調達につながった。ただし「DXの加速」がどこまで定着したかは業種により差があり、行動制限の解除後に需要が反転した分野もある。政策面では同月にオープンイノベーション促進税制が施行されていた。",
+      "credibility": "disputed",
+      "credibility_note": "宣言の期間は事実だが、スタートアップ需要への影響の大きさや持続性は業種や調査により評価が分かれる。",
+      "sources": [
+        {
+          "title": "内閣官房 新型コロナウイルス感染症対策",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2021-06-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "企業と資金調達",
+      "title": "SmartHRが156億円を調達",
+      "summary": "クラウド労務ソフトのSmartHRがシリーズDで約156億円を調達。企業評価額は1,700億円超と報じられ、ユニコーン入りとされた。",
+      "detail": "コロナ禍でのリモートワーク拡大が労務のクラウド化需要を押し上げ、SaaS企業の評価額が国内でも急上昇した局面を象徴する。海外投資家が主導した点も特徴で、同年はSmartNewsやPaidyの大型案件も相次いだ。国内スタートアップの年間資金調達額はこの前後で過去最高水準に達したとされる。",
+      "credibility": "unverified",
+      "credibility_note": "調達額は同社発表だが、企業評価額は非公表で報道ベースの推計値。",
+      "sources": [
+        {
+          "title": "株式会社SmartHR プレスリリース（2021年6月）",
+          "url": "https://smarthr.co.jp/"
+        }
+      ]
+    },
+    {
+      "date": "2021-09-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "企業と資金調達",
+      "title": "SmartNewsが評価額20億ドルと報道",
+      "summary": "ニュースアプリのSmartNewsが約2.3億ドルを調達し、企業評価額は20億ドルに達したと報じられた。",
+      "detail": "米国市場でのユーザー拡大が評価され、日米で事業を展開する国内発スタートアップの代表例となった。同月にはPayPalによるPaidy買収も発表され、2021年は国内スタートアップの評価額と資金調達額がともに高水準となった年として記録される。ただし評価額は同社が公式に確認した数値ではなく、報道と投資家筋の情報に基づく。",
+      "credibility": "unverified",
+      "credibility_note": "評価額は非公表で報道ベース。同社は調達額のみ公表している。",
+      "sources": [
+        {
+          "title": "Wikipedia: SmartNews",
+          "url": "https://en.wikipedia.org/wiki/SmartNews"
+        }
+      ]
+    },
+    {
+      "date": "2021-09-08",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "企業と資金調達",
+      "title": "PayPalがPaidyを約3,000億円で買収",
+      "summary": "米PayPalが後払い決済のPaidyを約3,000億円で買収すると発表。国内スタートアップの大型M&Aとして注目された。",
+      "detail": "IPO以外の出口として海外大手による買収が成立し、投資家の回収手段が広がった意味を持つ。技術面ではPayPay以降のキャッシュレス化と、コロナ禍でのEC拡大が後払い決済の需要を押し上げていた。制度面では翌2022年の東証再編と育成5か年計画を控え、出口の多様化が政策課題として意識され始めた時期でもある。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "PayPal ニュースリリース（2021年9月8日）",
+          "url": null
+        },
+        {
+          "title": "Wikipedia: Paidy",
+          "url": "https://en.wikipedia.org/wiki/Paidy"
+        }
+      ]
+    },
+    {
+      "date": "2022-04-04",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と市場",
+      "title": "東証がプライム・スタンダード・グロースへ再編",
+      "summary": "東京証券取引所が市場区分を再編し、マザーズはグロース市場へ移行。新興企業の上場市場が再定義された。",
+      "detail": "メルカリが上場したマザーズは「グロース市場」となり、上場維持基準に時価総額の要件が明確化された。同年11月には政府がスタートアップ育成5か年計画を決定し、投資額10兆円という数値目標を掲げる。市場側の制度と政策側の目標が同じ年に更新されたことで、小型IPOへの依存からの脱却が課題として共有された。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "日本取引所グループ 市場区分の見直し",
+          "url": "https://www.jpx.co.jp/"
+        }
+      ]
+    },
+    {
+      "date": "2022-11-28",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と市場",
+      "title": "スタートアップ育成5か年計画を決定",
+      "summary": "政府が2027年度にスタートアップ投資額10兆円、ユニコーン100社創出などを掲げる5か年計画を決定した。",
+      "detail": "新しい資本主義実現会議で決定され、人材・資金・オープンイノベーションの3本柱で構成される。同じ2022年11月末には米国でChatGPTが公開され、翌年以降の生成AIスタートアップの勃興と政策支援が重なる。2013年の日本再興戦略から続く政策系譜の中で、初めて具体的なユニコーン数を目標に置いた計画である。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "内閣官房 新しい資本主義実現本部",
+          "url": "https://www.cas.go.jp/jp/seisaku/atarashii_sihonsyugi/"
+        }
+      ]
+    },
+    {
+      "date": "2022-11-30",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術とトレンド",
+      "title": "ChatGPT公開と生成AIブーム",
+      "summary": "OpenAIがChatGPTを公開。生成AIへの関心が世界的に高まり、日本でも基盤モデルや応用サービスの起業が相次いだ。",
+      "detail": "育成5か年計画の決定からわずか2日後の出来事で、政策の追い風と技術の転換点が同時に訪れた。国内では2023年以降に生成AI関連の資金調達が増え、2024年にはSakana AIが短期間でユニコーンと報じられる。技術レイヤーの起点としては2015年のChainer公開以来の大きな波であり、AIスタートアップの資金源が事業会社中心から海外VCへ広がる契機ともなった。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: ChatGPT",
+          "url": "https://en.wikipedia.org/wiki/ChatGPT"
+        }
+      ]
+    },
+    {
+      "date": "2024-09-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "企業と資金調達",
+      "title": "Sakana AIが約300億円を調達",
+      "summary": "東京拠点のSakana AIがシリーズAで約300億円を調達。設立から約1年で評価額10億ドル超と報じられ、国内最速級のユニコーンとされた。",
+      "detail": "元Googleの研究者らが2023年に創業した企業で、ChatGPT以降の生成AIブームと育成5か年計画の追い風を受けた。海外VCと国内大手金融機関が共同で出資し、事業会社中心だった国内AI投資の構図が変わりつつあることを示す。ただし評価額は非公表で、報道により金額に幅があるため確定値ではない。",
+      "credibility": "disputed",
+      "credibility_note": "調達額は同社発表だが、企業評価額は非公表で報道により数値が異なる。",
+      "sources": [
+        {
+          "title": "Sakana AI 公式サイト",
+          "url": "https://sakana.ai/"
+        },
+        {
+          "title": "Wikipedia: Sakana AI",
+          "url": "https://en.wikipedia.org/wiki/Sakana_AI"
+        }
+      ]
+    }
+  ]
+}

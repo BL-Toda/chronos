@@ -1,0 +1,413 @@
+{
+  "slug": "business-toyota-production",
+  "title": "トヨタ生産方式の進化",
+  "description": "1930年代の豊田自動織機の自動車部から2020年代の半導体不足まで、トヨタ生産方式（TPS）を生産技術と現場・経営と危機・世界への波及の3層で辿る。危機のたびに現場の手法が磨かれた過程が見える。",
+  "category": "business",
+  "language": "ja",
+  "start_year": 1933,
+  "end_year": 2022,
+  "layers": [
+    {
+      "name": "生産技術と現場",
+      "color": "green"
+    },
+    {
+      "name": "経営と危機",
+      "color": "orange"
+    },
+    {
+      "name": "世界への波及",
+      "color": "teal"
+    }
+  ],
+  "events": [
+    {
+      "date": "1933-09-01",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "生産技術と現場",
+      "title": "豊田自動織機製作所に自動車部を設置",
+      "summary": "豊田喜一郎の主導で豊田自動織機製作所に自動車部が設けられ、国産乗用車の開発が始まった。",
+      "detail": "父・豊田佐吉が完成させた自動織機の事業を資金源に、喜一郎は欧米視察を経て自動車事業に踏み出した。糸が切れると機械が自ら止まる織機の思想は、のちに「自働化」としてトヨタ生産方式の二本柱の一つになる。1930年代は満州事変以降の統制経済へ向かう時期で、自動車製造事業法（1936年）が国産化を後押しした。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "トヨタ自動車75年史",
+          "url": "https://www.toyota.co.jp/jpn/company/history/75years/"
+        }
+      ]
+    },
+    {
+      "date": "1937-08-28",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "経営と危機",
+      "title": "トヨタ自動車工業を設立",
+      "summary": "自動車部が独立し、資本金1,200万円でトヨタ自動車工業株式会社が設立された。喜一郎が副社長として実務を率いた。",
+      "detail": "自動織機の利益に頼っていた自動車事業が独立採算の会社となり、翌年の挙母工場建設に向けて資本を集めた。1937年は日中戦争の開始と重なり、以後は軍需のトラック生産が中心となる。生産技術の面では喜一郎が「必要なものを、必要なときに、必要なだけ」という考えを掲げ始めた時期にあたる。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "トヨタ自動車75年史",
+          "url": "https://www.toyota.co.jp/jpn/company/history/75years/"
+        }
+      ]
+    },
+    {
+      "date": "1938-11-03",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "生産技術と現場",
+      "title": "挙母工場完成と「ジャスト・イン・タイム」構想",
+      "summary": "愛知県挙母町に本社工場が完成。喜一郎が工程間の流れを重視した「ジャスト・イン・タイム」の考えを工場運営に持ち込んだとされる。",
+      "detail": "設立翌年に完成した挙母（現・豊田市）工場は、工程を流れ順に配置し中間在庫を減らす構想で設計されたと社史は伝える。ただし喜一郎がいつどのように「ジャスト・イン・タイム」という言葉を用いたかは一次資料が乏しく、後年の回想に依るところが大きい。戦時統制で構想の実現は遅れ、本格的な体系化は戦後の大野耐一を待つことになる。",
+      "credibility": "disputed",
+      "credibility_note": "工場完成日は社史で確認できるが、喜一郎による「ジャスト・イン・タイム」提唱の時期と表現は後年の回想に基づき諸説ある。",
+      "sources": [
+        {
+          "title": "トヨタ自動車75年史",
+          "url": "https://www.toyota.co.jp/jpn/company/history/75years/"
+        },
+        {
+          "title": "Wikipedia: Kiichiro Toyoda",
+          "url": "https://en.wikipedia.org/wiki/Kiichiro_Toyoda"
+        }
+      ]
+    },
+    {
+      "date": "1950-04-01",
+      "precision": "month",
+      "end_date": "1950-06-30",
+      "type": "period",
+      "layer": "経営と危機",
+      "title": "経営危機と労働争議、喜一郎の退任",
+      "summary": "戦後の金融引き締めで資金繰りが悪化し、人員整理を巡る労働争議が発生。約2か月の争議の末、豊田喜一郎が社長を退いた。",
+      "detail": "銀行団の融資条件として販売会社の分離（トヨタ自動車販売）と人員整理が求められ、希望退職者は1,600人前後とされる。争議収束直後の6月に朝鮮戦争が始まり、米軍のトラック特需が会社を救った。この危機の教訓が「在庫を持たず、売れる分だけつくる」という生産方式の徹底と、以後の無借金経営志向につながった。",
+      "credibility": "disputed",
+      "credibility_note": "争議の期間と喜一郎退任は社史で確認できるが、退職者数は資料により1,500〜2,100人台と幅がある。",
+      "sources": [
+        {
+          "title": "トヨタ自動車75年史",
+          "url": "https://www.toyota.co.jp/jpn/company/history/75years/"
+        }
+      ]
+    },
+    {
+      "date": "1953-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "生産技術と現場",
+      "title": "機械工場で「かんばん」方式を試行",
+      "summary": "大野耐一が米国のスーパーマーケットに着想を得た後工程引取り方式を機械工場で試み、かんばんによる指示が始まった。",
+      "detail": "客が必要な分だけ棚から取り、店が補充するスーパーマーケットの仕組みを工程間に適用したもので、大野は1956年に渡米して実際の店舗を見学している。1950年の危機で在庫の重さを痛感した経営側の意向と現場の工夫が結びついた形である。ただし開始年は社史や大野の著書で1953年頃と記されるものの、正確な時期には諸説ある。",
+      "credibility": "disputed",
+      "credibility_note": "かんばん方式の試行開始は1953年頃とされるが、大野の著書と社史で年の記述が一致せず、正確な開始時期は特定できない。",
+      "sources": [
+        {
+          "title": "Wikipedia: Toyota Production System",
+          "url": "https://en.wikipedia.org/wiki/Toyota_Production_System"
+        },
+        {
+          "title": "大野耐一『トヨタ生産方式』ダイヤモンド社、1978年",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1957-10-31",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "世界への波及",
+      "title": "米国トヨタ自動車販売を設立",
+      "summary": "トヨタが米国ロサンゼルスに販売会社を設立し、乗用車クラウンで対米輸出を開始した。",
+      "detail": "初期のクラウンは高速走行に耐えられず一時撤退に近い状態となり、米国市場に合わせた製品開発の必要性を痛感させた。国内では同時期にかんばん方式が機械工場から広がりつつあり、輸出の失敗と現場改善が並行して進んでいた。1980年代のNUMMIや現地工場に至る海外展開の起点である。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "トヨタ自動車75年史",
+          "url": "https://www.toyota.co.jp/jpn/company/history/75years/"
+        }
+      ]
+    },
+    {
+      "date": "1962-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "生産技術と現場",
+      "title": "かんばん方式を全社に展開",
+      "summary": "機械工場で始まったかんばん方式が組立や部品供給を含む全社へ広がり、生産方式の骨格が固まった。",
+      "detail": "1960年代前半は乗用車の量産体制づくりが進んだ時期で、1966年のカローラ発売に向けて工程を貫く仕組みが必要とされた。全社展開に伴い、外注先の部品メーカーへもかんばんが広がっていく。同時期の経営面では1965年にデミング賞を受賞しており、品質管理と生産方式が並行して整備された。",
+      "credibility": "unverified",
+      "credibility_note": "全社展開の年は社史で1962〜1963年頃と記されるが、何をもって「全社」とするかの定義が資料で一致しないため年を確定できない。",
+      "sources": [
+        {
+          "title": "トヨタ自動車75年史",
+          "url": "https://www.toyota.co.jp/jpn/company/history/75years/"
+        }
+      ]
+    },
+    {
+      "date": "1973-10-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "経営と危機",
+      "title": "第一次オイルショック",
+      "summary": "第四次中東戦争を機に原油価格が急騰。高度成長が終わる中で、トヨタの低在庫・省資源の生産方式が注目を集めた。",
+      "detail": "国内の多くの企業が減産と在庫調整で赤字に陥る一方、トヨタは比較的早く収益を回復し、その要因として生産方式が語られるようになった。これを機に社外や海外からの見学が増え、大野が1978年に著書で体系を公表する流れにつながる。危機が生産技術の価値を経営の言葉に翻訳した転換点である。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 1973 oil crisis",
+          "url": "https://en.wikipedia.org/wiki/1973_oil_crisis"
+        },
+        {
+          "title": "トヨタ自動車75年史",
+          "url": "https://www.toyota.co.jp/jpn/company/history/75years/"
+        }
+      ]
+    },
+    {
+      "date": "1978-05-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "生産技術と現場",
+      "title": "大野耐一『トヨタ生産方式』刊行",
+      "summary": "大野耐一がダイヤモンド社から『トヨタ生産方式―脱規模の経営をめざして』を刊行し、体系を初めて社外に公開した。",
+      "detail": "ジャスト・イン・タイムと自働化を二本柱とし、七つのムダや標準作業などの概念が本人の言葉で整理された。オイルショック後の関心の高まりを受けた出版で、英訳は1988年に刊行される。1980年代の米国での研究や1990年の『リーン生産方式が、世界の自動車産業をこう変える。』はこの本を重要な参照元とした。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "大野耐一『トヨタ生産方式』ダイヤモンド社、1978年",
+          "url": null
+        },
+        {
+          "title": "Wikipedia: Taiichi Ohno",
+          "url": "https://en.wikipedia.org/wiki/Taiichi_Ohno"
+        }
+      ]
+    },
+    {
+      "date": "1984-02-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "世界への波及",
+      "title": "GMとの合弁NUMMIを設立",
+      "summary": "トヨタとGMが米カリフォルニア州フリーモントに合弁会社NUMMIを設立。同年12月に生産を開始した。",
+      "detail": "閉鎖されていたGM工場を引き継ぎ、旧来の従業員を再雇用しながらトヨタ生産方式を導入した実験場となった。日米貿易摩擦の中で現地生産を迫られた経営判断と、TPSが米国の労使環境でも機能するかという検証が同時に進んだ。ここでの成果が1988年のケンタッキー工場と、GM側のリーン生産導入につながる。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: NUMMI",
+          "url": "https://en.wikipedia.org/wiki/NUMMI"
+        }
+      ]
+    },
+    {
+      "date": "1988-05-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "世界への波及",
+      "title": "ケンタッキー工場（TMMK）が生産開始",
+      "summary": "トヨタ単独の米国工場としてケンタッキー州ジョージタウンでカムリの生産を開始した。",
+      "detail": "NUMMIで得た知見を基に、現地採用の従業員に対してトレーナーが「なぜそうするか」から教える方式が採られた。同年に大野の著書の英訳が刊行され、TPSの用語が英語圏に広がる。貿易摩擦への対応という経営課題と、現場手法の移植という生産技術の課題が同じ工場で扱われた点で象徴的である。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Toyota Motor Manufacturing Kentucky",
+          "url": "https://en.wikipedia.org/wiki/Toyota_Motor_Manufacturing_Kentucky"
+        }
+      ]
+    },
+    {
+      "date": "1990-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "世界への波及",
+      "title": "『The Machine That Changed the World』刊行",
+      "summary": "MITの国際自動車研究プログラムの成果として刊行され、トヨタの方式を「リーン生産」と名付けて世界に広めた。",
+      "detail": "ウォマック、ジョーンズ、ルースによる同書は、大量生産と対比してトヨタの手法を一般化した。NUMMIやTMMKで米国でも機能することが示された直後の出版で、自動車以外の製造業や医療、サービス業へ「リーン」の概念が波及する起点となった。日本ではバブル経済の末期にあたり、国内では生産方式よりも金融の話題が優勢だった。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: The Machine That Changed the World (book)",
+          "url": "https://en.wikipedia.org/wiki/The_Machine_That_Changed_the_World_(book)"
+        }
+      ]
+    },
+    {
+      "date": "2001-04-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "生産技術と現場",
+      "title": "「トヨタウェイ2001」を策定",
+      "summary": "海外拠点の拡大を受け、「知恵と改善」「人間性尊重」を柱とする価値観をトヨタウェイ2001として文書化した。",
+      "detail": "1980年代以降の海外生産の広がりで、現場のOJTだけでは伝えきれない考え方を明文化する必要が生じた。生産方式の手法（かんばん等）と、それを支える価値観を分けて示した点が特徴である。同時期の経営面では海外販売の拡大が続き、2000年代後半の生産台数世界一と、その直後の品質問題の両方をこの拡大が準備した。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: The Toyota Way",
+          "url": "https://en.wikipedia.org/wiki/The_Toyota_Way"
+        }
+      ]
+    },
+    {
+      "date": "2008-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "世界への波及",
+      "title": "世界販売台数でGMを上回る",
+      "summary": "2008年の世界販売台数でトヨタがGMを上回り、77年ぶりに首位が交代したと報じられた。",
+      "detail": "1957年の対米輸出の失敗から半世紀を経た到達点で、NUMMIやTMMKなど現地生産の積み重ねが背景にある。ただし同年秋にはリーマン・ショックが起き、翌2009年3月期にトヨタは戦後初の営業赤字を計上した。首位到達と赤字転落がほぼ同時に起きたことは、規模拡大と生産方式の関係を問い直す契機になった。",
+      "credibility": "unverified",
+      "credibility_note": "台数の集計基準（生産・販売、グループ会社の範囲）が発表主体により異なり、首位交代の年や差は資料で一致しない。",
+      "sources": [
+        {
+          "title": "トヨタ自動車 ニュースリリース（2009年1月）",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2009-05-08",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "経営と危機",
+      "title": "2009年3月期に戦後初の営業赤字",
+      "summary": "リーマン・ショック後の需要急減で、トヨタは2009年3月期決算で約4,610億円の営業赤字を発表した。",
+      "detail": "前年に世界販売首位に立った直後の急転で、生産能力の拡大が固定費として重くのしかかった。生産方式の観点では、需要変動に合わせて生産量を柔軟に変える「平準化」の限界が議論となり、以後は生産能力の増強を抑える方針へ転じる。この決算発表は豊田章男が社長に就任する直前にあたる。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "トヨタ自動車 2009年3月期 決算発表",
+          "url": null
+        },
+        {
+          "title": "トヨタ自動車 有価証券報告書（2009年3月期）",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2010-02-24",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "経営と危機",
+      "title": "大規模リコールと米下院公聴会",
+      "summary": "アクセルペダル等を巡る大規模リコールを受け、豊田章男社長が米下院の公聴会に出席し、品質問題について証言した。",
+      "detail": "2009年から2010年にかけて世界で数百万台規模のリコールが相次ぎ、急拡大した海外生産と品質保証の体制が問われた。公聴会で社長は「成長のスピードが人材育成を上回った」との趣旨を述べている。この危機を受け、生産方式の原点である「品質を工程でつくり込む」考えを再徹底する動きが社内で進み、2015年のTNGAにつながる。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 2009–2011 Toyota vehicle recalls",
+          "url": "https://en.wikipedia.org/wiki/2009%E2%80%932011_Toyota_vehicle_recalls"
+        }
+      ]
+    },
+    {
+      "date": "2011-03-11",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "経営と危機",
+      "title": "東日本大震災でサプライチェーンが寸断",
+      "summary": "東北の部品・素材メーカーが被災して供給網が寸断され、国内外の工場が数か月にわたる減産を余儀なくされた。",
+      "detail": "低在庫のジャスト・イン・タイムが災害に弱いとの批判が起きた一方、トヨタは寸断の原因を特定の部品や素材の一極集中に求め、サプライチェーンの可視化に取り組んだ。同年はタイの洪水も重なり、部品供給網の情報を集めるデータベース整備が進む。この教訓は2020年代の半導体不足で一定の効果を発揮したとされる。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "トヨタ自動車 ニュースリリース（2011年）",
+          "url": null
+        },
+        {
+          "title": "Wikipedia: Toyota Production System",
+          "url": "https://en.wikipedia.org/wiki/Toyota_Production_System"
+        }
+      ]
+    },
+    {
+      "date": "2011-09-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "世界への波及",
+      "title": "『リーン・スタートアップ』刊行",
+      "summary": "エリック・リースが『The Lean Startup』を刊行。TPS由来のリーンの考え方をソフトウェアと起業の方法論に転用した。",
+      "detail": "小さくつくり検証を繰り返す手法は、TPSのムダ排除や「現地現物」の発想を参照したと著者が述べている。1990年の『The Machine That Changed the World』が製造業に広げた概念が、2010年代にはIT産業や公共部門にまで及んだ形である。同年の日本では東日本大震災でTPSの弱点が議論されており、原産地と応用先で評価が分かれた年でもある。",
+      "credibility": "unverified",
+      "credibility_note": "刊行時期は確かだが、TPSからの影響の程度は著者の言及に基づく評価であり、方法論の系譜として定説化しているとは言い切れない。",
+      "sources": [
+        {
+          "title": "Wikipedia: The Lean Startup",
+          "url": "https://en.wikipedia.org/wiki/The_Lean_Startup"
+        }
+      ]
+    },
+    {
+      "date": "2015-12-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "生産技術と現場",
+      "title": "TNGA採用の初の車種（4代目プリウス）発売",
+      "summary": "車両の基本骨格と生産ラインを共通化するTNGAを採用した最初の車種として4代目プリウスが発売された。",
+      "detail": "リコール問題後の「もっといいクルマづくり」の方針を受け、設計と生産を一体で見直す取り組みである。生産ラインの設備を低く簡素にし、生産量の増減に合わせて組み替えやすくする方向は、2009年の営業赤字で明らかになった固定費の重さへの応答でもある。世界の工場に順次展開され、2020年代の半導体不足下でも工程を柔軟に組み替える基盤となった。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Toyota New Global Architecture",
+          "url": "https://en.wikipedia.org/wiki/Toyota_New_Global_Architecture"
+        }
+      ]
+    },
+    {
+      "date": "2021-08-19",
+      "precision": "day",
+      "end_date": "2022-12-31",
+      "type": "period",
+      "layer": "経営と危機",
+      "title": "半導体不足による長期減産",
+      "summary": "トヨタが2021年9月の世界生産を計画比約4割減らすと発表。半導体と部品の不足による減産は2022年まで断続的に続いた。",
+      "detail": "新型コロナ後の需要回復と東南アジアの感染拡大が重なり、半導体を含む部品供給が滞った。2011年以降に整備したサプライチェーンの可視化により当初は他社より影響が小さかったとされるが、長期化には耐えきれず減産に至った。ジャスト・イン・タイムの適用範囲と、戦略的な在庫の持ち方が改めて議論される契機となった。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "トヨタ自動車 ニュースリリース（2021年8月19日）",
+          "url": null
+        },
+        {
+          "title": "Wikipedia: 2020–2023 global chip shortage",
+          "url": "https://en.wikipedia.org/wiki/2020%E2%80%932023_global_chip_shortage"
+        }
+      ]
+    }
+  ]
+}

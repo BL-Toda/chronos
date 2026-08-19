@@ -1,0 +1,47 @@
+# Chronos シードコンテンツ仕様（生成エージェント向け）
+
+出力先: `supabase/seed/data/<slug>.json`（1年表=1ファイル、UTF-8）。この JSON は `supabase/seed/build-seed.mjs` が `seed.sql` に変換する。
+
+## JSONスキーマ（厳守）
+```json
+{
+  "slug": "tech-ai-revolution",           // 英小文字・数字・ハイフン。<category-short>-<topic>
+  "title": "AI革命の全体像 2020–2026",      // explore の TITLES と一致させる（与えられたタイトルをそのまま）
+  "description": "…",                     // 60〜120字。年表の視点と価値を一文〜二文で
+  "category": "technology",              // technology | history-politics | culture | science-nature | business | personal-life
+  "language": "ja",
+  "start_year": 2012, "end_year": 2026,   // イベントの最古/最新年
+  "layers": [                              // 3本（2〜4可）。「重ねると文脈が見える」対比になる切り口を選ぶ
+    {"name": "技術", "color": "blue"},     // name ≤ 30字。color: blue|green|pink|gold|purple|teal|orange（1年表内で重複不可）
+    {"name": "企業と資本", "color": "orange"},
+    {"name": "社会と規制", "color": "teal"}
+  ],
+  "events": [                              // 14〜20件。年代順。各レイヤーに最低3件
+    {
+      "date": "2017-06-12",               // ISO。月日不明なら "2017-06-01"/"2017-01-01" と precision で示す
+      "precision": "day",                 // year | month | day
+      "end_date": null,                    // 期間イベントのみ（type=period で必須、date以降）
+      "type": "point",                     // point | period（1年表に1〜3件は period を入れる）
+      "layer": "技術",                     // layers[].name のいずれか
+      "title": "Transformer論文「Attention Is All You Need」公開",  // ≤ 40字
+      "summary": "…",                     // 40〜80字。カード表示用の一文
+      "detail": "…",                      // 120〜240字。背景・因果・他レイヤーとのつながりに触れる
+      "credibility": "verified",          // verified | disputed | unverified（配分の目安: 70% / 15% / 15%）
+      "credibility_note": null,            // disputed/unverified のとき必須: 何が諸説あり・未検証なのか一文
+      "sources": [                         // 1〜2件。実在する出典。URLは確からしいものだけ（不確かなら url: null で title のみ）
+        {"title": "arXiv: Attention Is All You Need (1706.03762)", "url": "https://arxiv.org/abs/1706.03762"}
+      ]
+    }
+  ]
+}
+```
+
+## 品質基準
+- **史実の正確さ最優先**。確信がない日付・数値は precision を粗くするか credibility を `unverified`/`disputed` にして note に理由を書く（Chronosの思想: 分からないことは分からないと表示する）
+- 年代の前後関係・因果関係に矛盾がないこと（例: 発売前に普及率が上がらない）
+- **レイヤーは「重ねると発見がある」対比**にする（技術×資本×規制、作品×制度×受容、個人×社会 など）。detail の中で「同じ年に別レイヤーで何が起きていたか」に最低5件は触れる
+- 固有名詞・数値には出典。Wikipedia でも可だが、可能なら一次資料（公式発表、論文、政府統計、報道）
+- personal-life カテゴリは**架空の個人の物語**でよい（実在人物の私生活は書かない）。ただし社会レイヤー（時代の出来事）は史実に基づき、個人レイヤーは架空と分かるトーンで。credibility は個人レイヤー=verified扱いでよい（本人記録という建付け）
+- 生存する実在人物について、私生活・健康・評価に踏み込む記述はしない。公人の公的行為のみ
+- 文体: 「だ・である」/体言止め、簡潔。「!」不使用、絵文字不使用
+- 日本語。固有名詞は一般的な表記（原語併記は初出のみ可）

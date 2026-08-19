@@ -1,0 +1,421 @@
+{
+  "slug": "culture-impressionism-to-street",
+  "title": "印象派からストリートアートへ",
+  "description": "1874年の第1回印象派展から2010年代のバンクシーまで。作品と運動、それを受け入れ値付けする制度と市場、表現を支えた技術と社会の3層を重ね、「前衛」が周縁から中心へ移る反復を追う。",
+  "category": "culture",
+  "language": "ja",
+  "start_year": 1874,
+  "end_year": 2018,
+  "layers": [
+    {
+      "name": "作品と運動",
+      "color": "pink"
+    },
+    {
+      "name": "制度と市場",
+      "color": "gold"
+    },
+    {
+      "name": "技術と社会",
+      "color": "teal"
+    }
+  ],
+  "events": [
+    {
+      "date": "1874-04-15",
+      "precision": "day",
+      "end_date": "1886-06-15",
+      "type": "period",
+      "layer": "制度と市場",
+      "title": "印象派展の時代（全8回の自主展）",
+      "summary": "1874年から1886年まで計8回開かれた自主展。サロンに代わる発表と販売の回路を画商デュラン=リュエルらと築いた。",
+      "detail": "官展一極の発表制度に対し、グループ展と画商が結びつく近代的な市場モデルが形成された時期。参加者は毎回入れ替わり、最終回の1886年展にはスーラの点描が登場し、運動の内部から次の様式が生まれた。同じ頃、写真の商業化と鉄道網の拡大が郊外での制作と流通を後押ししていた。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Impressionism (Exhibitions)",
+          "url": "https://en.wikipedia.org/wiki/Impressionism"
+        },
+        {
+          "title": "National Gallery of Art: Paul Durand-Ruel and the Impressionists",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1874-04-15",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "作品と運動",
+      "title": "第1回印象派展、パリのナダール旧写真スタジオで開幕",
+      "summary": "モネ、ルノワール、ドガらの「画家・彫刻家・版画家等芸術家匿名協会」がサロンの外で自主展を開催。",
+      "detail": "官展サロンの審査に依存しない自主展。会場が写真家ナダールの旧スタジオだった点は象徴的で、写真という新技術が絵画の役割を問い直していた時期と重なる。批評家ルイ・ルロワがモネ《印象、日の出》を揶揄した記事が「印象派」の呼称の起源とされる。展覧会は約1か月続き、入場者は限られたが批評は活発だった。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Musée d'Orsay: 1874 Inventing Impressionism (展覧会解説)",
+          "url": "https://www.musee-orsay.fr/en/whats-on/exhibitions/paris-1874-inventing-impressionism"
+        },
+        {
+          "title": "Wikipedia: First Impressionist Exhibition",
+          "url": "https://en.wikipedia.org/wiki/First_Impressionist_Exhibition"
+        }
+      ]
+    },
+    {
+      "date": "1886-04-10",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と市場",
+      "title": "デュラン=リュエル、ニューヨークで大規模な印象派展を開催",
+      "summary": "画商ポール・デュラン=リュエルがアメリカ美術協会で約300点を展示。印象派の米国市場が開かれた。",
+      "detail": "パリで売れ残った在庫を抱えた画商が新大陸に活路を求めた。以後、米国の実業家コレクターが印象派の主要な買い手となり、20世紀の米国美術館コレクションの基礎を築く。同年パリでは最後の印象派展が開かれ、運動が制度化と拡散の段階に入ったことを示す。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Paul Durand-Ruel",
+          "url": "https://en.wikipedia.org/wiki/Paul_Durand-Ruel"
+        }
+      ]
+    },
+    {
+      "date": "1888-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と社会",
+      "title": "コダック、初のロールフィルム式カメラを発売",
+      "summary": "「あなたはボタンを押すだけ」。撮影の大衆化が始まり、絵画の「記録」としての役割はいっそう後退した。",
+      "detail": "ジョージ・イーストマンのコダック・カメラは現像・焼付をメーカーが代行する仕組みで、写真を専門家から一般へ解放した。画家たちは同時期にスナップ的な構図や瞬間の光へと関心を移し、写真と絵画の役割分担が明確になる。後年のグラフィティ記録やSNS拡散へ続く「誰もが記録者になる」流れの起点でもある。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Kodak (History)",
+          "url": "https://en.wikipedia.org/wiki/Kodak"
+        }
+      ]
+    },
+    {
+      "date": "1913-02-17",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と市場",
+      "title": "アーモリー・ショー開幕、米国にヨーロッパ前衛が紹介される",
+      "summary": "ニューヨークの兵器庫で開かれた国際現代美術展。デュシャン《階段を降りる裸体No.2》が騒動を呼んだ。",
+      "detail": "印象派から後期印象派、キュビスムまでを一望させ、米国の批評と市場に前衛の受容を迫った。会場は軍の兵器庫という非美術館空間で、後のオルタナティブ・スペースの先例でもある。同年、ヨーロッパでは翌年の大戦を控え、未来派やロシア前衛が急進化していた。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Armory Show",
+          "url": "https://en.wikipedia.org/wiki/Armory_Show"
+        }
+      ]
+    },
+    {
+      "date": "1917-04-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "作品と運動",
+      "title": "デュシャン《泉》、独立芸術家協会展への出品を拒否される",
+      "summary": "「R. Mutt」と署名した男性用小便器。既製品を作品とするレディメイドの概念が広まる契機となった。",
+      "detail": "「審査なし」を掲げた協会展が展示を拒んだことで、何が芸術かを決めるのは制度か作家かという問いが顕在化した。オリジナルは失われ、スティーグリッツの写真とレプリカで知られる。作者をエルザ・フォン・フライターク=ローリングホーフェンとする説もあり、帰属は現在も議論がある。",
+      "credibility": "disputed",
+      "credibility_note": "出品者がデュシャン本人か、エルザ・フォン・フライターク=ローリングホーフェンかについて研究者間で見解が分かれる。",
+      "sources": [
+        {
+          "title": "Wikipedia: Fountain (Duchamp)",
+          "url": "https://en.wikipedia.org/wiki/Fountain_(Duchamp)"
+        },
+        {
+          "title": "Tate: Fountain 1917, replica 1964 (作品解説)",
+          "url": "https://www.tate.org.uk/art/artworks/duchamp-fountain-t07573"
+        }
+      ]
+    },
+    {
+      "date": "1929-11-07",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と市場",
+      "title": "ニューヨーク近代美術館（MoMA）開館",
+      "summary": "開館展は「セザンヌ、ゴーガン、スーラ、ファン・ゴッホ」。近代美術を収集・体系化する美術館が誕生した。",
+      "detail": "ウォール街大暴落の直後に開館。印象派以後の美術を「近代美術」として正典化し、収蔵と展示を通じて価値を定める制度が確立した。同時期、ドイツではバウハウスが機能主義を掲げ、モダニズムは制度と教育の両面から広がっていた。開館当初は貸しビルの数室から始まった。開館当初は貸しビルの数室から始まり、1939年に現在地へ移った。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "MoMA: History (公式)",
+          "url": "https://www.moma.org/about/who-we-are/moma-history"
+        },
+        {
+          "title": "Wikipedia: Museum of Modern Art",
+          "url": "https://en.wikipedia.org/wiki/Museum_of_Modern_Art"
+        }
+      ]
+    },
+    {
+      "date": "1937-07-19",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と社会",
+      "title": "ナチス政権、ミュンヘンで「退廃芸術展」を開催",
+      "summary": "表現主義や抽象などを「退廃」として見せしめ展示。国家による美術の統制と没収が公然化した。",
+      "detail": "美術館から約1万6千点が押収され、一部は国外で売却・破棄された。多くの作家が亡命し、戦後の抽象表現主義がニューヨークで開花する遠因となる。作品と制度が政治に従属した極端な例で、同じ年パリ万博ではピカソ《ゲルニカ》がスペイン館に展示されていた。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Degenerate Art exhibition",
+          "url": "https://en.wikipedia.org/wiki/Degenerate_Art_exhibition"
+        }
+      ]
+    },
+    {
+      "date": "1947-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "作品と運動",
+      "title": "ポロック、床置きキャンバスへの「ドリップ」を本格化",
+      "summary": "絵具を垂らし飛ばすオールオーヴァーの画面。1949年の『ライフ』誌特集で大衆的にも知られる存在に。",
+      "detail": "工業用エナメル塗料と巨大なキャンバスという素材の変化が、身体の運動を画面に記録する手法を可能にした。冷戦下で抽象表現主義は「自由な米国美術」として国務省や美術館の海外展に組み込まれ、制度と政治が作品の評価を後押しした。",
+      "credibility": "disputed",
+      "credibility_note": "ドリップ技法の「開始年」は諸説あり、1936年のシケイロス工房での実験や1943年頃の試作を起点とする見方もある。",
+      "sources": [
+        {
+          "title": "MoMA: Jackson Pollock (作家解説)",
+          "url": "https://www.moma.org/artists/4675"
+        },
+        {
+          "title": "Wikipedia: Jackson Pollock",
+          "url": "https://en.wikipedia.org/wiki/Jackson_Pollock"
+        }
+      ]
+    },
+    {
+      "date": "1962-07-09",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "作品と運動",
+      "title": "ウォーホル《キャンベル・スープ缶》をロサンゼルスで初展示",
+      "summary": "フェラス画廊で32点の缶詰を並べた初個展。大量生産品と広告のイメージが美術館の壁に入った。",
+      "detail": "スーパーマーケットの陳列を模した展示は、消費社会そのものを主題にした。同年、シルクスクリーンによる複製技法を採用し、作家の手仕事という価値観を揺さぶる。テレビと雑誌広告が家庭に浸透した時期と重なり、後のストリートアートが広告的手法を用いる伏線となる。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "MoMA: Campbell's Soup Cans (作品解説)",
+          "url": "https://www.moma.org/collection/works/79809"
+        },
+        {
+          "title": "Wikipedia: Campbell's Soup Cans",
+          "url": "https://en.wikipedia.org/wiki/Campbell%27s_Soup_Cans"
+        }
+      ]
+    },
+    {
+      "date": "1970-01-01",
+      "precision": "year",
+      "end_date": "1989-05-12",
+      "type": "period",
+      "layer": "技術と社会",
+      "title": "ニューヨーク地下鉄グラフィティの時代",
+      "summary": "車両全面のピースからワイルドスタイルまで様式が発達。1989年、MTAが「グラフィティのない地下鉄」を宣言し終息。",
+      "detail": "1970年代の財政危機と治安悪化を背景に、地下鉄は最大のキャンバスとなった。写真家マーサ・クーパーらの記録と、1983年の映画『ワイルド・スタイル』や写真集『Subway Art』が世界に様式を伝え、ヨーロッパや日本へ波及した。行政は洗浄と車両更新で対抗し、80年代後半に路上へと舞台が移る。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Graffiti in New York City",
+          "url": "https://en.wikipedia.org/wiki/Graffiti_in_New_York_City"
+        },
+        {
+          "title": "Martha Cooper & Henry Chalfant『Subway Art』(1984)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1971-07-21",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と社会",
+      "title": "『ニューヨーク・タイムズ』が「TAKI 183」を報道",
+      "summary": "マンハッタン中に名前を書き残す少年を紹介した記事。地下鉄グラフィティが社会現象として認知される。",
+      "detail": "スプレー缶とマーカーという安価な道具、地下鉄という移動する画面が「タグ」の文化を生んだ。記事は模倣者を急増させ、都市財政危機下のニューヨークで行政との攻防が始まる。同じ1970年代初頭、美術界ではコンセプチュアル・アートが「もの」を離れつつあり、路上では逆に名前を可視化する欲望が噴出していた。",
+      "credibility": "disputed",
+      "credibility_note": "TAKI 183を「最初のグラフィティ・ライター」とする通説には異論があり、フィラデルフィアのCornbreadら先行例を挙げる見方がある。",
+      "sources": [
+        {
+          "title": "Wikipedia: TAKI 183",
+          "url": "https://en.wikipedia.org/wiki/TAKI_183"
+        }
+      ]
+    },
+    {
+      "date": "1973-10-18",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と市場",
+      "title": "スカル・コレクション競売、現代美術の投機時代を告げる",
+      "summary": "ロバートとエセルのスカル夫妻が所蔵50点をサザビー・パーク・バーネットで競売。落札額が購入価格を大きく上回った。",
+      "detail": "ラウシェンバーグ《Thaw》は約900ドルで購入された作品が8万5千ドルで落札され、作家が会場でコレクターに詰め寄った逸話が残る。存命作家の作品が短期間で値上がりする構図が可視化され、以後オークションが現代美術の価格形成の中心となる。作家への再販利益還元（追及権）の議論も高まった。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Robert C. Scull",
+          "url": "https://en.wikipedia.org/wiki/Robert_C._Scull"
+        }
+      ]
+    },
+    {
+      "date": "1980-06-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "作品と運動",
+      "title": "「タイムズ・スクエア・ショー」開催",
+      "summary": "作家集団コラボが空きビルで開いた雑居展。バスキア、ヘリングら路上系の若手が美術界と接続した。",
+      "detail": "元マッサージ店の廃屋を会場に、グラフィティ、パンク、ポルノ地区の風景を取り込んだ展示は「最初のラディカルな80年代アートショー」と評された。同年ニューヨーク市は財政再建の途上にあり、空き家と低家賃が若手の実験を可能にしていた。数年後、同じ作家たちがソーホーの画廊と競売に吸収されていく。",
+      "credibility": "unverified",
+      "credibility_note": "開催期間の正確な日付と参加作家の全リストは資料により異同があり、本項は6月開催という概略のみ記載。",
+      "sources": [
+        {
+          "title": "Wikipedia: The Times Square Show",
+          "url": "https://en.wikipedia.org/wiki/The_Times_Square_Show"
+        }
+      ]
+    },
+    {
+      "date": "1987-03-30",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と市場",
+      "title": "ゴッホ《ひまわり》、約2,475万ポンドで落札",
+      "summary": "クリスティーズ・ロンドンで当時の美術品最高額を記録。落札者は安田火災海上保険で、日本マネーの本格参入を示す。",
+      "detail": "1874年に嘲笑された印象派・後期印象派が、一世紀後には最も高価な資産となった。プラザ合意後の円高と日本のバブル経済が価格を押し上げ、1990年には斎藤了英がゴッホ《医師ガシェの肖像》を8,250万ドルで落札する。制度と市場のレイヤーが作品評価を規定する時代の頂点。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "SOMPO美術館: ゴッホ《ひまわり》(所蔵作品解説)",
+          "url": "https://www.sompo-museum.org/collections/sunflowers/"
+        },
+        {
+          "title": "Wikipedia: Sunflowers (Van Gogh series)",
+          "url": "https://en.wikipedia.org/wiki/Sunflowers_(Van_Gogh_series)"
+        }
+      ]
+    },
+    {
+      "date": "2005-08-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "作品と運動",
+      "title": "バンクシー、ヨルダン川西岸の分離壁に9点の壁画",
+      "summary": "少女が風船で壁を越える図像など。壁面を政治的メッセージの媒体にし、匿名の作家像が国際的に知られる。",
+      "detail": "ステンシル技法は短時間で高精度の図像を残せる。パレスチナでの制作は、路上の表現が観光地化と報道を通じて拡散する初期の例で、写真がウェブで共有される時代の到来と一体だった。作家は匿名を保ち、公式サイトと代理人以外の「認証」がないため、帰属の確認は常に困難を伴う。",
+      "credibility": "unverified",
+      "credibility_note": "制作時期は報道と作家側の発表に基づく概略で、日付レベルの一次資料は確認できていない。",
+      "sources": [
+        {
+          "title": "Wikipedia: Banksy",
+          "url": "https://en.wikipedia.org/wiki/Banksy"
+        }
+      ]
+    },
+    {
+      "date": "2008-05-23",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と市場",
+      "title": "テート・モダン、外壁を舞台に「Street Art」展を開催",
+      "summary": "国立美術館の建物正面に6組の作家が巨大壁画を制作。ストリートアートが公的制度に正面から迎え入れられた。",
+      "detail": "同じ月、ロンドン・ウォータールーの地下道ではバンクシー主催の「カンズ・フェスティバル」が開かれ、公的制度と自主企画が並走した。地下鉄グラフィティが洗浄された20年前と比べ、行政と美術館の態度は反転した。以後、路上作品の切り出し販売や保護をめぐる法的議論が続く。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Tate: Street Art (2008年展覧会ページ)",
+          "url": "https://www.tate.org.uk/whats-on/tate-modern/street-art"
+        }
+      ]
+    },
+    {
+      "date": "2010-10-06",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と社会",
+      "title": "Instagramがサービス開始",
+      "summary": "スマートフォンで撮影と共有が一体化。壁画は現地に行かなくても「消える前に」世界へ届く画像となった。",
+      "detail": "1888年のコダックが撮影を大衆化したように、Instagramは発表と流通を大衆化した。ストリートアートは制作直後に撮影・共有され、消去や上書きを前提とした表現が画像として残る。作家の匿名性とフォロワー数が価値の一部となり、美術館や画廊を経由しない評価回路が形成された。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Instagram",
+          "url": "https://en.wikipedia.org/wiki/Instagram"
+        }
+      ]
+    },
+    {
+      "date": "2013-10-01",
+      "precision": "day",
+      "end_date": "2013-10-31",
+      "type": "period",
+      "layer": "作品と運動",
+      "title": "バンクシー「Better Out Than In」ニューヨーク滞在制作",
+      "summary": "10月の1か月間、毎日1点をニューヨーク市内に発表。作品の場所はウェブとSNSで公表され、市民が探し歩いた。",
+      "detail": "作品と技術と社会のレイヤーが同時に動いた例。発表はInstagramと専用サイト、鑑賞は市民のスマートフォン、市長は「器物損壊」と非難し、一部作品は数時間で上書きされた。セントラルパークで本人の作品を1点60ドルで無名販売する企画は、市場が値付けする「作家名」の機能を露わにした。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Better Out Than In",
+          "url": "https://en.wikipedia.org/wiki/Better_Out_Than_In"
+        }
+      ]
+    },
+    {
+      "date": "2018-10-05",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と市場",
+      "title": "サザビーズで落札直後、バンクシー《風船と少女》が自ら裁断",
+      "summary": "落札額約104万ポンドの直後、額縁内のシュレッダーが作動。半分裁断された作品は《愛はごみ箱の中に》と改題された。",
+      "detail": "市場批判のパフォーマンスが、結果として作品価値を高めるという逆説。2021年の再出品では約1,870万ポンドで落札された。1973年のスカル競売で作家が抗議した構図から半世紀、抗議そのものが商品化される段階に達した。実行の映像はSNSで拡散され、技術と社会のレイヤーが市場の出来事を即時に世界化した。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Love is in the Bin",
+          "url": "https://en.wikipedia.org/wiki/Love_is_in_the_Bin"
+        },
+        {
+          "title": "Sotheby's: Banksy, Love is in the Bin (2021年セール解説)",
+          "url": null
+        }
+      ]
+    }
+  ]
+}

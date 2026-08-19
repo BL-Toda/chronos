@@ -1,0 +1,326 @@
+{
+  "slug": "science-astrophysics",
+  "title": "宇宙物理学の革命",
+  "description": "1915年の一般相対性理論から重力波とJWSTまで。理論の飛躍、それを検証した観測と装置、そして発見をめぐる人と社会の反応の3層を重ね、宇宙像がどう塗り替えられてきたかをたどる。",
+  "category": "science-nature",
+  "language": "ja",
+  "start_year": 1915,
+  "end_year": 2023,
+  "layers": [
+    {"name": "理論", "color": "purple"},
+    {"name": "観測と装置", "color": "blue"},
+    {"name": "人と社会", "color": "gold"}
+  ],
+  "events": [
+    {
+      "date": "1915-11-25",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "理論",
+      "title": "アインシュタイン、一般相対性理論の場の方程式を発表",
+      "summary": "プロイセン科学アカデミーで重力を時空の曲がりとして記述する場の方程式を提出。宇宙論と天体物理の基礎となる。",
+      "detail": "10年に及ぶ試行の末、11月中に4回の講演で理論を完成させ、水星の近日点移動を説明した。ほぼ同時期にヒルベルトも同等の方程式に到達しており、先取権をめぐる議論が長く続いた。理論の予言する光の湾曲は4年後の日食観測で検証され、膨張宇宙やブラックホールといった以後の理論展開はすべてこの方程式の解として現れる。",
+      "credibility": "disputed",
+      "credibility_note": "場の方程式の最終形をヒルベルトが先に得ていたかどうかについて、校正刷りの証拠をめぐり科学史家の見解が分かれる。",
+      "sources": [
+        {"title": "Einstein, A. (1915) Die Feldgleichungen der Gravitation. Sitzungsberichte der Königlich Preußischen Akademie der Wissenschaften", "url": null},
+        {"title": "Corry, L., Renn, J. & Stachel, J. (1997) Belated Decision in the Hilbert-Einstein Priority Dispute. Science", "url": null}
+      ]
+    },
+    {
+      "date": "1919-05-29",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "観測と装置",
+      "title": "エディントンらが日食観測で光の湾曲を確認",
+      "summary": "プリンシペ島とブラジル・ソブラルの皆既日食観測で、太陽近くの星の位置ずれが一般相対論の予測と一致。",
+      "detail": "第一次大戦終結の翌年、英国の遠征隊がドイツの物理学者の理論を検証した。同年11月6日の王立協会での発表を英タイムズ紙が「科学の革命」と報じ、アインシュタインは一夜にして世界的な有名人となった。観測精度と写真乾板の取捨選択には後年疑問も出されたが、再解析では結論が支持されている。理論と観測と社会的反響が半年のうちに連鎖した典型例。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Dyson, F. W., Eddington, A. S. & Davidson, C. (1920) A Determination of the Deflection of Light by the Sun's Gravitational Field. Philosophical Transactions of the Royal Society A", "url": "https://doi.org/10.1098/rsta.1920.0009"}
+      ]
+    },
+    {
+      "date": "1927-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "理論",
+      "title": "ルメートル、膨張宇宙モデルを提唱",
+      "summary": "ベルギーの司祭で物理学者のルメートルが、一般相対論の解として膨張する宇宙を導き、後退速度と距離の比例関係を予言。",
+      "detail": "1922年のフリードマンの数学的解に続き、ルメートルは観測データと結びつけて宇宙の膨張率を見積もった。フランス語の地方誌に掲載されたため当初は注目されず、2年後のハッブルの観測が広く知られることになる。2018年、IAUは「ハッブルの法則」を「ハッブル・ルメートルの法則」と呼ぶことを推奨し、先取権の再評価が行われた。1931年には「原始的原子」の着想でビッグバン理論の原型を示した。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Lemaître, G. (1927) Un Univers homogène de masse constante et de rayon croissant. Annales de la Société Scientifique de Bruxelles", "url": null},
+        {"title": "IAU (2018) Resolution B4 on a suggested renaming of the Hubble Law", "url": null}
+      ]
+    },
+    {
+      "date": "1929-03-15",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "観測と装置",
+      "title": "ハッブル、銀河の後退速度と距離の比例関係を発表",
+      "summary": "ウィルソン山天文台の100インチ望遠鏡で測った銀河の距離と赤方偏移から、遠い銀河ほど速く遠ざかることを示す。",
+      "detail": "1924年にアンドロメダが天の川の外の銀河だと示したハッブルは、24個の銀河のデータで比例関係を導いた。当時の距離尺度の誤りから比例定数は現在の約7倍と大きかったが、宇宙が膨張しているという理論レイヤーの予言に観測の裏付けを与え、静的宇宙を信じていたアインシュタインも1931年に宇宙項を撤回した。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Hubble, E. (1929) A relation between distance and radial velocity among extra-galactic nebulae. PNAS", "url": "https://doi.org/10.1073/pnas.15.3.168"}
+      ]
+    },
+    {
+      "date": "1933-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "観測と装置",
+      "title": "ツビッキー、かみのけ座銀河団に「見えない質量」を指摘",
+      "summary": "銀河団内の銀河の速度分散から、光る物質だけでは重力的に束縛できないほど大きな質量が必要と推定。",
+      "detail": "ツビッキーはビリアル定理を用いて銀河団の質量を見積もり、光度から推定される質量を大幅に上回るとして「暗黒物質（dunkle Materie）」の語を使った。当時のハッブル定数が過大だったため推定倍率は現在より大きく、結論は数十年間ほとんど顧みられなかった。1970年代のルービンらの銀河回転曲線の観測で問題が再浮上し、暗黒物質は現代宇宙論の中心課題となる。",
+      "credibility": "unverified",
+      "credibility_note": "ツビッキーが示した質量比の数値は当時の距離尺度に依存し、現在の値とは大きく異なる。「暗黒物質発見」と位置づけるかどうかも評価が分かれる。",
+      "sources": [
+        {"title": "Zwicky, F. (1933) Die Rotverschiebung von extragalaktischen Nebeln. Helvetica Physica Acta", "url": null}
+      ]
+    },
+    {
+      "date": "1935-01-11",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "人と社会",
+      "title": "エディントン、王立天文学会でチャンドラセカールの理論を公然と否定",
+      "summary": "白色矮星の質量に上限があるとする24歳のチャンドラセカールの発表に対し、権威エディントンがその場で酷評。",
+      "detail": "チャンドラセカールは相対論的量子統計を白色矮星に適用し、太陽質量の約1.4倍を超えると重力を支えられないと示した。エディントンの否定は若い研究者の評価に長く影を落とし、彼は研究分野を変えた。この上限質量は後に中性子星やブラックホールの形成理解の基礎となり、1983年のノーベル賞で報われた。理論の正しさと学界の受容が数十年ずれた事例として語り継がれる。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Chandrasekhar, S. (1935) The highly collapsed configurations of a stellar mass (Second paper). Monthly Notices of the Royal Astronomical Society", "url": null},
+        {"title": "The Observatory, Vol. 58 (1935) Report of the RAS meeting of 1935 January 11", "url": null}
+      ]
+    },
+    {
+      "date": "1948-04-01",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "理論",
+      "title": "アルファーとガモフ、高温初期宇宙での元素合成を提唱",
+      "summary": "「αβγ論文」として知られる短報で、膨張する高温高密度の初期宇宙で軽元素が作られたと論じる。",
+      "detail": "ガモフが冗談でベーテを著者に加えたことで知られるこの論文は、ビッグバン元素合成の出発点となった。同年アルファーとハーマンは、初期宇宙の名残の放射が現在約5Kの背景放射として残っていると予言したが、観測可能とは考えられず忘れられた。1965年の宇宙マイクロ波背景放射の偶然の発見が、17年越しでこの予言を裏付けることになる。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Alpher, R. A., Bethe, H. & Gamow, G. (1948) The Origin of Chemical Elements. Physical Review", "url": "https://doi.org/10.1103/PhysRev.73.803"}
+      ]
+    },
+    {
+      "date": "1965-07-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "観測と装置",
+      "title": "ペンジアスとウィルソン、宇宙マイクロ波背景放射を発見",
+      "summary": "ベル研究所のホーンアンテナで除去できない雑音が、あらゆる方向から届く約3Kの宇宙背景放射だと判明。",
+      "detail": "衛星通信用アンテナの雑音源を探していた2人は、鳩の糞まで疑った末に等方的な放射を確認した。プリンストンのディッケらはちょうど同じ放射を探す観測を準備中で、両グループの論文が同じ号に並んだ。1948年の予言を裏付けるビッグバン理論の決定的証拠となり、定常宇宙論は退場した。2人は1978年にノーベル物理学賞を受賞している。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Penzias, A. A. & Wilson, R. W. (1965) A Measurement of Excess Antenna Temperature at 4080 Mc/s. The Astrophysical Journal", "url": "https://doi.org/10.1086/148307"},
+        {"title": "The Nobel Prize in Physics 1978", "url": "https://www.nobelprize.org/prizes/physics/1978/summary/"}
+      ]
+    },
+    {
+      "date": "1967-11-28",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "観測と装置",
+      "title": "ジョスリン・ベル、初のパルサーを検出",
+      "summary": "ケンブリッジの大学院生が電波観測の記録紙に規則正しいパルスを見つけ、後に高速回転する中性子星と解釈される。",
+      "detail": "1.337秒周期の信号は当初「LGM-1（小さな緑の人）」と冗談交じりに呼ばれた。パルサーの発見により、1930年代に理論的に予想された中性子星の実在が確かめられ、極限状態の物理を試す天体が手に入った。1974年のノーベル物理学賞は指導教官ヒューイッシュに贈られ、発見者のベルが対象外だったことは科学界での貢献の帰属をめぐる議論を呼んだ。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Hewish, A., Bell, S. J., Pilkington, J. D. H., Scott, P. F. & Collins, R. A. (1968) Observation of a Rapidly Pulsating Radio Source. Nature", "url": "https://doi.org/10.1038/217709a0"}
+      ]
+    },
+    {
+      "date": "1970-02-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "観測と装置",
+      "title": "ルービンとフォード、アンドロメダ銀河の平坦な回転曲線を報告",
+      "summary": "銀河外縁部の星が予想より速く回っていることを示し、見えない質量が銀河を包む可能性を観測から提起。",
+      "detail": "光る物質だけなら外側ほど回転速度は落ちるはずだが、観測は速度がほぼ一定に保たれることを示した。1970年代末までに多数の渦巻銀河で同じ傾向が確かめられ、1933年のツビッキーの指摘が銀河スケールでも成り立つことになった。暗黒物質の存在は以後の宇宙論の前提となり、その正体は2020年代でも未解明のままである。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Rubin, V. C. & Ford, W. K. Jr. (1970) Rotation of the Andromeda Nebula from a Spectroscopic Survey of Emission Regions. The Astrophysical Journal", "url": "https://doi.org/10.1086/150317"}
+      ]
+    },
+    {
+      "date": "1974-03-01",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "理論",
+      "title": "ホーキング、ブラックホールが放射して蒸発すると予言",
+      "summary": "量子効果によりブラックホールが熱放射を出し、質量を失って蒸発しうることをNature誌の短報で示す。",
+      "detail": "一般相対論と量子論を組み合わせた計算で、ブラックホールに温度とエントロピーがあることを示した。1972年のベッケンシュタインの着想を理論的に裏付け、量子重力と情報パラドックスという長い議論を生んだ。放射は極めて微弱で観測はされていないが、1970年代の理論の飛躍は1988年の著書「ホーキング、宇宙を語る」を通じて社会に広く届き、宇宙物理学の大衆化を象徴した。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Hawking, S. W. (1974) Black hole explosions? Nature", "url": "https://doi.org/10.1038/248030a0"}
+      ]
+    },
+    {
+      "date": "1981-01-15",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "理論",
+      "title": "グース、インフレーション宇宙論を発表",
+      "summary": "初期宇宙が指数関数的に急膨張したとするモデルを提唱し、地平線問題と平坦性問題を同時に解決。",
+      "detail": "素粒子論の相転移から着想されたインフレーションは、宇宙の一様性と平坦さを説明し、量子ゆらぎが銀河の種になるという予測を生んだ。その予測は1992年のCOBE、2003年以降のWMAP、プランク衛星の観測で確かめられていく。同時期に佐藤勝彦、スタロビンスキー、リンデらも類似の考えを独立に提案しており、着想の先取権は単一には帰せない。",
+      "credibility": "disputed",
+      "credibility_note": "1979〜81年に佐藤勝彦、スタロビンスキー、カザナス、リンデらが独立に類似モデルを発表しており、誰を提唱者とするかは文献により異なる。",
+      "sources": [
+        {"title": "Guth, A. H. (1981) Inflationary universe: A possible solution to the horizon and flatness problems. Physical Review D", "url": "https://doi.org/10.1103/PhysRevD.23.347"},
+        {"title": "Sato, K. (1981) First-order phase transition of a vacuum and the expansion of the Universe. Monthly Notices of the Royal Astronomical Society", "url": null}
+      ]
+    },
+    {
+      "date": "1990-04-24",
+      "precision": "day",
+      "end_date": "1993-12-13",
+      "type": "period",
+      "layer": "観測と装置",
+      "title": "ハッブル宇宙望遠鏡、打ち上げから光学系修理まで",
+      "summary": "スペースシャトルで打ち上げられたが主鏡の研磨誤差が判明。1993年の修理ミッションで本来の性能を取り戻す。",
+      "detail": "打ち上げ直後に像がぼやける「球面収差」が見つかり、巨額計画への批判が噴出した。1993年12月のエンデバー号による補正光学系の取り付けで視力を回復し、以後、深宇宙撮像、宇宙年齢の決定、加速膨張の発見など数々の成果を生む。装置の失敗と回復が社会の科学予算への視線を左右した例であり、次世代望遠鏡JWSTの慎重な開発姿勢にも影響した。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "NASA: Hubble Space Telescope", "url": "https://science.nasa.gov/mission/hubble/"},
+        {"title": "NASA: STS-61 Mission Archives (First Hubble Servicing Mission)", "url": null}
+      ]
+    },
+    {
+      "date": "1998-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "観測と装置",
+      "title": "遠方超新星の観測で宇宙の加速膨張を発見",
+      "summary": "リースらとパールマッターらの2チームがIa型超新星の距離測定から、宇宙膨張が減速でなく加速していると報告。",
+      "detail": "重力で膨張が減速するはずという理論レイヤーの前提を覆し、アインシュタインが撤回した宇宙項に相当する「ダークエネルギー」の存在を示唆した。ハッブル宇宙望遠鏡の追観測が精度を支えた。宇宙の組成は通常物質約5%、暗黒物質約27%、ダークエネルギー約68%という現代の描像がここから固まり、3人は2011年にノーベル物理学賞を受賞した。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Riess, A. G. et al. (1998) Observational Evidence from Supernovae for an Accelerating Universe and a Cosmological Constant. The Astronomical Journal", "url": "https://doi.org/10.1086/300499"},
+        {"title": "Perlmutter, S. et al. (1999) Measurements of Ω and Λ from 42 High-Redshift Supernovae. The Astrophysical Journal", "url": "https://doi.org/10.1086/307221"}
+      ]
+    },
+    {
+      "date": "2014-03-17",
+      "precision": "day",
+      "end_date": "2015-01-30",
+      "type": "period",
+      "layer": "人と社会",
+      "title": "BICEP2「原始重力波の痕跡」発表から撤回まで",
+      "summary": "南極の望遠鏡がインフレーションの証拠となる偏光パターンを検出したと発表し話題となるが、銀河系の塵の影響と判明。",
+      "detail": "記者会見と動画で「ノーベル賞級」と報じられ、インフレーション理論の直接証拠として大きく取り上げられた。しかしプランク衛星との共同解析で、信号の大部分は銀河系内の塵によるものと結論され、2015年1月に主張は事実上撤回された。査読前の発表と科学報道のあり方が問われる一方、誤りが公開の場で修正される科学の自己修正機能を示した事例でもある。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "BICEP2 Collaboration (2014) Detection of B-Mode Polarization at Degree Angular Scales by BICEP2. Physical Review Letters", "url": "https://doi.org/10.1103/PhysRevLett.112.241101"},
+        {"title": "BICEP2/Keck and Planck Collaborations (2015) Joint Analysis of BICEP2/Keck Array and Planck Data. Physical Review Letters", "url": "https://doi.org/10.1103/PhysRevLett.114.101301"}
+      ]
+    },
+    {
+      "date": "2015-09-14",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "観測と装置",
+      "title": "LIGO、重力波を初めて直接検出",
+      "summary": "改良後の観測開始直後、約13億光年先のブラックホール連星合体からの重力波GW150914を2台の検出器が同時に捉える。",
+      "detail": "一般相対論が1916年に予言してからほぼ100年後の直接検出で、2016年2月11日に公表された。太陽の約36倍と29倍のブラックホールが合体し、約3太陽質量分のエネルギーが重力波として放出されたと解析された。2017年8月には中性子星合体GW170817が電磁波でも同時観測され、マルチメッセンジャー天文学が始まった。ワイス、バリッシュ、ソーンは2017年にノーベル物理学賞を受賞している。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Abbott, B. P. et al. (LIGO Scientific Collaboration and Virgo Collaboration) (2016) Observation of Gravitational Waves from a Binary Black Hole Merger. Physical Review Letters", "url": "https://doi.org/10.1103/PhysRevLett.116.061102"},
+        {"title": "The Nobel Prize in Physics 2017", "url": "https://www.nobelprize.org/prizes/physics/2017/summary/"}
+      ]
+    },
+    {
+      "date": "2019-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "理論",
+      "title": "「ハッブル定数の不一致」が統計的に有意と報告される",
+      "summary": "近傍宇宙の距離はしごによる測定値と、宇宙背景放射から標準モデルで導く値のずれが約4σ超に達し、新物理の可能性が議論に。",
+      "detail": "リースらのセファイド変光星と超新星による測定は毎秒毎メガパーセクあたり約74km、プランク衛星の背景放射に標準宇宙モデルを当てはめた値は約67kmで、誤差を超えて食い違う。測定の系統誤差か、暗黒エネルギーの性質や初期宇宙の物理に見直しが必要かは決着していない。JWSTによる距離尺度の再検証が2020年代の焦点となっている。",
+      "credibility": "disputed",
+      "credibility_note": "不一致の原因が未知の系統誤差か標準宇宙モデルの不備かについて研究者間で見解が分かれ、独立した距離測定法ごとに値も異なる。",
+      "sources": [
+        {"title": "Riess, A. G. et al. (2019) Large Magellanic Cloud Cepheid Standards Provide a 1% Foundation for the Determination of the Hubble Constant and Stronger Evidence for Physics beyond ΛCDM. The Astrophysical Journal", "url": null},
+        {"title": "Planck Collaboration (2020) Planck 2018 results. VI. Cosmological parameters. Astronomy & Astrophysics", "url": "https://doi.org/10.1051/0004-6361/201833910"}
+      ]
+    },
+    {
+      "date": "2020-10-06",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "人と社会",
+      "title": "ペンローズ、ゲンツェル、ゲズにノーベル物理学賞",
+      "summary": "ブラックホール形成が一般相対論の帰結であることの証明と、天の川銀河中心の超大質量天体の発見が評価される。",
+      "detail": "ペンローズは1965年に特異点定理でブラックホールの形成が理論の必然だと示し、ゲンツェルとゲズは1990年代からの星の軌道追跡で銀河中心に太陽の約400万倍の質量を突き止めた。前年2019年4月にはイベント・ホライズン・テレスコープがM87銀河中心のブラックホールの影を初めて撮像しており、理論、観測、社会的評価が105年の時を経て一点に集まった。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "The Nobel Prize in Physics 2020", "url": "https://www.nobelprize.org/prizes/physics/2020/summary/"}
+      ]
+    },
+    {
+      "date": "2021-12-25",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "観測と装置",
+      "title": "ジェイムズ・ウェッブ宇宙望遠鏡を打ち上げ",
+      "summary": "口径6.5mの赤外線宇宙望遠鏡が仏領ギアナからアリアン5で打ち上げられ、2022年7月に最初の科学画像を公開。",
+      "detail": "1996年の構想から25年、度重なる延期と予算超過を経て、総額約100億ドルの計画が実現した。太陽・地球のラグランジュ点L2で赤外線観測を行い、最初期の銀河、系外惑星大気、星形成領域を高感度で捉える。ハッブルの後継として距離尺度の再検証にも投入され、2019年の「ハッブル定数の不一致」の解決も期待される。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "NASA: James Webb Space Telescope", "url": "https://science.nasa.gov/mission/webb/"}
+      ]
+    },
+    {
+      "date": "2023-02-22",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "観測と装置",
+      "title": "JWST、初期宇宙に予想外に重い銀河候補を報告",
+      "summary": "ビッグバンから約5〜7億年の時点で、標準モデルの予想を超える質量を持つとみられる銀河候補がNature誌に報告される。",
+      "detail": "ラベらのチームは赤外線の色から推定した6個の候補天体の質量が、当時の宇宙にある通常物質の量から見て多すぎると指摘し、銀河形成理論の見直しの可能性を提起した。ただし推定は測光に基づき、分光確認や活動銀河核の寄与、質量推定法の違いによって結論が変わりうる。追観測で一部の候補は距離や質量が下方修正されており、評価は継続中である。",
+      "credibility": "unverified",
+      "credibility_note": "候補天体の距離と質量は測光推定に基づき、分光追観測やモデルの違いで大きく変わりうるため、標準モデルとの矛盾は確定していない。",
+      "sources": [
+        {"title": "Labbé, I. et al. (2023) A population of red candidate massive galaxies ~600 Myr after the Big Bang. Nature", "url": "https://doi.org/10.1038/s41586-023-05786-2"}
+      ]
+    }
+  ]
+}

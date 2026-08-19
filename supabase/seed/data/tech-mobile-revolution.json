@@ -1,0 +1,316 @@
+{
+  "slug": "tech-mobile-revolution",
+  "title": "モバイル革命の全体像",
+  "description": "iモードのモバイルネットからiPhone登場、アプリ経済圏の拡大、そして巨大プラットフォームへの規制まで。端末技術・アプリとビジネス・社会と制度の3層で、スマートフォンが生活の基盤になるまでを追う。",
+  "category": "technology",
+  "language": "ja",
+  "start_year": 1999,
+  "end_year": 2026,
+  "layers": [
+    {"name": "技術と端末", "color": "blue"},
+    {"name": "アプリとビジネス", "color": "orange"},
+    {"name": "社会と制度", "color": "green"}
+  ],
+  "events": [
+    {
+      "date": "1999-02-22",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "アプリとビジネス",
+      "title": "NTTドコモがiモードを開始",
+      "summary": "携帯電話からメールとウェブサイトを利用できるiモードが開始。公式サイトと月額課金の仕組みでモバイルコンテンツ市場を築いた。",
+      "detail": "着メロや占い、モバイルバンキングなど公式コンテンツへの課金を通信料と合算徴収する仕組みは、後のApp Storeが整えた「小額課金の経済圏」を先取りしたものと評される。一方で日本市場が独自進化を遂げたことは、2008年のiPhone上陸(技術と端末レイヤー)後に「ガラパゴス」と呼ばれる転換の背景ともなった。",
+      "credibility": "disputed",
+      "credibility_note": "「世界初のモバイルインターネットサービス」とする表現は、同時期のWAP等との比較で定義が分かれる。",
+      "sources": [
+        {"title": "Wikipedia: i-mode", "url": "https://en.wikipedia.org/wiki/I-mode"}
+      ]
+    },
+    {
+      "date": "2001-10-01",
+      "precision": "day",
+      "end_date": "2026-03-31",
+      "type": "period",
+      "layer": "技術と端末",
+      "title": "3G(FOMA)サービスの時代",
+      "summary": "NTTドコモが世界初の商用W-CDMAサービスFOMAを開始。2026年3月末の終了まで、四半世紀にわたり通信の土台を担った。",
+      "detail": "テレビ電話や高速パケット通信を掲げて始まった3Gは、当初は端末の電池持ちなどで普及が遅れたが、2000年代半ばに主流となった。2008年のiPhone 3G(技術と端末)、2010年代のLINEやスマホ決済(アプリとビジネス)はいずれも3G以降の通信基盤の上に成立している。停波はスマホ移行の完了を告げる区切りでもある。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "NTTドコモ 報道発表: FOMAおよびiモードのサービス終了について(2019年10月29日)", "url": null}
+      ]
+    },
+    {
+      "date": "2007-01-09",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と端末",
+      "title": "AppleがiPhoneを発表",
+      "summary": "スティーブ・ジョブズがMacworldでiPhoneを発表。マルチタッチ画面とフルブラウザを備え、同年6月29日に米国で発売された。",
+      "detail": "物理キーを廃した全面タッチスクリーンとデスクトップ級のブラウザは、iモードに代表される「携帯向けに縮小されたウェブ」との決別を意味した。当初はサードパーティのアプリを認めず、翌年のApp Store(アプリとビジネス)開設で経済圏が生まれる。発表当時、世界の携帯端末市場ではNokiaが首位にあった。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Apple Newsroom: Apple Reinvents the Phone with iPhone (2007-01-09)", "url": "https://www.apple.com/newsroom/2007/01/09Apple-Reinvents-the-Phone-with-iPhone/"}
+      ]
+    },
+    {
+      "date": "2007-11-05",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と端末",
+      "title": "GoogleらがAndroidとOpen Handset Allianceを発表",
+      "summary": "Googleと端末・通信34社がオープンソースのモバイルOS「Android」を発表。iPhoneに対抗する開放型の陣営が形成された。",
+      "detail": "iPhone発表から10か月後の対抗軸。OSを無償で端末メーカーに提供する戦略は、Samsungや中国メーカーの台頭を促し、世界のスマホ出荷台数の大半をAndroidが占める構図をつくった。同時に、検索やアプリストアを通じたGoogleの支配力が、後年のEUデジタル市場法(社会と制度レイヤー)の主要な争点となる。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Open Handset Alliance: Industry Leaders Announce Open Platform for Mobile Devices (2007-11-05)", "url": "https://www.openhandsetalliance.com/press_110507.html"}
+      ]
+    },
+    {
+      "date": "2008-07-10",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "アプリとビジネス",
+      "title": "App Store開設、アプリ経済圏の始まり",
+      "summary": "AppleがiPhone向けApp Storeを開設。約500本のアプリで始まり、開発者への70%配分モデルがアプリ産業の標準となった。",
+      "detail": "iモードの公式サイト課金と異なり、審査を通れば世界中の開発者が同じ条件で配信できる仕組みが、個人開発者から大手までを引き込んだ。翌日にはiPhone 3Gが日本を含む22か国で発売され(技術と端末)、端末とストアが同時に世界展開された。この30%手数料は十数年後にEpic訴訟やDMA(社会と制度)で問われることになる。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Apple Newsroom: iPhone 3G on Sale Tomorrow (2008-07-10)", "url": "https://www.apple.com/newsroom/2008/07/10iPhone-3G-on-Sale-Tomorrow/"}
+      ]
+    },
+    {
+      "date": "2008-07-11",
+      "precision": "day",
+      "end_date": "2011-10-14",
+      "type": "period",
+      "layer": "アプリとビジネス",
+      "title": "iPhone 3G日本発売とソフトバンク単独販売期",
+      "summary": "iPhone 3Gが日本で発売。ソフトバンクモバイルが単独で扱い、2011年10月のau参入まで国内iPhone市場を独占した。",
+      "detail": "発売日には表参道の店舗に長い行列ができ、日本の携帯市場が端末メーカー主導からプラットフォーム主導へ転換する起点となった。単独販売期間はソフトバンクの契約者数を押し上げ、通信キャリアの勢力図を変えた。iモード全盛の国内市場でスマホの世帯保有率が1割に満たなかった2010年(社会と制度)を挟む期間である。",
+      "credibility": "unverified",
+      "credibility_note": "Appleとソフトバンク間の契約内容は非公開で、「独占契約」の存在は当時の報道と販売実態からの推定にとどまる。",
+      "sources": [
+        {"title": "ソフトバンクモバイル 報道発表: iPhone 3Gの発売について(2008年)", "url": null}
+      ]
+    },
+    {
+      "date": "2008-10-22",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と端末",
+      "title": "初のAndroid端末「T-Mobile G1」発売",
+      "summary": "HTC製の初のAndroid搭載スマートフォンが米国で発売。物理キーボード付きで、Android Marketも同時に始まった。",
+      "detail": "iPhone 3G発売の3か月後にあたる。初代Androidは完成度で劣るとの評価も多かったが、複数メーカーへの展開が急速に進み、2010年代初頭には出荷台数でiOSを上回った。日本ではドコモが2009年にHT-03Aとして初のAndroid端末を投入し、iPhoneを持たなかった同社の対抗軸となった。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Wikipedia: HTC Dream", "url": "https://en.wikipedia.org/wiki/HTC_Dream"}
+      ]
+    },
+    {
+      "date": "2010-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と制度",
+      "title": "日本のスマートフォン世帯保有率は約1割",
+      "summary": "総務省の通信利用動向調査で、2010年末時点のスマートフォン世帯保有率は9.7%。携帯電話全体の保有率は9割を超えていた。",
+      "detail": "iPhone上陸から2年、まだ大半の利用者はフィーチャーフォンを使っていた。この年、Instagramが公開され(アプリとビジネス)、ドコモはLTEサービス「Xi」を12月に開始している(技術と端末)。普及の「前夜」にあたり、以後10年で保有率が8割超へ達する急上昇の起点として参照される数値である。",
+      "credibility": "unverified",
+      "credibility_note": "9.7%は平成22年通信利用動向調査の値として広く引用されるが、調査年版により集計対象や設問が異なるため原資料での確認を推奨する。",
+      "sources": [
+        {"title": "総務省: 通信利用動向調査", "url": "https://www.soumu.go.jp/johotsusintokei/statistics/statistics05.html"}
+      ]
+    },
+    {
+      "date": "2010-10-06",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "アプリとビジネス",
+      "title": "Instagram公開",
+      "summary": "写真共有アプリInstagramがiPhone向けに公開。スマホのカメラとSNSを直結させ、モバイル発のサービスが主流になる先駆けとなった。",
+      "detail": "PC版を持たずモバイル専用で始まった点が象徴的で、スマートフォンが「PCの補助」から「主戦場」へ変わったことを示す。2012年にFacebookが約10億ドルで買収し、アプリ企業の評価額が急騰する時代を印象づけた。同年の日本ではスマホ保有率が1割程度(社会と制度)であり、普及の速度差が読み取れる。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Wikipedia: Instagram", "url": "https://en.wikipedia.org/wiki/Instagram"}
+      ]
+    },
+    {
+      "date": "2011-03-11",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と制度",
+      "title": "東日本大震災、安否確認にSNSとモバイルが機能",
+      "summary": "音声通話がつながりにくい中、TwitterやSNS、パケット通信による安否確認や情報共有が広く使われ、モバイルの社会的役割が認識された。",
+      "detail": "通信規制で電話が制限される一方、パケット通信は比較的つながりやすく、SNS上の情報がテレビと並ぶ情報源となった。この経験は同年6月のLINE誕生(アプリとビジネス)の直接の動機とされ、災害時の連絡手段としてスマホへの移行を後押しした。3Gネットワーク(技術と端末)の混雑と復旧は通信各社の課題として残った。",
+      "credibility": "disputed",
+      "credibility_note": "SNSが果たした役割の評価は研究により幅があり、デマ拡散の弊害を重く見る見解もある。",
+      "sources": [
+        {"title": "総務省: 平成23年版 情報通信白書 東日本大震災における情報通信の状況", "url": null}
+      ]
+    },
+    {
+      "date": "2011-06-23",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "アプリとビジネス",
+      "title": "LINEサービス開始",
+      "summary": "NHN Japanがメッセージアプリ「LINE」を公開。無料通話とスタンプで急成長し、日本のスマホ利用の中心的なアプリとなった。",
+      "detail": "震災時の連絡手段の課題(社会と制度)を受けて短期間で開発されたとされる。電話番号ベースの登録により乗り換えの負担が小さく、フィーチャーフォン利用者をスマホへ移行させる強い動機となった。スタンプ販売や公式アカウントによる収益化はiモード時代の課金文化と接続し、日本独自のアプリ経済圏を形づくった。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Wikipedia: Line (software)", "url": "https://en.wikipedia.org/wiki/Line_(software)"}
+      ]
+    },
+    {
+      "date": "2013-09-03",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と端末",
+      "title": "MicrosoftがNokiaの携帯端末事業を買収すると発表",
+      "summary": "かつて世界首位だったNokiaの端末事業をMicrosoftが約72億ドルで取得すると発表。スマホ移行に乗り遅れた旧勢力の退場を象徴した。",
+      "detail": "iPhone発表時に首位だったNokiaは独自OSからWindows Phoneへ転換したが、iOSとAndroidの二強(技術と端末)とアプリの品揃え(アプリとビジネス)の差を埋められなかった。プラットフォームとアプリ経済圏を握った側が勝つという構図が確定した出来事で、同月には日本でドコモがiPhoneの取り扱いを開始している。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Wikipedia: Microsoft Mobile", "url": "https://en.wikipedia.org/wiki/Microsoft_Mobile"}
+      ]
+    },
+    {
+      "date": "2013-09-20",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と端末",
+      "title": "NTTドコモがiPhone販売を開始",
+      "summary": "国内最大手のドコモがiPhone 5s/5cを発売。国内3キャリアすべてがiPhoneを扱う体制となり、日本市場でのiPhone優位が固まった。",
+      "detail": "iモードで独自エコシステムを築いたドコモがiPhoneを受け入れたことは、キャリア主導からプラットフォーム主導への転換の完了を意味した。同日発売のiPhone 5sは指紋認証Touch IDを搭載し、翌年のApple Payにつながる。iモード終了(2026年)は既定路線となり、日本のスマホ世帯保有率はこの後も急上昇を続ける(社会と制度)。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "NTTドコモ 報道発表: iPhone 5s/iPhone 5cの発売について(2013年9月)", "url": null}
+      ]
+    },
+    {
+      "date": "2016-07-22",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と制度",
+      "title": "ポケモンGO日本配信、位置情報ゲームが社会現象に",
+      "summary": "米国などでの配信から2週間後に日本でも配信開始。公園や観光地に人が集まり、スマホが街の使い方を変える様子が可視化された。",
+      "detail": "GPSとカメラを使ったAR体験は、スマホの標準機能(技術と端末)が数億人規模の行動を同時に動かせることを示した。歩きスマホや私有地への立ち入りが問題となり、自治体や施設が利用ルールを設けるなど、社会の側がスマホ利用に対応を迫られた早い例でもある。任天堂株の急騰(アプリとビジネス)も話題となった。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Wikipedia: Pokémon Go", "url": "https://en.wikipedia.org/wiki/Pok%C3%A9mon_Go"}
+      ]
+    },
+    {
+      "date": "2018-12-04",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "アプリとビジネス",
+      "title": "PayPay「100億円あげちゃうキャンペーン」開始",
+      "summary": "スマホ決済PayPayが購入額の20%を還元する大型キャンペーンを開始。10日で予算を使い切り、QRコード決済の認知を一気に広げた。",
+      "detail": "中国のAlipayやWeChat Payに倣ったQRコード決済を、巨額の還元で普及させる手法。翌年の消費増税に伴う政府のポイント還元事業(社会と制度)が追い風となり、現金志向の強かった日本でスマホ決済が日常化する転機となった。スマホがサイフになることで、端末(技術と端末)は生活インフラとしての性格を強めた。",
+      "credibility": "unverified",
+      "credibility_note": "還元総額や終了時点の利用者数はPayPay社の発表に基づき、第三者による検証はない。",
+      "sources": [
+        {"title": "PayPay株式会社 プレスリリース: 100億円あげちゃうキャンペーン(2018年)", "url": null}
+      ]
+    },
+    {
+      "date": "2019-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と制度",
+      "title": "スマホの世帯保有率が固定電話を上回る",
+      "summary": "総務省の通信利用動向調査で、2019年のスマートフォン世帯保有率は83.4%となり、固定電話(69.0%)を初めて上回った。",
+      "detail": "2010年の約1割から10年足らずで8割超に達し、スマホが「電話」の主役の座を固定電話から奪った象徴的な数値。同時期にPayPayなど決済アプリ(アプリとビジネス)が普及し、翌年のコロナ禍ではCOCOAや給付金申請など行政サービスもスマホ前提で設計されるようになる。5Gの国内商用開始(2020年、技術と端末)も目前だった。",
+      "credibility": "disputed",
+      "credibility_note": "83.4%と69.0%は令和元年調査の公表値だが、調査年により集計方法が見直されており、経年比較の解釈には注意が必要。",
+      "sources": [
+        {"title": "総務省: 令和元年通信利用動向調査の結果", "url": "https://www.soumu.go.jp/johotsusintokei/statistics/statistics05.html"}
+      ]
+    },
+    {
+      "date": "2020-06-19",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と制度",
+      "title": "接触確認アプリCOCOAの提供開始",
+      "summary": "厚生労働省が新型コロナ接触確認アプリCOCOAを公開。AppleとGoogleが共同提供したAPIの上に築かれ、公衆衛生施策がスマホ前提となった。",
+      "detail": "国の施策がプラットフォーム企業の提供する仕組み(技術と端末)に依存する構図が明確になった出来事。Android版の不具合が長期間見過ごされるなど運用面の課題も残した。同時期にリモートワークやオンライン診療が広がり、スマホとアプリ(アプリとビジネス)が生活と行政の接点として不可欠になった年である。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "厚生労働省: 新型コロナウイルス接触確認アプリ(COCOA)", "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/cocoa_00138.html"}
+      ]
+    },
+    {
+      "date": "2020-08-13",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "アプリとビジネス",
+      "title": "Epic GamesがAppleを提訴、App Store手数料をめぐる争い",
+      "summary": "フォートナイトに独自決済を導入したEpicがApp Storeから排除され、同日Appleを反トラスト法違反で提訴。手数料30%の妥当性が法廷で争われた。",
+      "detail": "2008年のApp Store開設以来の30%手数料と外部決済禁止に対する正面からの挑戦。2021年の一審は大半でApple勝訴としつつ外部リンク禁止を違法と判断し、以後の是正命令へつながった。EUのDMAや日本のスマホ新法(社会と制度)と並び、アプリ経済圏の「門番」に対する規制の潮流をつくった。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Wikipedia: Epic Games v. Apple", "url": "https://en.wikipedia.org/wiki/Epic_Games_v._Apple"}
+      ]
+    },
+    {
+      "date": "2024-03-07",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と制度",
+      "title": "EUデジタル市場法(DMA)の義務が適用開始",
+      "summary": "指定ゲートキーパー企業への義務が発効。AppleはEU域内でサードパーティのアプリストアや外部決済を認める対応を迫られた。",
+      "detail": "iPhoneのアプリ配布がApp Store一本に限られてきた16年間の前提が、初めて法律によって変更された。対象にはGoogle、Meta、Amazonなども含まれ、Android(技術と端末)の検索やストアの既定設定も是正対象となった。Epic訴訟(アプリとビジネス)が問うた論点を、EUは事前規制として立法で解決する道を選んだ。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "European Commission: The Digital Markets Act", "url": "https://digital-markets-act.ec.europa.eu/"}
+      ]
+    },
+    {
+      "date": "2024-06-12",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と制度",
+      "title": "日本でスマホソフトウェア競争促進法が成立",
+      "summary": "スマホOS・アプリストア・ブラウザ・検索エンジンの提供事業者に、他社ストアの受け入れなどを義務づける新法が成立。2025年12月に全面施行。",
+      "detail": "EUのDMAに続き、日本もアプリ経済圏(アプリとビジネス)の門番に対する事前規制へ踏み出した。1999年のiモード以来、キャリアからプラットフォーム企業へ移った市場支配力に対し、制度が追いつく形となる。25年前にiモードで始まった日本のモバイル史が、規制対象としてのスマホという段階に到達したことを示す出来事。",
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "公正取引委員会: スマートフォンにおいて利用される特定ソフトウェアに係る競争の促進に関する法律", "url": null}
+      ]
+    }
+  ]
+}
