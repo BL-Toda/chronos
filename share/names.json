@@ -1,36 +1,139 @@
 {
   "_comment": "共有環境の一覧ページに表示する名称とグループ。編集後は npm run deploy で反映。ここに無いファイルはtitleで「未分類」に表示される。現行/アーカイブは2026-07-31の意思決定に基づく",
-  "groups": ["アプリ画面", "LP", "ドキュメント", "アーカイブ"],
+  "groups": [
+    "アプリ画面",
+    "LP",
+    "ドキュメント",
+    "アーカイブ"
+  ],
   "pages": {
-    "chronos-explore.html": { "name": "年表一覧 Explore（v2・現行作業中）", "group": "アプリ画面" },
-    "chronos-viewer.html": { "name": "年表ビューア（現行・閲覧の正）", "group": "アプリ画面" },
-    "chronos-screens.html": { "name": "主要画面集（マイページ・設定ほか）", "group": "アプリ画面" },
-    "chronos-auth.html": { "name": "ログイン / サインアップ", "group": "アプリ画面" },
-    "chronos-onboarding-v2.html": { "name": "オンボーディング（現行）", "group": "アプリ画面" },
-    "chronos-creation-flow.html": { "name": "年表作成フロー", "group": "アプリ画面" },
-    "chronos-share-embed.html": { "name": "共有・埋め込みUI", "group": "アプリ画面" },
-    "chronos-avatars.html": { "name": "アバター案", "group": "アプリ画面" },
-    "chronos-profile.html": { "name": "公開プロフィール @username（新規）", "group": "アプリ画面" },
-    "chronos-lp-v4.html": { "name": "LP v4（新規・ゼロから再設計・レビュー中）", "group": "LP" },
-    "chronos-lp-v3.html": { "name": "LP v3（前版・参照用）", "group": "LP" },
-    "chronos-legal.html": { "name": "法務ページ（利用規約・プライバシーポリシー・特商法）", "group": "ドキュメント" },
-    "chronos-design-system.html": { "name": "デザインシステム", "group": "ドキュメント" },
-    "chronos-sitemap.html": { "name": "サイトマップ・画面遷移", "group": "ドキュメント" },
-    "chronos-tech-overview.html": { "name": "技術構成メモ", "group": "ドキュメント" },
-    "chronos-ogp-templates.html": { "name": "OGP画像テンプレート", "group": "ドキュメント" },
-    "chronos-onboarding.html": { "name": "オンボーディング v1（旧）", "group": "アーカイブ" },
-    "chronos.html": { "name": "アプリ全体 v1（旧）", "group": "アーカイブ" },
-    "chronos-v2.html": { "name": "アプリ全体 v2（旧）", "group": "アーカイブ" },
-    "chronos-v3-multilayer.html": { "name": "マルチレイヤー表示 v3（UI実験）", "group": "アーカイブ" },
-    "chronos-period-lanes.html": { "name": "期間イベント レーン案（UI実験・viewerへ統合予定）", "group": "アーカイブ" },
-    "chronos-period-ui.html": { "name": "期間イベントUI検討（UI実験）", "group": "アーカイブ" },
-    "chronos-lp.html": { "name": "LP v1（旧）", "group": "アーカイブ" },
-    "chronos-lp-v2.html": { "name": "LP v2（旧・デモ移植元）", "group": "アーカイブ" },
-    "chronos-lp-brand.html": { "name": "LP ブランド訴求案（旧）", "group": "アーカイブ" },
-    "chronos-lp-launch.html": { "name": "LP ローンチ告知版（旧）", "group": "アーカイブ" },
-    "chronos-logo-exploration.html": { "name": "ロゴ検討（旧案）", "group": "アーカイブ" },
-    "chronos-logo-v2.html": { "name": "ロゴ検討 v2（旧案）", "group": "アーカイブ" },
-    "chronos-font-compare.html": { "name": "フォント比較（旧）", "group": "アーカイブ" },
-    "chronos-font-gothic.html": { "name": "ゴシック体検討（旧）", "group": "アーカイブ" }
+    "chronos-explore.html": {
+      "name": "年表一覧 Explore（v2・現行作業中）",
+      "group": "アプリ画面"
+    },
+    "chronos-viewer.html": {
+      "name": "年表ビューア（現行・閲覧の正）",
+      "group": "アプリ画面"
+    },
+    "chronos-screens.html": {
+      "name": "主要画面集（マイページ・設定ほか）",
+      "group": "アプリ画面"
+    },
+    "chronos-auth.html": {
+      "name": "ログイン / サインアップ",
+      "group": "アプリ画面"
+    },
+    "chronos-onboarding-v2.html": {
+      "name": "オンボーディング（現行）",
+      "group": "アプリ画面"
+    },
+    "chronos-creation-flow.html": {
+      "name": "年表作成フロー",
+      "group": "アプリ画面"
+    },
+    "chronos-share-embed.html": {
+      "name": "共有・埋め込みUI",
+      "group": "アプリ画面"
+    },
+    "chronos-avatars.html": {
+      "name": "アバター案",
+      "group": "アプリ画面"
+    },
+    "chronos-profile.html": {
+      "name": "公開プロフィール @username（新規）",
+      "group": "アプリ画面"
+    },
+    "chronos-lp-v4.html": {
+      "name": "LP v4（新規・ゼロから再設計・レビュー中）",
+      "group": "LP"
+    },
+    "chronos-lp-v3.html": {
+      "name": "LP v3（前版・参照用）",
+      "group": "LP"
+    },
+    "chronos-legal.html": {
+      "name": "法務ページ（利用規約・プライバシーポリシー・特商法）",
+      "group": "ドキュメント"
+    },
+    "chronos-design-system.html": {
+      "name": "デザインシステム",
+      "group": "ドキュメント"
+    },
+    "chronos-sitemap.html": {
+      "name": "サイトマップ・画面遷移",
+      "group": "ドキュメント"
+    },
+    "chronos-tech-overview.html": {
+      "name": "技術構成メモ",
+      "group": "ドキュメント"
+    },
+    "chronos-ogp-templates.html": {
+      "name": "OGP画像テンプレート",
+      "group": "ドキュメント"
+    },
+    "chronos-onboarding.html": {
+      "name": "オンボーディング v1（旧）",
+      "group": "アーカイブ"
+    },
+    "chronos.html": {
+      "name": "アプリ全体 v1（旧）",
+      "group": "アーカイブ"
+    },
+    "chronos-v2.html": {
+      "name": "アプリ全体 v2（旧）",
+      "group": "アーカイブ"
+    },
+    "chronos-v3-multilayer.html": {
+      "name": "マルチレイヤー表示 v3（UI実験）",
+      "group": "アーカイブ"
+    },
+    "chronos-period-lanes.html": {
+      "name": "期間イベント レーン案（UI実験・viewerへ統合予定）",
+      "group": "アーカイブ"
+    },
+    "chronos-period-ui.html": {
+      "name": "期間イベントUI検討（UI実験）",
+      "group": "アーカイブ"
+    },
+    "chronos-lp.html": {
+      "name": "LP v1（旧）",
+      "group": "アーカイブ"
+    },
+    "chronos-lp-v2.html": {
+      "name": "LP v2（旧・デモ移植元）",
+      "group": "アーカイブ"
+    },
+    "chronos-lp-brand.html": {
+      "name": "LP ブランド訴求案（旧）",
+      "group": "アーカイブ"
+    },
+    "chronos-lp-launch.html": {
+      "name": "LP ローンチ告知版（旧）",
+      "group": "アーカイブ"
+    },
+    "chronos-logo-exploration.html": {
+      "name": "ロゴ検討（旧案）",
+      "group": "アーカイブ"
+    },
+    "chronos-logo-v2.html": {
+      "name": "ロゴ検討 v2（旧案）",
+      "group": "アーカイブ"
+    },
+    "chronos-font-compare.html": {
+      "name": "フォント比較（旧）",
+      "group": "アーカイブ"
+    },
+    "chronos-font-gothic.html": {
+      "name": "ゴシック体検討（旧）",
+      "group": "アーカイブ"
+    },
+    "archive/chronos-explore-unsplash-202602.html": {
+      "name": "Explore 写真カバー案（Unsplash固定・2026-02）",
+      "group": "アーカイブ"
+    },
+    "archive/chronos-explore4-photo-202603.html": {
+      "name": "Explore 写真カバー案 v4（Unsplash API・2026-03）",
+      "group": "アーカイブ"
+    }
   }
 }

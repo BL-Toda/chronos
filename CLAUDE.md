@@ -16,7 +16,7 @@
 
 - `prototypes/` — 単一HTMLのUIプロトタイプ（各画面が独立して動作）
   - **現行版（2026-07-31確定）**: Explore=`chronos-explore.html`(v2・作業対象) / 閲覧の正=`chronos-viewer.html`（作成者ビューは「viewer+編集モード」方針、独立画面なし） / LP=`chronos-lp-v4.html`（ゼロから再設計、v3は参照用） / オンボーディング=`chronos-onboarding-v2.html` / 主要画面=`chronos-screens.html`
-  - **アーカイブ**: chronos.html, chronos-v2, chronos-v3-multilayer, period-lanes, period-ui, onboarding(v1), lp, lp-v2, lp-v3, lp-brand, lp-launch, logo系2種, font系2種（参照時は歴史資料として扱う）
+  - **アーカイブ**: `prototypes/archive/`（Explore写真カバー旧案2本）, chronos.html, chronos-v2, chronos-v3-multilayer, period-lanes, period-ui, onboarding(v1), lp, lp-v2, lp-v3, lp-brand, lp-launch, logo系2種, font系2種（参照時は歴史資料として扱う）
 - `assets/chronos-logo.svg` — **確定ロゴ原本**（グラデーション円シンボル+白ワードマーク、5.7MB）
   - 配信用軽量版: `prototypes/assets/chronos-logo.svg`（埋め込みテクスチャを800pxに縮小、68KB）
   - シンボル単体: `assets/chronos-symbol.svg`（原本）/ `prototypes/assets/chronos-symbol.svg`（軽量版）
@@ -39,7 +39,7 @@
 
 ## Explore v3 — 完了（2026-08-01）
 
-`chronos-explore.html` はv3実装済み: 生成型カバー画像（シード決定論・カテゴリカラー6パターン）/ ♡🔖ボタン+カウント（カード・リスト両対応）/ フルード全幅グリッド / モバイル導線（ボトムシート型フィルタ+ハンバーガー）/ a11y（button化・focus-visible・コントラスト是正）。
+`chronos-explore.html` はv3実装済み: **カバーはUnsplash写真が正**（2026-08-19確定。カテゴリ別8枚×6=48枚をPHOTO_POOLに固定埋め込み、seed決定論で選択、生成型SVGカバーは読み込み中プレースホルダ兼フォールバック。APIキーはプロトタイプに置かない。本番はサーバー側でUnsplash API+attribution+download tracking）/ マイクロインタラクション（写真フェードイン・hover微拡大・IO reveal・♡ポップ・フィルタ切替クロスフェード・年代範囲線・レイヤードット順次点灯・件数カウントアップ・空状態線画・ボトムシートのスワイプ閉じ・ブックマーク初回ヒント。すべて prefers-reduced-motion で無効）/ ♡🔖ボタン+カウント（カード・リスト両対応）/ フルード全幅グリッド / モバイル導線（ボトムシート型フィルタ+ハンバーガー）/ a11y（button化・focus-visible・コントラスト是正）。
 ソーシャル状態はlocalStorageで画面間連携: `chronos_likes_v1`（id配列）/ `chronos_bookmarks_v1`（`{id,title,desc,cat,catName,likes}`配列）。マイページ（screens）にブックマークタブ、viewerにいいねボタン実装済み。
 
 ## 公開系UX — 完了（2026-08-01）

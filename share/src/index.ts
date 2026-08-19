@@ -232,7 +232,7 @@ function indexPage(): string {
     const date = new Date(it.mtime).toLocaleDateString("ja-JP", {
       year: "numeric", month: "2-digit", day: "2-digit", timeZone: "Asia/Tokyo",
     });
-    return `<a class="row" href="/${encodeURIComponent(it.file)}" target="_blank" rel="noopener" data-q="${escapeHtml((it.name + " " + it.title + " " + it.file).toLowerCase())}">
+    return `<a class="row" href="/${it.file.split("/").map(encodeURIComponent).join("/")}" target="_blank" rel="noopener" data-q="${escapeHtml((it.name + " " + it.title + " " + it.file).toLowerCase())}">
 <span class="t">${escapeHtml(it.name)}</span>
 <span class="f mono">${escapeHtml(it.file)}</span>
 <span class="m mono">${kb} KB ・ ${date}</span>

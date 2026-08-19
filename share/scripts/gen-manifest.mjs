@@ -10,7 +10,18 @@ const protoDir = join(root, "..", "prototypes");
 const outFile = join(root, "src", "manifest.json");
 
 const names = JSON.parse(await readFile(join(root, "names.json"), "utf8"));
-const files = (await readdir(protoDir)).filter((f) => /\.html?$/i.test(f)).sort();
+// prototypes/ 直下と archive/ など1階層下のサブディレクトリを走査（assets/ は除外）
+const top = await readdir(protoDir, { withFileTypes: true });
+const files = [];
+for (const ent of top) {
+  if (ent.isFile() && /\.html?$/i.test(ent.name)) files.push(ent.name);
+  else if (ent.isDirectory() && ent.name !== "assets") {
+    for (const f of await readdir(join(protoDir, ent.name))) {
+      if (/\.html?$/i.test(f)) files.push(`${ent.name}/${f}`);
+    }
+  }
+}
+files.sort();
 
 const items = [];
 for (const file of files) {

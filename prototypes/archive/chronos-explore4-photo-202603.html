@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>Chronos — 年表を探す</title>
+<link href="https://api.fontshare.com/v2/css?f[]=erode@300,400,500,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0A0A0C;--bg2:#111114;--bg3:#16161A;--bg-card:#12121A;
+  --accent:#C8A87E;--accent-dim:rgba(200,168,126,0.13);--accent-glow:rgba(200,168,126,0.04);
+  --text:#E8E4DE;--text-h:#F5F2ED;--text2:#8A8680;--text3:#5A5754;
+  --border:rgba(200,168,126,0.1);--border2:rgba(200,168,126,0.22);
+  --c-blue:#5B9BD5;--c-blue-d:rgba(91,155,213,0.12);
+  --c-green:#7BC67E;--c-green-d:rgba(123,198,126,0.12);
+  --c-pink:#D4849A;--c-pink-d:rgba(212,132,154,0.12);
+  --c-teal:#5BBCB4;--c-teal-d:rgba(91,188,180,0.12);
+  --c-gold:#C8B87E;--c-gold-d:rgba(200,184,126,0.12);
+  --c-purple:#9E7EC8;--c-purple-d:rgba(158,126,200,0.12);
+  --c-orange:#D4A05A;--c-orange-d:rgba(212,160,90,0.12);
+  --f-d:'Erode','Shippori Mincho',serif;
+  --f-b:'DM Sans',sans-serif;
+  --f-m:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg);color-scheme:dark}
+body{font-family:var(--f-b);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ===== HEADER ===== */
+.hdr{position:sticky;top:0;z-index:100;background:rgba(10,10,12,0.88);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);padding:0 24px;height:56px;
+  display:flex;align-items:center;justify-content:space-between}
+.hdr-brand{font-family:var(--f-d);font-size:1.3rem;font-weight:500;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;cursor:pointer}
+.hdr-nav{display:flex;align-items:center;gap:20px}
+.hdr-nav a{font-size:13px;color:var(--text3);text-decoration:none;transition:color 0.2s}
+.hdr-nav a:hover{color:var(--text2)}
+.hdr-nav a.active{color:var(--accent)}
+.hdr-avatar{width:32px;height:32px;border-radius:50%;overflow:hidden;border:1.5px solid var(--border);cursor:pointer;transition:border-color 0.2s}
+.hdr-avatar:hover{border-color:var(--accent)}
+.hdr-avatar svg{width:100%;height:100%;display:block}
+
+/* ===== LAYOUT — LIQUID ===== */
+.layout{display:flex;min-height:calc(100vh - 56px)}
+
+/* ===== SIDEBAR ===== */
+.sidebar{width:260px;flex-shrink:0;border-right:1px solid var(--border);padding:24px 20px;
+  position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto;
+  scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+.sb-section{margin-bottom:28px}
+.sb-label{font-family:var(--f-m);font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--text3);margin-bottom:10px}
+.sb-item{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;border-radius:8px;font-size:13px;color:var(--text2);cursor:pointer;transition:all 0.2s;margin-bottom:2px}
+.sb-item:hover{background:rgba(200,168,126,0.04);color:var(--text)}
+.sb-item.active{background:var(--accent-dim);color:var(--accent)}
+.sb-item-count{font-family:var(--f-m);font-size:10px;color:var(--text3)}
+.sb-item.active .sb-item-count{color:var(--accent);opacity:0.6}
+.sb-dot{width:7px;height:7px;border-radius:50%;margin-right:8px;flex-shrink:0}
+.sb-item-left{display:flex;align-items:center}
+.sb-range{display:flex;align-items:center;gap:8px;padding:0 4px}
+.sb-range-input{flex:1;background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:6px 8px;font-family:var(--f-m);font-size:11px;color:var(--text);outline:none;width:100%;text-align:center}
+.sb-range-input:focus{border-color:var(--accent)}
+.sb-range-sep{color:var(--text3);font-size:12px}
+.sb-check{display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:8px;font-size:13px;color:var(--text2);cursor:pointer;transition:all 0.2s;margin-bottom:2px}
+.sb-check:hover{background:rgba(200,168,126,0.04)}
+.sb-check.active{color:var(--accent)}
+.sb-checkbox{width:14px;height:14px;border-radius:4px;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0}
+.sb-check.active .sb-checkbox{background:var(--accent);border-color:var(--accent)}
+.sb-check.active .sb-checkbox::after{content:'✓';font-size:10px;color:var(--bg);font-weight:600}
+.sb-reset{font-size:11px;color:var(--text3);cursor:pointer;padding:8px 10px;text-align:center;transition:color 0.2s}
+.sb-reset:hover{color:var(--accent)}
+
+/* ===== CONTENT ===== */
+.content{flex:1;padding:24px 32px 80px;min-width:0}
+.search-bar{display:flex;align-items:center;gap:12px;padding:11px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;transition:all 0.3s ease;margin-bottom:20px}
+.search-bar:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,168,126,0.06)}
+.search-icon{flex-shrink:0;width:16px;height:16px;stroke:var(--text3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.search-input{flex:1;background:none;border:none;outline:none;font-family:var(--f-b);font-size:14px;color:var(--text);caret-color:var(--accent)}
+.search-input::placeholder{color:var(--text3)}
+.search-kbd{font-family:var(--f-m);font-size:10px;color:var(--text3);padding:2px 7px;border-radius:4px;border:1px solid var(--border);background:var(--bg)}
+.toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+.toolbar-left{display:flex;align-items:center;gap:12px}
+.result-count{font-size:13px;color:var(--text2)}
+.result-count strong{color:var(--text);font-weight:500}
+.active-filters{display:flex;gap:6px;flex-wrap:wrap}
+.active-filter-tag{font-family:var(--f-m);font-size:10px;padding:3px 10px 3px 8px;border-radius:12px;background:var(--accent-dim);color:var(--accent);display:flex;align-items:center;gap:5px;cursor:pointer;transition:all 0.2s}
+.active-filter-tag:hover{background:rgba(200,168,126,0.2)}
+.active-filter-tag .aft-x{font-size:12px;opacity:0.6}
+.toolbar-right{display:flex;align-items:center;gap:8px}
+.sort-select{font-family:var(--f-b);font-size:12px;color:var(--text3);background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:6px 28px 6px 10px;cursor:pointer;outline:none;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%235A5754' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 8px center;transition:all 0.2s}
+.sort-select:focus{border-color:var(--accent)}
+.sort-select option{background:var(--bg2);color:var(--text)}
+.view-toggle{display:flex;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.view-btn{padding:6px 10px;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+.view-btn svg{width:14px;height:14px;stroke:var(--text3);fill:none;stroke-width:2}
+.view-btn.active{background:var(--accent-dim)}
+.view-btn.active svg{stroke:var(--accent)}
+.view-btn+.view-btn{border-left:1px solid var(--border)}
+
+/* ===== FEATURED SECTIONS ===== */
+.featured-sections{margin-bottom:28px}
+.featured-sections.hidden{display:none}
+.section-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding:0 2px}
+.section-title{display:flex;align-items:center;gap:8px;font-family:var(--f-d);font-size:18px;font-weight:400;color:var(--text-h)}
+.section-title .emoji{font-size:16px}
+.section-more{font-size:11px;color:var(--text3);cursor:pointer;transition:color 0.2s}
+.section-more:hover{color:var(--accent)}
+
+.feat-scroll{display:flex;gap:16px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory;
+  scrollbar-width:thin;scrollbar-color:var(--border) transparent;-webkit-overflow-scrolling:touch}
+.feat-scroll::-webkit-scrollbar{height:4px}
+.feat-scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+
+.feat-card{flex:0 0 340px;scroll-snap-align:start;background:var(--bg-card);border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;cursor:pointer;transition:all 0.3s ease;display:flex;flex-direction:column}
+.feat-card:hover{border-color:var(--border2);transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,0.3)}
+.feat-card-cover{position:relative;height:180px;overflow:hidden;background:var(--bg3)}
+.feat-card-cover img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease,opacity 0.4s ease;opacity:0;position:absolute;inset:0;z-index:1}
+.feat-card-cover img.loaded{opacity:1}
+.feat-card:hover .feat-card-cover img.loaded{transform:scale(1.05)}
+.feat-card-cover svg.fb{position:absolute;inset:0;width:100%;height:100%}
+.feat-card-cover-overlay{position:absolute;inset:0;z-index:2;
+  background:linear-gradient(180deg,rgba(10,10,12,0.05) 0%,rgba(10,10,12,0.7) 100%);pointer-events:none}
+.feat-badge{position:absolute;top:10px;left:12px;z-index:3;font-family:var(--f-m);font-size:9px;
+  letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:6px;
+  background:rgba(10,10,12,0.55);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.8)}
+.feat-badge.trend{color:#FF6B6B;border-color:rgba(255,107,107,0.2)}
+.feat-badge.new{color:#7BC67E;border-color:rgba(123,198,126,0.2)}
+.feat-card-cover-layers{position:absolute;top:10px;right:12px;display:flex;gap:4px;z-index:3}
+.feat-card-cover-layers span{width:8px;height:8px;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,0.5)}
+.feat-card-cover-info{position:absolute;bottom:10px;left:12px;z-index:3;font-family:var(--f-m);font-size:10px;
+  color:rgba(255,255,255,0.6);display:flex;align-items:center;gap:4px}
+.feat-card-cover-info svg{width:10px;height:10px;stroke:rgba(255,255,255,0.5);fill:none;stroke-width:2}
+
+.feat-card-body{padding:14px;flex:1;display:flex;flex-direction:column}
+.feat-card-cat{font-family:var(--f-m);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px}
+.feat-card-title{font-family:var(--f-d);font-size:17px;font-weight:400;line-height:1.3;margin-bottom:4px;color:var(--text-h)}
+.feat-card-desc{font-size:11px;color:var(--text3);line-height:1.5;margin-bottom:10px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1}
+.feat-card-meta{display:flex;align-items:center;justify-content:space-between}
+.feat-card-author{display:flex;align-items:center;gap:6px}
+.feat-card-author .tl-avatar{width:20px;height:20px}
+.feat-card-author>span{font-size:10px;color:var(--text3)}
+.feat-card-stats{display:flex;align-items:center;gap:10px;font-size:10px;color:var(--text3)}
+.feat-card-stats .stat{display:flex;align-items:center;gap:3px}
+.feat-card-stats svg{width:11px;height:11px;stroke:var(--text3);fill:none;stroke-width:2}
+
+.section-divider{height:1px;background:var(--border);margin:8px 0 20px}
+.all-hdr{display:flex;align-items:center;gap:8px;margin-bottom:16px}
+.all-hdr-title{font-family:var(--f-d);font-size:16px;font-weight:400;color:var(--text2)}
+
+@media(max-width:540px){
+  .feat-card{flex:0 0 280px}
+  .feat-card-cover{height:150px}
+}
+
+/* ===== GRID — LIQUID ===== */
+.tl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+.tl-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:all 0.3s ease;display:flex;flex-direction:column}
+.tl-card:hover{border-color:var(--border2);transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,0.3)}
+
+/* Cover — photo or SVG fallback */
+.tl-card-cover{position:relative;height:160px;overflow:hidden;flex-shrink:0;background:var(--bg3)}
+.tl-card-cover img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease,opacity 0.5s ease;opacity:0;position:absolute;inset:0;z-index:1}
+.tl-card-cover img.loaded{opacity:1}
+.tl-card:hover .tl-card-cover img.loaded{transform:scale(1.05)}
+.tl-card-cover svg.fb{position:absolute;inset:0;width:100%;height:100%}
+.tl-card-cover-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,12,0.1) 0%,rgba(10,10,12,0.7) 100%);pointer-events:none}
+.tl-card-cover-layers{position:absolute;top:10px;left:12px;display:flex;gap:4px;z-index:2}
+.tl-card-cover-layers span{width:8px;height:8px;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,0.5)}
+.tl-card-cover-actions{position:absolute;top:10px;right:12px;display:flex;gap:6px;z-index:2}
+.tl-card-action{width:28px;height:28px;border-radius:50%;background:rgba(10,10,12,0.5);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s}
+.tl-card-action:hover{background:rgba(10,10,12,0.75);border-color:rgba(255,255,255,0.2)}
+.tl-card-action svg{width:13px;height:13px;stroke:rgba(255,255,255,0.8);fill:none;stroke-width:2}
+.tl-card-action.liked svg{stroke:#D4849A;fill:#D4849A;stroke-width:0}
+.tl-card-action.bookmarked svg{stroke:var(--accent);fill:var(--accent);stroke-width:0}
+.tl-card-cover-info{position:absolute;bottom:10px;left:12px;z-index:2;font-family:var(--f-m);font-size:10px;color:rgba(255,255,255,0.6);display:flex;align-items:center;gap:4px}
+.tl-card-cover-info svg{width:10px;height:10px;stroke:rgba(255,255,255,0.5);fill:none;stroke-width:2}
+
+.tl-card-body{padding:14px 14px 12px;flex:1;display:flex;flex-direction:column}
+.tl-card-cat{font-family:var(--f-m);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px}
+.tl-card-title{font-family:var(--f-d);font-size:16px;font-weight:400;line-height:1.3;margin-bottom:4px;color:var(--text-h)}
+.tl-card-desc{font-size:11px;color:var(--text3);line-height:1.5;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1}
+.tl-card-meta{display:flex;align-items:center;justify-content:space-between}
+.tl-card-author{display:flex;align-items:center;gap:6px}
+.tl-avatar{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--f-m);font-size:8px;font-weight:500}
+.tl-card-author>span{font-size:10px;color:var(--text3)}
+.tl-card-stats{display:flex;align-items:center;gap:10px;font-size:10px;color:var(--text3)}
+.tl-card-stats .stat{display:flex;align-items:center;gap:3px}
+.tl-card-stats svg{width:11px;height:11px;stroke:var(--text3);fill:none;stroke-width:2}
+.tl-card-stats .stat-liked svg{stroke:#D4849A;fill:rgba(212,132,154,0.3)}
+.tl-card-stats .stat-bm svg{stroke:var(--accent);fill:rgba(200,168,126,0.3)}
+
+/* ===== LIST VIEW ===== */
+.tl-list{display:none;flex-direction:column;gap:2px}
+.tl-list.active{display:flex}
+.tl-grid.active{display:grid}
+.tl-grid:not(.active){display:none}
+.tl-list-item{display:flex;align-items:center;gap:14px;padding:10px 14px;border-radius:10px;border:1px solid transparent;cursor:pointer;transition:all 0.2s}
+.tl-list-item:hover{background:var(--bg-card);border-color:var(--border)}
+.tl-list-cover{width:72px;height:48px;border-radius:6px;overflow:hidden;flex-shrink:0;position:relative;background:var(--bg3)}
+.tl-list-cover img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity 0.3s;position:absolute;inset:0;z-index:1}
+.tl-list-cover img.loaded{opacity:1}
+.tl-list-cover svg.fb{position:absolute;inset:0;width:100%;height:100%}
+.tl-list-cover-overlay{position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(10,10,12,0.4) 100%);pointer-events:none}
+.tl-list-body{flex:1;min-width:0}
+.tl-list-title{font-family:var(--f-d);font-size:15px;font-weight:400;line-height:1.3;color:var(--text-h);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl-list-sub{font-size:11px;color:var(--text3);margin-top:2px;display:flex;align-items:center;gap:8px}
+.tl-list-cat{font-family:var(--f-m);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:2px 7px;border-radius:6px}
+.tl-list-meta{display:flex;align-items:center;gap:14px;flex-shrink:0;font-size:11px;color:var(--text3)}
+.tl-list-author{display:flex;align-items:center;gap:5px}
+.tl-list-author-av{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--f-m);font-size:8px}
+.tl-list-stats{display:flex;align-items:center;gap:12px}
+.tl-list-stats .stat{display:flex;align-items:center;gap:3px}
+.tl-list-stats svg{width:11px;height:11px;stroke:var(--text3);fill:none;stroke-width:2}
+
+.loading-row{display:flex;justify-content:center;padding:32px 0}
+.loading-spinner{width:24px;height:24px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite}
+.load-trigger{height:1px}
+.empty-state{display:none;text-align:center;padding:60px 20px}
+.empty-icon{width:44px;height:44px;margin:0 auto 14px;stroke:var(--text3);fill:none;stroke-width:1.5}
+.empty-title{font-family:var(--f-d);font-size:18px;font-weight:300;margin-bottom:6px;color:var(--text2)}
+.empty-desc{font-size:12px;color:var(--text3);line-height:1.6}
+
+@media(max-width:860px){.sidebar{display:none}}
+@media(max-width:540px){
+  .hdr-nav a:not(.active){display:none}
+  .search-kbd{display:none}
+  .content{padding:16px 14px 80px}
+  .tl-grid{grid-template-columns:1fr}
+  .tl-list-meta{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-brand">Chronos</div>
+  <nav class="hdr-nav">
+    <a href="#">マイページ</a>
+    <a href="#" class="active">年表を探す</a>
+    <a href="#">年表をつくる</a>
+    <div class="hdr-avatar">
+      <svg viewBox="0 0 200 200"><rect width="200" height="200" fill="#0F1A2E"/><ellipse cx="100" cy="100" rx="72" ry="32" fill="none" stroke="#5B9BD5" stroke-width="2" opacity="0.5" transform="rotate(-25 100 100)"/><ellipse cx="100" cy="100" rx="72" ry="32" fill="none" stroke="#D4849A" stroke-width="2" opacity="0.5" transform="rotate(30 100 100)"/><circle cx="100" cy="100" r="9" fill="#C8A87E" opacity="0.85"/></svg>
+    </div>
+  </nav>
+</header>
+
+<div class="layout">
+  <!-- SIDEBAR FACETS -->
+  <aside class="sidebar">
+    <div class="sb-section">
+      <div class="sb-label">カテゴリ</div>
+      <div class="sb-item active" data-cat="all" onclick="toggleCat('all',this)"><span class="sb-item-left">すべて</span><span class="sb-item-count" id="countAll">1,247</span></div>
+      <div class="sb-item" data-cat="tech" onclick="toggleCat('tech',this)"><span class="sb-item-left"><span class="sb-dot" style="background:var(--c-blue)"></span>テクノロジー</span><span class="sb-item-count">328</span></div>
+      <div class="sb-item" data-cat="history" onclick="toggleCat('history',this)"><span class="sb-item-left"><span class="sb-dot" style="background:var(--c-pink)"></span>歴史・政治</span><span class="sb-item-count">265</span></div>
+      <div class="sb-item" data-cat="culture" onclick="toggleCat('culture',this)"><span class="sb-item-left"><span class="sb-dot" style="background:var(--c-gold)"></span>カルチャー</span><span class="sb-item-count">218</span></div>
+      <div class="sb-item" data-cat="science" onclick="toggleCat('science',this)"><span class="sb-item-left"><span class="sb-dot" style="background:var(--c-green)"></span>科学・自然</span><span class="sb-item-count">172</span></div>
+      <div class="sb-item" data-cat="business" onclick="toggleCat('business',this)"><span class="sb-item-left"><span class="sb-dot" style="background:var(--c-orange)"></span>ビジネス</span><span class="sb-item-count">148</span></div>
+      <div class="sb-item" data-cat="personal" onclick="toggleCat('personal',this)"><span class="sb-item-left"><span class="sb-dot" style="background:var(--c-purple)"></span>個人・ライフ</span><span class="sb-item-count">116</span></div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-label">年代範囲</div>
+      <div class="sb-range">
+        <input class="sb-range-input" type="text" value="1800" placeholder="From">
+        <span class="sb-range-sep">–</span>
+        <input class="sb-range-input" type="text" value="2026" placeholder="To">
+      </div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-label">レイヤー数</div>
+      <div class="sb-check active" onclick="toggleCheck(this)"><div class="sb-checkbox"></div><span>2レイヤー以上</span></div>
+      <div class="sb-check" onclick="toggleCheck(this)"><div class="sb-checkbox"></div><span>3レイヤー以上</span></div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-label">イベント数</div>
+      <div class="sb-item active" onclick="this.parentElement.querySelectorAll('.sb-item').forEach(i=>i.classList.remove('active'));this.classList.add('active')"><span class="sb-item-left">すべて</span></div>
+      <div class="sb-item" onclick="this.parentElement.querySelectorAll('.sb-item').forEach(i=>i.classList.remove('active'));this.classList.add('active')"><span class="sb-item-left">10件以上</span></div>
+      <div class="sb-item" onclick="this.parentElement.querySelectorAll('.sb-item').forEach(i=>i.classList.remove('active'));this.classList.add('active')"><span class="sb-item-left">30件以上</span></div>
+      <div class="sb-item" onclick="this.parentElement.querySelectorAll('.sb-item').forEach(i=>i.classList.remove('active'));this.classList.add('active')"><span class="sb-item-left">50件以上</span></div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-label">言語</div>
+      <div class="sb-check active" onclick="toggleCheck(this)"><div class="sb-checkbox"></div><span>日本語</span></div>
+      <div class="sb-check active" onclick="toggleCheck(this)"><div class="sb-checkbox"></div><span>English</span></div>
+    </div>
+    <div class="sb-reset" onclick="resetFilters()">フィルターをリセット</div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+    <div class="search-bar">
+      <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input class="search-input" type="text" placeholder="キーワード、テーマ、レイヤーの組み合わせで検索…" id="searchInput" oninput="handleSearch()">
+      <span class="search-kbd">⌘K</span>
+    </div>
+
+    <!-- FEATURED SECTIONS -->
+    <div class="featured-sections" id="featuredSections">
+      <div class="section-hdr">
+        <div class="section-title"><span class="emoji">🔥</span> Trend</div>
+        <span class="section-more">もっと見る →</span>
+      </div>
+      <div class="feat-scroll" id="trendScroll"></div>
+
+      <div style="height:24px"></div>
+
+      <div class="section-hdr">
+        <div class="section-title"><span class="emoji">✨</span> New</div>
+        <span class="section-more">もっと見る →</span>
+      </div>
+      <div class="feat-scroll" id="newScroll"></div>
+
+      <div class="section-divider"></div>
+    </div>
+
+    <!-- ALL TIMELINES -->
+    <div class="toolbar">
+      <div class="toolbar-left">
+        <div class="result-count"><strong id="resultNum">1,247</strong> 件の年表</div>
+        <div class="active-filters" id="activeFilters"></div>
+      </div>
+      <div class="toolbar-right">
+        <select class="sort-select" id="sortSelect" onchange="rerender()">
+          <option value="popular">人気順</option>
+          <option value="recent">新着順</option>
+          <option value="events">イベント数順</option>
+          <option value="relevance">関連度順</option>
+        </select>
+        <div class="view-toggle">
+          <button class="view-btn active" id="viewGrid" onclick="setView('grid')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></button>
+          <button class="view-btn" id="viewList" onclick="setView('list')"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <div class="tl-grid active" id="gridView"></div>
+    <div class="tl-list" id="listView"></div>
+    <div class="loading-row" id="loadingRow" style="display:none"><div class="loading-spinner"></div></div>
+    <div class="empty-state" id="emptyState">
+      <svg class="empty-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+      <div class="empty-title">年表が見つかりませんでした</div>
+      <div class="empty-desc">検索キーワードを変えるか、フィルターを変更してお試しください</div>
+    </div>
+    <div class="load-trigger" id="loadTrigger"></div>
+  </main>
+</div>
+
+<script>
+// ===== UNSPLASH API =====
+const UNSPLASH_KEY='REDACTED_DEMO_KEY';
+const CAT_QUERIES={
+  tech:'technology futuristic digital',
+  history:'history ancient civilization',
+  culture:'art culture museum',
+  science:'science nature space',
+  business:'business office city',
+  personal:'lifestyle family cozy'
+};
+
+// Cache: cat → [url, url, ...]
+const photoCache={};
+let photosReady=false;
+
+async function fetchAllPhotos(){
+  const cats=Object.keys(CAT_QUERIES);
+  const promises=cats.map(async cat=>{
+    try{
+      const res=await fetch(
+        `https://api.unsplash.com/search/photos?query=${encodeURIComponent(CAT_QUERIES[cat])}&per_page=30&orientation=landscape`,
+        {headers:{'Authorization':`Client-ID ${UNSPLASH_KEY}`}}
+      );
+      if(!res.ok) return;
+      const data=await res.json();
+      photoCache[cat]=data.results.map(p=>p.urls.small);
+    }catch(e){console.warn('Unsplash fetch failed for',cat,e);}
+  });
+  await Promise.all(promises);
+  photosReady=true;
+  // Re-render visible cards with photos
+  refreshCovers();
+}
+
+function getPhotoUrl(item){
+  const photos=photoCache[item.cat];
+  if(!photos||!photos.length) return null;
+  return photos[item.id % photos.length];
+}
+
+function refreshCovers(){
+  document.querySelectorAll('.tl-card-cover[data-id]').forEach(cover=>{
+    const id=parseInt(cover.dataset.id);
+    const item=ALL_DATA.find(d=>d.id===id);
+    if(!item) return;
+    const url=getPhotoUrl(item);
+    if(!url) return;
+    if(cover.querySelector('img')) return; // already has photo
+    const img=document.createElement('img');
+    img.src=url;img.alt=item.title;img.loading='lazy';
+    img.onload=()=>img.classList.add('loaded');
+    cover.insertBefore(img,cover.querySelector('.tl-card-cover-overlay'));
+  });
+  document.querySelectorAll('.tl-list-cover[data-id]').forEach(cover=>{
+    const id=parseInt(cover.dataset.id);
+    const item=ALL_DATA.find(d=>d.id===id);
+    if(!item) return;
+    const url=getPhotoUrl(item);
+    if(!url||cover.querySelector('img')) return;
+    const img=document.createElement('img');
+    img.src=url;img.alt=item.title;img.loading='lazy';
+    img.onload=()=>img.classList.add('loaded');
+    cover.insertBefore(img,cover.querySelector('.tl-list-cover-overlay'));
+  });
+}
+
+// ===== GRADIENT MESH FALLBACK (single pattern) =====
+const COLOR_MAP={'--c-blue':'#5B9BD5','--c-pink':'#D4849A','--c-green':'#7BC67E','--c-teal':'#5BBCB4','--c-gold':'#C8B87E','--c-purple':'#9E7EC8','--c-orange':'#D4A05A'};
+function rc(v){return COLOR_MAP[v.replace('var(','').replace(')','')]||'#C8A87E';}
+
+function meshSVG(seed,c1,c2){
+  return `<svg class="fb" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <rect width="400" height="200" fill="#0A0A0C"/>
+    <circle cx="${120+seed%80}" cy="${60+seed%40}" r="120" fill="${c1}" opacity="0.07" style="filter:blur(40px)"/>
+    <circle cx="${280-seed%60}" cy="${130-seed%30}" r="100" fill="${c2}" opacity="0.06" style="filter:blur(35px)"/>
+    <circle cx="${200+seed%50}" cy="100" r="80" fill="${c1}" opacity="0.04" style="filter:blur(50px)"/>
+    <line x1="${80+seed%40}" y1="0" x2="${80+seed%40}" y2="200" stroke="${c1}" stroke-width="0.5" opacity="0.08"/>
+    <line x1="${240+seed%60}" y1="0" x2="${240+seed%60}" y2="200" stroke="${c2}" stroke-width="0.5" opacity="0.06"/>
+    <circle cx="${160+seed%40}" cy="${80+seed%30}" r="2" fill="${c1}" opacity="0.2"/>
+    <circle cx="${260+seed%30}" cy="${50+seed%40}" r="1.5" fill="${c2}" opacity="0.15"/>
+  </svg>`;
+}
+
+// ===== DATA =====
+const CATS=[
+  {id:'tech',name:'テクノロジー',color:'var(--c-blue)',colorD:'var(--c-blue-d)'},
+  {id:'history',name:'歴史・政治',color:'var(--c-pink)',colorD:'var(--c-pink-d)'},
+  {id:'culture',name:'カルチャー',color:'var(--c-gold)',colorD:'var(--c-gold-d)'},
+  {id:'science',name:'科学・自然',color:'var(--c-green)',colorD:'var(--c-green-d)'},
+  {id:'business',name:'ビジネス',color:'var(--c-orange)',colorD:'var(--c-orange-d)'},
+  {id:'personal',name:'個人・ライフ',color:'var(--c-purple)',colorD:'var(--c-purple-d)'}
+];
+const COLORS=['var(--c-blue)','var(--c-pink)','var(--c-green)','var(--c-teal)','var(--c-gold)','var(--c-purple)','var(--c-orange)'];
+const TITLES={
+  tech:['AI革命の全体像 2020–2026','モバイル革命の全体像','ブロックチェーンの興亡','量子コンピュータへの道','SNSが変えた世界','半導体戦争の50年','サイバーセキュリティの進化','Web3.0とメタバース','クラウド革命の15年','ロボティクスの夜明け','自動運転の現在地','5G/6G通信の進化','フィンテックの破壊力','EdTechが変える教育','宇宙インターネット計画'],
+  history:['宇宙開発の舞台裏','幕末から明治維新まで','冷戦の構図','フランス革命とナポレオン','シルクロードの2000年','大航海時代の光と影','日本の戦後復興','古代ローマの興亡','産業革命の波紋','民主主義の系譜','東西ドイツ統一','中東紛争の構造','EU統合の歴史','アジア通貨危機','デジタル民主主義'],
+  culture:['印象派からストリートアートへ','J-POPとストリーミングの30年','映画100年史','ファッションの変遷','建築様式の進化','アニメ文化の世界進出','ヒップホップの50年','文学賞の系譜','ゲーム産業の爆発','写真表現の進化','ストリートカルチャー','食文化のグローバル化','デザイン思考の歴史','K-POPグローバル化','伝統工芸の現在'],
+  science:['気候変動の100年','DNAから遺伝子編集まで','宇宙物理学の革命','感染症との闘い','素粒子物理学の旅','脳科学の最前線','再生可能エネルギー史','海洋探査の歴史','数学の美しい定理','恐竜研究の進化','火星探査ミッション','ワクチン開発の歴史','人工臓器の進化','深海探査の記録','天文学の転換点'],
+  business:['日本発ユニコーンの軌跡','GAFA帝国の形成','トヨタ生産方式の進化','スタートアップ失敗学','広告業界の100年','流通革命の歴史','M&A戦略の名勝負','サブスクモデルの進化','ESG投資の潮流','不動産バブルの教訓','フリーランス経済','DX推進の記録','B2B SaaSの勃興','働き方改革の年表','コーヒー産業の変遷'],
+  personal:['ふたりの10年間','子育ての記録','読書遍歴 1990–2026','マラソン完走記録','旅行アルバム年表','キャリアの転換点','猫との暮らし','引っ越しの歴史','料理スキルの進化','語学学習の道のり','ガーデニング日記','フィルム写真の記録','楽器練習の軌跡','ダイエット記録','家族の歴史']
+};
+const DESCS={
+  tech:['GPT、画像生成、AGI議論まで。技術と社会の接点を俯瞰。','iPhone × Android × 業界動向を並べて見る。','ビットコインからDeFi崩壊まで、暗号通貨の激動の歴史。','理論から実用化へ。量子の可能性と課題。','MySpaceからTikTokまで。人と情報の関係が変わった。','地政学と技術革新が交差する半導体の歴史。','ハッカー文化から国家安全保障まで。','分散型の理想と現実のギャップ。','AWS誕生からマルチクラウド時代まで。','産業ロボットから人型ロボットへ。'],
+  history:['アポロ計画からArtemisまで。宇宙を目指した人々の記録。','黒船来航から文明開化まで、激動の日本近代史。','鉄のカーテンからベルリンの壁崩壊まで。','革命・恐怖政治・皇帝の誕生。激動のフランス史。','東西交易が文明に与えた影響を辿る。','コロンブスから植民地時代まで。光と影の両面。','焼け野原から経済大国へ。日本の奇跡を検証。','共和制から帝政、そして崩壊へ。','蒸気機関が世界を変えた過程を追う。','古代ギリシャから現代までの民主主義の歩み。'],
+  culture:['モネからバンクシーまで。美術の潮流を一望。','CDからサブスクへ。音楽産業の構造変化。','リュミエール兄弟からストリーミングまで。','モードの100年を時系列で辿る。','ゴシックからモダニズム、そしてサステナブルへ。','鉄腕アトムからワンピースまで。世界を席巻した文化。','ブロンクスから世界へ。ヒップホップ50年の軌跡。','芥川賞からノーベル賞まで。文学の栄誉の歴史。','ファミコンからクラウドゲーミングまで。','銀塩からデジタル、そしてAI生成へ。'],
+  science:['産業革命から現在まで。気候と人類の関係。','二重らせんからCRISPRまで。生命科学の革命。','相対性理論からダークマターまで。','ペストからCOVID-19まで。感染症との闘いの歴史。','原子の内部構造を解き明かした物理学の旅。','fMRIからBCIまで。脳の謎に挑む研究。','風力・太陽光・水素。エネルギー転換の歴史。','深海から海底火山まで。未知の海を探る。','ユークリッドからペレルマンまで。美しい証明の歴史。','メガロドンからティラノサウルスまで。発掘の歴史。'],
+  business:['メルカリ、SmartHR、LayerX…日本のスタートアップ史。','検索・EC・クラウド・AI。GAFA帝国の形成過程。','カイゼンからJITまで。世界を変えた生産方式。','失敗から学ぶスタートアップの教訓集。','マスメディアからデジタル広告まで。100年の変遷。','百貨店からECまで。流通チャネルの革命。','歴史的なM&A案件を分析した年表。','SaaSからコンテンツまで。サブスク経済の進化。','環境・社会・ガバナンス。ESG投資の潮流。','バブル経済の形成と崩壊を分析。'],
+  personal:['出会いから今日まで。ふたりの歩みの記録。','誕生から小学校入学まで。日々の成長の記録。','読んだ本と人生の転機を重ねた年表。','初マラソンからサブ4達成まで。走り続けた記録。','世界各地を旅した記録を時系列で。','転職・独立・起業。キャリアの分岐点を振り返る。','保護猫との出会いから日々の暮らし。','賃貸から持ち家まで。住まいの歴史。','初めての自炊からレストラン級まで。','TOEIC 400から900へ。語学学習の軌跡。']
+};
+const NAMES=['toda_m','sato_ai','yui_art','kenta_h','rika_env','nao_biz','miki_m','abe_hist','hana_k','ryo_t','jun_s','emi_n','dai_k','yuki_o','mai_f','ken_y','aoi_m','shu_h','lin_w','tom_e'];
+
+function generateTimelines(count){
+  const items=[];
+  for(let i=0;i<count;i++){
+    const cat=CATS[i%6];
+    const title=TITLES[cat.id][i%TITLES[cat.id].length];
+    const desc=DESCS[cat.id][i%DESCS[cat.id].length];
+    const layers=2+Math.floor(Math.random()*2);
+    const lColors=[];for(let l=0;l<layers;l++)lColors.push(COLORS[(i+l*3)%COLORS.length]);
+    items.push({
+      id:i,cat:cat.id,catName:cat.name,catColor:cat.color,catColorD:cat.colorD,
+      title,desc,layers,lColors,
+      likes:Math.floor(Math.random()*3000)+50,
+      bookmarks:Math.floor(Math.random()*800)+10,
+      events:Math.floor(Math.random()*80)+8,
+      date:20260213-Math.floor(Math.random()*60),
+      author:NAMES[i%NAMES.length],
+      authorInitial:NAMES[i%NAMES.length][0].toUpperCase(),
+      search:(title+' '+cat.name+' '+desc).toLowerCase(),
+      liked:Math.random()>0.85,
+      bookmarked:Math.random()>0.9
+    });
+  }
+  return items;
+}
+
+const ALL_DATA=generateTimelines(1247);
+let filteredData=[...ALL_DATA];
+let displayedCount=0;
+const PAGE_SIZE=24;
+let currentView='grid';
+let activeCat='all';
+let searchQuery='';
+
+const ICON={
+  heart:'<path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>',
+  bookmark:'<path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/>',
+  clock:'<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>'
+};
+
+// ===== COVER CONTENT =====
+function getCoverHTML(item,size){
+  const c1=rc(item.catColor), c2=rc(item.lColors[1]||item.lColors[0]);
+  const svg=meshSVG(item.id,c1,c2);
+  const url=getPhotoUrl(item);
+  if(url){
+    return `${svg}<img src="${url}" alt="${item.title}" loading="lazy" onload="this.classList.add('loaded')">`;
+  }
+  return svg;
+}
+
+// ===== RENDER =====
+function renderGridCard(item){
+  const cover=getCoverHTML(item,'grid');
+  const dots=item.lColors.map(c=>`<span style="background:${c}"></span>`).join('');
+  return `<div class="tl-card" data-id="${item.id}">
+    <div class="tl-card-cover" data-id="${item.id}">
+      ${cover}
+      <div class="tl-card-cover-overlay"></div>
+      <div class="tl-card-cover-layers">${dots}</div>
+      <div class="tl-card-cover-actions">
+        <div class="tl-card-action${item.liked?' liked':''}" onclick="event.stopPropagation();toggleLike(${item.id},this)"><svg viewBox="0 0 24 24">${ICON.heart}</svg></div>
+        <div class="tl-card-action${item.bookmarked?' bookmarked':''}" onclick="event.stopPropagation();toggleBookmark(${item.id},this)"><svg viewBox="0 0 24 24">${ICON.bookmark}</svg></div>
+      </div>
+      <div class="tl-card-cover-info"><svg viewBox="0 0 24 24">${ICON.clock}</svg>${item.events} events · ${item.layers} layers</div>
+    </div>
+    <div class="tl-card-body">
+      <div class="tl-card-cat" style="color:${item.catColor}">${item.catName}</div>
+      <div class="tl-card-title">${item.title}</div>
+      <div class="tl-card-desc">${item.desc}</div>
+      <div class="tl-card-meta">
+        <div class="tl-card-author"><div class="tl-avatar" style="background:${item.catColorD};color:${item.catColor}">${item.authorInitial}</div><span>@${item.author}</span></div>
+        <div class="tl-card-stats">
+          <span class="stat${item.liked?' stat-liked':''}"><svg viewBox="0 0 24 24">${ICON.heart}</svg>${item.likes.toLocaleString()}</span>
+          <span class="stat${item.bookmarked?' stat-bm':''}"><svg viewBox="0 0 24 24">${ICON.bookmark}</svg>${item.bookmarks.toLocaleString()}</span>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderListItem(item){
+  const cover=getCoverHTML(item,'list');
+  return `<div class="tl-list-item" data-id="${item.id}">
+    <div class="tl-list-cover" data-id="${item.id}">${cover}<div class="tl-list-cover-overlay"></div></div>
+    <div class="tl-list-body">
+      <div class="tl-list-title">${item.title}</div>
+      <div class="tl-list-sub">
+        <span class="tl-list-cat" style="background:${item.catColorD};color:${item.catColor}">${item.catName}</span>
+        <span>${item.events} events</span><span>${item.layers} layers</span>
+      </div>
+    </div>
+    <div class="tl-list-meta">
+      <div class="tl-list-author"><div class="tl-list-author-av" style="background:${item.catColorD};color:${item.catColor}">${item.authorInitial}</div><span>@${item.author}</span></div>
+      <div class="tl-list-stats">
+        <span class="stat"><svg viewBox="0 0 24 24" style="width:11px;height:11px;stroke:var(--text3);fill:none;stroke-width:2">${ICON.heart}</svg>${item.likes.toLocaleString()}</span>
+        <span class="stat"><svg viewBox="0 0 24 24" style="width:11px;height:11px;stroke:var(--text3);fill:none;stroke-width:2">${ICON.bookmark}</svg>${item.bookmarks.toLocaleString()}</span>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ===== INTERACTIONS =====
+function toggleLike(id,el){
+  const item=ALL_DATA.find(d=>d.id===id);if(!item)return;
+  item.liked=!item.liked;item.likes+=item.liked?1:-1;
+  el.classList.toggle('liked',item.liked);
+  const card=el.closest('.tl-card');
+  if(card){const s=card.querySelector('.tl-card-stats .stat:first-child');if(s){s.className='stat'+(item.liked?' stat-liked':'');s.innerHTML=`<svg viewBox="0 0 24 24">${ICON.heart}</svg>${item.likes.toLocaleString()}`;}}
+}
+function toggleBookmark(id,el){
+  const item=ALL_DATA.find(d=>d.id===id);if(!item)return;
+  item.bookmarked=!item.bookmarked;item.bookmarks+=item.bookmarked?1:-1;
+  el.classList.toggle('bookmarked',item.bookmarked);
+  const card=el.closest('.tl-card');
+  if(card){const s=card.querySelector('.tl-card-stats .stat:nth-child(2)');if(s){s.className='stat'+(item.bookmarked?' stat-bm':'');s.innerHTML=`<svg viewBox="0 0 24 24">${ICON.bookmark}</svg>${item.bookmarks.toLocaleString()}`;}}
+}
+
+// ===== FILTERS =====
+function applyFilters(){
+  filteredData=ALL_DATA.filter(item=>{
+    if(activeCat!=='all'&&item.cat!==activeCat)return false;
+    if(searchQuery&&!item.search.includes(searchQuery))return false;
+    return true;
+  });
+  const sort=document.getElementById('sortSelect').value;
+  filteredData.sort((a,b)=>{
+    // Photo items always come first (while loading, pin items that already have photos)
+    if(sort==='popular')return b.likes-a.likes;
+    if(sort==='recent')return b.date-a.date;
+    if(sort==='events')return b.events-a.events;
+    return b.likes-a.likes;
+  });
+}
+function renderPage(){
+  const grid=document.getElementById('gridView'),list=document.getElementById('listView');
+  const end=Math.min(displayedCount+PAGE_SIZE,filteredData.length);
+  const newItems=filteredData.slice(displayedCount,end);
+  if(displayedCount===0){grid.innerHTML='';list.innerHTML='';}
+  newItems.forEach(item=>{
+    grid.insertAdjacentHTML('beforeend',renderGridCard(item));
+    list.insertAdjacentHTML('beforeend',renderListItem(item));
+  });
+  displayedCount=end;
+  document.getElementById('resultNum').textContent=filteredData.length.toLocaleString();
+  document.getElementById('emptyState').style.display=filteredData.length===0?'block':'none';
+  document.getElementById('loadingRow').style.display='none';
+  updateActiveFilterTags();
+  // Inject photos into newly rendered cards if cache is ready
+  if(photosReady) setTimeout(refreshCovers,50);
+}
+function rerender(){displayedCount=0;applyFilters();renderPage();updateFeaturedVisibility();}
+function handleSearch(){searchQuery=document.getElementById('searchInput').value.toLowerCase().trim();rerender();}
+
+function updateFeaturedVisibility(){
+  const el=document.getElementById('featuredSections');
+  // Hide featured when filtering or searching
+  if(activeCat!=='all'||searchQuery) el.classList.add('hidden');
+  else el.classList.remove('hidden');
+}
+
+function setView(v){
+  currentView=v;
+  document.getElementById('viewGrid').classList.toggle('active',v==='grid');
+  document.getElementById('viewList').classList.toggle('active',v==='list');
+  document.getElementById('gridView').classList.toggle('active',v==='grid');
+  document.getElementById('listView').classList.toggle('active',v==='list');
+}
+function toggleCat(cat,el){
+  activeCat=cat;
+  el.parentElement.querySelectorAll('.sb-item').forEach(i=>i.classList.remove('active'));
+  el.classList.add('active');rerender();
+}
+function toggleCheck(el){el.classList.toggle('active');}
+function resetFilters(){
+  activeCat='all';searchQuery='';
+  document.getElementById('searchInput').value='';
+  document.querySelectorAll('.sidebar .sb-item[data-cat]').forEach((item,i)=>item.classList.toggle('active',i===0));
+  rerender();
+}
+function updateActiveFilterTags(){
+  const c=document.getElementById('activeFilters');c.innerHTML='';
+  if(activeCat!=='all'){const cat=CATS.find(x=>x.id===activeCat);c.innerHTML+=`<div class="active-filter-tag" onclick="toggleCat('all',document.querySelector('.sb-item[data-cat=all]'))"><span>${cat.name}</span><span class="aft-x">×</span></div>`;}
+  if(searchQuery){c.innerHTML+=`<div class="active-filter-tag" onclick="document.getElementById('searchInput').value='';handleSearch()"><span>「${searchQuery}」</span><span class="aft-x">×</span></div>`;}
+}
+
+// ===== INFINITE SCROLL =====
+const observer=new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting&&displayedCount<filteredData.length){
+    document.getElementById('loadingRow').style.display='flex';
+    setTimeout(()=>renderPage(),300);
+  }
+},{rootMargin:'200px'});
+observer.observe(document.getElementById('loadTrigger'));
+
+document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();document.getElementById('searchInput').focus();}});
+
+applyFilters();renderPage();
+
+// ===== FEATURED SECTIONS =====
+function renderFeatCard(item, badgeText, badgeClass){
+  const c1=rc(item.catColor), c2=rc(item.lColors[1]||item.lColors[0]);
+  const svg=meshSVG(item.id,c1,c2);
+  const url=getPhotoUrl(item);
+  const imgTag=url?`<img src="${url}" alt="${item.title}" loading="lazy" onload="this.classList.add('loaded')">`:'';
+  const dots=item.lColors.map(c=>`<span style="background:${c}"></span>`).join('');
+  return `<div class="feat-card">
+    <div class="feat-card-cover" data-id="${item.id}">
+      ${svg}${imgTag}
+      <div class="feat-card-cover-overlay"></div>
+      <div class="feat-badge ${badgeClass}">${badgeText}</div>
+      <div class="feat-card-cover-layers">${dots}</div>
+      <div class="feat-card-cover-info"><svg viewBox="0 0 24 24">${ICON.clock}</svg>${item.events} events · ${item.layers} layers</div>
+    </div>
+    <div class="feat-card-body">
+      <div class="feat-card-cat" style="color:${item.catColor}">${item.catName}</div>
+      <div class="feat-card-title">${item.title}</div>
+      <div class="feat-card-desc">${item.desc}</div>
+      <div class="feat-card-meta">
+        <div class="feat-card-author"><div class="tl-avatar" style="background:${item.catColorD};color:${item.catColor}">${item.authorInitial}</div><span>@${item.author}</span></div>
+        <div class="feat-card-stats">
+          <span class="stat"><svg viewBox="0 0 24 24">${ICON.heart}</svg>${item.likes.toLocaleString()}</span>
+          <span class="stat"><svg viewBox="0 0 24 24">${ICON.bookmark}</svg>${item.bookmarks.toLocaleString()}</span>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function buildFeaturedSections(){
+  // Trend: top 8 by likes
+  const trend=[...ALL_DATA].sort((a,b)=>b.likes-a.likes).slice(0,8);
+  const trendEl=document.getElementById('trendScroll');
+  trendEl.innerHTML=trend.map(item=>renderFeatCard(item,'Trending','trend')).join('');
+
+  // New: top 8 by date
+  const newest=[...ALL_DATA].sort((a,b)=>b.date-a.date).slice(0,8);
+  const newEl=document.getElementById('newScroll');
+  newEl.innerHTML=newest.map(item=>renderFeatCard(item,'New','new')).join('');
+}
+buildFeaturedSections();
+
+// Refresh featured covers when Unsplash photos arrive
+const origRefreshCovers=refreshCovers;
+refreshCovers=function(){
+  origRefreshCovers();
+  // Also inject photos into featured cards
+  document.querySelectorAll('.feat-card-cover[data-id]').forEach(cover=>{
+    const id=parseInt(cover.dataset.id);
+    const item=ALL_DATA.find(d=>d.id===id);
+    if(!item) return;
+    const url=getPhotoUrl(item);
+    if(!url||cover.querySelector('img')) return;
+    const img=document.createElement('img');
+    img.src=url;img.alt=item.title;img.loading='lazy';
+    img.onload=()=>img.classList.add('loaded');
+    cover.insertBefore(img,cover.querySelector('.feat-card-cover-overlay'));
+  });
+};
+
+// Fetch Unsplash photos (6 API calls, ~30 photos each)
+fetchAllPhotos();
+
+// Ensure cached images get .loaded class (onload doesn't fire for cached)
+function fixImages(){document.querySelectorAll('.tl-card-cover img:not(.loaded), .tl-list-cover img:not(.loaded), .feat-card-cover img:not(.loaded)').forEach(img=>{if(img.complete&&img.naturalWidth>0)img.classList.add('loaded');});}
+new MutationObserver(()=>setTimeout(fixImages,100)).observe(document.getElementById('gridView'),{childList:true});
+fixImages();
+</script>
+</body>
+</html>

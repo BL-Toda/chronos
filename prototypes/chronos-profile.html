@@ -96,11 +96,31 @@ body.menu-open .overlay{opacity:1;visibility:visible}
 .tl-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;
   overflow:hidden;cursor:pointer;transition:all 0.3s ease;
   text-decoration:none;color:inherit}
-.tl-card:hover{border-color:var(--border2);transform:translateY(-3px);
+.tl-card:hover,.tl-card:focus-visible{border-color:var(--border2);transform:translateY(-3px);
   box-shadow:0 8px 32px rgba(0,0,0,0.25)}
 .tl-card-cover{aspect-ratio:16/8;position:relative;overflow:hidden;
   border-bottom:1px solid var(--border);background:var(--bg2)}
 .tl-card-cover svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+
+/* ===== PHOTO COVER (Unsplash) — SVGは読み込み中プレースホルダ兼フォールバック（exploreと同一） ===== */
+.cover-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+  opacity:0;transition:opacity 0.4s ease,transform 0.6s ease-out;will-change:transform}
+.cover-img.loaded{opacity:1}
+.tl-card:hover .cover-img.loaded,.tl-card:focus-visible .cover-img.loaded{transform:scale(1.04)}
+.cover-shade{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(10,10,12,0) 0%,rgba(10,10,12,0.55) 100%)}
+.cover-credit{position:absolute;left:10px;bottom:6px;z-index:2;display:flex;gap:3px;
+  font-family:var(--f-m);font-size:9px;letter-spacing:0.04em;color:rgba(232,228,222,0.55);
+  opacity:0;transition:opacity 0.3s ease;pointer-events:none;white-space:nowrap}
+.tl-card:hover .cover-credit,.tl-card:focus-within .cover-credit{opacity:1;pointer-events:auto}
+.cover-credit button{font:inherit;color:inherit;padding:0;text-decoration:underline;
+  text-underline-offset:2px;text-decoration-color:rgba(232,228,222,0.3)}
+.cover-credit button:hover{color:var(--text)}
+@keyframes heartPop{0%{transform:scale(1)}50%{transform:scale(1.15)}100%{transform:scale(1)}}
+.act-btn.pop svg{animation:heartPop 0.25s ease}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
 .tl-card-body{padding:14px 14px 12px}
 .tl-card-cat{font-family:var(--f-m);font-size:9px;letter-spacing:0.1em;
   text-transform:uppercase;margin-bottom:4px}
@@ -306,6 +326,91 @@ function coverSVG(item){
     `<rect width="${VBW}" height="${VBH}" fill="${c(0.05)}"/>${inner}</svg>`;
 }
 
+// ===== PHOTO COVERS (Unsplash) — exploreと同一のPHOTO_POOL・選定ロジック（同じseed→同じ写真） =====
+// プロトタイプ用の固定プール（6カテゴリ×8枚=48枚）。実行時にUnsplash APIは呼ばない。
+// 本番要件（申し送り）:
+//  - 写真の取得はサーバー側でUnsplash API経由（Access Keyはクライアントに埋め込まない）
+//  - 表示時に photo.links.download_location をサーバー経由でヒットする（downloadトラッキング必須）
+//  - attribution: 撮影者リンク+Unsplashリンクに ?utm_source=chronos&utm_medium=referral を付与（下記UNSPLASH_UTM）
+//  - hotlink必須（images.unsplash.com をそのまま使用、自前CDNへの再ホストは不可）。DBには photo_id + raw URL + 撮影者名/リンクをキャッシュ
+//  - 年表ごとの写真は cover_seed で決定論的に選ぶ（explore/profile/viewer で同一）
+const PHOTO_POOL={
+  tech:[
+    {id:"qwMfZVm3yRI",raw:"https://images.unsplash.com/photo-1637166185518-058f5896a2e9",name:"MJH SHIKDER",user:"https://unsplash.com/@mjh_shikder",link:"https://unsplash.com/photos/a-dark-hallway-with-blue-and-white-lights-qwMfZVm3yRI"},
+    {id:"56xiC0jUiQ0",raw:"https://images.unsplash.com/photo-1634834300387-8015d9fb7550",name:"MJH SHIKDER",user:"https://unsplash.com/@mjh_shikder",link:"https://unsplash.com/photos/a-tunnel-with-neon-lights-in-it-56xiC0jUiQ0"},
+    {id:"Wa-3T6d0rBo",raw:"https://images.unsplash.com/photo-1689443111130-6e9c7dfd8f9e",name:"Martin Martz",user:"https://unsplash.com/@martz90",link:"https://unsplash.com/photos/a-dark-background-with-a-purple-geometric-design-Wa-3T6d0rBo"},
+    {id:"4J1tjkox6ho",raw:"https://images.unsplash.com/photo-1672581437674-3186b17b405a",name:"Vinh Nguyen",user:"https://unsplash.com/@huyvinh95",link:"https://unsplash.com/photos/a-futuristic-sci-fi-scene-with-a-blue-background-4J1tjkox6ho"},
+    {id:"nmA5n9nHvFM",raw:"https://images.unsplash.com/photo-1785981254860-98d9ad1e7b22",name:"Logan Voss",user:"https://unsplash.com/@loganvoss",link:"https://unsplash.com/photos/abstract-metallic-circuit-board-with-blue-pins-nmA5n9nHvFM"},
+    {id:"2yClsTFXIcE",raw:"https://images.unsplash.com/photo-1660165458059-57cfb6cc87e5",name:"and machines",user:"https://unsplash.com/@and_machines",link:"https://unsplash.com/photos/iridescent-rectangular-prisms-in-grid-2yClsTFXIcE"},
+    {id:"UwLc1ZTnzos",raw:"https://images.unsplash.com/photo-1746755455586-e946c9b7a4a4",name:"Declan Sun",user:"https://unsplash.com/@declansun",link:"https://unsplash.com/photos/steel-beams-create-a-geometric-architectural-structure-UwLc1ZTnzos"},
+    {id:"Dn1Jjv3Kl1k",raw:"https://images.unsplash.com/photo-1777792231793-aa9341180be3",name:"Lai Man Nung",user:"https://unsplash.com/@kirklai",link:"https://unsplash.com/photos/tall-building-with-purple-and-blue-lights-at-night-Dn1Jjv3Kl1k"},
+  ],
+  history:[
+    {id:"-zoe4nviem4",raw:"https://images.unsplash.com/photo-1507475380673-1246fa72eeea",name:"Arthur Yeti",user:"https://unsplash.com/@arthuryeti",link:"https://unsplash.com/photos/brown-painted-structures--zoe4nviem4"},
+    {id:"Z9aR-ewdQTc",raw:"https://images.unsplash.com/photo-1604579806311-e65d83db73d7",name:"Federico Di Dio photography",user:"https://unsplash.com/@didiofederico_photographer",link:"https://unsplash.com/photos/brown-concrete-building-during-daytime-Z9aR-ewdQTc"},
+    {id:"Q9hRAcsW88o",raw:"https://images.unsplash.com/photo-1697789234239-adf2e075c654",name:"Onur KAYACI",user:"https://unsplash.com/@kayacionur",link:"https://unsplash.com/photos/the-ruins-of-the-ancient-city-of-delphinia-Q9hRAcsW88o"},
+    {id:"YOFvbEu9w9Y",raw:"https://images.unsplash.com/photo-1649590234463-4fabe475dd91",name:"amir ibrahim",user:"https://unsplash.com/@amir_ibrahim",link:"https://unsplash.com/photos/a-close-up-of-a-pillar-with-carvings-on-it-YOFvbEu9w9Y"},
+    {id:"tuak5aFYydE",raw:"https://images.unsplash.com/photo-1613552568445-7d357eb359c6",name:"Nika Benedictova",user:"https://unsplash.com/@nika_benedictova",link:"https://unsplash.com/photos/brown-rock-formation-under-blue-sky-during-daytime-tuak5aFYydE"},
+    {id:"umfgtmwR__Y",raw:"https://images.unsplash.com/photo-1738580971059-6c645b78c1b8",name:"Martijn Vonk",user:"https://unsplash.com/@vonkm737",link:"https://unsplash.com/photos/an-aerial-view-of-an-ancient-city-in-the-desert-umfgtmwR__Y"},
+    {id:"OtG1kmZCFIQ",raw:"https://images.unsplash.com/photo-1597078769927-ffb0c1fc9d98",name:"Moritz Kindler",user:"https://unsplash.com/@moritz_photography",link:"https://unsplash.com/photos/brown-concrete-building-during-daytime-OtG1kmZCFIQ"},
+    {id:"hTIftud72Jo",raw:"https://images.unsplash.com/photo-1771692822834-1ae0564af77f",name:"Aysegul Aytören",user:"https://unsplash.com/@oldsoulframes",link:"https://unsplash.com/photos/ancient-stone-ruins-of-gobeklitepe-archaeological-site-hTIftud72Jo"},
+  ],
+  culture:[
+    {id:"R7ZDmTCbUgs",raw:"https://images.unsplash.com/photo-1773474200110-c69c3accf229",name:"Egor Myznik",user:"https://unsplash.com/@vonshnauzer",link:"https://unsplash.com/photos/two-people-observe-framed-artwork-on-a-wall-R7ZDmTCbUgs"},
+    {id:"Nlf8WgIB9iw",raw:"https://images.unsplash.com/photo-1665902685700-323525ba96cd",name:"abdullah ali",user:"https://unsplash.com/@adbullahx",link:"https://unsplash.com/photos/a-building-with-a-large-arched-doorway-Nlf8WgIB9iw"},
+    {id:"utCun0FM4tw",raw:"https://images.unsplash.com/photo-1768133896436-ecd0fa6f228f",name:"Igor Rusakov",user:"https://unsplash.com/@toffeeposibilities",link:"https://unsplash.com/photos/two-people-sitting-on-a-bench-looking-at-an-exhibit-utCun0FM4tw"},
+    {id:"mDfLdPFcwJc",raw:"https://images.unsplash.com/photo-1687475790472-37ef7b6a5c6d",name:"Clark Gu",user:"https://unsplash.com/@atluminon",link:"https://unsplash.com/photos/a-dimly-lit-room-with-benches-and-pictures-on-the-wall-mDfLdPFcwJc"},
+    {id:"mWHCa1ZDaDw",raw:"https://images.unsplash.com/photo-1678308510962-7933731202e7",name:"2H Media",user:"https://unsplash.com/@2hmedia",link:"https://unsplash.com/photos/a-room-filled-with-lots-of-statues-of-animals-mWHCa1ZDaDw"},
+    {id:"TMg4REjyAjk",raw:"https://images.unsplash.com/photo-1687475792136-5035f792730f",name:"Clark Gu",user:"https://unsplash.com/@atluminon",link:"https://unsplash.com/photos/a-long-hallway-with-a-clock-on-the-wall-TMg4REjyAjk"},
+    {id:"PjmYzAOwAWA",raw:"https://images.unsplash.com/photo-1765127959662-a7229fa51580",name:"LISK OBE",user:"https://unsplash.com/@summerobelisk",link:"https://unsplash.com/photos/people-walking-through-a-dimly-lit-museum-exhibit-hall-PjmYzAOwAWA"},
+    {id:"3rEble63E6k",raw:"https://images.unsplash.com/photo-1765127959629-c7d150e75890",name:"LISK OBE",user:"https://unsplash.com/@summerobelisk",link:"https://unsplash.com/photos/artifact-displayed-in-a-museum-exhibit-with-red-lighting-3rEble63E6k"},
+  ],
+  science:[
+    {id:"sqwEXTQLTPQ",raw:"https://images.unsplash.com/photo-1761759161257-a1f9c41df8a9",name:"arnaud girault",user:"https://unsplash.com/@arnaudastro",link:"https://unsplash.com/photos/cosmic-nebula-with-swirling-clouds-of-gas-and-dust-sqwEXTQLTPQ"},
+    {id:"fU-oPNhdsO8",raw:"https://images.unsplash.com/photo-1785655140480-5153bdcac1f0",name:"Joel Henry",user:"https://unsplash.com/@joelhenry",link:"https://unsplash.com/photos/swirling-red-and-blue-cosmic-nebula-with-scattered-stars-fU-oPNhdsO8"},
+    {id:"JD7T8Y1B79U",raw:"https://images.unsplash.com/photo-1765754431926-964ed45a41e9",name:"Steve Busch",user:"https://unsplash.com/@sdbusch77",link:"https://unsplash.com/photos/a-spiral-galaxy-in-a-starry-night-sky-JD7T8Y1B79U"},
+    {id:"1WfegtbvNK8",raw:"https://images.unsplash.com/photo-1772289935663-80aa987be656",name:"NIR HIMI",user:"https://unsplash.com/@nirhimi",link:"https://unsplash.com/photos/rock-arch-under-a-starry-night-sky-1WfegtbvNK8"},
+    {id:"aB5tmNaOsYA",raw:"https://images.unsplash.com/photo-1777195680785-23dbb7768b60",name:"NASA",user:"https://unsplash.com/@nasa",link:"https://unsplash.com/photos/earth-rises-over-the-dark-lunar-surface-aB5tmNaOsYA"},
+    {id:"64_DnIpzsyI",raw:"https://images.unsplash.com/photo-1617457485942-458b94408f01",name:"Mier Chen",user:"https://unsplash.com/@miercat",link:"https://unsplash.com/photos/silhouette-of-mountain-under-blue-sky-during-night-time-64_DnIpzsyI"},
+    {id:"EsnsJHJxVOA",raw:"https://images.unsplash.com/photo-1786643684910-29dd0bd06b33",name:"Michael Kostiv",user:"https://unsplash.com/@michaelkostiv",link:"https://unsplash.com/photos/starry-night-sky-with-clouds-EsnsJHJxVOA"},
+    {id:"VKdU_oP54uo",raw:"https://images.unsplash.com/photo-1776105648206-fc6dd5fb0776",name:"Mike Newbry",user:"https://unsplash.com/@mikenewbry",link:"https://unsplash.com/photos/a-solitary-spire-under-a-starry-night-sky-VKdU_oP54uo"},
+  ],
+  business:[
+    {id:"_WO_STod-74",raw:"https://images.unsplash.com/photo-1619763515915-8e6d599f2935",name:"kate.sade",user:"https://unsplash.com/@kate_sade",link:"https://unsplash.com/photos/black-leather-chair-beside-glass-window-_WO_STod-74"},
+    {id:"io5clS15h9Q",raw:"https://images.unsplash.com/photo-1660496247667-3fb697c396af",name:"Egor Komarov",user:"https://unsplash.com/@egorkomarov",link:"https://unsplash.com/photos/a-tall-glass-building-io5clS15h9Q"},
+    {id:"D4s5XrwA0no",raw:"https://images.unsplash.com/photo-1754832728042-36484f848648",name:"Irina Chishkova",user:"https://unsplash.com/@irina_chishkova",link:"https://unsplash.com/photos/modern-skyscrapers-illuminated-at-dusk-with-cloudy-sky-D4s5XrwA0no"},
+    {id:"2qTXxHClwbE",raw:"https://images.unsplash.com/photo-1628089762887-544f4b53cea9",name:"Vista Wei",user:"https://unsplash.com/@weista",link:"https://unsplash.com/photos/aerial-view-of-city-buildings-during-daytime-2qTXxHClwbE"},
+    {id:"zUD329ahwpc",raw:"https://images.unsplash.com/photo-1474899544414-a357f12283fb",name:"Robert Bye",user:"https://unsplash.com/@robertbye",link:"https://unsplash.com/photos/silhouette-photo-of-woman-and-man-walking-zUD329ahwpc"},
+    {id:"bXiSDW3m930",raw:"https://images.unsplash.com/photo-1606818649966-8e1a45180a64",name:"Corporate Locations",user:"https://unsplash.com/@clsg",link:"https://unsplash.com/photos/grey-concrete-building-under-blue-sky-during-daytime-bXiSDW3m930"},
+    {id:"UAUS-dcbSZo",raw:"https://images.unsplash.com/photo-1657316169342-16ac18465619",name:"Manuel Keller",user:"https://unsplash.com/@emkaay",link:"https://unsplash.com/photos/a-city-street-with-tall-buildings-UAUS-dcbSZo"},
+    {id:"0JUAmZOWVsg",raw:"https://images.unsplash.com/photo-1734995972004-00fffbe0c3d9",name:"Dima Ermolenko",user:"https://unsplash.com/@dchoobaka",link:"https://unsplash.com/photos/a-very-tall-building-with-lots-of-windows-at-night-0JUAmZOWVsg"},
+  ],
+  personal:[
+    {id:"2H5yW_EaqgA",raw:"https://images.unsplash.com/photo-1654613698316-b9bce9f4b6bb",name:"volant",user:"https://unsplash.com/@volantaroma",link:"https://unsplash.com/photos/a-group-of-people-sitting-around-a-table-eating-food-2H5yW_EaqgA"},
+    {id:"AqKinW-2OJM",raw:"https://images.unsplash.com/photo-1646520537547-c56f4287aa45",name:"Tania Malréchauffé",user:"https://unsplash.com/@okta",link:"https://unsplash.com/photos/a-cat-sitting-on-top-of-a-pile-of-wood-AqKinW-2OJM"},
+    {id:"nHe8OAVrc34",raw:"https://images.unsplash.com/photo-1758523417185-5d46089b870a",name:"Vitaly Gariev",user:"https://unsplash.com/@silverkblack",link:"https://unsplash.com/photos/couple-looking-at-tablet-in-modern-kitchen-nHe8OAVrc34"},
+    {id:"AXbBeC1xwls",raw:"https://images.unsplash.com/photo-1758522484939-e1965be04b24",name:"Vitaly Gariev",user:"https://unsplash.com/@silverkblack",link:"https://unsplash.com/photos/couple-sharing-a-tender-moment-in-the-kitchen-AXbBeC1xwls"},
+    {id:"85oNhbUSulg",raw:"https://images.unsplash.com/photo-1763027471534-0038286c7c7b",name:"balint henter",user:"https://unsplash.com/@theoriginalbubi",link:"https://unsplash.com/photos/close-up-of-a-decorated-christmas-tree-with-ornaments-85oNhbUSulg"},
+    {id:"rzzJan1emGM",raw:"https://images.unsplash.com/photo-1760615303386-d025db9d6ae2",name:"Florian Schindler",user:"https://unsplash.com/@flo_raw",link:"https://unsplash.com/photos/a-golden-retriever-puppy-sleeping-peacefully-in-its-bed-rzzJan1emGM"},
+    {id:"oal546SgP_Q",raw:"https://images.unsplash.com/photo-1759239355404-63313f92cfc2",name:"Clay Banks",user:"https://unsplash.com/@claybanks",link:"https://unsplash.com/photos/dining-area-with-wooden-table-and-chairs-stairs-nearby-oal546SgP_Q"},
+    {id:"-ugsMunCUlw",raw:"https://images.unsplash.com/photo-1767016451745-b1748dcba5f4",name:"Antoine Pouligny",user:"https://unsplash.com/@gimmick",link:"https://unsplash.com/photos/person-petting-a-cat-on-a-bed--ugsMunCUlw"},
+  ],
+};const UNSPLASH_UTM='?utm_source=chronos&utm_medium=referral';
+function escHTML(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function pickPhoto(item){const pool=PHOTO_POOL[item.cat];return pool&&pool.length?pool[(item.seed>>>8)%pool.length]:null}
+function photoURL(p,w,h){return `${p.raw}?w=${w}&h=${h}&fit=crop&auto=format&q=70`}
+// SVGを下敷きにし、写真をlazy読み込み。onloadで.loaded付与→0.4sフェードイン。onerrorはimgを外してSVGを残す
+function coverHTML(item,uidPrefix,size){
+  const svg=coverSVG(item);
+  const p=pickPhoto(item);
+  if(!p)return svg;
+  const thumb=size==='thumb';
+  const img=`<img class="cover-img" src="${photoURL(p,thumb?128:640,thumb?80:360)}" alt="" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.remove()">`;
+  if(thumb)return svg+img;
+  const credit=`<span class="cover-credit">Photo: <button type="button" data-href="${escHTML(p.user)}${UNSPLASH_UTM}">${escHTML(p.name)}</button> / <button type="button" data-href="https://unsplash.com/${UNSPLASH_UTM}">Unsplash</button></span>`;
+  return svg+img+'<div class="cover-shade"></div>'+credit;
+}
+
 // ===== LIKE(localStorageスキーマはexplore/viewerと共有) =====
 const LS_LIKES='chronos_likes_v1';
 function loadJSON(key,fallback){try{const v=JSON.parse(localStorage.getItem(key));return v==null?fallback:v}catch(e){return fallback}}
@@ -318,7 +423,7 @@ const ICON_HEART='<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.7
 function renderCard(item){
   const liked=likedIds.has(item.id);
   return `<a class="tl-card" href="chronos-viewer.html">
-    <div class="tl-card-cover">${coverSVG(item)}</div>
+    <div class="tl-card-cover">${coverHTML(item,'p','card')}</div>
     <div class="tl-card-body">
       <div class="tl-card-cat" style="color:${item.catColor}">${item.catName}</div>
       <div class="tl-card-title">${item.title}</div>
@@ -343,12 +448,19 @@ if(isEmpty){
 
 // like toggle(カードは<a>のため委譲+preventDefault)
 document.addEventListener('click',e=>{
+  const credit=e.target.closest('.cover-credit button');
+  if(credit){e.preventDefault();e.stopPropagation();window.open(credit.dataset.href,'_blank','noopener');return}
   const btn=e.target.closest('.act-btn');
   if(!btn)return;
   e.preventDefault();e.stopPropagation();
   const item=TIMELINES.find(t=>t.id===btn.dataset.id);
   if(!item)return;
-  if(likedIds.has(item.id))likedIds.delete(item.id);else likedIds.add(item.id);
+  if(likedIds.has(item.id))likedIds.delete(item.id);
+  else{
+    likedIds.add(item.id);
+    btn.classList.remove('pop');void btn.offsetWidth;btn.classList.add('pop');
+    btn.addEventListener('animationend',()=>btn.classList.remove('pop'),{once:true});
+  }
   persist();
   const on=likedIds.has(item.id);
   btn.classList.toggle('on',on);

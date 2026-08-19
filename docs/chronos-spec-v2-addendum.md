@@ -29,8 +29,12 @@ ALTER TABLE timelines
   ADD COLUMN start_year INT NULL,                  -- 年代フィルタ用キャッシュ
   ADD COLUMN end_year INT NULL,                    --（イベント登録/削除時に再計算）
   ADD COLUMN bookmark_count INT NOT NULL DEFAULT 0,
-  ADD COLUMN cover_seed TEXT NULL;                 -- 生成型カバーのシード（画像アップロードはMVPで持たない）
+  ADD COLUMN cover_seed TEXT NULL,                 -- 生成型フォールバックカバーのシード
+  ADD COLUMN cover_photo_id TEXT NULL,             -- Unsplash写真ID（カバーの正。2026-08-19確定）
+  ADD COLUMN cover_url TEXT NULL,                  -- images.unsplash.com の raw URL（?以降除去。表示時にサイズ付与）
+  ADD COLUMN cover_credit JSONB NULL;              -- {name, user_link, photo_link, download_location}
 ```
+- **カバー画像（Unsplash）**: 年表作成時にタイトル・カテゴリから自動提案（サーバー側で Unsplash API `search/photos` を実行、Access Keyはサーバー秘匿）し、ユーザーが選択または再検索。採用時に `download_location` を叩く（Unsplash API規約）。表示は `cover_url?w=..&h=..&fit=crop&auto=format` を直接参照（再ホスト不可）、カード/ビューアに撮影者クレジット（utm_source=chronos）。写真未選択・読み込み失敗時は `cover_seed` の生成型SVGにフォールバック
 - visibility は既存3値（public / unlisted / private）のまま。**「下書き」ステータスは追加しない**（非公開=下書き扱い、UIバッジは「公開中/限定公開/非公開」）
 
 ### bookmarks（新設）
@@ -79,6 +83,7 @@ CREATE TABLE reports (
 
 ### 公開・共有
 - `PATCH /api/timelines/:id` の visibility 変更+`share_id` 発行は既存定義を実装（UIは作成フロー最終ステップ+設定モーダル。デフォルト非公開）
+- `GET /api/covers/suggest?timeline_id=`（Unsplash検索の代理。サーバー側キー）/ `POST /api/timelines/:id/cover`（photo_id 確定・download_location 通知）
 - `GET /embed/:share_id`（iframe配信）、`GET /api/timelines/:id/export?format=jpeg|png`（Free=JPEG+透かし / Pro=PNG高解像度。プラン制限はサーバー側でenforce）を新設
 - OGP画像生成はSatori互換の表現に限定する（blur・text-shadow不使用）。イベント年を取得してミニ年表を描画
 

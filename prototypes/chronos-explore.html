@@ -135,7 +135,7 @@ body.sheet-open{overflow:hidden}
   margin-bottom:16px;flex-wrap:wrap;gap:8px}
 .toolbar-left{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .result-count{font-size:13px;color:var(--text2)}
-.result-count strong{color:var(--text);font-weight:500}
+.result-count strong{color:var(--text);font-weight:400;font-family:var(--f-m);font-variant-numeric:tabular-nums}
 .active-filters{display:flex;gap:6px;flex-wrap:wrap}
 .active-filter-tag{font-family:var(--f-m);font-size:10px;padding:3px 10px 3px 8px;
   border-radius:12px;background:var(--accent-dim);color:var(--accent);
@@ -173,11 +173,71 @@ body.sheet-open{overflow:hidden}
 .tl-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;
   overflow:hidden;cursor:pointer;transition:all 0.3s ease;
   text-decoration:none;color:inherit}
-.tl-card:hover{border-color:var(--border2);transform:translateY(-3px);
+.tl-card:hover,.tl-card:focus-visible{border-color:var(--border2);transform:translateY(-3px);
   box-shadow:0 8px 32px rgba(0,0,0,0.25)}
 .tl-card-cover{aspect-ratio:16/8;position:relative;overflow:hidden;
   border-bottom:1px solid var(--border);background:var(--bg2)}
 .tl-card-cover svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+
+/* ===== PHOTO COVER (Unsplash) — SVGは読み込み中プレースホルダ兼フォールバック ===== */
+.cover-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+  opacity:0;transition:opacity 0.4s ease,transform 0.6s ease-out;will-change:transform}
+.cover-img.loaded{opacity:1}
+.tl-card:hover .cover-img.loaded,.tl-card:focus-visible .cover-img.loaded{transform:scale(1.04)}
+.cover-shade{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(10,10,12,0) 0%,rgba(10,10,12,0.55) 100%)}
+.cover-credit{position:absolute;left:10px;bottom:6px;z-index:2;display:flex;gap:3px;
+  font-family:var(--f-m);font-size:9px;letter-spacing:0.04em;color:rgba(232,228,222,0.55);
+  opacity:0;transition:opacity 0.3s ease;pointer-events:none;white-space:nowrap}
+.tl-card:hover .cover-credit,.tl-card:focus-within .cover-credit{opacity:1;pointer-events:auto}
+.cover-credit button{font:inherit;color:inherit;padding:0;text-decoration:underline;
+  text-underline-offset:2px;text-decoration-color:rgba(232,228,222,0.3)}
+.cover-credit button:hover{color:var(--text)}
+/* 年代範囲の線（hover/focusで左→右に伸び、両端に年代） クレジット(bottom:6px)の上 */
+.cover-era{position:absolute;left:10px;right:10px;bottom:28px;height:1px;z-index:2;
+  pointer-events:none;opacity:0;transition:opacity 0.2s ease}
+.cover-era-line{position:absolute;inset:0;background:rgba(200,168,126,0.6);
+  transform:scaleX(0);transform-origin:left center;transition:transform 0s linear 0.2s}
+.cover-era-y{position:absolute;bottom:5px;font-family:var(--f-m);font-size:11px;line-height:1;
+  color:var(--text);letter-spacing:0.04em;opacity:0;transition:opacity 0.2s ease}
+.cover-era-y.from{left:0}.cover-era-y.to{right:0}
+.tl-card:hover .cover-era,.tl-card:focus-visible .cover-era{opacity:1;transition:opacity 0.15s ease}
+.tl-card:hover .cover-era-line,.tl-card:focus-visible .cover-era-line{transform:scaleX(1);transition:transform 0.5s ease}
+.tl-card:hover .cover-era-y,.tl-card:focus-visible .cover-era-y{opacity:1;transition:opacity 0.3s ease 0.2s}
+
+/* ===== MICRO-INTERACTIONS ===== */
+.views{transition:opacity 0.2s ease}
+.views.xfade{opacity:0}
+@keyframes cardIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.tl-card.pre,.tl-list-item.pre{opacity:0}
+.tl-card.in,.tl-list-item.in{animation:cardIn 0.5s ease backwards}
+@keyframes heartPop{0%{transform:scale(1)}50%{transform:scale(1.15)}100%{transform:scale(1)}}
+.act-like.pop svg{animation:heartPop 0.25s ease}
+/* レイヤードットの順次点灯（reveal時、左から60ms間隔） */
+@keyframes dotIn{from{opacity:0}to{opacity:1}}
+.tl-card.pre .tl-mini-dot{opacity:0}
+.tl-card.in .tl-mini-dot{animation:dotIn 0.3s ease backwards;animation-delay:calc(150ms + var(--i,0)*60ms)}
+/* ブックマーク初回ヒント（マイページ / ハンバーガーが1.2s灯る） */
+.hdr-nav a{border-radius:4px;transition:color 0.3s ease,box-shadow 0.3s ease}
+.hdr-nav a.hint{color:var(--accent);box-shadow:0 0 14px 5px rgba(200,168,126,0.09)}
+.hdr-burger{transition:box-shadow 0.3s ease}
+.hdr-burger svg{transition:stroke 0.3s ease}
+.hdr-burger.hint{box-shadow:0 0 14px 3px rgba(200,168,126,0.10)}
+.hdr-burger.hint svg{stroke:var(--accent)}
+/* 空状態のタイムライン線画（0.6sで線が引かれる） */
+@keyframes emptyLine{to{stroke-dashoffset:0}}
+.empty-tl{display:block;width:220px;max-width:100%;height:24px;margin:0 auto 18px;overflow:visible}
+.empty-tl line{stroke:rgba(138,134,128,0.4);stroke-width:1;stroke-dasharray:220;stroke-dashoffset:220;
+  animation:emptyLine 0.6s ease forwards}
+.empty-tl circle{fill:rgba(138,134,128,0.4);animation:dotIn 0.3s ease backwards}
+.empty-tl circle:nth-child(2){animation-delay:0.1s}.empty-tl circle:nth-child(3){animation-delay:0.2s}.empty-tl circle:nth-child(4){animation-delay:0.3s}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tl-card.pre,.tl-list-item.pre{opacity:1}
+  .tl-card.pre .tl-mini-dot{opacity:1}
+  .cover-era-line{transform:scaleX(1)}
+  .empty-tl line{stroke-dashoffset:0}
+}
 .tl-card-body{padding:14px 14px 10px}
 .tl-card-cat{font-family:var(--f-m);font-size:9px;letter-spacing:0.1em;
   text-transform:uppercase;margin-bottom:4px}
@@ -255,7 +315,9 @@ body.sheet-open{overflow:hidden}
     transition:transform 0.32s ease,visibility 0.32s;padding:14px 20px 36px}
   body.sheet-open .sidebar{transform:translateY(0);visibility:visible}
   .sb-sheet-head{display:flex;align-items:center;justify-content:space-between;
-    margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+    margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--border);
+    touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+  .sidebar.dragging{transition:none}
   .sb-sheet-title{font-family:var(--f-d);font-size:15px;letter-spacing:0.08em;color:var(--text-h)}
   .sb-sheet-close{width:36px;height:36px;display:flex;align-items:center;justify-content:center;
     border-radius:8px;font-size:18px;color:var(--text2)}
@@ -281,7 +343,7 @@ body.sheet-open{overflow:hidden}
 <header class="hdr">
   <div class="hdr-brand"><img src="assets/chronos-logo.svg" alt="Chronos" style="height:40px;width:auto;display:block"></div>
   <nav class="hdr-nav">
-    <a href="#">マイページ</a>
+    <a href="#" id="navMypage">マイページ</a>
     <a href="#" class="active">年表を探す</a>
     <a href="#">年表をつくる</a>
     <button type="button" class="hdr-burger" id="menuBtn" aria-label="メニュー" aria-expanded="false">
@@ -423,11 +485,13 @@ body.sheet-open{overflow:hidden}
       </div>
     </div>
 
-    <!-- Grid View -->
-    <div class="tl-grid active" id="gridView"></div>
+    <div class="views" id="views">
+      <!-- Grid View -->
+      <div class="tl-grid active" id="gridView"></div>
 
-    <!-- List View -->
-    <div class="tl-list" id="listView"></div>
+      <!-- List View -->
+      <div class="tl-list" id="listView"></div>
+    </div>
 
     <!-- Loading -->
     <div class="loading-row" id="loadingRow" style="display:none">
@@ -436,7 +500,7 @@ body.sheet-open{overflow:hidden}
 
     <!-- Empty -->
     <div class="empty-state" id="emptyState">
-      <svg class="empty-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+      <svg class="empty-tl" viewBox="0 0 220 24" aria-hidden="true"><line x1="0" y1="12" x2="220" y2="12"/><circle cx="8" cy="12" r="2.5"/><circle cx="26" cy="12" r="2.5"/><circle cx="44" cy="12" r="2.5"/></svg>
       <div class="empty-title">年表が見つかりませんでした</div>
       <div class="empty-desc">検索キーワードを変えるか、フィルターを変更してお試しください</div>
     </div>
@@ -628,6 +692,93 @@ function coverSVG(item,uidPrefix){
     `<rect width="${VBW}" height="${VBH}" fill="${c(0.05)}"/>${inner}</svg>`;
 }
 
+// ===== PHOTO COVERS (Unsplash) =====
+// プロトタイプ用の固定プール（6カテゴリ×8枚=48枚）。実行時にUnsplash APIは呼ばない。
+// 本番要件（申し送り）:
+//  - 写真の取得はサーバー側でUnsplash API経由（Access Keyはクライアントに埋め込まない）
+//  - 表示時に photo.links.download_location をサーバー経由でヒットする（downloadトラッキング必須）
+//  - attribution: 撮影者リンク+Unsplashリンクに ?utm_source=chronos&utm_medium=referral を付与（下記UNSPLASH_UTM）
+//  - hotlink必須（images.unsplash.com をそのまま使用、自前CDNへの再ホストは不可）。DBには photo_id + raw URL + 撮影者名/リンクをキャッシュ
+//  - 年表ごとの写真は cover_seed で決定論的に選ぶ（explore/profile/viewer で同一）
+const PHOTO_POOL={
+  tech:[
+    {id:"qwMfZVm3yRI",raw:"https://images.unsplash.com/photo-1637166185518-058f5896a2e9",name:"MJH SHIKDER",user:"https://unsplash.com/@mjh_shikder",link:"https://unsplash.com/photos/a-dark-hallway-with-blue-and-white-lights-qwMfZVm3yRI"},
+    {id:"56xiC0jUiQ0",raw:"https://images.unsplash.com/photo-1634834300387-8015d9fb7550",name:"MJH SHIKDER",user:"https://unsplash.com/@mjh_shikder",link:"https://unsplash.com/photos/a-tunnel-with-neon-lights-in-it-56xiC0jUiQ0"},
+    {id:"Wa-3T6d0rBo",raw:"https://images.unsplash.com/photo-1689443111130-6e9c7dfd8f9e",name:"Martin Martz",user:"https://unsplash.com/@martz90",link:"https://unsplash.com/photos/a-dark-background-with-a-purple-geometric-design-Wa-3T6d0rBo"},
+    {id:"4J1tjkox6ho",raw:"https://images.unsplash.com/photo-1672581437674-3186b17b405a",name:"Vinh Nguyen",user:"https://unsplash.com/@huyvinh95",link:"https://unsplash.com/photos/a-futuristic-sci-fi-scene-with-a-blue-background-4J1tjkox6ho"},
+    {id:"nmA5n9nHvFM",raw:"https://images.unsplash.com/photo-1785981254860-98d9ad1e7b22",name:"Logan Voss",user:"https://unsplash.com/@loganvoss",link:"https://unsplash.com/photos/abstract-metallic-circuit-board-with-blue-pins-nmA5n9nHvFM"},
+    {id:"2yClsTFXIcE",raw:"https://images.unsplash.com/photo-1660165458059-57cfb6cc87e5",name:"and machines",user:"https://unsplash.com/@and_machines",link:"https://unsplash.com/photos/iridescent-rectangular-prisms-in-grid-2yClsTFXIcE"},
+    {id:"UwLc1ZTnzos",raw:"https://images.unsplash.com/photo-1746755455586-e946c9b7a4a4",name:"Declan Sun",user:"https://unsplash.com/@declansun",link:"https://unsplash.com/photos/steel-beams-create-a-geometric-architectural-structure-UwLc1ZTnzos"},
+    {id:"Dn1Jjv3Kl1k",raw:"https://images.unsplash.com/photo-1777792231793-aa9341180be3",name:"Lai Man Nung",user:"https://unsplash.com/@kirklai",link:"https://unsplash.com/photos/tall-building-with-purple-and-blue-lights-at-night-Dn1Jjv3Kl1k"},
+  ],
+  history:[
+    {id:"-zoe4nviem4",raw:"https://images.unsplash.com/photo-1507475380673-1246fa72eeea",name:"Arthur Yeti",user:"https://unsplash.com/@arthuryeti",link:"https://unsplash.com/photos/brown-painted-structures--zoe4nviem4"},
+    {id:"Z9aR-ewdQTc",raw:"https://images.unsplash.com/photo-1604579806311-e65d83db73d7",name:"Federico Di Dio photography",user:"https://unsplash.com/@didiofederico_photographer",link:"https://unsplash.com/photos/brown-concrete-building-during-daytime-Z9aR-ewdQTc"},
+    {id:"Q9hRAcsW88o",raw:"https://images.unsplash.com/photo-1697789234239-adf2e075c654",name:"Onur KAYACI",user:"https://unsplash.com/@kayacionur",link:"https://unsplash.com/photos/the-ruins-of-the-ancient-city-of-delphinia-Q9hRAcsW88o"},
+    {id:"YOFvbEu9w9Y",raw:"https://images.unsplash.com/photo-1649590234463-4fabe475dd91",name:"amir ibrahim",user:"https://unsplash.com/@amir_ibrahim",link:"https://unsplash.com/photos/a-close-up-of-a-pillar-with-carvings-on-it-YOFvbEu9w9Y"},
+    {id:"tuak5aFYydE",raw:"https://images.unsplash.com/photo-1613552568445-7d357eb359c6",name:"Nika Benedictova",user:"https://unsplash.com/@nika_benedictova",link:"https://unsplash.com/photos/brown-rock-formation-under-blue-sky-during-daytime-tuak5aFYydE"},
+    {id:"umfgtmwR__Y",raw:"https://images.unsplash.com/photo-1738580971059-6c645b78c1b8",name:"Martijn Vonk",user:"https://unsplash.com/@vonkm737",link:"https://unsplash.com/photos/an-aerial-view-of-an-ancient-city-in-the-desert-umfgtmwR__Y"},
+    {id:"OtG1kmZCFIQ",raw:"https://images.unsplash.com/photo-1597078769927-ffb0c1fc9d98",name:"Moritz Kindler",user:"https://unsplash.com/@moritz_photography",link:"https://unsplash.com/photos/brown-concrete-building-during-daytime-OtG1kmZCFIQ"},
+    {id:"hTIftud72Jo",raw:"https://images.unsplash.com/photo-1771692822834-1ae0564af77f",name:"Aysegul Aytören",user:"https://unsplash.com/@oldsoulframes",link:"https://unsplash.com/photos/ancient-stone-ruins-of-gobeklitepe-archaeological-site-hTIftud72Jo"},
+  ],
+  culture:[
+    {id:"R7ZDmTCbUgs",raw:"https://images.unsplash.com/photo-1773474200110-c69c3accf229",name:"Egor Myznik",user:"https://unsplash.com/@vonshnauzer",link:"https://unsplash.com/photos/two-people-observe-framed-artwork-on-a-wall-R7ZDmTCbUgs"},
+    {id:"Nlf8WgIB9iw",raw:"https://images.unsplash.com/photo-1665902685700-323525ba96cd",name:"abdullah ali",user:"https://unsplash.com/@adbullahx",link:"https://unsplash.com/photos/a-building-with-a-large-arched-doorway-Nlf8WgIB9iw"},
+    {id:"utCun0FM4tw",raw:"https://images.unsplash.com/photo-1768133896436-ecd0fa6f228f",name:"Igor Rusakov",user:"https://unsplash.com/@toffeeposibilities",link:"https://unsplash.com/photos/two-people-sitting-on-a-bench-looking-at-an-exhibit-utCun0FM4tw"},
+    {id:"mDfLdPFcwJc",raw:"https://images.unsplash.com/photo-1687475790472-37ef7b6a5c6d",name:"Clark Gu",user:"https://unsplash.com/@atluminon",link:"https://unsplash.com/photos/a-dimly-lit-room-with-benches-and-pictures-on-the-wall-mDfLdPFcwJc"},
+    {id:"mWHCa1ZDaDw",raw:"https://images.unsplash.com/photo-1678308510962-7933731202e7",name:"2H Media",user:"https://unsplash.com/@2hmedia",link:"https://unsplash.com/photos/a-room-filled-with-lots-of-statues-of-animals-mWHCa1ZDaDw"},
+    {id:"TMg4REjyAjk",raw:"https://images.unsplash.com/photo-1687475792136-5035f792730f",name:"Clark Gu",user:"https://unsplash.com/@atluminon",link:"https://unsplash.com/photos/a-long-hallway-with-a-clock-on-the-wall-TMg4REjyAjk"},
+    {id:"PjmYzAOwAWA",raw:"https://images.unsplash.com/photo-1765127959662-a7229fa51580",name:"LISK OBE",user:"https://unsplash.com/@summerobelisk",link:"https://unsplash.com/photos/people-walking-through-a-dimly-lit-museum-exhibit-hall-PjmYzAOwAWA"},
+    {id:"3rEble63E6k",raw:"https://images.unsplash.com/photo-1765127959629-c7d150e75890",name:"LISK OBE",user:"https://unsplash.com/@summerobelisk",link:"https://unsplash.com/photos/artifact-displayed-in-a-museum-exhibit-with-red-lighting-3rEble63E6k"},
+  ],
+  science:[
+    {id:"sqwEXTQLTPQ",raw:"https://images.unsplash.com/photo-1761759161257-a1f9c41df8a9",name:"arnaud girault",user:"https://unsplash.com/@arnaudastro",link:"https://unsplash.com/photos/cosmic-nebula-with-swirling-clouds-of-gas-and-dust-sqwEXTQLTPQ"},
+    {id:"fU-oPNhdsO8",raw:"https://images.unsplash.com/photo-1785655140480-5153bdcac1f0",name:"Joel Henry",user:"https://unsplash.com/@joelhenry",link:"https://unsplash.com/photos/swirling-red-and-blue-cosmic-nebula-with-scattered-stars-fU-oPNhdsO8"},
+    {id:"JD7T8Y1B79U",raw:"https://images.unsplash.com/photo-1765754431926-964ed45a41e9",name:"Steve Busch",user:"https://unsplash.com/@sdbusch77",link:"https://unsplash.com/photos/a-spiral-galaxy-in-a-starry-night-sky-JD7T8Y1B79U"},
+    {id:"1WfegtbvNK8",raw:"https://images.unsplash.com/photo-1772289935663-80aa987be656",name:"NIR HIMI",user:"https://unsplash.com/@nirhimi",link:"https://unsplash.com/photos/rock-arch-under-a-starry-night-sky-1WfegtbvNK8"},
+    {id:"aB5tmNaOsYA",raw:"https://images.unsplash.com/photo-1777195680785-23dbb7768b60",name:"NASA",user:"https://unsplash.com/@nasa",link:"https://unsplash.com/photos/earth-rises-over-the-dark-lunar-surface-aB5tmNaOsYA"},
+    {id:"64_DnIpzsyI",raw:"https://images.unsplash.com/photo-1617457485942-458b94408f01",name:"Mier Chen",user:"https://unsplash.com/@miercat",link:"https://unsplash.com/photos/silhouette-of-mountain-under-blue-sky-during-night-time-64_DnIpzsyI"},
+    {id:"EsnsJHJxVOA",raw:"https://images.unsplash.com/photo-1786643684910-29dd0bd06b33",name:"Michael Kostiv",user:"https://unsplash.com/@michaelkostiv",link:"https://unsplash.com/photos/starry-night-sky-with-clouds-EsnsJHJxVOA"},
+    {id:"VKdU_oP54uo",raw:"https://images.unsplash.com/photo-1776105648206-fc6dd5fb0776",name:"Mike Newbry",user:"https://unsplash.com/@mikenewbry",link:"https://unsplash.com/photos/a-solitary-spire-under-a-starry-night-sky-VKdU_oP54uo"},
+  ],
+  business:[
+    {id:"_WO_STod-74",raw:"https://images.unsplash.com/photo-1619763515915-8e6d599f2935",name:"kate.sade",user:"https://unsplash.com/@kate_sade",link:"https://unsplash.com/photos/black-leather-chair-beside-glass-window-_WO_STod-74"},
+    {id:"io5clS15h9Q",raw:"https://images.unsplash.com/photo-1660496247667-3fb697c396af",name:"Egor Komarov",user:"https://unsplash.com/@egorkomarov",link:"https://unsplash.com/photos/a-tall-glass-building-io5clS15h9Q"},
+    {id:"D4s5XrwA0no",raw:"https://images.unsplash.com/photo-1754832728042-36484f848648",name:"Irina Chishkova",user:"https://unsplash.com/@irina_chishkova",link:"https://unsplash.com/photos/modern-skyscrapers-illuminated-at-dusk-with-cloudy-sky-D4s5XrwA0no"},
+    {id:"2qTXxHClwbE",raw:"https://images.unsplash.com/photo-1628089762887-544f4b53cea9",name:"Vista Wei",user:"https://unsplash.com/@weista",link:"https://unsplash.com/photos/aerial-view-of-city-buildings-during-daytime-2qTXxHClwbE"},
+    {id:"zUD329ahwpc",raw:"https://images.unsplash.com/photo-1474899544414-a357f12283fb",name:"Robert Bye",user:"https://unsplash.com/@robertbye",link:"https://unsplash.com/photos/silhouette-photo-of-woman-and-man-walking-zUD329ahwpc"},
+    {id:"bXiSDW3m930",raw:"https://images.unsplash.com/photo-1606818649966-8e1a45180a64",name:"Corporate Locations",user:"https://unsplash.com/@clsg",link:"https://unsplash.com/photos/grey-concrete-building-under-blue-sky-during-daytime-bXiSDW3m930"},
+    {id:"UAUS-dcbSZo",raw:"https://images.unsplash.com/photo-1657316169342-16ac18465619",name:"Manuel Keller",user:"https://unsplash.com/@emkaay",link:"https://unsplash.com/photos/a-city-street-with-tall-buildings-UAUS-dcbSZo"},
+    {id:"0JUAmZOWVsg",raw:"https://images.unsplash.com/photo-1734995972004-00fffbe0c3d9",name:"Dima Ermolenko",user:"https://unsplash.com/@dchoobaka",link:"https://unsplash.com/photos/a-very-tall-building-with-lots-of-windows-at-night-0JUAmZOWVsg"},
+  ],
+  personal:[
+    {id:"2H5yW_EaqgA",raw:"https://images.unsplash.com/photo-1654613698316-b9bce9f4b6bb",name:"volant",user:"https://unsplash.com/@volantaroma",link:"https://unsplash.com/photos/a-group-of-people-sitting-around-a-table-eating-food-2H5yW_EaqgA"},
+    {id:"AqKinW-2OJM",raw:"https://images.unsplash.com/photo-1646520537547-c56f4287aa45",name:"Tania Malréchauffé",user:"https://unsplash.com/@okta",link:"https://unsplash.com/photos/a-cat-sitting-on-top-of-a-pile-of-wood-AqKinW-2OJM"},
+    {id:"nHe8OAVrc34",raw:"https://images.unsplash.com/photo-1758523417185-5d46089b870a",name:"Vitaly Gariev",user:"https://unsplash.com/@silverkblack",link:"https://unsplash.com/photos/couple-looking-at-tablet-in-modern-kitchen-nHe8OAVrc34"},
+    {id:"AXbBeC1xwls",raw:"https://images.unsplash.com/photo-1758522484939-e1965be04b24",name:"Vitaly Gariev",user:"https://unsplash.com/@silverkblack",link:"https://unsplash.com/photos/couple-sharing-a-tender-moment-in-the-kitchen-AXbBeC1xwls"},
+    {id:"85oNhbUSulg",raw:"https://images.unsplash.com/photo-1763027471534-0038286c7c7b",name:"balint henter",user:"https://unsplash.com/@theoriginalbubi",link:"https://unsplash.com/photos/close-up-of-a-decorated-christmas-tree-with-ornaments-85oNhbUSulg"},
+    {id:"rzzJan1emGM",raw:"https://images.unsplash.com/photo-1760615303386-d025db9d6ae2",name:"Florian Schindler",user:"https://unsplash.com/@flo_raw",link:"https://unsplash.com/photos/a-golden-retriever-puppy-sleeping-peacefully-in-its-bed-rzzJan1emGM"},
+    {id:"oal546SgP_Q",raw:"https://images.unsplash.com/photo-1759239355404-63313f92cfc2",name:"Clay Banks",user:"https://unsplash.com/@claybanks",link:"https://unsplash.com/photos/dining-area-with-wooden-table-and-chairs-stairs-nearby-oal546SgP_Q"},
+    {id:"-ugsMunCUlw",raw:"https://images.unsplash.com/photo-1767016451745-b1748dcba5f4",name:"Antoine Pouligny",user:"https://unsplash.com/@gimmick",link:"https://unsplash.com/photos/person-petting-a-cat-on-a-bed--ugsMunCUlw"},
+  ],
+};const UNSPLASH_UTM='?utm_source=chronos&utm_medium=referral';
+function escHTML(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function pickPhoto(item){const pool=PHOTO_POOL[item.cat];return pool&&pool.length?pool[(item.seed>>>8)%pool.length]:null}
+function photoURL(p,w,h){return `${p.raw}?w=${w}&h=${h}&fit=crop&auto=format&q=70`}
+// SVGを下敷きにし、写真をlazy読み込み。onloadで.loaded付与→0.4sフェードイン。onerrorはimgを外してSVGを残す
+function coverHTML(item,uidPrefix,size){
+  const svg=coverSVG(item,uidPrefix);
+  const p=pickPhoto(item);
+  const thumb=size==='thumb';
+  // 年代範囲の線（カードのみ。hover/focusでCSSアニメーション）
+  const era=thumb?'':`<div class="cover-era" aria-hidden="true"><span class="cover-era-line"></span><span class="cover-era-y from">${item.eraFrom}</span><span class="cover-era-y to">${item.eraTo}</span></div>`;
+  if(!p)return svg+(thumb?'':'<div class="cover-shade"></div>')+era;
+  const img=`<img class="cover-img" src="${photoURL(p,thumb?128:640,thumb?80:360)}" alt="" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.remove()">`;
+  if(thumb)return svg+img;
+  const credit=`<span class="cover-credit">Photo: <button type="button" data-href="${escHTML(p.user)}${UNSPLASH_UTM}">${escHTML(p.name)}</button> / <button type="button" data-href="https://unsplash.com/${UNSPLASH_UTM}">Unsplash</button></span>`;
+  return svg+img+'<div class="cover-shade"></div>'+era+credit;
+}
+
 // ===== RENDER =====
 const ICON_HEART='<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>';
 const ICON_BM='<svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>';
@@ -642,15 +793,15 @@ function actionButtons(item){
 }
 
 function renderGridCard(item){
-  const miniDots=[];
+  const miniDots=[];let di=0; // --i: 順次点灯の遅延インデックス
   item.lColors.forEach((c,i)=>{
-    miniDots.push(`<div class="tl-mini-dot" style="background:${c}"></div>`);
+    miniDots.push(`<div class="tl-mini-dot" style="background:${c};--i:${di++}"></div>`);
     miniDots.push('<div class="tl-mini-spacer"></div>');
-    miniDots.push(`<div class="tl-mini-dot" style="background:${item.lColors[(i+1)%item.lColors.length]}"></div>`);
+    miniDots.push(`<div class="tl-mini-dot" style="background:${item.lColors[(i+1)%item.lColors.length]};--i:${di++}"></div>`);
     if(i<item.lColors.length-1)miniDots.push('<div class="tl-mini-spacer"></div>');
   });
-  return `<a class="tl-card" href="chronos-viewer.html">
-    <div class="tl-card-cover">${coverSVG(item,'g')}</div>
+  return `<a class="tl-card pre" href="chronos-viewer.html">
+    <div class="tl-card-cover">${coverHTML(item,'g','card')}</div>
     <div class="tl-card-body">
       <div class="tl-card-cat" style="color:${item.catColor}">${item.catName}</div>
       <div class="tl-card-title">${item.title}</div>
@@ -665,8 +816,8 @@ function renderGridCard(item){
 }
 
 function renderListItem(item){
-  return `<a class="tl-list-item" href="chronos-viewer.html">
-    <div class="tl-list-thumb">${coverSVG(item,'l')}</div>
+  return `<a class="tl-list-item pre" href="chronos-viewer.html">
+    <div class="tl-list-thumb">${coverHTML(item,'l','thumb')}</div>
     <div class="tl-list-body">
       <div class="tl-list-title">${item.title}</div>
       <div class="tl-list-sub">
@@ -715,24 +866,77 @@ function renderPage(){
     grid.insertAdjacentHTML('beforeend',renderGridCard(item));
     list.insertAdjacentHTML('beforeend',renderListItem(item));
   });
+  observeReveal();
 
   displayedCount=end;
-  document.getElementById('resultNum').textContent=filteredData.length.toLocaleString();
+  setResultCount(filteredData.length);
   document.getElementById('emptyState').style.display=filteredData.length===0?'block':'none';
   document.getElementById('loadingRow').style.display='none';
 
   updateActiveFilterTags();
 }
 
+const REDUCE_MOTION=window.matchMedia('(prefers-reduced-motion: reduce)');
+
+// 件数のカウントアップ: 変化時に0.4s・easeOutCubicで旧値→新値。初回とreduce-motionは即時
+const resultNumEl=document.getElementById('resultNum');
+let shownCount=null,countRAF=null;
+function setResultCount(n){
+  if(shownCount===null||shownCount===n||REDUCE_MOTION.matches){
+    cancelAnimationFrame(countRAF);shownCount=n;resultNumEl.textContent=n.toLocaleString();return;
+  }
+  cancelAnimationFrame(countRAF);
+  const from=shownCount,t0=performance.now();
+  const step=now=>{
+    const p=Math.min(1,(now-t0)/400),e=1-Math.pow(1-p,3);
+    shownCount=Math.round(from+(n-from)*e);
+    resultNumEl.textContent=shownCount.toLocaleString();
+    if(p<1)countRAF=requestAnimationFrame(step);else shownCount=n;
+  };
+  countRAF=requestAnimationFrame(step);
+}
+
+// フィルタ・カテゴリ切替: 0.2sで旧DOMをフェードアウト→差し替え→フェードイン
+const viewsEl=document.getElementById('views');
+let xfadeTimer=null;
 function rerender(){
   displayedCount=0;
   applyFilters();
-  renderPage();
+  clearTimeout(xfadeTimer);
+  if(REDUCE_MOTION.matches){renderPage();return}
+  viewsEl.classList.add('xfade');
+  xfadeTimer=setTimeout(()=>{
+    renderPage();
+    requestAnimationFrame(()=>viewsEl.classList.remove('xfade'));
+  },200);
 }
 
+// カード表示時のreveal（IntersectionObserver、下から8px・stagger 40ms）
+const revealIO=new IntersectionObserver(entries=>{
+  let i=0;
+  entries.forEach(en=>{
+    if(!en.isIntersecting)return;
+    const el=en.target;
+    revealIO.unobserve(el);
+    el.style.animationDelay=(i++*40)+'ms';
+    el.classList.remove('pre');
+    el.classList.add('in');
+  });
+},{rootMargin:'0px 0px -5% 0px'});
+function observeReveal(){
+  document.querySelectorAll('.tl-card.pre,.tl-list-item.pre').forEach(el=>{
+    if(REDUCE_MOTION.matches){el.classList.remove('pre');return}
+    revealIO.observe(el);
+  });
+}
+
+let searchTimer=null;
 function handleSearch(){
-  state.q=document.getElementById('searchInput').value.toLowerCase().trim();
-  rerender();
+  clearTimeout(searchTimer);
+  searchTimer=setTimeout(()=>{
+    state.q=document.getElementById('searchInput').value.toLowerCase().trim();
+    rerender();
+  },150);
 }
 
 function handleEra(){
@@ -819,23 +1023,48 @@ function updateActiveFilterTags(){
 
 // ===== LIKE / BOOKMARK toggle (delegated; cards are <a>) =====
 document.addEventListener('click',e=>{
+  // Unsplashクレジット（カードが<a>のためbutton+data-hrefで別タブ）
+  const credit=e.target.closest('.cover-credit button');
+  if(credit){e.preventDefault();e.stopPropagation();window.open(credit.dataset.href,'_blank','noopener');return}
   const btn=e.target.closest('.act-btn');
   if(!btn)return;
   e.preventDefault();e.stopPropagation();
   const item=ITEM_BY_ID[btn.dataset.id];
   if(!item)return;
   if(btn.classList.contains('act-like')){
-    if(likedIds.has(item.id))likedIds.delete(item.id);else likedIds.add(item.id);
+    if(likedIds.has(item.id))likedIds.delete(item.id);
+    else{
+      likedIds.add(item.id);
+      btn.classList.remove('pop');void btn.offsetWidth;btn.classList.add('pop');
+      btn.addEventListener('animationend',()=>btn.classList.remove('pop'),{once:true});
+    }
   }else{
     if(isBookmarked(item.id)){
       bookmarks=bookmarks.filter(b=>b.id!==item.id);
     }else{
       bookmarks.push({id:item.id,title:item.title,desc:item.desc,cat:item.cat,catName:item.catName,likes:item.likes});
+      showBookmarkHint();
     }
   }
   persist();
   syncButtons(item.id);
 });
+
+// 初回ブックマーク時のヒント: マイページ（≤540pxはハンバーガー）が1.2s灯る。以後は出さない
+const LS_BM_HINT='chronos_bm_hint_v1';
+let hintTimer=null;
+function showBookmarkHint(){
+  if(REDUCE_MOTION.matches)return;
+  let seen=null;try{seen=localStorage.getItem(LS_BM_HINT)}catch(e){}
+  if(seen)return;
+  try{localStorage.setItem(LS_BM_HINT,'1')}catch(e){}
+  const target=window.matchMedia('(max-width:540px)').matches
+    ?document.getElementById('menuBtn'):document.getElementById('navMypage');
+  if(!target)return;
+  clearTimeout(hintTimer);
+  target.classList.add('hint');
+  hintTimer=setTimeout(()=>target.classList.remove('hint'),1200);
+}
 
 function syncButtons(id){
   const item=ITEM_BY_ID[id];
@@ -865,6 +1094,42 @@ function closeSheet(){
   sidebarEl.removeAttribute('aria-label');
 }
 document.getElementById('sheetClose').addEventListener('click',closeSheet);
+
+// スワイプダウンで閉じる: ヘッダー(ハンドル部)からのpointerドラッグに追従。80px以上 or 速度十分で閉じ、未満は0.25sで戻る
+(function(){
+  const head=sidebarEl.querySelector('.sb-sheet-head');
+  const SHEET_MQ=window.matchMedia('(max-width:860px)');
+  let drag=null;
+  head.addEventListener('pointerdown',e=>{
+    if(!SHEET_MQ.matches||REDUCE_MOTION.matches||!document.body.classList.contains('sheet-open'))return;
+    if(e.target.closest('.sb-sheet-close'))return;
+    if(e.pointerType==='mouse'&&e.button!==0)return;
+    drag={id:e.pointerId,startY:e.clientY,dy:0,lastY:e.clientY,lastT:e.timeStamp,vy:0};
+    sidebarEl.classList.add('dragging');
+    head.setPointerCapture(e.pointerId);
+    head.style.cursor='grabbing';
+  });
+  head.addEventListener('pointermove',e=>{
+    if(!drag||e.pointerId!==drag.id)return;
+    const dy=Math.max(0,e.clientY-drag.startY);
+    const dt=e.timeStamp-drag.lastT;
+    if(dt>0)drag.vy=(e.clientY-drag.lastY)/dt; // px/ms
+    drag.lastY=e.clientY;drag.lastT=e.timeStamp;drag.dy=dy;
+    sidebarEl.style.transform=`translateY(${dy}px)`;
+  });
+  function endDrag(e){
+    if(!drag||e.pointerId!==drag.id)return;
+    const {dy,vy}=drag;drag=null;
+    head.style.cursor='';
+    sidebarEl.classList.remove('dragging');
+    sidebarEl.style.transition='transform 0.25s ease,visibility 0.25s';
+    sidebarEl.style.transform='';           // 以後はCSS状態(open→0 / closed→102%)へ遷移
+    if(e.type==='pointerup'&&(dy>=80||(vy>0.5&&dy>20)))closeSheet();
+    setTimeout(()=>{sidebarEl.style.transition=''},300);
+  }
+  head.addEventListener('pointerup',endDrag);
+  head.addEventListener('pointercancel',endDrag);
+})();
 
 // ===== MOBILE MENU (≤540px) =====
 const menuBtn=document.getElementById('menuBtn');

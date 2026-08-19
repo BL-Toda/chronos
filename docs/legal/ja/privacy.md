@@ -135,6 +135,7 @@ localStorage の UI 状態は、ログインしていない閲覧者について
 | Stripe, Inc. | メールアドレス、決済情報（あなたが直接入力）、IPアドレス、不正防止用 Cookie | 決済処理、不正防止 | 決済ページを開いた場合のみ |
 | Google LLC / Apple Inc.（OAuth） | 認証要求、IPアドレス、各社アカウントのログイン情報（あなたが各社の画面で直接入力） | ログイン認証 | Google / Apple でログインする操作をした場合のみ |
 | Fontshare（Indian Type Foundry）/ Google Fonts | IPアドレス、ユーザーエージェント、参照元URL | フォントの読み込み | 現在は常時 [TODO: セルフホスト化。完了時に本行を削除] |
+| Unsplash, Inc.（images.unsplash.com） | IPアドレス、ユーザーエージェント、参照元URL | 年表のカバー写真の配信 | 写真付き年表を表示するページの閲覧時に自動送信 |
 
 ### 6.3 Google Analytics 4 と同意
 
