@@ -89,31 +89,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,12,0.7
 .hp-item{opacity:0;animation:hpin 1.2s var(--ease) forwards}
 @keyframes hpin{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 .hp-caption{margin-top:16px;font-family:var(--f-m);font-size:0.66rem;letter-spacing:0.14em;color:var(--text3);text-transform:uppercase;text-align:right}
-.hero-note{font-size:0.78rem;color:var(--text2);letter-spacing:0.04em;margin-bottom:16px}
-.hero-more{display:inline-block;margin-top:34px;font-size:0.8rem;color:var(--text2);text-decoration:none;letter-spacing:0.06em;padding:6px 2px;transition:color 0.3s}
+.hero-cta{display:flex;flex-direction:column;align-items:center;gap:0}
+.hero-cta .btn-primary{height:48px;padding:0 32px}
+.hero-consent{margin-top:14px;font-size:0.72rem;color:var(--text2);letter-spacing:0.02em;line-height:1.8}
+.hero-consent a{color:var(--text2);text-decoration:underline;text-underline-offset:3px;transition:color 0.3s}
+.hero-consent .nw{white-space:nowrap}
+.hero-consent a:hover{color:var(--accent)}
+.hero-more{display:inline-block;margin-top:26px;font-size:0.8rem;color:var(--text2);text-decoration:none;letter-spacing:0.06em;padding:6px 2px;transition:color 0.3s}
 .hero-more:hover{color:var(--accent)}
-
-/* waitlist form */
-.wl{max-width:480px;margin:0 auto}
-.wl-form{display:flex;gap:10px}
-.wl-form input{flex:1;min-width:0;height:48px;padding:0 16px;background:var(--card);border:1px solid var(--border2);border-radius:6px;color:var(--text);font-family:var(--f-b);font-size:0.9rem;transition:border-color 0.3s}
-.wl-form input::placeholder{color:var(--text3)}
-.wl-form input:focus{outline:none;border-color:var(--accent)}
-.wl-form input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.wl-form .btn{height:48px}
-.wl-consent{margin-top:12px;font-size:0.72rem;color:var(--text2);letter-spacing:0.02em}
-.wl-consent a{color:var(--text2);text-decoration:underline;text-underline-offset:3px;transition:color 0.3s}
-.wl-consent a:hover{color:var(--accent)}
-.wl-error{margin-top:10px;font-size:0.76rem;color:var(--c-orange);min-height:1.2em;display:none}
-.wl-error.on{display:block}
-.wl-done{display:none;padding:26px 24px;background:var(--card);border:1px solid var(--border2);border-radius:10px;text-align:center;animation:hpin 0.8s var(--ease)}
-.wl.done .wl-form,.wl.done .wl-consent,.wl.done .wl-error{display:none}
-.wl.done .wl-done{display:block}
-.wl-done-title{font-family:var(--f-d);font-size:1.05rem;letter-spacing:0.08em;color:var(--text-h);margin-bottom:6px;display:flex;align-items:center;justify-content:center;gap:10px}
-.wl-done-title svg{width:18px;height:18px;stroke:var(--c-green)}
-.wl-done-sub{font-size:0.82rem;color:var(--text2);margin-bottom:18px}
-.wl-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.wl-actions .btn{min-height:40px;padding:0 18px;font-size:0.78rem}
 
 /* problem */
 .prose{max-width:640px}
@@ -218,9 +201,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,12,0.7
 .plan li svg{width:14px;height:14px;stroke:var(--accent);fill:none;stroke-width:1.5;flex:none;position:relative;top:2px}
 .plan .btn{width:100%}
 .plan-note{text-align:center;margin-top:22px;font-size:0.76rem;color:var(--text2)}
+.plan-eligibility{margin-top:14px;font-size:0.72rem;color:var(--text2);letter-spacing:0.02em;text-align:center}
 
-/* waitlist section */
-.wl-sec .lead{margin-bottom:38px}
+/* start (final CTA) */
+.start-sec .sec-head{margin-bottom:0}
+.start-sec .lead{margin-bottom:34px}
+.start-sec .btn-primary{height:48px;padding:0 32px}
 
 /* footer */
 footer{padding:64px 0 40px;border-top:1px solid var(--border)}
@@ -240,10 +226,6 @@ footer{padding:64px 0 40px;border-top:1px solid var(--border)}
 .foot-legal details[open] summary::before{transform:rotate(45deg)}
 .foot-legal details p{font-size:0.78rem;color:var(--text2);padding:4px 4px 12px 18px}
 
-/* toast */
-.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--card-el);border:1px solid var(--border2);color:var(--text);padding:12px 20px;border-radius:8px;font-size:0.82rem;opacity:0;pointer-events:none;transition:opacity 0.4s,transform 0.4s var(--ease);z-index:200}
-.toast.on{opacity:1;transform:translate(-50%,0)}
-
 /* responsive */
 @media (max-width:860px){
   .cards3,.steps{grid-template-columns:1fr 1fr}
@@ -258,8 +240,7 @@ footer{padding:64px 0 40px;border-top:1px solid var(--border)}
   .hp-lane-label{font-size:16px}.hp-year{font-size:15px}
   .cards3,.steps,.plans{grid-template-columns:1fr}
   .hero-preview{padding:18px 14px 12px}
-  .wl-form{flex-direction:column}
-  .wl-form .btn{width:100%}
+  .hero-cta .btn-primary,.start-sec .btn-primary{width:100%;max-width:360px}
   .demo-top{padding:18px 16px}
   .demo-body{padding:10px 14px 18px}
   .ev-btn{grid-template-columns:1fr auto;grid-template-areas:"year layer" "title caret";gap:6px 12px;padding:12px 14px}
@@ -279,7 +260,8 @@ footer{padding:64px 0 40px;border-top:1px solid var(--border)}
       <a class="nav-link" href="#demo">体験する</a>
       <a class="nav-link" href="#how">仕組み</a>
       <a class="nav-link" href="#pricing">料金</a>
-      <a class="btn btn-primary nav-cta" href="#waitlist">ウェイトリストに登録</a>
+      <a class="nav-link" href="chronos-auth.html">ログイン</a>
+      <a class="btn btn-primary nav-cta" href="chronos-auth.html">無料ではじめる</a>
     </div>
   </div>
 </nav>
@@ -341,18 +323,9 @@ footer{padding:64px 0 40px;border-top:1px solid var(--border)}
         <div class="hp-caption">3 layers / 1 timeline</div>
       </div>
 
-      <div class="reveal d3">
-        <p class="hero-note">まもなく公開。最初の発見者になりませんか。</p>
-        <div class="wl" data-wl>
-          <form class="wl-form" novalidate>
-            <label class="sr" for="wl-email-hero" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">メールアドレス</label>
-            <input id="wl-email-hero" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
-            <button type="submit" class="btn btn-primary">ウェイトリストに登録</button>
-          </form>
-          <p class="wl-error" role="alert"></p>
-          <p class="wl-consent">登録により <a href="chronos-legal.html#privacy">プライバシーポリシー</a> に同意したものとします</p>
-          <div class="wl-done" role="status"></div>
-        </div>
+      <div class="reveal d3 hero-cta">
+        <a class="btn btn-primary" href="chronos-auth.html">無料ではじめる</a>
+        <p class="hero-consent">登録には <a href="chronos-legal.html#terms">利用規約</a> と <span class="nw"><a href="chronos-legal.html#privacy">プライバシーポリシー</a> への同意が必要です</span></p>
         <a class="hero-more" href="#demo">まずは体験する ↓</a>
       </div>
     </div>
@@ -528,7 +501,7 @@ footer{padding:64px 0 40px;border-top:1px solid var(--border)}
   <div class="container">
     <div class="sec-head reveal center">
       <div class="label">Pricing</div>
-      <h2>公開時は、Freeからはじめられる。</h2>
+      <h2>Freeから、はじめられる。</h2>
       <p class="lead">まずは無料で。重ねる年表が増えたら、Proへ。</p>
     </div>
     <div class="plans">
@@ -542,7 +515,7 @@ footer{padding:64px 0 40px;border-top:1px solid var(--border)}
           <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg>AIアシスト 月10回</li>
           <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg>JPEG書き出し</li>
         </ul>
-        <a class="btn btn-ghost" href="#waitlist">ウェイトリストに登録</a>
+        <a class="btn btn-ghost" href="chronos-auth.html">無料ではじめる</a>
       </div>
       <div class="plan pro reveal d1">
         <div class="plan-name">Pro <span class="plan-badge">RECOMMENDED</span></div>
@@ -554,30 +527,21 @@ footer{padding:64px 0 40px;border-top:1px solid var(--border)}
           <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg>PNG高解像度書き出し</li>
           <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg>埋め込み</li>
         </ul>
-        <a class="btn btn-primary" href="#waitlist">ウェイトリストに登録</a>
+        <a class="btn btn-primary" href="chronos-auth.html">Proをはじめる</a>
       </div>
     </div>
-    <p class="plan-note">価格は公開時点の予定。変更がある場合はウェイトリスト登録者に先にお知らせする。</p>
+    <p class="plan-eligibility">Proは日本にお住まいの18歳以上の方が購入できます</p>
   </div>
 </section>
 
-<!-- 8. WAITLIST -->
-<section class="section alt wl-sec" id="waitlist">
+<!-- 8. START -->
+<section class="section alt start-sec" id="start">
   <div class="container">
-    <div class="sec-head reveal center" style="margin-bottom:0">
-      <div class="label">Waitlist</div>
-      <h2>まもなく公開。最初の発見者になりませんか。</h2>
-      <p class="lead">公開のお知らせと、先行招待をメールでお送りする。</p>
-    </div>
-    <div class="wl reveal d1" data-wl>
-      <form class="wl-form" novalidate>
-        <label for="wl-email-foot" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">メールアドレス</label>
-        <input id="wl-email-foot" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
-        <button type="submit" class="btn btn-primary">ウェイトリストに登録</button>
-      </form>
-      <p class="wl-error" role="alert"></p>
-      <p class="wl-consent">登録により <a href="chronos-legal.html#privacy">プライバシーポリシー</a> に同意したものとします</p>
-      <div class="wl-done" role="status"></div>
+    <div class="sec-head reveal center">
+      <div class="label">Start</div>
+      <h2>さあ、最初の一本を。</h2>
+      <p class="lead">Freeプランは、ずっと無料。年表を2つまでつくれる。</p>
+      <a class="btn btn-primary" href="chronos-auth.html">無料ではじめる</a>
     </div>
   </div>
 </section>
@@ -603,8 +567,6 @@ footer{padding:64px 0 40px;border-top:1px solid var(--border)}
   </div>
 </footer>
 
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-
 <script>
 (function(){
   'use strict';
@@ -615,10 +577,6 @@ footer{padding:64px 0 40px;border-top:1px solid var(--border)}
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target);}});},{threshold:0.08,rootMargin:'0px 0px -6% 0px'});
     reveals.forEach(function(el){io.observe(el);});
   }else{reveals.forEach(function(el){el.classList.add('v');});}
-
-  /* ---------- toast ---------- */
-  var toastEl=document.getElementById('toast'),toastT;
-  function toast(msg){toastEl.textContent=msg;toastEl.classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){toastEl.classList.remove('on');},2600);}
 
   /* ---------- demo ---------- */
   var LAYERS={
@@ -711,46 +669,6 @@ footer{padding:64px 0 40px;border-top:1px solid var(--border)}
   tl.querySelectorAll('.ev').forEach(function(li){li.hidden=true;});
   render(null);
 
-  /* ---------- waitlist ---------- */
-  var KEY='chronos_waitlist_v1';
-  var wls=document.querySelectorAll('[data-wl]');
-  function doneHTML(){
-    return '<div class="wl-done-title"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>登録ありがとうございます。</div>'+
-      '<p class="wl-done-sub">公開時にご連絡します。</p>'+
-      '<div class="wl-actions"><a class="btn btn-ghost" href="#" rel="noopener">Xで進捗を追う</a><button type="button" class="btn btn-ghost" data-share>友人に共有する</button></div>';
-  }
-  function markDone(){
-    wls.forEach(function(w){
-      if(w.classList.contains('done'))return;
-      w.classList.add('done');
-      w.querySelector('.wl-done').innerHTML=doneHTML();
-      w.querySelector('[data-share]').addEventListener('click',share);
-    });
-  }
-  function share(){
-    var url=location.href.split('#')[0];
-    var data={title:'Chronos — Every event has context.',text:'複数の年表を同じ時間軸に重ねる、Chronos。',url:url};
-    if(navigator.share){navigator.share(data).catch(function(){});}
-    else if(navigator.clipboard){navigator.clipboard.writeText(url).then(function(){toast('URLをコピーしました');},function(){toast('コピーできませんでした');});}
-    else{toast('URL: '+url);}
-  }
-  var stored=null;
-  try{stored=localStorage.getItem(KEY);}catch(e){}
-  if(stored){markDone();}
-  wls.forEach(function(w){
-    var form=w.querySelector('.wl-form'),input=form.querySelector('input'),err=w.querySelector('.wl-error');
-    form.addEventListener('submit',function(ev){
-      ev.preventDefault();
-      var v=input.value.trim();
-      if(!v||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){err.textContent='メールアドレスの形式を確認してください';err.classList.add('on');input.focus();return;}
-      err.classList.remove('on');err.textContent='';
-      try{localStorage.setItem(KEY,JSON.stringify({email:v,at:new Date().toISOString()}));}catch(e){}
-      markDone();
-      var status=w.querySelector('.wl-done');
-      if(status)status.setAttribute('tabindex','-1'),status.focus({preventScroll:true});
-    });
-    input.addEventListener('input',function(){if(err.classList.contains('on')){err.classList.remove('on');}});
-  });
 })();
 </script>
 </body>

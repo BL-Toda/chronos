@@ -144,6 +144,7 @@ Phase 1 の要件はローンチのブロッカーであり、未実装のまま
 - 結果を `users.age_band TEXT CHECK ('adult','minor')`、`users.age_confirmed_at`、未成年の場合は `users.guardian_consent_at` に保存し、`consents` にも `doc_type='age_band'` / `'guardian_consent'` として記録する（R-09）。
 - `age_band='minor'` のユーザーは Pro 購入導線を非表示にし、checkout API でも拒否する（R-13 と連動）。
 - `age_band='minor'` のユーザーが年表を「公開」または「限定公開」に変更するとき、公開設定モーダルに「本名・学校名・住所など、あなたや周囲の人を特定できる情報が含まれていないか確認してください」の注意を表示し、確認チェックを求める（初回のみでよい）。
+- 生年月日を取得しないため、`age_band='minor'` のユーザーが18歳に達した場合は、設定画面から「18歳以上になりました」を自己申告して `age_band='adult'` に切り替えられる導線を用意する（切替日時を `users.adult_confirmed_at` に記録し、consents に `doc_type='adult_18'` を追加。逆方向の切替は不可）。
 - 13歳未満または保護者同意なしと後日判明した場合の運用（規約10条「虚偽申告」による削除）は管理画面（R-40）から実行できること。
 
 受入基準
@@ -824,20 +825,9 @@ Phase 1 で日本のプロ責法と DSA Art.16/17 相当の最小手続を満た
 受入基準
 - ログ保管先のライフサイクル/Cron 設定が 365日以内。
 
-### R-47 ウェイトリストメールの削除ジョブ
+### R-47 （廃止）ウェイトリストメールの削除ジョブ
 
-| ID | Phase | 根拠 |
-|---|---|---|
-| R-47 | 1 | PP 10節（公開後6ヶ月または配信停止時）/ 特電法 |
-
-要件
-- ウェイトリスト（LP v3）のメールアドレスは、本サービス公開日から6ヶ月後、または配信停止リンクのクリック時のいずれか早い時点で削除する。配信停止は即時（同期）で削除し、以後の送信対象から外す。
-- 公開日を設定値 `LAUNCH_DATE` として持ち、日次 Cron で `LAUNCH_DATE + 6 months` 経過後に一括削除。
-- 登録ユーザーへの移行（同じメールで登録）が起きても、ウェイトリスト側のレコードは同じ期限で削除する。
-
-受入基準
-- 配信停止リンクでレコードが即時に消える。
-- LAUNCH_DATE を過去に設定した状態で Cron を実行するとテーブルが空になる。
+2026-08-17 の決定によりウェイトリストを設けず即時公開するため、本要件は廃止。番号は欠番として保持する。
 
 ### R-48 取引記録の法定保存
 
@@ -867,7 +857,6 @@ Phase 1 で日本のプロ責法と DSA Art.16/17 相当の最小手続を満た
 | purge_users | users.purge_after 経過 | 30日 |
 | purge_ai_requests | ai_requests | 30日 |
 | purge_reports | reports.retain_until | 3年 |
-| purge_waitlist | waitlist | 公開後6ヶ月 |
 | purge_access_logs | ログテーブル | 12ヶ月 |
 | purge_billing_records | retain_until | 10年 |
 | purge_exports | exports.expires_at | 7日（R-50） |
@@ -1166,7 +1155,6 @@ Phase 1 で日本のプロ責法と DSA Art.16/17 相当の最小手続を満た
 | 新設 | notification_preferences | `(user_id PK, product_updates_email BOOL DEFAULT false, like_in_app BOOL DEFAULT true, updated_at)` | R-61 |
 | 変更 | notifications | `type` は `('like','system')` を維持し `kind` 列を追加（CHECK は R-60） | R-60 |
 | 新設 | security_incidents / incident_affected_users | R-62・R-63 の列 | R-62, R-63 |
-| 新設 | waitlist（既存があれば列追加） | `unsubscribed_at`, 削除ジョブ対象 | R-47 |
 
 reports 置換の DDL 骨子:
 
@@ -1252,7 +1240,7 @@ CREATE TABLE consents (
 | 追加 | `POST /api/privacy/requests` | 権利行使請求の受付 | R-51〜R-53 |
 | 追加 | `GET /api/legal/documents/:type?version=&lang=` | 版付き文書取得 | R-54 |
 | 追加 | `PATCH /api/users/me/notification-preferences`, `GET /unsubscribe?token=` | 通知設定・ワンクリック配信停止 | R-61 |
-| 追加 | Cron ハンドラ群 | renewal_notice(30日前), purge_users, purge_ai_requests, purge_reports, purge_waitlist, purge_access_logs, purge_billing_records, purge_exports, purge_dsr, legal_version_switch | R-15, R-43〜R-49, R-56 |
+| 追加 | Cron ハンドラ群 | renewal_notice(30日前), purge_users, purge_ai_requests, purge_reports, purge_access_logs, purge_billing_records, purge_exports, purge_dsr, legal_version_switch | R-15, R-43〜R-49, R-56 |
 
 ### 12.3 画面インベントリへの追加（補遺 §4 に追記）
 

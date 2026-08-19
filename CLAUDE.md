@@ -15,8 +15,8 @@
 ## ディレクトリ構成
 
 - `prototypes/` — 単一HTMLのUIプロトタイプ（各画面が独立して動作）
-  - **現行版（2026-07-31確定）**: Explore=`chronos-explore.html`(v2・作業対象) / 閲覧の正=`chronos-viewer.html`（作成者ビューは「viewer+編集モード」方針、独立画面なし） / LP=`chronos-lp-v3.html` / オンボーディング=`chronos-onboarding-v2.html` / 主要画面=`chronos-screens.html`
-  - **アーカイブ**: chronos.html, chronos-v2, chronos-v3-multilayer, period-lanes, period-ui, onboarding(v1), lp, lp-v2, lp-brand, lp-launch, logo系2種, font系2種（参照時は歴史資料として扱う）
+  - **現行版（2026-07-31確定）**: Explore=`chronos-explore.html`(v2・作業対象) / 閲覧の正=`chronos-viewer.html`（作成者ビューは「viewer+編集モード」方針、独立画面なし） / LP=`chronos-lp-v4.html`（ゼロから再設計、v3は参照用） / オンボーディング=`chronos-onboarding-v2.html` / 主要画面=`chronos-screens.html`
+  - **アーカイブ**: chronos.html, chronos-v2, chronos-v3-multilayer, period-lanes, period-ui, onboarding(v1), lp, lp-v2, lp-v3, lp-brand, lp-launch, logo系2種, font系2種（参照時は歴史資料として扱う）
 - `assets/chronos-logo.svg` — **確定ロゴ原本**（グラデーション円シンボル+白ワードマーク、5.7MB）
   - 配信用軽量版: `prototypes/assets/chronos-logo.svg`（埋め込みテクスチャを800pxに縮小、68KB）
   - シンボル単体: `assets/chronos-symbol.svg`（原本）/ `prototypes/assets/chronos-symbol.svg`（軽量版）
@@ -48,6 +48,13 @@ spec-v2-addendum の公開系UIを実装済み:
 - creation-flow: Step 5「公開設定」（公開/限定公開/非公開の3択+共有URL発行+コピー、デフォルト非公開）、イベント編集パネル拡張（レイヤー割当チップ・信憑性3択+補足メモ・出典リスト）
 - screens: 年表カードに公開設定モーダル（バッジ「公開中/限定公開/非公開」3種に統一、「下書き」文言廃止）
 - `chronos-profile.html` 新規: 公開プロフィール @username（explore v3とカバー生成・いいね状態を共有。`?empty=1` で空状態）
+
+## 法務（正: docs/legal/rollout-plan.md）
+
+- Phase 1 は日本向け簡潔版3本（`docs/legal/ja/` terms / privacy / tokushoho）。法務ページ `prototypes/chronos-legal.html` は `node docs/legal/build/build-legal.js` で Markdown から再生成
+- 決定事項: 登録13歳以上（13〜17歳は保護者同意の表明、Pro購入は18歳以上・日本居住者のみ）/ 非公開・限定公開の年表とAI入力はAI学習に不使用、公開年表はサービス改善に利用可（モデル学習は事前告知+オプトアウト）/ 上限付き責任制限（軽過失¥10,000）/ 法令上必須でない定期義務は負わない / ウェイトリスト無しで即時公開
+- 実装時は `docs/legal/implementation-requirements.md`（64要件）を spec-v2-addendum と併読。多法域版は `docs/legal/archive/multi-jurisdiction/`
+- 残TODO: 会社情報（登記商号・代表者・番地・電話）、責任上限額の可否、日本の弁護士レビュー
 
 ## 次の実装候補
 
