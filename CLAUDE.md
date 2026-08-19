@@ -39,7 +39,7 @@
 
 ## Explore v3 — 完了（2026-08-01）
 
-`chronos-explore.html` はv3実装済み: **カバーはUnsplash写真が正**（2026-08-19確定。カテゴリ別8枚×6=48枚をPHOTO_POOLに固定埋め込み、seed決定論で選択、生成型SVGカバーは読み込み中プレースホルダ兼フォールバック。APIキーはプロトタイプに置かない。本番はサーバー側でUnsplash API+attribution+download tracking）/ マイクロインタラクション（写真フェードイン・hover微拡大・IO reveal・♡ポップ・フィルタ切替クロスフェード・年代範囲線・レイヤードット順次点灯・件数カウントアップ・空状態線画・ボトムシートのスワイプ閉じ・ブックマーク初回ヒント。すべて prefers-reduced-motion で無効）/ ♡🔖ボタン+カウント（カード・リスト両対応）/ フルード全幅グリッド / モバイル導線（ボトムシート型フィルタ+ハンバーガー）/ a11y（button化・focus-visible・コントラスト是正）。
+`chronos-explore.html` はv3実装済み: **カバーはUnsplash写真が正**（2026-08-19確定。カテゴリ別8枚×6=48枚をPHOTO_POOLに固定埋め込み、seed決定論で選択、生成型SVGカバーは読み込み中プレースホルダ兼フォールバック。APIキーはプロトタイプに置かない。本番はサーバー側でUnsplash API+attribution+download tracking）/ マイクロインタラクション（写真フェードイン・hover微拡大・IO reveal・♡ポップ・フィルタ切替クロスフェード・年代範囲線・積層バー（カバー上の年代ベースラインにレイヤー色の短いバーをseed決定論で重ねる。旧ドット行は廃止）・件数カウントアップ・空状態線画・ボトムシートのスワイプ閉じ・ブックマーク初回ヒント。すべて prefers-reduced-motion で無効）/ ♡🔖ボタン+カウント（カード・リスト両対応）/ フルード全幅グリッド / モバイル導線（ボトムシート型フィルタ+ハンバーガー）/ a11y（button化・focus-visible・コントラスト是正）。
 ソーシャル状態はlocalStorageで画面間連携: `chronos_likes_v1`（id配列）/ `chronos_bookmarks_v1`（`{id,title,desc,cat,catName,likes}`配列）。マイページ（screens）にブックマークタブ、viewerにいいねボタン実装済み。
 
 ## 公開系UX — 完了（2026-08-01）

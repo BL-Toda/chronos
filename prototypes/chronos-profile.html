@@ -116,6 +116,24 @@ body.menu-open .overlay{opacity:1;visibility:visible}
 .cover-credit button{font:inherit;color:inherit;padding:0;text-decoration:underline;
   text-underline-offset:2px;text-decoration-color:rgba(232,228,222,0.3)}
 .cover-credit button:hover{color:var(--text)}
+/* 年代ベースライン（常時表示）+ 積層バー（exploreと同一: seed決定論の位置/長さ）
+   両端の年代・「N layers」はhover/focusでフェードイン。クレジット(bottom:6px)の上 */
+.cover-era{position:absolute;left:14px;right:14px;bottom:28px;height:1px;z-index:2;pointer-events:none}
+.cover-era-line{position:absolute;inset:0;background:rgba(200,168,126,0.32)}
+.cover-era-y{position:absolute;bottom:5px;font-family:var(--f-m);font-size:11px;line-height:1;
+  color:var(--text);letter-spacing:0.04em;opacity:0;transition:opacity 0.2s ease}
+.cover-era-y.from{left:0}.cover-era-y.to{right:0}
+.cover-layers{position:absolute;left:0;right:0;bottom:1px;height:16px}
+.cover-layers-track{position:absolute;left:36px;right:92px;top:0;bottom:0}
+.cover-layers-bar{position:absolute;height:2px;border-radius:1px;opacity:0.9;
+  bottom:calc(3px + var(--k,0)*5px);transform-origin:left center;
+  animation:barIn 0.45s ease-out backwards;animation-delay:calc(230ms + var(--k,0)*80ms)}
+.cover-layers-n{position:absolute;right:38px;bottom:4px;font-family:var(--f-m);font-size:10px;line-height:1;
+  color:var(--text2);letter-spacing:0.04em;white-space:nowrap;opacity:0;transition:opacity 0.2s ease}
+.tl-card:hover .cover-era-y,.tl-card:focus-visible .cover-era-y,
+.tl-card:hover .cover-layers-n,.tl-card:focus-visible .cover-layers-n{opacity:1;transition:opacity 0.3s ease 0.1s}
+/* 積層バーの順次伸長（グリッドfadeUp 0.08s + 150ms後、下のバーから80ms間隔） */
+@keyframes barIn{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @keyframes heartPop{0%{transform:scale(1)}50%{transform:scale(1.15)}100%{transform:scale(1)}}
 .act-btn.pop svg{animation:heartPop 0.25s ease}
 @media (prefers-reduced-motion:reduce){
@@ -246,14 +264,19 @@ const CAT_META={
   culture:{name:'カルチャー',color:'var(--c-gold)',hex:'#C8B87E'},
   science:{name:'科学・自然',color:'var(--c-green)',hex:'#7BC67E'}
 };
+// lColors はexploreの同一年表と同じ並び（exploreは生成インデックス依存のためここでは明示）
 const TIMELINES=[
-  {cat:'tech',title:'AI革命の全体像 2020–2026',desc:'技術の進化を複数レイヤーで俯瞰する年表。',likes:4820,events:64},
-  {cat:'history',title:'宇宙開発の舞台裏',desc:'複数の視点を重ねて読み解く歴史年表。',likes:3260,events:48},
-  {cat:'tech',title:'半導体戦争の50年',desc:'地政学と技術のせめぎ合いを重ねた年表。',likes:2840,events:52},
-  {cat:'science',title:'気候変動の100年',desc:'科学の発見と社会への影響を重ねた年表。',likes:1480,events:37}
+  {cat:'tech',title:'AI革命の全体像 2020–2026',desc:'技術の進化を複数レイヤーで俯瞰する年表。',likes:4820,events:64,lColors:['var(--c-blue)','var(--c-teal)','var(--c-orange)']},
+  {cat:'history',title:'宇宙開発の舞台裏',desc:'複数の視点を重ねて読み解く歴史年表。',likes:3260,events:48,lColors:['var(--c-pink)','var(--c-gold)','var(--c-blue)']},
+  {cat:'tech',title:'半導体戦争の50年',desc:'地政学と技術のせめぎ合いを重ねた年表。',likes:2840,events:52,lColors:['var(--c-green)','var(--c-purple)']},
+  {cat:'science',title:'気候変動の100年',desc:'科学の発見と社会への影響を重ねた年表。',likes:1480,events:37,lColors:['var(--c-teal)','var(--c-orange)','var(--c-green)']}
 ].map(t=>{
   const seed=hashStr(t.cat+'|'+t.title);
-  return {...t,seed,id:t.cat+'-'+seed.toString(36),pattern:seed%6,
+  // 年代範囲はexploreと同じrng消費順（layers→likes→eraFrom→eraTo）で導出し、同一年表で一致させる
+  const rng=mulberry32(seed);rng();rng();
+  const eraFrom=1800+Math.floor(rng()*170);
+  const eraTo=Math.min(2026,eraFrom+20+Math.floor(rng()*80));
+  return {...t,seed,id:t.cat+'-'+seed.toString(36),pattern:seed%6,eraFrom,eraTo,
     catName:CAT_META[t.cat].name,catColor:CAT_META[t.cat].color,catHex:CAT_META[t.cat].hex};
 });
 
@@ -400,15 +423,30 @@ function escHTML(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&l
 function pickPhoto(item){const pool=PHOTO_POOL[item.cat];return pool&&pool.length?pool[(item.seed>>>8)%pool.length]:null}
 function photoURL(p,w,h){return `${p.raw}?w=${w}&h=${h}&fit=crop&auto=format&q=70`}
 // SVGを下敷きにし、写真をlazy読み込み。onloadで.loaded付与→0.4sフェードイン。onerrorはimgを外してSVGを残す
+// 積層バー: exploreと同一ロジック（seed^0x5A17 → 左端6〜34%・長さ38〜68%）。同じ年表なら同じ形
+function layerBars(item){
+  const rng=mulberry32((item.seed^0x5A17)>>>0);
+  return item.lColors.map((c,k)=>{
+    const left=6+rng()*28,width=Math.min(38+rng()*30,100-left);
+    return `<span class="cover-layers-bar" style="left:${left.toFixed(1)}%;width:${width.toFixed(1)}%;background:${c};--k:${k}"></span>`;
+  }).join('');
+}
+function eraHTML(item){
+  const n=item.lColors.length;
+  return `<div class="cover-era"><span class="cover-era-line" aria-hidden="true"></span><span class="cover-era-y from" aria-hidden="true">${item.eraFrom}</span><span class="cover-era-y to" aria-hidden="true">${item.eraTo}</span>`+
+    `<div class="cover-layers" role="img" aria-label="レイヤー${n}本"><span class="cover-layers-track">${layerBars(item)}</span><span class="cover-layers-n" aria-hidden="true">${n} layers</span></div></div>`;
+}
 function coverHTML(item,uidPrefix,size){
   const svg=coverSVG(item);
   const p=pickPhoto(item);
-  if(!p)return svg;
   const thumb=size==='thumb';
+  // 年代ベースライン+積層バー（カードのみ。写真なしフォールバックでも表示）
+  const era=thumb?'':eraHTML(item);
+  if(!p)return svg+(thumb?'':'<div class="cover-shade"></div>')+era;
   const img=`<img class="cover-img" src="${photoURL(p,thumb?128:640,thumb?80:360)}" alt="" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.remove()">`;
   if(thumb)return svg+img;
   const credit=`<span class="cover-credit">Photo: <button type="button" data-href="${escHTML(p.user)}${UNSPLASH_UTM}">${escHTML(p.name)}</button> / <button type="button" data-href="https://unsplash.com/${UNSPLASH_UTM}">Unsplash</button></span>`;
-  return svg+img+'<div class="cover-shade"></div>'+credit;
+  return svg+img+'<div class="cover-shade"></div>'+era+credit;
 }
 
 // ===== LIKE(localStorageスキーマはexplore/viewerと共有) =====

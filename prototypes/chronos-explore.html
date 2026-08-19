@@ -193,17 +193,21 @@ body.sheet-open{overflow:hidden}
 .cover-credit button{font:inherit;color:inherit;padding:0;text-decoration:underline;
   text-underline-offset:2px;text-decoration-color:rgba(232,228,222,0.3)}
 .cover-credit button:hover{color:var(--text)}
-/* 年代範囲の線（hover/focusで左→右に伸び、両端に年代） クレジット(bottom:6px)の上 */
-.cover-era{position:absolute;left:10px;right:10px;bottom:28px;height:1px;z-index:2;
-  pointer-events:none;opacity:0;transition:opacity 0.2s ease}
-.cover-era-line{position:absolute;inset:0;background:rgba(200,168,126,0.6);
-  transform:scaleX(0);transform-origin:left center;transition:transform 0s linear 0.2s}
+/* 年代ベースライン（常時表示）+ 積層バー（レイヤー数ぶん、seed決定論の位置/長さ）
+   両端の年代・「N layers」はhover/focusでフェードイン。クレジット(bottom:6px)の上 */
+.cover-era{position:absolute;left:14px;right:14px;bottom:28px;height:1px;z-index:2;pointer-events:none}
+.cover-era-line{position:absolute;inset:0;background:rgba(200,168,126,0.32)}
 .cover-era-y{position:absolute;bottom:5px;font-family:var(--f-m);font-size:11px;line-height:1;
   color:var(--text);letter-spacing:0.04em;opacity:0;transition:opacity 0.2s ease}
 .cover-era-y.from{left:0}.cover-era-y.to{right:0}
-.tl-card:hover .cover-era,.tl-card:focus-visible .cover-era{opacity:1;transition:opacity 0.15s ease}
-.tl-card:hover .cover-era-line,.tl-card:focus-visible .cover-era-line{transform:scaleX(1);transition:transform 0.5s ease}
-.tl-card:hover .cover-era-y,.tl-card:focus-visible .cover-era-y{opacity:1;transition:opacity 0.3s ease 0.2s}
+.cover-layers{position:absolute;left:0;right:0;bottom:1px;height:16px}
+.cover-layers-track{position:absolute;left:36px;right:92px;top:0;bottom:0}
+.cover-layers-bar{position:absolute;height:2px;border-radius:1px;opacity:0.9;
+  bottom:calc(3px + var(--k,0)*5px);transform-origin:left center}
+.cover-layers-n{position:absolute;right:38px;bottom:4px;font-family:var(--f-m);font-size:10px;line-height:1;
+  color:var(--text2);letter-spacing:0.04em;white-space:nowrap;opacity:0;transition:opacity 0.2s ease}
+.tl-card:hover .cover-era-y,.tl-card:focus-visible .cover-era-y,
+.tl-card:hover .cover-layers-n,.tl-card:focus-visible .cover-layers-n{opacity:1;transition:opacity 0.3s ease 0.1s}
 
 /* ===== MICRO-INTERACTIONS ===== */
 .views{transition:opacity 0.2s ease}
@@ -213,10 +217,11 @@ body.sheet-open{overflow:hidden}
 .tl-card.in,.tl-list-item.in{animation:cardIn 0.5s ease backwards}
 @keyframes heartPop{0%{transform:scale(1)}50%{transform:scale(1.15)}100%{transform:scale(1)}}
 .act-like.pop svg{animation:heartPop 0.25s ease}
-/* レイヤードットの順次点灯（reveal時、左から60ms間隔） */
+/* 積層バーの順次伸長（reveal時、下のバーから80ms間隔・card .in の150ms後） */
+@keyframes barIn{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.tl-card.pre .cover-layers-bar{transform:scaleX(0)}
+.tl-card.in .cover-layers-bar{animation:barIn 0.45s ease-out backwards;animation-delay:calc(150ms + var(--k,0)*80ms)}
 @keyframes dotIn{from{opacity:0}to{opacity:1}}
-.tl-card.pre .tl-mini-dot{opacity:0}
-.tl-card.in .tl-mini-dot{animation:dotIn 0.3s ease backwards;animation-delay:calc(150ms + var(--i,0)*60ms)}
 /* ブックマーク初回ヒント（マイページ / ハンバーガーが1.2s灯る） */
 .hdr-nav a{border-radius:4px;transition:color 0.3s ease,box-shadow 0.3s ease}
 .hdr-nav a.hint{color:var(--accent);box-shadow:0 0 14px 5px rgba(200,168,126,0.09)}
@@ -234,11 +239,10 @@ body.sheet-open{overflow:hidden}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .tl-card.pre,.tl-list-item.pre{opacity:1}
-  .tl-card.pre .tl-mini-dot{opacity:1}
-  .cover-era-line{transform:scaleX(1)}
+  .tl-card.pre .cover-layers-bar{transform:none}
   .empty-tl line{stroke-dashoffset:0}
 }
-.tl-card-body{padding:14px 14px 10px}
+.tl-card-body{padding:14px 14px 12px}
 .tl-card-cat{font-family:var(--f-m);font-size:9px;letter-spacing:0.1em;
   text-transform:uppercase;margin-bottom:4px}
 .tl-card-title{font-family:var(--f-d);font-size:16px;font-weight:400;
@@ -251,12 +255,6 @@ body.sheet-open{overflow:hidden}
   justify-content:center;font-family:var(--f-m);font-size:8px;font-weight:500;flex-shrink:0}
 .tl-card-author span{font-size:10px;color:var(--text2);white-space:nowrap;
   overflow:hidden;text-overflow:ellipsis}
-.tl-mini{display:flex;align-items:center;gap:2px;padding:0 14px 10px;position:relative}
-.tl-mini::before{content:'';position:absolute;left:14px;right:14px;top:50%;
-  height:1px;background:var(--line)}
-.tl-mini-dot{width:6px;height:6px;border-radius:50%;position:relative;z-index:1;flex-shrink:0}
-.tl-mini-spacer{flex:1}
-
 /* Like / Bookmark buttons */
 .tl-actions{display:flex;align-items:center;gap:2px;flex-shrink:0}
 .act-btn{display:inline-flex;align-items:center;gap:4px;padding:4px 7px;border-radius:8px;
@@ -766,12 +764,26 @@ function escHTML(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&l
 function pickPhoto(item){const pool=PHOTO_POOL[item.cat];return pool&&pool.length?pool[(item.seed>>>8)%pool.length]:null}
 function photoURL(p,w,h){return `${p.raw}?w=${w}&h=${h}&fit=crop&auto=format&q=70`}
 // SVGを下敷きにし、写真をlazy読み込み。onloadで.loaded付与→0.4sフェードイン。onerrorはimgを外してSVGを残す
+// 積層バー: レイヤー数ぶんの短い横バーをベースライン上に積む。左端6〜34%・長さ38〜68%はseedから決定論
+// （explore/profileで同一の形）。下から順に --k で積層・reveal時の伸長順を指定
+function layerBars(item){
+  const rng=mulberry32((item.seed^0x5A17)>>>0);
+  return item.lColors.map((c,k)=>{
+    const left=6+rng()*28,width=Math.min(38+rng()*30,100-left);
+    return `<span class="cover-layers-bar" style="left:${left.toFixed(1)}%;width:${width.toFixed(1)}%;background:${c};--k:${k}"></span>`;
+  }).join('');
+}
+function eraHTML(item){
+  const n=item.lColors.length;
+  return `<div class="cover-era"><span class="cover-era-line" aria-hidden="true"></span><span class="cover-era-y from" aria-hidden="true">${item.eraFrom}</span><span class="cover-era-y to" aria-hidden="true">${item.eraTo}</span>`+
+    `<div class="cover-layers" role="img" aria-label="レイヤー${n}本"><span class="cover-layers-track">${layerBars(item)}</span><span class="cover-layers-n" aria-hidden="true">${n} layers</span></div></div>`;
+}
 function coverHTML(item,uidPrefix,size){
   const svg=coverSVG(item,uidPrefix);
   const p=pickPhoto(item);
   const thumb=size==='thumb';
-  // 年代範囲の線（カードのみ。hover/focusでCSSアニメーション）
-  const era=thumb?'':`<div class="cover-era" aria-hidden="true"><span class="cover-era-line"></span><span class="cover-era-y from">${item.eraFrom}</span><span class="cover-era-y to">${item.eraTo}</span></div>`;
+  // 年代ベースライン+積層バー（カードのみ。写真なしフォールバックでも表示）
+  const era=thumb?'':eraHTML(item);
   if(!p)return svg+(thumb?'':'<div class="cover-shade"></div>')+era;
   const img=`<img class="cover-img" src="${photoURL(p,thumb?128:640,thumb?80:360)}" alt="" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.remove()">`;
   if(thumb)return svg+img;
@@ -793,13 +805,6 @@ function actionButtons(item){
 }
 
 function renderGridCard(item){
-  const miniDots=[];let di=0; // --i: 順次点灯の遅延インデックス
-  item.lColors.forEach((c,i)=>{
-    miniDots.push(`<div class="tl-mini-dot" style="background:${c};--i:${di++}"></div>`);
-    miniDots.push('<div class="tl-mini-spacer"></div>');
-    miniDots.push(`<div class="tl-mini-dot" style="background:${item.lColors[(i+1)%item.lColors.length]};--i:${di++}"></div>`);
-    if(i<item.lColors.length-1)miniDots.push('<div class="tl-mini-spacer"></div>');
-  });
   return `<a class="tl-card pre" href="chronos-viewer.html">
     <div class="tl-card-cover">${coverHTML(item,'g','card')}</div>
     <div class="tl-card-body">
@@ -811,7 +816,6 @@ function renderGridCard(item){
         ${actionButtons(item)}
       </div>
     </div>
-    <div class="tl-mini">${miniDots.join('')}</div>
   </a>`;
 }
 
