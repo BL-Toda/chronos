@@ -1,0 +1,349 @@
+{
+  "slug": "history-age-of-discovery",
+  "title": "大航海時代の光と影",
+  "description": "セウタ攻略から東インド会社まで約200年。航海・交易・征服の3層を重ね、世界が一つの経済圏に結ばれていく過程と、その裏で進んだ収奪と人口崩壊を同じ画面で見る年表。",
+  "category": "history-politics",
+  "language": "ja",
+  "start_year": 1415,
+  "end_year": 1602,
+  "layers": [
+    {
+      "name": "航海と探検",
+      "color": "blue"
+    },
+    {
+      "name": "交易と経済",
+      "color": "gold"
+    },
+    {
+      "name": "征服と先住民",
+      "color": "pink"
+    }
+  ],
+  "events": [
+    {
+      "date": "1415-08-21",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "航海と探検",
+      "title": "ポルトガルが北アフリカのセウタを攻略",
+      "summary": "ジョアン1世率いるポルトガル軍が、ジブラルタル海峡対岸の交易都市セウタを一日で攻略した。エンリケ航海王子も従軍したこの遠征は、大航海時代の出発点と位置づけられることが多い。\n\n十字軍的な信仰の動機と、金と穀物の集まる北アフリカ交易への参入という経済の動機が重なっており、以後エンリケの支援でアフリカ西岸の組織的探検が始まる。信仰・栄光・利益が最初から不可分だったことを示す開幕である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Conquest of Ceuta",
+          "url": "https://en.wikipedia.org/wiki/Conquest_of_Ceuta"
+        }
+      ]
+    },
+    {
+      "date": "1434-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "航海と探検",
+      "title": "ジル・エアネスがボジャドール岬を越える",
+      "summary": "エンリケ航海王子の船長ジル・エアネスが、船乗りたちに「越えれば戻れない」と恐れられた西サハラ沖のボジャドール岬を初めて越えて帰還した。十数回の失敗の末の突破だったと伝えられる。\n\n心理的な限界線の突破により、アフリカ西岸の南下が一気に進む。一方でこの南下は、10年後のラゴスでの奴隷競売(征服と先住民レイヤー)に直結しており、探検の一歩一歩が収奪の一歩でもあったという本年表の主題がここから始まる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Gil Eanes",
+          "url": "https://en.wikipedia.org/wiki/Gil_Eanes"
+        }
+      ]
+    },
+    {
+      "date": "1444-08-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "征服と先住民",
+      "title": "ラゴスでアフリカ人捕虜の大規模な競売",
+      "summary": "ポルトガル南部の港ラゴスで、西アフリカから連行された200人以上の捕虜が競売にかけられた。年代記作者ズララは、家族が引き離される光景への同情を記しつつ、事業自体は神意として正当化している。\n\n**大西洋奴隷貿易の原型**となった出来事であり、以後アフリカ人の労働力は航海事業の収益源に組み込まれていく。喜望峰到達もアメリカ到達もまだ先のこの時点で、既に人身の売買が探検の経済を支え始めていた。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "235人という人数や競売の詳細はズララ『ギニア発見征服誌』のほぼ単一の記録に依拠しており、第三者史料による検証はできない。",
+      "sources": [
+        {
+          "title": "ズララ『ギニア発見征服誌』(1450年代成立)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1488-02-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "航海と探検",
+      "title": "バルトロメウ・ディアスが喜望峰を回航",
+      "summary": "ポルトガルのバルトロメウ・ディアスが嵐に流されながらアフリカ大陸南端を回り込み、大陸の南に海が開けていることを確認した。帰路に望見した岬は、のちに「喜望峰」と名づけられる。\n\n70年余りに及んだアフリカ西岸南下の到達点であり、インドへの海路が実在するという確信をポルトガルに与えた。この情報の蓄積が10年後のガマのインド航路開拓を可能にし、香辛料交易(交易と経済レイヤー)の構造を一変させる前提となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Bartolomeu Dias",
+          "url": "https://en.wikipedia.org/wiki/Bartolomeu_Dias"
+        }
+      ]
+    },
+    {
+      "date": "1492-10-12",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "航海と探検",
+      "title": "コロンブス、カリブ海の島に到達",
+      "summary": "スペイン両王の支援を得たコロンブスが、大西洋を西へ約1か月航海してバハマ諸島の島に到達し、サンサルバドルと名づけた。彼は死ぬまでそこをアジアの一部と信じていた。\n\n**「発見」は一方の側から見た言葉**であり、島には数万年来の先住民の歴史があった。この上陸を境に旧大陸と新大陸の生態系・病原体・人間が交わる「コロンブス交換」が始まり、以後の年表の光と影のすべてがこの日から分岐する。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Voyages of Christopher Columbus",
+          "url": "https://en.wikipedia.org/wiki/Voyages_of_Christopher_Columbus"
+        }
+      ]
+    },
+    {
+      "date": "1493-01-01",
+      "precision": "year",
+      "end_date": "1600-01-01",
+      "type": "period",
+      "layer": "征服と先住民",
+      "title": "アメリカ大陸先住民の人口激減",
+      "summary": "接触開始からの約1世紀で、南北アメリカの先住民人口は天然痘・麻疹などの旧大陸由来の疫病、戦争、強制労働により激減した。地域によっては9割前後が失われたとする推計もある。\n\n免疫のない集団を襲った疫病が最大の要因とされるが、征服と収奪が社会の回復力を奪ったことと不可分である。**大陸規模の人口崩壊**は労働力不足を生み、それを埋める形でアフリカ人奴隷貿易が拡大するという、影が影を呼ぶ連鎖の中心にこの期間がある。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "接触前の人口推計自体が800万人台から1億人超まで研究者間で桁違いに分かれており、減少率・死者数は確定できない。",
+      "sources": [
+        {
+          "title": "Wikipedia: Population history of Indigenous peoples of the Americas",
+          "url": "https://en.wikipedia.org/wiki/Population_history_of_Indigenous_peoples_of_the_Americas"
+        }
+      ]
+    },
+    {
+      "date": "1494-06-07",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "交易と経済",
+      "title": "トルデシリャス条約、世界を二分する線を引く",
+      "summary": "スペインとポルトガルが、ヴェルデ岬諸島西方の子午線を境に、新たに到達する土地の権利を二分する条約を結んだ。教皇の裁定を修正する形での、ヨーロッパ2国間の取り決めである。\n\n当事者不在のまま**地図上の一本の線で世界の所有を宣言した**この条約は、大航海時代の発想を最も端的に示す。境界線の東側にあたったブラジルは後にポルトガル領となり、条約の線は現在の南米の言語地図にまで痕跡を残している。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Treaty of Tordesillas",
+          "url": "https://en.wikipedia.org/wiki/Treaty_of_Tordesillas"
+        }
+      ]
+    },
+    {
+      "date": "1498-05-20",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "航海と探検",
+      "title": "ヴァスコ・ダ・ガマがインドのカリカットに到達",
+      "summary": "喜望峰回りでインド洋を横断したガマの艦隊が、香辛料交易の中心カリカットに到達した。欧州からアジアへ直接至る海路が初めて実証された瞬間である。\n\nただしインド洋には既にアラブ・インド商人の成熟した交易網があり、ポルトガルは新参者にすぎなかった。持参した贈り物は現地の支配者に貧弱と一笑されている。以後ポルトガルは交渉ではなく艦砲による拠点支配へ転じ、航海の成果が武力交易(交易と経済レイヤー)へ姿を変えていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Vasco da Gama",
+          "url": "https://en.wikipedia.org/wiki/Vasco_da_Gama"
+        }
+      ]
+    },
+    {
+      "date": "1500-04-22",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "航海と探検",
+      "title": "カブラルの艦隊がブラジルに到達",
+      "summary": "インドへ向かうため大西洋を大きく西へ迂回したカブラルの艦隊が、現在のブラジル沿岸に到達し、ポルトガル領有を宣言した。意図的な探査か偶然の漂着かは今も議論がある。\n\nトルデシリャス条約(交易と経済レイヤー)の線の東側だったため、南米にポルトガル語圏が生まれる起点となった。当初は染料木の採取地にすぎなかったが、後に砂糖プランテーションとアフリカ人奴隷労働の中心地となり、条約の線が数百万人の運命を規定することになる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Pedro Álvares Cabral",
+          "url": "https://en.wikipedia.org/wiki/Pedro_%C3%81lvares_Cabral"
+        }
+      ]
+    },
+    {
+      "date": "1519-09-20",
+      "precision": "day",
+      "end_date": "1522-09-06",
+      "type": "period",
+      "layer": "航海と探検",
+      "title": "マゼラン艦隊の世界周航",
+      "summary": "マゼラン率いる5隻・約270人の艦隊がスペインを出港し、南米南端の海峡を抜けて太平洋を横断した。マゼラン自身はフィリピンのマクタン島で戦死し、エルカーノ指揮下のビクトリア号1隻・生存者18人が3年後に帰港して史上初の世界周航が完成する。\n\n地球が一続きの海で結ばれていることを実証し、地球の大きさを体感として示した航海である。同じ頃メキシコではコルテスの征服(征服と先住民レイヤー)が進行しており、探検の達成と征服の暴力が同時代であったことを両レイヤーの並置が示す。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Magellan expedition",
+          "url": "https://en.wikipedia.org/wiki/Magellan_expedition"
+        }
+      ]
+    },
+    {
+      "date": "1521-08-13",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "征服と先住民",
+      "title": "テノチティトラン陥落、アステカ王国滅亡",
+      "summary": "コルテス率いるスペイン軍と先住民同盟軍が、湖上の大都市テノチティトランを長期の包囲戦の末に陥落させ、アステカ王国は滅亡した。包囲中の市内では天然痘が猛威を振るっていた。\n\n数百人のスペイン人だけの勝利ではなく、アステカ支配に反発する先住民諸都市の大軍と、旧大陸由来の疫病という「見えない同盟者」が決定的だった。人口数十万を擁したとされる都市の廃墟の上にメキシコシティが築かれ、征服の統治が始まる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Fall of Tenochtitlan",
+          "url": "https://en.wikipedia.org/wiki/Fall_of_Tenochtitlan"
+        }
+      ]
+    },
+    {
+      "date": "1533-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "征服と先住民",
+      "title": "ピサロがインカ皇帝アタワルパを処刑",
+      "summary": "カハマルカで捕らえられていたインカ皇帝アタワルパが、部屋を満たす金銀の身代金を納めた後にもかかわらず、スペイン人により処刑された。ピサロの部隊は200人足らずでインカ帝国の中枢を制圧した。\n\n内戦と疫病で弱っていた帝国の混乱に乗じた征服であり、身代金の金銀はスペインへ流れて欧州の貨幣経済を刺激した(交易と経済レイヤー)。約束と処刑の顛末は、征服の論理の身勝手さを示す事例として同時代から批判の対象となった。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "処刑は1533年7月26日とされることが多いが、史料により日付・月に食い違いがあり確定していない。",
+      "sources": [
+        {
+          "title": "Wikipedia: Atahualpa",
+          "url": "https://en.wikipedia.org/wiki/Atahualpa"
+        }
+      ]
+    },
+    {
+      "date": "1543-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "交易と経済",
+      "title": "種子島に鉄砲が伝来",
+      "summary": "中国船に乗って種子島に漂着したポルトガル人が火縄銃をもたらしたと『鉄炮記』は伝える。領主種子島時堯が2挺を購入し、国産化と改良が急速に進んで、戦国日本の戦争の形を変えた。\n\n大航海時代の交易網が東アジアの島国にまで届いたことを示す出来事で、直後のザビエル来日(1549年)とあわせ、日本は銀の輸出国として世界経済(交易と経済レイヤーの主題)に組み込まれていく。ポトシとならび石見銀山の銀が世界を巡る時代の入口である。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "1543年は『鉄炮記』(1606年成立)に基づく通説だが、ポルトガル側史料から1542年とする説もあり、伝来の年次・経緯には諸説ある。",
+      "sources": [
+        {
+          "title": "Wikipedia: 鉄砲伝来",
+          "url": "https://ja.wikipedia.org/wiki/鉄砲伝来"
+        }
+      ]
+    },
+    {
+      "date": "1545-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "交易と経済",
+      "title": "ポトシ銀山の採掘が始まる",
+      "summary": "アンデス高地(現ボリビア)の標高4000メートルを超えるセロ・リコで銀鉱脈が確認され、採掘が始まった。ポトシは16世紀末には欧州の大都市に匹敵する人口を抱え、世界の銀生産の中心となる。\n\nこの銀はスペインを経由して欧州の物価革命を引き起こし、マニラ経由で中国にも流れて、**銀が初めて世界を一つの経済圏に結んだ**。その裏で先住民はミタ制と呼ばれる強制労働に動員され、過酷な坑内労働と水銀中毒が多数の命を奪い続けた。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "先住民ディエゴ・ワルパによる発見という経緯は伝承的で、犠牲者数についても信頼できる同時代統計がなく推計の幅が大きい。",
+      "sources": [
+        {
+          "title": "Wikipedia: Potosí",
+          "url": "https://en.wikipedia.org/wiki/Potos%C3%AD"
+        }
+      ]
+    },
+    {
+      "date": "1552-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "征服と先住民",
+      "title": "ラス・カサス『インディアスの破壊についての簡潔な報告』",
+      "summary": "ドミニコ会士ラス・カサスが、スペイン人による先住民への残虐行為を告発する『インディアスの破壊についての簡潔な報告』をセビリャで刊行した。国王への上訴を意図した文書である。\n\n征服の最前線を知る聖職者による**帝国の内部からの告発**であり、先住民の権利をめぐるバリャドリッド論争(1550-51年)と並ぶ良心の記録となった。一方でその誇張された数字は、後に対抗諸国の反スペイン宣伝「黒い伝説」にも利用され、告発の書自体が政治の道具になる皮肉も残した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: A Short Account of the Destruction of the Indies",
+          "url": "https://en.wikipedia.org/wiki/A_Short_Account_of_the_Destruction_of_the_Indies"
+        }
+      ]
+    },
+    {
+      "date": "1571-06-24",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "交易と経済",
+      "title": "スペインがマニラを建設、ガレオン貿易の拠点に",
+      "summary": "レガスピがマニラをスペイン領フィリピンの首府と定めた。以後アカプルコとの間を往復するガレオン船が、メキシコの銀とアジアの絹・陶磁器を交換する太平洋横断貿易が約250年続く。\n\nポトシの銀(交易と経済レイヤー)が太平洋を渡って中国に吸い込まれ、中国の産品が新大陸へ流れるこの回路の成立により、大西洋・インド洋・太平洋の交易が閉じた環になった。世界の一体化という大航海時代の帰結を象徴する都市の誕生である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Manila galleon",
+          "url": "https://en.wikipedia.org/wiki/Manila_galleon"
+        }
+      ]
+    },
+    {
+      "date": "1600-12-31",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "交易と経済",
+      "title": "イギリス東インド会社設立",
+      "summary": "エリザベス1世が、東インド貿易の独占権を持つ会社に特許状を与えた。ロンドンの商人たちが出資する株式会社形式の交易会社である。\n\n王室や国家が直接担ってきた遠洋交易を、出資者の資本を束ねた会社組織が担う転換であり、大航海時代の「冒険」が「経営」へ制度化されていく画期にあたる。この会社が後の2世紀でインド亜大陸の統治者にまで肥大化することは、設立時点では誰も想像していなかった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: East India Company",
+          "url": "https://en.wikipedia.org/wiki/East_India_Company"
+        }
+      ]
+    },
+    {
+      "date": "1602-03-20",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "交易と経済",
+      "title": "オランダ東インド会社(VOC)設立",
+      "summary": "オランダ議会が乱立するアジア貿易会社を統合し、連合東インド会社(VOC)を設立した。広く一般から出資を募り、出資持分が取引される仕組みを備えた、**世界初の本格的な株式会社**とされる。\n\n条約締結や交戦の権限まで持つ「国家のような会社」であり、アムステルダムには証券取引所が生まれた。大航海時代が生んだ最後の発明が艦船でも航法でもなく資本の組織形態だったことは、この時代の帰結が近代資本主義であることを示して、本年表の幕を閉じる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Dutch East India Company",
+          "url": "https://en.wikipedia.org/wiki/Dutch_East_India_Company"
+        }
+      ]
+    }
+  ]
+}

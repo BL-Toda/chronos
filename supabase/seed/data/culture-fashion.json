@@ -1,0 +1,353 @@
+{
+  "slug": "culture-fashion",
+  "title": "ファッションの変遷",
+  "description": "コルセットの解放からファストファッション、サステナビリティの要請まで。デザイナーの美意識・産業と流通・社会と身体の3層を重ね、服が映してきた時代の変化を辿る年表。",
+  "category": "culture",
+  "language": "ja",
+  "start_year": 1906,
+  "end_year": 2022,
+  "layers": [
+    {
+      "name": "デザイナーと美意識",
+      "color": "pink"
+    },
+    {
+      "name": "産業と流通",
+      "color": "orange"
+    },
+    {
+      "name": "社会と身体",
+      "color": "teal"
+    }
+  ],
+  "events": [
+    {
+      "date": "1906-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "デザイナーと美意識",
+      "title": "ポワレがコルセットに依らないドレスを発表",
+      "summary": "パリのクチュリエ、ポール・ポワレが、胴を締め付けるコルセットを前提としない、ハイウエストのゆるやかなドレスを打ち出した。\n\n「私が女性をコルセットから解放した」という本人の語りは後年の神話化を含み、解放は服飾改革運動など複数の要因が重なる漸進的な過程だった。それでも**身体の解放**という20世紀モードの主題がここに現れた点で、本年表の起点にふさわしい。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "コルセット廃止をポワレ個人の功績とする語りは本人の回想に基づくもので、同時代のデザイナーの寄与や既存の服飾改革運動との先後関係には諸説がある。",
+      "sources": [
+        {
+          "title": "The Metropolitan Museum of Art: Poiret: King of Fashion (2007年展覧会)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1926-10-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "デザイナーと美意識",
+      "title": "シャネルのリトル・ブラック・ドレスがVogue誌に",
+      "summary": "米Vogue誌1926年10月号がシャネルのシンプルな黒いドレスを掲載し、誰もが乗る量産車になぞらえて「シャネルのフォード」と評した。\n\n喪の色だった黒を日常の装いへ転じ、装飾ではなく簡素さを豊かさとする美意識を提示した。第一次大戦後の女性の社会進出と呼応する提案であり、後に産業と流通レイヤーが前提とする「定番」という考え方の原型になった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Vogue (US) 1926年10月1日号",
+          "url": null
+        },
+        {
+          "title": "Wikipedia: Little black dress",
+          "url": "https://en.wikipedia.org/wiki/Little_black_dress"
+        }
+      ]
+    },
+    {
+      "date": "1947-02-12",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "デザイナーと美意識",
+      "title": "ディオールが「ニュールック」を発表",
+      "summary": "クリスチャン・ディオールが最初のコレクションで、なで肩・絞った腰・長く豊かなスカートのシルエットを発表し、米誌編集長スノーの命名「ニュールック」とともに世界へ広まった。\n\n布地を惜しみなく使う優雅さは、戦時の物資統制と実用一辺倒の服からの転換を告げるものだった。パリ・オートクチュールの復権を象徴する一方で贅沢への反発も招き、**服が時代の気分を映す**ことを示す代表例となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Christian Dior",
+          "url": "https://en.wikipedia.org/wiki/Christian_Dior"
+        }
+      ]
+    },
+    {
+      "date": "1964-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "デザイナーと美意識",
+      "title": "ミニスカートが若者のモードを塗り替える",
+      "summary": "ロンドンのマリー・クワントが膝上丈のスカートを大衆化し、パリのクレージュも同時期にミニを発表。若者の街のスタイルが高級モードを動かす逆流が起きた。\n\n「発明者」がクワントかクレージュかは当時から論争があり、クワント自身は考案したのは街の女の子たちだと語った。**ストリートがモードを動かす**構図の最初の明確な事例であり、社会と身体レイヤーの若者文化と直結している。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "ミニスカートの考案者をクワントとする説とクレージュとする説が併存し、流行の起点年にも幅があって決着していない。",
+      "sources": [
+        {
+          "title": "Wikipedia: Miniskirt",
+          "url": "https://en.wikipedia.org/wiki/Miniskirt"
+        }
+      ]
+    },
+    {
+      "date": "1966-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "デザイナーと美意識",
+      "title": "サンローランが「ル・スモーキング」を発表",
+      "summary": "イヴ・サンローランが1966年秋冬コレクションで、男性の夜会服タキシードを女性のワードローブに翻訳した「ル・スモーキング」を発表した。\n\nパンツ姿の女性が高級レストランで入店を断られることもあった時代に、性差の記号を組み替える提案は挑発でもあった。同時期の既製服ライン展開とも重なり、デザイナーの美意識が社会の性規範(社会と身体レイヤー)へ踏み込んだ例となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Musée Yves Saint Laurent Paris: Le Smoking",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1974-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と身体",
+      "title": "ウエストウッドらの店「SEX」がパンクの発信地に",
+      "summary": "ヴィヴィアン・ウエストウッドとマルコム・マクラーレンがロンドン・キングス・ロードの店を「SEX」と改名し、破れやボンデージの要素を持ち込んだ服でパンクの美学を発信した。\n\n店にはセックス・ピストルズの面々が集い、音楽と服が一体となった反抗の文化として広がった。反体制の記号はやがて高級モードのコレクションに引用されていく。ストリートと高級モードの往復運動の、重要な起点の一つである。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "店は1971年の開店後に業態と店名の変更を重ねており、「SEX」への改称時期は1974年とする資料が多いものの記録により記述が異なる。",
+      "sources": [
+        {
+          "title": "V&A: Vivienne Westwood",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1975-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "産業と流通",
+      "title": "ザラ1号店がスペインで開業",
+      "summary": "アマンシオ・オルテガがスペイン北西部ア・コルーニャにザラの1号店を開いた。流行を素早く製品化し、店頭を高頻度で入れ替える手法の出発点である。\n\n後にインディテックスは世界最大級のアパレル企業となり、企画から店頭まで数週間という速度が業界標準を塗り替えた。デザイナーレイヤーの創造をただちに大衆価格へ翻訳する、**ファストファッション**の原型がここに生まれた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Zara (retailer)",
+          "url": "https://en.wikipedia.org/wiki/Zara_(retailer)"
+        }
+      ]
+    },
+    {
+      "date": "1981-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "デザイナーと美意識",
+      "title": "川久保玲と山本耀司がパリコレクションに初参加",
+      "summary": "コム・デ・ギャルソンの川久保玲とヨウジヤマモトの山本耀司が1981年にパリで初のショーを行い、黒を基調に非対称や穴あきを含む服を提示した。\n\n「黒の衝撃」と呼ばれた提案は、身体を理想形に整える西欧服飾の伝統への異議として受け止められ、賛否を巻き起こした。酷評も浴びたが、以後の脱構築的なデザイナーたちへ道を開き、黒は都市の知的な制服として定着していく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Rei Kawakubo",
+          "url": "https://en.wikipedia.org/wiki/Rei_Kawakubo"
+        }
+      ]
+    },
+    {
+      "date": "1988-01-01",
+      "precision": "year",
+      "end_date": "1997-12-31",
+      "type": "period",
+      "layer": "産業と流通",
+      "title": "スーパーモデルの時代",
+      "summary": "リンダ・エヴァンジェリスタ、ナオミ・キャンベルら少数のモデルが雑誌表紙と主要ショーを独占し、モデル本人がブランドを超える知名度を持つ時代が続いた。\n\n背景には雑誌とテレビという媒体の最盛期があり、彼女たちの発言力は出演料の高騰にも表れた。90年代後半に女優起用などの流れで退潮したとされるが、**顔が服を売る**仕組みはSNS時代のインフルエンサーへ引き継がれる。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "「スーパーモデルの時代」の起点・終点は論者により異なり、明確な区切りが存在するわけではない。",
+      "sources": [
+        {
+          "title": "Wikipedia: Supermodel",
+          "url": "https://en.wikipedia.org/wiki/Supermodel"
+        }
+      ]
+    },
+    {
+      "date": "1998-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "産業と流通",
+      "title": "ユニクロのフリースブームが服の買い方を変える",
+      "summary": "ファーストリテイリングが原宿出店とともにフリースを1,900円で大量販売し、爆発的なブームとなった。企画・生産・販売を一体で担うSPAモデルの威力を示した出来事である。\n\n安くても品質が足りるという感覚を広め、日本の衣料消費の基準を変えた。ザラやH&Mの世界展開と並び、産業と流通レイヤーがデザイナーレイヤーから主導権を奪っていく潮流の、日本における象徴となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "ファーストリテイリング: 沿革",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2000-06-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "産業と流通",
+      "title": "ネッタポルテ創業、高級服のEC販売が始まる",
+      "summary": "ナタリー・マスネがロンドンで高級ファッション専門のECサイト、ネッタポルテを開設した。雑誌のように編集された誌面から、そのまま服を買える体験を提示した。\n\n高級ブランドの多くはECを敬遠していたが、同社の成功で流通の常識が変わり、後の越境ECやブランド直販への流れを開いた。買う場所が店から画面へ移ることで、ショー映像の即時公開など情報の流れ方も変わっていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Net-a-Porter",
+          "url": "https://en.wikipedia.org/wiki/Net-a-Porter"
+        }
+      ]
+    },
+    {
+      "date": "2013-04-24",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と身体",
+      "title": "ラナ・プラザ崩落、犠牲者1,100人超",
+      "summary": "バングラデシュ・ダッカ近郊で縫製工場が入る商業ビル、ラナ・プラザが崩落し、1,100人を超える労働者が死亡した。多くが欧米ブランド向けの衣料を縫製していた。\n\n前日に建物の亀裂が指摘されながら操業が続けられていた。**誰がこの服を作ったのか**という問いが世界に広がり、Fashion Revolution運動やサプライチェーン開示の要求へつながる、産業倫理の転換点となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "ILO: The Rana Plaza Accident",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2017-01-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "デザイナーと美意識",
+      "title": "ルイ・ヴィトンがシュプリームとの協業を発表",
+      "summary": "ルイ・ヴィトンが2017年秋冬メンズショーでストリートブランドのシュプリームとの協業を発表し、モノグラムとボックスロゴを組み合わせた製品は世界的な争奪戦となった。\n\nかつて高級メゾンが模倣を訴えた相手と手を組む逆転劇であり、ストリートウェアの購買力と発信力を高級産業が公式に認めた瞬間だった。転売市場の過熱という流通(産業と流通レイヤー)の新現象も、ここで広く可視化された。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Supreme (brand)",
+          "url": "https://en.wikipedia.org/wiki/Supreme_(brand)"
+        }
+      ]
+    },
+    {
+      "date": "2018-03-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "デザイナーと美意識",
+      "title": "アブローがルイ・ヴィトンのメンズ芸術監督に",
+      "summary": "オフホワイト創業者のヴァージル・アブローが、ルイ・ヴィトンのメンズ部門芸術監督に任命された。同メゾンの主要部門を黒人デザイナーが率いるのは初である。\n\n建築を学びDJとしても活動した経歴は、服飾の徒弟制の外から頂点へ至る新しい道筋を示した。ストリートと高級モードの融合を制度の側が引き受けた人事であり、2021年の急逝後もその影響は業界の人材観に残っている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Virgil Abloh",
+          "url": "https://en.wikipedia.org/wiki/Virgil_Abloh"
+        }
+      ]
+    },
+    {
+      "date": "2019-08-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と身体",
+      "title": "G7で「ファッション協定」が発足",
+      "summary": "仏ビアリッツでのG7サミットに合わせ、ケリング会長ピノー主導で気候・生物多様性・海洋保護を柱とする業界共同の枠組み「ファッション協定」が発足し、多数の大手企業が署名した。\n\n拘束力のない自主的枠組みへの批判もあるが、産業の環境負荷が首脳外交の場の議題に載った意味は大きい。ラナ・プラザ以降の倫理の問いが、労働から環境へと広がったことを示す出来事である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "The Fashion Pact",
+          "url": "https://www.thefashionpact.org"
+        }
+      ]
+    },
+    {
+      "date": "2020-03-01",
+      "precision": "month",
+      "end_date": "2022-03-31",
+      "type": "period",
+      "layer": "産業と流通",
+      "title": "パンデミックがファッションウィークを変える",
+      "summary": "新型コロナの流行で世界のファッションウィークが中止・無観客となり、各都市はショーの映像配信やデジタル開催へ移行した。店舗休業でECへの移行も一気に進んだ。\n\n集うことが本質だったショーの形式が問い直され、快適さを重視する需要の変化も起きた。制約下の2年間は、シーズン制や過剰生産という業界の前提を見直す議論を加速させ、対面回帰後もデジタル併用が常態となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "The Business of Fashion / McKinsey: The State of Fashion 2021",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2022-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "産業と流通",
+      "title": "SHEINが米国ファストファッション市場を席巻",
+      "summary": "中国発のシーインが超低価格と毎日数千点規模の新商品投入で急成長し、報道では米国のファストファッション売上でH&Mやザラを上回ったと伝えられた。\n\n需要データから極小ロットで生産する手法は流通の速度を極限まで高めた。一方で労働環境や環境負荷、デザイン盗用への批判(社会と身体レイヤー)も集中しており、速さの果てに何が残るかという本年表の現在地を示す事例である。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "非上場のため売上やシェアの数値は調査会社・報道の推計に基づくもので、公式な開示はない。",
+      "sources": [
+        {
+          "title": "SHEINの米国市場シェアに関する各社報道(2022)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2022-03-30",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と身体",
+      "title": "EUが「持続可能な繊維戦略」を発表",
+      "summary": "欧州委員会が「持続可能で循環型の繊維のためのEU戦略」を公表し、2030年までにEU市場の繊維製品を長寿命でリサイクル可能なものとする方針や、売れ残り廃棄への規制の方向性を打ち出した。\n\nファストファッションの過剰生産を名指しで問題視し、自主協定から法規制へと段階が進んだ。美意識・産業・社会の3層が「速さと量」をめぐって正面から向き合う、現在進行形の局面である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "European Commission: EU Strategy for Sustainable and Circular Textiles (COM(2022) 141)",
+          "url": null
+        }
+      ]
+    }
+  ]
+}

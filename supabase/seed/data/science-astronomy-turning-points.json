@@ -1,0 +1,385 @@
+{
+  "slug": "science-astronomy-turning-points",
+  "title": "天文学の転換点",
+  "description": "コペルニクスの地動説から望遠鏡、相対性理論、系外惑星、重力波、JWSTまで。観測技術・宇宙像・社会の3層を重ね、「宇宙の見え方」がひっくり返った瞬間を選んで並べた年表。",
+  "category": "science-nature",
+  "language": "ja",
+  "start_year": 1543,
+  "end_year": 2023,
+  "layers": [
+    {
+      "name": "観測と技術",
+      "color": "blue"
+    },
+    {
+      "name": "宇宙像の転換",
+      "color": "purple"
+    },
+    {
+      "name": "社会と宇宙観",
+      "color": "gold"
+    }
+  ],
+  "events": [
+    {
+      "date": "1543-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "宇宙像の転換",
+      "title": "コペルニクス「天球の回転について」刊行",
+      "summary": "コペルニクスの主著「天球の回転について」が刊行された。太陽を中心に地球が公転する体系を数学的に示し、古代以来の天動説に代わる選択肢を提示した。刊行は著者の死の直前だった。\n\n**地球を宇宙の中心から外した**この一冊が、のちの科学革命の起点とされる。ただし刊行当時は主に計算の道具として読まれ、教会が本格的に問題視する(社会と宇宙観レイヤー)のはガリレオの時代である。観測による裏付けまでには半世紀以上を要した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: De revolutionibus orbium coelestium",
+          "url": "https://en.wikipedia.org/wiki/De_revolutionibus_orbium_coelestium"
+        }
+      ]
+    },
+    {
+      "date": "1600-02-17",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と宇宙観",
+      "title": "無限宇宙を説いたブルーノの処刑",
+      "summary": "修道士ジョルダーノ・ブルーノが、ローマで異端として火刑に処された。ブルーノは無限の宇宙と無数の世界を唱え、恒星は太陽と同じ存在であり、それぞれに世界が伴うと論じていた。\n\n後世には「宇宙論のための殉教者」として語られてきたが、裁判記録の多くは失われており、処刑理由に宇宙論がどの程度関わったのかの検証は難しい。宇宙像と信仰の衝突(1633年のガリレオ裁判)を先取りする出来事として、この年表に置かれる。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "裁判記録の多くが現存せず、有罪理由のうち宇宙論的主張が占めた比重は検証が難しい。神学的異端が主因とする見解が有力である。",
+      "sources": [
+        {
+          "title": "Wikipedia: Giordano Bruno",
+          "url": "https://en.wikipedia.org/wiki/Giordano_Bruno"
+        }
+      ]
+    },
+    {
+      "date": "1609-08-01",
+      "precision": "month",
+      "end_date": "1610-03-13",
+      "type": "period",
+      "layer": "観測と技術",
+      "title": "ガリレオの望遠鏡観測と「星界の報告」",
+      "summary": "ガリレオが自作の望遠鏡を夜空へ向け、月面の凹凸、木星を回る4つの衛星、天の川が無数の星の集まりであることを次々に発見した。成果は1610年3月の「星界の報告」で公表され、欧州中を駆け巡った。\n\n木星の衛星は「すべての天体が地球を回るわけではない」ことの実証であり、コペルニクス説(宇宙像の転換レイヤー)を観測が初めて後押しした。**見る道具が宇宙像を変える**という天文学の型が、ここで確立した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Sidereus Nuncius",
+          "url": "https://en.wikipedia.org/wiki/Sidereus_Nuncius"
+        }
+      ]
+    },
+    {
+      "date": "1633-06-22",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と宇宙観",
+      "title": "異端審問所がガリレオに有罪宣告",
+      "summary": "ローマの異端審問所がガリレオに有罪を宣告し、地動説を「異端の疑いが濃厚」として撤回させた。ガリレオは終身の軟禁下に置かれ、主著「天文対話」は禁書目録に載った。\n\n科学と宗教的権威の衝突を象徴する事件として、以後何世紀も語り継がれることになる。ローマ教皇庁が裁判の誤りを公式に認めたのは1992年である。一方、軟禁下のガリレオが力学研究を続けたことは、ニュートン(宇宙像の転換レイヤー)への橋渡しとなった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Galileo affair",
+          "url": "https://en.wikipedia.org/wiki/Galileo_affair"
+        }
+      ]
+    },
+    {
+      "date": "1687-07-05",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "宇宙像の転換",
+      "title": "ニュートン「プリンキピア」刊行",
+      "summary": "ニュートンの「自然哲学の数学的諸原理(プリンキピア)」が刊行された。万有引力と運動の法則によって、物体の落下から惑星の公転までを同じ数学で説明し、ケプラーの法則を導出してみせた。\n\n天上と地上を支配する法則は同じであるという統一は、天動説と地動説の対立を最終的に過去のものにした。以後160年間この力学は完璧に見え、そのわずかな揺らぎ(1846年の海王星発見、1915年の一般相対性理論)自体が次の転換点となっていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Philosophiæ Naturalis Principia Mathematica",
+          "url": "https://en.wikipedia.org/wiki/Philosophi%C3%A6_Naturalis_Principia_Mathematica"
+        }
+      ]
+    },
+    {
+      "date": "1846-09-23",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "宇宙像の転換",
+      "title": "計算が予言した惑星、海王星の発見",
+      "summary": "ベルリン天文台のガレが、フランスのルヴェリエの計算が示した位置のすぐ近くに海王星を発見した。天王星の軌道のずれから未知の惑星の位置を割り出した、理論天文学の金字塔である。\n\n**紙と計算だけで惑星を予言した**この成功は、ニュートン力学の権威を頂点に押し上げた。発見の栄誉をめぐっては英国のアダムズの計算の先行を主張する声が上がり英仏間の論争となったが、近年の史料再検証では英国側の主張を割り引く見方が進んでいる。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "アダムズの計算の先行性と精度をめぐる評価は英仏間で長く対立し、近年の史料再検証では英国側の主張を割り引く見解が有力である。",
+      "sources": [
+        {
+          "title": "Wikipedia: Discovery of Neptune",
+          "url": "https://en.wikipedia.org/wiki/Discovery_of_Neptune"
+        }
+      ]
+    },
+    {
+      "date": "1915-11-25",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "宇宙像の転換",
+      "title": "アインシュタインが一般相対性理論を発表",
+      "summary": "アインシュタインがプロイセン科学アカデミーで一般相対性理論の重力場方程式を発表した。重力を力ではなく時空の曲がりとして記述し、ニュートン以来の重力観を根本から置き換えた。\n\n水星の近日点移動という積年の謎を説明したうえ、光の湾曲と重力波という検証可能な予言を生んだ。前者は1919年の日食観測(社会と宇宙観レイヤー)で、後者はちょうど100年後の2015年の直接検出(観測と技術レイヤー)で確かめられることになる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: General relativity",
+          "url": "https://en.wikipedia.org/wiki/General_relativity"
+        }
+      ]
+    },
+    {
+      "date": "1919-05-29",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と宇宙観",
+      "title": "日食観測が相対性理論を実証、世界的事件に",
+      "summary": "エディントンらの遠征隊が西アフリカとブラジルで皆既日食を観測し、太陽の重力による星の光の湾曲が一般相対性理論の予言と一致すると同年11月に発表した。「ニュートンの宇宙が覆された」と新聞が報じ、アインシュタインは一夜にして世界的な名声を得た。\n\n科学の成果がメディアを通じて大衆的事件となった最初期の例である。当時の観測精度は低く、データの取捨選択が結論を左右したのではという批判が長く続いたが、後年の再解析は結論をおおむね支持している。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "観測精度の低さとデータ選択の妥当性への批判が長く存在したが、後年の再解析では結論はおおむね支持されている。",
+      "sources": [
+        {
+          "title": "Wikipedia: Eddington experiment",
+          "url": "https://en.wikipedia.org/wiki/Eddington_experiment"
+        }
+      ]
+    },
+    {
+      "date": "1923-10-06",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "宇宙像の転換",
+      "title": "ハッブル、アンドロメダが銀河系の外と示す",
+      "summary": "ハッブルがウィルソン山天文台の100インチ望遠鏡で、アンドロメダ「星雲」の中にセファイド変光星を発見し、その距離が銀河系の大きさをはるかに超えることを示した。変光星を意味する「VAR」の書き込みを興奮とともに感嘆符付きで記した写真乾板が残っている。\n\n宇宙は銀河系がすべてか否かを争った1920年の「大論争」に決着をつけ、**銀河系は無数の銀河の一つ**にすぎないことを確定させた。距離の物差しは、リービットが1912年に発見した変光星の周期光度関係だった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Edwin Hubble",
+          "url": "https://en.wikipedia.org/wiki/Edwin_Hubble"
+        }
+      ]
+    },
+    {
+      "date": "1929-03-15",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "宇宙像の転換",
+      "title": "宇宙膨張の観測的証拠、ハッブルの法則",
+      "summary": "ハッブルが、銀河は遠いものほど速く遠ざかるという距離と後退速度の比例関係を発表した。宇宙そのものが膨張していることの観測的な根拠であり、永遠不変の静的な宇宙像は放棄を迫られた。\n\n膨張を時間的に遡れば宇宙に「始まり」があることになり、ビッグバン宇宙論への道が開けた。同様の関係は1927年にルメートルが理論とともに導いており、先取権をめぐる長い議論の末、2018年に「ハッブル–ルメートルの法則」へと改称された。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "法則の先取権については1927年のルメートルの論文との関係で議論が続き、IAUが2018年に名称変更を決議した経緯がある。",
+      "sources": [
+        {
+          "title": "Wikipedia: Hubble's law",
+          "url": "https://en.wikipedia.org/wiki/Hubble%27s_law"
+        }
+      ]
+    },
+    {
+      "date": "1957-10-04",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と宇宙観",
+      "title": "スプートニク1号打ち上げ、宇宙時代の幕開け",
+      "summary": "ソ連が世界初の人工衛星スプートニク1号の打ち上げに成功した。直径58cmの球体が発する電波信号は世界中のアマチュア無線家にも受信され、米国に「スプートニク・ショック」と呼ばれる衝撃を与えた。\n\n宇宙が「観測するだけの場所」から「人類が機械を送り込む場所」へ変わった瞬間である。冷戦下の宇宙開発競争は、結果として宇宙望遠鏡や惑星探査機(観測と技術レイヤー)という、大気の外から宇宙を見る天文学の新しい道具を生み出していく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Sputnik 1",
+          "url": "https://en.wikipedia.org/wiki/Sputnik_1"
+        }
+      ]
+    },
+    {
+      "date": "1965-05-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "観測と技術",
+      "title": "宇宙マイクロ波背景放射の発見",
+      "summary": "ベル研究所のペンジアスとウィルソンが、アンテナの除去できない雑音として、全天からほぼ等方的に届くマイクロ波を検出した。これが宇宙誕生の名残の光、宇宙マイクロ波背景放射と同定された。\n\nビッグバン理論と定常宇宙論の論争に事実上の決着をつけ、宇宙論(宇宙像の転換レイヤー)を思弁から精密観測の科学へ変える突破口となった(1978年ノーベル賞)。この放射を予言していたプリンストンの研究チームとの同時期の遭遇は、科学史に残る偶然として知られる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Cosmic microwave background",
+          "url": "https://en.wikipedia.org/wiki/Cosmic_microwave_background"
+        }
+      ]
+    },
+    {
+      "date": "1967-11-28",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "観測と技術",
+      "title": "ジョスリン・ベルがパルサーを発見",
+      "summary": "ケンブリッジ大学の大学院生ジョスリン・ベルが、電波観測データの中に正確な周期で届くパルスを発見した。当初半ば冗談で「小さな緑の人(LGM-1)」と呼ばれた信号は、高速で自転する中性子星、パルサーと同定された。\n\n理論上の存在だった中性子星の実在を示し、極限状態の物理を観測できる高エネルギー天体物理学の扉を開いた。1974年のノーベル物理学賞は指導教員ヒューイッシュらに贈られ、発見者本人の除外は科学界の長い論争として残った。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Jocelyn Bell Burnell",
+          "url": "https://en.wikipedia.org/wiki/Jocelyn_Bell_Burnell"
+        }
+      ]
+    },
+    {
+      "date": "1990-04-24",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "観測と技術",
+      "title": "ハッブル宇宙望遠鏡の打ち上げ",
+      "summary": "スペースシャトルによってハッブル宇宙望遠鏡が打ち上げられた。大気の揺らぎに邪魔されない軌道上からの観測は天文学の悲願であり、口径2.4mのこの望遠鏡は30年以上にわたり観測を続けることになる。\n\n直後に主鏡の研磨誤差が発覚して「欠陥望遠鏡」と酷評されたが、1993年の修理ミッションで性能を回復した。以後、宇宙膨張の加速の測定(宇宙像の転換レイヤー)などに貢献し、公開された画像は大衆の宇宙のイメージそのものを塗り替えた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Hubble Space Telescope",
+          "url": "https://en.wikipedia.org/wiki/Hubble_Space_Telescope"
+        }
+      ]
+    },
+    {
+      "date": "1995-10-06",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "宇宙像の転換",
+      "title": "太陽に似た恒星を回る初の系外惑星発見",
+      "summary": "スイスのマイヨールとケローが、ペガスス座51番星を回る惑星の発見を発表した。太陽に似た恒星を回る系外惑星の確認は史上初で、木星級の巨大惑星がわずか4日で公転するという、太陽系の常識の外にある姿だった。\n\n**太陽系が特別ではなくなった**転換点である。「灼熱の木星」の存在は惑星形成理論の書き換えを迫り、以後の探査で系外惑星は5000個を超えて見つかっていく。2019年、二人にはノーベル物理学賞が贈られた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 51 Pegasi b",
+          "url": "https://en.wikipedia.org/wiki/51_Pegasi_b"
+        }
+      ]
+    },
+    {
+      "date": "1998-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "宇宙像の転換",
+      "title": "宇宙膨張の加速とダークエネルギーの発見",
+      "summary": "遠方の超新星を観測していた2つの国際チームが、宇宙の膨張は減速ではなくむしろ加速しているという結果を相次いで発表した。加速を引き起こす未知の何かは「ダークエネルギー」と名付けられた。\n\n**膨張は加速していた**という発見は、宇宙の約7割が正体不明のエネルギーで占められることを意味し、物理学最大級の未解決問題を生んだ。観測自体は追試で確立して2011年のノーベル賞に至ったが、ダークエネルギーの正体は今も分かっていない。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Accelerating expansion of the universe",
+          "url": "https://en.wikipedia.org/wiki/Accelerating_expansion_of_the_universe"
+        }
+      ]
+    },
+    {
+      "date": "2015-09-14",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "観測と技術",
+      "title": "LIGOが重力波を初めて直接検出",
+      "summary": "米国の重力波検出器LIGOが、約13億光年彼方のブラックホール連星の合体から届いた重力波を史上初めて直接検出した。一般相対性理論(宇宙像の転換レイヤー)の予言から、ちょうど100年目の検証だった。\n\n電磁波に頼らず時空のさざ波そのものを捉える、**宇宙を「聴く」観測**の始まりである。2017年には中性子星合体を重力波と光の双方で捉えるマルチメッセンジャー天文学も実現し、検出は同年のノーベル物理学賞の対象となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Physical Review Letters: Observation of Gravitational Waves from a Binary Black Hole Merger",
+          "url": "https://doi.org/10.1103/PhysRevLett.116.061102"
+        }
+      ]
+    },
+    {
+      "date": "2019-04-10",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と宇宙観",
+      "title": "ブラックホールの「影」を初めて撮像・公開",
+      "summary": "国際協力イベント・ホライズン・テレスコープ(EHT)が、楕円銀河M87の中心にある超大質量ブラックホールの「影」の画像を、世界6か所の同時会見で公開した。ブラックホールが直接撮像された史上初の例である。\n\n地球規模の電波望遠鏡網(観測と技術レイヤー)が成し遂げた成果であると同時に、オレンジ色のリングの画像が一夜で世界中に共有される、科学とメディアの新しい関係を示した。理論上の存在だったブラックホールは、誰もが見た「実在」になった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Event Horizon Telescope",
+          "url": "https://en.wikipedia.org/wiki/Event_Horizon_Telescope"
+        }
+      ]
+    },
+    {
+      "date": "2021-12-25",
+      "precision": "day",
+      "end_date": "2022-07-12",
+      "type": "period",
+      "layer": "観測と技術",
+      "title": "JWST打ち上げから最初の科学画像公開まで",
+      "summary": "ジェイムズ・ウェッブ宇宙望遠鏡(JWST)が打ち上げられ、地球から150万kmのラグランジュ点への航行と口径6.5mの主鏡の展開・調整を経て、2022年7月12日に最初の科学画像が公開された。\n\n赤外線で宇宙最初期の銀河まで見通す設計で、開発には四半世紀と約100億ドルが投じられた。最初の画像公開は米大統領が参加する社会的イベント(社会と宇宙観レイヤー)となり、観測データは公開直後から初期宇宙の描像(宇宙像の転換レイヤー)を揺さぶり始めた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: James Webb Space Telescope",
+          "url": "https://en.wikipedia.org/wiki/James_Webb_Space_Telescope"
+        }
+      ]
+    },
+    {
+      "date": "2023-02-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "宇宙像の転換",
+      "title": "JWSTが初期宇宙に「重すぎる銀河」候補を発見",
+      "summary": "JWSTの初期観測データから、ビッグバン後5〜7億年の宇宙に、標準的な銀河形成モデルの予想を大きく上回る質量を持つとみられる銀河の候補が複数報告された。\n\n候補の多くは測光観測による赤方偏移の推定に基づいており、分光での確認や質量見積もりの下方修正も進行中で、宇宙論の修正が必要かどうかは未確定である。新しい観測装置(観測と技術レイヤー)が宇宙像を揺さぶるという、この年表で繰り返されてきた構図の最新の一幕といえる。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "銀河候補の距離と質量は測光的推定に基づく初期報告であり、分光確認と再解析によって見積もりが変わる可能性が高い。",
+      "sources": [
+        {
+          "title": "Nature: A population of red candidate massive galaxies ~600 Myr after the Big Bang (Labbé et al., 2023)",
+          "url": null
+        }
+      ]
+    }
+  ]
+}

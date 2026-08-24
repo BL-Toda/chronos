@@ -1,0 +1,349 @@
+{
+  "slug": "culture-design-thinking",
+  "title": "デザイン思考の歴史",
+  "description": "バウハウスからd.school、そして批判の時代へ。思想・企業実践・教育制度の3層を重ね、デザインが造形の技能から問題解決の方法論へ拡張し、流行と反省を経て定着するまでを辿る。",
+  "category": "culture",
+  "language": "ja",
+  "start_year": 1919,
+  "end_year": 2023,
+  "layers": [
+    {
+      "name": "思想と方法論",
+      "color": "purple"
+    },
+    {
+      "name": "企業と実践",
+      "color": "orange"
+    },
+    {
+      "name": "教育と制度",
+      "color": "teal"
+    }
+  ],
+  "events": [
+    {
+      "date": "1919-04-01",
+      "precision": "month",
+      "end_date": "1933-07-01",
+      "type": "period",
+      "layer": "教育と制度",
+      "title": "バウハウス開校",
+      "summary": "芸術と技術の統合を掲げる造形学校バウハウスが、独ヴァイマルに開校した。工業生産を前提に、素材と機能から発想する基礎教育を体系化し、ナチス政権の圧力で1933年に閉校するまでモダンデザインの規範を作った。\n\n閉校後は教員たちの亡命によって方法論が米国の大学へ移植された。デザインを**個人の才能ではなく教えられる方法**とみなす伝統はここに始まり、後年のd.schoolに連なる「デザイン教育の制度化」の源流となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Bauhaus",
+          "url": "https://en.wikipedia.org/wiki/Bauhaus"
+        }
+      ]
+    },
+    {
+      "date": "1969-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "思想と方法論",
+      "title": "サイモン『人工物の科学』刊行",
+      "summary": "のちにノーベル経済学賞を受けるハーバート・サイモンが『人工物の科学』を刊行した。「現状をより好ましいものに変えようと行為を考案する者は、誰もがデザインをしている」と述べ、デザインを科学の対象に据えた。\n\n造形の技能だったデザインを、経営や工学を含むあらゆる問題解決に共通する知的活動として一般化した宣言である。後年「デザイン思考」と呼ばれる考え方の、最も広く引用される理論的な土台になった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: The Sciences of the Artificial",
+          "url": "https://en.wikipedia.org/wiki/The_Sciences_of_the_Artificial"
+        }
+      ]
+    },
+    {
+      "date": "1971-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "思想と方法論",
+      "title": "パパネック『生きのびるためのデザイン』刊行",
+      "summary": "デザイナーのヴィクター・パパネックが『生きのびるためのデザイン』を刊行した。商業主義に奉仕するデザインを「有害な職業」とまで呼び、社会的弱者や途上国のための設計を説いた。\n\nデザインの対象を商品から社会課題へ広げた古典であり、後年の社会課題解決型デザイン思考の先駆といえる。同時にその商業主義批判は、半世紀後に噴出するデザイン思考批判(同レイヤー)の論点を先取りしていた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Victor Papanek",
+          "url": "https://en.wikipedia.org/wiki/Victor_Papanek"
+        }
+      ]
+    },
+    {
+      "date": "1982-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "思想と方法論",
+      "title": "クロス「デザイナー的な知」論文発表",
+      "summary": "英国のデザイン研究者ナイジェル・クロスが論文「デザイナー的な知」を発表した。科学の知とも人文の知とも異なる第三の知の様式がデザイン実践にあると論じ、デザイン研究を独立した学問領域として基礎づけた。\n\n実務家の直観や素描を研究対象へ引き上げたことで、デザインの思考プロセスを語る学術的な語彙が整った。1960年代からのデザイン方法論運動を継ぎ、後のビジネス的流行とは別系統の学術的系譜を形づくる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Nigel Cross, \"Designerly Ways of Knowing\", Design Studies Vol.3 No.4 (1982)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1987-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "思想と方法論",
+      "title": "ロウ『デザイン・シンキング』刊行",
+      "summary": "建築学者ピーター・ロウが、建築家と都市設計者の思考過程を分析した『デザイン・シンキング』をMIT出版から刊行した。この語が書名として広く流通する初期の例となった。\n\nただしここでの語義は建築設計の記述であり、後年ビジネス手法として流行する「デザイン思考」とはほぼ別物である。**同じ語が意味を変えながら流行していく**過程そのものが、この年表の主題といえる。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "書名としては初期の例だが、「デザイン思考」という語・概念の起源には諸説あり、本書を起源と断定する見方には異論がある。",
+      "sources": [
+        {
+          "title": "Wikipedia: Design thinking",
+          "url": "https://en.wikipedia.org/wiki/Design_thinking"
+        }
+      ]
+    },
+    {
+      "date": "1991-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "企業と実践",
+      "title": "IDEO設立",
+      "summary": "デビッド・ケリーの事務所と、ビル・モグリッジ、マイク・ナットールの3社が合併し、米パロアルトにデザインファームIDEOが誕生した。前身の事務所はアップル初期のマウス開発などで知られていた。\n\nプロダクトデザインの受託会社として出発したIDEOは、やがて手法そのものを商品化し、「方法論を売る会社」へ転身していく。デザイン思考の商業的な担い手の中心が、ここに揃った。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: IDEO",
+          "url": "https://en.wikipedia.org/wiki/IDEO"
+        }
+      ]
+    },
+    {
+      "date": "1999-02-09",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "企業と実践",
+      "title": "米ABCがIDEOの買い物カート再設計を放映",
+      "summary": "米ABCの報道番組ナイトラインが、IDEOに5日間でショッピングカートを再設計させる企画「ザ・ディープ・ダイブ」を放映した。付箋を使うブレインストーミングと素早い試作の現場が全米に流れた。\n\nデザインのプロセスが大衆的な見世物として初めて可視化された放送であり、ビジネス界の関心に火を付けた。後のd.school設立(教育と制度レイヤー)や企業研修ブームに至る、デザイン思考流行の世俗的な起点とされる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "ABC Nightline: The Deep Dive (1999)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2005-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "教育と制度",
+      "title": "スタンフォード大学にd.school設立",
+      "summary": "SAP共同創業者ハッソ・プラットナーの3500万ドルの寄付により、スタンフォード大学にデザイン研究所(通称d.school)が設立された。全学部の学生に開かれた、専攻横断のデザイン思考教育機関である。\n\n共感・定義・発想・試作・検証の5段階プロセスに代表される教育のパッケージ化が進み、**方法論の標準化と輸出**の拠点となった。世界中の大学と企業研修が、このモデルを模倣していく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Stanford d.school",
+          "url": "https://dschool.stanford.edu"
+        }
+      ]
+    },
+    {
+      "date": "2007-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "教育と制度",
+      "title": "ポツダムにHPIデザイン思考学校開設",
+      "summary": "プラットナーが独ポツダムの自身の研究所(HPI)に、デザイン思考の教育課程「HPIスクール・オブ・デザインシンキング」を開設した。スタンフォードd.schoolの姉妹校にあたる。\n\n米国西海岸で生まれた教育モデルが、欧州の工学教育に接続された。ここで学んだ人材と教材は欧州企業の研修市場へ供給され、SAPをはじめ大企業の組織改革にデザイン思考が組み込まれる回路を作った。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "HPI School of Design Thinking (ポツダム) 公式サイト",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2008-06-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "思想と方法論",
+      "title": "ティム・ブラウンがHBRに「デザイン思考」寄稿",
+      "summary": "IDEOのCEOティム・ブラウンが、ハーバード・ビジネス・レビュー誌に論文「デザイン思考」を発表した。デザイナーの感性と手法を、イノベーションを生む経営の方法論として定式化した。\n\n翌年の著書『デザイン思考が世界を変える』と合わせて、この概念は**経営言語への翻訳**を完了する。以後、コンサルティング業界と企業研修市場で爆発的に広がり、2010年代の流行語の地位を確立した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Tim Brown, \"Design Thinking\", Harvard Business Review (June 2008)",
+          "url": "https://hbr.org/2008/06/design-thinking"
+        }
+      ]
+    },
+    {
+      "date": "2010-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "教育と制度",
+      "title": "人間中心設計が国際規格ISO 9241-210に",
+      "summary": "インタラクティブシステムの人間中心設計プロセスが、国際規格ISO 9241-210として発行された。利用状況の理解、ユーザーの関与、反復的な設計と評価などを開発の要件として定めている。\n\nデザイン思考の核心にある人間中心の考え方が、調達仕様や開発標準に書き込める形式へ翻訳された。流行とは独立に実務へ定着する経路であり、後年ブームが退潮しても残る「制度化された成果」の代表である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "ISO 9241-210:2010 Ergonomics of human-system interaction — Part 210: Human-centred design",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2011-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "教育と制度",
+      "title": "英政府がGDS設立、行政にデザインが常駐",
+      "summary": "英政府が行政サービスのデジタル化組織Government Digital Service(GDS)を設立した。利用者ニーズから出発する設計原則を掲げ、政府サイトを統合したGOV.UKは2013年に英国のデザイン・オブ・ザ・イヤーを受賞した。\n\nデザイン思考的な手法が一国の行政の標準装備になった画期であり、米国の18Fや日本のデジタル庁など、各国の政府デジタル組織のモデルとなった。教育機関の外で方法論が制度化された代表例である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Government Digital Service",
+          "url": "https://en.wikipedia.org/wiki/Government_Digital_Service"
+        }
+      ]
+    },
+    {
+      "date": "2013-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "企業と実践",
+      "title": "IBMが大規模デザイン組織を始動",
+      "summary": "IBMが米オースティンを拠点にデザイン部門IBM Designを発足させた。デザイナー1000人超の採用計画と、全社員向け研修プログラムIBM Design Thinkingの展開を打ち出したと報じられた。\n\n「史上最大級のデザイン投資」と喧伝され、大企業がデザイン組織を内製する流れを決定づけた。同時期のデザイン会社買収ブーム(同レイヤー)と合わせ、実践の主導権がデザイン事務所から事業会社へ移っていく。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "採用規模や投資額は同社発表と報道に基づく数字で、独立した検証はない。",
+      "sources": [
+        {
+          "title": "IBM Design (公式サイト)",
+          "url": "https://www.ibm.com/design/"
+        }
+      ]
+    },
+    {
+      "date": "2013-01-01",
+      "precision": "year",
+      "end_date": "2017-12-31",
+      "type": "period",
+      "layer": "企業と実践",
+      "title": "デザイン会社の買収ブーム",
+      "summary": "AccentureによるFjord買収、Capital OneによるAdaptive Path買収、McKinseyによるLunar買収など、コンサルティング会社・金融・事業会社によるデザイン会社の買収が相次いだ。\n\nデザインが外注するサービスから**経営資源として買われる対象**へ変わったことを示す潮流である。ジョン・マエダの年次報告書Design in Tech Reportがこの動きを毎年集計し、業界の合言葉になった。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "買収件数の集計はDesign in Tech Report等の民間集計によるもので、集計基準により件数は変動する。",
+      "sources": [
+        {
+          "title": "Design in Tech Report (John Maeda)",
+          "url": "https://designintech.report"
+        }
+      ]
+    },
+    {
+      "date": "2017-06-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "思想と方法論",
+      "title": "ナターシャ・ジェンのデザイン思考批判講演",
+      "summary": "ペンタグラムのパートナー、ナターシャ・ジェンがニューヨークの99Uカンファレンスでデザイン思考を痛烈に批判する講演を行った。5段階図式の形骸化と、付箋に頼る安易なワークショップ文化を槍玉に挙げた。\n\nデザインに不可欠な批評(クリット)の不在という指摘は、方法論の大衆化が生んだ質の劣化を突き、流行の頂点で内部から上がった最初の広く知られた異議となった。以後、批判は散発から潮流へ変わっていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Natasha Jen: 99U Conference講演 (2017)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2018-05-23",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "教育と制度",
+      "title": "経産省・特許庁が「デザイン経営」宣言",
+      "summary": "経済産業省と特許庁の研究会が報告書「デザイン経営」を公表した。最高デザイン責任者の経営参画やデザイン投資の効果を説き、日本企業へのデザイン思考導入を国の政策として後押しした。\n\n米国では企業実践が先行し批判期に入りつつあった時期に、日本では官庁がブームの推進役を担った。約10年の時差を伴って方法論が輸入されるという、日本のデザイン受容に繰り返し現れる構図である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "経済産業省・特許庁「産業競争力とデザインを考える研究会」報告書『「デザイン経営」宣言』(2018)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2018-10-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "企業と実践",
+      "title": "マッキンゼー「デザインの経営価値」報告書",
+      "summary": "マッキンゼーが報告書「デザインの経営価値」を公表した。約300社を5年間追跡し、独自のデザイン指標で上位に入る企業は売上成長と株主リターンで業界平均を上回った、と結論づけた。\n\nデザイン投資を財務の言葉で正当化する際の定番の引用元となった。ブームが測定と投資対効果の言葉で語られる段階に入ったことを示すが、相関を因果として引用する例の多さには慎重な見方もある。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "報告書の分析は相関にとどまり、デザイン投資が業績を高めるという因果関係は実証されていない。指標の妥当性にも議論がある。",
+      "sources": [
+        {
+          "title": "McKinsey: The Business Value of Design (2018)",
+          "url": "https://www.mckinsey.com/capabilities/mckinsey-design/our-insights/the-business-value-of-design"
+        }
+      ]
+    },
+    {
+      "date": "2023-02-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "思想と方法論",
+      "title": "「デザイン思考はどこで間違ったのか」",
+      "summary": "MITテクノロジーレビュー誌が「デザイン思考は世界を直すはずだった。どこで間違ったのか」と題する長編記事を掲載した。d.school関係者を含む当事者への取材から、方法論の限界と形骸化を総括した。\n\n万能の問題解決法という物語の終わりを象徴する記事とされる。一方で人間中心設計は国際規格や行政の標準(教育と制度レイヤー)として定着しており、**「流行の終わり」と「定着」は別物**であることも読み取れる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "MIT Technology Review: Design thinking was supposed to fix the world. Where did it go wrong? (2023-02)",
+          "url": null
+        }
+      ]
+    }
+  ]
+}

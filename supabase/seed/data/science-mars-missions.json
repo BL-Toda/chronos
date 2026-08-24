@@ -1,0 +1,385 @@
+{
+  "slug": "science-mars-missions",
+  "title": "火星探査ミッション",
+  "description": "運河の幻から探査車の隊列、サンプルリターン計画まで。ミッションの成否・水と生命の証拠・競争と構想の3層を重ね、人類が隣の惑星をどう読み解いてきたかをたどる。",
+  "category": "science-nature",
+  "language": "ja",
+  "start_year": 1877,
+  "end_year": 2024,
+  "layers": [
+    {
+      "name": "ミッションと技術",
+      "color": "blue"
+    },
+    {
+      "name": "水と生命の探査",
+      "color": "teal"
+    },
+    {
+      "name": "競争と構想",
+      "color": "orange"
+    }
+  ],
+  "events": [
+    {
+      "date": "1877-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "競争と構想",
+      "title": "スキャパレリが火星の「溝」を報告",
+      "summary": "イタリアの天文学者スキャパレリが大接近時の火星を観測し、表面に線状の地形を認めて「canali(溝)」と記載した。英語圏で「運河」と訳されたことで、人工物という連想が独り歩きした。\n\nローウェルらが**知的生命が築いた運河網**という解釈を広め、SFの火星人像を育てていく。この幻は1965年の探査機の写真(ミッションと技術レイヤー)まで88年間生き続け、観測と願望の混同の教訓として語り継がれる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Giovanni Schiaparelli",
+          "url": "https://en.wikipedia.org/wiki/Giovanni_Schiaparelli"
+        }
+      ]
+    },
+    {
+      "date": "1938-10-30",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "競争と構想",
+      "title": "ラジオドラマ「宇宙戦争」放送",
+      "summary": "オーソン・ウェルズ演出のラジオドラマ「宇宙戦争」が、火星人の襲来を臨時ニュース仕立てで放送し、一部の聴取者が現実の出来事と誤解したと報じられた。\n\n「全米がパニックに陥った」という通説は後年の研究で誇張と指摘されているが、火星イコール侵略者というイメージの定着を示す事件ではあった。運河説から続く想像の火星の頂点であり、実像の探査が始まるのはこの27年後である。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "全国的パニックが起きたという通説は後年の研究で誇張と指摘されており、実際の聴取率と混乱の規模には諸説ある。",
+      "sources": [
+        {
+          "title": "Wikipedia: The War of the Worlds (1938 radio drama)",
+          "url": "https://en.wikipedia.org/wiki/The_War_of_the_Worlds_(1938_radio_drama)"
+        }
+      ]
+    },
+    {
+      "date": "1965-07-15",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "ミッションと技術",
+      "title": "マリナー4号、初の火星接近撮影",
+      "summary": "NASAのマリナー4号が火星への接近通過に成功し、20枚余りの近接写真を初めて地球へ送った。写っていたのは運河でも植生でもなく、月に似たクレーターだらけの地表だった。\n\n88年続いた運河の幻(競争と構想レイヤー)は事実上ここで消え、大気圧は地球の1%に満たないことも判明した。期待との落差から探査の意義が問われたが、「本当に死んだ星なのか」という問いが、以後の水探し(水と生命の探査レイヤー)の動機となる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Mariner 4",
+          "url": "https://en.wikipedia.org/wiki/Mariner_4"
+        }
+      ]
+    },
+    {
+      "date": "1971-12-02",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "競争と構想",
+      "title": "ソ連のマルス3号、初の火星軟着陸",
+      "summary": "ソ連のマルス3号の着陸機が、人類として初めて火星への軟着陸に成功した。ただし送信は着陸の約20秒後に途絶し、意味のある画像は得られなかった。\n\n同じ時期、米国のマリナー9号は初の火星周回機となり全球の撮影に成功している。着陸はソ連が先んじ、観測は米国が制したという対照的な結果は、火星が**国家の威信を測る場**であったこと、そしてその難しさを同時に物語る。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Mars 3",
+          "url": "https://en.wikipedia.org/wiki/Mars_3"
+        }
+      ]
+    },
+    {
+      "date": "1976-07-20",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "ミッションと技術",
+      "title": "バイキング1号が着陸、生命探査実験を実施",
+      "summary": "NASAのバイキング1号がクリュセ平原に着陸し、火星表面からの撮影と土壌の生命探査実験を初めて本格的に実施した。実験の一部は、当初生命を示唆するかに見える反応を返した。\n\n結果は最終的に「生命の証拠なし」と解釈されたが、標識放出実験の解釈には現在も異論が残る。生命探しへの期待と失望の落差はその後20年間の火星着陸の空白の一因となり、次の着陸は1997年まで待つことになる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Viking 1",
+          "url": "https://en.wikipedia.org/wiki/Viking_1"
+        }
+      ]
+    },
+    {
+      "date": "1996-08-07",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "水と生命の探査",
+      "title": "火星隕石に「生命の痕跡」発表",
+      "summary": "NASAの研究チームが、南極で発見された火星起源の隕石ALH84001に微生物の化石に似たナノメートル級の構造を見つけたと発表した。クリントン大統領が声明を出すほどの騒ぎとなった。\n\n主張の多くは後に非生物的な過程で説明され、現在は懐疑的な見方が主流である。それでもこの騒動は宇宙生物学という分野の確立と火星探査予算の復活を後押しし、**証拠の解釈をめぐる火星生命論争**の型がここで定まった。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "ナノメートル級構造を生物起源とする解釈には非生物的な生成過程による説明が示されており、現在は懐疑的な見方が主流である。",
+      "sources": [
+        {
+          "title": "Wikipedia: Allan Hills 84001",
+          "url": "https://en.wikipedia.org/wiki/Allan_Hills_84001"
+        }
+      ]
+    },
+    {
+      "date": "1997-07-04",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "ミッションと技術",
+      "title": "パスファインダー着陸、初の火星ローバー",
+      "summary": "NASAのマーズ・パスファインダーがエアバッグで弾みながら着陸し、初の火星ローバー「ソジャーナ」が地表を走行した。画像はウェブで即時公開され、公開サイトには当時として記録的なアクセスが集まった。\n\n「より速く、より良く、より安く」路線の象徴で、バイキング以来21年ぶりの着陸成功が探査の空白を破った。動き回り、岩を選んで調べるというローバーの様式は、以後の火星探査の標準になっていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Mars Pathfinder",
+          "url": "https://en.wikipedia.org/wiki/Mars_Pathfinder"
+        }
+      ]
+    },
+    {
+      "date": "1999-09-23",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "ミッションと技術",
+      "title": "マーズ・クライメイト・オービター喪失",
+      "summary": "NASAの火星気候周回機が軌道投入の際に大気圏へ深く進入しすぎ、破壊された。原因は、開発側がヤード・ポンド法、運用側がメートル法の数値を前提にしていたという単位の取り違えだった。\n\n直後のマーズ・ポーラー・ランダーの失敗と併せ、低コスト路線の管理体制が厳しく問い直された。初歩的な取り違えが1億ドル超の機体を失わせた事例として、システム工学の教材に今も登場し続けている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Mars Climate Orbiter",
+          "url": "https://en.wikipedia.org/wiki/Mars_Climate_Orbiter"
+        }
+      ]
+    },
+    {
+      "date": "2004-01-25",
+      "precision": "day",
+      "end_date": "2019-02-13",
+      "type": "period",
+      "layer": "ミッションと技術",
+      "title": "オポチュニティ、90日の予定を15年走る",
+      "summary": "双子ローバーの一方オポチュニティがメリディアニ平原に着陸した。設計寿命90日のところ約15年・45km超を走破し、2018年の全球砂嵐で交信が途絶、2019年2月にミッション終了が宣言された。\n\n着陸直後に水中で形成された鉱物を発見し、**かつて水をたたえていた火星**の姿を決定づけた(水と生命の探査レイヤー)。想定を超えて延命する運用のノウハウは、キュリオシティ以降の設計と計画に引き継がれた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Opportunity (rover)",
+          "url": "https://en.wikipedia.org/wiki/Opportunity_(rover)"
+        }
+      ]
+    },
+    {
+      "date": "2008-06-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "水と生命の探査",
+      "title": "フェニックス、火星の水の氷を直接確認",
+      "summary": "北極域に着陸したNASAのフェニックスが、掘削した溝に現れた白い塊が数日のうちに昇華して消える様子を撮影し、地表直下に水の氷が存在することを初めてその場で確認した。\n\n周回機の中性子観測による推定を地上で裏づけた成果である。土壌からは過塩素酸塩も検出され、生命探査の条件と将来の水資源利用の両面で、以後の着陸地選定の前提を変えることになった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Phoenix (spacecraft)",
+          "url": "https://en.wikipedia.org/wiki/Phoenix_(spacecraft)"
+        }
+      ]
+    },
+    {
+      "date": "2012-08-06",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "ミッションと技術",
+      "title": "キュリオシティ、スカイクレーンで着陸",
+      "summary": "1トン級ローバーのキュリオシティが、ロケット噴射で空中に静止したクレーンから吊り下ろされる新方式「スカイクレーン」でゲールクレーターに着陸した。「恐怖の7分間」という言葉とともに世界が中継を見守った。\n\n重量級の科学機材を安全に降ろすこの方式は、後のパーサヴィアランスにも継承される。着陸からまもなく古代の河床の礫を発見し、湖の痕跡を追う探査(水と生命の探査レイヤー)が本格化した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Curiosity (rover)",
+          "url": "https://en.wikipedia.org/wiki/Curiosity_(rover)"
+        }
+      ]
+    },
+    {
+      "date": "2013-12-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "水と生命の探査",
+      "title": "ゲールクレーターに古代湖、生命居住可能と判定",
+      "summary": "キュリオシティの掘削試料の分析から、ゲールクレーターにかつて中性の淡水湖が存在し、微生物が生存しうる化学環境だったとする一連の論文がサイエンス誌に掲載された。\n\n「水があったか」から「**住める環境だったか**」へと問いが一段進んだ画期である。ただし生命そのものの痕跡の検出は探査車の機器では難しく、その検証は将来のサンプルリターン(競争と構想レイヤー)に委ねられている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Grotzinger et al., Science: A Habitable Fluvio-Lacustrine Environment at Yellowknife Bay, Gale Crater, Mars (2014)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2014-12-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "水と生命の探査",
+      "title": "キュリオシティがメタンの一時的増加を検出",
+      "summary": "キュリオシティ搭載の分析計が、火星大気中のメタン濃度が数カ月にわたり背景値の約10倍に高まる現象を捉えたと報告された。メタンは生物起源にも地質起源にもなりうる注目の分子である。\n\nしかしその後、高感度の欧州周回機TGOはメタンをほとんど検出せず、測定どうしの矛盾は未解決のまま残っている。検出のたびに期待と懐疑が交錯する経過は、ALH84001以来の火星生命論争の続編といえる。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "メタン検出は時期や観測手段により結果が一致せず、欧州のTGOはほぼ検出していない。発生源・消失過程も含めて未確定である。",
+      "sources": [
+        {
+          "title": "Webster et al., Science: Mars methane detection and variability at Gale crater (2015)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2015-09-28",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "水と生命の探査",
+      "title": "NASA「現在の火星に液体の水」と発表",
+      "summary": "周回機MROの分光観測に基づき、斜面に季節的に現れて伸びる筋状地形(RSL)から含水塩が検出されたとして、NASAが「現在の火星に液体の水が流れている証拠」と大きく発表した。\n\nしかし2年後には、乾いた砂の流れでも同じ地形を説明できるとする反論が提示され、解釈は覆されつつある。派手な発表と静かな訂正という経過は、**発表の科学と検証の科学の時差**を示す例としてしばしば引かれる。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "含水塩に基づく液体の水という解釈にはその後、乾いた砂の流動とする説が有力に提示されており、決着していない。",
+      "sources": [
+        {
+          "title": "Wikipedia: Seasonal flows on warm Martian slopes",
+          "url": "https://en.wikipedia.org/wiki/Seasonal_flows_on_warm_Martian_slopes"
+        }
+      ]
+    },
+    {
+      "date": "2016-09-27",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "競争と構想",
+      "title": "スペースXが火星移民構想を発表",
+      "summary": "マスクが国際宇宙会議で「人類を複数惑星種にする」と題した講演を行い、100人乗り大型ロケット(後のスターシップ)による火星都市建設の構想を示した。\n\n国家機関の科学探査とは別に、民間企業による移民という目標が公の議論に載った転換点である。示されたスケジュールは以後繰り返し延期されているが、大型機の開発自体は進み、独自の着陸手段を持たないNASAの月・火星計画にも影響を与えている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "SpaceX: Making Humans a Multiplanetary Species (IAC 2016 講演)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2018-07-25",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "水と生命の探査",
+      "title": "南極冠の地下に「湖」検出と発表",
+      "summary": "欧州の周回機マーズ・エクスプレスのレーダー観測から、南極冠の氷の下約1.5kmに幅約20kmの液体の水域が存在するとイタリアの研究チームがサイエンス誌で発表した。\n\n極低温でも塩分濃度が高ければ液体を保ちうるという解釈だが、粘土鉱物などでも似たレーダー反射を説明できるとする反論が続く。地球の氷底湖に微生物の生態系があることを思わせる発見だけに、検証の行方が注目されている。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "レーダー反射の解釈には粘土鉱物や塩水以外による説明も提示されており、湖の実在をめぐる議論が続いている。",
+      "sources": [
+        {
+          "title": "Orosei et al., Science: Radar evidence of subglacial liquid water on Mars (2018)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2021-02-18",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "ミッションと技術",
+      "title": "パーサヴィアランス着陸、サンプル採取開始",
+      "summary": "NASAのパーサヴィアランスが、かつて川のデルタが広がっていたジェゼロクレーターに着陸した。試料を採取・密封して地表に残し、将来の回収を待つサンプルリターン計画の第一段階を担う。\n\n搭載ヘリコプター「インジェニュイティ」は同年4月、他天体で初の動力飛行に成功した。同じ月にはUAEと中国の探査機も相次いで火星に到着しており(競争と構想レイヤー)、火星は多極化した探査の舞台となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Perseverance (rover)",
+          "url": "https://en.wikipedia.org/wiki/Perseverance_(rover)"
+        }
+      ]
+    },
+    {
+      "date": "2021-05-15",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "競争と構想",
+      "title": "中国の祝融号が着陸、米ソに続く3カ国目",
+      "summary": "中国の天問1号ミッションの着陸機がユートピア平原に軟着陸し、ローバー祝融号の走行に成功した。初挑戦で周回・着陸・走行の3つを一度に達成した国は初めてである。\n\n火星着陸の成功国は旧ソ連(部分的成功)、米国に続く3カ国目で、**一極化していた火星探査の多極化**を決定づけた。中国はサンプルリターンでも独自計画を進めており、見直しが続く米欧の計画と試料回収の時期を競う構図になっている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Zhurong (rover)",
+          "url": "https://en.wikipedia.org/wiki/Zhurong_(rover)"
+        }
+      ]
+    },
+    {
+      "date": "2022-03-17",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "競争と構想",
+      "title": "ロシア侵攻でExoMarsローバー打上げ中止",
+      "summary": "欧州宇宙機関(ESA)が、ロシアのウクライナ侵攻を受けて、同国と共同で予定していたExoMarsローバーの2022年打ち上げを断念し、ロシアとの協力を停止すると決定した。\n\n着陸システムをロシア側が担う分担だったため計画は根本からの再設計となり、打ち上げは2028年以降へ延期された。地上の地政学が惑星探査の時間割を直接書き換えた、冷戦後では最も明確な事例である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: ExoMars",
+          "url": "https://en.wikipedia.org/wiki/ExoMars"
+        }
+      ]
+    },
+    {
+      "date": "2024-04-15",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "競争と構想",
+      "title": "NASA、サンプルリターン計画の見直しを表明",
+      "summary": "NASAが火星サンプルリターン計画について、このままでは費用が最大110億ドル、試料の地球到着が2040年になるとの独立評価を受け、より安く早い代替案を産業界からも募ると発表した。\n\nパーサヴィアランスが密封した試料(ミッションと技術レイヤー)は、回収の目途が定まらないまま火星表面で待ち続けている。生命の痕跡の決定的な検証は地球の実験室でしか行えないだけに、計画の帰趨は火星生命論争(水と生命の探査レイヤー)全体の行方を左右する。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Mars sample-return mission",
+          "url": "https://en.wikipedia.org/wiki/Mars_sample-return_mission"
+        }
+      ]
+    }
+  ]
+}

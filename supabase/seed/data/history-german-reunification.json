@@ -1,0 +1,379 @@
+{
+  "slug": "history-german-reunification",
+  "title": "東西ドイツ統一",
+  "description": "敗戦国の分割占領から1990年10月3日の統一まで。大国の外交、東ドイツの体制と経済、市民の動きを三層で重ね、45年の分断が1年足らずで解けた理由と、その後に残った課題を追う。",
+  "category": "history-politics",
+  "language": "ja",
+  "start_year": 1945,
+  "end_year": 1994,
+  "layers": [
+    {
+      "name": "外交と大国",
+      "color": "blue"
+    },
+    {
+      "name": "体制と経済",
+      "color": "gold"
+    },
+    {
+      "name": "市民と社会",
+      "color": "orange"
+    }
+  ],
+  "events": [
+    {
+      "date": "1945-08-02",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "外交と大国",
+      "title": "ポツダム協定、ドイツ4か国分割占領",
+      "summary": "1945年8月2日、米英ソの首脳はポツダム協定に合意し、敗戦国ドイツを米英仏ソの4占領地区に、首都ベルリンを4分割統治とすることを確定した。非ナチ化・非武装化と、統一体としての管理が建前だった。\n\n「一時的な占領管理」のはずの線引きは、米ソ対立の激化とともに固定化していく。とりわけソ連占領地区の奥深くに浮かぶ西ベルリンという飛び地の存在が、以後45年にわたる分断の火種であり続けた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: ポツダム協定",
+          "url": "https://ja.wikipedia.org/wiki/ポツダム協定"
+        }
+      ]
+    },
+    {
+      "date": "1948-06-24",
+      "precision": "day",
+      "end_date": "1949-05-12",
+      "type": "period",
+      "layer": "外交と大国",
+      "title": "ベルリン封鎖と大空輸",
+      "summary": "1948年6月24日、西側地区の通貨改革に反発したソ連は、西ベルリンへ通じる陸路と水路を全面封鎖した。米英は約11か月間、200万人の市民の食料と石炭を空輸で運び続け、1949年5月12日に封鎖は解除された。\n\n冷戦最初の本格的な対決は、軍事衝突なしに西側の西ベルリン残留を確定させた。封鎖は西ベルリン市民の帰属意識を西側へ決定的に傾け、翌月からの二つの国家の建国(体制と経済レイヤー)への流れを不可逆にした。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: ベルリン封鎖",
+          "url": "https://ja.wikipedia.org/wiki/ベルリン封鎖"
+        }
+      ]
+    },
+    {
+      "date": "1949-05-23",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "外交と大国",
+      "title": "西独と東独、二つの国家が成立",
+      "summary": "1949年5月23日にドイツ連邦共和国(西独)の基本法が公布・発効し、10月7日にはソ連占領地区にドイツ民主共和国(東独)が建国された。占領地区の境界が、そのまま二つの国家の境界になった。\n\n西独の基本法は「憲法」を名乗らず、統一までの暫定秩序と自らを規定した。この建て付けが41年後、東独の「加入」による統一という法形式を可能にする。双方は互いを正式の国家と認めず、分断は「暫定」の名の下で固定化していった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: ドイツ連邦共和国基本法",
+          "url": "https://ja.wikipedia.org/wiki/ドイツ連邦共和国基本法"
+        },
+        {
+          "title": "Wikipedia: ドイツ民主共和国",
+          "url": "https://ja.wikipedia.org/wiki/ドイツ民主共和国"
+        }
+      ]
+    },
+    {
+      "date": "1953-06-17",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "市民と社会",
+      "title": "6月17日事件、東独全土の労働者蜂起",
+      "summary": "1953年6月17日、労働ノルマ引き上げへの抗議から始まったストライキは東独全土で数十万人規模のデモに発展し、ソ連軍の戦車が鎮圧した。死者は少なくとも55人とされるが、推計には幅がある。\n\n東独の体制がソ連軍なしには維持できないことを、建国4年目にして示した事件である。以後、体制は監視機構(シュタージ)を肥大させ、市民の不満は公然の抗議から西への出国という形に変わっていく。西独はこの日を「ドイツ統一の日」として祝日にした。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "死者数は55人から125人以上まで推計に幅があり、正確な犠牲者数は確定していない。",
+      "sources": [
+        {
+          "title": "Wikipedia: East German uprising of 1953",
+          "url": "https://en.wikipedia.org/wiki/East_German_uprising_of_1953"
+        }
+      ]
+    },
+    {
+      "date": "1961-08-13",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "体制と経済",
+      "title": "ベルリンの壁の建設",
+      "summary": "1961年8月13日未明、東独は東西ベルリンの境界を封鎖し、壁の建設を始めた。建国以来の西への出国者は累計約270万人に達しており、若年層と技術者の流出は体制の存続そのものを脅かしていた。\n\n壁は東独経済をひとまず安定させたが、**国民を閉じ込めなければ維持できない体制**であることを世界に可視化した。以後28年間、壁を越えようとして少なくとも140人が命を落とす。ケネディの「私はベルリン市民である」演説(1963年)など、壁は冷戦の象徴となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: ベルリンの壁",
+          "url": "https://ja.wikipedia.org/wiki/ベルリンの壁"
+        }
+      ]
+    },
+    {
+      "date": "1972-12-21",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "外交と大国",
+      "title": "東西ドイツ基本条約に調印",
+      "summary": "1972年12月21日、東西ドイツは基本条約に調印し、互いを対等な存在として尊重し常駐代表部を置くことで合意した。翌1973年、両国は同時に国連へ加盟する。\n\nブラント西独首相の東方外交は、対決ではなく「**接近による変化**」を掲げた。分断の現実をいったん認めることで人の往来と通信を広げ、東独社会に西側との接点を保ち続ける。この回路が、1980年代末の市民と社会レイヤーの動きで効いてくることになる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 東西ドイツ基本条約",
+          "url": "https://ja.wikipedia.org/wiki/東西ドイツ基本条約"
+        }
+      ]
+    },
+    {
+      "date": "1975-08-01",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "外交と大国",
+      "title": "ヘルシンキ宣言、人権が東西の議題に",
+      "summary": "1975年8月1日、欧州33か国と米国・カナダが全欧安全保障協力会議(CSCE)の最終文書に署名した。欧州の国境の現状承認と引き換えに、人権と基本的自由の尊重、人と情報の移動の自由が明記された。\n\nソ連圏は国境の承認を成果と見たが、**人権が国際合意の言葉になった**ことの効果は逆向きに働いた。東欧各国で宣言を根拠に人権侵害を記録する市民グループが生まれ、東独でも出国申請者や教会内の運動が「ヘルシンキ」を盾に取るようになる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 全欧安全保障協力会議",
+          "url": "https://ja.wikipedia.org/wiki/全欧安全保障協力会議"
+        }
+      ]
+    },
+    {
+      "date": "1976-11-16",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "体制と経済",
+      "title": "ビーアマン国籍剥奪事件",
+      "summary": "1976年11月16日、東独は西独公演中の歌手ヴォルフ・ビーアマンの帰国を拒み、国籍を剥奪した。体制批判の歌を理由とする、事実上の追放だった。\n\n著名な作家や俳優が公然と抗議声明を出し、その多くが処分や出国に追い込まれた。この事件は知識人と体制の決定的な亀裂となり、文化による統合という東独の建前を自ら壊した。抗議した文化人たちへの監視の記録は、統一後にシュタージ文書として公開されている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Wolf Biermann",
+          "url": "https://en.wikipedia.org/wiki/Wolf_Biermann"
+        }
+      ]
+    },
+    {
+      "date": "1983-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "体制と経済",
+      "title": "西独が東独への10億マルク借款を保証",
+      "summary": "1983年、西独政府はバイエルン州首相シュトラウスの仲介による10億西独マルクの民間銀行借款を東独に保証した。反共の急先鋒として知られた政治家が東独への融資を仲介したことは、東西双方に衝撃を与えた。\n\n東独は深刻な外貨不足にあり、借款は支払い不能の回避を助けた。**市場の外にある体制が、市場からの借金で延命する**構図である。借款が体制を安定させたのか、依存を深めて崩壊を早めたのかは、今も評価が分かれる。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "借款が東独体制の延命・崩壊に与えた影響の評価は、研究者の間で分かれている。",
+      "sources": [
+        {
+          "title": "ドイツ連邦政治教育センター(bpb)資料: Milliardenkredit",
+          "url": null
+        },
+        {
+          "title": "Wikipedia: Franz Josef Strauss",
+          "url": "https://en.wikipedia.org/wiki/Franz_Josef_Strauss"
+        }
+      ]
+    },
+    {
+      "date": "1985-03-11",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "外交と大国",
+      "title": "ゴルバチョフ、ソ連書記長に就任",
+      "summary": "1985年3月11日、54歳のゴルバチョフがソ連共産党書記長に就任し、ペレストロイカ(再建)とグラスノスチ(情報公開)を掲げた。やがて東欧諸国への内政不干渉へ舵を切り、軍事介入を正当化してきた「ブレジネフ・ドクトリン」を事実上放棄する。\n\nソ連軍の介入(1953年の記憶)こそが東独体制の最後の担保だった。その担保が静かに外されたことで、体制と経済レイヤーの矛盾も市民と社会レイヤーの不満も、もはや戦車では抑えられないものになっていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: ミハイル・ゴルバチョフ",
+          "url": "https://ja.wikipedia.org/wiki/ミハイル・ゴルバチョフ"
+        }
+      ]
+    },
+    {
+      "date": "1989-09-11",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "市民と社会",
+      "title": "ハンガリー国境開放、東独市民の大量出国",
+      "summary": "1989年9月11日、ハンガリーは東独市民のオーストリアへの出国を正式に認めた。この夏、東独の休暇客は西への脱出路を求めて国境地帯やプラハの西独大使館に殺到しており、数週間で数万人が西へ渡ったとされる。\n\n5月の国境鉄条網の撤去、8月の「汎ヨーロッパ・ピクニック」と、鉄のカーテンの穴は段階的に広がっていた。「逃げる自由」が現実になったことで、国内に残る市民の「とどまって変える」声、すなわちライプツィヒのデモも一気に力を増す。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "1989年夏から秋の出国者数は当時の当局・報道の推計で、集計により数値に幅がある。",
+      "sources": [
+        {
+          "title": "Wikipedia: 汎ヨーロッパ・ピクニック",
+          "url": "https://ja.wikipedia.org/wiki/汎ヨーロッパ・ピクニック"
+        }
+      ]
+    },
+    {
+      "date": "1989-10-09",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "市民と社会",
+      "title": "ライプツィヒ月曜デモ、7万人の行進",
+      "summary": "1989年10月9日、ライプツィヒのニコライ教会の「平和の祈り」から続く月曜デモに約7万人(推計)が集まり、「**我々が人民だ**」を合言葉に市内を行進した。治安部隊は展開したが、発砲は起きなかった。\n\n建国40周年式典の直後、天安門事件(同年6月)型の鎮圧が公然と語られる中で、暴力なしに行進が貫かれたことは決定的だった。以後デモは毎週膨れ上がり、体制は市民を止める手段を失っていく。参加者数は主催者側や研究者の推計に依存する。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "参加者数約7万人は推計であり、正確な人数を示す記録はない。",
+      "sources": [
+        {
+          "title": "Wikipedia: Monday demonstrations in East Germany",
+          "url": "https://en.wikipedia.org/wiki/Monday_demonstrations_in_East_Germany"
+        }
+      ]
+    },
+    {
+      "date": "1989-11-09",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "市民と社会",
+      "title": "ベルリンの壁崩壊",
+      "summary": "1989年11月9日夜、東独政府報道官シャボフスキーが記者会見で新しい出国規制を「遅滞なく」施行すると発表し、検問所に市民が殺到した。国境警備は圧力に屈して通行を認め、壁は事実上崩壊した。\n\n準備不足の記者会見という偶然が引き金だったが、それが引き金になり得たのは、出国の波とデモによって体制の権威がすでに空洞化していたからである。この夜を境に、問いは「東独をどう改革するか」から「統一をどう進めるか」へと急速に移っていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: ベルリンの壁崩壊",
+          "url": "https://ja.wikipedia.org/wiki/ベルリンの壁崩壊"
+        }
+      ]
+    },
+    {
+      "date": "1989-11-28",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "外交と大国",
+      "title": "コール首相、統一への10項目提案",
+      "summary": "1989年11月28日、西独のコール首相は連邦議会で、両独の連合的構造を経て連邦国家へ段階的に進む10項目計画を表明した。壁崩壊からわずか19日後、同盟国にも事前に諮らない単独の発表だった。\n\n**タブーだった「統一」が公式の政治目標に戻った**瞬間である。英仏には強い警戒があり、ソ連は反発したが、東独のデモの合言葉は「我々は一つの人民だ」へ変わり、流れは加速する。統一の主導権が街頭と西独政府に移ったことを示す出来事だった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "ドイツ連邦議会議事録(1989年11月28日) コール首相演説",
+          "url": null
+        },
+        {
+          "title": "Wikipedia: ヘルムート・コール",
+          "url": "https://ja.wikipedia.org/wiki/ヘルムート・コール"
+        }
+      ]
+    },
+    {
+      "date": "1990-03-01",
+      "precision": "day",
+      "end_date": "1994-12-31",
+      "type": "period",
+      "layer": "体制と経済",
+      "title": "信託公社による東独経済の民営化",
+      "summary": "1990年3月に設立された信託公社(トロイハント)は、約8500の東独国営企業(コンビナート)を引き継ぎ、統一後の1994年末までに売却・清算を進めた。一国の経済のほぼ全体を市場経済へ移し替える、前例のない事業だった。\n\nその過程で数百万人規模の雇用が失われたとされ、東部の脱工業化と西部資本への安値売却をめぐる不満は、統一後の東西の心理的な溝の核心となった。雇用喪失の規模や民営化全体の評価は、今日まで論争が続いている。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "民営化に伴う雇用喪失の規模(約250万人とする推計もある)や事業全体の評価は、推計・立場により大きく分かれる。",
+      "sources": [
+        {
+          "title": "Wikipedia: Treuhandanstalt",
+          "url": "https://en.wikipedia.org/wiki/Treuhandanstalt"
+        }
+      ]
+    },
+    {
+      "date": "1990-03-18",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "体制と経済",
+      "title": "東独初の自由選挙、早期統一派が勝利",
+      "summary": "1990年3月18日、東独で初めて自由な人民議会選挙が行われ、93%を超える投票率の下、コール支持の選挙連合「ドイツのための連合」が第一勢力となった。争点はもはや体制の改革ではなく、統一までの速度だった。\n\n「改革された東独」の存続を模索した市民運動側の得票は数%にとどまり、有権者は西独マルクと早期統一を選んだ。この結果が、基本法23条による東独の加入という最短の法形式と、通貨同盟の早期実施を決定づけた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 1990 East German general election",
+          "url": "https://en.wikipedia.org/wiki/1990_East_German_general_election"
+        }
+      ]
+    },
+    {
+      "date": "1990-07-01",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "体制と経済",
+      "title": "通貨・経済・社会同盟が発足",
+      "summary": "1990年7月1日、東西ドイツの通貨・経済・社会同盟が発効し、西独マルクが東独の通貨となった。賃金・年金と一定額までの預金は1対1で交換され、両独間の国境管理も事実上撤廃された。\n\n政治的には統一を先取りする決定だったが、実勢を大きく上回る交換レートは東独企業の競争力を一夜で奪い、倒産と失業の波(信託公社の民営化)を加速したと批判される。統一の速度と経済の現実との緊張が、ここに凝縮されている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: ドイツ再統一",
+          "url": "https://ja.wikipedia.org/wiki/ドイツ再統一"
+        }
+      ]
+    },
+    {
+      "date": "1990-09-12",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "外交と大国",
+      "title": "2プラス4条約に調印",
+      "summary": "1990年9月12日、モスクワで東西ドイツと米英仏ソの外相が「ドイツに関する最終規定条約」に調印した。戦勝4か国の占領国としての権利は終了し、統一ドイツは完全な主権と、NATOに残留する自由を認められた。\n\nオーデル・ナイセ線の国境確定、兵力の上限、ソ連軍の撤退と経済支援が取引の中身だった。1945年のポツダム(外交と大国レイヤーの起点)で始まった「戦勝国による管理」が、45年を経て正式に閉じられた条約である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: ドイツ最終規定条約",
+          "url": "https://ja.wikipedia.org/wiki/ドイツ最終規定条約"
+        }
+      ]
+    },
+    {
+      "date": "1990-10-03",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "体制と経済",
+      "title": "ドイツ統一、東独が連邦共和国へ加入",
+      "summary": "1990年10月3日、ドイツ民主共和国は基本法第23条に基づきドイツ連邦共和国へ加入し、東西ドイツは統一された。壁の崩壊から1年足らず、ベルリンの旧帝国議会議事堂前に連邦の旗が掲げられた。\n\n法形式の上では東独の消滅による「加入」であり、新憲法の制定という道は選ばれなかった。外交の合意、体制の自壊、市民の圧力という三つの層が一点で交わった帰結だが、経済統合と心理的な統一という課題はこの日から始まる。10月3日は「ドイツ統一の日」として祝日となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: ドイツ再統一",
+          "url": "https://ja.wikipedia.org/wiki/ドイツ再統一"
+        }
+      ]
+    }
+  ]
+}

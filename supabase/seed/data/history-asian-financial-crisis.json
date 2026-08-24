@@ -1,0 +1,385 @@
+{
+  "slug": "history-asian-financial-crisis",
+  "title": "アジア通貨危機",
+  "description": "1997年、タイの通貨切り下げから始まった危機は数か月でアジア全域と世界市場へ波及した。市場・政治・国際機関の3層で、グローバル資本時代の最初の大危機を追う。",
+  "category": "history-politics",
+  "language": "ja",
+  "start_year": 1985,
+  "end_year": 2001,
+  "layers": [
+    {
+      "name": "通貨と市場",
+      "color": "gold"
+    },
+    {
+      "name": "政治と社会",
+      "color": "pink"
+    },
+    {
+      "name": "国際機関と改革",
+      "color": "teal"
+    }
+  ],
+  "events": [
+    {
+      "date": "1985-09-22",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "通貨と市場",
+      "title": "プラザ合意、円高とアジアへの資本流入",
+      "summary": "先進5か国がドル高是正で合意し、円は急騰した。円高に直面した日本企業は生産拠点を東南アジアへ移し、域内への直接投資と融資が急拡大した。\n\nドルに連動する通貨制度を採る東南アジア諸国は、円高局面で輸出競争力を得て高成長を実現した。**ドルペッグと外資依存の成長**という危機の前提条件は、この資本流入の中で形づくられていった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Plaza Accord",
+          "url": "https://en.wikipedia.org/wiki/Plaza_Accord"
+        }
+      ]
+    },
+    {
+      "date": "1993-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "国際機関と改革",
+      "title": "世界銀行が報告書「東アジアの奇跡」刊行",
+      "summary": "世界銀行が東アジア8経済の高成長を分析する報告書を刊行し、「東アジアの奇跡」という言葉が定着した。政府の適切な介入と市場メカニズムの組み合わせが成長要因として論じられた。\n\n国際機関自身が域内経済への楽観を裏書きした形であり、4年後の危機は**楽観の絶頂で危機は準備される**ことの例証となった。高成長の陰で短期外貨建て債務が積み上がっていたことは、危機後に強調されるようになる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "World Bank: The East Asian Miracle: Economic Growth and Public Policy (1993)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1994-01-01",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "通貨と市場",
+      "title": "中国が為替レートを一本化、実質切り下げ",
+      "summary": "中国が公定レートと市場実勢レートを一本化し、人民元は対ドルで実質的に大きく切り下がった。輸出主導の成長が加速していく。\n\nこの切り下げが東南アジア諸国の輸出競争力を奪い通貨危機の遠因になったとする説があるが、影響の大きさをめぐる評価は分かれている。競争的切り下げの連鎖への懸念は、危機当時の各国の政策判断にも影を落とした。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "元切り下げを通貨危機の遠因とする説には、貿易の多くが既に市場レートで行われており切り下げの実質幅は限定的だったとする有力な反論がある。",
+      "sources": [
+        {
+          "title": "Wikipedia: 1997 Asian financial crisis",
+          "url": "https://en.wikipedia.org/wiki/1997_Asian_financial_crisis"
+        }
+      ]
+    },
+    {
+      "date": "1996-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "通貨と市場",
+      "title": "タイの輸出失速と経常赤字の拡大",
+      "summary": "タイの輸出の伸びが急減速し、経常赤字はGDP比8%前後に達した。不動産向け融資の焦げ付きも表面化し、金融会社の経営不安が広がり始めた。\n\nドルペッグの下で短期外貨資金への依存が進み、外貨準備に対する短期債務の比率は危険水域にあったとされる。数値の把握自体が当時は不完全であり、**見えない脆弱性**こそが翌年の急激な資本逃避を増幅する要因となった。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "経常赤字比率や短期債務の残高は資料により数値に幅があり、当時の統計整備の不備もあって確定的な値を示しにくい。",
+      "sources": [
+        {
+          "title": "Wikipedia: 1997 Asian financial crisis",
+          "url": "https://en.wikipedia.org/wiki/1997_Asian_financial_crisis"
+        }
+      ]
+    },
+    {
+      "date": "1997-05-01",
+      "precision": "month",
+      "end_date": "1997-06-30",
+      "type": "period",
+      "layer": "通貨と市場",
+      "title": "バーツへの投機攻撃と防衛戦",
+      "summary": "ヘッジファンドなどによるバーツ売りが本格化し、タイ中央銀行は為替介入と資本規制で防衛を試みた。介入により外貨準備は急速に枯渇していった。\n\n先物市場を含む介入の実態は当時公表されず、使用可能な準備がほぼ尽きていたことは後に判明する。投機筋の売り建て規模も推定の域を出ないが、この攻防の帰結が7月の変動相場制移行だった。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "投機筋のポジション規模や介入額の詳細は推定と事後開示に基づいており、正確な全体像は確定していない。",
+      "sources": [
+        {
+          "title": "Wikipedia: 1997 Asian financial crisis",
+          "url": "https://en.wikipedia.org/wiki/1997_Asian_financial_crisis"
+        }
+      ]
+    },
+    {
+      "date": "1997-07-02",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "通貨と市場",
+      "title": "タイがバーツ変動相場制へ移行、危機の発端",
+      "summary": "タイ中央銀行がバーツのドルペッグを放棄し、バーツは即日15%超下落した。アジア通貨危機の始まりとされる日である。\n\n切り下げはフィリピン、マレーシア、インドネシアの通貨への売り圧力に即座に波及した。**一国の通貨制度の放棄が域内全体の資本逃避に転じる**という伝染の構図は、グローバル化した資本市場が示した新しい現実だった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 1997 Asian financial crisis",
+          "url": "https://en.wikipedia.org/wiki/1997_Asian_financial_crisis"
+        }
+      ]
+    },
+    {
+      "date": "1997-08-14",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "通貨と市場",
+      "title": "インドネシア・ルピアが変動相場制へ",
+      "summary": "インドネシア中央銀行がルピアの管理変動制を放棄し、変動相場制へ移行した。ルピアはその後数か月で対ドル価値の大半を失う暴落となった。\n\n企業の対外債務の多くが為替ヘッジのないドル建てだったため、通貨暴落は即座に企業債務危機へ転化した。経済危機は物価急騰と失業を通じて、政治と社会レイヤーの動揺へつながっていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 1997 Asian financial crisis",
+          "url": "https://en.wikipedia.org/wiki/1997_Asian_financial_crisis"
+        }
+      ]
+    },
+    {
+      "date": "1997-08-20",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "国際機関と改革",
+      "title": "IMFがタイ支援を承認",
+      "summary": "IMF理事会がタイへの39億ドルの融資を承認し、日本などの拠出を含む支援総額は約172億ドルとなった。緊縮財政と金融引き締め、金融部門の再建が条件とされた。\n\n危機対応の主導権がIMFに置かれた最初の事例だが、緊縮を柱とする処方箋は景気をかえって悪化させたとの批判を後に浴びる。支援条件の妥当性をめぐる論争は、以後の韓国・インドネシア支援でより激しくなっていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "IMF: IMF Approves Stand-By Credit for Thailand (Press Release, 1997-08-20)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1997-11-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "国際機関と改革",
+      "title": "IMFインドネシア支援とAMF構想の挫折",
+      "summary": "IMF主導でインドネシアへの総額400億ドル規模の支援が組まれた。同じ秋、日本が提唱したアジア通貨基金(AMF)構想は米国とIMFの反対で撤回された。\n\n域内独自の危機対応枠組みの試みが**米国とIMF中心の秩序**の壁に阻まれた出来事であり、この挫折の経験は2000年のチェンマイ・イニシアティブ(同レイヤー)につながる。支援額は追加分を含めて段階的に変動した。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "支援総額(約400億ドルとされる)は追加支援を含めて段階的に変動しており、資料により数値が異なる。",
+      "sources": [
+        {
+          "title": "Wikipedia: 1997 Asian financial crisis",
+          "url": "https://en.wikipedia.org/wiki/1997_Asian_financial_crisis"
+        }
+      ]
+    },
+    {
+      "date": "1997-11-24",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "通貨と市場",
+      "title": "山一証券が自主廃業、日本の金融危機",
+      "summary": "四大証券の一角である山一証券が、簿外債務の発覚を受けて自主廃業を決定した。同月には北海道拓殖銀行も破綻し、日本の金融システム不安は頂点に達した。\n\nアジア向け与信の大きな出し手だった日本の銀行は融資の回収を急ぎ、域内の資金逼迫を強めたとされる。危機はアジアの新興国だけでなく、バブル崩壊後の日本の金融の脆弱さも同時に露呈させた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 山一證券",
+          "url": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E4%B8%80%E8%A8%BC%E5%88%B8"
+        }
+      ]
+    },
+    {
+      "date": "1997-12-03",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "国際機関と改革",
+      "title": "韓国がIMFと580億ドルの支援で合意",
+      "summary": "外貨準備が底を突いた韓国が、IMFと当時史上最大の総額約580億ドルの支援で合意した。財閥改革、資本市場開放、労働市場改革が条件に含まれた。\n\nOECD加盟国の危機は、アジアの問題が世界の問題であることを示した。韓国では**「IMF体制」という言葉が時代の記憶**として定着した。金大中次期政権の下で改革が進み、2001年に借入は完済される。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 1997 Asian financial crisis",
+          "url": "https://en.wikipedia.org/wiki/1997_Asian_financial_crisis"
+        }
+      ]
+    },
+    {
+      "date": "1998-01-15",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "政治と社会",
+      "title": "スハルトがIMF追加合意に署名、権威の失墜",
+      "summary": "インドネシアのスハルト大統領が追加のIMF合意文書に署名した。署名する大統領を腕組みして見下ろすカムドシュIMF専務理事の写真は、主権国家と国際機関の力関係の象徴として世界に流れた。\n\n合意された補助金削減は物価急騰を招き、30年続いた開発体制の正統性は経済成長の停止とともに崩れていった。通貨暴落(通貨と市場レイヤー)が政治体制の動揺へ転化する局面の始まりである。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Suharto",
+          "url": "https://en.wikipedia.org/wiki/Suharto"
+        }
+      ]
+    },
+    {
+      "date": "1998-05-13",
+      "precision": "day",
+      "end_date": "1998-05-15",
+      "type": "period",
+      "layer": "政治と社会",
+      "title": "ジャカルタ暴動",
+      "summary": "学生射殺事件を契機にジャカルタで大規模な暴動が発生し、商店の略奪と放火が広がった。華人系住民が標的となり、死者は1000人を超えるとされる。\n\n暴動の組織性や治安部隊の関与は独立調査でも解明され切っておらず、被害の全容には諸説がある。経済危機が社会の亀裂を暴力として噴出させた事例であり、スハルト退陣(同レイヤー)の直接の引き金となった。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "死者数(1000人超とされる)や暴動への組織的関与については、政府系調査と人権団体の報告の間で見解が分かれる。",
+      "sources": [
+        {
+          "title": "Wikipedia: May 1998 riots of Indonesia",
+          "url": "https://en.wikipedia.org/wiki/May_1998_riots_of_Indonesia"
+        }
+      ]
+    },
+    {
+      "date": "1998-05-21",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "政治と社会",
+      "title": "スハルト大統領が辞任、32年体制の終焉",
+      "summary": "全国に広がった抗議と与党内の離反を受け、スハルト大統領が辞任した。1960年代半ばから32年に及んだ体制は、通貨危機の発生から1年足らずで崩壊した。\n\n**通貨の崩壊が独裁の崩壊に至る**という本年表の縦の因果が最も鮮明に現れた出来事である。後任のハビビ政権下で民主化(レフォルマシ)が始まり、インドネシアは危機を経て民主国家へと転換していく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Fall of Suharto",
+          "url": "https://en.wikipedia.org/wiki/Fall_of_Suharto"
+        }
+      ]
+    },
+    {
+      "date": "1998-08-17",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "通貨と市場",
+      "title": "ロシアがデフォルト、危機が世界へ",
+      "summary": "原油安と資本流出に見舞われたロシアが、短期国債の債務不履行とルーブルの実質切り下げに踏み切った。アジアで始まった新興国からの資本逃避は、欧州の大国にまで及んだ。\n\n「アジアの危機」が新興市場全体の危機へ拡大したことを示す出来事であり、翌月の米ヘッジファンドLTCM危機(同レイヤー)の直接の引き金となった。資本移動の自由化の速度をめぐる国際的な再考が始まる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 1998 Russian financial crisis",
+          "url": "https://en.wikipedia.org/wiki/1998_Russian_financial_crisis"
+        }
+      ]
+    },
+    {
+      "date": "1998-09-01",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "政治と社会",
+      "title": "マレーシアが資本規制、アンワル副首相解任",
+      "summary": "マハティール首相がIMF型の処方箋を拒否して資本規制と固定相場制を導入し、翌日には経済政策で対立していたアンワル副首相を解任した。\n\n国際世論の批判を浴びた資本規制は後に一定の再評価を受け、危機対応の「正解」が一つではないことを示した。一方でアンワルの解任と逮捕は長期の政治対立を生み、経済政策の選択が権力闘争と不可分であることも露呈した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 1997 Asian financial crisis",
+          "url": "https://en.wikipedia.org/wiki/1997_Asian_financial_crisis"
+        }
+      ]
+    },
+    {
+      "date": "1998-09-23",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "通貨と市場",
+      "title": "米ヘッジファンドLTCMの救済",
+      "summary": "ロシア危機で巨額損失を出したヘッジファンドLTCMに対し、ニューヨーク連銀の仲介で大手金融機関14社による約36億ドルの救済が組まれた。\n\nアジアの通貨売りから始まった連鎖が、ノーベル経済学賞受賞者を擁する米国の金融エリートを直撃した帰結である。グローバル金融の相互連関の深さを米当局自身が認めた出来事であり、システミックリスクという概念が広く共有された。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Long-Term Capital Management",
+          "url": "https://en.wikipedia.org/wiki/Long-Term_Capital_Management"
+        }
+      ]
+    },
+    {
+      "date": "1998-10-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "国際機関と改革",
+      "title": "新宮澤構想、日本が300億ドルの支援表明",
+      "summary": "日本がアジアの危機国への総額300億ドルの資金支援枠組み(新宮澤構想)を表明した。AMF構想の挫折を経た、二国間ベースでの域内支援である。\n\n危機の初期に金融不安の「震源」との批判も受けた日本が、最大の支援国として存在感を示した局面である。この域内金融協力の実績はチェンマイ・イニシアティブ(同レイヤー)の基盤となり、アジアの通貨協力は多国間化へ向かう。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "財務省: アジア通貨危機支援に関する新構想(新宮澤構想)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2000-05-06",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "国際機関と改革",
+      "title": "チェンマイ・イニシアティブ合意",
+      "summary": "ASEANと日中韓の蔵相がタイのチェンマイで、通貨危機時に外貨を融通し合う二国間スワップ網の構築で合意した。危機の教訓を制度化した域内協力である。\n\nAMF構想(同レイヤー)で挫折した域内セーフティネットが、IMFを補完する形で実現した。**危機が残した最大の遺産は制度**であり、この枠組みは後にマルチ化・拡大されて、現在も域内金融協力の柱となっている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Chiang Mai Initiative",
+          "url": "https://en.wikipedia.org/wiki/Chiang_Mai_Initiative"
+        }
+      ]
+    },
+    {
+      "date": "2001-08-23",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "国際機関と改革",
+      "title": "韓国がIMF借入を完済",
+      "summary": "韓国がIMFからの借入を予定より約3年早く完済した。金融・企業・労働・公共の4大改革と、金保有を持ち寄る国民運動を経た回復だった。\n\nV字回復は改革の成果とされる一方、非正規雇用の拡大や格差など「IMF体制」の社会的代償も残った。危機はアジア各国に外貨準備の大幅な積み増しという行動様式を残し、世界的な経常収支不均衡の一因となっていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 1997 Asian financial crisis",
+          "url": "https://en.wikipedia.org/wiki/1997_Asian_financial_crisis"
+        }
+      ]
+    }
+  ]
+}

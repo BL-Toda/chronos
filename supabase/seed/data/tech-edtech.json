@@ -1,0 +1,256 @@
+{
+  "slug": "tech-edtech",
+  "title": "EdTechが変える教育",
+  "description": "無料公開講義の理想からコロナ禍の一斉オンライン化、AI家庭教師まで。サービス・制度・資本の3層を重ね、テクノロジーが教育の何を変え、何が変わらなかったのかを検証する年表。",
+  "category": "technology",
+  "language": "ja",
+  "start_year": 2001,
+  "end_year": 2025,
+  "layers": [
+    {"name": "技術とサービス", "color": "blue"},
+    {"name": "制度と教育現場", "color": "teal"},
+    {"name": "産業と資本", "color": "orange"}
+  ],
+  "events": [
+    {
+      "date": "2001-04-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術とサービス",
+      "title": "MITが講義教材の無料公開OCWを発表",
+      "summary": "マサチューセッツ工科大学が、ほぼすべての講義教材をウェブで無償公開するOpenCourseWare(OCW)構想を発表した。「教育をオープンにする」という宣言は世界の大学に衝撃を与えた。\n\n商用eラーニングの模索が続くなかで、最高峰の大学が知識の無償公開を選んだ意味は大きい。後のオープン教材(OER)運動とMOOCの思想的な源流であり、日本でも2005年に主要大学によるJOCWが発足した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "MIT News: MIT to make nearly all course materials available free on the World Wide Web (2001-04)", "url": null}
+      ]
+    },
+    {
+      "date": "2008-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術とサービス",
+      "title": "カーンアカデミー設立、動画で学ぶ形を確立",
+      "summary": "サルマン・カーンが、親戚の子への算数指導用に作ったYouTube動画を母体として非営利のカーンアカデミーを設立した。短い解説動画と練習問題を無料で提供するモデルを確立した。\n\n「授業を動画で予習し、教室では演習する」という反転授業の議論を世界に広め、財団の支援を受けて成長した。営利スタートアップが主導する後年のEdTech産業に対し、非営利・無料という対極のモデルを示し続ける存在である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Khan Academy: About", "url": "https://www.khanacademy.org/about"}
+      ]
+    },
+    {
+      "date": "2012-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術とサービス",
+      "title": "「MOOC元年」、大学講義が数十万人に開かれる",
+      "summary": "スタンフォード発のCourseraとUdacity、MITとハーバードが設立したedXが相次いで開講し、大学講義を誰でも無料受講できるMOOCが爆発的な注目を集めた。米紙はこの年を「MOOCの年」と呼んだ。\n\n数十万人規模の登録者は「大学の終わり」論まで呼んだが、後の研究で修了率が数%にとどまることが示され、期待は急速に収縮する。**理想の規模と学びの完遂の落差**という、本年表を貫く主題の最初の実例である。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "登録者数は各社の自社発表で、修了率も研究により数%から十数%と推計に幅がある。",
+      "sources": [
+        {"title": "The New York Times: The Year of the MOOC (2012-11)", "url": null}
+      ]
+    },
+    {
+      "date": "2019-12-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と教育現場",
+      "title": "日本がGIGAスクール構想を開始",
+      "summary": "文部科学省が、児童生徒1人1台の学習端末と高速ネットワークを全国の小中学校に整備するGIGAスクール構想を打ち出し、補正予算が計上された。当初は2023年度までの整備計画だった。\n\n直後のコロナ禍で計画は大幅に前倒しされ、OECD調査で最下位級とされた日本の学校ICT環境は数年で一変する。危機が制度を動かした典型例だが、端末が行き渡った後に「何にどう使うか」という課題が現場に残された。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "文部科学省: GIGAスクール構想の実現について", "url": null}
+      ]
+    },
+    {
+      "date": "2020-03-01",
+      "precision": "month",
+      "end_date": "2021-08-31",
+      "type": "period",
+      "layer": "制度と教育現場",
+      "title": "世界規模の学校閉鎖、オンライン学習へ一斉移行",
+      "summary": "新型コロナウイルスの感染拡大で世界の大半の国が休校措置をとり、ピーク時には世界の学習者の9割超・約16億人が影響を受けたとUNESCOは推計した。授業は突如としてオンラインに移行した。\n\nZoomやGoogle Classroomが事実上の公共インフラとなり、EdTechの利用は数年分跳ね上がった。一方で端末や通信環境の有無による**学習機会の格差**が世界中で可視化され、テクノロジーは格差を埋めるのか広げるのかという問いを残した。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "影響を受けた学習者数はUNESCOの推計であり、各国の報告基準によって数値は変動する。",
+      "sources": [
+        {"title": "UNESCO: Education - From COVID-19 school closures to recovery", "url": null}
+      ]
+    },
+    {
+      "date": "2021-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "産業と資本",
+      "title": "世界のEdTech投資が過去最高の200億ドル規模に",
+      "summary": "コロナ禍の需要急増を受け、2021年の世界のEdTechベンチャー投資は調査会社の推計で200億ドル規模と過去最高に達した。インドと中国の大型資金調達が全体を牽引した。\n\nオンライン学習の恒久的な定着を見込んだ資金流入だったが、翌年以降は対面回帰と金利上昇で投資額は急減する。**需要の先食い**だったことが後から判明し、高い評価額で調達した企業ほど深い調整を迫られることになった。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "投資額はHolonIQなど調査会社の推計で、集計範囲により数値が異なる。",
+      "sources": [
+        {"title": "HolonIQ: Global EdTech Venture Capital Report", "url": null}
+      ]
+    },
+    {
+      "date": "2021-07-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と教育現場",
+      "title": "中国が「双減」政策で学習塾産業を事実上解体",
+      "summary": "中国政府が、義務教育段階の学科系学習塾に非営利化や新規認可停止などを課す「双減」政策を発表した。急成長していたオンライン教育企業の株価は暴落し、世界最大の教育産業は事実上解体された。\n\n史上最大級のEdTech市場が政策一つで消えた出来事であり、教育サービスが**国家の教育方針の従属変数**であることを最も鮮烈に示した。行き場を失った投資マネー(産業と資本レイヤー)は、以後インドや東南アジアへ向かう。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "中共中央弁公庁・国務院弁公庁「双減」に関する意見 (2021-07)", "url": null}
+      ]
+    },
+    {
+      "date": "2022-03-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "産業と資本",
+      "title": "Byju'sが評価額220億ドル、世界最大のEdTechに",
+      "summary": "インドのByju'sが資金調達で評価額220億ドルと報じられ、世界で最も企業価値の高いEdTech企業となった。広告攻勢と相次ぐ買収でインドの国民的サービスと目されていた。\n\nしかしコロナ特需の反動と決算監査の遅延で信用は急速に崩れ、2年後には債権者から破産手続を申し立てられるに至る。EdTechバブルの頂点と崩壊をわずか数年で体現した、時代の象徴といえる企業である。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "評価額220億ドルは資金調達時の報道ベースの数値で、その後の評価下落の幅にも諸説がある。",
+      "sources": [
+        {"title": "Reuters・Bloomberg報道 (2022)", "url": null}
+      ]
+    },
+    {
+      "date": "2022-11-30",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術とサービス",
+      "title": "ChatGPT公開、宿題とレポートの前提を揺るがす",
+      "summary": "OpenAIの対話型AIが公開され、レポート作成や問題演習を数秒で代行できることが教育界を直撃した。公開から数週間で学生の利用が広がり、剽窃検出ツール各社は対応を迫られた。\n\n「答えを出す機械」の登場は、宿題・試験・評価という学校の基本装置(制度と教育現場レイヤー)の前提を揺るがした。禁止か活用かの論争が世界の教室で始まり、以後の教育とAIをめぐるすべての議論の起点となる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "OpenAI: Introducing ChatGPT", "url": "https://openai.com/index/chatgpt/"}
+      ]
+    },
+    {
+      "date": "2023-01-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と教育現場",
+      "title": "NY市教育局がChatGPTを遮断、4か月で方針転換",
+      "summary": "全米最大の学区であるニューヨーク市教育局が、学校のネットワークと端末からChatGPTへのアクセスを遮断した。学習への悪影響と不正利用への懸念が理由とされた。\n\nしかし同年5月には方針を撤回し、AIリテラシー教育の推進へと転じる。**禁止から共存への転回**をわずか4か月で経験したこの学区の迷走は、その後世界中の教育行政が辿ることになる道筋の縮図だった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "ニューヨーク市教育局発表・Chalkbeat報道 (2023-01, 2023-05)", "url": null}
+      ]
+    },
+    {
+      "date": "2023-03-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術とサービス",
+      "title": "カーンアカデミーがAI家庭教師Khanmigoを発表",
+      "summary": "カーンアカデミーがGPT-4を組み込んだAI家庭教師「Khanmigo」を発表した。答えを直接教えず、対話を通じて生徒自身の思考を促すソクラテス式の設計を掲げている。\n\nChatGPT遮断(制度と教育現場レイヤー)と同時期に、非営利の老舗が「正しく使う」形を示した対比が鮮やかである。1対1の個別指導は集団授業より大幅に効果が高いという「ブルームの2シグマ問題」への、AIによる挑戦と位置づけられた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Khan Academy発表 (2023-03)", "url": null}
+      ]
+    },
+    {
+      "date": "2023-05-02",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "産業と資本",
+      "title": "Chegg株が1日で約半値に、AIが収益を直撃",
+      "summary": "宿題支援サービス大手Cheggの株価が1日で約48%下落した。ChatGPTの影響で新規契約の伸びが鈍化していると経営陣が決算発表で認めたことが引き金となった。\n\n生成AIが既存EdTech企業の収益を直接破壊しうることを、資本市場が織り込んだ最初の事例である。「AIに置き換えられる側」と「AIを組み込む側」の選別が始まり、教育関連株はAI戦略の説得力で評価される時代に入った。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Reuters報道 (2023-05-02)", "url": null}
+      ]
+    },
+    {
+      "date": "2023-07-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と教育現場",
+      "title": "UNESCOが学校でのスマートフォン規制を提言",
+      "summary": "UNESCOが世界教育モニタリングレポートで、学習の妨げになる場合には学校でのスマートフォン使用を禁止すべきだと提言した。テクノロジー導入は人間中心の視点で判断すべきだと警鐘を鳴らした。\n\nデジタル化を推進してきた国際機関自身による軌道修正であり、各国で相次いだ学校スマホ禁止立法と呼応する。EdTechの学習効果に関する**独立した証拠の乏しさ**への指摘は、業界全体への根本的な問いとなっている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "UNESCO: Global Education Monitoring Report 2023 - Technology in education", "url": null}
+      ]
+    },
+    {
+      "date": "2024-04-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と教育現場",
+      "title": "日本の小中学校で英語のデジタル教科書を本格導入",
+      "summary": "2024年度から全国の小学5年から中学3年の英語で、紙の教科書と併用する形のデジタル教科書の提供が始まった。GIGAスクール構想で整備された1人1台端末がその前提となっている。\n\n端末整備(2019年〜)から日常活用への移行を示す節目だが、視力や学習定着への影響を懸念する声も根強く、当面は紙との併用が続く。制度が慎重に歩む間にも、生徒の学びはAIアプリ(技術とサービスレイヤー)へ先に流れている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "文部科学省: 学習者用デジタル教科書について", "url": null}
+      ]
+    },
+    {
+      "date": "2024-07-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "産業と資本",
+      "title": "Byju'sに破産手続き開始、バブルの象徴が転落",
+      "summary": "インドの会社法審判所が、スポンサー料未払いを申し立てたインドクリケット協会の訴えを認め、Byju'sの破産手続き開始を決定した。評価額220億ドルとされた企業は2年で法的整理の入口に立った。\n\n過大な広告費、強引な販売手法、ガバナンスの不全が崩壊の内因とされ、コロナ特需を実力と誤認した業界全体への教訓となった。資本の熱狂と教育の成果は別物であることを、最も高い代償で示した事例である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Reuters報道 (2024-07)", "url": null}
+      ]
+    },
+    {
+      "date": "2025-07-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術とサービス",
+      "title": "ChatGPTに「学習モード」、答えを教えないAIへ",
+      "summary": "OpenAIがChatGPTに、答えを直接示さず対話を通じて理解へ導く「study mode」を追加した。学生による丸写し利用への批判が続くなかでの、汎用AI側からの応答である。\n\nKhanmigoが先行した「ソクラテス式AI」の設計思想が汎用チャットAIにも標準搭載された形で、教育専用サービスと汎用AIの境界は一段と曖昧になった。宿題の代行者から**学びの伴走者**へ、教育におけるAIの立ち位置の再定義が進んでいる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "OpenAI発表 (2025-07)", "url": null}
+      ]
+    }
+  ]
+}

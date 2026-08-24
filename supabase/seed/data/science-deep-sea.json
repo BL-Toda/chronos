@@ -1,0 +1,367 @@
+{
+  "slug": "science-deep-sea",
+  "title": "深海探査の記録",
+  "description": "チャレンジャー号の測深から有人・無人での最深部到達、熱水噴出孔の生態系、深海採掘をめぐる攻防まで。探査技術・生命の発見・資源と環境の3層で、人類と深海の150年を追う。",
+  "category": "science-nature",
+  "language": "ja",
+  "start_year": 1872,
+  "end_year": 2023,
+  "layers": [
+    {
+      "name": "探査と技術",
+      "color": "blue"
+    },
+    {
+      "name": "深海の生命と発見",
+      "color": "green"
+    },
+    {
+      "name": "資源・環境と社会",
+      "color": "orange"
+    }
+  ],
+  "events": [
+    {
+      "date": "1872-12-21",
+      "precision": "day",
+      "end_date": "1876-05-24",
+      "type": "period",
+      "layer": "探査と技術",
+      "title": "チャレンジャー号探検航海、海洋学の出発点",
+      "summary": "英国のチャレンジャー号が、3年半をかけて世界の海を巡る科学探検航海に出発した。約13万kmを航海して水深測定と生物採集を体系的に行い、4700種を超える新種を記録した。\n\n1875年にはマリアナ海溝で当時最深の8184mを測深し、のちに最深部は「チャレンジャー海淵」と名付けられる。50巻に及ぶ報告書は**海洋学という学問の誕生**を告げるものとされ、以後の深海探査はすべてこの航海を起点に語られる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Challenger expedition",
+          "url": "https://en.wikipedia.org/wiki/Challenger_expedition"
+        }
+      ]
+    },
+    {
+      "date": "1934-08-15",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "探査と技術",
+      "title": "バチスフィアで潜航深度923mに到達",
+      "summary": "生物学者ビービと技師バートンが、鋼鉄球「バチスフィア」に乗りバミューダ沖で潜航深度923mに達した。人類が深海の生物を生きたまま直接観察した最初の本格的な記録である。\n\n母船からケーブルで吊り下げられた直径1.4mの球からの観察は世間を熱狂させたが、ビービが報告した発光魚の一部は後年の調査で確認されておらず、観察の正確性をめぐる議論が残る。深海が「観察できる場所」になった出発点だった。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "ビービが報告した未確認の発光魚など一部の観察記録は、後年の調査で裏付けが得られておらず真偽をめぐって議論がある。",
+      "sources": [
+        {
+          "title": "Wikipedia: Bathysphere",
+          "url": "https://en.wikipedia.org/wiki/Bathysphere"
+        }
+      ]
+    },
+    {
+      "date": "1938-12-22",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "深海の生命と発見",
+      "title": "「生きた化石」シーラカンスの発見",
+      "summary": "南アフリカの博物館学芸員ラティマーが、漁獲物の中から絶滅したはずのシーラカンスを発見した。約6600万年前に姿を消したと考えられていた魚類の生存が確認され、「生きた化石」として世界を驚かせた。\n\n同定は魚類学者スミスによる。深海がまだ知られざる生物の宝庫であることを象徴する発見となり、深海生物学への関心を大きく高めた。1952年に2例目が見つかり、1997年にはインドネシアで別種も発見されている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Coelacanth",
+          "url": "https://en.wikipedia.org/wiki/Coelacanth"
+        }
+      ]
+    },
+    {
+      "date": "1943-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "探査と技術",
+      "title": "クストーらがアクアラングを開発",
+      "summary": "海軍士官クストーと技術者ガニアンが、需要に応じて空気を供給する自動給気式の潜水器具アクアラングを開発した。船やケーブルにつながれず、人間が自力で水中を移動できるスキューバ潜水の原型である。\n\n到達できる深度こそ浅いものの、「潜る」ことを研究者や映像作家の日常の手段に変えた。クストー自身の映像作品を通じて海への大衆的な関心(資源・環境と社会レイヤー)を生み、深海探査を支える人と技術の裾野はここから広がった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Aqua-Lung",
+          "url": "https://en.wikipedia.org/wiki/Aqua-Lung"
+        }
+      ]
+    },
+    {
+      "date": "1960-01-23",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "探査と技術",
+      "title": "トリエステ号、チャレンジャー海淵に到達",
+      "summary": "ピカールとウォルシュが深海艇トリエステ号でマリアナ海溝のチャレンジャー海淵に潜航し、水深約10,900mの世界最深部に人類として初めて到達した。海底での滞在は約20分だった。\n\n**人類が最深部に到達した最初の日**だが、当初発表の深度10,916mは計測の補正を経た値で、現代の測量では最深部は10,920m前後とされるなど数値には今も幅がある。次の有人到達までは、52年後のキャメロンを待つことになる。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "到達深度は当初11,521mと発表された後に10,916mへ訂正され、現代の測量値(10,920m前後)とも差があるなど数値に幅がある。",
+      "sources": [
+        {
+          "title": "Wikipedia: Trieste (bathyscaphe)",
+          "url": "https://en.wikipedia.org/wiki/Trieste_(bathyscaphe)"
+        }
+      ]
+    },
+    {
+      "date": "1977-02-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "深海の生命と発見",
+      "title": "アルビン号が熱水噴出孔の生態系を発見",
+      "summary": "米国の潜水調査船アルビン号が、ガラパゴス沖の海嶺で熱水噴出孔と、そこに密集するチューブワームや二枚貝の群集を発見した。冷たく暗い深海に、誰も予想しなかった豊かな生態系が広がっていた。\n\n光合成ではなく硫化水素の化学合成を基盤とする**太陽に依存しない生態系**の発見は生命観を塗り替え、生命の起源や地球外生命の研究にも波及した。噴出孔が作る鉱床は、のちに深海採掘(資源・環境と社会レイヤー)の標的ともなっていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Hydrothermal vent",
+          "url": "https://en.wikipedia.org/wiki/Hydrothermal_vent"
+        }
+      ]
+    },
+    {
+      "date": "1982-12-10",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "資源・環境と社会",
+      "title": "国連海洋法条約が採択、深海底は人類の財産に",
+      "summary": "国連海洋法条約が採択され、各国の管轄外にある深海底とその鉱物資源を、特定の国に属さない**人類の共同の財産**と定めた。管理機関として国際海底機構(ISA)の設立も定められ、条約は1994年に発効した。\n\nマンガン団塊など深海底資源への期待が高まった時代の産物であり、探査(探査と技術レイヤー)が進むほど「深海は誰のものか」が問われる構図を法として先取りした。2021年以降の採掘ルールをめぐる攻防もこの条約の枠内で起きている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: United Nations Convention on the Law of the Sea",
+          "url": "https://en.wikipedia.org/wiki/United_Nations_Convention_on_the_Law_of_the_Sea"
+        }
+      ]
+    },
+    {
+      "date": "1985-09-01",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "探査と技術",
+      "title": "タイタニック号の残骸を海底で発見",
+      "summary": "バラード率いる米仏合同チームが、水深約3800mの北大西洋の海底でタイタニック号の船体を発見した。曳航式カメラ「アルゴ」が捉えた散乱するボイラーが決め手となった。\n\n無人探査技術の実力を世界に示すと同時に、深海を「歴史が保存される場所」として大衆に印象づけた。調査が米海軍の原子力潜水艦残骸調査の副産物だったことは後年公表された。沈没船を目指す深海観光は、2023年のタイタン事故(資源・環境と社会レイヤー)まで続く系譜の起点である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Wreck of the Titanic",
+          "url": "https://en.wikipedia.org/wiki/Wreck_of_the_Titanic"
+        }
+      ]
+    },
+    {
+      "date": "1989-08-11",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "探査と技術",
+      "title": "しんかい6500が6527mの潜航記録",
+      "summary": "日本の有人潜水調査船しんかい6500が、三陸沖で水深6527mへの潜航に成功した。当時の有人調査船として世界最深の記録であり、以後も稼働する調査船では世界最深級の能力を長く保ち続ける。\n\n日本海溝の調査ではプレート境界の亀裂の直接観察など地震研究に貢献し、熱水噴出域の生物調査(深海の生命と発見レイヤー)でも成果を重ねた。深海探査が一度きりの記録競争から、繰り返し通う科学インフラへ移ったことを示す存在である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "JAMSTEC: 有人潜水調査船しんかい6500",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1995-03-24",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "探査と技術",
+      "title": "無人探査機かいこう、最深部10,911mに到達",
+      "summary": "JAMSTECの無人探査機かいこうが、チャレンジャー海淵で水深10,911mに到達した。トリエステ号以来35年ぶりの最深部到達であり、無人機としては世界初である。\n\n採取した堆積物からは超深海の微生物が多数見つかり、極限環境生物学(深海の生命と発見レイヤー)に貴重な材料を提供した。人が乗らないからこそ反復調査ができることを示し、**無人機が主役になる深海探査**の時代を開いたが、かいこう自体は2003年に洋上で失われた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "JAMSTEC: 無人探査機かいこう",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2012-03-26",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "探査と技術",
+      "title": "キャメロン、52年ぶりの有人最深部到達",
+      "summary": "映画監督ジェームズ・キャメロンが、単独操縦の潜水艇ディープシー・チャレンジャーでチャレンジャー海淵の水深10,908mに到達した。有人での最深部到達はトリエステ号以来52年ぶりで、単独潜航としては史上初である。\n\n民間の資金と独自設計による挑戦であり、国家プロジェクトだった深海探査が個人と民間の領域へ移ったことを象徴する。撮影された映像と採取試料は科学チームと共有され、探査と映像文化(資源・環境と社会レイヤー)の結びつきを更新した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Deepsea Challenger",
+          "url": "https://en.wikipedia.org/wiki/Deepsea_Challenger"
+        }
+      ]
+    },
+    {
+      "date": "2012-07-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "深海の生命と発見",
+      "title": "生きたダイオウイカの深海撮影に世界初成功",
+      "summary": "国立科学博物館の窪寺恒己らが、小笠原沖の水深600m超で生きたダイオウイカの動画撮影に成功した。深海を泳ぐ生きた姿の撮影は世界初で、映像は翌年NHKなどで放送され世界的な反響を呼んだ。\n\n何世紀も船乗りの伝説として語られてきた巨大イカが、ようやく生きた姿で記録された。深海生物の眼に配慮した赤色光や発光ルアーなど、生物側の感覚に合わせた撮影手法の成果であり、観察が「捕る」から「そっと見る」へ移る流れを象徴する。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "国立科学博物館・NHK: 小笠原沖ダイオウイカ撮影(2012年)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2017-05-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "深海の生命と発見",
+      "title": "水深8178mで魚類の最深映像記録",
+      "summary": "JAMSTECらの調査で、マリアナ海溝の水深8178mを泳ぐシンカイクサウオ属の魚が撮影され、当時の魚類の生息最深映像記録となった。8000m級の海底では、餌に群がる端脚類の大群も確認された。\n\n魚類は浸透圧調整物質の濃度の限界から水深8200〜8400m付近が生息下限と予測されており、この記録は理論限界の実証という意味も持った。記録は2022年、伊豆・小笠原海溝の水深8336mで撮影されたクサウオ類により更新されている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "JAMSTEC: マリアナ海溝における魚類の世界最深映像記録(2017年)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2018-12-19",
+      "precision": "day",
+      "end_date": "2019-08-24",
+      "type": "period",
+      "layer": "探査と技術",
+      "title": "ファイブ・ディープス探検、五大洋最深部を制覇",
+      "summary": "投資家ヴェスコボが潜水艇リミティング・ファクターで、五大洋すべての最深部に潜る「ファイブ・ディープス探検」を実施し完遂した。2019年4月にはチャレンジャー海淵で潜航深度10,928mを記録したと発表した。\n\n何度でも潜れる商用認証を得た潜水艇の登場で、最深部は「一度きりの到達点」から繰り返し通える場所へ変わった。ただし発表された深度と過去の記録の差は計測誤差の範囲内であり、「最深記録の更新」という位置づけには議論がある。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "潜航深度10,928mは計測誤差を伴う値で、トリエステ号やキャメロンの記録との差は誤差範囲内とされ、記録更新の位置づけに議論がある。",
+      "sources": [
+        {
+          "title": "Wikipedia: Five Deeps Expedition",
+          "url": "https://en.wikipedia.org/wiki/Five_Deeps_Expedition"
+        }
+      ]
+    },
+    {
+      "date": "2020-03-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "資源・環境と社会",
+      "title": "プラスチックの名を持つ超深海の新種",
+      "summary": "マリアナ海溝の水深6900m超で採集された端脚類の新種が、体内からマイクロプラスチックが検出されたことにちなみ「ユーリテネス・プラスティクス」と命名された。\n\n人類が数回しか到達していない**最深部にまで届いたプラスチック**という事実は、深海がもはや手つかずの領域ではないことを突きつけた。命名は研究者による汚染への警告として意図されており、発見の年表(深海の生命と発見レイヤー)が環境問題の年表と重なり始めたことを象徴する。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Zootaxa: Eurythenes plasticus sp. nov. (Weston et al., 2020)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2021-06-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "資源・環境と社会",
+      "title": "ナウルが深海採掘の「2年ルール」を発動",
+      "summary": "太平洋の島国ナウルが、後援する企業による深海採掘の計画を念頭に、国際海底機構(ISA)へ「2年ルール」の適用を通告した。2年以内に採掘規則が完成しなくても、採掘申請の審査が始まりうる状況が生まれた。\n\n電気自動車の電池金属の需要増を背景に、1982年の海洋法条約が定めた「人類の共同の財産」の商業利用が初めて現実の日程に載った。科学者からは、熱水噴出孔などの生態系(深海の生命と発見レイヤー)への不可逆な影響を懸念する声が相次いだ。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Deep sea mining",
+          "url": "https://en.wikipedia.org/wiki/Deep_sea_mining"
+        }
+      ]
+    },
+    {
+      "date": "2023-06-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "探査と技術",
+      "title": "海底地図化プロジェクト、進捗25%に",
+      "summary": "海底地形の全容解明を目指す国際プロジェクト「Seabed 2030」が、世界の海底の約25%が現代的な水準で測深済みになったと発表した。プロジェクト開始時の2017年には約6%だった。\n\n月や火星の表面より粗くしか知られていない海底の地図は、探査・資源・環境(資源・環境と社会レイヤー)のあらゆる議論の土台である。2030年の完全地図化という目標には各国と民間の測深データ提供が不可欠で、データを共有する仕組みづくりが技術と並ぶ課題になっている。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "進捗率はプロジェクト側の自己発表値であり、「マッピング済み」とする解像度基準の定義によって数値は変わりうる。",
+      "sources": [
+        {
+          "title": "The Nippon Foundation-GEBCO Seabed 2030 Project 進捗発表",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2023-06-18",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "資源・環境と社会",
+      "title": "潜水艇タイタンが圧壊、乗員5人死亡",
+      "summary": "タイタニック号の見学ツアーへ向かった民間潜水艇タイタンが潜航中に圧壊し、乗員5人全員が死亡した。船体には第三者認証を受けていない炭素繊維複合材の耐圧殻が使われていた。\n\n深海観光という新しい市場における安全規制の空白を露呈し、業界の認証制度と冒険的な民間探査の関係が問い直された。1985年のタイタニック発見(探査と技術レイヤー)に始まる大衆的な深海への憧れが、最悪の形で裏返った事故である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Titan submersible implosion",
+          "url": "https://en.wikipedia.org/wiki/Titan_submersible_implosion"
+        }
+      ]
+    },
+    {
+      "date": "2023-07-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "資源・環境と社会",
+      "title": "深海採掘の規則できず、対立が鮮明に",
+      "summary": "国際海底機構の理事会・総会は、期限とされた時期までに商業採掘の規則を完成できず、採択目標を先送りした。一方でモラトリアム(一時停止)や予防的中断を支持する国は20か国を超えたとされ、推進派との対立が鮮明になった。\n\nナウルの通告から2年が経過し、規則がないまま採掘申請が可能になりうる異例の局面で、**採掘か保全か**の対立が続く。深海の科学的知見の少なさ(深海の生命と発見レイヤー)そのものが、判断を先送りさせる理由になっている。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "モラトリアム等を支持する国の数は環境団体や報道による集計で20か国超とされるが、立場の分類の仕方により数え方が異なる。",
+      "sources": [
+        {
+          "title": "国際海底機構(ISA)第28回会期に関する報道・IISD Earth Negotiations Bulletin",
+          "url": null
+        }
+      ]
+    }
+  ]
+}

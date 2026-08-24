@@ -1,0 +1,385 @@
+{
+  "slug": "business-advertising-100",
+  "title": "広告業界の100年",
+  "description": "1922年のラジオCMからCookie廃止撤回まで、広告の100年をメディアと技術・広告産業とクリエイティブ・社会と規制の3層で辿る。媒体が変わるたびに、注意の売り方とルールが作り直されてきた。",
+  "category": "business",
+  "language": "ja",
+  "start_year": 1922,
+  "end_year": 2024,
+  "layers": [
+    {
+      "name": "メディアと技術",
+      "color": "blue"
+    },
+    {
+      "name": "広告産業とクリエイティブ",
+      "color": "orange"
+    },
+    {
+      "name": "社会と規制",
+      "color": "teal"
+    }
+  ],
+  "events": [
+    {
+      "date": "1922-08-28",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "メディアと技術",
+      "title": "米WEAFで最初期の有料ラジオ広告放送",
+      "summary": "ニューヨークのラジオ局WEAFが、不動産会社クイーンズボロ・コーポレーションの宣伝放送を有料で流した。約10分の告知で、料金は50ドルだったと伝えられる。\n\nこれが「世界初のラジオ広告」とされることが多いが、先行事例を挙げる研究もある。**電波が広告を家庭の居間まで運んだ**ことで、広告は紙面ではなく時間を買うものへと変わり、放送メディアの収益モデルが生まれた。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "「世界初のラジオ広告」とする位置づけには諸説があり、放送時間・料金も資料により記述が異なる。",
+      "sources": [
+        {
+          "title": "Wikipedia: WEAF (歴史的放送局) およびラジオ広告史の各種資料",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1923-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "広告産業とクリエイティブ",
+      "title": "ニールセン創業、「測定」の産業が始まる",
+      "summary": "アーサー・C・ニールセンが米国で市場調査会社を創業した。のちにラジオの聴取率、テレビの視聴率測定へ進出し、広告取引の共通通貨となる指標を提供していく。\n\n「どれだけの人が見たか」を第三者が数値化する仕組みは、広告枠の価格形成を可能にした基盤である。約70年後にバナー広告(メディアと技術レイヤー)が持ち込むクリック測定も、この延長線上にある。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Nielsen Holdings",
+          "url": "https://en.wikipedia.org/wiki/Nielsen_Holdings"
+        }
+      ]
+    },
+    {
+      "date": "1941-07-01",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "メディアと技術",
+      "title": "世界初のテレビCM、ブローバの時計広告",
+      "summary": "米NBC系のWNBTで、時計メーカー・ブローバの広告が放送された。野球中継の前に流れた短い映像で、料金は9ドルだったとされる。商業テレビ放送が認可された初日の出来事である。\n\n以後半世紀にわたり、テレビは広告費の最大の受け皿として広告産業の構造を規定する。クリエイティブ革命(広告産業とクリエイティブレイヤー)も、テレビとグラフィック広告の黄金期に起きることになる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Bulova",
+          "url": "https://en.wikipedia.org/wiki/Bulova"
+        }
+      ]
+    },
+    {
+      "date": "1957-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と規制",
+      "title": "『かくれた説得者』が広告批判の古典に",
+      "summary": "ジャーナリストのヴァンス・パッカードが『かくれた説得者』を刊行し、深層心理を突く広告手法を批判的に描いてベストセラーとなった。\n\n広告への社会的警戒がはじめて大衆的な言説になった画期であり、のちのタバコ広告規制やサブリミナル批判の下地となる。広告産業が自らの手法を語る言葉を持つより先に、批判の言葉のほうが広く普及した点が示唆的である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: The Hidden Persuaders",
+          "url": "https://en.wikipedia.org/wiki/The_Hidden_Persuaders"
+        }
+      ]
+    },
+    {
+      "date": "1959-01-01",
+      "precision": "year",
+      "end_date": "1969-12-31",
+      "type": "period",
+      "layer": "広告産業とクリエイティブ",
+      "title": "クリエイティブ革命",
+      "summary": "DDBのビル・バーンバックらを中心に、コピーライターとアートディレクターを対等に組ませ、誇張ではなく機知と正直さで語る広告表現の刷新が米国で進んだ。\n\nフォルクスワーゲンやエイビスのキャンペーンが代表例で、広告が文化として批評される時代が始まった。期間の区切りは概説によって異なるが、テレビ(メディアと技術レイヤー)の普及期と重なっている点が本質である。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "「クリエイティブ革命」の期間区分は論者により異なり、1960年代全般とする概説に依拠した。",
+      "sources": [
+        {
+          "title": "Wikipedia: Creative revolution",
+          "url": "https://en.wikipedia.org/wiki/Creative_revolution"
+        }
+      ]
+    },
+    {
+      "date": "1959-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "広告産業とクリエイティブ",
+      "title": "VW「Think Small」キャンペーン開始",
+      "summary": "DDBがフォルクスワーゲン・ビートルの広告「Think Small」を展開した。小ささを欠点ではなく美点として正直に語る手法で、のちに広告史上最高のキャンペーンとの評価を受ける。\n\n大型車全盛の米国で自虐的なユーモアを用いた点が革新で、クリエイティブ革命の代表作となった。なお掲載開始の年については、1959年とする資料と1960年とする資料がある。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "キャンペーン開始年は1959年とも1960年ともされ、資料により記述が分かれる。",
+      "sources": [
+        {
+          "title": "Wikipedia: Think Small",
+          "url": "https://en.wikipedia.org/wiki/Think_Small"
+        }
+      ]
+    },
+    {
+      "date": "1971-01-02",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と規制",
+      "title": "米国でタバコのテレビ・ラジオ広告禁止",
+      "summary": "公衆衛生タバコ喫煙法の施行により、米国のテレビ・ラジオでのタバコ広告が禁止された。最後のCMは前夜の年越し番組の枠で放送された。\n\nテレビ広告の大口出稿者を法律が排除した初の大型規制で、広告が公衆衛生政策の対象になった。**何を広告してよいかを社会が決める**時代の始まりであり、以後、酒類・医薬品・子ども向け広告へと規制の対象は広がっていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Public Health Cigarette Smoking Act",
+          "url": "https://en.wikipedia.org/wiki/Public_Health_Cigarette_Smoking_Act"
+        }
+      ]
+    },
+    {
+      "date": "1984-01-22",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "広告産業とクリエイティブ",
+      "title": "Apple「1984」、スーパーボウルCMの伝説",
+      "summary": "スーパーボウル中継で、AppleがMacintosh発売を予告するCM「1984」を放送した。リドリー・スコット監督による約60秒の映像は、製品をほとんど見せないまま強烈な印象を残した。\n\nスーパーボウルを広告の檜舞台へ変えた転換点とされ、CM自体がニュースとして報道される「広告のイベント化」が始まった。テレビ広告の演出力が頂点に達した時期を象徴する作品である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 1984 (advertisement)",
+          "url": "https://en.wikipedia.org/wiki/1984_(advertisement)"
+        }
+      ]
+    },
+    {
+      "date": "1986-04-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "広告産業とクリエイティブ",
+      "title": "オムニコム誕生、メガエージェンシー時代へ",
+      "summary": "米広告大手BBDO、DDB、ニーダム・ハーパーの3社統合によるオムニコム・グループの設立が発表され、業界で「ビッグバン」と呼ばれた。\n\n同時期に英国ではサーチ&サーチが買収を重ねて世界最大手に躍り出ており、広告会社は世界規模の持株会社へと再編されていく。クリエイティブの工房だった広告会社が、資本市場で評価される産業へ変わった画期である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Omnicom Group",
+          "url": "https://en.wikipedia.org/wiki/Omnicom_Group"
+        }
+      ]
+    },
+    {
+      "date": "1994-10-27",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "メディアと技術",
+      "title": "HotWiredに世界初のバナー広告",
+      "summary": "米ウェブメディアHotWiredに、AT&Tなどのバナー広告が掲載された。ウェブ広告の事実上の始まりとされ、AT&Tのバナーのクリック率は44%に達したと伝えられる。\n\n**クリックという行動の測定**が可能になったことで、広告効果は推定から計測へ移行し始めた。ニールセン以来の「視聴の通貨」(広告産業とクリエイティブレイヤー)とは別の、行動データに基づく取引の系譜がここから始まる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Web banner",
+          "url": "https://en.wikipedia.org/wiki/Web_banner"
+        }
+      ]
+    },
+    {
+      "date": "2000-10-23",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "メディアと技術",
+      "title": "Google AdWords開始",
+      "summary": "Googleがセルフサービス型の検索連動広告AdWordsを開始した。当初は表示回数課金で、2002年にクリック課金とオークション制へ移行する。\n\n**検索の意図に対して広告枠を競売にかける**仕組みは、その後の広告費の流れを根本から変えた。ドットコムバブル崩壊(2000年)の直後に、バナーの露出販売ではなく意図への課金が生き残った点が示唆的である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Google プレスリリース: Google Launches Self-Service Advertising Program (2000-10-23)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2007-04-13",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "広告産業とクリエイティブ",
+      "title": "GoogleがDoubleClickを31億ドルで買収",
+      "summary": "Googleがアドテク大手DoubleClickを31億ドルで買収すると発表した。検索広告に加え、ディスプレイ広告の配信基盤を手中に収めることになった。\n\nMicrosoftらも買収を競った末の決着で、広告産業の主役が代理店からプラットフォームへ移る転機となった。この統合が生むデータ集中と寡占への懸念は、のちのGDPR(社会と規制レイヤー)や各国の競争法調査の伏線である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: DoubleClick",
+          "url": "https://en.wikipedia.org/wiki/DoubleClick"
+        }
+      ]
+    },
+    {
+      "date": "2007-11-06",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "メディアと技術",
+      "title": "Facebook Ads発表、ソーシャル広告の起点",
+      "summary": "Facebookが広告プラットフォーム「Facebook Ads」を発表した。友人の購買行動を広告として流すBeaconも同時に発表されたが、こちらは強い反発を受けて撤回に追い込まれる。\n\nソーシャルグラフと属性データによるターゲティングは、検索連動と並ぶデジタル広告の二本柱となった。Beaconの失敗は、データ利用と同意をめぐる10年後の論争(社会と規制レイヤー)を先取りしていた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Facebook: Facebook Unveils Facebook Ads (2007-11-06)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2013-03-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "広告産業とクリエイティブ",
+      "title": "電通がイージス買収を完了",
+      "summary": "電通が英広告グループのイージスを約4000億円で買収し、手続きを完了した。日本の広告会社による過去最大級の海外買収である。\n\nデジタル領域と海外市場への対応を一気に進める狙いで、国内最大手が「日本のメディア枠の販売」を軸とする事業構造から脱する転換点となった。世界の広告産業がデータとデジタル運用へ再編される流れの一部である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "電通 ニュースリリース: イージス・グループ買収完了(2013年3月)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2018-05-25",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と規制",
+      "title": "GDPR施行、ターゲティング広告に規制の網",
+      "summary": "EUの一般データ保護規則(GDPR)が施行され、個人データの処理に同意等の法的根拠と高額の制裁金が定められた。行動ターゲティング広告は最大の影響領域となった。\n\n**同意が広告取引の前提条件になった**ことで、同意管理ツールの普及や文脈連動広告への回帰が起きた。プラットフォームへのデータ集中(広告産業とクリエイティブレイヤー)に対し、規制が対抗軸として働く構図が明確になった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "EUR-Lex: Regulation (EU) 2016/679 (GDPR)",
+          "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+        }
+      ]
+    },
+    {
+      "date": "2019-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と規制",
+      "title": "日本でネット広告費がテレビを初めて逆転",
+      "summary": "電通「日本の広告費」の推計で、2019年のインターネット広告費が2兆1048億円となり、テレビメディア広告費を初めて上回った。\n\n1975年にテレビが新聞を抜いて以来の首位交代であり、運用型広告が主流となった市場構造の変化を確定させた。媒体の主役交代はラジオからテレビ、テレビからネットへと、およそ半世紀の周期で繰り返されている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "電通「2019年 日本の広告費」(2020年3月発表)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2021-04-26",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と規制",
+      "title": "AppleがATT導入、追跡に本人許可を必須化",
+      "summary": "AppleがiOS 14.5でApp Tracking Transparency(ATT)を導入し、アプリ横断のトラッキングにユーザーの明示的な許可を必須とした。\n\n許可率は低水準にとどまり、Metaは2022年の減収要因として約100億ドルの影響を公表した。規制当局ではなく**プラットフォームが事実上の規制者になる**構図を示し、広告の効果測定は確率的な推定へと後退した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: App Tracking Transparency",
+          "url": "https://en.wikipedia.org/wiki/App_Tracking_Transparency"
+        }
+      ]
+    },
+    {
+      "date": "2022-02-03",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "広告産業とクリエイティブ",
+      "title": "Amazon、広告事業を初めて区分開示",
+      "summary": "Amazonが決算で広告事業の売上を初めて区分開示し、2021年通年で約312億ドルに達していたことが明らかになった。\n\n購買データと購入直前の顧客接点を持つ小売業者が広告の売り手になる「リテールメディア」の存在感を裏付けた。Cookie規制やATT(社会と規制レイヤー)で外部データが細るなか、自社データを持つ事業者へ広告費が移る流れを象徴する。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Amazon.com Q4 2021 Earnings Release (2022-02-03)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2023-05-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "広告産業とクリエイティブ",
+      "title": "生成AIが広告制作に入る",
+      "summary": "Metaが広告主向けに生成AIで広告文や背景画像を作る「AI Sandbox」を発表するなど、生成AIによる広告制作の自動化が業界全体の動きとなった。\n\nコピーとビジュアルの制作をアルゴリズムが担うことは、クリエイティブ革命以来の「人の技」という前提を揺るがす。ただし効果や普及の実態は各社発表ベースで、評価が定まるのはこれからである。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "生成AIによる広告制作の効果・普及度は各社の発表ベースで、第三者による検証は確立していない。",
+      "sources": [
+        {
+          "title": "Meta: AI Sandbox発表(2023年5月)ほか各社発表",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2024-07-22",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "メディアと技術",
+      "title": "GoogleがサードパーティCookie廃止を撤回",
+      "summary": "GoogleがChromeにおけるサードパーティCookie廃止計画の撤回を発表した。2020年の廃止表明から4年、3度の延期を経た方針転換である。\n\n廃止は代替技術Privacy Sandboxをめぐる競争上の懸念から英競争当局の監視下にあり、プライバシー保護と競争政策の板挟みが露呈した。個人追跡の基盤技術の行方が一企業の判断に委ねられていること自体が、規制側の新たな論点となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Google Privacy Sandbox: A new path for Privacy Sandbox on the web (2024-07-22)",
+          "url": null
+        }
+      ]
+    }
+  ]
+}

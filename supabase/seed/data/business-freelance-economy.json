@@ -1,0 +1,357 @@
+{
+  "slug": "business-freelance-economy",
+  "title": "フリーランス経済",
+  "description": "クラウドソーシングの誕生からギグエコノミーの拡大、各国の保護法制、生成AIの衝撃まで。プラットフォーム・制度・働き手の3層で「雇用によらない働き方」の四半世紀を追う年表。",
+  "category": "business",
+  "language": "ja",
+  "start_year": 1999,
+  "end_year": 2024,
+  "layers": [
+    {
+      "name": "プラットフォーム",
+      "color": "orange"
+    },
+    {
+      "name": "制度と保護",
+      "color": "teal"
+    },
+    {
+      "name": "働き手と社会",
+      "color": "green"
+    }
+  ],
+  "events": [
+    {
+      "date": "1999-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "プラットフォーム",
+      "title": "Elance登場、オンライン外注市場の先駆け",
+      "summary": "米国でElanceが立ち上がり、企業がインターネット経由で世界中の個人に仕事を発注する「オンライン外注」の市場が生まれた。後にoDeskとの統合を経てUpworkの源流となる。\n\n回線の高速化を背景に、仕事の受発注が対面と人づての紹介の世界からオンラインへ移り始めた出発点である。この働き方を指す言葉はまだなく、「ギグエコノミー」の語が広まるのは約10年後(働き手と社会レイヤー)のことになる。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "会社の創業は1998年とされ、サービス開始の時期は資料により1999年前後と幅がある。",
+      "sources": [
+        {
+          "title": "Wikipedia: Elance",
+          "url": "https://en.wikipedia.org/wiki/Elance"
+        }
+      ]
+    },
+    {
+      "date": "2005-11-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "プラットフォーム",
+      "title": "Amazon Mechanical Turk公開、マイクロタスクの誕生",
+      "summary": "Amazonが、人間にしかできない細かな作業を少額で発注できるAmazon Mechanical Turkを公開した。データ整理や画像判定といった細切れの仕事を、世界中の作業者に分配する仕組みである。\n\n仕事を極小の単位に分解して単価をつける発想はクラウドソーシングの一つの極であり、後にAIの学習データ作成を支える労働として再注目される。同時に、最低賃金の枠外で働く「見えない労働者」への批判(働き手と社会レイヤー)もここから始まった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Amazon Mechanical Turk",
+          "url": "https://en.wikipedia.org/wiki/Amazon_Mechanical_Turk"
+        }
+      ]
+    },
+    {
+      "date": "2008-12-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "プラットフォーム",
+      "title": "ランサーズ開始、日本のクラウドソーシング元年",
+      "summary": "秋好陽介が仕事のオンライン受発注サービス「ランサーズ」を開始し、日本でもクラウドソーシングが本格的に始まった。2011年設立のクラウドワークスと並び、国内市場を形づくっていく。\n\n地方在住者や子育て中の親など、通勤や常勤を前提としない働き手に仕事が届くようになった意義は大きい。一方で受注者同士の低単価競争という構造的な課題も早くから指摘され、働き手と社会レイヤーの論点として現在まで続いている。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "会社設立とサービス開始の時期は資料により2008年4月から12月の間で記述が揺れる。",
+      "sources": [
+        {
+          "title": "ランサーズ株式会社: 会社情報・沿革",
+          "url": "https://www.lancers.co.jp/company/"
+        }
+      ]
+    },
+    {
+      "date": "2009-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "働き手と社会",
+      "title": "「ギグエコノミー」という言葉が生まれる",
+      "summary": "金融危機後の米国で、単発の仕事(ギグ)を組み合わせて生計を立てる働き方を指す「ギグエコノミー」という言葉が使われ始めた。ジャーナリストのティナ・ブラウンによる2009年のコラムが初期の用例とされる。\n\n当初は不況で職を失った人々の苦肉の策を指す言葉だったが、スマートフォンとアプリの普及とともに「自由な働き方」という看板へ意味を変えていく。言葉の意味の変遷そのものが、この経済の光と影を映している。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "語の初出には諸説あり、ブラウンのコラムを起源とする説が広く引用されるが確定的ではない。",
+      "sources": [
+        {
+          "title": "The Daily Beast: The Gig Economy (Tina Brown, 2009)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2009-03-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "プラットフォーム",
+      "title": "Uber創業、ギグワークが都市の風景になる起点",
+      "summary": "サンフランシスコでUberCab(現Uber)が創業した。スマートフォンで運転手と乗客を直接つなぐ配車サービスは、その後数年で世界の都市交通を塗り替えていく。\n\n運転手を雇用せず「独立請負人」と位置づける事業モデルは、**プラットフォームは雇用主か仲介者か**という、この年表を貫く法的争点を生み出した。料理宅配や買い物代行など同じ構造のサービスが次々と登場し、アプリで単発の仕事を受けるギグワークが日常の風景になっていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Uber",
+          "url": "https://en.wikipedia.org/wiki/Uber"
+        }
+      ]
+    },
+    {
+      "date": "2014-09-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "働き手と社会",
+      "title": "米調査「フリーランスは5300万人・就労者の34%」",
+      "summary": "フリーランサーズ・ユニオンとElance-oDeskの共同調査「Freelancing in America」が、米国のフリーランス人口を約5300万人・就労者の34%と推計した。\n\n副業者を含む広い定義への批判はあるものの、「3人に1人」という数字はギグエコノミー論の定番の根拠となり、各国で類似調査が始まる。実態をとらえる政府統計の乏しさは各国共通で、**定義次第で人数が大きく動く**という統計の問題は現在まで解決していない。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "推計は業界団体の委託調査に基づくもので、フリーランスの定義に副業者を含むため政府統計より大きく出る傾向がある。",
+      "sources": [
+        {
+          "title": "Freelancers Union & Elance-oDesk: Freelancing in America (2014)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2014-12-12",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "プラットフォーム",
+      "title": "クラウドワークスが東証マザーズに上場",
+      "summary": "クラウドワークスが東証マザーズに上場し、日本のクラウドソーシングが資本市場に認知される節目となった。\n\n「時間と場所にとらわれない働き方」が成長産業として語られる一方、プラットフォーム上の平均報酬の低さや手数料のあり方も報道で取り上げられるようになり、日本のフリーランス政策論議(制度と保護レイヤー)の呼び水となった。政府が「働き方改革」を掲げ、雇用によらない働き方を政策課題に載せるのはこの数年後である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "クラウドワークス: 東京証券取引所マザーズ上場に関するお知らせ (2014)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2015-05-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "プラットフォーム",
+      "title": "Upwork誕生、世界最大級のフリーランス市場に",
+      "summary": "ElanceとoDeskの統合会社が社名をUpworkに変更し、世界最大級のフリーランス仲介プラットフォームが誕生した。\n\nスキルのオンライン売買が世界規模の単一市場に近づき、国境を越えた発注と価格競争が日常になっていく。発注側の企業では業務を細かく切り出して外部化する動きが進み、「仕事の分解」がデザインや翻訳などホワイトカラー職に本格的に及び始めた時期にあたる。この分解の構造は後の生成AIの影響(働き手と社会レイヤー)にもつながる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Upwork",
+          "url": "https://en.wikipedia.org/wiki/Upwork"
+        }
+      ]
+    },
+    {
+      "date": "2019-09-18",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と保護",
+      "title": "カリフォルニア州でAB5法成立",
+      "summary": "働き手を原則として従業員と推定する「ABCテスト」を法制化したAB5法に、カリフォルニア州知事が署名した。前年の州最高裁ダイナメックス判決を成文化したものである。\n\nギグワーカーの誤分類問題に対する最も踏み込んだ立法例であり、**労働法が想定しない働き手**をどう保護するかという問いを世界に突きつけた。適用を避けたいUberやLyftは巨額の住民投票キャンペーンを展開し、翌年のプロップ22(同じ制度と保護レイヤー)へ続く。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "California Legislative Information: AB-5 Worker status: employees and independent contractors (2019)",
+          "url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=201920200AB5"
+        }
+      ]
+    },
+    {
+      "date": "2020-03-01",
+      "precision": "month",
+      "end_date": "2021-12-31",
+      "type": "period",
+      "layer": "働き手と社会",
+      "title": "コロナ禍でギグワークが生活インフラになる",
+      "summary": "新型コロナのロックダウン下で料理宅配や配送のギグワークが急増し、外出できない都市の生活を支えた。米国では通常は失業給付の対象外である自営業者に特例の給付(PUA)が適用された。\n\n「エッセンシャルワーカー」と呼ばれながら感染リスクと隣り合わせで働く実態は、保護の薄さを一気に可視化した。日本でも2021年に自転車配達員らが労災保険に特別加入できるようになるなど、制度と保護レイヤーが動き出す直接の契機となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "U.S. Department of Labor: Pandemic Unemployment Assistance (CARES Act, 2020)",
+          "url": null
+        },
+        {
+          "title": "厚生労働省: 労災保険の特別加入制度の対象拡大(自転車配達員・ITフリーランス、2021年)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2020-11-03",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と保護",
+      "title": "住民投票プロップ22可決、AB5に風穴",
+      "summary": "カリフォルニア州の住民投票で、配車・宅配の運転手をAB5の適用から外し独立請負人と位置づける「プロポジション22」が半数を大きく超える賛成で可決された。\n\nUberなど関係企業が2億ドル超を投じたとされる史上最高額級の住民投票キャンペーンの結果であり、**ルール自体を書き換えるプラットフォームの力**を示した。その後の違憲訴訟を経て、2024年に州最高裁は本法を有効と判断している。労働者側には最低報酬保証など一部の保護が導入された。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "California Secretary of State: Proposition 22 (2020) 開票結果",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2021-02-19",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と保護",
+      "title": "英最高裁がUber運転手を「ワーカー」と認定",
+      "summary": "英国最高裁が、Uberの運転手は完全な自営業者ではなく、最低賃金や有給休暇などの保護を受ける中間的な地位「ワーカー」にあたると全員一致で認定した。\n\n判決後、Uberは英国の運転手をワーカーとして処遇すると発表した。雇用と自営の間に第三の地位を置く英国型の解決は、二分法を前提に住民投票で決着を図った米国(プロップ22)と対照的であり、同じ問題への各国の制度設計が分岐していく様子を示している。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "UK Supreme Court: Uber BV and others v Aslam and others [2021] UKSC 5",
+          "url": "https://www.supremecourt.uk/cases/uksc-2019-0029.html"
+        }
+      ]
+    },
+    {
+      "date": "2021-03-26",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と保護",
+      "title": "日本でフリーランスガイドライン策定",
+      "summary": "内閣官房・公正取引委員会・中小企業庁・厚生労働省が連名で「フリーランスとして安心して働ける環境を整備するためのガイドライン」を策定した。\n\n独占禁止法・下請法・労働関係法令のフリーランス取引への適用関係を初めて体系的に整理したもので、フリーランスが政策の対象として正面から位置づけられた。内閣官房の調査ではフリーランス人口は462万人と推計されており、2023年の専用法制定(同じ制度と保護レイヤー)への足がかりとなった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "公正取引委員会: フリーランスとして安心して働ける環境を整備するためのガイドライン (2021-03-26)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2023-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "働き手と社会",
+      "title": "生成AIがフリーランスの仕事を揺らし始める",
+      "summary": "ChatGPTや画像生成AIの急速な普及を受け、翻訳・ライティング・イラストなどの分野で受注減を訴えるフリーランスが現れ始めた。プラットフォーム上の定型的な案件の減少を示す調査も報告された。\n\n一方でAI活用スキルを掲げる新しい案件も増えており、影響は職種の内部でも二極化している。仕事を細分化して取引してきたクラウドソーシングの構造(プラットフォームレイヤー)が、細分化された仕事ほどAIに置き換えやすいという形で跳ね返った、との指摘もある。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "受注減と生成AIの因果関係は調査により結論が分かれており、影響の規模は確定していない。",
+      "sources": [
+        {
+          "title": "SSRN: Hui, Reshef & Zhou, The Short-Term Effects of Generative Artificial Intelligence on Employment (2023)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2023-04-28",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と保護",
+      "title": "フリーランス保護新法が国会で成立",
+      "summary": "発注内容の書面等による明示、報酬の60日以内の支払い、ハラスメント対策などを発注者に義務付けるフリーランス保護新法(フリーランス・事業者間取引適正化等法)が成立した。\n\n資本金基準で対象が限られる下請法では守れなかった小規模な取引を広くカバーし、**取引の適正化と就業環境の整備**を初めて一体で定めた日本の立法である。ガイドライン(2021年)からわずか2年での法制化は、フリーランス人口の拡大と社会的関心の高まりを反映している。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "e-Gov法令検索: 特定受託事業者に係る取引の適正化等に関する法律(令和5年法律第25号)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2023-10-01",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "働き手と社会",
+      "title": "インボイス制度開始、免税事業者に転換圧力",
+      "summary": "日本で消費税のインボイス(適格請求書)制度が始まった。免税事業者のままでは取引先が仕入税額控除を受けられなくなるため、多くのフリーランスが課税事業者への転換か、値引きや取引打ち切りの圧力かの選択を迫られた。\n\n反対のオンライン署名は50万筆を超えたとされ、小規模な働き手への負担集中が争点となった。保護法制の整備(制度と保護レイヤー)と税負担の増加が同時に進む、日本のフリーランス政策の両義性を示す出来事である。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "反対署名の筆数は主催団体の集計によるもので、第三者による検証はない。制度開始日自体は確定した事実である。",
+      "sources": [
+        {
+          "title": "国税庁: インボイス制度の概要",
+          "url": "https://www.nta.go.jp/taxes/shiraberu/zeimokubetsu/shohi/keigenzeiritsu/invoice.htm"
+        }
+      ]
+    },
+    {
+      "date": "2024-04-24",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と保護",
+      "title": "EUプラットフォーム労働指令を欧州議会が可決",
+      "summary": "欧州議会がプラットフォーム労働指令を可決した。一定の要件を満たす場合に雇用関係を法的に推定し、反証責任をプラットフォーム側に課すほか、**アルゴリズムによる管理**の透明化と人による監督を義務付ける。\n\n個別の訴訟で争われてきた誤分類の問題を、雇用推定という一般ルールで扱う初のEU横断枠組みである。同年中に正式採択・発効し、加盟国は2026年末までに国内法化する。配車や宅配の働き手の地位を巡る15年の攻防の、現時点での到達点といえる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "European Parliament: Parliament adopts Platform Work Directive (2024-04-24)",
+          "url": null
+        },
+        {
+          "title": "EUR-Lex: Directive (EU) 2024/2831 on improving working conditions in platform work",
+          "url": "https://eur-lex.europa.eu/eli/dir/2024/2831/oj"
+        }
+      ]
+    },
+    {
+      "date": "2024-11-01",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と保護",
+      "title": "フリーランス法が施行、執行段階へ",
+      "summary": "フリーランス・事業者間取引適正化等法が施行され、公正取引委員会と厚生労働省による執行体制が始動した。施行後は報酬の支払い遅延や買いたたきなどへの指導・勧告が行われている。\n\nプラットフォームの登場(1999年)から言葉の誕生(2009年)、各国の司法判断と立法を経て、日本でも専用法の執行という段階に到達した。**雇用によらない働き方**を制度が追いかける往復運動は、生成AI(働き手と社会レイヤー)という新しい変数を迎えてなお続いている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "公正取引委員会: フリーランス法特設サイト",
+          "url": "https://www.jftc.go.jp/freelancelaw/"
+        }
+      ]
+    }
+  ]
+}

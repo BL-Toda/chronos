@@ -1,0 +1,367 @@
+{
+  "slug": "science-mathematics",
+  "title": "数学の美しい定理",
+  "description": "フェルマーの余白の書き込みからポアンカレ予想の解決まで。定理の証明・予想の提示・応用への波及の3層を重ね、抽象的な美しさが時を経て世界を動かす瞬間をたどる。",
+  "category": "science-nature",
+  "language": "ja",
+  "start_year": 1637,
+  "end_year": 2023,
+  "layers": [
+    {
+      "name": "定理と証明",
+      "color": "gold"
+    },
+    {
+      "name": "予想と問題提起",
+      "color": "purple"
+    },
+    {
+      "name": "応用への波及",
+      "color": "teal"
+    }
+  ],
+  "events": [
+    {
+      "date": "1637-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "予想と問題提起",
+      "title": "フェルマー、「最終定理」を欄外に書き残す",
+      "summary": "フェルマーがディオファントス『算術』の余白に、3以上の冪では成り立たない旨の命題と「真に驚くべき証明を見つけたが、この余白は狭すぎる」という言葉を書き残したとされる。時期は1637年頃と推定される。\n\n見た目の単純さと証明の困難さの落差が数学者を358年間ひきつけ、その挑戦の過程で代数的数論という分野が育った。**余白の一行が生んだ358年**の物語の起点である。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "欄外書き込みの年は本人による日付の記録がなく、1637年頃とする後世の推定に基づく。",
+      "sources": [
+        {
+          "title": "Wikipedia: Fermat's Last Theorem",
+          "url": "https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem"
+        }
+      ]
+    },
+    {
+      "date": "1735-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "定理と証明",
+      "title": "オイラーがバーゼル問題を解く",
+      "summary": "平方数の逆数をすべて足した無限和がπ²/6に等しいことをオイラーが示し、ベルヌーイ家の数学者たちも解けなかった難問を28歳で解決した。\n\n整数だけから作った和に円周率が現れるという**無関係に見えるものどうしの結びつき**は、数学の美の典型とされる。この和を一般化したものが後にリーマンのゼータ関数(予想と問題提起レイヤー)となり、素数の謎へと直結していく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Basel problem",
+          "url": "https://en.wikipedia.org/wiki/Basel_problem"
+        }
+      ]
+    },
+    {
+      "date": "1736-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "応用への波及",
+      "title": "ケーニヒスベルクの橋の問題、グラフ理論の誕生",
+      "summary": "7本の橋をすべて一度ずつ渡る経路は存在しないことを、オイラーが土地と橋を点と線に置き換えて証明した。位置や距離を捨てて「つながり方」だけを扱う、当時としては異例の抽象化だった。\n\n娯楽的な問いから生まれたこの発想がグラフ理論となり、約250年後にはインターネットの経路制御やSNSの分析を支えることになる。役に立たなそうな問いが最も役に立つという逆説の代表例である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Seven Bridges of Königsberg",
+          "url": "https://en.wikipedia.org/wiki/Seven_Bridges_of_K%C3%B6nigsberg"
+        }
+      ]
+    },
+    {
+      "date": "1748-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "定理と証明",
+      "title": "『無限解析序説』とオイラーの等式",
+      "summary": "オイラーが『無限解析序説』を出版し、指数関数と三角関数を結ぶ公式 e^iθ = cosθ + i sinθ を体系化した。θにπを代入すれば e^iπ + 1 = 0 が得られる。\n\ne、i、π、1、0という**五つの基本定数が一つの式で結ばれる**この等式は、後世の数学者への調査でしばしば「最も美しい式」に選ばれてきた。もっとも、この形を最初に明示的に書いた人物が誰かは、はっきりしていない。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "e^iπ+1=0という等式の形を最初に明示した人物・時期には諸説あり、オイラー自身の著作にこの形そのものの記載は確認されていない。",
+      "sources": [
+        {
+          "title": "Wikipedia: Euler's identity",
+          "url": "https://en.wikipedia.org/wiki/Euler%27s_identity"
+        }
+      ]
+    },
+    {
+      "date": "1801-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "定理と証明",
+      "title": "ガウス『整数論』刊行、相互法則を証明",
+      "summary": "24歳のガウスが『ディスクィジティオネス・アリトメティカエ(整数論)』を刊行した。合同式の記法を整備し、オイラーやルジャンドルが証明しきれなかった平方剰余の相互法則に初の完全な証明を与えた。\n\nガウスはこの法則を「黄金定理」と呼び、生涯に複数の異なる証明を残した。素数どうしの間に潜む対称性を示すこの定理は、後の類体論からラングランズ・プログラムに至る数論の主軸となっていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Disquisitiones Arithmeticae",
+          "url": "https://en.wikipedia.org/wiki/Disquisitiones_Arithmeticae"
+        }
+      ]
+    },
+    {
+      "date": "1822-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "応用への波及",
+      "title": "フーリエ『熱の解析的理論』刊行",
+      "summary": "フーリエが熱伝導の研究をまとめ、任意の関数を三角関数の無限和で表せるという主張を体系化した。数学的な厳密さをめぐり、当時は有力数学者からの批判も受けた。\n\nこの「フーリエ級数」は音声や画像の圧縮、医療画像、信号処理の基盤となった。同時に「関数とは何か」という問いを純粋数学に突きつけ、後の集合論の誕生を刺激した点でも重要で、応用と純粋が互いを育てる循環の好例である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Joseph Fourier",
+          "url": "https://en.wikipedia.org/wiki/Joseph_Fourier"
+        }
+      ]
+    },
+    {
+      "date": "1859-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "予想と問題提起",
+      "title": "リーマン予想の提示",
+      "summary": "リーマンが論文「与えられた数より小さい素数の個数について」で、ゼータ関数を複素数へ拡張し、その非自明な零点はすべて実部1/2の直線上にあると予想した。\n\nバーゼル問題(定理と証明レイヤー)に始まる級数が、素数の分布という数論の核心と結ばれた瞬間である。予想は1900年のヒルベルトの23問題、2000年のミレニアム懸賞問題に引き継がれ、今なお未解決の**数学最大の未解決問題**とされる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Riemann hypothesis",
+          "url": "https://en.wikipedia.org/wiki/Riemann_hypothesis"
+        }
+      ]
+    },
+    {
+      "date": "1874-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "定理と証明",
+      "title": "カントール、無限に大小があることを証明",
+      "summary": "カントールが、実数全体は自然数全体と一対一に対応づけられないことを証明し、無限集合の間にも「濃度」の違いがあることを初めて示した。\n\n「無限はひとつ」という直観を覆すこの結果は同時代の数学者から激しい反発を受けたが、やがて集合論として数学全体の共通言語になった。さらに連続体仮説という新たな問い(予想と問題提起レイヤー)を生み、それは後のゲーデルの仕事につながる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Cantor's first set theory article",
+          "url": "https://en.wikipedia.org/wiki/Cantor%27s_first_set_theory_article"
+        }
+      ]
+    },
+    {
+      "date": "1900-08-08",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "予想と問題提起",
+      "title": "ヒルベルト、23の問題を提示",
+      "summary": "パリの国際数学者会議でヒルベルトが講演し、20世紀の数学が取り組むべき23の問題を提示した。リーマン予想や連続体仮説、算術の無矛盾性の証明などが含まれる。\n\n**問いを立てること自体が数学を駆動する**ことを示した講演であり、以後100年の研究の地図となった。皮肉にも、算術の無矛盾性を証明せよという第2問題は、31年後のゲーデル(定理と証明レイヤー)によって否定的な形で決着する。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Hilbert's problems",
+          "url": "https://en.wikipedia.org/wiki/Hilbert%27s_problems"
+        }
+      ]
+    },
+    {
+      "date": "1931-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "定理と証明",
+      "title": "ゲーデルの不完全性定理",
+      "summary": "ゲーデルが、算術を含む無矛盾な形式体系には証明も反証もできない命題が必ず存在すること、そして体系は自身の無矛盾性を証明できないことを示した。\n\n数学の完全な基礎づけを目指すヒルベルトの計画(予想と問題提起レイヤー)に根本的な限界を突きつけた結果だが、その証明技法は計算可能性の理論を生み、チューリングを経てコンピュータの理論的な土台となった。限界の証明が新しい分野を開いた逆説である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Gödel's incompleteness theorems",
+          "url": "https://en.wikipedia.org/wiki/G%C3%B6del%27s_incompleteness_theorems"
+        }
+      ]
+    },
+    {
+      "date": "1948-07-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "応用への波及",
+      "title": "シャノン「通信の数学的理論」発表",
+      "summary": "シャノンが情報を確率とビットで定量化する理論を発表し、あらゆる通信路には誤りなく情報を送れる限界(通信路容量)が存在することを数学的に示した。\n\nブール代数や確率論という純粋数学の道具が、通信という工学の全体を一つの理論で説明してみせた。デジタル革命の理論的な出発点であり、エントロピーの概念を介して物理学や統計学とも結ばれている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: A Mathematical Theory of Communication",
+          "url": "https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication"
+        }
+      ]
+    },
+    {
+      "date": "1976-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "定理と証明",
+      "title": "四色定理、コンピュータで証明される",
+      "summary": "どんな地図も4色あれば隣り合う領域を塗り分けられるという1852年以来の予想を、アッペルとハーケンが約2,000通りの配置をコンピュータで検証することにより証明した。\n\n人間が一生かけても読み切れない証明は「これは数学の証明といえるのか」という論争を呼んだ。証明とは何かという問いを実務のレベルで突きつけた最初の事件であり、半世紀後の形式検証(応用への波及レイヤー)を先取りしていた。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "定理自体への反例は見つかっていないが、コンピュータに依存する証明を数学的証明と認めるかは当時激しく議論され、検証方法の評価には現在も立場の差がある。",
+      "sources": [
+        {
+          "title": "Wikipedia: Four color theorem",
+          "url": "https://en.wikipedia.org/wiki/Four_color_theorem"
+        }
+      ]
+    },
+    {
+      "date": "1977-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "応用への波及",
+      "title": "RSA暗号の考案、数論が社会基盤になる",
+      "summary": "リベスト、シャミア、エイドルマンの3人が、大きな数の素因数分解の難しさに安全性の根拠を置く公開鍵暗号を考案した。鍵をあらかじめ受け渡さなくても秘密の通信ができる。\n\nフェルマーやオイラーの整数論という**最も実用から遠いとされた分野**が、オンライン取引と通信の安全を支える社会基盤へ転じた。数論の「無用さ」を誇ったハーディの随筆から約40年後の逆転である。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "同等の方式は英国GCHQのコックスが1973年に先に考案していたことが1997年の機密解除で判明しており、発明の先後関係は文脈により語られ方が分かれる。",
+      "sources": [
+        {
+          "title": "Wikipedia: RSA (cryptosystem)",
+          "url": "https://en.wikipedia.org/wiki/RSA_(cryptosystem)"
+        }
+      ]
+    },
+    {
+      "date": "1993-06-23",
+      "precision": "day",
+      "end_date": "1995-05-01",
+      "type": "period",
+      "layer": "定理と証明",
+      "title": "ワイルズ、フェルマー最終定理を証明",
+      "summary": "ワイルズがケンブリッジでの連続講演の最後に証明を発表した。直後の査読で見つかった欠陥を教え子テイラーとともに修正し、1995年5月の論文出版をもって358年の懸案が決着した。\n\n証明の実体は、楕円曲線とモジュラー形式を結ぶ谷山–志村予想の(半安定な場合の)解決である。フェルマーの素朴な問い(予想と問題提起レイヤー)は、現代数学の最深部と結ばれることで初めて落ちた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Wiles's proof of Fermat's Last Theorem",
+          "url": "https://en.wikipedia.org/wiki/Wiles%27s_proof_of_Fermat%27s_Last_Theorem"
+        }
+      ]
+    },
+    {
+      "date": "1994-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "応用への波及",
+      "title": "ショアのアルゴリズム発表",
+      "summary": "ショアが、量子コンピュータであれば素因数分解を効率的に解けるアルゴリズムを発表した。大規模な量子計算機が実現すれば、RSA暗号(1977年)の安全性の前提は崩れることになる。\n\n数論から暗号へ、暗号から量子計算へという応用の連鎖が一巡し、暗号の置き換え(耐量子暗号)という新しい社会課題を生んだ。一つの定理が数十年単位で社会のリスク構造を変えることを示す例である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Shor's algorithm",
+          "url": "https://en.wikipedia.org/wiki/Shor%27s_algorithm"
+        }
+      ]
+    },
+    {
+      "date": "2000-05-24",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "予想と問題提起",
+      "title": "クレイ研究所がミレニアム懸賞問題を発表",
+      "summary": "クレイ数学研究所が、リーマン予想、ポアンカレ予想、P対NP問題など7つの未解決問題に各100万ドルの懸賞金をかけると発表した。ヒルベルトの23問題からちょうど100年後にあたる。\n\n賞金という分かりやすい形で、数学の未解決問題が一般のニュースとして扱われるようになった。7問のうち解決されたのは現在までポアンカレ予想(定理と証明レイヤー)のみで、しかも解決者は賞金を辞退することになる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Millennium Prize Problems",
+          "url": "https://en.wikipedia.org/wiki/Millennium_Prize_Problems"
+        }
+      ]
+    },
+    {
+      "date": "2002-11-11",
+      "precision": "day",
+      "end_date": "2006-08-22",
+      "type": "period",
+      "layer": "定理と証明",
+      "title": "ペレルマン、ポアンカレ予想を証明",
+      "summary": "ペレルマンが3本のプレプリントをarXivに投稿し、リッチフローを用いてポアンカレ予想を含む幾何化予想を解決した。国際的な検証には約4年を要し、2006年のフィールズ賞は本人が辞退した。\n\n査読誌を経ずアーカイブ投稿のみで公表し、後にクレイ研究所の賞金100万ドルも辞退した。宇宙の形にも通じる位相幾何学の百年の難問が、**名誉と無縁の一人の研究者**によって静かに閉じられた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "arXiv: The entropy formula for the Ricci flow and its geometric applications (math/0211159)",
+          "url": "https://arxiv.org/abs/math/0211159"
+        }
+      ]
+    },
+    {
+      "date": "2013-05-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "定理と証明",
+      "title": "張益唐、素数の間隔に有限の上界を証明",
+      "summary": "ほぼ無名だった張益唐が、差が7,000万以下である素数の組が無限に存在することを証明し、論文がアナルズ誌に受理された。差2の組を問う双子素数予想に対する、史上初の「有限の壁」だった。\n\n発表直後から世界中の数学者がオンライン共同研究「Polymath」で改良を重ね、上界は数カ月で246まで縮んだ。孤高の証明と開かれた共同作業が連続したこの出来事は、数学の営みの新旧両面を同時に見せた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Yitang Zhang",
+          "url": "https://en.wikipedia.org/wiki/Yitang_Zhang"
+        }
+      ]
+    },
+    {
+      "date": "2023-12-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "応用への波及",
+      "title": "タオら、最新の定理を証明支援系Leanで形式化",
+      "summary": "フィールズ賞受賞者テレンス・タオらが、発表から数週間しか経っていない最新の定理(多項式フライマン–ルジャ予想の解決)を証明支援システムLeanで形式化し、機械による検証を完了したと報告した。\n\n四色定理(定理と証明レイヤー)が突きつけた「計算機による証明は信用できるか」という問いから約半世紀を経て、今度は計算機が証明の正しさを保証する側に回った。大人数が分担して証明を検証する、数学の共同研究の新しい形も示した。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "形式化完了の時期と作業規模は著者らのブログ等の当事者発信に基づき、第三者によるまとまった検証記録はない。",
+      "sources": [
+        {
+          "title": "Terence Tao's blog: Formalizing the proof of PFR in Lean4 (2023)",
+          "url": null
+        }
+      ]
+    }
+  ]
+}

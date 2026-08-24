@@ -1,0 +1,357 @@
+{
+  "slug": "culture-literary-awards",
+  "title": "文学賞の系譜",
+  "description": "ノーベル賞から芥川賞・本屋大賞まで。賞という制度、作家と作品、読者と市場の3層を重ね、文学賞が文学をどう動かし、時に文学が賞の外で動いたかをたどる年表。",
+  "category": "culture",
+  "language": "ja",
+  "start_year": 1901,
+  "end_year": 2024,
+  "layers": [
+    {
+      "name": "賞の制度",
+      "color": "gold"
+    },
+    {
+      "name": "作家と作品",
+      "color": "blue"
+    },
+    {
+      "name": "読者と市場",
+      "color": "pink"
+    }
+  ],
+  "events": [
+    {
+      "date": "1901-12-10",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "賞の制度",
+      "title": "第1回ノーベル文学賞授与",
+      "summary": "アルフレッド・ノーベルの遺言に基づく第1回ノーベル文学賞が、フランスの詩人シュリ・プリュドムに授与された。遺言にある「理想的な方向」という選考基準の解釈は、以後1世紀にわたり論争の種であり続ける。\n\n国境を越えて作家に権威を与える最初の仕組みであり、以後の各国の文学賞の参照点となった。**賞が文学の世界地図を描く時代**の始まりである。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "NobelPrize.org: The Nobel Prize in Literature 1901",
+          "url": "https://www.nobelprize.org/prizes/literature/1901/summary/"
+        }
+      ]
+    },
+    {
+      "date": "1935-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "賞の制度",
+      "title": "菊池寛が芥川賞・直木賞を創設",
+      "summary": "菊池寛が友人の芥川龍之介と直木三十五を記念し、文藝春秋社を母体に芥川賞・直木賞を創設した。純文学の新人に贈る芥川賞と大衆文芸の直木賞という二本立ては、日本の文学地図を長く規定することになる。\n\n**出版社が賞を作り、賞が雑誌を売る**という構図の原型であり、選考会と受賞発表は出版ジャーナリズムの行事として定着していく。この構造は約70年後の綿矢・金原同時受賞(読者と市場レイヤー)で頂点に達する。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "日本文学振興会: 芥川龍之介賞・直木三十五賞",
+          "url": null
+        },
+        {
+          "title": "Wikipedia: 芥川龍之介賞",
+          "url": "https://ja.wikipedia.org/wiki/芥川龍之介賞"
+        }
+      ]
+    },
+    {
+      "date": "1945-01-01",
+      "precision": "year",
+      "end_date": "1948-12-31",
+      "type": "period",
+      "layer": "賞の制度",
+      "title": "芥川賞・直木賞の中断",
+      "summary": "戦局の悪化と敗戦後の混乱により、芥川賞・直木賞は1945年から1948年まで中断された。用紙の統制など、出版そのものが困難な時期だった。\n\n1949年の再開後、賞は戦後文壇の登竜門として権威を強めていく。一方でこの空白期に太宰治や坂口安吾ら無頼派が読者の熱狂的な支持で台頭したことは、賞の制度と文学の動きが必ずしも一致しないことを示す例でもある。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 芥川龍之介賞",
+          "url": "https://ja.wikipedia.org/wiki/芥川龍之介賞"
+        }
+      ]
+    },
+    {
+      "date": "1956-01-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "作家と作品",
+      "title": "石原慎太郎「太陽の季節」が芥川賞受賞",
+      "summary": "一橋大学在学中の石原慎太郎が「太陽の季節」で第34回芥川賞を受賞した。既成のモラルへの挑発を含む作品は選考会でも賛否が割れ、受賞自体が事件として報じられた。\n\n受賞を機に単行本はベストセラーとなり、同年の映画化を経て「太陽族」という流行現象(読者と市場レイヤー)を生む。受賞がメディアイベントになった最初期の例とされ、以後の芥川賞報道の原型となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 太陽の季節",
+          "url": "https://ja.wikipedia.org/wiki/太陽の季節"
+        }
+      ]
+    },
+    {
+      "date": "1956-05-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "読者と市場",
+      "title": "「太陽族」ブームが社会現象に",
+      "summary": "「太陽の季節」の映画公開を機に、無軌道な若者風俗を指す「太陽族」という語が流行し、若者の模倣を懸念する映画への批判運動も起きた。\n\n芥川賞(賞の制度レイヤー)が生んだ作品が、文学の枠を超えて風俗現象となった事例である。ただし「太陽族」の語の起源や現象の実際の規模には諸説があり、メディアが作り上げた流行という側面も指摘されている。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "「太陽族」という語の起源(大宅壮一の命名とする説など)や、若者風俗としての実態・規模については諸説ある。",
+      "sources": [
+        {
+          "title": "Wikipedia: 太陽族",
+          "url": "https://ja.wikipedia.org/wiki/太陽族"
+        }
+      ]
+    },
+    {
+      "date": "1968-10-17",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "作家と作品",
+      "title": "川端康成が日本人初のノーベル文学賞",
+      "summary": "川端康成が日本人として初めてノーベル文学賞を受賞した。授賞理由は「日本人の心の精髄を、すぐれた感受性をもって表現した」ことだった。\n\n戦後日本の国際復帰を象徴する文化的事件として報じられ、記念講演「美しい日本の私」も広く読まれた。サイデンステッカーら翻訳者の貢献が強調されるなど、翻訳が賞の前提になるという世界文学の構造も可視化した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "NobelPrize.org: The Nobel Prize in Literature 1968",
+          "url": "https://www.nobelprize.org/prizes/literature/1968/summary/"
+        }
+      ]
+    },
+    {
+      "date": "1969-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "賞の制度",
+      "title": "英国でブッカー賞創設",
+      "summary": "英国で英連邦の作家を対象とする長編小説の賞、ブッカー賞が創設され、第1回はP・H・ニュービーの「Something to Answer For」が受賞した。\n\n後に候補作の段階的発表や賭け率の報道まで含めた「レース」の演出で部数を動かす賞となり、賞を出版マーケティングの中核に据える英国型モデルを確立する。2005年には国際版も設けられ、翻訳文学の市場(読者と市場レイヤー)を世界的に広げた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "The Booker Prizes: 賞の沿革",
+          "url": null
+        },
+        {
+          "title": "Wikipedia: Booker Prize",
+          "url": "https://en.wikipedia.org/wiki/Booker_Prize"
+        }
+      ]
+    },
+    {
+      "date": "1976-07-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "作家と作品",
+      "title": "村上龍「限りなく透明に近いブルー」受賞",
+      "summary": "群像新人文学賞を受けた村上龍「限りなく透明に近いブルー」が第75回芥川賞を受賞した。米軍基地の町を舞台にした感覚的な文体は選考でも読者の間でも賛否を呼んだ。\n\n単行本は刊行後まもなくミリオンセラーになったとされ、芥川賞受賞作の商業的な破壊力を再認識させた。20年前の石原慎太郎と並び、若い書き手のスキャンダラスな登場を賞が増幅する構図の典型例となった。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "「ミリオンセラー」とされる部数は出版社の公称に基づくもので、実売部数の第三者による検証はない。",
+      "sources": [
+        {
+          "title": "Wikipedia: 限りなく透明に近いブルー",
+          "url": "https://ja.wikipedia.org/wiki/限りなく透明に近いブルー"
+        }
+      ]
+    },
+    {
+      "date": "1987-09-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "読者と市場",
+      "title": "「ノルウェイの森」が記録的ベストセラー",
+      "summary": "村上春樹の長編「ノルウェイの森」が講談社から刊行され、上下巻あわせて数百万部と伝えられる記録的なベストセラーとなった。\n\n村上は芥川賞を受賞しないまま国内最大の作家となり、後年は毎年ノーベル賞報道の的となる。**賞の外側で文学市場が動く**ことを示した代表例であり、賞の制度レイヤーの権威と市場の論理の乖離を象徴する存在であり続けている。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "累計部数は集計時点や上下巻の合算方法により400万部超などと幅があり、確定した数値はない。",
+      "sources": [
+        {
+          "title": "Wikipedia: ノルウェイの森",
+          "url": "https://ja.wikipedia.org/wiki/ノルウェイの森"
+        }
+      ]
+    },
+    {
+      "date": "1994-10-13",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "作家と作品",
+      "title": "大江健三郎がノーベル文学賞受賞",
+      "summary": "大江健三郎が日本人として2人目のノーベル文学賞を受賞した。授賞理由では、詩的な言語によって現実と神話の混交する世界を作り出したことが挙げられた。\n\n受賞直後に文化勲章を辞退し、賞と国家の距離について議論を呼んだ。川端康成の受賞から26年、日本文学の国際的評価の軸が「美しい日本」の美学から戦後民主主義の文学へと移ったことを示す出来事でもある。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "NobelPrize.org: The Nobel Prize in Literature 1994",
+          "url": "https://www.nobelprize.org/prizes/literature/1994/summary/"
+        }
+      ]
+    },
+    {
+      "date": "2004-01-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "作家と作品",
+      "title": "綿矢りさ・金原ひとみが最年少で同時受賞",
+      "summary": "第130回芥川賞を19歳の綿矢りさ「蹴りたい背中」と20歳の金原ひとみ「蛇にピアス」が同時受賞し、史上最年少記録を更新した。若い女性作家2人の受賞は文芸の枠を超えて報道された。\n\n受賞作を掲載した「文藝春秋」は異例の売れ行き(読者と市場レイヤー)となり、賞が若さと話題性を増幅する装置として機能した平成期の頂点といえる。純文学の読者層を一時的に大きく広げた出来事でもあった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 芥川龍之介賞",
+          "url": "https://ja.wikipedia.org/wiki/芥川龍之介賞"
+        }
+      ]
+    },
+    {
+      "date": "2004-02-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "読者と市場",
+      "title": "受賞作掲載の「文藝春秋」が100万部超",
+      "summary": "綿矢りさ・金原ひとみの受賞作を全文掲載した「文藝春秋」2004年3月号が発売され、同誌として過去最大級となる100万部を超える発行部数に達したと発表された。\n\n総合月刊誌が受賞作掲載号で100万部を超えるのは異例であり、芥川賞というブランドの集客力を数字で示した。1935年の創設時に組み込まれた、賞が雑誌を売るという構図(賞の制度レイヤー)の約70年後の到達点である。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "「100万部超」は発行元の発表に基づく発行・増刷部数であり、実売数の第三者による検証はない。",
+      "sources": [
+        {
+          "title": "文藝春秋2004年3月号(第130回芥川賞発表号)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2004-04-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "賞の制度",
+      "title": "本屋大賞創設、第1回は「博士の愛した数式」",
+      "summary": "全国の書店員の投票だけで「いちばん売りたい本」を決める本屋大賞が創設され、第1回は小川洋子「博士の愛した数式」が受賞した。運営は書店員有志によるNPOが担う。\n\n作家や批評家による選考会という従来の権威への異議として生まれ、受賞作が確実に売れる賞として出版界での存在感を急速に高めた。**選ぶ権威が選考委員から売り場へ**移った、賞の歴史の転換点である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "本屋大賞公式サイト",
+          "url": "https://www.hontai.or.jp/"
+        }
+      ]
+    },
+    {
+      "date": "2015-07-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "作家と作品",
+      "title": "又吉直樹「火花」が芥川賞受賞",
+      "summary": "お笑い芸人・又吉直樹の中編「火花」が第153回芥川賞を受賞した。純文学の新人賞を現役の芸人が受けたことは、テレビ・ネット・出版を横断する大きな話題となった。\n\n単行本は芥川賞受賞作として過去最大級の部数に達したと発表され、文芸書市場の縮小が続くなかで賞の集客力(読者と市場レイヤー)を改めて示した。テレビというメディアと文学賞の距離が最も縮まった事例である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 火花 (小説)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2017-10-05",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "作家と作品",
+      "title": "カズオ・イシグロがノーベル文学賞受賞",
+      "summary": "長崎生まれの英国作家カズオ・イシグロがノーベル文学賞を受賞した。「日の名残り」「わたしを離さないで」で知られ、日本では「日系作家」の受賞として大きく報じられた。\n\n5歳で渡英し英語で書き続けた作家の受賞は、国籍や母語で文学を区分する視線の限界を示した。前年の音楽家ボブ・ディランへの授賞に続き、ノーベル賞自体が「文学」の境界を広げつつある時期の受賞でもあった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "NobelPrize.org: The Nobel Prize in Literature 2017",
+          "url": "https://www.nobelprize.org/prizes/literature/2017/summary/"
+        }
+      ]
+    },
+    {
+      "date": "2018-05-04",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "賞の制度",
+      "title": "ノーベル文学賞、2018年の発表見送り",
+      "summary": "選考主体のスウェーデン・アカデミーが、関係者を巡るスキャンダルと内部対立を受けて2018年のノーベル文学賞の発表見送りを決めた。授与の延期は1949年以来の事態と報じられた。\n\n**賞という制度そのものの信頼が問われた**出来事であり、選考体制の刷新を経て2019年に2年分がまとめて発表された。権威が人の組織である以上、賞もまた歴史の審判を受けることを示した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "NobelPrize.org: The Nobel Prize in Literature 2018",
+          "url": "https://www.nobelprize.org/prizes/literature/2018/summary/"
+        }
+      ]
+    },
+    {
+      "date": "2018-12-01",
+      "precision": "month",
+      "end_date": "2021-12-31",
+      "type": "period",
+      "layer": "読者と市場",
+      "title": "「キム・ジヨン」邦訳とK文学ブーム",
+      "summary": "チョ・ナムジュ「82年生まれ、キム・ジヨン」の邦訳刊行を起点に、韓国文学の翻訳出版が日本で相次ぎ、「K文学ブーム」と呼ばれる状況が生まれた。\n\n書店の棚づくりとSNSの読者コミュニティが牽引した現象で、賞の制度レイヤーとは別の回路で翻訳文学の市場が動いた例である。2024年のハン・ガンのノーベル文学賞受賞は、日本ではこのブームの延長線上で受け止められた。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "「ブーム」の起点・終点に明確な定義はなく、期間の区切りは便宜的なもの。市場規模を示す統一的な統計もない。",
+      "sources": [
+        {
+          "title": "筑摩書房: 82年生まれ、キム・ジヨン(日本語版)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2024-10-10",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "作家と作品",
+      "title": "ハン・ガンがノーベル文学賞受賞",
+      "summary": "韓国の作家ハン・ガンがノーベル文学賞を受賞した。韓国初のノーベル文学賞であり、「菜食主義者」「少年が来る」など、歴史的な傷に向き合う詩的な散文が評価された。\n\n2016年の国際ブッカー賞(賞の制度レイヤー)が世界的評価の足場となっており、翻訳者との協働を含め**賞が賞を呼ぶ**現代の評価回路を体現する。日本ではK文学ブームで広がった読者層がこの受賞を迎えた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "NobelPrize.org: The Nobel Prize in Literature 2024",
+          "url": "https://www.nobelprize.org/prizes/literature/2024/summary/"
+        }
+      ]
+    }
+  ]
+}

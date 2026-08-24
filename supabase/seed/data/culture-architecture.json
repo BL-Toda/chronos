@@ -1,0 +1,367 @@
+{
+  "slug": "culture-architecture",
+  "title": "建築様式の進化",
+  "description": "鉄とガラスの時代からモダニズムの成立と批判、ポストモダン、そして木造回帰まで。様式の思想・技術と材料・都市と生活の3層を重ね、建築が各時代の社会にどう応えたかを辿る年表。",
+  "category": "culture",
+  "language": "ja",
+  "start_year": 1851,
+  "end_year": 2022,
+  "layers": [
+    {
+      "name": "様式と思想",
+      "color": "purple"
+    },
+    {
+      "name": "技術と材料",
+      "color": "blue"
+    },
+    {
+      "name": "都市と生活",
+      "color": "gold"
+    }
+  ],
+  "events": [
+    {
+      "date": "1851-05-01",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と材料",
+      "title": "ロンドン万博の水晶宮が開幕",
+      "summary": "第1回万国博覧会の会場として、ジョセフ・パクストン設計の水晶宮が開幕した。鋳鉄とガラスの規格部材を工場で量産し現場で組み立てる方式により、巨大な展示空間をわずか数か月で建て上げた。\n\n建築家ではなく温室技師の手による建物が時代の象徴となり、**部材の工業生産**という20世紀建築の前提がここで示された。石を積む建築から、組み立てる建築への転換点である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: The Crystal Palace",
+          "url": "https://en.wikipedia.org/wiki/The_Crystal_Palace"
+        }
+      ]
+    },
+    {
+      "date": "1885-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と材料",
+      "title": "シカゴにホーム・インシュランス・ビル完成",
+      "summary": "シカゴに、建物の重さを鉄の骨組みに負担させるホーム・インシュランス・ビルが完成した。組積造の厚い壁から構造を解放し、高層化への道を開いたとされる。\n\n「世界初の超高層ビル」と紹介されるが、鉄骨の負担割合など技術的根拠には異論もある。大火後のシカゴで地価高騰と土地不足が高さを要請したという、都市と生活レイヤーの事情が技術を押し上げた例である。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "「最初の超高層ビル」という位置づけは定義に依存し、構造の先進性の評価も建築史家の間で分かれている。",
+      "sources": [
+        {
+          "title": "Wikipedia: Home Insurance Building",
+          "url": "https://en.wikipedia.org/wiki/Home_Insurance_Building"
+        }
+      ]
+    },
+    {
+      "date": "1889-03-31",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と材料",
+      "title": "エッフェル塔完成、300メートルの鉄塔",
+      "summary": "パリ万博に合わせ、ギュスターヴ・エッフェルの設計事務所による約300メートルの錬鉄塔が完成した。当時世界一の高さで、風の力を計算に基づき処理する構造設計の到達点だった。\n\n建設中には芸術家たちが「無用で醜怪な塔」と抗議したが、完成後は都市の象徴として受け入れられていく。新技術と美意識の衝突、そして構築物が都市の顔に転じる過程(都市と生活レイヤー)は、後のビルバオまで繰り返される。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Eiffel Tower",
+          "url": "https://en.wikipedia.org/wiki/Eiffel_Tower"
+        }
+      ]
+    },
+    {
+      "date": "1919-04-01",
+      "precision": "month",
+      "end_date": "1933-07-31",
+      "type": "period",
+      "layer": "様式と思想",
+      "title": "バウハウスの14年",
+      "summary": "ヴァルター・グロピウスがワイマールに造形学校バウハウスを設立。工芸と芸術の分離を排し、**芸術と産業の統合**を掲げる教育で、家具から建築までの機能主義デザインを体系化した。\n\nデッサウ移転を経て、ナチスの圧力により1933年に閉校。だが教師と学生の亡命が結果的に理念を世界へ拡散させ、米国での国際様式の受容や戦後の設計教育の土台となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Bauhaus",
+          "url": "https://en.wikipedia.org/wiki/Bauhaus"
+        }
+      ]
+    },
+    {
+      "date": "1923-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "様式と思想",
+      "title": "ル・コルビュジエ『建築をめざして』刊行",
+      "summary": "ル・コルビュジエが論集『建築をめざして』を刊行し、「住宅は住むための機械である」の言葉とともに、工業製品の論理で建築を再定義するモダニズムの綱領を示した。\n\n自動車や客船を美の規範に挙げる主張は、水晶宮以来の技術と材料レイヤーの蓄積を思想の言葉に翻訳するものだった。装飾を廃した白い住宅群の実作がこれに続き、その射程はやがて都市計画論へも拡張されていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Vers une architecture",
+          "url": "https://en.wikipedia.org/wiki/Vers_une_architecture"
+        }
+      ]
+    },
+    {
+      "date": "1932-02-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "様式と思想",
+      "title": "MoMA「近代建築展」が国際様式を定義",
+      "summary": "ニューヨーク近代美術館で、ヒッチコックとフィリップ・ジョンソンの企画による近代建築の展覧会が開かれ、欧州の新しい建築を「インターナショナル・スタイル」として整理・命名した。\n\n社会改革の思想を帯びていた欧州モダニズムを、様式すなわち見た目の語彙として米国へ輸入した展覧会と評される。命名により普及が加速する一方で思想の脱色という代償も指摘され、後のポストモダンからの批判の伏線となる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "MoMA: Modern Architecture: International Exhibition (1932)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1952-10-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "都市と生活",
+      "title": "ユニテ・ダビタシオン(マルセイユ)竣工",
+      "summary": "ル・コルビュジエ設計の集合住宅ユニテ・ダビタシオンがマルセイユに完成した。337戸に商店街や屋上庭園を積層し、戦後フランスの深刻な住宅難に「垂直の村」で応えた。\n\n人体寸法に基づく尺度モデュロールを全面適用した実作で、粗打ちコンクリートの表現は後のブルータリズムの源流となる。ただし理念先行の大規模集合住宅は、後年プルーイット・アイゴーの失敗で厳しく問い直されることになる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Fondation Le Corbusier: Unité d'habitation, Marseille",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1958-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と材料",
+      "title": "シーグラム・ビル完成、カーテンウォールの規範に",
+      "summary": "ミース・ファン・デル・ローエ設計のシーグラム・ビルがニューヨークに完成した。ブロンズとガラスのカーテンウォールと前面広場を持つ構成は、以後の超高層オフィスの世界的な規範となった。\n\n「レス・イズ・モア」の美学の到達点とされ、当時最も建設費の高い超高層とも報じられた。前面広場の評価はニューヨークの容積率優遇制度(都市と生活レイヤー)を後に生み、企業の威信が都市空間を形づくる時代を象徴する。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "「当時世界で最も建設費の高い超高層」という言及は報道・二次資料に基づくもので、一次的な費用の開示は確認できない。",
+      "sources": [
+        {
+          "title": "Wikipedia: Seagram Building",
+          "url": "https://en.wikipedia.org/wiki/Seagram_Building"
+        }
+      ]
+    },
+    {
+      "date": "1960-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "様式と思想",
+      "title": "世界デザイン会議で「メタボリズム」宣言",
+      "summary": "東京で開かれた世界デザイン会議に合わせ、菊竹清訓、黒川紀章らが宣言文書「METABOLISM 1960」を発表した。都市と建築を新陳代謝する生命体と捉え、成長と交換を前提とする設計を唱えた。\n\n高度成長期の日本の人口集中という都市と生活レイヤーの現実が生んだ、日本発の建築運動である。理念は後に中銀カプセルタワービルで実作となるが、その建物の運命は思想と現実の距離をも示すことになる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Metabolism (architecture)",
+          "url": "https://en.wikipedia.org/wiki/Metabolism_(architecture)"
+        }
+      ]
+    },
+    {
+      "date": "1966-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "様式と思想",
+      "title": "ヴェンチューリ『建築の多様性と対立性』刊行",
+      "summary": "ロバート・ヴェンチューリが著書で「レス・イズ・ア・ボア(退屈)」と切り返し、単純明快を求めるモダニズムに対して、曖昧さや折衷、歴史的引用を含む建築の豊かさを擁護した。\n\nMoMAから出版された本書は、ポストモダン建築の理論的出発点とされる。国際様式がその定義から30年余りで内部から批判された形であり、様式の交代がまず思想の言葉から始まるという本年表の型を示す例でもある。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "MoMA: Complexity and Contradiction in Architecture (1966)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1972-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "都市と生活",
+      "title": "中銀カプセルタワービル完成",
+      "summary": "黒川紀章設計の中銀カプセルタワービルが東京・銀座に完成した。工場生産した140個のカプセル住戸を2本のコアに取り付ける構成で、メタボリズムの理念を体現した代表的な実作である。\n\nカプセルは将来の交換が想定され、世界初のカプセル型集合住宅と紹介されることが多い。都心に暮らす単身ビジネスマンという新しい生活像に応えた点で、都市と生活レイヤーの実験でもあった。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "「世界初のカプセル型集合住宅」という位置づけは定義に依存し、先行例の扱いによって見解が分かれる。",
+      "sources": [
+        {
+          "title": "Wikipedia: Nakagin Capsule Tower",
+          "url": "https://en.wikipedia.org/wiki/Nakagin_Capsule_Tower"
+        }
+      ]
+    },
+    {
+      "date": "1972-03-16",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "都市と生活",
+      "title": "プルーイット・アイゴー団地の爆破解体が始まる",
+      "summary": "米セントルイスの大規模公営住宅プルーイット・アイゴーで、荒廃した棟の爆破解体が始まった。モダニズムの手法で計画された団地の、竣工から20年足らずでの取り壊しだった。\n\n評論家ジェンクスは爆破の瞬間を「**モダニズム建築が死んだ日**」と呼んだが、失敗の主因を設計に帰すこの語りには、人種隔離や維持財源の欠如といった政策要因を軽視しているとの批判が強い。建築に何が背負えるのかを問う事件である。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "解体をモダニズム建築の失敗の証拠とする解釈は象徴的な語りであり、主因は住宅政策や運営にあったとする研究が有力である。",
+      "sources": [
+        {
+          "title": "Wikipedia: Pruitt–Igoe",
+          "url": "https://en.wikipedia.org/wiki/Pruitt%E2%80%93Igoe"
+        }
+      ]
+    },
+    {
+      "date": "1977-01-31",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と材料",
+      "title": "ポンピドゥー・センター開館",
+      "summary": "パリに、レンゾ・ピアノとリチャード・ロジャース設計のポンピドゥー・センターが開館した。構造や配管、動線を色分けして建物の外側に露出し、内部を自由な無柱空間とするハイテク建築の代表作である。\n\n歴史都市の中心に現れた精製工場のような姿は激しい賛否を呼んだが、前面広場とともに市民へ開かれた文化装置として定着した。技術の表現がそのまま様式となる、技術と材料レイヤーの思想化を示す例である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Centre Pompidou: The Building",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1984-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "様式と思想",
+      "title": "AT&Tビル完成、ポストモダンの記念碑に",
+      "summary": "フィリップ・ジョンソン設計のAT&Tビルがニューヨークに完成した。頂部に家具のような割れたペディメントを載せた石張りの超高層は、ガラスの箱への決別を宣言するものだった。\n\n1932年に国際様式を米国へ紹介した本人によるポストモダン転向であるだけに象徴性が大きく、歴史的意匠の引用が企業建築の主流となる80年代を開いた。ヴェンチューリの理論が超高層のスケールで実現した形といえる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 550 Madison Avenue",
+          "url": "https://en.wikipedia.org/wiki/550_Madison_Avenue"
+        }
+      ]
+    },
+    {
+      "date": "1997-10-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "都市と生活",
+      "title": "グッゲンハイム美術館ビルバオ開館",
+      "summary": "フランク・ゲーリー設計のグッゲンハイム美術館が、造船業の衰退したスペイン・ビルバオに開館した。チタンで覆われた曲面の群れは、航空機設計ソフトを転用する手法(技術と材料レイヤー)で実現された。\n\n開館後の観光客急増による経済再生は**ビルバオ効果**と呼ばれ、各都市が象徴建築を求める潮流を生んだ。ただし効果の金額は自治体系の推計が中心で、他都市での再現性には懐疑も多い。デジタル設計普及の起点でもある。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "経済効果とされる数値は州・市当局や関係機関の推計に基づき、独立した検証は限られている。",
+      "sources": [
+        {
+          "title": "Guggenheim Bilbao: The Building",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2010-01-04",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と材料",
+      "title": "ブルジュ・ハリファ開業、高さ828メートル",
+      "summary": "ドバイに世界一の高さ828メートルを誇るブルジュ・ハリファが開業した。風の影響を抑えるため上昇につれ断面を細めるY字形の平面と、超高強度コンクリートを高所へ圧送する技術がこの高さを支えた。\n\n金融危機でドバイが債務危機に陥った直後の開業で、支援した隣国首長の名へ改称された経緯は、超高層が経済と威信の指標であることを示す。高さ競争の舞台は湾岸・アジアへ移り、欧米中心の摩天楼史が塗り替えられた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Burj Khalifa",
+          "url": "https://en.wikipedia.org/wiki/Burj_Khalifa"
+        }
+      ]
+    },
+    {
+      "date": "2014-03-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "都市と生活",
+      "title": "坂茂がプリツカー賞受賞、紙の建築が評価される",
+      "summary": "紙管を構造材とする避難所や仮設住宅を各地の被災地で建ててきた坂茂が、プリツカー賞を受賞した。神戸の紙の教会からニュージーランドの紙のカテドラルに至る実践が評価された。\n\n記念碑ではなく緊急時の生活を支える建築に最高の栄誉が与えられたことは、象徴建築の造形競争が続いた2000年代からの転換と受け止められた。建築の社会的役割を問い直す流れは、以後の同賞の受賞者選定にも続いていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "The Pritzker Architecture Prize: Shigeru Ban",
+          "url": "https://www.pritzkerprize.com/laureates/shigeru-ban"
+        }
+      ]
+    },
+    {
+      "date": "2019-03-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と材料",
+      "title": "ミョーストーネ完成、木造超高層の時代へ",
+      "summary": "ノルウェーに高さ85.4メートル、18階建ての木造高層ビル、ミョーストーネが完成し、CTBUHに当時の世界最高の木造建築と認定された。集成材と直交集成板(CLT)による構造である。\n\n炭素を蓄える木材は脱炭素時代の構造材として再評価され、各国で耐火規制の見直しと高層木造の計画が続く。鉄とガラスから始まった本年表が、**木への回帰**という円環を描いて現在に至ることを示す事例である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "CTBUH: Mjøstårnet",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2022-04-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "都市と生活",
+      "title": "中銀カプセルタワービル解体始まる",
+      "summary": "老朽化と修繕の困難から、中銀カプセルタワービルの解体が始まった。設計時に想定されたカプセルの交換は、竣工から50年の間に一度も実現しなかった。\n\n交換により生き続けるはずだった建築が、交換できないまま終わった結末は**新陳代謝の思想と現実の距離**を示す。一部のカプセルは取り外されて美術館などに収蔵・再生され、解体をめぐる議論は戦後日本の名建築の保存問題を広く喚起した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Nakagin Capsule Tower",
+          "url": "https://en.wikipedia.org/wiki/Nakagin_Capsule_Tower"
+        }
+      ]
+    }
+  ]
+}

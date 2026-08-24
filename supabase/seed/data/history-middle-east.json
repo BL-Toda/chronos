@@ -1,0 +1,367 @@
+{
+  "slug": "history-middle-east",
+  "title": "中東紛争の構造",
+  "description": "百年にわたる中東の紛争を、戦争・外交・大国の介入という3つの層で重ねて読む。個々の衝突ではなく、紛争が繰り返される構造そのものを浮かび上がらせる年表。",
+  "category": "history-politics",
+  "language": "ja",
+  "start_year": 1917,
+  "end_year": 2024,
+  "layers": [
+    {
+      "name": "戦争と紛争",
+      "color": "pink"
+    },
+    {
+      "name": "外交と和平",
+      "color": "blue"
+    },
+    {
+      "name": "大国の介入と資源",
+      "color": "gold"
+    }
+  ],
+  "events": [
+    {
+      "date": "1917-11-02",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "外交と和平",
+      "title": "バルフォア宣言、ユダヤ人の「民族的郷土」支持",
+      "summary": "英外相バルフォアが、パレスチナにおけるユダヤ人の「民族的郷土」建設への支持を表明する書簡をロスチャイルド卿に送った。第一次大戦中の英国の中東政策の一環である。\n\n同時期の英国はフサイン=マクマホン書簡でアラブ側にも独立を示唆しており、**相互に矛盾する約束**がその後百年の紛争の出発点となった。委任統治(大国の介入と資源レイヤー)の下でユダヤ人移民が増え、両民族の衝突が始まる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "The Avalon Project: Balfour Declaration 1917",
+          "url": "https://avalon.law.yale.edu/20th_century/balfour.asp"
+        }
+      ]
+    },
+    {
+      "date": "1947-11-29",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "外交と和平",
+      "title": "国連総会がパレスチナ分割決議181を採択",
+      "summary": "国連総会が決議181を採択し、パレスチナをユダヤ国家とアラブ国家に分割してエルサレムを国際管理下に置く案を可決した。ユダヤ側は受諾し、アラブ側は拒否した。\n\n英国の委任統治放棄を受けた国際社会の解決案だったが、当事者の合意なき分割は翌年の建国と第一次中東戦争(戦争と紛争レイヤー)に直結した。以後の和平交渉は、常にこの決議の線引きを参照点とし続けることになる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: United Nations Partition Plan for Palestine",
+          "url": "https://en.wikipedia.org/wiki/United_Nations_Partition_Plan_for_Palestine"
+        }
+      ]
+    },
+    {
+      "date": "1948-05-14",
+      "precision": "day",
+      "end_date": "1949-07-20",
+      "type": "period",
+      "layer": "戦争と紛争",
+      "title": "イスラエル建国宣言と第一次中東戦争",
+      "summary": "イスラエルが独立を宣言し、翌日エジプト・ヨルダン・シリアなどアラブ諸国が侵攻して第一次中東戦争が始まった。1949年の休戦協定まで続き、イスラエルは分割決議案を上回る領土を確保した。\n\n戦争の過程で70万人前後のパレスチナ人が故郷を追われ、「ナクバ(大惨事)」と呼ばれる。**難民問題という紛争の核**がここで生まれ、外交と和平レイヤーのすべての和平案が向き合う争点となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 1948 Arab-Israeli War",
+          "url": "https://en.wikipedia.org/wiki/1948_Arab%E2%80%93Israeli_War"
+        }
+      ]
+    },
+    {
+      "date": "1956-10-29",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "大国の介入と資源",
+      "title": "スエズ危機、英仏イスラエルがエジプトへ軍事介入",
+      "summary": "ナセルのスエズ運河国有化を受け、イスラエルがシナイ半島に侵攻し、英仏も運河地帯へ軍事介入した。しかし米ソ双方の圧力により、3か国は撤退に追い込まれた。\n\n運河という資源動脈をめぐる旧宗主国の介入は失敗し、中東の主導権は英仏から米ソへ移った。ナセルはアラブ民族主義の英雄となり、以後の戦争と紛争レイヤーの対立構図を大きく規定していく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Suez Crisis",
+          "url": "https://en.wikipedia.org/wiki/Suez_Crisis"
+        }
+      ]
+    },
+    {
+      "date": "1967-06-05",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "戦争と紛争",
+      "title": "第三次中東戦争、6日間で占領地が拡大",
+      "summary": "イスラエルが先制攻撃でエジプト空軍を壊滅させ、6日間でシナイ半島、ガザ地区、ヨルダン川西岸、東エルサレム、ゴラン高原を占領した。\n\nこの戦争で生じた「占領」が以後の紛争の中心争点となり、「土地と平和の交換」を掲げる国連安保理決議242(外交と和平レイヤー)もここから生まれた。入植地やエルサレムの帰属など、現在まで続く争点の大半がこの6日間に起源を持つ。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Six-Day War",
+          "url": "https://en.wikipedia.org/wiki/Six-Day_War"
+        }
+      ]
+    },
+    {
+      "date": "1973-10-06",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "戦争と紛争",
+      "title": "第四次中東戦争、エジプト・シリアが奇襲",
+      "summary": "ユダヤ教の贖罪日にエジプトとシリアがスエズ運河とゴラン高原で奇襲攻撃を開始した。緒戦はアラブ側が優勢に立ったが、イスラエルが巻き返して停戦に至った。\n\n軍事的には決着がつかなかったが、エジプトは緒戦の成功で交渉の足場を得て、単独和平(外交と和平レイヤー)へ向かう。同月の石油戦略(大国の介入と資源レイヤー)と併せ、中東の戦争が世界経済を直撃した最初の例となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Yom Kippur War",
+          "url": "https://en.wikipedia.org/wiki/Yom_Kippur_War"
+        }
+      ]
+    },
+    {
+      "date": "1973-10-17",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "大国の介入と資源",
+      "title": "アラブ産油国が石油戦略発動、第一次石油危機",
+      "summary": "アラブ石油輸出国機構(OAPEC)がイスラエル支持国への段階的減産と禁輸を決定し、原油価格は数か月で約4倍に高騰した。第一次石油危機である。\n\n**石油が外交兵器として機能する**ことを世界に示し、産油国の発言力を一変させた。消費国は中東和平への関与を強め、翌年以降の米国の仲介外交(外交と和平レイヤー)の背景となる。日本の親アラブ路線への転換など域外国の政策も動かした。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 1973 oil crisis",
+          "url": "https://en.wikipedia.org/wiki/1973_oil_crisis"
+        }
+      ]
+    },
+    {
+      "date": "1978-09-17",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "外交と和平",
+      "title": "キャンプ・デービッド合意",
+      "summary": "カーター米大統領の仲介でエジプトのサダトとイスラエルのベギンが合意に署名し、翌1979年の平和条約でエジプトはアラブ諸国として初めてイスラエルを承認した。\n\nシナイ半島は返還されたが、併記されたパレスチナ自治の枠組みは実現せず、サダトは1981年に暗殺された。**個別和平は成立しても中核の問題は残る**という、以後繰り返される和平の型がここで定まった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Camp David Accords",
+          "url": "https://en.wikipedia.org/wiki/Camp_David_Accords"
+        }
+      ]
+    },
+    {
+      "date": "1979-02-11",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "大国の介入と資源",
+      "title": "イラン革命、親米王政が崩壊",
+      "summary": "ホメイニ率いる革命勢力がパフラヴィー王政を打倒し、イスラム共和国が成立した。米国の中東戦略の柱だった親米国家が、一転して敵対国となった。\n\n革命の波及を恐れた周辺国と米国の警戒がイラン・イラク戦争(戦争と紛争レイヤー)の背景となり、第二次石油危機も引き起こした。宗派と革命理念が国家間対立の軸に加わり、中東の紛争構造は一段と複雑になった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Iranian Revolution",
+          "url": "https://en.wikipedia.org/wiki/Iranian_Revolution"
+        }
+      ]
+    },
+    {
+      "date": "1980-09-22",
+      "precision": "day",
+      "end_date": "1988-08-20",
+      "type": "period",
+      "layer": "戦争と紛争",
+      "title": "イラン・イラク戦争、8年の消耗戦",
+      "summary": "イラクのフセイン政権が国境紛争と革命波及への懸念からイランに侵攻し、8年におよぶ消耗戦となった。1988年、国連安保理決議598の受諾により停戦した。\n\n米ソや湾岸諸国がイラクを支援するなど大国の介入と資源レイヤーと深く絡み、化学兵器の使用も確認された。犠牲者は両国合計で推定数十万人から100万人規模とされるが確定していない。戦後のイラクの巨額債務は1990年のクウェート侵攻の一因となる。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "犠牲者数は推計により数十万人から100万人超まで幅があり、確定した統計は存在しない。",
+      "sources": [
+        {
+          "title": "Wikipedia: Iran-Iraq War",
+          "url": "https://en.wikipedia.org/wiki/Iran%E2%80%93Iraq_War"
+        }
+      ]
+    },
+    {
+      "date": "1990-08-02",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "戦争と紛争",
+      "title": "イラクがクウェート侵攻、湾岸戦争へ",
+      "summary": "イラクがクウェートに侵攻し併合を宣言した。国連安保理は即時撤退を要求し、翌1991年1月に米国主導の多国籍軍が攻撃を開始、2月末にクウェートは解放された。\n\n冷戦終結直後の安保理が一致して行動した稀有な事例だった。石油資源(大国の介入と資源レイヤー)が開戦判断の核心にあり、戦後の米軍サウジアラビア駐留は、後の反米武装闘争が掲げる口実ともなっていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Gulf War",
+          "url": "https://en.wikipedia.org/wiki/Gulf_War"
+        }
+      ]
+    },
+    {
+      "date": "1993-09-13",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "外交と和平",
+      "title": "オスロ合意、イスラエルとPLOが相互承認",
+      "summary": "ノルウェーの仲介による秘密交渉を経て、イスラエルとPLOが相互承認とパレスチナ暫定自治で合意した。ホワイトハウスでラビン首相とアラファト議長が握手した。\n\n和平プロセスの頂点だったが、エルサレム・難民・入植地という核心問題は先送りされた。1995年のラビン暗殺と双方の強硬派の台頭で行き詰まり、**合意の脆さが次の暴力の温床になる**という構図を残した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Oslo Accords",
+          "url": "https://en.wikipedia.org/wiki/Oslo_Accords"
+        }
+      ]
+    },
+    {
+      "date": "2001-09-11",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "大国の介入と資源",
+      "title": "米同時多発テロ、「対テロ戦争」の開始",
+      "summary": "アルカイダが米国で同時多発テロを実行し、約3000人が死亡した。米国は翌月アフガニスタンを攻撃し、「対テロ戦争」を宣言した。\n\n攻撃の背景には湾岸戦争後の米軍サウジアラビア駐留への反発があり、中東の紛争構造が米本土への攻撃として跳ね返った出来事といえる。以後の米国の大規模介入は中東の秩序を大きく揺らし、2003年のイラク戦争へつながっていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: September 11 attacks",
+          "url": "https://en.wikipedia.org/wiki/September_11_attacks"
+        }
+      ]
+    },
+    {
+      "date": "2003-03-20",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "大国の介入と資源",
+      "title": "イラク戦争開戦",
+      "summary": "米英軍が大量破壊兵器の保有を理由にイラクを攻撃し、フセイン政権を打倒した。しかし大量破壊兵器は発見されず、開戦の正当性は今も争われている。\n\n戦後統治の失敗は宗派対立と過激派の温床を生み、後のIS台頭(戦争と紛争レイヤー)につながった。**外部の介入が新たな紛争を生む**という本年表の構造が、最も明瞭に現れた事例とされる。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "開戦理由とされた大量破壊兵器は発見されず、開戦判断の正当性と国際法上の根拠について現在も評価が分かれる。",
+      "sources": [
+        {
+          "title": "Wikipedia: Iraq War",
+          "url": "https://en.wikipedia.org/wiki/Iraq_War"
+        }
+      ]
+    },
+    {
+      "date": "2010-12-17",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "戦争と紛争",
+      "title": "アラブの春の発端、チュニジアで抗議拡大",
+      "summary": "チュニジアの露天商ブアジジの焼身自殺を契機に反政府デモが拡大し、翌月ベンアリ政権が崩壊した。抗議はエジプト、リビア、シリアなどアラブ諸国へ波及した。\n\n民主化の期待は多くの国で内戦や権威主義の再強化に転じ、特にシリアとリビアは長期の内戦(同レイヤー)に陥った。域外大国の介入が各地の内戦を長期化させ、紛争の主形態が国家間戦争から代理戦争へ移る画期となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Arab Spring",
+          "url": "https://en.wikipedia.org/wiki/Arab_Spring"
+        }
+      ]
+    },
+    {
+      "date": "2011-03-15",
+      "precision": "day",
+      "end_date": "2024-12-08",
+      "type": "period",
+      "layer": "戦争と紛争",
+      "title": "シリア内戦、13年でアサド政権崩壊まで",
+      "summary": "アサド政権による抗議デモ弾圧から内戦に発展し、ISの台頭、ロシア・イラン・トルコ・米国など多数の外部勢力が介入する複合紛争となった。2024年12月、反体制派の攻勢で政権は崩壊した。\n\n死者は数十万人、難民・国内避難民は1000万人超とされ、代理戦争化した内戦の典型となった。難民の流出は欧州政治まで揺るがし、中東の紛争が域外に及ぼす影響の大きさを改めて示した。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "内戦の開始日には2011年3月15日の抗議拡大を起点とする説など諸説あり、死者数も監視団体による推計で大きな幅がある。",
+      "sources": [
+        {
+          "title": "Wikipedia: Syrian civil war",
+          "url": "https://en.wikipedia.org/wiki/Syrian_civil_war"
+        }
+      ]
+    },
+    {
+      "date": "2015-07-14",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "外交と和平",
+      "title": "イラン核合意(JCPOA)成立",
+      "summary": "イランと米英仏独中露の6か国が、核開発の制限と制裁解除を柱とする包括的共同作業計画(JCPOA)に合意した。10年以上に及んだ核交渉の到達点である。\n\nしかし2018年に米国が一方的に離脱し、合意は形骸化した。**大国の政権交代で外交成果が覆る**脆弱さを示し、地域各国の核・ミサイル開発と代理勢力間の対立(戦争と紛争レイヤー)はむしろ深まっていった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Joint Comprehensive Plan of Action",
+          "url": "https://en.wikipedia.org/wiki/Joint_Comprehensive_Plan_of_Action"
+        }
+      ]
+    },
+    {
+      "date": "2020-09-15",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "外交と和平",
+      "title": "アブラハム合意、UAEなどがイスラエルと国交",
+      "summary": "米国の仲介でUAEとバーレーンがイスラエルとの国交正常化に合意した。アラブ諸国の正常化はエジプト、ヨルダンに続くもので、後にモロッコとスーダンも加わった。\n\nパレスチナ問題の解決を経ない正常化にパレスチナ側は「裏切り」と反発した。紛争の当事者を置き去りにした和平の限界は、2023年のガザでの戦争(戦争と紛争レイヤー)で改めて問われることになる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Abraham Accords",
+          "url": "https://en.wikipedia.org/wiki/Abraham_Accords"
+        }
+      ]
+    },
+    {
+      "date": "2023-10-07",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "戦争と紛争",
+      "title": "ハマスの奇襲攻撃とガザ戦争",
+      "summary": "ハマスがイスラエルへ大規模な奇襲攻撃を行い、約1200人を殺害し約250人を人質とした。イスラエルはガザ地区への大規模攻撃で応じ、戦闘はレバノンやイエメン、イランへも波及した。\n\nガザ側の死者は保健当局の集計で数万人規模とされるが、独立した検証は難しい。難民・占領・エルサレムという百年来の争点が未解決のまま残っていたことを、最も苛烈な形で示した戦争となった。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "双方の死者数は当事者側の発表に基づき、特にガザ側の集計は独立検証が困難で数値に幅がある。",
+      "sources": [
+        {
+          "title": "Reuters・BBC等による2023年10月7日攻撃とガザ戦争の報道",
+          "url": null
+        }
+      ]
+    }
+  ]
+}

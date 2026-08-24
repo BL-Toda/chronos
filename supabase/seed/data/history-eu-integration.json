@@ -1,0 +1,385 @@
+{
+  "slug": "history-eu-integration",
+  "title": "EU統合の歴史",
+  "description": "石炭鉄鋼共同体から27か国の連合へ。条約による制度づくり、市場と通貨の統合、そして危機と離脱。3層を重ね、EUが危機のたびに深化してきた逆説を追う年表。",
+  "category": "history-politics",
+  "language": "ja",
+  "start_year": 1950,
+  "end_year": 2020,
+  "layers": [
+    {
+      "name": "制度と条約",
+      "color": "blue"
+    },
+    {
+      "name": "市場と通貨",
+      "color": "gold"
+    },
+    {
+      "name": "危機と離脱",
+      "color": "pink"
+    }
+  ],
+  "events": [
+    {
+      "date": "1950-05-09",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と条約",
+      "title": "シューマン宣言、欧州統合の出発点",
+      "summary": "フランス外相シューマンが、独仏の石炭・鉄鋼の共同管理を提案した。モネの構想に基づき、戦争の道具だった基幹産業を超国家機関の下に置くという着想である。\n\n欧州は一挙にではなく具体的な成果の積み重ねで作られる、という宣言の言葉どおり、**機能的な統合の積み重ね**が以後のEUの方法論となった。宣言の5月9日は現在「ヨーロッパ・デー」として記念されている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Schuman Declaration",
+          "url": "https://en.wikipedia.org/wiki/Schuman_Declaration"
+        }
+      ]
+    },
+    {
+      "date": "1952-07-23",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と条約",
+      "title": "欧州石炭鉄鋼共同体(ECSC)発足",
+      "summary": "パリ条約の発効により、フランス・西ドイツ・イタリア・ベネルクス3国の6か国で欧州石炭鉄鋼共同体が発足した。史上初の超国家機関である最高機関が置かれた。\n\n加盟国が主権の一部を共同機関に委ねる仕組みがここで初めて実現した。石炭と鉄鋼という当時の戦争遂行能力そのものを共有することで、独仏の戦争を物理的に不可能にするという安全保障の設計でもあった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: European Coal and Steel Community",
+          "url": "https://en.wikipedia.org/wiki/European_Coal_and_Steel_Community"
+        }
+      ]
+    },
+    {
+      "date": "1957-03-25",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と条約",
+      "title": "ローマ条約調印、EECが誕生へ",
+      "summary": "6か国がローマ条約に調印し、翌1958年に欧州経済共同体(EEC)と欧州原子力共同体が発足した。関税同盟と共同市場の建設が目標に掲げられた。\n\n前年のスエズ危機で欧州の国際的地位の低下が露呈した直後であり、危機が統合を後押しした早い例といえる。経済統合を軸に据えたことで、市場と通貨レイヤーの歩みが実質的にここから始まった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Treaty of Rome",
+          "url": "https://en.wikipedia.org/wiki/Treaty_of_Rome"
+        }
+      ]
+    },
+    {
+      "date": "1973-01-01",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と条約",
+      "title": "第一次拡大、英国など3か国が加盟",
+      "summary": "英国、アイルランド、デンマークが加盟し、共同体は9か国となった。英国の加盟は、ドゴール仏大統領による2度の拒否を経てようやく実現したものである。\n\n英国は当初から通貨統合や社会政策への留保が強く、1975年には早くも残留を問う国民投票を実施した。**距離を置く加盟国**という英国の立ち位置は、40年余り後の離脱(危機と離脱レイヤー)まで一貫する伏線である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 1973 enlargement of the European Communities",
+          "url": "https://en.wikipedia.org/wiki/1973_enlargement_of_the_European_Communities"
+        }
+      ]
+    },
+    {
+      "date": "1979-03-13",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "市場と通貨",
+      "title": "欧州通貨制度(EMS)発足",
+      "summary": "加盟国の為替相場を相互に安定させる欧州通貨制度が発足し、共通の計算単位ECUが導入された。1970年代の変動相場制移行と通貨混乱への対応である。\n\n中核の為替相場メカニズム(ERM)は域内貿易を支えたが、各国の経済力格差を抱えたままの相場安定は投機攻撃(危機と離脱レイヤー)に脆く、1992年の危機で限界を露呈する。単一通貨への長い助走の始まりだった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: European Monetary System",
+          "url": "https://en.wikipedia.org/wiki/European_Monetary_System"
+        }
+      ]
+    },
+    {
+      "date": "1985-06-14",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と条約",
+      "title": "シェンゲン協定調印",
+      "summary": "フランス・西ドイツ・ベネルクス3国の5か国が、共通国境における検問の段階的廃止で合意した。ルクセンブルクの小村シェンゲンで調印された。\n\n発効は1995年と時間を要したが、人の移動の自由を目に見える形にした点で統合の象徴となった。一方で域内の自由移動は、2015年の難民危機(危機と離脱レイヤー)では検問復活論を招く争点にもなっていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Schengen Agreement",
+          "url": "https://en.wikipedia.org/wiki/Schengen_Agreement"
+        }
+      ]
+    },
+    {
+      "date": "1986-02-17",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "市場と通貨",
+      "title": "単一欧州議定書調印、市場統合へ再始動",
+      "summary": "ローマ条約の初の大幅改正となる単一欧州議定書が調印され、1992年末までの域内市場完成が条約上の目標となった。理事会での多数決の適用範囲も拡大された。\n\n「欧州硬化症」と呼ばれた1970年代の停滞を破る再始動であり、ドロール欧州委員長の下で統合は加速期に入る。モノ・ヒト・カネ・サービスの移動自由化が具体化し、単一市場(同レイヤー)への道筋が定まった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Single European Act",
+          "url": "https://en.wikipedia.org/wiki/Single_European_Act"
+        }
+      ]
+    },
+    {
+      "date": "1992-02-07",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と条約",
+      "title": "マーストリヒト条約調印、EU誕生へ",
+      "summary": "欧州連合条約が調印され、翌1993年11月に発効してEUが誕生した。経済通貨同盟への工程表、共通外交・安全保障政策、欧州市民権が盛り込まれた。\n\n批准過程ではデンマークが国民投票で一時否決し、フランスも僅差の承認にとどまるなど、**エリート主導の統合と世論の距離**が初めて表面化した。通貨統合の財政基準は、後のユーロ危機の争点を予告するものだった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Maastricht Treaty",
+          "url": "https://en.wikipedia.org/wiki/Maastricht_Treaty"
+        }
+      ]
+    },
+    {
+      "date": "1992-09-16",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "危機と離脱",
+      "title": "ポンド危機、英国がERM離脱",
+      "summary": "欧州為替相場メカニズム(ERM)内のポンドが大規模な投機売りを浴び、英国は防衛を断念してERMから離脱した。「ブラック・ウェンズデー」と呼ばれる。\n\n投機筋のソロスのファンドは10億ドル超の利益を得たとされるが、正確な額は推定の域を出ない。固定相場の脆さを示したこの危機は、逆に「戻れない単一通貨」ユーロ(市場と通貨レイヤー)への大陸側の決意を強め、英国の通貨統合不参加もここで事実上定まった。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "ソロスのファンドが得たとされる利益額(10億ドル超)は報道による推定で、確定した数値ではない。",
+      "sources": [
+        {
+          "title": "Wikipedia: Black Wednesday",
+          "url": "https://en.wikipedia.org/wiki/Black_Wednesday"
+        }
+      ]
+    },
+    {
+      "date": "1993-01-01",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "市場と通貨",
+      "title": "単一市場発足",
+      "summary": "モノ・ヒト・サービス・資本の移動を自由化する域内単一市場が発足した。単一欧州議定書が掲げた「1992年末」の期限が達成された形である。\n\n世界最大級の統合市場の誕生は加盟希望国を引き寄せ、2004年の東方拡大(制度と条約レイヤー)の吸引力となった。同時に、規制統一をめぐる「ブリュッセルの官僚主義」への批判も英国を中心に強まっていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: European Single Market",
+          "url": "https://en.wikipedia.org/wiki/European_Single_Market"
+        }
+      ]
+    },
+    {
+      "date": "1999-01-01",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "市場と通貨",
+      "title": "単一通貨ユーロ導入",
+      "summary": "11か国で単一通貨ユーロが決済通貨として導入され、2002年1月には現金の流通が始まった。金融政策は新設の欧州中央銀行(ECB)に一元化された。\n\n**通貨は統合し財政は各国に残る**という非対称な設計は導入時から経済学者に指摘されていた弱点であり、10年後のユーロ危機(危機と離脱レイヤー)で現実の試練となる。それでもユーロはドルに次ぐ国際通貨の地位を確立した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Euro",
+          "url": "https://en.wikipedia.org/wiki/Euro"
+        }
+      ]
+    },
+    {
+      "date": "2004-05-01",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と条約",
+      "title": "東方拡大、中東欧など10か国が一挙加盟",
+      "summary": "ポーランド、チェコ、ハンガリー、バルト3国など10か国が加盟し、EUは25か国となった。冷戦で分断された欧州の再統一と位置づけられた。\n\n旧共産圏諸国の民主化と市場経済化をEU加盟という目標が支えた一方、労働移動の拡大は西欧で移民論争を呼び、英国のEU懐疑論(危機と離脱レイヤー)を強める一因ともなった。拡大と深化の緊張が以後の主題となる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 2004 enlargement of the European Union",
+          "url": "https://en.wikipedia.org/wiki/2004_enlargement_of_the_European_Union"
+        }
+      ]
+    },
+    {
+      "date": "2005-05-29",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "危機と離脱",
+      "title": "フランス国民投票で欧州憲法条約を否決",
+      "summary": "EUの憲法条約の批准を問うフランス国民投票で反対が約55%を占めて否決され、3日後にはオランダも否決した。条約は発効不能となった。\n\n統合の「憲法」化という象徴的な深化が原加盟国の国民自身に拒まれた衝撃は大きかった。内容の大半は2007年のリスボン条約(制度と条約レイヤー)に引き継がれたが、国民投票を回避した手法は民主的正統性への批判を残した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 2005 French European Constitution referendum",
+          "url": "https://en.wikipedia.org/wiki/2005_French_European_Constitution_referendum"
+        }
+      ]
+    },
+    {
+      "date": "2007-12-13",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と条約",
+      "title": "リスボン条約調印",
+      "summary": "否決された憲法条約に代わる改革条約としてリスボン条約が調印され、2009年12月に発効した。常任の欧州理事会議長と外交安全保障上級代表が新設された。\n\n離脱手続きを定めた第50条が初めて明文化され、後にBrexit(危機と離脱レイヤー)で現実に使われることになる。批准過程ではアイルランドが一度否決し再投票で承認するなど、世論との緊張はここでも続いた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Treaty of Lisbon",
+          "url": "https://en.wikipedia.org/wiki/Treaty_of_Lisbon"
+        }
+      ]
+    },
+    {
+      "date": "2009-10-01",
+      "precision": "month",
+      "end_date": "2012-09-06",
+      "type": "period",
+      "layer": "危機と離脱",
+      "title": "ユーロ危機、ギリシャの統計修正から波及",
+      "summary": "ギリシャ新政権が財政赤字統計の大幅な下方修正を公表したことを発端に国債市場の信認が崩れ、危機はアイルランド、ポルトガル、スペイン、イタリアへ波及した。ギリシャは2010年以降3次にわたる支援を受けた。\n\n欧州安定メカニズム(ESM)や銀行同盟の創設など、**危機が新たな統合装置を生む**というEU特有の力学が働いた局面である。終息は2012年の国債買い入れ策の表明に置く見方が多いが、確定的ではない。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "危機の起点と終息をどの出来事に置くかは論者により異なり、この期間設定は代表的な整理の一つにすぎない。",
+      "sources": [
+        {
+          "title": "Wikipedia: European debt crisis",
+          "url": "https://en.wikipedia.org/wiki/European_debt_crisis"
+        }
+      ]
+    },
+    {
+      "date": "2012-07-26",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "市場と通貨",
+      "title": "ドラギECB総裁「何でもやる」発言",
+      "summary": "ドラギ欧州中央銀行総裁がロンドンで「ユーロを守るためなら何でもやる」と演説し、9月に国債買い入れ策OMTを発表した。南欧諸国の国債利回りは急速に低下していった。\n\n市場の空気を一変させた転機として語られるが、利回り低下の主因が発言そのものかOMTという制度の裏付けかは、経済学的に議論が続いている。中央銀行が事実上の最後の貸し手となったことで、通貨同盟は財政危機を生き延びた。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "利回り低下の主因が発言自体かOMTの制度設計かについては、研究者の間で評価が分かれる。",
+      "sources": [
+        {
+          "title": "ECB: Speech by Mario Draghi at the Global Investment Conference in London (2012-07-26)",
+          "url": "https://www.ecb.europa.eu/press/key/date/2012/html/sp120726.en.html"
+        }
+      ]
+    },
+    {
+      "date": "2015-09-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "危機と離脱",
+      "title": "難民危機が最高潮に",
+      "summary": "シリア内戦などから逃れた難民・移民の欧州流入が急増し、2015年の庇護申請は100万件を超えたとされる。ドイツは受け入れを表明し、加盟国間の分担をめぐる対立が激化した。\n\nシェンゲンの自由移動(制度と条約レイヤー)は一部の国で検問復活を招き、各国で反EU政党が伸長した。流入者数の集計は機関により異なる。移民問題は翌年の英国民投票(同レイヤー)でも中心的な争点となった。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "流入者数・庇護申請数はUNHCR、Frontex、Eurostatなど集計主体によって定義と数値が異なる。",
+      "sources": [
+        {
+          "title": "Wikipedia: 2015 European migrant crisis",
+          "url": "https://en.wikipedia.org/wiki/2015_European_migrant_crisis"
+        }
+      ]
+    },
+    {
+      "date": "2016-06-23",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "危機と離脱",
+      "title": "英国民投票でEU離脱派が勝利",
+      "summary": "英国のEU残留・離脱を問う国民投票で離脱支持が51.9%となり、キャメロン首相は辞任を表明した。加盟国が離脱を選んだ初めての事例である。\n\n1973年の加盟以来続いた**「距離を置く加盟国」の帰結**であり、移民・主権・拠出金が主な争点となった。リスボン条約50条(制度と条約レイヤー)に定められた離脱手続きが、初めて発動されることになる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 2016 United Kingdom European Union membership referendum",
+          "url": "https://en.wikipedia.org/wiki/2016_United_Kingdom_European_Union_membership_referendum"
+        }
+      ]
+    },
+    {
+      "date": "2017-03-29",
+      "precision": "day",
+      "end_date": "2020-01-31",
+      "type": "period",
+      "layer": "危機と離脱",
+      "title": "離脱交渉から英国のEU離脱まで",
+      "summary": "英国がリスボン条約50条を発動し、離脱条件と将来関係をめぐる交渉が始まった。離脱協定は英議会で3度否決され、メイ首相は退陣、期限は3度延期された末に、2020年1月31日に英国は正式に離脱した。\n\n手続きの困難さは、統合の深さを逆説的に証明した。EU側は27か国の結束を維持し、懸念された「離脱ドミノ」は起きず、世論調査では残る加盟国のEU支持がむしろ上昇した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Brexit",
+          "url": "https://en.wikipedia.org/wiki/Brexit"
+        }
+      ]
+    },
+    {
+      "date": "2020-07-21",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "市場と通貨",
+      "title": "復興基金「次世代EU」に合意",
+      "summary": "新型コロナ禍からの復興のため、EUが共同債務による7500億ユーロの復興基金「次世代EU」で合意した。補助金と融資を加盟国に配分する仕組みである。\n\nEUの名による大規模な共同借り入れは長くタブーとされてきたもので、**危機による統合の深化**が財政分野にまで及んだ画期といえる。恒久化には慎重論も強く、財政同盟への一歩か一度限りの例外かは開かれた問いである。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Next Generation EU",
+          "url": "https://en.wikipedia.org/wiki/Next_Generation_EU"
+        }
+      ]
+    }
+  ]
+}

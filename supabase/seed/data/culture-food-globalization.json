@@ -1,0 +1,367 @@
+{
+  "slug": "culture-food-globalization",
+  "title": "食文化のグローバル化",
+  "description": "回転寿司と即席麺の発明から、ミシュランの東京上陸、宅配アプリの席巻まで。料理と店・制度と認定・技術と流通の3層を重ね、食が国境を越える経路を描く年表。",
+  "category": "culture",
+  "language": "ja",
+  "start_year": 1958,
+  "end_year": 2024,
+  "layers": [
+    {
+      "name": "料理と店",
+      "color": "pink"
+    },
+    {
+      "name": "制度と認定",
+      "color": "gold"
+    },
+    {
+      "name": "技術と流通",
+      "color": "teal"
+    }
+  ],
+  "events": [
+    {
+      "date": "1958-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と流通",
+      "title": "回転寿司の元祖「廻る元禄寿司」開業",
+      "summary": "大阪で立ち食い寿司店を営んでいた白石義明が、ビール工場のベルトコンベアに着想を得た「コンベヤ旋廻食事台」を考案し、東大阪に回転寿司の元祖「廻る元禄寿司」を開いた。\n\n職人の技に依存していた寿司の提供を機械化し、高級食だった寿司を大衆価格に引き下げた発明である。同年にはチキンラーメンも登場しており、日本の食が世界へ運ばれるための「技術の型」を得た年といえる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 回転寿司",
+          "url": "https://ja.wikipedia.org/wiki/回転寿司"
+        }
+      ]
+    },
+    {
+      "date": "1958-08-25",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と流通",
+      "title": "チキンラーメン発売、即席麺の誕生",
+      "summary": "日清食品の創業者・安藤百福が、世界初の即席麺「チキンラーメン」を発売した。湯を注いで2分で食べられる手軽さと保存性で、発売直後から爆発的に売れた。\n\n即席麺はその後、各国の味覚に合わせて姿を変えながら普及し、世界で年間1000億食規模(業界団体推計)に達する。日本発のフォーマットが**現地化しながら国境を越える**、この年表の原型がここに生まれた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: チキンラーメン",
+          "url": "https://ja.wikipedia.org/wiki/チキンラーメン"
+        }
+      ]
+    },
+    {
+      "date": "1964-05-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "料理と店",
+      "title": "鉄板焼「BENIHANA」がニューヨークに開店",
+      "summary": "レスラー出身の実業家ロッキー青木が、ニューヨークに鉄板焼レストラン「BENIHANA OF TOKYO」を開店した。シェフが客の目の前で調理してみせるパフォーマンスが評判を呼び、チェーン展開に成功する。\n\n日本食をエンターテインメントとして翻訳した先駆例であり、生魚への抵抗が強かった当時の米国市場に日本食の入口を作った。のちに寿司バーが受け入れられる素地は、こうした店が耕したものである。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Benihana",
+          "url": "https://en.wikipedia.org/wiki/Benihana"
+        }
+      ]
+    },
+    {
+      "date": "1966-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "料理と店",
+      "title": "ロサンゼルスに寿司バー「川福」開店",
+      "summary": "ロサンゼルスのリトルトーキョーにある日本食店「川福」に本格的な寿司カウンターが設けられ、米国における寿司バーの先駆けになったとされる。当初の客は日本人駐在員が中心だった。\n\n寿司はやがてハリウッドの俳優や健康志向の富裕層に「ヘルシーな日本食」として発見され、現地社会へ浸透していく。カリフォルニアロールの誕生と並び、寿司の米国現地化の起点として語られる出来事である。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "「米国初の寿司バー」とする説が広く流布しているが、開店時期(1966年前後)や「初」であるかどうかには諸説ある。",
+      "sources": [
+        {
+          "title": "Wikipedia: History of sushi",
+          "url": "https://en.wikipedia.org/wiki/History_of_sushi"
+        }
+      ]
+    },
+    {
+      "date": "1970-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "料理と店",
+      "title": "カリフォルニアロール考案",
+      "summary": "アボカドとカニ風味の具を使い、海苔を内側に巻き込んだ「カリフォルニアロール」がロサンゼルスの寿司店で考案されたとされる。生魚と黒い海苔への抵抗感を避ける、現地の嗜好に合わせた設計だった。\n\n現地の食材で作り替えられた寿司はやがて日本への「逆輸入」も果たした。**「本場の再現」ではなく「翻訳」**こそが食文化の越境の実態であることを示す、最も有名な例である。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "考案者はロサンゼルスの寿司職人・真下一郎とする説が有力だが、考案時期(1960年代末〜70年代)と考案者には複数の説がある。",
+      "sources": [
+        {
+          "title": "Wikipedia: California roll",
+          "url": "https://en.wikipedia.org/wiki/California_roll"
+        }
+      ]
+    },
+    {
+      "date": "1971-07-20",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "料理と店",
+      "title": "マクドナルド日本1号店が銀座に開店",
+      "summary": "藤田田率いる日本マクドナルドが、銀座三越1階に日本1号店を開店した。歩行者天国の銀座で立ったままハンバーガーを食べる光景が話題となり、米国型ファストフードが日本の外食に本格上陸した。\n\n食のグローバル化は日本から世界への一方向ではない。同年にはカップヌードル(技術と流通レイヤー)が発売されており、外来の食が入り、日本の食が出ていく双方向の越境が同時に加速した年として記憶される。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 日本マクドナルド",
+          "url": "https://ja.wikipedia.org/wiki/日本マクドナルド"
+        }
+      ]
+    },
+    {
+      "date": "1971-09-18",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と流通",
+      "title": "カップヌードル発売",
+      "summary": "日清食品が世界初のカップ入り即席麺「カップヌードル」を発売した。容器がそのまま調理器具と食器になる設計は、丼も箸も持たない文化圏への輸出を最初から想定したものだった。\n\n米国では1973年に本格発売され、以後、即席麺は各国で現地の味に姿を変えながら定着していく。食文化のグローバル化が料理そのものだけでなく、**パッケージと流通の発明**によって進むことを示した商品である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: カップヌードル",
+          "url": "https://ja.wikipedia.org/wiki/カップヌードル"
+        }
+      ]
+    },
+    {
+      "date": "1989-12-10",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と認定",
+      "title": "スローフード宣言がパリで調印",
+      "summary": "ファストフードの世界的拡大に対抗し、イタリア発の運動体が15か国の代表とともにパリで「スローフード宣言」に調印した。郷土料理と食の多様性、ゆっくり味わう暮らしの保護を掲げた。\n\n源流は1986年、ローマのスペイン広場へのマクドナルド出店に対する反対運動にある。食の均質化への最初の組織的な異議申し立てであり、以後この年表の底流には「広がる食」と「守る食」の緊張が流れ続ける。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Slow Food",
+          "url": "https://en.wikipedia.org/wiki/Slow_Food"
+        }
+      ]
+    },
+    {
+      "date": "1996-08-02",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "料理と店",
+      "title": "スターバックス北米外1号店が銀座に開店",
+      "summary": "スターバックスが北米以外で初となる店舗を東京・銀座に開いた。禁煙のカフェでカスタマイズしたラテを片手に過ごすシアトル流の様式は、喫茶店文化の根づいていた日本で新しい定番になった。\n\nエスプレッソ文化はイタリアから米国へ渡り、商業様式として磨かれて日本へ届いた。マクドナルドの銀座上陸から四半世紀、銀座は外来の食文化が日本社会に試される実験場であり続けている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: スターバックス",
+          "url": "https://ja.wikipedia.org/wiki/スターバックス"
+        }
+      ]
+    },
+    {
+      "date": "2007-11-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と認定",
+      "title": "ミシュランガイド東京版が刊行",
+      "summary": "ミシュランガイドが欧米以外で初めてとなる東京版を刊行した。東京は掲載店の星の総数で世界最多となり、「世界一の美食都市」という評価が国際的に流通し始めた。\n\nフランスの権威が日本の食を格付けする構図は、料理だけでなく**評価制度そのものの越境**を意味した。ガイドは以後アジア各都市へ拡大し、6年後の和食のユネスコ登録に至る「日本食の制度的公認」の流れを開いた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: ミシュランガイド",
+          "url": "https://ja.wikipedia.org/wiki/ミシュランガイド"
+        }
+      ]
+    },
+    {
+      "date": "2008-03-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "料理と店",
+      "title": "一風堂がニューヨークに出店",
+      "summary": "博多ラーメンの一風堂がニューヨークに海外1号店を開いた。行列のできる人気と有力メディアの高評価を得て、ラーメンは「安い麺料理」から「専門店で並んで食べる一杯」へと地位を変えた。\n\n即席麺(技術と流通レイヤー)が先に世界へ届けていたラーメンの認知の上に、専門店の食体験が乗った構図である。以後ロンドンやパリにも専門店が広がり、RAMENは寿司に続く日本食の世界語となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Ippudo",
+          "url": "https://en.wikipedia.org/wiki/Ippudo"
+        }
+      ]
+    },
+    {
+      "date": "2010-10-06",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と流通",
+      "title": "Instagram登場、「映える」食が拡散力を持つ",
+      "summary": "写真共有アプリのInstagramが公開された。料理を撮って投稿する行為が世界共通の習慣となり、食のトレンドが国境を越えて数週間で伝播する時代が始まった。\n\nタピオカドリンクやスフレパンケーキの世界的流行は、このインフラ抜きには説明できない。店の評判を左右する力はガイドブックからフィードへ移り、後年の評価制度(制度と認定レイヤー)のあり方にも影響を与えていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Instagram",
+          "url": "https://en.wikipedia.org/wiki/Instagram"
+        }
+      ]
+    },
+    {
+      "date": "2010-11-16",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と認定",
+      "title": "フランスの美食術がユネスコ無形文化遺産に",
+      "summary": "「フランス人の美食術」がユネスコ無形文化遺産に登録された。食文化の登録は初めてで、同じ委員会で地中海料理とメキシコの伝統料理も認められた。\n\n食が「守るべき人類の文化」として国際制度に組み込まれた転換点である。以後、各国が自国の食文化を国家ブランドとして申請する競争が始まり、3年後の和食の登録へ直結していく。スローフード運動が訴えた「守る食」の思想が、制度の言葉に翻訳された瞬間でもあった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "UNESCO ICH: Gastronomic meal of the French",
+          "url": "https://ich.unesco.org/en/RL/gastronomic-meal-of-the-french-00437"
+        }
+      ]
+    },
+    {
+      "date": "2013-12-04",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と認定",
+      "title": "「和食」がユネスコ無形文化遺産に登録",
+      "summary": "「和食;日本人の伝統的な食文化」がユネスコ無形文化遺産に登録された。個別の料理ではなく、自然の尊重を核とし正月行事などと結びついた社会的慣習として認められた点が特徴である。\n\n日本政府は和食を輸出促進とインバウンド観光の柱に据え、海外の日本食レストラン急増を制度面から後押しした。制度による公認が市場の拡大を牽引する、この年表の典型的な構図である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "農林水産省: 「和食」のユネスコ無形文化遺産登録",
+          "url": "https://www.maff.go.jp/j/keikaku/syokubunka/ich/"
+        }
+      ]
+    },
+    {
+      "date": "2014-08-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と流通",
+      "title": "UberFRESH開始、料理宅配のアプリ化",
+      "summary": "Uberがロサンゼルス近郊のサンタモニカで料理宅配サービス「UberFRESH」を始めた(翌年UberEATSに改称)。配車アプリの車両網を食の物流に転用する発想だった。\n\nDoorDashやDeliveroo、出前館など各国で同型のサービスが急成長し、レストランの商圏は店の立地から配達網の範囲へと広がった。この構造は数年後のコロナ禍で一気に社会の主流になる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Uber Eats",
+          "url": "https://en.wikipedia.org/wiki/Uber_Eats"
+        }
+      ]
+    },
+    {
+      "date": "2019-05-02",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と流通",
+      "title": "ビヨンド・ミート上場、代替肉が資本市場へ",
+      "summary": "植物由来の代替肉を開発する米ビヨンド・ミートがナスダックに上場し、初日に株価が2倍を超えた。食品スタートアップのIPOとして異例の注目を集めた。\n\n気候変動と食の持続可能性が投資テーマとなったことを象徴する出来事で、世界のファストフードチェーンが相次いで植物由来メニューを試験導入した。食のグローバル化に「地球環境」という制約条件が加わった転換点である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Beyond Meat",
+          "url": "https://en.wikipedia.org/wiki/Beyond_Meat"
+        }
+      ]
+    },
+    {
+      "date": "2020-03-01",
+      "precision": "month",
+      "end_date": "2022-12-31",
+      "type": "period",
+      "layer": "技術と流通",
+      "title": "コロナ禍で宅配とゴーストキッチンが急拡大",
+      "summary": "新型コロナウイルスの流行で世界の都市の外食が制限され、料理宅配とテイクアウトが生活インフラになった。客席を持たず宅配アプリ上にだけ存在する「ゴーストキッチン」も急増した。\n\n**「店」と「料理」の分離**という構造変化が一気に可視化された期間である。一方で老舗の廃業も世界規模で進み、宅配プラットフォームの手数料をめぐる摩擦など、新しい流通の支配力も問われ始めた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Ghost kitchen",
+          "url": "https://en.wikipedia.org/wiki/Ghost_kitchen"
+        }
+      ]
+    },
+    {
+      "date": "2023-10-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と認定",
+      "title": "海外の日本食レストラン、約18.7万店に",
+      "summary": "農林水産省の調査で、海外の日本食レストランは約18万7000店と推計された。調査が始まった2006年の約2万4000店から、17年でおよそ8倍に増えた計算になる。\n\n増加の主役は日本人経営ではない現地資本の店で、寿司もラーメンももはや「日本人が作る料理」ではない。**担い手ごと現地化する**段階に入ったことを、この数字は示している。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "店舗数は在外公館等を通じた推計値で、日本食レストランの定義や集計方法により数値には幅がある。",
+      "sources": [
+        {
+          "title": "農林水産省: 海外における日本食レストラン数の調査結果(2023年)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2024-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度と認定",
+      "title": "訪日客の最大の目的は「日本食を食べること」",
+      "summary": "観光庁の訪日外国人消費動向調査では、「訪日前に最も期待していたこと」として「日本食を食べること」を挙げる回答が例年最多を占める。食は日本観光の中心的な動機になっている。\n\n1958年に技術の力で国境を越え始めた日本の食は、制度の公認と店の越境を経て、いまや**人を日本へ呼び寄せる引力**へと変わった。食文化のグローバル化が一巡したことを示す到達点である。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "「最多」は複数年の同調査で続くとされる傾向だが、調査年・設問形式により数値は変動する。",
+      "sources": [
+        {
+          "title": "観光庁: 訪日外国人消費動向調査",
+          "url": null
+        }
+      ]
+    }
+  ]
+}

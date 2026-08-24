@@ -1,0 +1,371 @@
+{
+  "slug": "tech-quantum-computing",
+  "title": "量子コンピュータへの道",
+  "description": "1981年のファインマンの着想から誤り訂正の実証まで。理論・ハードウェア・産業・国家戦略の4層を重ね、40年越しの技術がなぜいま実用へ近づいているのかを俯瞰する年表。",
+  "category": "technology",
+  "language": "ja",
+  "start_year": 1981,
+  "end_year": 2025,
+  "layers": [
+    {
+      "name": "理論とアルゴリズム",
+      "color": "purple"
+    },
+    {
+      "name": "ハードウェア実装",
+      "color": "blue"
+    },
+    {
+      "name": "産業と投資",
+      "color": "orange"
+    },
+    {
+      "name": "国家戦略",
+      "color": "teal"
+    }
+  ],
+  "events": [
+    {
+      "date": "1981-05-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "理論とアルゴリズム",
+      "title": "ファインマンが量子シミュレータを提唱",
+      "summary": "MITで開かれた計算物理の会議で、物理学者リチャード・ファインマンが「自然は量子力学的であり、その完全なシミュレーションには量子力学で動く計算機が必要だ」と講演した。\n\n**量子で量子を計算する**という着想がこのとき研究課題として定式化され、量子計算の出発点として広く引用される。以後10年以上、関心は少数の理論家にとどまり、産業や国家戦略の視点はまだ存在しなかった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "R. P. Feynman, \"Simulating Physics with Computers\", Int. J. Theor. Phys. 21 (1982)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1985-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "理論とアルゴリズム",
+      "title": "ドイチュが万能量子計算機を定式化",
+      "summary": "オックスフォード大学のデイヴィッド・ドイチュが、任意の物理系を模倣できる「万能量子チューリング機械」の概念を論文で提示し、量子計算を計算理論の正式な対象に据えた。\n\nファインマンの着想が「原理的に何を計算できるか」という数学の言葉に翻訳された段階であり、後のショアやグローヴァーのアルゴリズムはこの枠組みの上で設計される。実装(ハードウェア実装レイヤー)への道筋はまだ全く見えていなかった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "D. Deutsch, Proc. R. Soc. Lond. A 400, 97–117 (1985)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1994-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "理論とアルゴリズム",
+      "title": "ショアが素因数分解の量子アルゴリズムを発表",
+      "summary": "AT&Tベル研究所のピーター・ショアが、量子計算機なら大きな数の素因数分解を効率的に解けることを示した。素因数分解の困難さはRSAなど公開鍵暗号の安全性の根拠そのものである。\n\n**理論が暗号という現実の利害に直結した**瞬間であり、各国の政府と軍が量子計算に注目する出発点となった。約30年後のポスト量子暗号標準(国家戦略レイヤー)まで続く、長い備えの起点でもある。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "arXiv: Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer (quant-ph/9508027)",
+          "url": "https://arxiv.org/abs/quant-ph/9508027"
+        }
+      ]
+    },
+    {
+      "date": "1996-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "理論とアルゴリズム",
+      "title": "グローヴァーの探索アルゴリズム発表",
+      "summary": "ベル研究所のロヴ・グローヴァーが、N件のデータからの探索を古典計算の平方根程度の手数で行える量子アルゴリズムを発表した。ショアの指数的な加速に続く、応用範囲の広い二次加速の代表例である。\n\n素因数分解に加えて探索という汎用的な応用が示されたことで、量子アルゴリズム研究は一つの分野として定着した。一方、これらを動かす量子ビット(ハードウェア実装レイヤー)は、この時点ではまだ実験室にも存在しなかった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "arXiv: A fast quantum mechanical algorithm for database search (quant-ph/9605043)",
+          "url": "https://arxiv.org/abs/quant-ph/9605043"
+        }
+      ]
+    },
+    {
+      "date": "1999-04-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "ハードウェア実装",
+      "title": "NECで超伝導量子ビットが初めて動作",
+      "summary": "NEC基礎研究所の中村泰信と蔡兆申らが、超伝導回路上の電荷状態を使って量子重ね合わせの制御に成功し、Nature誌に発表した。\n\n**固体の電子回路で量子ビットを作れる**ことを示した成果で、原子や光子が中心だった実装研究の流れを変えた。超伝導方式は後にGoogleやIBM(産業と投資レイヤー)が採用する主流方式へ育ち、日本発の貢献として特筆される。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Nakamura, Pashkin & Tsai, Nature 398, 786–788 (1999)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2011-05-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "産業と投資",
+      "title": "D-Waveが「世界初の商用量子コンピュータ」発売",
+      "summary": "カナダのD-Wave Systemsが量子アニーリング方式の「D-Wave One」を発表し、ロッキード・マーティンが購入した。量子計算をうたう装置が初めて商品として売買された出来事である。\n\nただし同機は最適化問題に特化した方式で、量子効果が計算速度に寄与しているかをめぐり長い学術論争が起きた。論争自体が量子計算への産業的関心を広げた面もあり、市場形成の始まりと位置づけられる。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "量子効果による高速化が実際にあったかは学術的に決着しておらず、性能評価が研究者間で分かれる。",
+      "sources": [
+        {
+          "title": "Wikipedia: D-Wave Systems",
+          "url": "https://en.wikipedia.org/wiki/D-Wave_Systems"
+        }
+      ]
+    },
+    {
+      "date": "2016-05-04",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "産業と投資",
+      "title": "IBMが量子計算機をクラウドで一般公開",
+      "summary": "IBMが5量子ビットの実機をクラウド経由で誰でも使える「IBM Quantum Experience」を公開した。研究室の外の開発者や学生が、実際の量子ハードウェアに触れられるようになった。\n\n量子計算機が論文の中の存在から「試せるサービス」へ変わり、開発ツールと人材をめぐるエコシステム競争が始まった。以後、各社によるロードマップ公表と量子ビット数の競争(ハードウェア実装レイヤー)が産業の定番となる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "IBMニュースリリース: IBM Makes Quantum Computing Available on IBM Cloud (2016-05-04)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2016-12-01",
+      "precision": "month",
+      "end_date": "2024-08-13",
+      "type": "period",
+      "layer": "国家戦略",
+      "title": "NISTがポスト量子暗号の標準化を推進",
+      "summary": "米国立標準技術研究所(NIST)が、量子計算機でも破れない暗号方式の公募を開始。世界から提案された方式の評価を約8年かけて進め、2024年8月に最初の標準3件を発表した。\n\n**まだ存在しない計算機に備えて世界の暗号を入れ替える**という異例の事業であり、根拠は1994年のショアのアルゴリズム(理論とアルゴリズムレイヤー)にある。理論から30年がかりで制度が動いた例といえる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "NIST: Post-Quantum Cryptography Project",
+          "url": "https://csrc.nist.gov/projects/post-quantum-cryptography"
+        }
+      ]
+    },
+    {
+      "date": "2018-12-21",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "国家戦略",
+      "title": "米国で国家量子イニシアチブ法が成立",
+      "summary": "量子情報科学への連邦投資を定める国家量子イニシアチブ法が米国で成立し、5年間で約12億ドルの研究資金と省庁横断の調整体制が整備された。\n\n背景には量子技術を安全保障と経済競争力の問題とみなす認識があり、EUのQuantum Flagshipや中国の大型投資と同時期の動きである。企業の研究開発(産業と投資レイヤー)に対し、国家が資金と方向を与える構図がここで定まった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "H.R.6227 National Quantum Initiative Act (Public Law 115-368)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2019-10-23",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "ハードウェア実装",
+      "title": "Googleが「量子超越性」の達成を発表",
+      "summary": "Googleが53量子ビットの超伝導チップSycamoreで特定の乱数サンプリング課題を約200秒で実行し、最速スパコンなら1万年かかるとする論文をNatureに発表した。\n\nIBMは古典計算でも数日で可能と反論し、**「量子超越性」という言葉の意味そのもの**が論争になった。実用性のない課題ではあったが、各国の投資判断(国家戦略レイヤー)や報道に強く影響し、量子への注目を一段引き上げた。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "「スパコンで1万年」という見積もりにはIBMが反論しており、古典計算に対する優位の程度は評価が分かれる。",
+      "sources": [
+        {
+          "title": "Nature: Quantum supremacy using a programmable superconducting processor (2019)",
+          "url": "https://www.nature.com/articles/s41586-019-1666-5"
+        }
+      ]
+    },
+    {
+      "date": "2020-12-03",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "ハードウェア実装",
+      "title": "中国の光量子計算機「九章」が優位性を主張",
+      "summary": "中国科学技術大学の潘建偉らが、光子を用いる専用機「九章」でガウシアン・ボソンサンプリングを実行し、古典計算機を大幅に上回るとする論文をScienceに発表した。\n\n超伝導方式のGoogleに続く別方式・別国からの優位性主張であり、量子計算が米中の技術競争(国家戦略レイヤー)の文脈で語られる流れを決定づけた。なお後年の古典アルゴリズムの改良により、優位の幅は当初の主張より縮まっている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Science: Quantum computational advantage using photons (2020)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2021-07-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "産業と投資",
+      "title": "PsiQuantumが4.5億ドル調達、評価額31億ドルと報道",
+      "summary": "光量子方式で誤り訂正済みの大規模機を目指す米PsiQuantumが4億5000万ドルの資金調達を発表し、報道では企業評価額が31億ドル超とされた。\n\n実機を公開していない段階での巨額調達であり、量子スタートアップ投資が期待先行で過熱する局面を象徴する。誤り訂正に必要な規模を見積もる理論(理論とアルゴリズムレイヤー)の時間軸と、資本の時間軸のずれが試され始めた。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "評価額31億ドル超は報道ベースの数値で、当事者による公式開示はない。",
+      "sources": [
+        {
+          "title": "Reuters: PsiQuantum raises $450 mln (2021-07)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2021-10-01",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "産業と投資",
+      "title": "IonQが上場、量子専業で初の上場企業に",
+      "summary": "イオントラップ方式のIonQがSPAC合併を経てニューヨーク証券取引所に上場し、量子計算専業として初の上場企業となった。\n\n収益がほぼない段階での上場は、量子産業が公開市場の資金で長期開発を続けるモデルへ移ったことを示す。以後RigettiやD-Waveも株式市場に続き、株価は各社の技術発表(ハードウェア実装レイヤー)のたびに大きく変動する投機的な値動きを見せるようになる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: IonQ",
+          "url": "https://en.wikipedia.org/wiki/IonQ"
+        }
+      ]
+    },
+    {
+      "date": "2022-10-04",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "理論とアルゴリズム",
+      "title": "量子もつれの実証にノーベル物理学賞",
+      "summary": "量子もつれの実在を実験で示したアスペ、クラウザー、ツァイリンガーの3氏にノーベル物理学賞が贈られた。ベルの不等式の破れの検証という、量子情報科学の土台にあたる業績である。\n\n授賞理由に「量子情報科学の開拓」が明記され、かつて哲学論争に近かった基礎研究が、量子計算・量子通信という応用分野の礎として公式に位置づけられた。基礎から産業(産業と投資レイヤー)までの距離の縮まりを示す授賞といえる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "The Nobel Prize in Physics 2022 - Press release",
+          "url": "https://www.nobelprize.org/prizes/physics/2022/press-release/"
+        }
+      ]
+    },
+    {
+      "date": "2023-03-27",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "国家戦略",
+      "title": "国産量子コンピュータ初号機が稼働",
+      "summary": "理化学研究所が64量子ビットの超伝導量子コンピュータ国産初号機を稼働させ、クラウド経由での外部利用を開始した。1999年に超伝導量子ビットを生んだ国としての蓄積が、実機として結実した。\n\n開発は国のプロジェクトとして大学・企業の連合で進められ、日本も量子を国家戦略技術と位置づけたことを示す。ハードウェア実装レイヤーにおける日本の存在感を再確立する一歩と受け止められた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "理化学研究所プレスリリース: 量子コンピュータ国産初号機の公開 (2023-03-27)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2023-12-04",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "ハードウェア実装",
+      "title": "IBMが1121量子ビットの「Condor」を発表",
+      "summary": "IBMが1121量子ビットの超伝導プロセッサCondorを発表した。同時に、量子ビット数より誤り率の低さを重視した新チップHeronと、誤り訂正を見据えた開発ロードマップの改訂も示した。\n\n数を競う時代が一つの節目に達し、以後の焦点は誤りの少なさと誤り訂正へ移る。この転換は翌年のGoogleによる誤り訂正実証と合わせ、投資家(産業と投資レイヤー)の評価軸も物理量子ビット数から論理量子ビットへと変えていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "IBM Quantum Summit 2023 発表 (Condor / Heron)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2024-12-09",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "ハードウェア実装",
+      "title": "GoogleのWillowが誤り訂正の閾値を突破",
+      "summary": "Googleが105量子ビットのチップWillowで、符号を大きくするほど論理誤り率が下がる「閾値以下」の量子誤り訂正を実証したと発表し、Natureに論文が掲載された。\n\n量子ビットを増やすほど誤りも増えるという最大の障壁に対し、**誤り訂正が原理どおりに機能する**ことを実機で示した節目である。発表を受けて量子関連株が急伸(産業と投資レイヤー)し、実用化時期の議論が具体的になった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Google Blog: Meet Willow, our state-of-the-art quantum chip (2024-12-09)",
+          "url": "https://blog.google/technology/research/google-willow-quantum-chip/"
+        }
+      ]
+    },
+    {
+      "date": "2025-02-19",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "ハードウェア実装",
+      "title": "Microsoftがトポロジカル量子チップを発表",
+      "summary": "Microsoftが、マヨラナ粒子に基づくとするトポロジカル量子ビットのチップ「Majorana 1」を発表した。誤りに本質的に強い方式であり、実現すれば大規模化への近道になると同社は主張した。\n\nただしマヨラナ準粒子の観測をめぐっては同社関連の論文撤回が過去にあり、学界からは慎重な検証を求める声が相次いだ。超伝導・イオン・光と並ぶ方式間の競争が、なお決着していないことを示す出来事でもある。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "トポロジカル量子ビットが実際に実現されたかは学界で検証が続いており、評価が定まっていない。",
+      "sources": [
+        {
+          "title": "Microsoft発表: Majorana 1 (2025-02-19)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2025-04-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "産業と投資",
+      "title": "富士通と理研が256量子ビット機を開発",
+      "summary": "富士通と理化学研究所が共同開発した256量子ビットの超伝導量子コンピュータを発表し、企業や研究機関への提供を始めた。2023年の国産初号機から約2年での大規模化である。\n\n国の研究機関と民間企業の共同開発という日本型の体制が継続的に成果を出し始めた例であり、国家戦略レイヤーの投資が産業側の実装能力へ接続しつつある。誤り訂正時代に向けた1000量子ビット級への通過点と位置づけられる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "富士通・理化学研究所 共同プレスリリース (2025年4月)",
+          "url": null
+        }
+      ]
+    }
+  ]
+}

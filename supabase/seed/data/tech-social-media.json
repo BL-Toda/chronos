@@ -1,0 +1,385 @@
+{
+  "slug": "tech-social-media",
+  "title": "SNSが変えた世界",
+  "description": "Facebook誕生からTikTok規制まで。プラットフォームの進化、社会と政治への波及、規制の応答という3層を重ね、SNSが世論と統治の形をどう変えてきたかを追う年表。",
+  "category": "technology",
+  "language": "ja",
+  "start_year": 2004,
+  "end_year": 2025,
+  "layers": [
+    {
+      "name": "プラットフォーム",
+      "color": "blue"
+    },
+    {
+      "name": "社会と政治",
+      "color": "pink"
+    },
+    {
+      "name": "規制と説明責任",
+      "color": "teal"
+    }
+  ],
+  "events": [
+    {
+      "date": "2004-02-04",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "プラットフォーム",
+      "title": "ハーバードの学生寮でFacebookが誕生",
+      "summary": "マーク・ザッカーバーグらがハーバード大学の学生向けサイト「TheFacebook」を公開した。実名と現実の人間関係をオンラインに持ち込む設計が、匿名文化が主流だった当時のネットでは異例だった。\n\n実名制は後の広告ビジネスと個人データ集積の土台となり、2010年代のプライバシー問題(規制と説明責任レイヤー)の遠因もこの設計思想に遡る。20年で30億人が使うインフラになるとは、当時誰も想定していなかった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Facebook",
+          "url": "https://en.wikipedia.org/wiki/Facebook"
+        }
+      ]
+    },
+    {
+      "date": "2006-07-15",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "プラットフォーム",
+      "title": "Twitterが一般公開",
+      "summary": "140字の短文を投稿する「Twitter」が一般公開された。フォローという非対称な関係と公開が基本の投稿は、友人間の交流を前提としたそれまでのSNSと異なる、速報と拡散に向いた構造だった。\n\nこの構造ゆえにTwitterは後に報道・災害・政治の基盤(社会と政治レイヤー)となり、各国の首脳が直接発信する場にもなる。個人のつぶやきと公共の言論が同じタイムラインに並ぶ空間は、ここから始まった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Twitter",
+          "url": "https://en.wikipedia.org/wiki/Twitter"
+        }
+      ]
+    },
+    {
+      "date": "2006-09-05",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "プラットフォーム",
+      "title": "FacebookがNews Feedを導入",
+      "summary": "Facebookが友人の行動を時系列で自動表示する「News Feed」を導入した。公開当初は「監視のようだ」と強い反発を受けたが、利用時間は急増し、まもなくSNSの標準機能となった。\n\n自分で見に行く場から**アルゴリズムが情報の流れを決める**場への転換点である。この配信の仕組みは後に、偽情報の拡散や分断の増幅(社会と政治レイヤー)をめぐる論争の中心になっていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Feed (Facebook)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2010-10-06",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "プラットフォーム",
+      "title": "Instagram公開、写真SNSの時代へ",
+      "summary": "写真共有アプリInstagramがiPhone向けに公開され、初日に約2万5000人が登録した。正方形の写真とフィルターという制約の強い設計が、スマートフォンのカメラ性能の向上と噛み合った。\n\n言葉より画像で自己表現する文化はここで主流化し、「映え」が消費や観光を動かす経済現象となる。後年、外見比較が若年層の心理に与える影響(社会と政治レイヤー)が公衆衛生の議題に上る素地でもある。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Instagram",
+          "url": "https://en.wikipedia.org/wiki/Instagram"
+        }
+      ]
+    },
+    {
+      "date": "2010-12-17",
+      "precision": "day",
+      "end_date": "2011-12-31",
+      "type": "period",
+      "layer": "社会と政治",
+      "title": "アラブの春、SNSが動員の基盤に",
+      "summary": "チュニジアでの青年の焼身自殺を発端に反政府デモが中東・北アフリカへ連鎖し、チュニジア、エジプトなどで長期政権が倒れた。FacebookやTwitterがデモの告知と映像拡散に使われ、「SNS革命」と呼ばれた。\n\nSNSが**国家権力に対する動員のインフラ**になり得ると世界が認識した出来事である。一方で各国政府も監視と遮断の技術を学び、規制と説明責任レイヤーにおける統制強化の転機にもなった。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "政変へのSNSの寄与の大きさについては研究者の評価が分かれており、「SNS革命」という呼称自体に異論がある。",
+      "sources": [
+        {
+          "title": "Wikipedia: Arab Spring",
+          "url": "https://en.wikipedia.org/wiki/Arab_Spring"
+        }
+      ]
+    },
+    {
+      "date": "2011-03-11",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と政治",
+      "title": "東日本大震災、SNSが災害情報インフラに",
+      "summary": "東日本大震災の発生直後、電話網が輻輳する中でTwitterなどのSNSが安否確認と情報共有の手段として機能した。震災当日の日本発ツイートは平常時を大きく上回ったとされる。\n\n日本でSNSが娯楽から社会インフラへと認識を変えた転機であり、以後、自治体や公共機関の公式アカウント開設が一気に進んだ。同時にデマの拡散という課題も顕在化し、災害時の情報検証という論点が生まれた。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "震災当日のツイート数の増加率は集計主体により数値が異なり、確定的な統計はない。",
+      "sources": [
+        {
+          "title": "総務省: 情報通信白書(平成23年版) 東日本大震災における情報通信の状況",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2012-04-09",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "プラットフォーム",
+      "title": "FacebookがInstagramを10億ドルで買収",
+      "summary": "Facebookが社員13人のInstagramを約10億ドルで買収すると発表した。売上のないアプリへの巨額買収は当時「高すぎる」と評されたが、結果的にはIT史上屈指の安い買い物とされるようになる。\n\n有力な新興サービスを早期に取り込む成長戦略の象徴であり、後の WhatsApp買収と合わせ、競争の芽を摘む買収ではないかという議論(規制と説明責任レイヤー)を招く。米当局は2020年に同社を反トラストで提訴した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Instagram (Acquisition by Facebook)",
+          "url": "https://en.wikipedia.org/wiki/Instagram"
+        }
+      ]
+    },
+    {
+      "date": "2013-06-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と説明責任",
+      "title": "スノーデンが大規模監視を告発",
+      "summary": "元NSA契約職員エドワード・スノーデンが、米政府が大手IT企業のデータに広くアクセスする監視プログラムの存在を告発した。SNSやメールの利用記録が国家監視の対象であることが具体的に示された。\n\nプラットフォームに蓄積された個人データ(プラットフォームレイヤー)が国家に流れ得るという事実は世界に衝撃を与え、通信の暗号化の常時化を一気に進めた。EUのデータ保護強化の議論もこの事件で加速した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Edward Snowden",
+          "url": "https://en.wikipedia.org/wiki/Edward_Snowden"
+        }
+      ]
+    },
+    {
+      "date": "2016-09-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "プラットフォーム",
+      "title": "抖音(Douyin)公開、ショート動画時代の幕開け",
+      "summary": "中国のByteDanceが短尺動画アプリ「抖音」を公開した。翌年に国際版TikTokを展開し、買収したMusical.lyと統合して世界市場へ急拡大する。\n\nフォロー関係よりも推薦アルゴリズムを核とする設計は、友人のつながりを前提とした従来のSNSの定義を書き換えた。中国企業のアプリが欧米の若年層の主要メディアになったことは、後に安全保障上の争点(規制と説明責任レイヤー)へと発展する。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: TikTok",
+          "url": "https://en.wikipedia.org/wiki/TikTok"
+        }
+      ]
+    },
+    {
+      "date": "2016-11-08",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と政治",
+      "title": "米大統領選、SNS上の偽情報と影響工作が争点に",
+      "summary": "トランプ氏が勝利した米大統領選で、SNS上の偽ニュースの拡散とロシアによる組織的な影響工作が明らかになり、プラットフォームの責任を問う世界的な議論が始まった。\n\nSNSが**世論操作の主戦場**になり得ることが広く認識された転機である。翌年以降、各社はファクトチェックや広告透明化(プラットフォームレイヤー)を導入し、各国は規制の検討(規制と説明責任レイヤー)を本格化させた。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "影響工作の存在は米司法省の捜査で確認されたが、それが選挙結果をどの程度左右したかは実証されておらず、評価が分かれる。",
+      "sources": [
+        {
+          "title": "米司法省特別検察官報告書(ミュラー報告書、2019)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2018-03-17",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と説明責任",
+      "title": "ケンブリッジ・アナリティカ事件が発覚",
+      "summary": "英コンサル企業ケンブリッジ・アナリティカが、最大8700万人分のFacebookユーザーデータを不正に取得し選挙広告の標的設定に使っていたと報じられた。ザッカーバーグCEOは米議会で証言に立った。\n\n2016年米大統領選(社会と政治レイヤー)への疑念と結びつき、SNSのデータ利用への信頼が決定的に揺らいだ事件である。FTCは2019年、Facebookに50億ドルの制裁金を科し、規制強化の流れが確定した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Facebook–Cambridge Analytica data scandal",
+          "url": "https://en.wikipedia.org/wiki/Facebook%E2%80%93Cambridge_Analytica_data_scandal"
+        }
+      ]
+    },
+    {
+      "date": "2018-05-25",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と説明責任",
+      "title": "EUで一般データ保護規則(GDPR)施行",
+      "summary": "個人データの処理に同意取得や削除権などを義務づけ、違反に全世界売上の最大4%の制裁金を科すGDPRがEUで施行された。域外の企業にも適用される強い設計である。\n\nスノーデンの告発やデータ不正利用事件を経て、**個人データを基本権として守る**という欧州の姿勢が法になった。各社の同意画面や設定変更(プラットフォームレイヤー)は世界共通で改修され、各国のデータ保護法の手本となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "EUR-Lex: Regulation (EU) 2016/679 (GDPR)",
+          "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+        }
+      ]
+    },
+    {
+      "date": "2021-01-08",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と説明責任",
+      "title": "Twitterがトランプ大統領のアカウントを永久凍結",
+      "summary": "米連邦議会議事堂の襲撃事件(1月6日)を受け、Twitterがさらなる暴力扇動の恐れを理由に現職大統領のアカウントを永久凍結した。FacebookやYouTubeも同様の停止措置を取った。\n\n**私企業が国家元首の発信を止められる**という事実は、言論空間の統治権が誰にあるのかという根源的な問いを世界に突きつけた。この判断への評価は割れ、後のマスク氏による凍結解除(プラットフォームレイヤー)まで論争が続く。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Twitter Blog: Permanent suspension of @realDonaldTrump (2021-01-08)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2021-09-27",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "プラットフォーム",
+      "title": "TikTokが月間利用者10億人と発表",
+      "summary": "TikTokが月間アクティブユーザーが10億人に達したと発表した。国際版の提供開始から約4年での到達で、FacebookやYouTubeより速いペースとされる。\n\n推薦アルゴリズム主導の設計が世界標準になったことを示す数字であり、Metaは対抗機能Reelsへ全面的に舵を切った。同時に、若年層への影響や中国政府との関係への懸念(規制と説明責任レイヤー)も利用者数とともに膨らんでいった。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "10億人は自社発表の数値であり、第三者機関による検証はない。",
+      "sources": [
+        {
+          "title": "TikTok Newsroom: Thanks a billion (2021-09-27)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2021-10-05",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と説明責任",
+      "title": "元Facebook社員ハウゲンが内部文書を告発",
+      "summary": "元Facebook社員フランシス・ハウゲンが大量の内部文書を持ち出し、米上院で証言した。Instagramが10代の少女の心身に有害だと社内調査が示していながら対策が不十分だった、というのが告発の核心である。\n\n企業が自社サービスの害を認識していた証拠が示されたことで、議論は外部の推測から**内部文書に基づく責任追及**へ段階を変えた。各国の未成年保護規制や後の州政府による提訴の重要な根拠となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "米上院商業科学運輸委員会公聴会証言 (2021-10-05)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2022-10-27",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "プラットフォーム",
+      "title": "マスク氏がTwitterを440億ドルで買収",
+      "summary": "イーロン・マスク氏がTwitterを約440億ドルで買収し非公開化した。大規模な人員削減、認証制度の有料化、凍結アカウントの復活、そして「X」への改名と、方針を急速に転換した。\n\n公共の言論基盤と呼ばれたサービスが一個人の所有物になったことで、モデレーションの基準が経営者の思想で変わり得ることが可視化された。広告主の離脱やEUのDSAによる監視(規制と説明責任レイヤー)など、緊張が続いている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Acquisition of Twitter by Elon Musk",
+          "url": "https://en.wikipedia.org/wiki/Acquisition_of_Twitter_by_Elon_Musk"
+        }
+      ]
+    },
+    {
+      "date": "2023-05-23",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と政治",
+      "title": "米公衆衛生局長官がSNSと若者の危機で勧告",
+      "summary": "米公衆衛生局長官が、SNSが若者のメンタルヘルスに深刻なリスクをもたらし得るとする勧告を発表した。たばこや飲酒と同様の公衆衛生問題として扱う枠組みを示した点が画期的だった。\n\nハウゲンの内部告発(規制と説明責任レイヤー)以降に蓄積された研究と訴訟を背景に、「SNSと子ども」が政策課題として確立した。翌年の豪州の年齢制限法など、各国の未成年規制はこの流れの延長にある。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "U.S. Surgeon General Advisory: Social Media and Youth Mental Health (2023)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2024-02-17",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と説明責任",
+      "title": "EUデジタルサービス法(DSA)が全面適用",
+      "summary": "違法コンテンツ対応、推薦アルゴリズムの透明化、研究者へのデータ提供などを大手プラットフォームに義務づけるDSAが、EU域内の全事業者に適用された。違反には全世界売上の最大6%の制裁金が科される。\n\nGDPRがデータを守る法だとすれば、DSAは**アルゴリズムと運営に説明責任を課す**法である。X社への正式手続きなど執行も始まり、プラットフォーム設計(プラットフォームレイヤー)をEU基準が拘束する時代に入った。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "EUR-Lex: Regulation (EU) 2022/2065 (Digital Services Act)",
+          "url": "https://eur-lex.europa.eu/eli/reg/2022/2065/oj"
+        }
+      ]
+    },
+    {
+      "date": "2024-11-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と説明責任",
+      "title": "豪州が16歳未満のSNS利用を禁止する法律を可決",
+      "summary": "オーストラリア議会が、16歳未満のSNS利用を禁止し年齢確認をプラットフォーム側の義務とする世界初の法律を可決した。2025年12月から適用され、違反企業には最大4950万豪ドルの罰金が科される。\n\n米公衆衛生局長官の勧告(社会と政治レイヤー)に象徴される若者への害の議論が、ついに利用そのものの禁止という強い形の立法に至った。年齢確認の実効性とプライバシーへの影響をめぐり、各国が実施を注視している。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Online Safety Amendment (Social Media Minimum Age) Act 2024 (豪州)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2025-01-19",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と説明責任",
+      "title": "米TikTok禁止法が発効、一時サービス停止",
+      "summary": "ByteDanceに米国事業の売却を求め、応じなければ配信を禁じる法律が発効し、TikTokは米国で一時サービスを停止した。新政権の執行猶予でまもなく復旧したが、売却をめぐる交渉は長期化した。\n\n1億7000万人が使うアプリが安全保障を理由に止められた事例であり、アラブの春の頃に自由の道具とされたSNS(社会と政治レイヤー)が、国家間対立の駒になったことを象徴する。データの帰属が主権の問題になった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Restrictions on TikTok in the United States",
+          "url": "https://en.wikipedia.org/wiki/Restrictions_on_TikTok_in_the_United_States"
+        }
+      ]
+    }
+  ]
+}

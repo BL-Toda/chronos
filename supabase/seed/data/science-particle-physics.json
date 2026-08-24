@@ -1,0 +1,385 @@
+{
+  "slug": "science-particle-physics",
+  "title": "素粒子物理学の旅",
+  "description": "1897年の電子発見からヒッグス粒子、次世代加速器構想まで。理論の予言、実験と加速器による検証、巨大科学を支える国際協力の3層を重ね、物質の最小単位を問い続ける旅を辿る。",
+  "category": "science-nature",
+  "language": "ja",
+  "start_year": 1897,
+  "end_year": 2025,
+  "layers": [
+    {
+      "name": "理論",
+      "color": "purple"
+    },
+    {
+      "name": "実験と加速器",
+      "color": "blue"
+    },
+    {
+      "name": "巨大科学と協力",
+      "color": "gold"
+    }
+  ],
+  "events": [
+    {
+      "date": "1897-04-30",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "実験と加速器",
+      "title": "J.J.トムソン、電子を発見",
+      "summary": "キャヴェンディッシュ研究所のトムソンが、陰極線の正体は原子よりはるかに軽い負電荷の粒子だとする実験結果を王立研究所で講演した。原子より小さい構成要素、最初の素粒子の発見である。\n\n「原子は分割できない」という古代以来の前提が崩れた出発点であり、1911年の原子核、1932年の中性子と続く**より小さな階層を問い続ける旅**がここから始まる。当時この発見に実用価値を見た者はほとんどいなかった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: J. J. Thomson",
+          "url": "https://en.wikipedia.org/wiki/J._J._Thomson"
+        }
+      ]
+    },
+    {
+      "date": "1928-02-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "理論",
+      "title": "ディラック方程式、反物質を予言",
+      "summary": "ディラックが特殊相対論と量子力学を両立させる電子の方程式を発表した。方程式は負エネルギーの解を含み、やがて電子と同じ質量で電荷が逆の「反粒子」の存在を意味すると解釈される。\n\n1932年にアンダーソンが宇宙線の中に陽電子を発見して予言は的中した。**紙の上の数学が未知の粒子を先に言い当てる**という理論主導の発見様式の最初の劇的な成功であり、以後の素粒子物理の型となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Dirac equation",
+          "url": "https://en.wikipedia.org/wiki/Dirac_equation"
+        }
+      ]
+    },
+    {
+      "date": "1932-02-27",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "実験と加速器",
+      "title": "チャドウィック、中性子を発見",
+      "summary": "チャドウィックが、ベリリウムから出る透過力の強い放射線を電荷を持たない中性の粒子と同定し、Nature誌に速報した。師のラザフォードが1920年に示唆していた中性子の実証である。\n\n陽子と中性子の組で原子核を説明できるようになり、核物理は急展開した。同年には加速器による人工核変換も成功している。核子どうしを結ぶ力の説明として、3年後に湯川の中間子論(理論レイヤー)が生まれる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: James Chadwick",
+          "url": "https://en.wikipedia.org/wiki/James_Chadwick"
+        }
+      ]
+    },
+    {
+      "date": "1935-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "理論",
+      "title": "湯川秀樹、中間子論を発表",
+      "summary": "湯川秀樹が、原子核の中で陽子と中性子を結びつける力は未知の粒子(中間子)の交換によって生じるとする理論を日本の学術誌に発表した。力を粒子の交換として説明する枠組みの提示である。\n\n1947年のパイ中間子発見(実験と加速器レイヤー)で理論は裏づけられ、1949年に日本人初のノーベル賞を受賞。敗戦直後の日本社会を勇気づけ、素粒子論の研究拠点が日本に育つ契機となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 湯川秀樹",
+          "url": "https://ja.wikipedia.org/wiki/%E6%B9%AF%E5%B7%9D%E7%A7%80%E6%A8%B9"
+        }
+      ]
+    },
+    {
+      "date": "1947-05-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "実験と加速器",
+      "title": "パイ中間子を宇宙線中に発見",
+      "summary": "パウエルらが、高山に設置した原子核乾板に残された飛跡から、湯川の予言に合う新粒子パイ中間子の崩壊を捉えてNature誌に報告した。\n\n加速器がまだ非力だった時代、天然の高エネルギー源である宇宙線が素粒子の狩場だった。だが同様に見つかる新粒子は予想外に増え続け、「粒子の動物園」と呼ばれる混沌が生じる。この混沌を整理する試みが、1964年のクォーク模型(理論レイヤー)につながっていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Pion",
+          "url": "https://en.wikipedia.org/wiki/Pion"
+        }
+      ]
+    },
+    {
+      "date": "1954-09-29",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "巨大科学と協力",
+      "title": "欧州合同原子核研究機関(CERN)設立",
+      "summary": "欧州12か国の批准によりCERNが正式に発足した。第二次大戦で疲弊し人材が米国へ流出した欧州が、一国では持てない大型加速器を共同で保有するために作った国際機関である。\n\n「科学による欧州の再建」を掲げた設立は、素粒子物理が**一国では担えない巨大科学**へ向かう転換点となった。後にW/Z粒子の発見、LHC、さらに副産物としてのWeb発明(1989年)まで、協力の枠組みそのものが成果を生み続ける。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: CERN",
+          "url": "https://en.wikipedia.org/wiki/CERN"
+        }
+      ]
+    },
+    {
+      "date": "1956-06-14",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "実験と加速器",
+      "title": "ニュートリノを初めて検出",
+      "summary": "ライネスとコーワンが原子炉から放出される反ニュートリノの検出に成功し、提唱者パウリに「検出した」と電報を打った。1930年の理論的な提唱から26年目の実証である。\n\nパウリが「検出不可能かもしれない」と悩みながら導入した粒子は実在した。物質とほとんど反応しないこの幽霊のような粒子は、その後も超新星の観測(1987年)や振動の発見(1998年)と、本年表で繰り返し主役を務めることになる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Cowan–Reines neutrino experiment",
+          "url": "https://en.wikipedia.org/wiki/Cowan%E2%80%93Reines_neutrino_experiment"
+        }
+      ]
+    },
+    {
+      "date": "1964-02-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "理論",
+      "title": "クォーク模型の提唱",
+      "summary": "ゲルマンとツワイクがそれぞれ独立に、乱立するハドロンを3種類の基本粒子(クォーク)の組み合わせとして整理する模型を提唱した。\n\n分数電荷を持つ粒子は当初「数学的な便法」と受け取られ、単独で取り出せない性質もあって実在への懐疑が続いたが、1968年以降の電子散乱実験が陽子の内部構造を裏づけた。宇宙線と加速器が生んだ「粒子の動物園」(実験と加速器レイヤー)に、周期表にあたる秩序を与えた転換点である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Quark",
+          "url": "https://en.wikipedia.org/wiki/Quark"
+        }
+      ]
+    },
+    {
+      "date": "1964-08-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "理論",
+      "title": "ヒッグス機構の提唱",
+      "summary": "アングレールとブラウト、続いてヒッグス、さらにグラルニクらの3グループが、対称性の自発的破れによって素粒子が質量を得る機構を相次いで独立に発表した。ヒッグスの論文は新粒子の存在に明示的に触れていた。\n\n半世紀後のLHCでの粒子発見(実験と加速器レイヤー)で実証されるが、提唱の先取権と呼び名をめぐる議論は長く続いた。2013年のノーベル賞は2名に絞られ、選から漏れた貢献者をめぐる論争も残った。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "機構はほぼ同時期に3グループが独立に提唱しており、貢献の配分と「誰の名を冠すべきか」は現在も立場によって見解が分かれる。",
+      "sources": [
+        {
+          "title": "Wikipedia: Higgs mechanism",
+          "url": "https://en.wikipedia.org/wiki/Higgs_mechanism"
+        }
+      ]
+    },
+    {
+      "date": "1967-11-20",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "理論",
+      "title": "ワインバーグ、電弱統一理論を発表",
+      "summary": "ワインバーグが電磁気力と弱い力を一つの枠組みで記述する理論を発表した。ヒッグス機構を組み込み、未発見のW粒子とZ粒子の質量を予言するものだった。サラムも独立に同様の理論へ到達している。\n\n発表当初はほとんど引用されなかったが、1971年にトフーフトが計算の整合性(繰り込み可能性)を証明すると一気に主流となり、素粒子の「標準模型」の柱となった。予言の検証は1983年のCERN(実験と加速器レイヤー)を待つ。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Electroweak interaction",
+          "url": "https://en.wikipedia.org/wiki/Electroweak_interaction"
+        }
+      ]
+    },
+    {
+      "date": "1974-11-11",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "実験と加速器",
+      "title": "J/ψ粒子の同時発見(11月革命)",
+      "summary": "米国のブルックヘブン研究所とSLACの2チームが、同じ新粒子J/ψの発見を同日に発表した。異常に長い寿命を持つこの粒子は、第4のクォーク(チャーム)と反クォークの束縛状態と解釈された。\n\nクォーク模型と電弱理論(理論レイヤー)の予言が一挙に裏づけられ、標準模型が定説となる「11月革命」と呼ばれる転換点になった。一方でティン側が結果の公表を数か月遅らせた経緯には食い違いが残り、名称も両陣営の呼称を併記する異例の形となった。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "ブルックヘブン側がいつ発見と確信し、なぜ公表を遅らせたのかについては、当事者の回想の間に食い違いがある。",
+      "sources": [
+        {
+          "title": "Wikipedia: J/psi meson",
+          "url": "https://en.wikipedia.org/wiki/J/psi_meson"
+        }
+      ]
+    },
+    {
+      "date": "1983-01-25",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "実験と加速器",
+      "title": "CERN、W粒子の発見を発表",
+      "summary": "ルビア率いるUA1実験が、陽子・反陽子衝突の中にW粒子の証拠を確認したと発表した。同年6月にはZ粒子の発見も発表され、いずれも電弱統一理論(理論レイヤー)の予言どおりの質量だった。\n\n反陽子を貯めて冷却するファンデルメーアの技術革新が発見を可能にし、両名は翌1984年にノーベル賞を受賞。欧州が素粒子実験の主導権を米国から取り戻した出来事とも評され、探索の焦点は残るヒッグス粒子へ移っていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: W and Z bosons",
+          "url": "https://en.wikipedia.org/wiki/W_and_Z_bosons"
+        }
+      ]
+    },
+    {
+      "date": "1987-02-23",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "実験と加速器",
+      "title": "超新星1987Aのニュートリノを検出",
+      "summary": "大マゼラン雲で起きた超新星爆発からのニュートリノを、岐阜県神岡のカミオカンデを含む3つの検出器がほぼ同時に捉えた。カミオカンデは11個の事象を時刻とエネルギー付きで記録した。\n\n超新星理論の中核を初めて直接検証した観測であり、ニュートリノで宇宙を見る「ニュートリノ天文学」を開いた。小柴昌俊は2002年にノーベル賞を受賞し、後継機スーパーカミオカンデによる振動発見(1998年)へと日本の実験の系譜が続く。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: SN 1987A",
+          "url": "https://en.wikipedia.org/wiki/SN_1987A"
+        }
+      ]
+    },
+    {
+      "date": "1993-10-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "巨大科学と協力",
+      "title": "米国、超伝導超大型加速器(SSC)を中止",
+      "summary": "米議会が、テキサス州で建設中だった周長約87kmの加速器SSCの計画中止を決定した。すでに約20億ドルが投じられトンネルの一部も掘られていたが、費用の膨張と冷戦終結後の優先順位の変化が致命傷となった。\n\n素粒子物理の主導権は、より小さい周長27kmのLHCを選んだ欧州へ移る。**巨大科学の成否を決めるのは政治と予算**であることを見せつけた事件であり、以後の大型計画は最初から国際分担を前提に設計されるようになった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Superconducting Super Collider",
+          "url": "https://en.wikipedia.org/wiki/Superconducting_Super_Collider"
+        }
+      ]
+    },
+    {
+      "date": "1998-01-01",
+      "precision": "year",
+      "end_date": "2008-09-10",
+      "type": "period",
+      "layer": "巨大科学と協力",
+      "title": "LHC建設、100か国規模の協力事業に",
+      "summary": "CERNで大型ハドロン衝突型加速器(LHC)の建設が進み、2008年9月10日に最初のビーム周回に到達した。周長27kmのトンネルに超伝導磁石を並べ、検出器の建設には日本や米国を含む100を超える国・地域の研究者が参加した。\n\nSSC中止(1993年)後の素粒子物理の希望を一身に背負った計画である。周回の9日後に磁石接続部の事故で1年余り停止する挫折も経て2010年から本格運転に入り、2年後のヒッグス粒子発見の舞台となる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Large Hadron Collider",
+          "url": "https://en.wikipedia.org/wiki/Large_Hadron_Collider"
+        }
+      ]
+    },
+    {
+      "date": "1998-06-05",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "実験と加速器",
+      "title": "ニュートリノ振動の発見",
+      "summary": "スーパーカミオカンデのグループが、大気ニュートリノが飛行中に種類を変える「振動」の証拠を岐阜県高山市での国際会議で発表した。振動が起きることは、ニュートリノに質量があることを意味する。\n\n標準模型はニュートリノの質量をゼロと仮定しており、これは**標準模型の綻びを示した初の確かな実験事実**となった。梶田隆章とマクドナルドは2015年にノーベル賞を受賞。質量の起源や宇宙の物質優勢の謎へ続く未解決領域が開かれた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Neutrino oscillation",
+          "url": "https://en.wikipedia.org/wiki/Neutrino_oscillation"
+        }
+      ]
+    },
+    {
+      "date": "2012-07-04",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "実験と加速器",
+      "title": "ヒッグス粒子の発見を発表",
+      "summary": "CERNのATLASとCMSの両実験が、質量約125GeVの新粒子の発見を発表した。1964年に提唱されたヒッグス機構(理論レイヤー)が予言する粒子と矛盾しない性質で、その後の測定でも裏づけられた。\n\n標準模型最後の未発見粒子が48年越しに見つかり、翌年アングレールとヒッグスがノーベル賞を受賞した。**半世紀前の理論を数千人の実験が検証する**という、この分野の時間スケールと協力の規模を象徴する到達点である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Higgs boson",
+          "url": "https://en.wikipedia.org/wiki/Higgs_boson"
+        }
+      ]
+    },
+    {
+      "date": "2013-08-23",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "巨大科学と協力",
+      "title": "ILC、国内候補地に北上山地を選定",
+      "summary": "次世代の直線加速器・国際リニアコライダー(ILC)について、日本の研究者組織が国内候補地を岩手県などにまたがる北上山地に一本化した。発見されたばかりのヒッグス粒子を精密測定する「ヒッグス工場」の構想である。\n\nしかし巨額の建設費の国際分担は固まらず、日本政府は誘致の意思表明を保留し続けた。SSC中止(1993年)と同様に、次の一手を決めるのは物理ではなく政治と資金であるという構図が繰り返されている。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "候補地選定は研究者側の決定であり、政府の誘致判断・国際的な費用分担・実現時期はいずれも未確定のままである。",
+      "sources": [
+        {
+          "title": "Wikipedia: 国際リニアコライダー",
+          "url": "https://ja.wikipedia.org/wiki/%E5%9B%BD%E9%9A%9B%E3%83%AA%E3%83%8B%E3%82%A2%E3%82%B3%E3%83%A9%E3%82%A4%E3%83%80%E3%83%BC"
+        }
+      ]
+    },
+    {
+      "date": "2021-04-07",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "実験と加速器",
+      "title": "ミューオンg-2、標準模型とのずれを報告",
+      "summary": "米フェルミ研究所のMuon g-2実験が、ミューオンの磁気異常の測定値が標準模型の予測と食い違うとする最初の結果を発表した。先行するブルックヘブンの測定とも一致し、ずれの統計的有意性が高まった。\n\n未知の粒子の兆候かと注目されたが、同時期に格子QCDによる新しい理論計算が実験値に近い値を示し、**ずれているのは自然か、それとも理論計算か**という論争になった。標準模型の先を探る現在進行形の戦線である。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "実験値と理論値の乖離は、理論側の計算手法(データ駆動法と格子QCD)の間の不一致が未解決のため、新物理の証拠かどうか結論が出ていない。",
+      "sources": [
+        {
+          "title": "Wikipedia: Muon g-2",
+          "url": "https://en.wikipedia.org/wiki/Muon_g-2"
+        }
+      ]
+    },
+    {
+      "date": "2025-03-31",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "巨大科学と協力",
+      "title": "CERN、次期加速器FCCの実現可能性報告",
+      "summary": "CERNが周長約91kmの次期円形加速器FCCの実現可能性調査の最終報告をまとめた。まず電子・陽電子衝突でヒッグス粒子を精密測定し、将来は陽子衝突で未知の高エネルギー領域を探る二段構えの構想である。\n\n建設費は第1段階だけで150億スイスフラン規模とされ、承認は加盟国の判断に委ねられる。1954年の設立以来続いてきた国際協力の枠組みが、数十年がかりの次の賭けに踏み出せるかが問われている。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "報告書は構想段階の計画であり、費用見積りと建設の可否・時期は未承認・未確定。公表日は報道に基づく。",
+      "sources": [
+        {
+          "title": "Wikipedia: Future Circular Collider",
+          "url": "https://en.wikipedia.org/wiki/Future_Circular_Collider"
+        }
+      ]
+    }
+  ]
+}

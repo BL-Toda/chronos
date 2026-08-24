@@ -1,0 +1,393 @@
+{
+  "slug": "history-industrial-revolution",
+  "title": "産業革命の波紋",
+  "description": "蒸気機関と紡績機から始まった変化が、都市と経済、そして働く人々の生活をどう作り替えたか。技術・経済と都市・労働と社会運動の三層を重ね、一つの発明が社会全体に広がる波紋を追う。",
+  "category": "history-politics",
+  "language": "ja",
+  "start_year": 1712,
+  "end_year": 1872,
+  "layers": [
+    {
+      "name": "技術と発明",
+      "color": "blue"
+    },
+    {
+      "name": "経済と都市",
+      "color": "orange"
+    },
+    {
+      "name": "労働と社会運動",
+      "color": "pink"
+    }
+  ],
+  "events": [
+    {
+      "date": "1712-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と発明",
+      "title": "ニューコメンの蒸気機関が稼働",
+      "summary": "1712年、トーマス・ニューコメンの大気圧機関がイングランドの炭鉱で排水用に稼働を始めた。人力と畜力と水力しかなかった世界に、燃料から動力を取り出す初めての実用機械が現れた。\n\n効率は低く、用途も鉱山の排水にほぼ限られたが、**石炭を動力に変える**という原理はここで実証された。半世紀後にワットはこの機関の改良から出発する。産業革命という波紋の、最初の一滴にあたる出来事である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Newcomen atmospheric engine",
+          "url": "https://en.wikipedia.org/wiki/Newcomen_atmospheric_engine"
+        }
+      ]
+    },
+    {
+      "date": "1733-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と発明",
+      "title": "ジョン・ケイ、飛び杼を発明",
+      "summary": "1733年、ジョン・ケイが特許を得た飛び杼(フライング・シャトル)は織布の速度をおよそ2倍にし、これまで2人がかりだった広幅の布を1人で織ることを可能にした。\n\n織りが速くなると、今度は糸が足りなくなる。この不均衡が後の紡績機の発明競争を呼び、技術が次の技術を要求する連鎖が始まった。職を奪われることを恐れた織工たちの反発でケイが困窮したという逸話も伝わるが、その細部は検証されていない。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "ケイが織工の反発を受けて困窮・亡命したという逸話は後世の脚色を含む可能性があり、検証されていない。",
+      "sources": [
+        {
+          "title": "Wikipedia: John Kay (flying shuttle)",
+          "url": "https://en.wikipedia.org/wiki/John_Kay_(flying_shuttle)"
+        },
+        {
+          "title": "T.S.アシュトン『産業革命』",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1764-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と発明",
+      "title": "ハーグリーブスのジェニー紡績機",
+      "summary": "織工ジェームズ・ハーグリーブスが、1人で複数の錘(つむ)を同時に回せるジェニー紡績機を作った。家内工業の道具の形のまま、紡績の生産性を数倍に引き上げた発明である。\n\n発明年は1764年とも65年ともされ、ハーグリーブス自身が記録を残さなかったため確定しない。飛び杼が生んだ糸不足への応答であり、まもなくアークライトの水力紡績機と競い合いながら、綿工業を技術革新の主戦場に変えていく。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "発明年は1764〜65年と資料により幅があり、発明の経緯も後年の証言と伝承に依存する。",
+      "sources": [
+        {
+          "title": "Wikipedia: Spinning jenny",
+          "url": "https://en.wikipedia.org/wiki/Spinning_jenny"
+        }
+      ]
+    },
+    {
+      "date": "1769-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と発明",
+      "title": "ワットの分離凝縮器特許",
+      "summary": "ジェームズ・ワットが、蒸気を別室で冷やす分離凝縮器の特許を取得した。ニューコメン機関の燃料消費を大幅に減らすこの改良で、蒸気機関は炭鉱の外でも採算の取れる動力になった。\n\n同じ1769年にはアークライトが水力紡績機の特許を得ており、動力と作業機械の革新が同時に進んだ。ワットは実業家ボールトンと組み、特許制度に守られながら機関を市場化していく。技術が資本と結びつく産業革命の型が、ここで整った。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: ジェームズ・ワット",
+          "url": "https://ja.wikipedia.org/wiki/ジェームズ・ワット"
+        }
+      ]
+    },
+    {
+      "date": "1771-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "経済と都市",
+      "title": "アークライト、クロムフォードに紡績工場",
+      "summary": "リチャード・アークライトがダーウェント川沿いのクロムフォードに水力紡績工場を建てた。数百人が機械の速度に合わせて交替で働く、近代的な工場制度の原型である。\n\n農村の仕事は季節と日光が区切っていたが、工場では時計が区切る。**時間で管理される労働**という新しい生活の型がここで生まれ、やがて都市へ、そして世界へ広がっていく。工場村クロムフォードを含むダーウェント峡谷は、現在世界遺産に登録されている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Cromford Mill",
+          "url": "https://en.wikipedia.org/wiki/Cromford_Mill"
+        }
+      ]
+    },
+    {
+      "date": "1776-03-09",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "経済と都市",
+      "title": "アダム・スミス『国富論』刊行",
+      "summary": "1776年3月9日、アダム・スミスの『国富論』が刊行された。ピン工場の分業の観察から説き起こし、市場での交換が社会全体の富を増やしていく仕組みを体系的に描いた。\n\n重商主義的な規制や独占への批判は、その後の自由貿易政策や工場主たちの自己理解を支える理論となった。工業化がまだ始まったばかりの時点で、来たるべき経済社会を語る言葉を先に用意した書物といえる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 国富論",
+          "url": "https://ja.wikipedia.org/wiki/国富論"
+        }
+      ]
+    },
+    {
+      "date": "1785-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と発明",
+      "title": "カートライトの力織機特許",
+      "summary": "聖職者エドマンド・カートライトが、動力で布を織る力織機の特許を取得した。初期の機械は実用性に乏しかったが、改良を重ねて19世紀初頭から普及が進む。\n\n紡績の機械化が生んだ「糸余り」への応答であり、飛び杼以来の技術連鎖がこれで一巡した。手織工は一時は高賃金を享受したが、力織機の普及とともに没落していき、その困窮が労働と社会運動レイヤーのラッダイト運動の背景の一つとなる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Edmund Cartwright",
+          "url": "https://en.wikipedia.org/wiki/Edmund_Cartwright"
+        }
+      ]
+    },
+    {
+      "date": "1811-01-01",
+      "precision": "year",
+      "end_date": "1816-12-31",
+      "type": "period",
+      "layer": "労働と社会運動",
+      "title": "ラッダイト運動（機械打ち壊し）",
+      "summary": "1811年、ノッティンガムの靴下編工から始まった機械打ち壊しは、伝説の指導者「ネッド・ラッド」の名を掲げてランカシャーやヨークシャーの繊維地帯に広がった。政府は軍を投入し、機械破壊を死刑とする法で応じた。\n\n単純な機械嫌いではなく、賃金切り下げと熟練の無価値化への抗議だった。団結が法で禁じられていた時代、機械の破壊(技術と発明レイヤーの力織機など)は残された交渉手段でもあった。「ラッド」なる人物の実在は確認されていない。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: ラッダイト運動",
+          "url": "https://ja.wikipedia.org/wiki/ラッダイト運動"
+        },
+        {
+          "title": "E.P.トムスン『イングランド労働者階級の形成』",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1819-08-16",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "労働と社会運動",
+      "title": "ピータールーの虐殺",
+      "summary": "1819年8月16日、マンチェスターの聖ピーター広場で議会改革を求めて集まった約6万人の群衆に騎兵隊が突入し、死者十数人、負傷者数百人を出した。ワーテルローをもじって「ピータールー」と呼ばれる。\n\n急成長する工業都市マンチェスターには、当時まだ独自の議席がなかった。**繁栄の中心にいながら発言権を持たない人々**の存在をこの事件は可視化し、1832年の選挙法改正へ続く長い圧力の起点となった。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "死者数は11〜18人、参加者数は6万人前後と、資料により推計に幅がある。",
+      "sources": [
+        {
+          "title": "Wikipedia: Peterloo Massacre",
+          "url": "https://en.wikipedia.org/wiki/Peterloo_Massacre"
+        }
+      ]
+    },
+    {
+      "date": "1825-09-27",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と発明",
+      "title": "世界初の公共鉄道が開業",
+      "summary": "1825年9月27日、スティーヴンソンの機関車ロコモーション号が客車と貨車を牽いてストックトン・アンド・ダーリントン鉄道を走った。蒸気機関車が牽く世界初の公共鉄道である。\n\nもとは炭鉱の石炭を港へ運ぶための路線だったが、蒸気機関が「据え付けの動力」から「移動する動力」へ変わった意味は大きい。5年後のリバプール・マンチェスター鉄道(経済と都市レイヤー)で、鉄道の時代が本格的に開く。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Stockton and Darlington Railway",
+          "url": "https://en.wikipedia.org/wiki/Stockton_and_Darlington_Railway"
+        }
+      ]
+    },
+    {
+      "date": "1830-09-15",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "経済と都市",
+      "title": "リバプール・マンチェスター鉄道開業",
+      "summary": "綿工業都市マンチェスターと港湾都市リバプールを結ぶ、時刻表に基づき機関車牽引で運行される初の都市間鉄道が開業した。開業式典では政治家ハスキソンが機関車にひかれて死亡する事故も起きている。\n\n輸送費と移動時間の劇的な短縮は、原料と製品と人と情報の流れを一変させた。以後20年で英国は鉄道網に覆われ、株式投機の熱狂(鉄道狂時代)まで生む。産業革命の波紋が、空間そのものを縮め始めた出来事である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Liverpool and Manchester Railway",
+          "url": "https://en.wikipedia.org/wiki/Liverpool_and_Manchester_Railway"
+        }
+      ]
+    },
+    {
+      "date": "1833-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "労働と社会運動",
+      "title": "工場法成立、児童労働に国家が介入",
+      "summary": "1833年の工場法は、繊維工場での9歳未満の児童の就労を禁じ、年少者の労働時間を制限し、専任の工場監督官を置いた。実効性を備えた初の労働立法とされる。\n\n**自由放任の時代に、国家が工場の門をくぐった**転換点である。監督官の報告書は労働の実態を数字で可視化し、以後の10時間法など一連の工場立法の根拠となった。児童に就学を義務づけた規定は、公教育の整備にもつながっていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Factory Acts",
+          "url": "https://en.wikipedia.org/wiki/Factory_Acts"
+        }
+      ]
+    },
+    {
+      "date": "1842-05-02",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "労働と社会運動",
+      "title": "チャーティスト運動、第2次請願を提出",
+      "summary": "男子普通選挙などを求める人民憲章を掲げたチャーティスト運動は、1842年5月2日、主催者発表で300万筆を超える署名を議会に提出した。同年夏には賃下げに抗議するストライキが工業地帯に広がった。\n\n議会は請願の審議自体を拒んだが、工場労働者が全国規模の政治運動を組織したこと自体が新しかった。掲げられた要求の多く(普通選挙・秘密投票など)は、半世紀以上かけて実現していくことになる。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "署名数(約331万筆とされる)は主催者側の集計で、水増しの指摘もあり第三者による検証はない。",
+      "sources": [
+        {
+          "title": "Wikipedia: Chartism",
+          "url": "https://en.wikipedia.org/wiki/Chartism"
+        }
+      ]
+    },
+    {
+      "date": "1844-01-01",
+      "precision": "year",
+      "end_date": "1847-12-31",
+      "type": "period",
+      "layer": "経済と都市",
+      "title": "鉄道狂時代（レイルウェイ・マニア）",
+      "summary": "1840年代半ばの英国では鉄道会社の設立と株式投機が過熱し、ピークの1846年には270本を超える鉄道法案が議会を通過した。中流層まで巻き込んだ投機は40年代末に破綻し、多くの投資家が財産を失った。\n\nしかしバブルの残骸として、路線網は現実に残った。技術レイヤーの発明が資本市場の熱狂を生み、その熱狂が意図せずインフラを整備するという、後の時代にも繰り返されるパターンの原型である。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "「鉄道狂時代」の期間の区切りは慣用的で、投機の規模や損失額の推計は研究により幅がある。",
+      "sources": [
+        {
+          "title": "Wikipedia: Railway Mania",
+          "url": "https://en.wikipedia.org/wiki/Railway_Mania"
+        }
+      ]
+    },
+    {
+      "date": "1848-02-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "労働と社会運動",
+      "title": "『共産党宣言』刊行",
+      "summary": "1848年2月、マルクスとエンゲルスの『共産党宣言』がロンドンで刊行された。産業革命が生んだブルジョアジーとプロレタリアートの対立を歴史の推進力として描き、労働者の国際的な団結を呼びかけた。\n\n刊行直後に大陸では二月革命・三月革命が連鎖したが、宣言自体の同時代への影響は限られていた。むしろ後年、労働運動と社会主義運動の基礎文献となっていく。エンゲルスの父は、マンチェスターの紡績工場の共同経営者だった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 共産党宣言",
+          "url": "https://ja.wikipedia.org/wiki/共産党宣言"
+        }
+      ]
+    },
+    {
+      "date": "1851-05-01",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "経済と都市",
+      "title": "ロンドン万国博覧会が開幕",
+      "summary": "1851年5月1日、ガラスと鉄でできた水晶宮を会場に、世界初の万国博覧会が開幕した。約5か月半の会期で600万人が入場し、展示の中心は英国の機械と工業製品が占めた。\n\n**「世界の工場」となった英国**が自国の工業力を世界に示す祭典であり、整備されたばかりの鉄道網が地方から観客を運んだ。他国は展示から技術と制度を学び、以後の万博は各国の工業化の進度を競う場となる。入場者数は主催者の記録に基づく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Great Exhibition",
+          "url": "https://en.wikipedia.org/wiki/Great_Exhibition"
+        }
+      ]
+    },
+    {
+      "date": "1856-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と発明",
+      "title": "ベッセマー転炉法の発表",
+      "summary": "ヘンリー・ベッセマーが、溶けた銑鉄に空気を吹き込んで大量の鋼を安価に作る転炉法を発表した。鋼の価格は劇的に下がり、レール・船・建築・機械の素材が鉄から鋼へ置き換わっていく。\n\n産業革命の主役だった綿と石炭に、鋼という新しい主役が加わった。安価な鋼は、より長い鉄道、より大きな船、やがては高層建築を可能にし、重工業と化学を軸とするいわゆる第二次産業革命への橋渡しとなった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Bessemer process",
+          "url": "https://en.wikipedia.org/wiki/Bessemer_process"
+        }
+      ]
+    },
+    {
+      "date": "1858-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "経済と都市",
+      "title": "ロンドンの「大悪臭」と下水道建設",
+      "summary": "1858年夏、猛暑でテムズ川の汚水が腐敗し、議事堂が窓を閉ざすほどの悪臭がロンドンを覆った。「大悪臭」と呼ばれるこの事態を受け、議会は長年先送りしてきた大下水道の建設をわずか18日で決定した。\n\n人口が急増した工業都市は、コレラの流行と河川汚染という代価を払っていた。バザルジェット設計の下水道網は都市衛生の転換点となり、急成長する都市をどう住める場所にするかという工業化の問いへの、最初の大規模な答えの一つとなった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Great Stink",
+          "url": "https://en.wikipedia.org/wiki/Great_Stink"
+        }
+      ]
+    },
+    {
+      "date": "1871-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "労働と社会運動",
+      "title": "英国で労働組合法が成立",
+      "summary": "1871年の労働組合法により、労働組合は初めて法的な地位を認められた。団結禁止法(1799年)から70年あまりを経て、組合はもはや犯罪ではなく制度の一部となった。\n\n機械打ち壊し(ラッダイト)から街頭の請願(チャーティズム)を経て、交渉と立法へ。労働運動の手段の変遷は、産業革命が生んだ対立が制度に組み込まれていく過程そのものである。ただし争議行為への刑事責任は残り、完全な合法化はさらに後の課題となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Trade Union Act 1871",
+          "url": "https://en.wikipedia.org/wiki/Trade_Union_Act_1871"
+        }
+      ]
+    },
+    {
+      "date": "1872-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "経済と都市",
+      "title": "富岡製糸場が開業、波紋は日本へ",
+      "summary": "1872年(明治5年)、群馬県富岡に官営の器械製糸場が開業した。フランスから技師と機械を導入し、全国から集まった工女たちが器械製糸の技術を学んで各地に伝えた。\n\n英国に始まった工業化の波紋は、1世紀半かけて極東の島国に到達した。**後発国が国家主導で工業化を移植する**モデルの初期例であり、日本の産業革命はここから約40年で重工業の段階まで駆け上がっていく。富岡製糸場は2014年に世界遺産に登録された。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 富岡製糸場",
+          "url": "https://ja.wikipedia.org/wiki/富岡製糸場"
+        }
+      ]
+    }
+  ]
+}

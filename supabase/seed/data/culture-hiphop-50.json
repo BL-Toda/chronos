@@ -1,0 +1,367 @@
+{
+  "slug": "culture-hiphop-50",
+  "title": "ヒップホップの50年",
+  "description": "1973年ブロンクスの一夜のパーティーから50周年まで。音楽と表現・産業とメディア・社会とストリートの3層を重ね、地域の路上文化が世界最大級の音楽ジャンルへ育つ過程を辿る年表。",
+  "category": "culture",
+  "language": "ja",
+  "start_year": 1973,
+  "end_year": 2023,
+  "layers": [
+    {
+      "name": "音楽と表現",
+      "color": "purple"
+    },
+    {
+      "name": "産業とメディア",
+      "color": "orange"
+    },
+    {
+      "name": "社会とストリート",
+      "color": "teal"
+    }
+  ],
+  "events": [
+    {
+      "date": "1973-08-11",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会とストリート",
+      "title": "クール・ハークのパーティー、ヒップホップ誕生の日",
+      "summary": "ニューヨーク・ブロンクスのセジウィック通り1520番地で、DJクール・ハークが妹の企画するパーティーでプレイした。曲の間奏部分だけを2枚のレコードでつなぐ手法が、ここで披露されたとされる。\n\nこの夜を「ヒップホップ誕生」とする語りは後年に定着した記念日であり、文化は多数の担い手の中で徐々に形づくられた。それでも**ブレイクビーツ**の発明に象徴的な起点を与える日付として、50周年もこの日に祝われた。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "この日を「誕生日」とする位置づけは記念日的な後付けであり、手法や文化の成立はより漸進的だったとする研究が多い。",
+      "sources": [
+        {
+          "title": "Wikipedia: 1520 Sedgwick Avenue",
+          "url": "https://en.wikipedia.org/wiki/1520_Sedgwick_Avenue"
+        }
+      ]
+    },
+    {
+      "date": "1979-09-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "産業とメディア",
+      "title": "「ラッパーズ・ディライト」がラップを商品に変える",
+      "summary": "シュガーヒル・ギャングの「ラッパーズ・ディライト」が発売され、ラップのレコードとして初めて全米チャートの上位に入るヒットとなった。\n\nパーティーの場の即興だったラップが録音商品として成立することを証明し、**現場の文化が産業になった**分岐点とされる。ただし「最初のラップレコード」かどうかは先行作の存在をめぐって議論があり、ブロンクスの当事者たちの間でも評価は割れた。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "「最初のラップレコード」とする位置づけには、同年の先行作(ファットバック・バンドのKing Tim III等)を挙げる異論がある。",
+      "sources": [
+        {
+          "title": "Wikipedia: Rapper's Delight",
+          "url": "https://en.wikipedia.org/wiki/Rapper%27s_Delight"
+        }
+      ]
+    },
+    {
+      "date": "1982-07-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "音楽と表現",
+      "title": "「ザ・メッセージ」が路上の現実をラップに刻む",
+      "summary": "グランドマスター・フラッシュ&ザ・フューリアス・ファイヴの「ザ・メッセージ」が発売された。荒廃した都市生活を淡々と描く歌詞で、パーティー音楽だったラップの主題を一変させた。\n\n社会とストリートレイヤーにあるブロンクスの荒廃と貧困が、初めて正面から曲の中心に据えられた作品とされる。以後「現実を語る」ことはヒップホップの中核的な価値となり、ギャングスタラップにも政治的なラップにも受け継がれていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: The Message (Grandmaster Flash and the Furious Five song)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1983-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会とストリート",
+      "title": "映画「ワイルド・スタイル」が文化を世界へ運ぶ",
+      "summary": "ヒップホップ黎明期の実像を描いた映画「ワイルド・スタイル」が公開された。ラップ、DJ、ブレイクダンス、グラフィティという文化の諸要素をまとめて世界に見せた最初期の作品である。\n\n出演者たちは来日プロモーションも行い、テレビ出演や街頭でのパフォーマンスが反響を呼んだ。日本語ラップの先駆者たちが影響を公言する文化の伝播経路となったが、来日時の詳細は当事者の回想に依拠する部分が大きい。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "来日プロモーションの時期や内容は関係者の回想・インタビューに基づくところが大きく、一次資料での確認が難しい。",
+      "sources": [
+        {
+          "title": "Wikipedia: Wild Style",
+          "url": "https://en.wikipedia.org/wiki/Wild_Style"
+        }
+      ]
+    },
+    {
+      "date": "1984-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "産業とメディア",
+      "title": "デフ・ジャム・レコーディングス設立",
+      "summary": "リック・ルービンとラッセル・シモンズがニューヨークでデフ・ジャムを設立した。大学寮の一室から始まり、LL・クール・Jやビースティ・ボーイズを送り出す看板レーベルへ成長する。\n\nメジャーの流通網と組みながら路上の感覚を保つ経営で、ヒップホップを一過性の流行ではなく継続的な産業として成立させた。文化の担い手自身がビジネスの主導権を握る型がここで確立し、後の起業家型アーティストの系譜へつながる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Def Jam Recordings",
+          "url": "https://en.wikipedia.org/wiki/Def_Jam_Recordings"
+        }
+      ]
+    },
+    {
+      "date": "1986-07-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "音楽と表現",
+      "title": "Run-D.M.C.とエアロスミスの「Walk This Way」",
+      "summary": "Run-D.M.C.がエアロスミスと共演した「Walk This Way」を発表し、全米チャートの上位に入った。ロックの名曲をラップで作り直すという、当時としては異例の共演である。\n\nMTVがラップのビデオを本格的に流す契機となり、白人ロック聴衆とラップの間の壁を壊した曲と評される。ジャンルの越境がヒットの方程式になり得ることを示し、産業とメディアレイヤーの扉を内側から開いた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Walk This Way",
+          "url": "https://en.wikipedia.org/wiki/Walk_This_Way"
+        }
+      ]
+    },
+    {
+      "date": "1988-08-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "産業とメディア",
+      "title": "MTVでラップ専門番組「Yo MTV Raps」開始",
+      "summary": "MTVでラップ専門番組「Yo MTV Raps」が始まり、高い視聴率を記録した。ヒップホップのビデオが全米、さらに国際放送網で日常的に流れる最初の大きな窓口である。\n\n地域ごとに分かれていた各都市のシーンの音とファッションが全国で同時に共有され、地方や海外の若者がヒップホップに出会う経路となった。メディアの回路が文化の拡散速度を一変させた例である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Yo MTV Raps(ラップ専門番組)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1988-08-08",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "音楽と表現",
+      "title": "N.W.A『ストレイト・アウタ・コンプトン』発売",
+      "summary": "N.W.Aがアルバム『ストレイト・アウタ・コンプトン』を発売した。ロサンゼルス・コンプトンの警察との緊張や街の暴力を生々しく描き、ギャングスタラップを全国区に押し上げた。\n\n収録曲への抗議としてFBI職員がレーベルへ書簡を送る事態に発展し、**表現の自由をめぐる係争地**としてのヒップホップの位置が定まった。ラジオにほとんど頼らず売れた点も、産業とメディアレイヤーの常識を崩した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Straight Outta Compton",
+          "url": "https://en.wikipedia.org/wiki/Straight_Outta_Compton"
+        }
+      ]
+    },
+    {
+      "date": "1990-06-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会とストリート",
+      "title": "2ライヴ・クルーのアルバムに猥褻判定",
+      "summary": "フロリダ州の連邦地裁が2ライヴ・クルーのアルバム『As Nasty As They Wanna Be』を猥褻と判定し、販売した店主やメンバーの逮捕が相次いだ。音楽アルバムへの猥褻判定は極めて異例だった。\n\n判定は1992年の控訴審で覆され、表現の自由の側の勝利として決着した。ラップが法廷や議会で繰り返し標的となる90年代の摩擦の始まりであり、論争自体が知名度と売上を押し上げる皮肉な構図も生んだ。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: As Nasty as They Wanna Be",
+          "url": "https://en.wikipedia.org/wiki/As_Nasty_as_They_Wanna_Be"
+        }
+      ]
+    },
+    {
+      "date": "1991-05-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "産業とメディア",
+      "title": "サウンドスキャン導入、ラップの実売が可視化",
+      "summary": "ビルボードがPOSデータに基づく集計方式サウンドスキャンを導入し、店員への聞き取りに頼っていたチャートが実売ベースへ変わった。導入直後からラップとカントリーの順位が急上昇した。\n\n業界の思い込みで過小評価されていた**ラップの実勢**が数字で証明され、メジャー各社の投資が本格化した。測り方が変わるだけで文化(音楽と表現レイヤー)の勢力図の見え方が変わることを示した転換点である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Nielsen SoundScan",
+          "url": "https://en.wikipedia.org/wiki/Nielsen_SoundScan"
+        }
+      ]
+    },
+    {
+      "date": "1994-01-01",
+      "precision": "year",
+      "end_date": "1997-03-09",
+      "type": "period",
+      "layer": "社会とストリート",
+      "title": "東西抗争の時代",
+      "summary": "ニューヨークのバッド・ボーイ勢とロサンゼルスのデス・ロウ勢の対立が、雑誌報道や楽曲での応酬を通じて過熱した。1996年に2パック、1997年にノトーリアス・B.I.G.が相次いで射殺され、抗争の時代は最悪の形で幕を閉じた。\n\n両事件はいずれも全容解明に至っていない。メディアが対立の構図を煽って売上に変えた側面が指摘され、以後のシーンには対立の商業的な演出への自省が残った。地域性という文化の核が、暴力と結び付いてしまった時代である。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "「東西抗争」の起点や範囲の区分は論者により異なり、二つの射殺事件と抗争との因果関係も確定していない。",
+      "sources": [
+        {
+          "title": "Wikipedia: East Coast–West Coast hip hop rivalry",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1996-07-07",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会とストリート",
+      "title": "「さんピンCAMP」開催、日本語ラップの金字塔",
+      "summary": "東京・日比谷野外音楽堂で日本語ラップのイベント「さんピンCAMP」が開かれ、ランプアイ、キングギドラら当時のシーンの中心的なアーティストが一堂に会した。\n\n記録映像が繰り返し参照されることで、日本語でラップするという表現が独自の到達点を示した日として神話化されている。ワイルド・スタイル来日から10年余り、**輸入文化のローカル化**が一つの頂点に達した瞬間である。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "動員数や当日の詳細は主催関係者の証言と映像作品に依拠しており、公的な記録による確認は難しい。",
+      "sources": [
+        {
+          "title": "Wikipedia: さんピンCAMP",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1999-02-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "音楽と表現",
+      "title": "ローリン・ヒルがグラミー5部門受賞",
+      "summary": "ローリン・ヒルが『ミスエデュケーション』でグラミー賞の最優秀アルバムを含む5部門を受賞した。ヒップホップ系のアルバムが主要部門の頂点に立つのは初めてだった。\n\nソウルやレゲエを溶かし込んだ音楽性と内省的な詞が、ラップを賞の外側に置いてきた音楽業界(産業とメディアレイヤー)の評価軸を動かした。女性アーティストの達成としても画期であり、主流化の決定的な一歩となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: The Miseducation of Lauryn Hill",
+          "url": "https://en.wikipedia.org/wiki/The_Miseducation_of_Lauryn_Hill"
+        }
+      ]
+    },
+    {
+      "date": "2005-09-02",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会とストリート",
+      "title": "カニエ・ウェストが生放送で災害対応を批判",
+      "summary": "ハリケーン・カトリーナの被災者支援の生放送番組で、カニエ・ウェストが台本を離れ、報道の偏りと政府の対応を批判して「ジョージ・ブッシュは黒人を気にかけていない」と発言した。\n\n発言は激しい論争を呼んだが、ヒップホップのアーティストが黒人コミュニティの代弁者として国政へ直言する構図を全国に可視化した。路上で生まれた音楽が、世論の回路として機能することを示した出来事である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: A Concert for Hurricane Relief",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2017-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "産業とメディア",
+      "title": "ヒップホップが米国で最も聴かれるジャンルに",
+      "summary": "ニールセンの2017年の統計で、R&B/ヒップホップがロックを抜いて米国で最も消費される音楽ジャンルになったと報告された。ストリーミング再生を含む集計方法が大きく寄与した。\n\nCD時代に築かれたロックの優位が、聴取行動を直接測る**ストリーミングの時代**に覆った。サウンドスキャン導入(1991年)と同じく、測定方法の変化が文化の実勢を露わにしたという産業とメディアレイヤーの節目である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Nielsen Music Mid-Year Report U.S. 2017",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2018-04-16",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "音楽と表現",
+      "title": "ケンドリック・ラマーにピュリッツァー賞",
+      "summary": "ケンドリック・ラマーのアルバム『DAMN.』がピュリッツァー賞音楽部門を受賞した。同部門でクラシックとジャズ以外の作品が選ばれるのは初めてである。\n\n現代の黒人の生活の複雑さを捉えた作品集という授賞理由は、ラップの詞を文学として正面から認めるものだった。半世紀前に路上で生まれた表現形式に対する、制度の側からの**芸術としての承認**を象徴する出来事である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "The Pulitzer Prizes: Kendrick Lamar",
+          "url": "https://www.pulitzer.org/winners/kendrick-lamar"
+        }
+      ]
+    },
+    {
+      "date": "2018-05-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "音楽と表現",
+      "title": "「This Is America」が銃社会を撃つ",
+      "summary": "チャイルディッシュ・ガンビーノが「This Is America」を発表した。陽気なダンスと突然の銃撃を交錯させるミュージックビデオが米国の銃暴力と黒人の生を主題化し、世界で爆発的に再生された。\n\nMVという形式そのものを批評の道具へ変えた達成で、翌年のグラミー賞では主要2部門を制した。「ザ・メッセージ」以来の現実を語る系譜が、映像とSNSの時代の文法で更新されたといえる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: This Is America (song)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2019-08-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "産業とメディア",
+      "title": "「オールド・タウン・ロード」が19週連続首位",
+      "summary": "リル・ナズ・Xの「オールド・タウン・ロード」が、ビルボードHot 100で史上最長となる19週連続1位を達成した。カントリーとトラップを混ぜた曲で、TikTok上のミーム拡散がヒットの起点だった。\n\nカントリーチャートから除外された経緯は、ジャンル分類と人種の関係をめぐる論争を呼んだ。SNSがラジオに代わるヒットの入口になったことを決定づけ、ヒップホップの語法があらゆるポップの土台となった現在を象徴する。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Old Town Road",
+          "url": "https://en.wikipedia.org/wiki/Old_Town_Road"
+        }
+      ]
+    },
+    {
+      "date": "2023-08-11",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会とストリート",
+      "title": "ヒップホップ生誕50周年、発祥の地で記念公演",
+      "summary": "クール・ハークのパーティーからちょうど50年の当日、ブロンクスのヤンキー・スタジアムでRun-D.M.C.らが出演する大規模な記念公演が開かれた。この年はグラミー賞の特別企画など、年間を通じて50周年が祝われた。\n\n誕生日という語りそのものが神話を含むことは指摘されつつも、地域の路上文化が半世紀で世界最大級のポップカルチャーに達したことを発祥の地で確認する一年となった。本年表の締めくくりにふさわしい。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Hip Hop 50 Live at Yankee Stadium (2023年8月11日)に関する各社報道",
+          "url": null
+        }
+      ]
+    }
+  ]
+}

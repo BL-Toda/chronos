@@ -1,0 +1,286 @@
+{
+  "slug": "tech-fintech",
+  "title": "フィンテックの破壊力",
+  "description": "モバイル送金から暗号資産、スマホ時代の銀行取り付けまで。技術は金融の何を壊し、何を壊せなかったのか。サービス・既存金融・規制の3層で破壊と吸収の20年を追う。",
+  "category": "technology",
+  "language": "ja",
+  "start_year": 2007,
+  "end_year": 2025,
+  "layers": [
+    {"name": "技術とサービス", "color": "blue"},
+    {"name": "既存金融と資本", "color": "orange"},
+    {"name": "規制と社会", "color": "teal"}
+  ],
+  "events": [
+    {
+      "date": "2007-03-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術とサービス",
+      "title": "ケニアでM-Pesa開始、銀行なしの送金インフラに",
+      "summary": "ケニアの通信会社サファリコムが、携帯電話のショートメッセージを使った送金サービスM-Pesaを開始した。銀行口座を持たない人々が、現金を電子的に送り、受け取れるようになった。\n\n銀行網の外側から金融アクセスを一気に広げた代表例で、金融包摂というフィンテックの原点を示す。後の途上国モバイルマネーやQR決済の先行モデルとなり、規制当局も「銀行免許なしで営まれる金融」への対応を迫られた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Safaricom/Vodafone発表・GSMA調査 (2007)", "url": null}
+      ]
+    },
+    {
+      "date": "2008-10-31",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術とサービス",
+      "title": "ビットコイン論文公開",
+      "summary": "サトシ・ナカモト名義の論文「Bitcoin: A Peer-to-Peer Electronic Cash System」が暗号技術のメーリングリストで公開され、中央管理者なしに二重支払いを防ぐ電子通貨の仕組みが示された。\n\nリーマン・ブラザーズ破綻の翌月という時期は象徴的で、既存金融(既存金融と資本レイヤー)への不信がこの構想の受け皿となった。翌年1月に最初のブロックが生成され、以後の暗号資産のすべてがここから派生する。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Bitcoin: A Peer-to-Peer Electronic Cash System (原論文)", "url": "https://bitcoin.org/bitcoin.pdf"}
+      ]
+    },
+    {
+      "date": "2011-09-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術とサービス",
+      "title": "Stripe公開、オンライン決済がAPI数行になる",
+      "summary": "米Stripeが開発者向けの決済APIを一般公開した。加盟店契約や審査に数週間かかっていたカード決済の導入が、ウェブサイトに数行のコードを書くだけで済むようになった。\n\n**決済のインフラ化**はECやSaaSの起業コストを大きく下げ、その後のプラットフォーム経済の裏方となった。既存金融レイヤーから見れば、カード網の上に乗りながら顧客接点だけを奪っていく新種の存在の登場だった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Stripe公式発表 (2011-09)", "url": null}
+      ]
+    },
+    {
+      "date": "2014-01-01",
+      "precision": "year",
+      "end_date": "2018-12-31",
+      "type": "period",
+      "layer": "技術とサービス",
+      "title": "中国でQR決済が日常インフラ化",
+      "summary": "アリペイとWeChat Payの二強が、屋台の支払いから公共料金までQRコード決済を浸透させた。この間に中国のモバイル決済取引額は数十兆元規模へ拡大したと推計されている。\n\nカード社会を経ずに現金からスマホへ跳んだ「リープフロッグ」の代表例である。決済データが信用スコアや少額投資の入口になることを世界に示し、各国のスーパーアプリ構想と規制議論(規制と社会レイヤー)の参照点となった。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "取引額は中国人民銀行統計や調査会社の推計に基づくもので、集計範囲によって数値が大きく異なる。",
+      "sources": [
+        {"title": "中国人民銀行「支付体系運行総体情況」各年版", "url": null}
+      ]
+    },
+    {
+      "date": "2014-02-28",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と社会",
+      "title": "マウントゴックス破綻、暗号資産規制の原点に",
+      "summary": "世界最大級のビットコイン交換所だった東京のマウントゴックスが民事再生法の適用を申請した。約85万BTCの消失が公表され、利用者資産の保全が世界的な問題として噴出した。\n\nこの事件を機に日本は交換業者の登録制を導入し、世界に先んじて暗号資産を法制度に取り込む道を選ぶ。**破綻が規制を生む**というフィンテック史の反復パターンの、最初の大きな実例である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "日本経済新聞・Reuters報道 (2014-02-28)", "url": null}
+      ]
+    },
+    {
+      "date": "2015-10-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と社会",
+      "title": "EUが決済サービス指令PSD2を可決",
+      "summary": "欧州議会が改定決済サービス指令(PSD2)を可決した。銀行に対し、顧客の同意を前提に口座情報や決済機能を外部事業者へAPIで開放することを義務づける内容である。\n\n銀行が独占してきた口座データを競争基盤として開放させる「オープンバンキング」の法的出発点であり、規制が破壊を後押しした珍しい例といえる。英国の同名制度や日本の銀行法改正など、各国制度の雛形となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "EUR-Lex: Directive (EU) 2015/2366 (PSD2)", "url": "https://eur-lex.europa.eu/eli/dir/2015/2366/oj"}
+      ]
+    },
+    {
+      "date": "2018-12-04",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術とサービス",
+      "title": "PayPayの「100億円あげちゃうキャンペーン」",
+      "summary": "ソフトバンクとヤフーが立ち上げたPayPayが、決済額の20%を還元する大型キャンペーンを開始し、わずか10日で還元原資100億円を使い切った。日本のQR決済の認知を一気に押し上げたとされる。\n\n現金志向の強い日本市場に、巨額の販促でユーザーの行動変容を買うプラットフォーム型の戦略が持ち込まれた出来事である。翌年の消費増税に伴うポイント還元事業(規制と社会レイヤー)と重なり、キャッシュレス比率は以後上昇を続けた。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "キャンペーンの実施は事実だが、利用者獲得数や認知への効果は同社発表と調査会社推計に基づき、独立した検証はない。",
+      "sources": [
+        {"title": "PayPay報道発表 (2018-12)", "url": null}
+      ]
+    },
+    {
+      "date": "2019-06-18",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術とサービス",
+      "title": "FacebookがLibra構想を発表",
+      "summary": "Facebook(現Meta)が、複数の通貨建て資産で裏付けるグローバルデジタル通貨Libraの構想を発表した。世界20億人超の利用者基盤に金融を載せる計画に、各国の規制当局と中央銀行が一斉に警戒を示した。\n\n構想は縮小と改名(Diem)を経て2022年に消滅したが、**民間企業が通貨そのものに手を伸ばした**衝撃は大きく、各国の中央銀行デジタル通貨(CBDC)研究とステーブルコイン規制を加速させた。挫折が制度を動かした例である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Libra白書 (2019-06)", "url": null}
+      ]
+    },
+    {
+      "date": "2021-01-28",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と社会",
+      "title": "ゲームストップ株騒動、Robinhoodが購入制限",
+      "summary": "掲示板Redditに集った個人投資家が空売りの多いゲームストップ株を買い上げて株価が急騰。手数料無料の株取引アプリRobinhoodが同株の新規購入を一時制限し、後に米議会の公聴会にまで発展した。\n\nスマホ証券が掲げた「投資の民主化」と、その足元の脆さが同時に露呈した事件である。購入制限の背景には清算機関への預託金という既存金融レイヤーの仕組みがあり、新興サービスも旧来インフラの上に立つ事実を示した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "米下院金融サービス委員会公聴会記録 (2021-02)", "url": null}
+      ]
+    },
+    {
+      "date": "2021-04-14",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "既存金融と資本",
+      "title": "Coinbaseがナスダック上場",
+      "summary": "米最大の暗号資産交換所Coinbaseがナスダックに直接上場し、時価総額は一時1,000億ドル近くに達した。暗号資産企業として初めての大型上場となった。\n\n既存金融の破壊を掲げた企業が、伝統的な資本市場の作法で資金調達をする構図は、**破壊と制度への吸収が同時に進む**というフィンテックの性格をよく示している。この上場を頂点とする強気相場は、翌年の連鎖破綻で暗転することになる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Reuters報道 (2021-04-14)", "url": null}
+      ]
+    },
+    {
+      "date": "2021-09-07",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と社会",
+      "title": "エルサルバドルがビットコインを法定通貨に",
+      "summary": "エルサルバドルが世界で初めてビットコインを法定通貨とする法律を施行した。国民向けウォレット「Chivo」を配布し、事業者には受け入れを義務づけた。\n\n国家が暗号資産を通貨制度へ組み込む最初の実験だったが、その後の調査では国民の利用低迷が繰り返し報告され、IMFも見直しを勧告し続けた。2025年には受け入れ義務が撤廃され、実験は大幅に後退した。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "法律の施行は事実だが、国民の利用実態は学術調査・世論調査ベースで報告され、数値には幅がある。",
+      "sources": [
+        {"title": "NBER Working Paper: Are Cryptocurrencies Currencies? Bitcoin as Legal Tender in El Salvador", "url": null}
+      ]
+    },
+    {
+      "date": "2022-05-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術とサービス",
+      "title": "ステーブルコインTerraUSD崩壊",
+      "summary": "アルゴリズム型ステーブルコインTerraUSD(UST)が米ドルとの連動を失い、姉妹通貨LUNAとともに数日でほぼ無価値となった。消失した時価総額は400億ドル規模と推計される。\n\n「アルゴリズムで価値を保つ」という設計の破綻は貸付業者やファンドの連鎖倒産を招き、半年後のFTX破綻への導火線となった。各国のステーブルコイン規制(規制と社会レイヤー)が一気に具体化する直接の契機である。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "消失額の推計は集計時点と対象範囲により数百億ドル規模の幅がある。",
+      "sources": [
+        {"title": "Reuters・Bloomberg報道 (2022-05)", "url": null}
+      ]
+    },
+    {
+      "date": "2022-11-11",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "既存金融と資本",
+      "title": "FTX破綻",
+      "summary": "世界2位級の暗号資産交換所FTXが、顧客資産の流用疑惑の表面化から10日足らずで連邦破産法11条を申請した。創業者サム・バンクマン=フリードは後に詐欺罪で有罪となった。\n\n著名投資家や機関投資家まで巻き込んだ崩壊は、**規制の空白地帯に築かれた信用の脆さ**を露呈させた。皮肉にも破綻処理は伝統的な裁判所と会計専門家の手に委ねられ、暗号資産業界への規制導入論を決定づけた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "FTX連邦破産法11条申請・米司法省発表 (2022-11)", "url": null}
+      ]
+    },
+    {
+      "date": "2023-03-10",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "既存金融と資本",
+      "title": "シリコンバレー銀行破綻、スマホ時代の取り付け",
+      "summary": "スタートアップ業界の主要銀行だったシリコンバレー銀行(SVB)が破綻した。SNSでの不安拡散とモバイルバンキングにより預金流出は1日で420億ドル規模に達したとされ、史上最速級の取り付けと呼ばれた。\n\nフィンテックが磨いた「即時に動くカネ」が、預金は簡単に逃げないという既存銀行の前提を崩した事件である。破壊の技術は新興企業だけでなく**銀行制度そのものの弱点**にもなり得ることを示し、預金保険と規制の再設計論を呼んだ。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "流出額・速度は当局発表と報道に基づくが、「史上最速の取り付け」という比較には定義上の異論がある。",
+      "sources": [
+        {"title": "FDIC・カリフォルニア州金融保護革新局発表 (2023-03-10)", "url": null}
+      ]
+    },
+    {
+      "date": "2023-06-01",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と社会",
+      "title": "日本で改正資金決済法施行、ステーブルコインを制度化",
+      "summary": "改正資金決済法が施行され、法定通貨建てステーブルコインが「電子決済手段」として定義された。発行者を銀行・資金移動業者・信託会社に限定する、世界でも先行する包括的な制度である。\n\nマウントゴックス以来の「事件が先、制度が後」という順序から、**制度を先に整えて市場を待つ**姿勢への転換点といえる。2025年には国内初の円建てステーブルコインが登場し、送金・決済インフラとしての実験段階に入った。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "金融庁: 資金決済法等の改正について (2023)", "url": null}
+      ]
+    },
+    {
+      "date": "2023-07-20",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "既存金融と資本",
+      "title": "米FRBが即時決済網FedNowを稼働",
+      "summary": "米連邦準備制度が、24時間365日稼働する銀行間の即時送金インフラFedNowの運用を開始した。数日かかることもあった米国内送金が、ようやくリアルタイム化への一歩を踏み出した。\n\n英国の即時決済や日本の全銀システム24時間化など各国の流れに続く動きで、フィンテックが生んだ「即時性」への需要に中央銀行側が応えた形である。**土台のインフラを更新して破壊者を吸収する**、既存側の対応の典型といえる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Federal Reserve発表 (2023-07-20)", "url": null}
+      ]
+    },
+    {
+      "date": "2024-01-10",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "既存金融と資本",
+      "title": "米SECがビットコイン現物ETFを一括承認",
+      "summary": "米証券取引委員会(SEC)が11本のビットコイン現物ETFを一括で承認し、翌日から取引が始まった。10年にわたり申請却下が続いてきた歴史が、裁判所の判断を経て覆った形である。\n\nブラックロックなど伝統的な資産運用最大手が暗号資産への窓口となり、破壊者として出発した資産が既存金融の商品棚に収まった。反体制の思想から生まれたビットコインの制度化として、本年表の一つの到達点である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "米SEC発表・声明 (2024-01-10)", "url": null}
+      ]
+    },
+    {
+      "date": "2025-07-18",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と社会",
+      "title": "米国でステーブルコイン規制法(GENIUS法)成立",
+      "summary": "決済用ステーブルコインの発行者に準備資産の全額保有と開示を義務づけるGENIUS法が米国で成立した。連邦レベルでは初となる包括的な暗号資産関連法である。\n\nLibra(2019年)への警戒から始まった議論が、6年を経て「排除ではなく制度化」へ着地した。ドル建てステーブルコインの普及を通じたドルの地位維持という狙いも指摘されており、規制そのものが競争戦略の色彩を帯びる段階に入った。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "米ホワイトハウス・連邦議会発表 (2025-07)", "url": null}
+      ]
+    }
+  ]
+}

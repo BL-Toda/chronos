@@ -1,0 +1,349 @@
+{
+  "slug": "history-digital-democracy",
+  "title": "デジタル民主主義",
+  "description": "インターネットは民主主義を強くするのか、壊すのか。市民の動員、世論の操作、制度の応答という3層を重ね、同じ技術が希望と脅威の両方として現れた30年を追う。",
+  "category": "history-politics",
+  "language": "ja",
+  "start_year": 1996,
+  "end_year": 2024,
+  "layers": [
+    {
+      "name": "参加と動員",
+      "color": "green"
+    },
+    {
+      "name": "操作と分断",
+      "color": "pink"
+    },
+    {
+      "name": "制度とプラットフォーム",
+      "color": "blue"
+    }
+  ],
+  "events": [
+    {
+      "date": "1996-02-08",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "参加と動員",
+      "title": "「サイバースペース独立宣言」発表",
+      "summary": "米国の通信品位法の成立に抗議し、電子フロンティア財団の共同創設者バーロウが「サイバースペース独立宣言」を発表した。ネットは政府の主権が及ばない自由な空間だと宣言した。\n\n**ネットは本質的に民主化の力である**という初期の楽観を象徴する文書である。この理想は2010年代の「アラブの春」の評価まで生き続けるが、国家とプラットフォームによる統制の現実(他の2レイヤー)に次第に侵食されていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "EFF: A Declaration of the Independence of Cyberspace",
+          "url": "https://www.eff.org/cyberspace-independence"
+        }
+      ]
+    },
+    {
+      "date": "2005-10-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度とプラットフォーム",
+      "title": "エストニアが世界初の全国規模ネット投票",
+      "summary": "エストニアが地方選挙で、法的拘束力を持つ世界初の全国規模インターネット投票を実施した。国民IDカードを基盤とする電子政府構築の一環である。\n\n以後の国政選挙でもネット投票は拡大し、投票の過半がオンラインで行われる選挙も現れた。一方でセキュリティ研究者からは脆弱性の指摘が繰り返されており、利便性と検証可能性の緊張は現在も残る論点である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Electronic voting in Estonia",
+          "url": "https://en.wikipedia.org/wiki/Electronic_voting_in_Estonia"
+        }
+      ]
+    },
+    {
+      "date": "2008-11-04",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "参加と動員",
+      "title": "オバマ当選、ネット動員が選挙を変える",
+      "summary": "バラク・オバマが米大統領選に勝利した。SNSと電子メールを駆使した小口献金と草の根動員の手法は、ネット時代の選挙運動の教科書とされた。\n\nこの時点でソーシャルメディアは**参加を広げる道具**として肯定的に語られていた。同じデータ駆動の手法がマイクロターゲティングとして操作と分断レイヤーの主役になるのは、わずか8年後のことである。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Barack Obama 2008 presidential campaign",
+          "url": "https://en.wikipedia.org/wiki/Barack_Obama_2008_presidential_campaign"
+        }
+      ]
+    },
+    {
+      "date": "2010-12-17",
+      "precision": "day",
+      "end_date": "2011-02-11",
+      "type": "period",
+      "layer": "参加と動員",
+      "title": "アラブの春、SNSが動員の基盤に",
+      "summary": "チュニジアの抗議を発端に反政府運動がアラブ諸国へ波及し、2011年2月にはエジプトのムバラク政権が18日間の抗議で崩壊した。SNSが動員と情報拡散に使われ「SNS革命」とも呼ばれた。\n\nただしSNSの寄与がどの程度だったかは研究者の間で評価が分かれ、衛星放送や労働運動の役割を重視する見方も強い。ネット楽観論の頂点であると同時に、その後の内戦化と権威主義の再強化が楽観の終わりの始まりとなった。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "「SNS革命」という規定には異論が多く、SNSの動員への寄与度は研究により評価が分かれる。",
+      "sources": [
+        {
+          "title": "Wikipedia: Arab Spring",
+          "url": "https://en.wikipedia.org/wiki/Arab_Spring"
+        }
+      ]
+    },
+    {
+      "date": "2011-05-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "操作と分断",
+      "title": "「フィルターバブル」概念の提唱",
+      "summary": "活動家イーライ・パリサーが著書でフィルターバブルという概念を提唱した。アルゴリズムによる情報の個人最適化が、人々を自分好みの情報の泡に閉じ込めると警告した。\n\n民主主義の前提である共通の事実基盤が技術によって侵食されるという問題設定は、後のフェイクニュース論争の枠組みを先取りした。実証研究には効果を限定的とする結果もあり、概念の妥当性自体も論争の対象であり続けている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Filter bubble",
+          "url": "https://en.wikipedia.org/wiki/Filter_bubble"
+        }
+      ]
+    },
+    {
+      "date": "2013-06-06",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "操作と分断",
+      "title": "スノーデンがNSAの大量監視を暴露",
+      "summary": "元NSA契約職員スノーデンの提供資料に基づき、米国家安全保障局による通信記録の大量収集プログラムが報道された。大手テック企業のデータへのアクセスも暴かれた。\n\n民主国家自身が**インフラ化した監視**を運用していた事実は、ネット自由論の前提を根本から揺さぶった。EUのデータ保護強化(制度とプラットフォームレイヤー)を加速させ、プライバシーは民主主義の問題として再定義された。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Edward Snowden",
+          "url": "https://en.wikipedia.org/wiki/Edward_Snowden"
+        }
+      ]
+    },
+    {
+      "date": "2014-03-18",
+      "precision": "day",
+      "end_date": "2014-04-10",
+      "type": "period",
+      "layer": "参加と動員",
+      "title": "台湾ひまわり運動、市民テックの合流",
+      "summary": "対中サービス貿易協定の審議強行に抗議した学生らが台湾の立法院を占拠した。シビックハッカー集団g0vが議場や街頭の情報をオンラインで中継・集約し、運動を支えた。\n\n運動後、政府はデジタル担当の政務委員に唐鳳を起用し、市民参加プラットフォームvTaiwanなどの実験が制度化された。抗議が**制度への参加回路**に転じた例として、デジタル民主主義論で最も参照される事例の一つである。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Sunflower Student Movement",
+          "url": "https://en.wikipedia.org/wiki/Sunflower_Student_Movement"
+        }
+      ]
+    },
+    {
+      "date": "2016-11-08",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "操作と分断",
+      "title": "米大統領選、偽情報とロシア介入が争点に",
+      "summary": "トランプが米大統領選に勝利した。選挙期間中にSNS上で虚偽ニュースが大量に拡散し、ロシアによる組織的な情報工作の存在も後に米情報機関が認定した。\n\n介入活動の存在自体は特別検察官の起訴などで裏づけられたが、それが選挙結果を左右したかは実証が難しく、評価は分かれたままである。ソーシャルメディアが民主主義への脅威として本格的に論じられる転換点となった。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "ロシアの介入活動の存在は米情報機関と特別検察官の捜査で認定されているが、選挙結果への影響の程度については実証的な確定がない。",
+      "sources": [
+        {
+          "title": "Wikipedia: Russian interference in the 2016 United States elections",
+          "url": "https://en.wikipedia.org/wiki/Russian_interference_in_the_2016_United_States_elections"
+        }
+      ]
+    },
+    {
+      "date": "2018-03-17",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "操作と分断",
+      "title": "ケンブリッジ・アナリティカ事件",
+      "summary": "選挙コンサルティング企業ケンブリッジ・アナリティカが最大8700万人分のFacebookデータを不正取得し、有権者の心理プロファイリングに用いたと報じられた。\n\n**個人データが世論操作の弾薬になる**構図を可視化した事件である。FacebookのCEOは米議会で証言し、同社には後に巨額の制裁金が科された。施行直前だったGDPR(制度とプラットフォームレイヤー)の正当性を裏書きする事件ともなった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Facebook-Cambridge Analytica data scandal",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2018-05-25",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度とプラットフォーム",
+      "title": "GDPR施行",
+      "summary": "EU一般データ保護規則(GDPR)が施行され、個人データの処理に包括的な義務と、最大で全世界売上高4%の制裁金が導入された。EU域外の企業にも適用される。\n\nスノーデン暴露(操作と分断レイヤー)後のデータ保護世論を制度化したもので、世界各国の個人情報保護法制のひな型となった。データの自己決定権を民主主義の基盤と位置づける「ブリュッセル効果」の代表例である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "EUR-Lex: Regulation (EU) 2016/679 (GDPR)",
+          "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+        }
+      ]
+    },
+    {
+      "date": "2019-06-09",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "参加と動員",
+      "title": "香港で100万人デモ、分散型動員の頂点",
+      "summary": "逃亡犯条例改正案に反対する大規模デモが香港で始まった。主催者発表で100万人、1週間後には200万人と称する参加者が街頭に出た。\n\n指導者を置かずTelegramや掲示板で戦術を調整する「水になれ」型の運動だったが、翌2020年の国家安全維持法の施行で運動は制圧された。参加者数は主催者と警察の発表が大きく乖離しており、確定的な数値はない。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "参加者数(100万人・200万人)は主催者発表であり、警察発表とは数倍の開きがある。",
+      "sources": [
+        {
+          "title": "Wikipedia: 2019-2020 Hong Kong protests",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2021-01-06",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度とプラットフォーム",
+      "title": "米議会襲撃、SNS各社が現職大統領を排除",
+      "summary": "米大統領選の結果認定を阻止しようとする群衆が連邦議会議事堂を襲撃した。SNS上の不正選挙言説が動員の基盤となり、直後にTwitterやFacebookはトランプ大統領のアカウントを停止した。\n\n偽情報の帰結が物理的暴力に至った出来事であると同時に、**私企業が国家元首の発言の場を奪える**事実がプラットフォーム権力の統制という新しい問いを突きつけた。EUのデジタルサービス法(同レイヤー)の議論も加速した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: January 6 United States Capitol attack",
+          "url": "https://en.wikipedia.org/wiki/January_6_United_States_Capitol_attack"
+        }
+      ]
+    },
+    {
+      "date": "2022-10-27",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度とプラットフォーム",
+      "title": "マスクがTwitterを買収",
+      "summary": "イーロン・マスクが約440億ドルでTwitterを買収した。コンテンツモデレーションの緩和、認証制度の変更、後の「X」への改称など、運営方針を大きく転換した。\n\n世界の公論空間の一つが一個人の所有物であることを露わにした出来事である。研究者へのデータ提供の縮小は偽情報研究(操作と分断レイヤー)の基盤を弱め、プラットフォームと民主主義の関係は所有者個人の意思に左右される段階に入った。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Acquisition of Twitter by Elon Musk",
+          "url": "https://en.wikipedia.org/wiki/Acquisition_of_Twitter_by_Elon_Musk"
+        }
+      ]
+    },
+    {
+      "date": "2022-11-16",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度とプラットフォーム",
+      "title": "EUデジタルサービス法(DSA)発効",
+      "summary": "違法コンテンツへの対応や巨大プラットフォームへのリスク評価義務を定めるEUデジタルサービス法が発効した。2024年から全面適用され、選挙の公正性への体系的リスクも評価対象とされた。\n\nプラットフォームの内部運用を公的監督の下に置く初の包括的枠組みであり、GDPRに続く「ブリュッセル効果」の再現が競われる。表現の自由への萎縮効果を懸念する批判もあり、規制と自由の均衡点はなお論争の中にある。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "EUR-Lex: Regulation (EU) 2022/2065 (Digital Services Act)",
+          "url": "https://eur-lex.europa.eu/eli/reg/2022/2065/oj"
+        }
+      ]
+    },
+    {
+      "date": "2024-01-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "操作と分断",
+      "title": "AI偽音声ロボコールが米予備選で使用",
+      "summary": "米ニューハンプシャー州予備選の直前、バイデン大統領の声をAIで合成し投票の棄権を促すロボコールが有権者に届いた。生成AIが実際の選挙妨害に使われた代表的事例として世界的に報じられた。\n\n発信を仕掛けた人物は後に特定され、罰金と訴追の対象となったが、電話の到達件数や投票行動への実際の影響は推定にとどまる。**合成メディアが選挙の声を偽造する**時代の到来を告げ、各国で対策立法が動き出した。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "ロボコールの到達件数(数千件から2万件超とされる)や投票行動への影響は推定であり、確定した数値はない。",
+      "sources": [
+        {
+          "title": "FCC・ニューハンプシャー州司法長官によるAI音声ロボコール事案の発表(2024)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2024-01-01",
+      "precision": "year",
+      "end_date": "2024-12-31",
+      "type": "period",
+      "layer": "参加と動員",
+      "title": "史上最大の「選挙の年」",
+      "summary": "世界の60を超える国・地域で国政級の選挙が行われ、有権者の合計は数十億人規模に達したとされる。インド、EU、米国など主要な民主政体の選挙が同じ年に集中した。\n\n生成AIによる偽情報への懸念が年初から語られた一方、事後の検証ではAI偽情報の決定的な影響は確認されなかったとする分析も出ており、評価は続いている。選挙の対象国数や有権者総数は、集計主体の定義により異なる。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "「選挙の年」の対象国数(60超から80超まで)や有権者総数は、集計主体の定義により大きく異なる。",
+      "sources": [
+        {
+          "title": "International IDEA: 2024 global elections \"super-cycle\" 関連資料",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2024-11-28",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "制度とプラットフォーム",
+      "title": "豪州が16歳未満のSNS利用禁止法を可決",
+      "summary": "オーストラリア議会が16歳未満のソーシャルメディア利用を禁止し、プラットフォームに年齢確認を義務づける法律を可決した。国レベルの包括的なSNS年齢規制としては世界初である。\n\n未成年保護を掲げる規制は各国で追随の動きを呼んだが、年齢確認が事実上全利用者の身元確認を要請し、匿名性と表現の自由を損なうという批判も強い。プラットフォームへの統制が、参加の基盤そのものと緊張する段階に入った。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "オーストラリア議会: Online Safety Amendment (Social Media Minimum Age) Bill 2024",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2024-12-06",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "操作と分断",
+      "title": "ルーマニア憲法裁が大統領選を無効化",
+      "summary": "ルーマニア憲法裁判所が大統領選第1回投票の結果を無効とし、選挙のやり直しを命じた。無名に近い候補ジョルジェスクがTikTok上の組織的キャンペーンで首位に立ち、当局は外国の介入を示す機密文書を公開していた。\n\nSNS経由の影響工作を理由に民主的選挙そのものが取り消された、EU加盟国で初の事例である。介入の主体や規模は当局の発表に基づいており、司法判断の妥当性を含めて欧州で激しい論争を呼んだ。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "外国(ロシアとされる)の介入の主体・規模は当局の機密解除文書に基づくもので、独立した全容の検証はなされていない。",
+      "sources": [
+        {
+          "title": "Reuters: Romanian court annuls presidential election first round (2024-12-06)",
+          "url": null
+        }
+      ]
+    }
+  ]
+}

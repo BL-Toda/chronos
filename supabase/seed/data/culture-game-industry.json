@@ -1,0 +1,385 @@
+{
+  "slug": "culture-game-industry",
+  "title": "ゲーム産業の爆発",
+  "description": "アーケードの黎明からファミコン、モバイル、巨大買収まで。ハード、ソフト、ビジネスと社会の3層を重ね、遊びが世界最大級のエンタテインメント産業へ育つ過程を追う年表。",
+  "category": "culture",
+  "language": "ja",
+  "start_year": 1972,
+  "end_year": 2023,
+  "layers": [
+    {
+      "name": "ハードとプラットフォーム",
+      "color": "blue"
+    },
+    {
+      "name": "ソフトと表現",
+      "color": "purple"
+    },
+    {
+      "name": "ビジネスと社会",
+      "color": "orange"
+    }
+  ],
+  "events": [
+    {
+      "date": "1972-11-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "ソフトと表現",
+      "title": "AtariがPongを発売、アーケードの起点に",
+      "summary": "Atariがアーケードゲーム「Pong」を発売した。卓球を模した単純なルールで、酒場に置かれた試作機が硬貨の詰まりで故障したという逸話とともに、ビデオゲームが商売になることを証明した。\n\n家庭用ゲーム機の始祖オデッセイの発売と同じ年の出来事で、遊びが電子産業と結びついた出発点にあたる。以後10年で北米にアーケードと家庭用の市場が急速に立ち上がり、1983年の市場崩壊(ビジネスと社会レイヤー)の前提となる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Pong",
+          "url": "https://en.wikipedia.org/wiki/Pong"
+        }
+      ]
+    },
+    {
+      "date": "1978-06-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "ソフトと表現",
+      "title": "スペースインベーダー稼働、日本中がブームに",
+      "summary": "タイトーがスペースインベーダーの稼働を開始した。専用の「インベーダーハウス」が各地に生まれ、喫茶店にもテーブル筐体が並ぶ社会現象となった。\n\n流通する100円硬貨が不足したという逸話は象徴として語り継がれるが、裏付けは乏しい。ブームは翌年にかけて過熱と反動を経験し、ゲームセンターと青少年を巡る摩擦(ビジネスと社会レイヤー)の原型となった。日本のゲーム産業の人材と資本の多くが、この熱狂から出発している。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "「100円玉が不足し造幣局が増産した」という逸話は広く流布しているが、公的記録による裏付けはなく俗説とする指摘が有力である。",
+      "sources": [
+        {
+          "title": "Wikipedia: Space Invaders",
+          "url": "https://en.wikipedia.org/wiki/Space_Invaders"
+        }
+      ]
+    },
+    {
+      "date": "1983-01-01",
+      "precision": "year",
+      "end_date": "1985-12-31",
+      "type": "period",
+      "layer": "ビジネスと社会",
+      "title": "アタリショック、北米家庭用市場の崩壊",
+      "summary": "北米の家庭用ゲーム市場が、供給過剰と粗悪ソフトの氾濫への消費者の失望で崩壊し、市場規模が数年で数十分の一に縮んだとされる。Atariが売れ残りカートリッジを砂漠に埋めた逸話はその象徴となった。\n\n小売がゲームから撤退するなか、1985年にNintendo Entertainment Systemが玩具の体裁で北米市場に再参入し、市場を再建する。**ソフトの品質を管理する**日本型モデル(ハードとプラットフォームレイヤー)の正しさを裏書きした期間である。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "市場縮小の規模(約32億ドルから約1億ドルへ、などとされる)は集計方法により幅があり、崩壊の主因についても複数の説がある。",
+      "sources": [
+        {
+          "title": "Wikipedia: Video game crash of 1983",
+          "url": "https://en.wikipedia.org/wiki/Video_game_crash_of_1983"
+        }
+      ]
+    },
+    {
+      "date": "1983-07-15",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "ハードとプラットフォーム",
+      "title": "任天堂がファミリーコンピュータ発売",
+      "summary": "任天堂が家庭用ゲーム機ファミリーコンピュータを発売した。14,800円という戦略的な価格と専用チップによる性能で、日本の家庭用ゲーム機の事実上の標準となった。\n\n同じ年に北米市場はアタリショック(ビジネスと社会レイヤー)で崩壊しており、任天堂はソフトの品質審査とライセンス制でこれを教訓化した。**プラットフォームがソフトを審査する**という産業構造はここに始まり、以後の家庭用ゲームビジネスの基本形となる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Nintendo Entertainment System",
+          "url": "https://en.wikipedia.org/wiki/Nintendo_Entertainment_System"
+        }
+      ]
+    },
+    {
+      "date": "1985-09-13",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "ソフトと表現",
+      "title": "スーパーマリオブラザーズ発売",
+      "summary": "任天堂がスーパーマリオブラザーズを発売した。横スクロールで広がる世界と精密な操作感が家庭用アクションゲームの文法を確立し、世界で数千万本規模を売り上げた。\n\n北米ではNESの看板ソフトとして市場再建(ビジネスと社会レイヤー)を牽引した。キャラクターが映画や玩具へ広がる「ゲームIP」の原型となり、ソフトがハードを売るという業界の力学を決定づけた作品である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Super Mario Bros.",
+          "url": "https://en.wikipedia.org/wiki/Super_Mario_Bros."
+        }
+      ]
+    },
+    {
+      "date": "1989-04-21",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "ハードとプラットフォーム",
+      "title": "ゲームボーイ発売、携帯ゲームの時代へ",
+      "summary": "任天堂が携帯型ゲーム機ゲームボーイを発売した。モノクロ液晶と単3電池4本という割り切った設計は、画面性能の競争より電池寿命と価格と頑丈さを優先したものだった。\n\n同梱・併売されたテトリスが子供以外の層まで取り込み、通信ケーブルは後のポケットモンスター(ソフトと表現レイヤー)の交換文化の土台となる。**ゲームを持ち歩く**という習慣はここから始まり、後の携帯電話ゲーム時代の遠い伏線となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Game Boy",
+          "url": "https://en.wikipedia.org/wiki/Game_Boy"
+        }
+      ]
+    },
+    {
+      "date": "1991-03-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "ソフトと表現",
+      "title": "ストリートファイターIIが対戦文化を生む",
+      "summary": "カプコンの対戦格闘ゲーム、ストリートファイターIIがアーケードで稼働を開始した。見知らぬ他人と筐体をはさんで戦う対戦文化を生み、ゲームセンターに再び人を呼び戻した。\n\n個性的なキャラクターとコマンド入力の奥深さは家庭用移植でも爆発的に売れ、スーパーファミコンの普及(ハードとプラットフォームレイヤー)を押し上げた。対戦の技術を競い合うコミュニティは、後年のeスポーツの源流の一つとされる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Street Fighter II",
+          "url": "https://en.wikipedia.org/wiki/Street_Fighter_II"
+        }
+      ]
+    },
+    {
+      "date": "1994-12-03",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "ハードとプラットフォーム",
+      "title": "PlayStation発売、3DとCD-ROMの時代",
+      "summary": "ソニー・コンピュータエンタテインメントがPlayStationを発売した。CD-ROMと3Dグラフィックスを核に、音楽流通で培った手法を応用したソフト流通の改革も持ち込んだ。\n\nセガサターンとの競争を経て世界で1億台に到達し、ゲームの買い手を大人へと広げた。ファイナルファンタジーVIIの陣営移籍に象徴されるソフト獲得競争は、**ハードの勝敗をソフトが決める**ことを改めて示した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: PlayStation (console)",
+          "url": "https://en.wikipedia.org/wiki/PlayStation_(console)"
+        }
+      ]
+    },
+    {
+      "date": "1996-02-27",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "ソフトと表現",
+      "title": "ポケットモンスター赤・緑発売",
+      "summary": "ゲームボーイ用ソフト、ポケットモンスター赤・緑が発売された。発売当初から口コミで販売を伸ばし、通信ケーブルによる交換と対戦を核に社会現象となった。\n\nアニメ・カードゲーム・映画へ広がる展開により、ポケモンは世界最大級のメディアフランチャイズへ成長する。発売から6年が経過した旧世代ハード(ハードとプラットフォームレイヤー)で生まれた世界的ヒットであり、遊びの仕組みの発明がハード性能に勝ることを示した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Pokémon Red and Blue",
+          "url": "https://en.wikipedia.org/wiki/Pokémon_Red_and_Blue"
+        }
+      ]
+    },
+    {
+      "date": "2006-12-02",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "ハードとプラットフォーム",
+      "title": "Wii発売、「ゲーム人口の拡大」路線",
+      "summary": "任天堂がWiiを日本で発売した。体の動きで直感的に操作するリモコンを採用し、高性能化の競争から距離を置いて、家族や高齢者まで遊び手を広げる戦略をとった。\n\n高性能路線のPlayStation 3が苦戦する一方でWiiは世界1億台を超え、「ゲーム人口の拡大」路線の成功例となった。ゲームに触れる人の裾野を広げたことは、直後に始まるスマートフォンゲーム(ビジネスと社会レイヤー)の爆発的な市場拡大の下地ともなる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Wii",
+          "url": "https://en.wikipedia.org/wiki/Wii"
+        }
+      ]
+    },
+    {
+      "date": "2008-07-10",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "ハードとプラットフォーム",
+      "title": "App Store開設、ゲーム流通の転換点",
+      "summary": "AppleがiPhone向けにApp Storeを開設した。個人開発者でも世界へゲームを直接販売できる流通網が生まれ、ソフトの価格は数百円から無料へと急速に下がった。\n\nパッケージ流通と専用ハードを前提としてきた産業構造は根本から揺らぎ、**誰もがポケットにゲーム機を持つ**時代が始まる。基本無料とアイテム課金という収益モデル(ビジネスと社会レイヤー)の主戦場も、ここから携帯電話の画面の中へ移っていった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: App Store (Apple)",
+          "url": "https://en.wikipedia.org/wiki/App_Store_(Apple)"
+        }
+      ]
+    },
+    {
+      "date": "2012-02-20",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "ソフトと表現",
+      "title": "パズル&ドラゴンズ配信開始",
+      "summary": "ガンホーがスマートフォン向けにパズル&ドラゴンズの配信を開始した。パズルとRPGを組み合わせた基本無料ゲームで、国内のモバイルゲームとして記録的な収益を上げた。\n\nガチャによる収益モデルの威力を示し、家庭用中心だった日本のゲーム産業の重心をモバイルへ動かした。一方で射幸性への社会的懸念も強まっており、コンプガチャ規制(ビジネスと社会レイヤー)と同じ年の出来事である点が、この時期の産業の光と影を示している。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "ガンホー・オンライン・エンターテイメント: パズル&ドラゴンズ",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2012-05-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "ビジネスと社会",
+      "title": "消費者庁がコンプガチャ規制の見解",
+      "summary": "消費者庁が「コンプリートガチャ」を景品表示法の禁止類型(カード合わせ)にあたるとする考え方を公表し、ソーシャルゲーム各社は同方式の廃止を相次いで発表した。\n\n急成長したソーシャルゲームの射幸性に行政が初めて明確な線を引いた出来事であり、業界は自主規制団体の整備へ動いた。遊びと賭博の境界という論点は、その後もガチャの確率表示やルートボックス規制として、世界各国で繰り返し問われることになる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "消費者庁: カード合わせに関する景品表示法(景品規制)上の考え方の公表について(2012年5月)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2016-07-06",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "ビジネスと社会",
+      "title": "Pokémon GO配信、街に遊び手があふれる",
+      "summary": "Nianticと株式会社ポケモンによるPokémon GOの配信が始まった。位置情報とARを使い、現実の街を歩いてポケモンを捕まえる遊びが世界中で社会現象となった。\n\n公園や観光地に人が集まる光景がニュースとなり、配信数か月で数億ダウンロードに達したとされる。20年前にゲームボーイで生まれたIP(ソフトと表現レイヤー)が、**スマートフォンで現実の街を遊び場に変えた**出来事である。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "ダウンロード数や利用者数は調査会社の推計や自社発表に基づくもので、集計方法により数値には幅がある。",
+      "sources": [
+        {
+          "title": "Wikipedia: Pokémon Go",
+          "url": "https://en.wikipedia.org/wiki/Pokémon_Go"
+        }
+      ]
+    },
+    {
+      "date": "2017-03-03",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "ハードとプラットフォーム",
+      "title": "Nintendo Switch発売",
+      "summary": "任天堂がNintendo Switchを発売した。据置機と携帯機の垣根をなくすハイブリッド設計で、前世代Wii Uの不振から一転し、世界で1億台を超える成功となった。\n\nゼルダの伝説 ブレス オブ ザ ワイルド(ソフトと表現レイヤー)を筆頭とする自社ソフトの求心力を改めて示し、スマートフォン全盛の時代にも専用ゲーム機の市場が成立することを証明した。携帯できる据置機という設計は、ゲームボーイ以来の系譜の到達点でもある。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Nintendo Switch",
+          "url": "https://en.wikipedia.org/wiki/Nintendo_Switch"
+        }
+      ]
+    },
+    {
+      "date": "2017-09-26",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "ソフトと表現",
+      "title": "フォートナイトがバトルロイヤルを配信",
+      "summary": "Epic Gamesがフォートナイトにバトルロイヤルモードを基本無料で追加配信した。100人での対戦とポップなビジュアル、建築の要素で、世界の若年層に爆発的に広がった。\n\n収益はスキンなど外見アイテムの課金が中心で、登録利用者は数億人と発表された。ゲーム内でアーティストのライブイベントが開かれるなど、ゲームがSNSに近い常設の「場」になったことを示し、後のメタバース論の参照点となった。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "利用者数や収益の数値は自社発表や調査会社の推計に基づくもので、第三者による検証はない。",
+      "sources": [
+        {
+          "title": "Wikipedia: Fortnite Battle Royale",
+          "url": "https://en.wikipedia.org/wiki/Fortnite_Battle_Royale"
+        }
+      ]
+    },
+    {
+      "date": "2019-05-25",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "ビジネスと社会",
+      "title": "WHOが「ゲーム障害」を国際疾病分類に",
+      "summary": "世界保健機関(WHO)の総会が国際疾病分類の改訂版ICD-11を採択し、ゲームへの依存を「ゲーム障害(gaming disorder)」として疾病に位置づけた。\n\nゲームへの過度の依存を公衆衛生の問題として扱う初の国際的枠組みであり、日本では香川県のゲーム条例(2020年)などの規制論に影響した。娯楽の中心となったゲーム(ソフトと表現レイヤー)を社会がどう位置づけるかという、インベーダーブーム以来の問いの現代版といえる。業界団体は疾病化に反対の立場を表明した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "WHO: ICD-11における gaming disorder の位置づけ(Q&A)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2020-03-01",
+      "precision": "month",
+      "end_date": "2021-12-31",
+      "type": "period",
+      "layer": "ビジネスと社会",
+      "title": "コロナ禍の巣ごもり特需",
+      "summary": "新型コロナウイルスの流行下で在宅時間が増え、世界のゲーム市場は各社の想定を超えて拡大した。ハードの品薄や開発の遅延も同時に起きた。\n\nこの特需は、あつまれ どうぶつの森(ソフトと表現レイヤー)の世界的ヒットやSwitch・PlayStation 5の品薄(ハードとプラットフォームレイヤー)として現れた。反動は2022年以降の市場減速と大手各社の人員削減につながり、拡大期の投資の見直しを産業全体に迫った。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "特需の期間の区切りは便宜的なもので、市場統計の集計範囲により拡大幅の評価は異なる。",
+      "sources": [
+        {
+          "title": "ファミ通ゲーム白書2021",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2020-03-20",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "ソフトと表現",
+      "title": "あつまれ どうぶつの森が世界的ヒット",
+      "summary": "任天堂があつまれ どうぶつの森を発売した。新型コロナウイルスによる外出制限と時期が重なり、島でのおだやかな生活が世界中で「もう一つの日常」として受け入れられた。\n\n美術館の所蔵品公開やブランドの衣装配布、友人との集まりまでがゲーム内で行われ、ゲームが社会インフラのように使われる光景が広がった。巣ごもり需要(ビジネスと社会レイヤー)の象徴として、Switchの品薄とともに産業全体の追い風となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Animal Crossing: New Horizons",
+          "url": "https://en.wikipedia.org/wiki/Animal_Crossing:_New_Horizons"
+        }
+      ]
+    },
+    {
+      "date": "2023-10-13",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "ビジネスと社会",
+      "title": "MicrosoftがActivision Blizzard買収完了",
+      "summary": "MicrosoftがActivision Blizzardの買収を完了した。687億ドルはゲーム産業史上最大の買収額であり、発表から完了まで各国競争当局の審査は約20か月に及んだ。\n\nクラウドゲームの競争への影響が審査の主要な論点となり、英国当局は当初、買収を差し止めた。**ゲームが各国の競争政策の主戦場になる**規模の産業へ成長したことを示す出来事であり、Pongから約半世紀の本年表の到達点である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Acquisition of Activision Blizzard by Microsoft",
+          "url": "https://en.wikipedia.org/wiki/Acquisition_of_Activision_Blizzard_by_Microsoft"
+        }
+      ]
+    }
+  ]
+}

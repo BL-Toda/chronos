@@ -1,0 +1,385 @@
+{
+  "slug": "history-french-revolution",
+  "title": "フランス革命とナポレオン",
+  "description": "三部会からワーテルローまで。政治体制・民衆・戦争の3層を重ね、自由の理想がいかに恐怖政治と帝政へ転じ、それでも近代の原理を残したのかを追う年表。",
+  "category": "history-politics",
+  "language": "ja",
+  "start_year": 1789,
+  "end_year": 1815,
+  "layers": [
+    {
+      "name": "政治体制",
+      "color": "blue"
+    },
+    {
+      "name": "民衆と社会",
+      "color": "pink"
+    },
+    {
+      "name": "戦争と外交",
+      "color": "gold"
+    }
+  ],
+  "events": [
+    {
+      "date": "1789-05-05",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "政治体制",
+      "title": "三部会がヴェルサイユで開会",
+      "summary": "財政危機の打開のため、ルイ16世が175年ぶりに三部会を召集した。聖職者・貴族・平民の3身分の代表が集まったが、身分別議決か頭数議決かをめぐって冒頭から対立し、6月には第三身分が「国民議会」を自称して分離する。\n\n凶作とパンの価格高騰で民衆の生活が極度に悪化していた時期であり(民衆と社会レイヤー)、王権の側が開いた協議の場が、王権そのものを問い直す議会へ変質していく起点となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Estates General of 1789",
+          "url": "https://en.wikipedia.org/wiki/Estates_General_of_1789"
+        }
+      ]
+    },
+    {
+      "date": "1789-07-14",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "民衆と社会",
+      "title": "バスティーユ牢獄襲撃",
+      "summary": "ネッケル罷免と軍隊のパリ集結に反発した民衆が、武器と弾薬を求めて専制の象徴バスティーユ牢獄を襲撃し、守備隊を降伏させた。この日は後にフランスの国民祝日となる。\n\n国民議会の憲法制定作業(政治体制レイヤー)が軍事力で潰される寸前に、民衆の直接行動が議会を救った構図であり、以後の革命は**議会の言葉と街頭の暴力の二重奏**で進む。地方でも領主への蜂起「大恐怖」が広がり、8月4日の封建的特権の廃止につながった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Storming of the Bastille",
+          "url": "https://en.wikipedia.org/wiki/Storming_of_the_Bastille"
+        }
+      ]
+    },
+    {
+      "date": "1789-08-26",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "政治体制",
+      "title": "人権宣言(人間と市民の権利の宣言)を採択",
+      "summary": "国民議会が全17条の人権宣言を採択した。自由・所有・安全・圧制への抵抗を自然権とし、**主権は国民にある**と定めて、法の前の平等と権力分立を掲げた。\n\nバスティーユ襲撃(民衆と社会レイヤー)からわずか6週間後であり、旧体制の身分原理を言葉の上で葬った文書といえる。ただし女性や植民地の奴隷は想定の外に置かれ、宣言の普遍性と適用範囲のずれは、その後の革命の火種であり続けた。1791年憲法の前文にも据えられる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Declaration of the Rights of Man and of the Citizen",
+          "url": "https://en.wikipedia.org/wiki/Declaration_of_the_Rights_of_Man_and_of_the_Citizen"
+        }
+      ]
+    },
+    {
+      "date": "1789-10-05",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "民衆と社会",
+      "title": "ヴェルサイユ行進、国王一家をパリへ連行",
+      "summary": "パンの欠乏に怒るパリの女性たちを中心とする群衆が、雨の中をヴェルサイユまで行進し、翌6日に国王一家をパリのテュイルリー宮殿へ移させた。国民議会もパリへ移る。\n\n生活物資の問題が王権の所在地を動かした出来事で、以後の国王と議会は、パリ民衆の監視と圧力のもとで政治を行うことになる。人権宣言への国王の裁可拒否(政治体制レイヤー)が行進の引き金の一つだった点に、理念と生活が結びつく革命の性格が表れている。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "行進参加者の規模は数千人から7千人前後まで推計に幅があり、同時代の記録も一致しない。",
+      "sources": [
+        {
+          "title": "Wikipedia: Women's March on Versailles",
+          "url": "https://en.wikipedia.org/wiki/Women%27s_March_on_Versailles"
+        }
+      ]
+    },
+    {
+      "date": "1791-06-20",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "政治体制",
+      "title": "ヴァレンヌ逃亡事件、国王への信頼が崩壊",
+      "summary": "ルイ16世一家が変装して国外脱出を図り、国境近くのヴァレンヌで発見されてパリへ連れ戻された。国王が革命を受け入れていないことが誰の目にも明らかになった。\n\n立憲君主制の設計を進めていた議会は動揺し、翌月には共和制を求める請願への発砲事件(シャン・ド・マルスの虐殺)が起きて民衆と穏健派の亀裂も深まる(民衆と社会レイヤー)。逃亡先の亡命貴族と諸外国の介入への不信は、翌年の開戦論(戦争と外交レイヤー)を勢いづけた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Flight to Varennes",
+          "url": "https://en.wikipedia.org/wiki/Flight_to_Varennes"
+        }
+      ]
+    },
+    {
+      "date": "1792-04-20",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "戦争と外交",
+      "title": "フランスがオーストリアに宣戦布告",
+      "summary": "ジロンド派主導の立法議会が「ボヘミア・ハンガリー王」に宣戦し、革命戦争が始まった。戦況は当初フランスの劣勢で、敵軍の脅迫的なブラウンシュヴァイク宣言はかえってパリ民衆を激高させた。\n\n開戦は革命の輸出を掲げる勢力と、戦争で王権回復を狙う宮廷の思惑が交差した結果であり、以後**戦争が革命の性格を決めていく**。前線の敗報が8月10日の王権停止(民衆と社会レイヤー)を、外患の恐怖が九月虐殺を招き、内政は常に戦況とともに振れた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: War of the First Coalition",
+          "url": "https://en.wikipedia.org/wiki/War_of_the_First_Coalition"
+        }
+      ]
+    },
+    {
+      "date": "1792-08-10",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "民衆と社会",
+      "title": "8月10日事件、民衆がテュイルリー宮殿を襲撃",
+      "summary": "パリの民衆と連盟兵がテュイルリー宮殿を襲撃し、スイス人衛兵隊と激しく交戦した。国王一家は議会に避難し、王権は停止され、男子普通選挙による国民公会の召集が決まった。\n\n対外戦争の敗勢と国王への不信(戦争と外交・政治体制レイヤー)が臨界に達した瞬間で、1789年に始まった立憲君主制の実験はここで事実上終わる。蜂起を主導したパリ・コミューンが以後の政治で発言力を強め、革命は共和制と急進化の段階へ入った。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "双方の死者数は史料により数百人から千人超まで幅があり、確定した集計は存在しない。",
+      "sources": [
+        {
+          "title": "Wikipedia: Insurrection of 10 August 1792",
+          "url": "https://en.wikipedia.org/wiki/Insurrection_of_10_August_1792"
+        }
+      ]
+    },
+    {
+      "date": "1792-09-20",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "戦争と外交",
+      "title": "ヴァルミーの戦い、義勇兵が侵攻軍を撃退",
+      "summary": "北東部ヴァルミーの丘で、義勇兵を含むフランス軍が砲撃戦の末にプロイセン軍の進撃を止めた。死傷者は比較的少ない砲撃戦だったが、革命軍が正規の王軍に対抗できることを示した。\n\n翌21日に国民公会は王政廃止を宣言し、22日から共和暦が起算される。戦場の一勝が共和制宣言(政治体制レイヤー)の露払いとなった象徴的な連鎖である。従軍していたゲーテが「ここから世界史の新しい時代が始まる」と述べたと後年伝えられる。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "ゲーテの言葉は約30年後の回想録に基づくもので、当日の発言かどうかは検証できない。",
+      "sources": [
+        {
+          "title": "Wikipedia: Battle of Valmy",
+          "url": "https://en.wikipedia.org/wiki/Battle_of_Valmy"
+        }
+      ]
+    },
+    {
+      "date": "1793-01-21",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "政治体制",
+      "title": "ルイ16世処刑",
+      "summary": "国民公会は僅差の評決で国王の死刑を決め、ルイ16世は革命広場のギロチンで処刑された。国王の身体に体現されてきた主権が、名実ともに国民へ移ったことを示す出来事である。\n\n処刑は諸外国の強い反発を招き、イギリス・スペインなどが加わる第一次対仏大同盟の結成(戦争と外交レイヤー)を決定的にした。国内でもヴァンデ地方の反乱が起き、内憂外患のなかで公安委員会への権力集中と恐怖政治への道が開かれていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Execution of Louis XVI",
+          "url": "https://en.wikipedia.org/wiki/Execution_of_Louis_XVI"
+        }
+      ]
+    },
+    {
+      "date": "1793-08-23",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "戦争と外交",
+      "title": "国民総動員令(ルヴェ・アン・マス)を布告",
+      "summary": "国民公会が全国民を戦争遂行に動員する国民総動員令を布告した。独身男性は前線へ、既婚男性は武器製造へ、女性は被服と看護へと、社会全体を戦争機械に組み込む前例のない体制である。\n\n傭兵と職業軍人の戦争から**国民が国民として戦う戦争**への転換点であり、翌年までにフランス軍は諸国を圧倒する兵力を持った。この動員国家の型は徴兵制として後の各国に受け継がれ、革命の遺産のうち最も両義的なものの一つとなる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Levée en masse",
+          "url": "https://en.wikipedia.org/wiki/Lev%C3%A9e_en_masse"
+        }
+      ]
+    },
+    {
+      "date": "1793-09-05",
+      "precision": "day",
+      "end_date": "1794-07-27",
+      "type": "period",
+      "layer": "政治体制",
+      "title": "恐怖政治",
+      "summary": "外敵の侵攻と内乱の危機を背景に、公安委員会が独裁的権力を握り、反革命容疑者法と革命裁判所による大量処刑が進んだ。マリー・アントワネット、ジロンド派、さらにダントンら革命の同志までがギロチンに送られた。\n\n**共和国の防衛が暴力を正当化する**という論理の帰結であり、戦況の好転(戦争と外交レイヤー)後もテロルが加速したことが、テルミドールの反動を招く。処刑判決は全国で1万6千件以上とされるが、裁判によらない死者を含む総数は諸説ある。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "開始点を1793年9月5日の国民公会決議とするのは通説的な区切りであり、犠牲者総数も1万6千人強の処刑判決から数万人超まで推計が分かれる。",
+      "sources": [
+        {
+          "title": "Wikipedia: Reign of Terror",
+          "url": "https://en.wikipedia.org/wiki/Reign_of_Terror"
+        }
+      ]
+    },
+    {
+      "date": "1794-07-27",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "政治体制",
+      "title": "テルミドール9日のクーデタ、ロベスピエール失脚",
+      "summary": "国民公会がロベスピエールらの逮捕を決議し、翌日彼らは裁判なしで処刑された。革命暦テルミドール9日の政変により恐怖政治は終わり、公安委員会の権限は縮小された。\n\n粛清の恐怖が議員自身に及んだことが結束を生んだ政変であり、思想的な転換というより自己保存の反射だった。以後は穏健共和派の総裁政府へ移行するが、政情は安定せず、左右からの脅威のたびに軍の力を借りる悪循環が、ブリュメールの軍事クーデタの土壌を用意する。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Thermidorian Reaction",
+          "url": "https://en.wikipedia.org/wiki/Thermidorian_Reaction"
+        }
+      ]
+    },
+    {
+      "date": "1796-03-01",
+      "precision": "month",
+      "end_date": "1797-10-17",
+      "type": "period",
+      "layer": "戦争と外交",
+      "title": "ナポレオンのイタリア遠征",
+      "summary": "26歳でイタリア方面軍司令官となったナポレオン・ボナパルトが、劣勢の軍を率いてサルデーニャとオーストリアを連破し、1797年のカンポ・フォルミオ条約で第一次対仏大同盟を事実上崩壊させた。\n\n戦費と美術品の送金で総裁政府(政治体制レイヤー)を財政的に支え、独断で講和条件を決めるなど、一将軍が外交を動かす前例を作った。勝利の報道が生んだ国民的人気は、後のクーデタの政治資本となる。革命が生んだ軍隊が革命政府を凌ぎ始めた期間である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Italian campaigns of the French Revolutionary Wars",
+          "url": "https://en.wikipedia.org/wiki/Italian_campaigns_of_the_French_Revolutionary_Wars"
+        }
+      ]
+    },
+    {
+      "date": "1799-11-09",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "政治体制",
+      "title": "ブリュメール18日のクーデタ、統領政府樹立",
+      "summary": "エジプトから帰国したナポレオンが、シェイエスらと結んで総裁政府を倒し、自らを第一統領とする統領政府を樹立した。憲法上の手続きを装ったが、実態は軍を背景とする政変である。\n\n10年間の混乱に疲れた社会が「革命の成果を保証する強い政府」を受け入れた瞬間であり、**革命は自らが生んだ軍人に幕を引かれた**。ただし新体制は封建制復活ではなく、法の前の平等や国有化財産の保有を保証しており、革命の遺産の管理者を名乗った点が重要である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Coup of 18 Brumaire",
+          "url": "https://en.wikipedia.org/wiki/Coup_of_18_Brumaire"
+        }
+      ]
+    },
+    {
+      "date": "1804-03-21",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "民衆と社会",
+      "title": "ナポレオン法典(フランス民法典)公布",
+      "summary": "全2281条の民法典が公布された。法の前の平等、所有権の不可侵、契約の自由、政教分離といった**革命の原理を日常生活の法として固定**し、旧体制の身分特権と封建的負担の廃止を不可逆にした。\n\n一方で家族法では夫と父の権限を強め、女性の法的地位は革命期より後退した面もある。法典は征服地とともに欧州へ広がり、日本を含む多くの国の民法典の母法となった。ナポレオン自身が最大の遺産と呼んだ、戦勝より長持ちした成果である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Napoleonic Code",
+          "url": "https://en.wikipedia.org/wiki/Napoleonic_Code"
+        }
+      ]
+    },
+    {
+      "date": "1804-12-02",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "政治体制",
+      "title": "ナポレオン、皇帝に戴冠",
+      "summary": "ノートルダム大聖堂で、ナポレオンは教皇ピウス7世の臨席のもと自ら帝冠をかぶり、フランス人民の皇帝ナポレオン1世となった。帝位は事前の国民投票で圧倒的多数の承認を得た形式を踏んでいる。\n\n王を処刑した国民が11年後に皇帝を戴く逆説だが、帝政は世襲王政の復活ではなく「革命の成果の上に立つ君主制」を自称した。国民投票という装置で権力を正当化する手法は、以後の近代政治にも受け継がれる。欧州諸王室はこれを挑発と受け取り、対仏大同盟が再結成されていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Coronation of Napoleon",
+          "url": "https://en.wikipedia.org/wiki/Coronation_of_Napoleon"
+        }
+      ]
+    },
+    {
+      "date": "1805-12-02",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "戦争と外交",
+      "title": "アウステルリッツの三帝会戦",
+      "summary": "ナポレオンがロシア・オーストリア連合軍を大破した。中央の高地をあえて放棄して敵を誘い込み、分断して撃破する采配は戦史上の傑作とされ、第三次対仏大同盟は崩壊した。\n\n戴冠1周年の日の大勝は帝政の軍事的絶頂を示し、翌年の神聖ローマ帝国解体とライン同盟結成につながった。ただし同年10月のトラファルガー海戦で仏西艦隊は英海軍に壊滅しており、大陸の覇権と海の敗北という対照が、翌年の大陸封鎖という経済戦争の選択を規定する。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Battle of Austerlitz",
+          "url": "https://en.wikipedia.org/wiki/Battle_of_Austerlitz"
+        }
+      ]
+    },
+    {
+      "date": "1806-11-21",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "戦争と外交",
+      "title": "ベルリン勅令、大陸封鎖令を発布",
+      "summary": "占領下のベルリンでナポレオンが大陸封鎖令を発し、大陸諸国とイギリスの通商を禁じた。海戦で勝てないイギリスを経済的に締め上げる戦略である。\n\n実際には密貿易が横行し、穀物や工業品の流通が滞って大陸側の民衆と商工業(民衆と社会レイヤー)にも打撃を与えた。封鎖の徹底を各国に強制する必要が、スペイン介入やロシア遠征といった過剰な軍事行動を呼び込み、帝国の破滅の遠因となる。経済戦争が軍事的破綻を招いた例として引かれることが多い。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Continental System",
+          "url": "https://en.wikipedia.org/wiki/Continental_System"
+        }
+      ]
+    },
+    {
+      "date": "1812-06-24",
+      "precision": "day",
+      "end_date": "1812-12-14",
+      "type": "period",
+      "layer": "戦争と外交",
+      "title": "ロシア遠征、大陸軍の壊滅",
+      "summary": "大陸封鎖から離反したロシアを罰するため、ナポレオンは60万人規模とされる多国籍の大陸軍でニエメン川を渡った。ボロジノの激戦を経てモスクワに入城したが、講和は成立せず、大火と飢えと冬将軍のなかの退却で軍は壊滅した。\n\n動員国家の頂点で起きた最大の破局であり、翌年の諸国民解放戦争と1814年の退位への転回点となる。フランス一国の革命が生んだエネルギーが、欧州全土を巻き込んで反転してくる構図がここに極まった。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "侵攻兵力(45万〜68万)と生還者数(数万人規模)は史料・算定範囲により大きく幅があり、確定値はない。",
+      "sources": [
+        {
+          "title": "Wikipedia: French invasion of Russia",
+          "url": "https://en.wikipedia.org/wiki/French_invasion_of_Russia"
+        }
+      ]
+    },
+    {
+      "date": "1815-06-18",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "戦争と外交",
+      "title": "ワーテルローの戦い、百日天下の終焉",
+      "summary": "エルバ島を脱出して復位したナポレオンは、ブリュッセル南方ワーテルローでウェリントンの英蘭連合軍と対峙し、プロイセン軍の到着により決定的に敗れた。再退位の後、セントヘレナ島へ流される。\n\n25年に及んだ革命戦争・ナポレオン戦争の終幕であり、ウィーン体制下で各国は王政へ回帰した。しかし法典・行政制度・国民主権の理念は消えず、**帝政は滅び、原理は残った**。以後の19世紀欧州は、この反動と継承の緊張のうえで動いていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Battle of Waterloo",
+          "url": "https://en.wikipedia.org/wiki/Battle_of_Waterloo"
+        }
+      ]
+    }
+  ]
+}

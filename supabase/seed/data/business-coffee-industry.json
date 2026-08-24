@@ -1,0 +1,331 @@
+{
+  "slug": "business-coffee-industry",
+  "title": "コーヒー産業の変遷",
+  "description": "缶コーヒーの発明からサードウェーブ、気候変動と歴史的価格高騰まで。企業とチェーン・生産と流通・消費と文化の3層で、一杯のコーヒーの裏にある産業構造の変化を追う年表。",
+  "category": "business",
+  "language": "ja",
+  "start_year": 1969,
+  "end_year": 2025,
+  "layers": [
+    {
+      "name": "企業とチェーン",
+      "color": "orange"
+    },
+    {
+      "name": "生産と流通",
+      "color": "green"
+    },
+    {
+      "name": "消費と文化",
+      "color": "gold"
+    }
+  ],
+  "events": [
+    {
+      "date": "1969-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "消費と文化",
+      "title": "UCCがミルク入り缶コーヒーを発売",
+      "summary": "UCC上島珈琲がミルク入り缶コーヒーを発売した。いつでもどこでも飲める形態は自動販売機の普及とともに広がり、日本独自のコーヒー消費文化を作り上げていく。\n\n「世界初の缶コーヒー」とされることが多いが先行商品を挙げる説もある。いずれにせよ、コーヒーを喫茶店の飲み物から**日常の習慣に変えた**発明として、家庭外消費の拡大を数十年にわたり支えた。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "「世界初の缶コーヒー」については、これに先行する地方メーカーの商品を挙げる説があり、定義によって見解が分かれる。",
+      "sources": [
+        {
+          "title": "UCC上島珈琲 会社沿革",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1971-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "企業とチェーン",
+      "title": "スターバックスがシアトルで創業",
+      "summary": "シアトルのパイクプレイス市場近くでスターバックスが創業した。当初は焙煎豆を売る小売店であり、後にハワード・シュルツの合流を経てエスプレッソバー業態へ転換していく。\n\n産地や焙煎に踏み込む「第二の波」と呼ばれるシアトル系コーヒー文化の源流であり、コーヒーを豆の販売から**体験を売る業態**へ変えた。四半世紀後の日本上陸(同レイヤー)で日本の喫茶市場も塗り替える。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Starbucks",
+          "url": "https://en.wikipedia.org/wiki/Starbucks"
+        }
+      ]
+    },
+    {
+      "date": "1980-04-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "企業とチェーン",
+      "title": "ドトールコーヒーショップ1号店が原宿に開店",
+      "summary": "ドトールコーヒーショップの1号店が原宿に開店した。立ち飲み形式で1杯150円という低価格を実現し、セルフサービス式コーヒーチェーンという業態を日本に定着させた。\n\n外食チェーン化の波をコーヒーに持ち込んだ存在であり、従来の喫茶店文化とは異なる「早い・安い」という軸を作った。スターバックスが上陸するまで、日本のチェーンコーヒーの標準形であり続ける。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "ドトールコーヒー 会社沿革",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1989-07-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "生産と流通",
+      "title": "国際コーヒー協定の経済条項が失効",
+      "summary": "輸出割当によって国際価格を支えてきた国際コーヒー協定(ICA)の経済条項が失効し、コーヒーは市場価格に委ねられる時代に入った。価格は長期的な下落局面へ向かう。\n\n生産国の収入は不安定化し、1990年代末からの「コーヒー危機」(同レイヤー)の遠因となった。一方で安価な豆の安定供給は、消費国でのチェーン拡大(企業とチェーンレイヤー)を支える裏面でもあった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: International Coffee Agreement",
+          "url": "https://en.wikipedia.org/wiki/International_Coffee_Agreement"
+        }
+      ]
+    },
+    {
+      "date": "1996-08-02",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "企業とチェーン",
+      "title": "スターバックス日本1号店が銀座に開店",
+      "summary": "スターバックスが北米以外で初となる店舗を東京・銀座に開いた。全席禁煙の店内とエスプレッソドリンクという新しい様式で、若年層や女性客を喫茶市場に呼び込んだ。\n\n家庭でも職場でもない「サードプレイス」という空間の売り方が持ち込まれ、国内チェーン(同レイヤーのドトール等)との競争軸が価格から体験へと広がった。日本のカフェブームの起点とされる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "スターバックス コーヒー ジャパン 会社概要・沿革",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1997-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "生産と流通",
+      "title": "フェアトレード認証の国際組織FLOが設立",
+      "summary": "各国のフェアトレード認証団体を束ねる国際組織FLO(現Fairtrade International)が設立され、統一基準と共通の認証ラベルの仕組みが整った。コーヒーはその中心的な対象産品である。\n\n価格下落に苦しむ生産者への最低価格保証を、援助ではなく市場の仕組みとして制度化した試みであり、消費側の倫理的な関心(消費と文化レイヤー)を購買行動へ接続する回路を作った。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Fairtrade International",
+          "url": "https://en.wikipedia.org/wiki/Fairtrade_International"
+        }
+      ]
+    },
+    {
+      "date": "1999-01-01",
+      "precision": "year",
+      "end_date": "2004-12-31",
+      "type": "period",
+      "layer": "生産と流通",
+      "title": "国際価格が暴落、「コーヒー危機」",
+      "summary": "ベトナムの急速な増産などで供給過剰となり、国際価格が多くの産地で生産コストを下回る水準まで暴落した。中米やアフリカの小規模農家が離農や転作を迫られる「コーヒー危機」となった。\n\nICA体制の崩壊(同レイヤー)後の自由市場が生産者に最も過酷に働いた局面であり、フェアトレードやスペシャルティコーヒーといった、**価格以外の価値**を豆に付ける動きを加速させた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "国際コーヒー機関(ICO)の価格統計および関連研究",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2002-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "消費と文化",
+      "title": "「サードウェーブ」という言葉が生まれる",
+      "summary": "米国の焙煎業界誌への寄稿で、焙煎士トリッシュ・ロスギブが「サードウェーブ」という語を用い、豆の個性や淹れ方に向き合う新潮流を、先行する二つの波と区別して名付けた。\n\n語の初出時期や定義には諸説あるが、大量消費の第一波、シアトル系チェーンの第二波(企業とチェーンレイヤー)への対抗として、産地・精製・抽出を語る文化に名前が付いた意味は大きい。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "語の初出は2002〜2003年の業界誌寄稿とされるが、時期や「誰が最初か」については諸説ある。",
+      "sources": [
+        {
+          "title": "Trish Rothgeb寄稿(The Flamekeeper, Roasters Guild)に関する記録",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2013-01-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "企業とチェーン",
+      "title": "セブンカフェ開始、コンビニコーヒーが市場に",
+      "summary": "セブン-イレブンが1杯100円のいれたてコーヒー「セブンカフェ」の全国展開を始め、初年度に4億5000万杯を販売したとされる。コンビニコーヒーという巨大市場が一気に立ち上がった。\n\n販売杯数は自社発表ベースだが、100円で挽きたてが飲める体験は、缶コーヒー(消費と文化レイヤー)や低価格チェーンの需要を侵食し、日常のコーヒーの飲用シーンの勢力図を塗り替えた。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "初年度4億5000万杯という販売数はセブン&アイの自社発表であり、第三者統計による検証はない。",
+      "sources": [
+        {
+          "title": "セブン&アイ・ホールディングス「セブンカフェ」に関する発表資料",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2015-02-06",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "消費と文化",
+      "title": "ブルーボトルコーヒーが清澄白河に日本上陸",
+      "summary": "米ブルーボトルコーヒーが海外初の店舗を東京・清澄白河に開いた。一杯ずつハンドドリップで淹れるスタイルが「サードウェーブの上陸」として大きく報じられ、開店当初は長蛇の列ができた。\n\n焙煎所を併設する立地選びやミニマルな店舗設計が広く模倣され、国内でも自家焙煎ロースターの開業が相次いだ。豆の産地や焙煎度を語る消費文化(同レイヤー)が日本で大衆化した瞬間である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Blue Bottle Coffee",
+          "url": "https://en.wikipedia.org/wiki/Blue_Bottle_Coffee"
+        }
+      ]
+    },
+    {
+      "date": "2018-05-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "企業とチェーン",
+      "title": "ネスレがスタバ製品の販売権を71.5億ドルで取得",
+      "summary": "ネスレが、スターバックス製品を店舗の外で販売する永続的なライセンスを71億5000万ドルで取得すると発表した。家庭用・小売市場で世界最大級のコーヒー連合が生まれた。\n\nカフェ体験(店舗)と家庭内消費(小売)の境界が崩れ、巨大資本による寡占が進む象徴となった。同年にはコカ・コーラによる英コスタの買収も発表され、世界のコーヒー業界の再編が一気に進んだ。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Nestlé: Nestlé and Starbucks announce global coffee alliance (2018-05)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2019-01-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "生産と流通",
+      "title": "「コーヒー2050年問題」が業界共通の課題に",
+      "summary": "気候変動によりアラビカ種の栽培適地が2050年までに大きく減少するとの研究が相次ぎ、野生のコーヒー種の6割に絶滅リスクがあるとする論文も発表された。「コーヒー2050年問題」として広く知られるようになった。\n\n適地減少の数値は気候シナリオや研究により幅があるが、耐候性品種の開発や産地の高地移転など**供給の持続可能性**が業界共通の課題となり、大手チェーンの調達方針にも影響を与え始めた。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "「適地半減」等の予測値は気候シナリオや研究手法によって幅があり、単一の確定した数値ではない。",
+      "sources": [
+        {
+          "title": "Davis et al., \"High extinction risk for wild coffee species\" (Science Advances, 2019)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2020-04-01",
+      "precision": "month",
+      "end_date": "2023-05-01",
+      "type": "period",
+      "layer": "消費と文化",
+      "title": "コロナ禍、コーヒーを飲む場所が店から家へ",
+      "summary": "新型コロナで都市部のカフェは休業や時短を迫られ、一方で在宅時間の増加により家庭用レギュラーコーヒーや抽出器具の販売が伸びた。飲む場所が店から家へと大きく移動した。\n\nテイクアウトやモバイルオーダーへの投資が定着し、チェーン各社(企業とチェーンレイヤー)では店舗網の見直しも進んだ。家庭で豆や抽出にこだわる層の拡大は、サードウェーブ的な消費の裾野を広げた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "全日本コーヒー協会の統計および各社報道",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2021-07-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "生産と流通",
+      "title": "ブラジル霜害でアラビカ先物価格が急騰",
+      "summary": "最大の産地ブラジルを数十年ぶりといわれる強い霜が襲い、翌年産以降の減産懸念からアラビカ先物価格が急騰した。先行する干ばつと重なり、供給不安が長期化する入口となった。\n\n気候変動リスク(同レイヤーの2050年問題)が目の前の価格として顕在化した最初の大きな局面であり、のちの歴史的高値(同レイヤー)へ続く需給逼迫の起点となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "2021年7月のブラジル霜害とコーヒー先物価格に関するReuters等の報道",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2023-06-29",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "生産と流通",
+      "title": "EU森林破壊防止規則(EUDR)が発効",
+      "summary": "森林破壊に由来する産品のEU市場での流通を禁じる森林破壊防止規則(EUDR)が発効した。コーヒーは対象品目であり、輸入者には生産地の位置情報まで遡る証明が求められる。\n\n小規模農家が大半を占めるコーヒーでは対応コストの負担が重く、適用時期の延期が決まるなど混乱も続く。**サプライチェーンの透明性**が貿易の条件そのものになったことを示す規制である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "EUR-Lex: Regulation (EU) 2023/1115 (EUDR)",
+          "url": "https://eur-lex.europa.eu/eli/reg/2023/1115/oj"
+        }
+      ]
+    },
+    {
+      "date": "2025-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "消費と文化",
+      "title": "国内で値上げが相次ぎ、消費の前提が揺らぐ",
+      "summary": "2024年からの生豆高騰と円安を受け、国内ではレギュラーコーヒーや缶コーヒー、チェーン各社の値上げが相次いだ。業界統計では国内消費量は頭打ちから微減傾向にあるとされる。\n\n消費量の統計は業界団体の推計ベースで幅があるが、半世紀にわたり「安く日常的に飲める」ことを前提に築かれた日本のコーヒー文化(同レイヤーの缶コーヒー)が、価格局面の転換で試されている。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "国内消費量の動向は全日本コーヒー協会等の推計に基づくもので、集計範囲により数値が異なる。",
+      "sources": [
+        {
+          "title": "全日本コーヒー協会「日本のコーヒーの飲用状況・統計資料」",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2025-02-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "生産と流通",
+      "title": "アラビカ先物が名目で史上最高値を更新",
+      "summary": "ニューヨーク市場のアラビカ先物が1ポンド4ドルを超え、名目価格で史上最高値を更新した。ブラジルの干ばつによる減産懸念と在庫の減少、規制対応コストが重なった構造的な高値とされる。\n\n名目では最高値だが、実質価格では1977年の高騰に及ばないとの指摘もあり評価は分かれる。店頭価格への転嫁が世界で進み、**安いコーヒーの時代の終わり**が消費者にも実感される局面となった。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "「史上最高値」は名目価格ベースの評価であり、インフレ調整後の実質価格では過去の高騰期を下回るとの指摘がある。",
+      "sources": [
+        {
+          "title": "2025年2月のアラビカ先物価格に関するReuters・Bloomberg等の報道",
+          "url": null
+        }
+      ]
+    }
+  ]
+}

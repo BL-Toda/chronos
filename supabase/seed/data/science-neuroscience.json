@@ -1,0 +1,385 @@
+{
+  "slug": "science-neuroscience",
+  "title": "脳科学の最前線",
+  "description": "1848年の事故症例から脳直結インターフェースまで。脳の理解をめぐる発見、計測と操作の技術、医療と社会への波及の3層を重ね、最も身近で最も未知の臓器への接近を追う。",
+  "category": "science-nature",
+  "language": "ja",
+  "start_year": 1848,
+  "end_year": 2024,
+  "layers": [
+    {
+      "name": "脳の理解",
+      "color": "blue"
+    },
+    {
+      "name": "計測と操作の技術",
+      "color": "green"
+    },
+    {
+      "name": "医療と社会",
+      "color": "pink"
+    }
+  ],
+  "events": [
+    {
+      "date": "1848-09-13",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "医療と社会",
+      "title": "フィニアス・ゲージ、前頭葉損傷の事故",
+      "summary": "米国の鉄道工事現場で爆発事故が起き、作業員フィニアス・ゲージの頭部を鉄棒が貫通した。彼は一命を取り留めたが、前頭葉の損傷後に人格が変わったと報告された。\n\n脳の部位と心の働きの対応を示す症例として教科書に載り続けている。ただし実際の人格変化の程度や経過は同時代の記録が乏しく、後年の誇張も指摘される。**症例が語れることと語れないこと**の教訓まで含めた、脳科学の古典である。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "事故後の人格変化の内容と程度は主治医ハーローの限られた記録に依存しており、後世の記述には誇張や脚色が指摘されている。",
+      "sources": [
+        {
+          "title": "Wikipedia: Phineas Gage",
+          "url": "https://en.wikipedia.org/wiki/Phineas_Gage"
+        }
+      ]
+    },
+    {
+      "date": "1861-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "脳の理解",
+      "title": "ブローカ、言語野を特定",
+      "summary": "外科医ブローカが、発話を失った患者「タン」の死後解剖で左前頭葉の限局した損傷を確認し、発話をつかさどる領域(後のブローカ野)の存在を報告した。\n\n「脳の機能は場所ごとに分かれている」とする機能局在論に、初めて決定的な証拠を与えた。頭蓋骨の形から性格を読む骨相学の失敗で疑われていた局在の考えが科学として復権し、1874年のウェルニッケによる感覚性言語野の発見へと続く。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Paul Broca",
+          "url": "https://en.wikipedia.org/wiki/Paul_Broca"
+        }
+      ]
+    },
+    {
+      "date": "1873-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "計測と操作の技術",
+      "title": "ゴルジ染色法の開発",
+      "summary": "イタリアのゴルジが、ごく一部の神経細胞だけを全形まで黒く染め出す鍍銀染色法を開発した。細胞が密集する脳組織の中から、個々の細胞のかたちを初めて浮かび上がらせた技術である。\n\nこの染色をスペインのカハールが徹底的に使い込み、神経細胞は独立した単位だとするニューロン説(脳の理解レイヤー)に到達する。**見る技術が理解の限界を決める**という、本年表を貫く主旋律の最初の例となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Golgi's method",
+          "url": "https://en.wikipedia.org/wiki/Golgi%27s_method"
+        }
+      ]
+    },
+    {
+      "date": "1888-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "脳の理解",
+      "title": "カハール、ニューロン説の証拠を示す",
+      "summary": "カハールがゴルジ染色を改良し、神経細胞どうしは連続した網ではなく独立した細胞として接しているとする観察を発表し始めた。神経系の単位をニューロンとする学説の実証的な基盤である。\n\n皮肉にも染色法の開発者ゴルジ自身は細胞が融合した網だとする網状説を支持し続け、1906年に2人が同時受賞したノーベル賞の記念講演でも真っ向から対立した。接合部シナプスの実在が電子顕微鏡で確認されるのは1950年代である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Santiago Ramón y Cajal",
+          "url": "https://en.wikipedia.org/wiki/Santiago_Ram%C3%B3n_y_Cajal"
+        }
+      ]
+    },
+    {
+      "date": "1929-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "計測と操作の技術",
+      "title": "ベルガー、ヒト脳波(EEG)を報告",
+      "summary": "ドイツの精神科医ベルガーが、頭皮の上から人間の脳の電気活動を記録した「脳波」の論文を発表した。頭を開かずに生きた人間の脳の活動を捉えた、最初の計測技術である。\n\n発表当初は疑いの目で見られたが、1934年に英国の生理学者エイドリアンらが追試して確立した。てんかんの診断や睡眠研究を一変させ、脳を「開けずに測る」系譜はfMRI(1990年)や脳直結インターフェース(2023年)へと続いていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Hans Berger",
+          "url": "https://en.wikipedia.org/wiki/Hans_Berger"
+        }
+      ]
+    },
+    {
+      "date": "1952-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "脳の理解",
+      "title": "ホジキン・ハクスリーの神経興奮モデル",
+      "summary": "ホジキンとハクスリーがヤリイカの巨大軸索を使った実験から、神経の電気信号(活動電位)はナトリウムとカリウムのイオンの流れで生じることを示し、その全過程を微分方程式で記述した。\n\n神経の働きを物理と数学の言葉で定量的に説明したこの仕事は、脳を計算する装置として扱う計算論的神経科学の原点となった。2人は1963年にノーベル賞を受賞している。イオンの通り道であるチャネルの実体の解明は後年に続く。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Hodgkin–Huxley model",
+          "url": "https://en.wikipedia.org/wiki/Hodgkin%E2%80%93Huxley_model"
+        }
+      ]
+    },
+    {
+      "date": "1953-09-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "医療と社会",
+      "title": "患者H.M.の手術、記憶研究の転機に",
+      "summary": "重いてんかんの治療のため、米国の患者ヘンリー・モレゾン(H.M.)の左右の海馬を含む内側側頭葉が切除された。発作は減ったが、彼は新しい出来事を覚えられなくなった。\n\nミルナーらによる半世紀の研究で、記憶には海馬を必要とする種類とそうでない種類があることが分かり、記憶研究の土台となった。治療が生んだ悲劇が科学を進めたという**患者の犠牲の上に立つ知見**であり、研究倫理の教材でもある。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Henry Molaison",
+          "url": "https://en.wikipedia.org/wiki/Henry_Molaison"
+        }
+      ]
+    },
+    {
+      "date": "1959-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "脳の理解",
+      "title": "ヒューベルとウィーゼル、視覚野の応答を発見",
+      "summary": "ヒューベルとウィーゼルが、ネコの一次視覚野に特定の傾きの線分にだけ反応する神経細胞があることを発見した。視覚は単純な特徴の検出から段階的に組み立てられる、という理解の出発点である。\n\n幼少期の経験が視覚回路を形作る「臨界期」の発見と合わせて1981年のノーベル賞となった。階層的に特徴を抽出するという考え方は、半世紀後の深層学習における畳み込みネットワークの設計にも影響を与えている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: David H. Hubel",
+          "url": "https://en.wikipedia.org/wiki/David_H._Hubel"
+        }
+      ]
+    },
+    {
+      "date": "1971-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "脳の理解",
+      "title": "オキーフ、場所細胞を発見",
+      "summary": "オキーフらが、ラットの海馬に「自分が特定の場所にいるときだけ発火する」神経細胞を見つけ、場所細胞と名付けた。脳内に空間の地図が実在することを示す発見である。\n\n2005年にはモーザー夫妻が格子状の座標系を作るグリッド細胞を発見し、3人は2014年のノーベル賞を受賞した。H.M.の症例(医療と社会レイヤー)が示した海馬と記憶の深い関係に、細胞レベルの説明を与えていく系譜の起点となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Place cell",
+          "url": "https://en.wikipedia.org/wiki/Place_cell"
+        }
+      ]
+    },
+    {
+      "date": "1973-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "脳の理解",
+      "title": "長期増強(LTP)の発見",
+      "summary": "ブリスとレモが、ウサギの海馬でシナプスの伝達効率が刺激の後に長時間強まったままになる現象を報告し、長期増強(LTP)と名付けた。\n\n「記憶はシナプスの強さの変化として蓄えられる」という1949年のヘッブの仮説に、初めて具体的な生理現象を対応づけた発見である。記憶の分子機構の研究はこの現象を軸に展開し、後の認知症治療の研究(医療と社会レイヤー)にも基礎を提供している。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Long-term potentiation",
+          "url": "https://en.wikipedia.org/wiki/Long-term_potentiation"
+        }
+      ]
+    },
+    {
+      "date": "1990-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "計測と操作の技術",
+      "title": "fMRIの原理となるBOLD信号を発見",
+      "summary": "米ベル研究所の小川誠二が、血液中の酸素量の変化がMRI信号に影響する現象(BOLD効果)を報告した。神経活動に伴う血流の変化を、造影剤なしで画像化できることを意味する発見である。\n\n数年のうちに機能的MRI(fMRI)として実用化され、健常な人間の脳活動を非侵襲で見る研究が爆発的に広がった。心を画像で語る時代の幕開けだが、血流はあくまで神経活動の間接指標である点への注意も繰り返し指摘されてきた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Functional magnetic resonance imaging",
+          "url": "https://en.wikipedia.org/wiki/Functional_magnetic_resonance_imaging"
+        }
+      ]
+    },
+    {
+      "date": "1990-01-01",
+      "precision": "year",
+      "end_date": "1999-12-31",
+      "type": "period",
+      "layer": "医療と社会",
+      "title": "米国「脳の10年」",
+      "summary": "米国が1990年代を「脳の10年」と定め、大統領布告のもとで脳研究の振興と社会への普及を図った。脳研究が国家の旗印として掲げられた最初の例である。\n\n神経科学の学会規模と研究費はこの時期に大きく拡大し、fMRI(計測と操作の技術レイヤー)の普及とも重なって、健常者の心を扱う認知神経科学が確立した。国家主導の大型脳科学という路線は、2013年の米欧のプロジェクトへと引き継がれていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Decade of the Brain",
+          "url": "https://en.wikipedia.org/wiki/Decade_of_the_Brain"
+        }
+      ]
+    },
+    {
+      "date": "2005-08-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "計測と操作の技術",
+      "title": "光遺伝学、神経活動を光で操作",
+      "summary": "ボイデンとダイセロスらが、藻類由来の光感受性タンパク質を神経細胞に発現させ、光を当てるだけで特定の細胞の活動をミリ秒単位で制御する手法を報告した。光遺伝学の実質的な誕生である。\n\n「観察する」から**狙った回路を操作して因果を確かめる**への転換をもたらし、神経科学の標準手法として一気に普及した。特定の記憶を人工的に呼び起こす実験など、かつては思考実験だった研究を現実のものにしている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Optogenetics",
+          "url": "https://en.wikipedia.org/wiki/Optogenetics"
+        }
+      ]
+    },
+    {
+      "date": "2013-04-02",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "医療と社会",
+      "title": "米BRAINイニシアチブ発表",
+      "summary": "オバマ大統領が、脳の神経回路の活動を大規模に記録・解読する技術開発を掲げる研究計画BRAINイニシアチブを発表した。ヒトゲノム計画に続く国家主導の大型生命科学と位置づけられた。\n\n「脳の10年」(1990年代)から続く投資の系譜にあるが、疾患の解明そのものより計測技術の開発を主眼に据えた設計が特徴で、光遺伝学(計測と操作の技術レイヤー)以後の「道具が科学を駆動する」時代を反映している。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: BRAIN Initiative",
+          "url": "https://en.wikipedia.org/wiki/BRAIN_Initiative"
+        }
+      ]
+    },
+    {
+      "date": "2013-10-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "医療と社会",
+      "title": "ヒューマン・ブレイン・プロジェクト始動",
+      "summary": "EUの旗艦プロジェクトとしてヒューマン・ブレイン・プロジェクト(HBP)が始動した。提唱者マークラムは10年でヒトの脳全体をスーパーコンピュータ上に再現すると訴え、約10億ユーロ規模の予算が組まれた。\n\nしかし「10年で脳のシミュレーション」という看板は実現性への疑問を呼び、発足翌年には数百人の研究者が公開書簡で抗議、運営は再編された。2023年の終了までに研究基盤は残したが、当初の看板は実現しなかった。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "「10年でヒト脳全体をシミュレーションする」という当初目標は科学的裏づけが確立しておらず、実現しないまま計画は再編・終了した。",
+      "sources": [
+        {
+          "title": "Wikipedia: Human Brain Project",
+          "url": "https://en.wikipedia.org/wiki/Human_Brain_Project"
+        }
+      ]
+    },
+    {
+      "date": "2021-06-07",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "医療と社会",
+      "title": "アルツハイマー新薬アデュカヌマブ承認",
+      "summary": "米FDAが、脳内のアミロイドβを除去する抗体薬アデュカヌマブを、約20年ぶりのアルツハイマー病新薬として迅速承認した。原因物質とされるタンパク質を直接の標的にした初の承認薬である。\n\nしかし臨床的な有効性の証拠は不十分だとして諮問委員会はほぼ全会一致で承認に反対しており、承認後に委員3名が辞任する異例の事態となった。アミロイド仮説(脳の理解レイヤー)の妥当性をめぐる論争を象徴する出来事である。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "認知機能の低下を抑える臨床効果があるかどうかで評価が真っ二つに分かれ、FDA内部と諮問委員会の判断も対立した。",
+      "sources": [
+        {
+          "title": "Wikipedia: Aducanumab",
+          "url": "https://en.wikipedia.org/wiki/Aducanumab"
+        }
+      ]
+    },
+    {
+      "date": "2022-07-21",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "脳の理解",
+      "title": "アミロイド研究の重要論文に画像疑義",
+      "summary": "Science誌の調査報道が、アルツハイマー病のアミロイド仮説を支えてきた2006年の著名論文に画像の加工疑惑があると報じた。問題の論文は2024年に撤回された。\n\n特定のアミロイド種の役割を示したとされる同論文への疑義は、**一つの仮説に研究資源が集中する危うさ**の議論を呼んだ。ただし仮説自体は他の証拠にも支えられており、翌年のレカネマブ承認(医療と社会レイヤー)で治療応用は一定の裏づけを得ている。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "画像加工の疑義と論文撤回は確定したが、それがアミロイド仮説全体の妥当性をどこまで揺るがすかは研究者の間で評価が分かれる。",
+      "sources": [
+        {
+          "title": "Science: Blots on a field? (2022-07-21)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2023-07-06",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "医療と社会",
+      "title": "レカネマブ、正式承認",
+      "summary": "米FDAがエーザイとバイオジェンの抗アミロイド抗体薬レカネマブを正式承認した。臨床試験で認知機能の低下を27%緩やかにしたと報告され、日本でも同年9月に承認された。\n\n効果の大きさが患者の生活にとって意味のある水準かどうかは議論が続くが、症状への対症療法ではなく疾患の進行に働きかける治療が初めて標準医療に入った。LTP(1973年)以来の基礎研究が半世紀を経て薬へ結実した形である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Lecanemab",
+          "url": "https://en.wikipedia.org/wiki/Lecanemab"
+        }
+      ]
+    },
+    {
+      "date": "2023-08-23",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "計測と操作の技術",
+      "title": "脳信号から会話を復元するBCI",
+      "summary": "脳に埋め込んだ電極の信号から発話を毎分約60〜80語の速度で文章化する脳直結インターフェース(BCI)の成果を、米国の2チームがNature誌に同時発表した。ALSや脳幹梗塞で話せなくなった参加者が、考えるだけで会話できることを示した。\n\nベルガーの脳波(1929年)から続く「脳を読む」技術が、実用的な意思疎通の速度に達した画期である。読み取り精度の向上は、思考のプライバシーという倫理問題(医療と社会レイヤー)も現実のものにした。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Brain–computer interface",
+          "url": "https://en.wikipedia.org/wiki/Brain%E2%80%93computer_interface"
+        }
+      ]
+    },
+    {
+      "date": "2024-01-29",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "計測と操作の技術",
+      "title": "ニューラリンク、初のヒト埋め込みを発表",
+      "summary": "イーロン・マスク率いるニューラリンク社が、脳埋め込み型デバイスを初めてヒトに移植したとSNS上で発表した。同社はその後、頸髄損傷のある参加者が思考でカーソルを操作する様子を配信した。\n\n学術界のBCI研究(2023年)と異なり、査読論文や詳細データの公表を伴わない企業発表が先行する点には批判がある。脳インターフェースの主戦場が研究室から企業へ広がったことを示す出来事であり、安全性と透明性の検証はこれからである。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "移植の実施と経過は同社および参加者本人の発表・配信に基づいており、査読を経た詳細データは公表されていない。",
+      "sources": [
+        {
+          "title": "Wikipedia: Neuralink",
+          "url": "https://en.wikipedia.org/wiki/Neuralink"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,419 @@
+{
+  "slug": "history-ancient-rome",
+  "title": "古代ローマの興亡",
+  "description": "建国伝承から西ローマ帝国の消滅まで約1200年。政治体制の変遷、戦争による拡大、社会と文化の三層を重ね、拡大がやがて体制そのものを作り替えていく過程を追う年表。",
+  "category": "history-politics",
+  "language": "ja",
+  "start_year": -753,
+  "end_year": 476,
+  "layers": [
+    {
+      "name": "政治体制",
+      "color": "purple"
+    },
+    {
+      "name": "戦争と拡大",
+      "color": "orange"
+    },
+    {
+      "name": "社会と文化",
+      "color": "gold"
+    }
+  ],
+  "events": [
+    {
+      "date": "0753-01-01 BC",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "政治体制",
+      "title": "伝承上のローマ建国",
+      "summary": "後世のローマ人は、ロムルスによる建国を紀元前753年4月21日と定めて記念した。ティベリス川沿いの丘に生まれた小さな都市国家が、この年表の出発点である。\n\n建国譚は後代の伝承であり、考古学的にはパラティヌスの丘に前8世紀ごろの集落跡が確認されるにとどまる。それでも「建国から何年」と数える紀年法は共和政にも帝政にも受け継がれ、都市の自己意識の核であり続けた。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "建国年・建国者は後世の伝承に基づくもので、考古学的な裏付けはない。",
+      "sources": [
+        {
+          "title": "リウィウス『ローマ建国以来の歴史』第1巻",
+          "url": null
+        },
+        {
+          "title": "Wikipedia: ロームルス",
+          "url": "https://ja.wikipedia.org/wiki/ロームルス"
+        }
+      ]
+    },
+    {
+      "date": "0509-01-01 BC",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "政治体制",
+      "title": "王政の廃止と共和政の成立",
+      "summary": "伝承では前509年、最後の王タルクィニウス・スペルブスが追放され、任期1年・2名の執政官(コンスル)が統治する共和政が始まったとされる。\n\n王の追放譚には伝説的要素が濃く、成立年代にも議論があるが、権力を分割し任期で区切るという発想は、この後450年あまりローマの統治の骨格となる。やがて平民と貴族の身分闘争を通じて護民官や平民会が加わり、体制は少しずつ開かれていった。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "成立年代と経緯は後代の年代記的伝承に基づき、史実性をめぐって議論がある。",
+      "sources": [
+        {
+          "title": "リウィウス『ローマ建国以来の歴史』第2巻",
+          "url": null
+        },
+        {
+          "title": "Wikipedia: 共和政ローマ",
+          "url": "https://ja.wikipedia.org/wiki/共和政ローマ"
+        }
+      ]
+    },
+    {
+      "date": "0450-01-01 BC",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と文化",
+      "title": "十二表法の制定",
+      "summary": "伝承では前451〜前450年、10人委員会が慣習法を成文化し、12枚の板に刻んで公共の場に掲示した。ローマ最古の成文法であり、法の知識を貴族の独占から引き出した出来事とされる。\n\n原文は現存せず、内容は後世の法学者や文人の引用断片から復元されたものにすぎない。それでも「公開された法」という理念は、身分闘争の中で平民が獲得した成果として記憶され、後のローマ法学の出発点に位置づけられる。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "原文は現存せず、制定の経緯と条文の内容は後世の引用と伝承からの復元による。",
+      "sources": [
+        {
+          "title": "Wikipedia: 十二表法",
+          "url": "https://ja.wikipedia.org/wiki/十二表法"
+        }
+      ]
+    },
+    {
+      "date": "0387-01-01 BC",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "戦争と拡大",
+      "title": "ガリア人によるローマ略奪",
+      "summary": "北から南下したガリア人(セノネス族)がアッリアの戦いでローマ軍を破り、市街を略奪した。カピトリヌスの丘だけが持ちこたえたと伝えられる。\n\n年代は伝承の前390年と、ギリシア側史料から推定される前387年ごろの間で議論がある。この屈辱はローマ人の集合的記憶となり、城壁の再建と軍制の見直しを促した。以後ローマは、敗北のたびに制度を作り直しながら拡大する国家となっていく。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "略奪の年代は前390年(ローマ伝承)と前387年ごろ(ギリシア系史料)で史料により食い違う。",
+      "sources": [
+        {
+          "title": "リウィウス『ローマ建国以来の歴史』第5巻",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "0264-01-01 BC",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "戦争と拡大",
+      "title": "第一次ポエニ戦争が始まる",
+      "summary": "シチリアの都市メッサナへの介入をきっかけに、ローマは西地中海の大国カルタゴと開戦した。23年に及ぶこの戦争は、ローマ初の本格的な海外戦争である。\n\n陸の国だったローマは艦隊をゼロから建造して海戦を制し、前241年の勝利でシチリアを最初の属州とした。**イタリアの都市国家が地中海帝国へ変わる入口**であり、属州の統治という都市国家の制度が想定しない課題が、政治体制レイヤーに持ち込まれた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "ポリュビオス『歴史』第1巻",
+          "url": null
+        },
+        {
+          "title": "Wikipedia: ポエニ戦争",
+          "url": "https://ja.wikipedia.org/wiki/ポエニ戦争"
+        }
+      ]
+    },
+    {
+      "date": "0146-01-01 BC",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "戦争と拡大",
+      "title": "カルタゴ滅亡、地中海の覇権が確定",
+      "summary": "第三次ポエニ戦争の末、ローマ軍はカルタゴ市を陥落させて破壊した。ハンニバルに本土を蹂躙された第二次ポエニ戦争(前218〜前201年)の記憶が、徹底的な破壊を後押しした。同年にはギリシアの都市コリントスも破壊されている。\n\n地中海に敵はいなくなったが、長期の従軍で中小農民は没落し、属州から富と奴隷が流入して格差が広がった。勝利の代償が共和政の内側を蝕み始め、13年後のグラックスの改革につながる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "ポリュビオス『歴史』第38巻",
+          "url": null
+        },
+        {
+          "title": "Wikipedia: ポエニ戦争",
+          "url": "https://ja.wikipedia.org/wiki/ポエニ戦争"
+        }
+      ]
+    },
+    {
+      "date": "0133-01-01 BC",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と文化",
+      "title": "ティベリウス・グラックスの改革と死",
+      "summary": "護民官ティベリウス・グラックスが、公有地の占有を制限し土地を失った市民に再分配する法を成立させたが、同年、反対派の元老院議員らに撲殺された。政治的暴力がローマ市街で公然と行われた最初の事例とされる。\n\n争点は**拡大の果実をだれに分配するか**だった。戦争(戦争と拡大レイヤー)が生んだ富が少数に集中する構造への異議は弟ガイウスに引き継がれ、以後約1世紀続く内乱の時代の底流となる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "プルタルコス『英雄伝』ティベリウス・グラックス伝",
+          "url": null
+        },
+        {
+          "title": "Wikipedia: Tiberius Gracchus",
+          "url": "https://en.wikipedia.org/wiki/Tiberius_Gracchus"
+        }
+      ]
+    },
+    {
+      "date": "0049-01-01 BC",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "戦争と拡大",
+      "title": "カエサル、ルビコン川を渡る",
+      "summary": "前49年1月、ガリア総督カエサルは元老院の武装解除命令を拒み、属州境のルビコン川を軍団とともに渡って内戦に踏み切った。\n\nガリア征服(前58〜前51年)で得た兵力と富と名声が、元老院の統制を超える個人を生んでいた。ポンペイウスとの内戦を制したカエサルは終身独裁官に就き、共和政の制度は事実上機能を停止する。拡大が生んだ軍事力の私物化という共和政末期の問題が、ここで頂点に達した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "スエトニウス『ローマ皇帝伝』カエサル伝",
+          "url": null
+        },
+        {
+          "title": "Wikipedia: ガイウス・ユリウス・カエサル",
+          "url": "https://ja.wikipedia.org/wiki/ガイウス・ユリウス・カエサル"
+        }
+      ]
+    },
+    {
+      "date": "0044-03-15 BC",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "政治体制",
+      "title": "カエサル暗殺",
+      "summary": "前44年3月15日、終身独裁官カエサルがブルートゥスら元老院議員の一団に議場で刺殺された。共和政の回復を掲げた行動だったが、市民と軍はむしろカエサルの後継者の側に付いた。\n\n暗殺は共和政を蘇らせるどころか、オクタウィアヌスとアントニウスによる新たな内戦を招いた。制度を壊したのは一人の野心家ではなく、都市国家の制度のまま帝国を統治しようとする矛盾そのものだったことが、この結末に表れている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "プルタルコス『英雄伝』カエサル伝",
+          "url": null
+        },
+        {
+          "title": "スエトニウス『ローマ皇帝伝』カエサル伝",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "0031-09-02 BC",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "戦争と拡大",
+      "title": "アクティウムの海戦",
+      "summary": "前31年9月2日、オクタウィアヌスの艦隊がアントニウスとクレオパトラの連合艦隊をギリシア西岸のアクティウム沖で破った。約1世紀続いた内乱の時代の、事実上の終幕である。\n\n翌年エジプトは併合され、地中海の全域が単一の権力の下に置かれた。もはや戦う相手は外にも内にもいない。勝者への権力集中が完成したことで、政治体制レイヤーでは共和政から帝政への転換が現実の日程に上ることになる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: アクティウムの海戦",
+          "url": "https://ja.wikipedia.org/wiki/アクティウムの海戦"
+        },
+        {
+          "title": "カッシウス・ディオ『ローマ史』第50巻",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "0027-01-01 BC",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "政治体制",
+      "title": "オクタウィアヌス、アウグストゥスとなる",
+      "summary": "前27年、オクタウィアヌスは非常大権を元老院に返上する形式を取り、元老院から「アウグストゥス(尊厳なる者)」の称号を受けた。共和政の官職と権限を一身に集める元首政(プリンキパトゥス)の始まりである。\n\n王や皇帝という新しい官名を作らず、**共和政の形式をまとった君主政**を築いた点にこの体制の本質がある。軍と属州と財政を掌握した元首の下で、社会と文化レイヤーでは約2世紀の安定期が始まる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "『神君アウグストゥス業績録』",
+          "url": null
+        },
+        {
+          "title": "Wikipedia: アウグストゥス",
+          "url": "https://ja.wikipedia.org/wiki/アウグストゥス"
+        }
+      ]
+    },
+    {
+      "date": "0027-01-01 BC",
+      "precision": "year",
+      "end_date": "0180-01-01",
+      "type": "period",
+      "layer": "社会と文化",
+      "title": "パクス・ロマーナ（ローマの平和）",
+      "summary": "アウグストゥスの体制確立からマルクス・アウレリウス帝の死(180年)までの約200年は、地中海世界が比較的安定した「ローマの平和」と呼ばれる。街道と海運が結ばれ、都市文化と法とラテン語が帝国全域に広がった。\n\nこれは**際限ない拡大を止めたことと引き換えに得た安定**でもあった。辺境では戦争が続き、平和の恩恵には地域差も大きい。起点と終点の区切りは、近代の歴史叙述が与えた慣用である。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "「パクス・ロマーナ」の期間の区切りは近代以降の歴史叙述上の慣用で、研究者により幅がある。",
+      "sources": [
+        {
+          "title": "Wikipedia: パクス・ロマーナ",
+          "url": "https://ja.wikipedia.org/wiki/パクス・ロマーナ"
+        },
+        {
+          "title": "エドワード・ギボン『ローマ帝国衰亡史』",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "0064-07-19",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と文化",
+      "title": "ローマ大火とネロの再建",
+      "summary": "64年7月19日、大競技場付近から出た火はローマ市街の大半に広がり、6日以上燃え続けた。ネロ帝は被災者の救済と防火を織り込んだ都市再建を進める一方、放火の疑いをキリスト教徒に向けて処刑した。\n\nネロ自身の放火説は同時代から囁かれたが、タキトゥスら古代の著述家の間でも見解が割れ、確証はない。大火後の再建は耐火建材と広い街路を定めた都市計画として、以後の帝国の都市文化の基準となった。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "出火原因は不明で、ネロ放火説・偶発説など古代の史料の間でも記述が分かれる。",
+      "sources": [
+        {
+          "title": "タキトゥス『年代記』第15巻",
+          "url": null
+        },
+        {
+          "title": "Wikipedia: ローマ大火",
+          "url": "https://ja.wikipedia.org/wiki/ローマ大火"
+        }
+      ]
+    },
+    {
+      "date": "0235-01-01",
+      "precision": "year",
+      "end_date": "0284-01-01",
+      "type": "period",
+      "layer": "戦争と拡大",
+      "title": "軍人皇帝時代（3世紀の危機）",
+      "summary": "235年から284年までの約50年間に、各地の軍団に擁立された皇帝が20人以上乱立し、その多くが暗殺や戦死で倒れた。ゲルマン諸族とササン朝の圧力、疫病、通貨の悪化が重なった帝国の危機である。\n\n**帝国の重さに、一つの都市と一人の皇帝が耐えられなくなった**時代であり、危機を収拾したディオクレティアヌスは帝国を複数の正帝・副帝で分担統治する体制へ移行する。政治体制レイヤーの遷都と東西分割は、この経験の延長線上にある。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 軍人皇帝",
+          "url": "https://ja.wikipedia.org/wiki/軍人皇帝"
+        },
+        {
+          "title": "エドワード・ギボン『ローマ帝国衰亡史』",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "0313-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と文化",
+      "title": "ミラノ勅令、キリスト教を公認",
+      "summary": "313年、コンスタンティヌス1世とリキニウスは、キリスト教を含むすべての宗教の信仰の自由を認め、没収されていた教会財産の返還を命じた。ディオクレティアヌスの大迫害(303年開始)からわずか10年での転換である。\n\n迫害されていた少数派の宗教は、以後国家の保護を受けて急速に制度化し、4世紀末には事実上の国教となる。帝国の統合の軸が、都市と伝統祭祀からキリスト教会へと移っていく画期であった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: ミラノ勅令",
+          "url": "https://ja.wikipedia.org/wiki/ミラノ勅令"
+        },
+        {
+          "title": "エウセビオス『教会史』",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "0330-05-11",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "政治体制",
+      "title": "コンスタンティノープル遷都",
+      "summary": "330年5月11日、コンスタンティヌス1世はビュザンティオンの地に建設した新都コンスタンティノープルを奉献した。帝国の重心は、経済的に豊かな東方の属州へと移る。\n\nローマ市はすでに3世紀から皇帝の常駐地ではなくなっており、遷都はその現実を制度として確定させたものだった。東の新都は以後1000年以上にわたり東ローマ(ビザンツ)帝国の首都として存続し、「ローマ」の名は都市を離れて受け継がれていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: コンスタンティノープル",
+          "url": "https://ja.wikipedia.org/wiki/コンスタンティノープル"
+        }
+      ]
+    },
+    {
+      "date": "0395-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "政治体制",
+      "title": "帝国の東西分割が固定化",
+      "summary": "395年、テオドシウス1世の死により帝国は二人の息子に分割相続され、以後、東西の宮廷が一人の皇帝の下に統合されることはなかった。分担統治自体は3世紀末からの慣行だが、これが事実上の最終分割となる。\n\n同じ帝国の二つの政府という建前は保たれたものの、財政も軍も別々に動き、ゲルマン諸族の移動(戦争と拡大レイヤー)への対応力に東西で大きな差が生じた。西の政府は、この後80年あまりで消滅する。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: テオドシウス1世",
+          "url": "https://ja.wikipedia.org/wiki/テオドシウス1世"
+        }
+      ]
+    },
+    {
+      "date": "0410-08-24",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "戦争と拡大",
+      "title": "西ゴート族によるローマ略奪",
+      "summary": "410年8月24日、アラリック率いる西ゴート族がローマ市に入り、3日間にわたって略奪した。ガリア人以来およそ800年ぶりの首都陥落は、地中海世界に大きな衝撃を与えた。\n\n西ゴート族はもともと帝国内への移住を認められた集団であり、その処遇をめぐる交渉の破綻が略奪に至った。外敵の侵入というより、自らの軍事を外部集団に依存した帝国の構造の帰結である。アウグスティヌスが『神の国』を書く契機ともなった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Sack of Rome (410)",
+          "url": "https://en.wikipedia.org/wiki/Sack_of_Rome_(410)"
+        }
+      ]
+    },
+    {
+      "date": "0476-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "政治体制",
+      "title": "西ローマ帝国の終焉",
+      "summary": "476年、ゲルマン人傭兵隊長オドアケルが少年皇帝ロムルス・アウグストゥルスを退位させ、帝位の標章を東の皇帝に送った。西方で皇帝は立てられなくなり、この年が伝統的に「西ローマ帝国の滅亡」とされる。\n\n同時代人にとってこれは劇的な断絶ではなく、実権を失って久しい帝位の整理に近かった。**滅亡とは一つの事件ではなく、長い変質の過程につけられた名**である。東の帝国は、この後もほぼ1000年存続した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 西ローマ帝国",
+          "url": "https://ja.wikipedia.org/wiki/西ローマ帝国"
+        }
+      ]
+    }
+  ]
+}

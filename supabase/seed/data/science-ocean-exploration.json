@@ -1,0 +1,349 @@
+{
+  "slug": "science-ocean-exploration",
+  "title": "海洋探査の歴史",
+  "description": "帆船による世界周航から有人潜水艇、無人機、そして深海資源をめぐる国際ルールまで。探査技術・発見・制度の3層を重ね、人類が最後のフロンティアである深海へどう到達してきたかをたどる。",
+  "category": "science-nature",
+  "language": "ja",
+  "start_year": 1872,
+  "end_year": 2023,
+  "layers": [
+    {
+      "name": "探査技術",
+      "color": "blue"
+    },
+    {
+      "name": "発見と科学",
+      "color": "teal"
+    },
+    {
+      "name": "社会と制度",
+      "color": "orange"
+    }
+  ],
+  "events": [
+    {
+      "date": "1872-12-21",
+      "precision": "day",
+      "end_date": "1876-05-24",
+      "type": "period",
+      "layer": "発見と科学",
+      "title": "チャレンジャー号探検航海、海洋学の誕生",
+      "summary": "英国のチャレンジャー号がポーツマスを出航し、3年半かけて約13万kmを周航。約360地点で測深と生物採集を行い、4,700種余りの新種を報告し、マリアナ海溝の深部も測深した。\n\n国家が科学のために艦船を投じた最初期の例で、全50巻の報告書は海洋学という学問の出発点とされる。以後の探査は「深さ」への挑戦(探査技術レイヤー)と、海をめぐる国際的な制度づくり(社会と制度レイヤー)へと分岐していく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Challenger expedition",
+          "url": "https://en.wikipedia.org/wiki/Challenger_expedition"
+        }
+      ]
+    },
+    {
+      "date": "1925-04-01",
+      "precision": "month",
+      "end_date": "1927-06-01",
+      "type": "period",
+      "layer": "探査技術",
+      "title": "メテオール号が音響測深で南大西洋を観測",
+      "summary": "ドイツの観測船メテオール号が南大西洋を14回横断し、音響測深機で6万点を超える水深データを取得。大西洋中央海嶺が南北に連続する巨大山脈であることを示した。\n\nロープを下ろして測る従来の測深から**音で海底を測る**時代への転換点である。ここで得られた海底地形の知識は、後の海洋底拡大説とプレートテクトニクス確立(発見と科学レイヤー)の伏線となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "ドイツ海洋観測船メテオール号 南大西洋観測航海報告(1925–1927)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1934-08-15",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "探査技術",
+      "title": "ビービとバートン、潜水球で水深923mに到達",
+      "summary": "生物学者ビービと技師バートンが鋼鉄球「バチスフィア」でバミューダ沖の水深923m(3,028フィート)に達し、人類が初めて深海の生物をその場で直接観察した。\n\n母船からケーブルで吊るす方式のため行動範囲は限られたが、発光生物の目撃記録は深海生物学への関心を一気に高めた。自力で潜航するバチスカーフ(1960年のトリエステ)へ続く技術的な布石である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Bathysphere",
+          "url": "https://en.wikipedia.org/wiki/Bathysphere"
+        }
+      ]
+    },
+    {
+      "date": "1943-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "探査技術",
+      "title": "クストーとガニャンがアクアラングを開発",
+      "summary": "占領下のフランスでクストーと技師ガニャンが、呼吸に応じて空気を供給するレギュレーターを備えた自給気式潜水器「アクアラング」を完成させた。\n\n潜水を軍や職業ダイバーの独占から解放し、戦後は研究者や市民が自ら海中を観察する道を開いた。浅海の生態研究や水中考古学(発見と科学レイヤー)の裾野を広げ、海洋ドキュメンタリーという文化も生み出した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Aqua-Lung",
+          "url": "https://en.wikipedia.org/wiki/Aqua-Lung"
+        }
+      ]
+    },
+    {
+      "date": "1960-01-23",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "探査技術",
+      "title": "トリエステ号がチャレンジャー海淵に到達",
+      "summary": "ピカールとウォルシュが乗るバチスカーフ「トリエステ」がマリアナ海溝チャレンジャー海淵の底に到達し、人類が**海の最深部に立った**最初の瞬間となった。\n\n到達水深は当初11,521mと発表され、後の較正で約10,916mに修正された。海底で魚らしき生物を見たという証言は深海にも生命が満ちる証拠と受け止められたが、種の同定には議論が残る。有人での再訪は2012年まで52年間途絶えることになる。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "当初発表の水深11,521mは後に約10,916mへ修正されており、計測値には資料により幅がある。海底で目撃したとされる魚の正体にも異論がある。",
+      "sources": [
+        {
+          "title": "Wikipedia: Trieste (bathyscaphe)",
+          "url": "https://en.wikipedia.org/wiki/Trieste_(bathyscaphe)"
+        }
+      ]
+    },
+    {
+      "date": "1977-02-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "発見と科学",
+      "title": "ガラパゴス沖で熱水噴出孔を発見",
+      "summary": "潜水艇アルビン号の調査隊がガラパゴス地溝帯の水深約2,500mで熱水噴出孔を発見した。周囲にはチューブワームや二枚貝が密集し、太陽光に依存しない生態系が広がっていた。\n\n光合成ではなく**化学合成が支える生態系**の発見は生物学の前提を覆し、生命の起源や地球外生命の議論にも波及した。1960年代の有人潜水艇の整備(探査技術レイヤー)が科学的発見に結実した代表例である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Hydrothermal vent",
+          "url": "https://en.wikipedia.org/wiki/Hydrothermal_vent"
+        }
+      ]
+    },
+    {
+      "date": "1982-12-10",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と制度",
+      "title": "国連海洋法条約、モンテゴ・ベイで署名開放",
+      "summary": "「海の憲法」と呼ばれる国連海洋法条約がジャマイカのモンテゴ・ベイで署名開放された。領海12海里と排他的経済水域200海里を定め、深海底とその資源を**人類の共同財産**と位置づけた。\n\n測深と地質調査の蓄積により深海採鉱が現実味を帯びたことが、深海底制度の交渉を長期化させた一因である。発効は12年後の1994年で、探査技術の進歩に制度が追いつくまでの時差を示している。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: United Nations Convention on the Law of the Sea",
+          "url": "https://en.wikipedia.org/wiki/United_Nations_Convention_on_the_Law_of_the_Sea"
+        }
+      ]
+    },
+    {
+      "date": "1985-09-01",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "発見と科学",
+      "title": "バラードらがタイタニック号の残骸を発見",
+      "summary": "ウッズホール海洋研究所のバラードらが、曳航式カメラシステム「アルゴ」により水深約3,800mに沈むタイタニック号を沈没から73年ぶりに発見した。\n\n調査は米海軍の原子力潜水艦残骸調査の副産物として行われていたことが後年公表された。無人カメラで広域を捜索し有人艇で確認する手法は無人機中心の深海探査への転換を象徴し、沈没船考古学と深海観光をめぐる議論も呼び起こした。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Wreck of the Titanic",
+          "url": "https://en.wikipedia.org/wiki/Wreck_of_the_Titanic"
+        }
+      ]
+    },
+    {
+      "date": "1994-11-16",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と制度",
+      "title": "海洋法条約が発効、国際海底機構が発足",
+      "summary": "署名開放から12年を経て国連海洋法条約が発効し、深海底の鉱物資源を管理する国際海底機構(ISA)がジャマイカのキングストンに設立された。\n\n深海底の商業採鉱を国際管理の下に置く枠組みがようやく動き出したが、肝心の採掘規則づくりは30年後も完了していない。技術(探査技術レイヤー)より制度の時計が遅く進む構図は、2021年のナウルによる「2年ルール」発動へとつながっていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: International Seabed Authority",
+          "url": "https://en.wikipedia.org/wiki/International_Seabed_Authority"
+        }
+      ]
+    },
+    {
+      "date": "1995-03-24",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "探査技術",
+      "title": "無人探査機かいこうがチャレンジャー海淵に到達",
+      "summary": "海洋科学技術センター(現JAMSTEC)の無人探査機「かいこう」がチャレンジャー海淵で水深10,911mを記録し、無人機として初めて世界最深部に到達した。\n\n以後かいこうは最深部の堆積物を採取し、超高圧下で生きる微生物の研究へ道を開いた。1960年のトリエステ以来35年ぶりの最深部到達が無人機によって成し遂げられたことは、深海探査の主役交代を印象づけた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Kaikō ROV",
+          "url": "https://en.wikipedia.org/wiki/Kaik%C5%8D_ROV"
+        }
+      ]
+    },
+    {
+      "date": "2000-01-01",
+      "precision": "year",
+      "end_date": "2010-10-04",
+      "type": "period",
+      "layer": "発見と科学",
+      "title": "国際共同調査「海洋生物センサス」",
+      "summary": "80カ国超の研究者約2,700人が参加する10年計画の国際調査「海洋生物センサス」が始動した。海洋生物の多様性・分布・個体数を体系的に記録し、2010年の最終報告までに1,200種を超える新種を正式に記載した。\n\n単発の航海ではなく**世界規模のデータベースづくり**へと海洋研究の様式を変えた計画であり、成果は公海の保護区設計(社会と制度レイヤー)の科学的基盤にもなっていく。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "参加者数や新種数は計画側の最終報告に基づく集計で、その後の分類学的な見直しにより数値は変動しうる。",
+      "sources": [
+        {
+          "title": "Wikipedia: Census of Marine Life",
+          "url": "https://en.wikipedia.org/wiki/Census_of_Marine_Life"
+        }
+      ]
+    },
+    {
+      "date": "2007-11-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "探査技術",
+      "title": "海洋観測フロート網Argoが3,000基体制に",
+      "summary": "世界の海にセンサー付き自動フロートを漂わせる国際観測網Argoが、目標としていた3,000基の展開に到達したと発表された。各フロートは約10日ごとに潜航と浮上を繰り返し、水温・塩分の鉛直データを衛星経由で送り続ける。\n\n船が行かない海域を含めて海洋内部を常時監視する体制が初めて整い、海面上昇や海洋熱吸収の評価など、気候変動をめぐる政策議論(社会と制度レイヤー)を支える基礎インフラとなった。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "3,000基到達の時期は計画側の集計に基づくもので、稼働中フロートの定義や集計時点により数値は前後する。",
+      "sources": [
+        {
+          "title": "Wikipedia: Argo (oceanography)",
+          "url": "https://en.wikipedia.org/wiki/Argo_(oceanography)"
+        }
+      ]
+    },
+    {
+      "date": "2012-03-26",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "探査技術",
+      "title": "キャメロンが単独潜航でチャレンジャー海淵へ",
+      "summary": "映画監督キャメロンが潜水艇ディープシー・チャレンジャーで単独潜航し、チャレンジャー海淵の水深10,908mに到達した。1960年のトリエステ以来52年ぶりの有人到達だった。\n\n国家事業ではなく個人の資金と情熱による探査だった点が新しく、撮影された映像と採取試料は科学チームと共有された。民間資金が深海探査を担う流れは、2019年のファイブ・ディープス遠征へと続いていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Deepsea Challenger",
+          "url": "https://en.wikipedia.org/wiki/Deepsea_Challenger"
+        }
+      ]
+    },
+    {
+      "date": "2017-06-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "発見と科学",
+      "title": "海底地形図計画「Seabed 2030」開始",
+      "summary": "日本財団とGEBCOが、2030年までに世界の海底地形図を完成させる国際プロジェクト「Seabed 2030」を国連海洋会議で発表した。開始時点で現代的な水準で測深済みの海底は全体の約6%にすぎなかった。\n\n火星の地形より粗くしか分かっていない地球の海底を埋める試みで、各国の調査船や民間船が持つ測深データを持ち寄る方式をとる。地形データは資源探査や大陸棚の境界画定(社会と制度レイヤー)にも直結する。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "The Nippon Foundation-GEBCO Seabed 2030 Project",
+          "url": "https://seabed2030.org"
+        }
+      ]
+    },
+    {
+      "date": "2019-04-28",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "探査技術",
+      "title": "ファイブ・ディープス遠征、五大洋最深部へ",
+      "summary": "投資家ヴェスコヴォが潜水艇リミッティング・ファクターでチャレンジャー海淵に潜航し、水深10,928mと発表した。五大洋すべての最深部に潜るファイブ・ディープス遠征の一環で、遠征は約10カ月で完遂された。\n\n繰り返し潜航できる商用認証艇の登場により、最深部は一度きりの偉業の場から**繰り返し通える場所**へ変わった。同艇はその後、各国の研究者を乗せた科学潜航にも使われている。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "記録水深10,928mは遠征側の発表値で、計測・較正の方法をめぐり過去の記録との比較には議論がある。",
+      "sources": [
+        {
+          "title": "Wikipedia: Five Deeps Expedition",
+          "url": "https://en.wikipedia.org/wiki/Five_Deeps_Expedition"
+        }
+      ]
+    },
+    {
+      "date": "2021-06-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と制度",
+      "title": "ナウルが深海採鉱の「2年ルール」を発動",
+      "summary": "太平洋の島国ナウルが、支援する企業による深海底採鉱の計画を念頭に、2年以内の採掘規則完成を国際海底機構に求める条項を発動した。規則が未完成のままでも採掘申請の審査が始まりうる状況が生まれた。\n\n主対象はクラリオン・クリッパートン海域の多金属団塊で、電池向け金属の需要増が背景にある。科学界からは深海生態系(発見と科学レイヤー)の知見不足を理由にモラトリアムを求める声が上がり、各国の賛否も割れている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "国際海底機構(ISA)へのナウルによる2年ルール発動通知(2021年6月)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2023-06-18",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と制度",
+      "title": "潜水艇タイタン、タイタニック観光中に圧壊",
+      "summary": "オーシャンゲート社の潜水艇タイタンがタイタニック号見学ツアーの潜航中に消息を絶ち、のちに水深約3,800m付近で圧壊していたことが確認された。乗員5人全員が死亡した。\n\n同艇は既存の第三者認証を受けない独自設計で運航されており、事故は深海観光をめぐる安全規制の空白を露呈した。1985年の残骸発見(発見と科学レイヤー)が生んだ観光需要と、制度の未整備が交差した悲劇である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Titan submersible implosion",
+          "url": "https://en.wikipedia.org/wiki/Titan_submersible_implosion"
+        }
+      ]
+    },
+    {
+      "date": "2023-06-19",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と制度",
+      "title": "国連で公海の生物多様性協定(BBNJ)を採択",
+      "summary": "国家管轄権の外側にある海域の生物多様性を保全する「BBNJ協定」が国連で採択された。公海に海洋保護区を設ける手続きと、海洋遺伝資源から得る利益の配分枠組みを初めて定めた。\n\n交渉開始から採択まで約20年を要した。海洋法条約が生まれた1982年には想定されていなかった遺伝資源やDNA配列データが争点となり、**探査が生んだ新しい価値**に制度が追いつくという構図がここでも繰り返された。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "国連: 国家管轄権外区域の海洋生物多様性(BBNJ)協定 採択(2023年6月19日)",
+          "url": null
+        }
+      ]
+    }
+  ]
+}

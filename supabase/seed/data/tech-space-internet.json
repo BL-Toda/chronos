@@ -1,0 +1,286 @@
+{
+  "slug": "tech-space-internet",
+  "title": "宇宙インターネット計画",
+  "description": "イリジウムの挫折から数千基の衛星コンステレーション、スマホと衛星の直接通信まで。打ち上げ技術・事業競争・規制の3層で、宇宙からインターネットを届ける挑戦の四半世紀を追う。",
+  "category": "technology",
+  "language": "ja",
+  "start_year": 1998,
+  "end_year": 2025,
+  "layers": [
+    {"name": "技術と打ち上げ", "color": "blue"},
+    {"name": "事業と競争", "color": "orange"},
+    {"name": "規制と社会", "color": "teal"}
+  ],
+  "events": [
+    {
+      "date": "1998-11-01",
+      "precision": "day",
+      "end_date": "1999-08-13",
+      "type": "period",
+      "layer": "事業と競争",
+      "title": "イリジウム、衛星電話開始から9か月で経営破綻",
+      "summary": "モトローラ主導のイリジウムが、66基の低軌道衛星による世界初の衛星携帯電話サービスを開始した。しかし高額な端末と通話料で加入者は伸びず、9か月後に当時史上最大級の経営破綻に至った。\n\n「宇宙から全地球に通信を届ける」構想の最初の大規模な挫折であり、**需要を読み違えた宇宙事業の墓標**として長く語られた。同時期のテレデシックやグローバルスターの構想も相次いで頓挫し、夢は20年近く凍結される。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "The New York Times報道 (1999-08)", "url": null}
+      ]
+    },
+    {
+      "date": "2015-01-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "事業と競争",
+      "title": "スペースXが衛星インターネット構想を発表",
+      "summary": "イーロン・マスクがシアトルでの講演で、数千基の低軌道衛星により全世界へブロードバンドを提供する構想(後のStarlink)を発表した。収益は火星移住計画の資金源にすると語った。\n\nイリジウムの失敗から15年余、再使用ロケットによる**打ち上げコストの劇的低下**が構想を蘇らせた。同時期にOneWebも同様の計画で資金調達を進めており、第2次衛星コンステレーション競争の号砲となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "SpaceX発表・報道 (2015-01)", "url": null}
+      ]
+    },
+    {
+      "date": "2018-02-22",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と打ち上げ",
+      "title": "Starlink試験衛星2基を打ち上げ",
+      "summary": "スペースXがFalcon 9ロケットで、Starlinkの試験衛星「Tintin A/B」2基を打ち上げた。低軌道からのブロードバンド通信の実証が始まった。\n\n量産設計に先立ってアンテナや通信方式の課題を洗い出す技術検証の段階であり、並行して米FCCへの数千基規模の認可申請(規制と社会レイヤー)が進められていた。翌年の量産機一括打ち上げへ向けた助走である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "SpaceX発表・FCC申請資料 (2018)", "url": null}
+      ]
+    },
+    {
+      "date": "2019-02-27",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と打ち上げ",
+      "title": "OneWebが最初の6衛星を打ち上げ",
+      "summary": "英OneWebが最初の6基の衛星をソユーズロケットで打ち上げ、コンステレーションの構築を開始した。ソフトバンクなどから巨額の出資を集めた、Starlinkの最大の対抗馬だった。\n\nスペースXと異なり自前のロケットを持たず、打ち上げを外部調達に頼る構造が重いコストとなってのしかかる。打ち上げ手段を持つ者と持たざる者の差は、翌年の同社の経営破綻(事業と競争レイヤー)で最初の答えを見る。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "OneWeb発表 (2019-02)", "url": null}
+      ]
+    },
+    {
+      "date": "2019-05-24",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と打ち上げ",
+      "title": "Starlink量産衛星60基を一括打ち上げ",
+      "summary": "スペースXがFalcon 9の1機で量産型Starlink衛星60基を一括投入した。平積みの専用搭載方式により、1回の打ち上げで従来の衛星網数個分に相当する規模を展開してみせた。\n\n衛星を一点物ではなく「量産品」として扱う発想の転換であり、以後ほぼ隔週の打ち上げで軌道上の衛星数は数年で数千基に達する。直後から天文学者が夜空に並ぶ光跡へ懸念を表明し(規制と社会レイヤー)、軌道の混雑が現実の問題になった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "SpaceX発表 (2019-05)", "url": null}
+      ]
+    },
+    {
+      "date": "2019-06-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と社会",
+      "title": "国際天文学連合が衛星群の光害に懸念声明",
+      "summary": "国際天文学連合(IAU)が、衛星コンステレーションの反射光が天体観測と夜空の景観に与える影響について懸念を表明する声明を発表した。\n\nStarlink衛星60基の一括打ち上げ(技術と打ち上げレイヤー)の直後の反応であり、**軌道と夜空は誰のものか**という新しい規制問題の始まりとなった。スペースXは反射低減塗装やサンバイザーで対応したが、電波天文学への影響や衛星急増そのものへの懸念は現在まで続いている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "IAU Statement on Satellite Constellations (2019-06)", "url": null}
+      ]
+    },
+    {
+      "date": "2020-03-27",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "事業と競争",
+      "title": "OneWebが経営破綻、英政府連合が救済",
+      "summary": "OneWebがコロナ禍での資金調達難から連邦破産法11条を申請した。主要出資者ソフトバンクの追加出資見送りが背景と報じられた。同年7月には英政府とインドのバーティ・グローバルが買収し、再建へ向かう。\n\n民間資金のみで衛星網を築くことの難しさを示すと同時に、英政府の買収参画は衛星コンステレーションが**国家インフラとしての価値**を持ち始めたことを示した。以後、各国政府が自前の衛星網構想を掲げる流れが加速する。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Reuters報道 (2020-03-27)", "url": null}
+      ]
+    },
+    {
+      "date": "2020-07-30",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と社会",
+      "title": "米FCCがアマゾンの衛星網Project Kuiperを認可",
+      "summary": "米連邦通信委員会(FCC)がアマゾンの衛星コンステレーション計画「Project Kuiper」の3,236基を認可した。2020年代末までに半数を配備することが条件として付された。\n\n巨大IT企業の本格参入を規制当局が認めた節目であり、低軌道の軌道枠と周波数の割当が競争の主戦場となったことを示す。配備期限という規制上の仕掛けは、後にKuiperの打ち上げを急がせる強制力(事業と競争レイヤー)として働くことになる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "FCC Order: Kuiper Systems LLC (2020-07)", "url": null}
+      ]
+    },
+    {
+      "date": "2020-10-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "事業と競争",
+      "title": "Starlinkが一般向けベータサービスを開始",
+      "summary": "スペースXが北米で「Better Than Nothing Beta(何もないよりマシなベータ)」と名づけた一般向けの試験サービスを開始した。月額99ドル・機器代499ドルながら、光回線の届かない地域の住民から予想を上回る需要を集めた。\n\n謙遜した名称とは裏腹に、ブロードバンド空白地帯という明確な市場を突いた出発だった。イリジウムが読み違えた「顧客は誰か」という問いに、取り残された地域の住民という答えを示した点が、四半世紀前との本質的な違いである。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "SpaceX案内・報道 (2020-10)", "url": null}
+      ]
+    },
+    {
+      "date": "2022-02-08",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と打ち上げ",
+      "title": "磁気嵐でStarlink衛星最大40基を喪失",
+      "summary": "打ち上げ直後の低い軌道にあったStarlink衛星49基のうち最大40基が、磁気嵐に伴う大気の膨張で軌道を維持できず失われたとスペースXが発表した。\n\n宇宙天気が大規模コンステレーションの現実的なリスクであることを示した、初の大量喪失事例である。不良機を早期に処分できるよう低い初期軌道へ投入する同社の運用設計が、逆に嵐への脆弱性となった側面もあり、運用高度と宇宙環境予報の重要性が再認識された。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "喪失数は同社発表で「最大40基」とされ、最終的に確定した数の公表はない。",
+      "sources": [
+        {"title": "SpaceX update: Geomagnetic storm and recently deployed Starlink satellites (2022-02)", "url": null}
+      ]
+    },
+    {
+      "date": "2022-02-26",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と社会",
+      "title": "ウクライナ侵攻直後、Starlinkが戦時の通信網に",
+      "summary": "ロシアの侵攻で通信網が攻撃されるなか、ウクライナ政府高官のSNS上の要請に応じてスペースXがStarlinkを同国で有効化し、端末を順次供給した。衛星網が戦時の基幹通信を支える初の大規模事例となった。\n\n一民間企業のサービスが戦争の帰趨に関わる状況は、**一企業が握る地政学的な力**への各国の警戒を呼び覚ました。欧州の独自衛星網IRIS²構想をはじめ、通信の主権を問い直す各国の動きは、この経験を直接の背景としている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Reuters・BBC報道 (2022-02〜03)", "url": null}
+      ]
+    },
+    {
+      "date": "2023-04-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と打ち上げ",
+      "title": "AST、市販スマホと衛星の直接通話に成功と発表",
+      "summary": "米AST SpaceMobileが、試験衛星BlueWalker 3を使い、改造していない市販のスマートフォンとの衛星経由の音声通話に成功したと発表した。\n\n専用端末を前提としてきた衛星通信の常識を覆し、「基地局を空に置く」方式の実現性を示した。既存の携帯事業者と組んで圏外そのものを消しにいく路線は、Starlinkのスマホ直接接続と並ぶ第二の競争軸(事業と競争レイヤー)へ育っていく。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "通話成功は同社の発表に基づくもので、通信品質や再現性についての第三者による検証は公表されていない。",
+      "sources": [
+        {"title": "AST SpaceMobile press release (2023-04)", "url": null}
+      ]
+    },
+    {
+      "date": "2023-10-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と社会",
+      "title": "FCCがスペースデブリ規則違反に初の制裁金",
+      "summary": "米FCCが、退役衛星を約束した軌道へ離脱させる義務を怠ったとして、衛星放送会社DISHに15万ドルの制裁金を科した。宇宙ゴミをめぐる規制当局として初の処分となった。\n\n金額こそ小さいが、軌道を「管理され、執行の対象となる環境」として扱った先例である。数千基規模のコンステレーション時代に、衝突リスクとデブリの責任を誰がどのように負うのかという問いへの、最初の制度的な応答だった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "FCC Enforcement Bureau発表 (2023-10)", "url": null}
+      ]
+    },
+    {
+      "date": "2024-01-02",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と打ち上げ",
+      "title": "Starlink、スマホ直結用衛星の打ち上げを開始",
+      "summary": "スペースXが、スマートフォンと直接通信するdirect-to-cell機能を持つ最初のStarlink衛星6基を打ち上げた。地上の携帯事業者の周波数を使い、圏外のスマホへそのまま電波を届ける方式である。\n\nT-Mobileをはじめ各国の携帯事業者との提携により、衛星網は携帯網の「圏外を埋める層」として組み込まれ始めた。ASTとの競争も本格化し、宇宙インターネットは固定回線の代替からモバイルの補完へと戦線を広げた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "SpaceX発表 (2024-01)", "url": null}
+      ]
+    },
+    {
+      "date": "2024-08-06",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "事業と競争",
+      "title": "中国の「千帆星座」が初打ち上げ",
+      "summary": "上海市系企業が主導する衛星コンステレーション「千帆」の最初の18基が打ち上げられた。最終的には1万基を超える衛星網を構想しているとされる。\n\n国家主導の「国網」構想と並ぶ中国の大規模計画の始動であり、低軌道の軌道枠と周波数の獲得競争は米中の国家間競争の様相を帯びた。軌道は事実上早い者勝ちの側面が強く、**配備の速度そのものが地政学的な意味**を持つ段階に入っている。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "計画総数(1万基超)は報道・申請ベースの数値であり、実際の配備規模と時期は確定していない。",
+      "sources": [
+        {"title": "新華社・Reuters報道 (2024-08)", "url": null}
+      ]
+    },
+    {
+      "date": "2024-12-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と社会",
+      "title": "EUが独自衛星網IRIS²の契約を締結",
+      "summary": "欧州委員会が、官民連携による独自の衛星コンステレーション「IRIS²」のコンセッション契約を締結した。約290基を2030年頃までに配備し、政府向けのセキュア通信と商用ブロードバンドを提供する計画である。\n\n特定企業のサービスへの依存に対する危機感から生まれた**通信主権**の具体化であり、ウクライナでの経験(2022年)が直接の教訓となった。規模と速度で米中に劣る欧州が、規制と公共調達で対抗する構図がここに定まった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "European Commission発表 (2024-12)", "url": null}
+      ]
+    },
+    {
+      "date": "2025-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "事業と競争",
+      "title": "Starlink利用者500万人超、事業は黒字化と発表",
+      "summary": "スペースXがStarlinkの利用者が世界で500万人を超えたことを明らかにした。約130か国で提供され、航空機や船舶への搭載も進み、衛星通信の売上は同社のロケット事業を上回る規模になったとされる。\n\nイリジウムが数万加入で沈んでから四半世紀、宇宙インターネットは初めて**商業的に成立する事業**になったとみられる。ただし利用者数も黒字化も自社発表であり、巨額の衛星更新費用を含めた採算の全体像は外部から検証できない。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "利用者数・収益性はいずれも同社および経営陣の発言に基づくもので、監査済み財務情報としての公開はない。",
+      "sources": [
+        {"title": "SpaceX発表・報道 (2025)", "url": null}
+      ]
+    },
+    {
+      "date": "2025-04-28",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "事業と競争",
+      "title": "アマゾンKuiper、最初の本格衛星27基を打ち上げ",
+      "summary": "アマゾンがProject Kuiperの最初の本格運用衛星27基を打ち上げ、コンステレーションの構築を開始した。FCC認可に付された配備期限が迫るなかでの船出となった。\n\n認可(2020年)から5年を要した遅れは、打ち上げ手段の確保が今なお最大の関門であることを物語る。自前ロケットを持つスペースXの優位は揺らがないが、ECとクラウドに衛星網を結びつけるという別の戦い方をアマゾンは狙っている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "Amazon発表 (2025-04)", "url": null}
+      ]
+    }
+  ]
+}

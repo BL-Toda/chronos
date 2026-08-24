@@ -1,0 +1,367 @@
+{
+  "slug": "culture-anime-global",
+  "title": "アニメ文化の世界進出",
+  "description": "1963年のテレビアニメ誕生から劇場作品の世界的ヒット、配信による産業化まで。作品・産業と配信・海外の受容の3層を重ね、日本のアニメが世界の主流娯楽になる過程を追う年表。",
+  "category": "culture",
+  "language": "ja",
+  "start_year": 1963,
+  "end_year": 2025,
+  "layers": [
+    {
+      "name": "作品と表現",
+      "color": "blue"
+    },
+    {
+      "name": "産業と配信",
+      "color": "orange"
+    },
+    {
+      "name": "海外の受容とファン",
+      "color": "green"
+    }
+  ],
+  "events": [
+    {
+      "date": "1963-01-01",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "作品と表現",
+      "title": "「鉄腕アトム」放送開始、テレビアニメの原点",
+      "summary": "手塚治虫の虫プロダクションが制作した「鉄腕アトム」がフジテレビ系で放送を開始した。日本初の本格的な30分連続テレビアニメである。\n\n週1本の放送を回すために止め絵や作画の使い回しなどを体系化した**リミテッドアニメ**の手法は、低予算で物語の密度を追求する日本アニメの生産様式と表現の型をつくった。この方式が以後の産業と表現の両方を長く規定していく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "手塚プロダクション公式サイト: 鉄腕アトム",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1963-09-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "海外の受容とファン",
+      "title": "「Astro Boy」として米国で放送開始",
+      "summary": "「鉄腕アトム」がNBCエンタープライズの配給により「Astro Boy」として米国で放送された。日本のテレビアニメ輸出の最初期の成功例である。\n\n放送権は制作費の穴を埋める安値で販売されたとされ、輸出を前提とする採算構造はこの時点で始まっていた。米国の子どもたちは日本製と意識せずに見ており、「日本のアニメ」というブランドの認知は数十年後のファン文化の成立を待つことになる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Astro Boy (1963 TV series)",
+          "url": "https://en.wikipedia.org/wiki/Astro_Boy_(1963_TV_series)"
+        }
+      ]
+    },
+    {
+      "date": "1978-07-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "海外の受容とファン",
+      "title": "「ゴルドラック」がフランスで社会現象に",
+      "summary": "「UFOロボ グレンダイザー」が「Goldorak」の題でフランスの公共放送の子ども番組枠で放送され、爆発的な人気となった。\n\n「視聴率100%」という伝説的な数字が語られるほどの現象で、フランスが日本アニメの一大受容国となる起点になった。一方で暴力性を批判する社会的論争も起き、熱狂と反発が併走するという日本アニメ海外展開の型が、ここに早くも現れている。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "「視聴率100%」などの数字は当時の逸話として流布したもので、測定方法を含めて裏付けは確認できない。",
+      "sources": [
+        {
+          "title": "Wikipedia: UFOロボ グレンダイザー(フランスでの放送)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1980-01-01",
+      "precision": "year",
+      "end_date": "1994-12-31",
+      "type": "period",
+      "layer": "海外の受容とファン",
+      "title": "ファンサブVHSの時代",
+      "summary": "北米や欧州のファンが、日本のアニメに自主的に字幕を付けたVHSテープを同好会経由で複製・回覧する文化が広がった。公式流通がほとんどない時代の、非公式な受容の回路である。\n\n権利の上では違法な複製だが、**非公式な熱意が後の市場を耕した**とする評価が定着している。ここで育ったファンがCrunchyroll(産業と配信レイヤー)など後の正規配信の担い手や顧客となった。規模を示す信頼できる記録はない。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "非公式な流通のため時期や規模を示す一次資料がなく、関係者の回想と研究書の記述に依拠する。",
+      "sources": [
+        {
+          "title": "Jonathan Clements: Anime: A History (BFI, 2013)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1988-07-16",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "作品と表現",
+      "title": "「AKIRA」公開、ジャパニメーションの衝撃",
+      "summary": "大友克洋監督の「AKIRA」が公開された。当時としては破格の制作費とセル画枚数を投じた緻密な作画で、崩壊後の東京を描くSF大作である。\n\n翌年以降の海外公開でカルト的な支持を獲得し、「ジャパニメーション」の代名詞として欧米のクリエイターに影響を与えた。アニメは子ども向けという既成観念を覆し、大人の観客という新しい市場を海外の受容レイヤーに切り開いた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Akira (1988 film)",
+          "url": "https://en.wikipedia.org/wiki/Akira_(1988_film)"
+        }
+      ]
+    },
+    {
+      "date": "1992-07-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "海外の受容とファン",
+      "title": "アニメ・エキスポ初開催",
+      "summary": "北米最大級のアニメコンベンションとなるアニメ・エキスポの第1回が、カリフォルニアで開かれた。ファンサブ時代の同好会文化が、数千人規模の集会として初めて可視化された。\n\n以後、来場者は数十万人規模へと成長し、企業の新作発表やライセンス商談の場を兼ねるようになる。ファンの集いが産業のインフラへ転じていく過程は、海外受容レイヤーと産業と配信レイヤーが合流していく典型例である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Anime Expo (Society for the Promotion of Japanese Animation)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1995-11-18",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "作品と表現",
+      "title": "「GHOST IN THE SHELL/攻殻機動隊」公開",
+      "summary": "押井守監督の「GHOST IN THE SHELL/攻殻機動隊」が日英合作の枠組みで公開された。義体化した主人公を通じて、ネットワーク時代の自我を問う哲学的SFである。\n\n米国ではビデオ市場で支持を広げ、ビルボードのビデオ販売チャートで首位を記録したと報じられた。「マトリックス」の監督らが影響を公言するなど、**逆輸入される影響源**として日本アニメの国際評価を決定づけた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Ghost in the Shell (1995 film)",
+          "url": "https://en.wikipedia.org/wiki/Ghost_in_the_Shell_(1995_film)"
+        }
+      ]
+    },
+    {
+      "date": "1996-07-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "産業と配信",
+      "title": "ディズニーがジブリ作品の世界展開で提携",
+      "summary": "ウォルト・ディズニーと徳間書店が、スタジオジブリ作品の販売・配給に関する提携を発表した。「もののけ姫」以降の新作や旧作ビデオの海外展開をディズニーが担う枠組みである。\n\n世界最大の配給網に乗ることで、ジブリ作品は質の高い吹替版制作と劇場公開の体制を得た。作品に手を加えない無改変の条件が交渉の核だったと伝えられ、日本側が条件を主導した契約として画期的だった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "1996年7月のディズニー・徳間書店提携発表に関する各社報道",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1998-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "海外の受容とファン",
+      "title": "「ドラゴンボールZ」が米Toonami枠で人気爆発",
+      "summary": "米カートゥーン・ネットワークの放送枠Toonamiで「ドラゴンボールZ」の放送が始まり、再放送を重ねながら10代を中心に絶大な人気を得た。\n\nケーブル局の専門枠という受け皿を得て、日本アニメは字幕ビデオのマニア文化からテレビの日常へと移った。この時期にToonamiで育った世代の視聴体験が、2000年代以降の北米市場拡大と配信サービス(産業と配信レイヤー)の顧客基盤の土台となる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Toonami",
+          "url": "https://en.wikipedia.org/wiki/Toonami"
+        }
+      ]
+    },
+    {
+      "date": "1998-09-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "産業と配信",
+      "title": "ポケモンが米国上陸、メディアミックス輸出の完成形",
+      "summary": "ゲーム・アニメ・カードを束ねた「ポケットモンスター」が米国で本格展開を開始し、アニメ放送とゲーム発売が連動する形で一気に浸透した。\n\n名前や演出のローカライズを徹底し、玩具やカードまで束ねる**メディアミックスの輸出モデル**を完成させ、世界的フランチャイズ化の雛形となった。キャラクター産業としてのアニメの規模を桁違いに広げた事例である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Pokémon",
+          "url": "https://en.wikipedia.org/wiki/Pok%C3%A9mon"
+        }
+      ]
+    },
+    {
+      "date": "2003-03-23",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "作品と表現",
+      "title": "「千と千尋の神隠し」がアカデミー賞受賞",
+      "summary": "宮崎駿監督の「千と千尋の神隠し」が、第75回アカデミー賞長編アニメーション部門を受賞した。前年にはベルリン国際映画祭で金熊賞も受けている。\n\n日本で歴代興行収入1位となった作品が米映画界の最高賞に達したことで、**作家性への世界的承認**が決定的となった。CG全盛へ向かう時期に手描きの表現が評価された意味も大きく、以後の劇場アニメの海外展開への強い追い風となる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Spirited Away",
+          "url": "https://en.wikipedia.org/wiki/Spirited_Away"
+        }
+      ]
+    },
+    {
+      "date": "2006-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "産業と配信",
+      "title": "Crunchyroll創業、ファン発の配信サービス",
+      "summary": "米国でアニメ動画サイトCrunchyrollが創業した。当初は無許諾のアップロードを含むファン主導のサイトだったが、後に権利者と提携して正規のサイマル配信へ転換した。\n\n日本の放送直後に字幕付きで世界へ届けるサイマル配信は、ファンサブが満たしていた需要を合法の市場に変えた。ファン文化の内側から産業が生まれた例であり、配信時代のアニメ経済圏の原型となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Crunchyroll",
+          "url": "https://en.wikipedia.org/wiki/Crunchyroll"
+        }
+      ]
+    },
+    {
+      "date": "2013-04-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "作品と表現",
+      "title": "「進撃の巨人」放送、配信で世界同時ブームに",
+      "summary": "諫山創原作のテレビアニメ「進撃の巨人」が放送を開始した。配信サービスを通じてほぼ同時に海外へ届き、SNS上の考察・リアクション文化とともに世界規模のブームとなった。\n\n国内放送から海外人気までの時差がほぼ消えた最初期の例で、世界の反応が製作委員会の収益と続編の判断に直結する構造が定着していく。作品レイヤーと産業と配信レイヤーの結合が、配信によって一段深まった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Attack on Titan",
+          "url": "https://en.wikipedia.org/wiki/Attack_on_Titan"
+        }
+      ]
+    },
+    {
+      "date": "2016-08-26",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "作品と表現",
+      "title": "「君の名は。」公開、アジアで記録的ヒット",
+      "summary": "新海誠監督の「君の名は。」が公開され、日本で興行収入約250億円、中国や韓国でも当時の日本映画の記録を塗り替える大ヒットとなった。\n\nスタジオジブリ以外の作家による初めての世界的メガヒットで、とりわけ中国市場の急成長を強く印象づけた。個人の作家性とSNS時代の拡散力が結び付いた事例であり、劇場アニメの海外収益が事業計画の柱になる転機となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Your Name",
+          "url": "https://en.wikipedia.org/wiki/Your_Name"
+        }
+      ]
+    },
+    {
+      "date": "2020-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "産業と配信",
+      "title": "Netflixが「1億世帯超がアニメ視聴」と公表",
+      "summary": "Netflixが、直近1年間で全世界の1億を超える世帯が同社でアニメを視聴したと公表し、オリジナルアニメへの投資拡大を打ち出した。\n\n数字は自社発表で外部の検証はないが、世界最大級の配信プラットフォームがアニメを主要ジャンルと位置づけた意味は大きい。配信マネーの流入は、制作現場の待遇や製作委員会方式のあり方をめぐる議論も同時に呼び起こした。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "視聴世帯数はNetflixの自社発表に基づく数値で、集計基準の詳細な開示や第三者による検証はない。",
+      "sources": [
+        {
+          "title": "Netflixのアニメ視聴に関する発表(2020年)への各社報道",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2020-10-16",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "作品と表現",
+      "title": "「鬼滅の刃 無限列車編」が2020年世界興収首位",
+      "summary": "「劇場版 鬼滅の刃 無限列車編」が公開され、日本歴代1位の興行収入を記録した。パンデミック下の2020年の世界年間興行収入でも首位となった。\n\nテレビ放送と配信で拡大したファン層が劇場に殺到する、**配信が観客を育てる**時代の象徴となった。日本映画が世界の年間首位に立つのは初めてであり、ハリウッドの公開延期が続いた特殊な年という条件を差し引いても産業の地力を示した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 劇場版「鬼滅の刃」無限列車編",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2021-08-09",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "産業と配信",
+      "title": "ソニーがCrunchyroll買収を完了",
+      "summary": "ソニー傘下のファニメーションが、AT&TからのCrunchyroll買収を完了した。買収額は11.75億ドルで、傘下の配信ブランドは後にCrunchyrollへ統合された。\n\n日本の権利元に近い資本が海外アニメ配信の最大手を押さえたことで、製作から世界配信までの垂直統合が進んだ。**流通の主導権**をめぐる再編であり、アニメが国際的なメディア資本の主戦場になったことを示している。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Sony Pictures / Funimationプレスリリース(2021-08-09)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2024-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "産業と配信",
+      "title": "アニメ産業市場が3兆円突破と報告される",
+      "summary": "日本動画協会の「アニメ産業レポート2024」で、2023年の広義のアニメ産業市場が初めて3兆円を超えたと報告された。海外市場が全体のおよそ半分を占める構造が続いている。\n\nこの数値は関連事業者の売上を積み上げた推計であり、集計範囲の設定で規模感は変わる。それでも約10年で市場が倍増し、**成長の主因が海外**にあるという傾向は一貫しており、本年表の到達点を数字で裏づけている。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "市場規模は日本動画協会による広義市場の推計で、集計範囲や手法をめぐって数値の評価が分かれる。",
+      "sources": [
+        {
+          "title": "日本動画協会「アニメ産業レポート2024」",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2025-07-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "作品と表現",
+      "title": "「鬼滅の刃 無限城編」が世界で記録的ヒット",
+      "summary": "「劇場版 鬼滅の刃 無限城編 第一章」が公開され、日本で歴代最速級の興行記録を更新した。北米でもアニメ映画の公開週末記録を塗り替えたと報じられている。\n\n興行数値は集計途上で確定していないが、字幕・吹替を問わず世界の一般客層が公開初週から動く状況は、半世紀にわたる受容の積み重ねの現在地を示す。海外レイヤーで「特別な趣味」だったアニメは、もはや主流の娯楽である。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "公開後の興行数値は報道ベースの速報値で、確定値や最終的な順位は集計途上である。",
+      "sources": [
+        {
+          "title": "「劇場版 鬼滅の刃 無限城編」の興行に関する各社報道(2025)",
+          "url": null
+        }
+      ]
+    }
+  ]
+}

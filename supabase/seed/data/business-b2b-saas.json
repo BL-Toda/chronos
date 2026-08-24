@@ -1,0 +1,349 @@
+{
+  "slug": "business-b2b-saas",
+  "title": "B2B SaaSの勃興",
+  "description": "Salesforce創業の「No Software」からSaaSバブルと調整、AIエージェント時代まで。プロダクト・資本市場・導入と商習慣の3層で、業務ソフトが所有から利用へ変わった四半世紀を追う。",
+  "category": "business",
+  "language": "ja",
+  "start_year": 1999,
+  "end_year": 2025,
+  "layers": [
+    {
+      "name": "プロダクトと企業",
+      "color": "blue"
+    },
+    {
+      "name": "資本市場",
+      "color": "orange"
+    },
+    {
+      "name": "導入と商習慣",
+      "color": "teal"
+    }
+  ],
+  "events": [
+    {
+      "date": "1999-03-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "プロダクトと企業",
+      "title": "Salesforce創業、「No Software」を掲げる",
+      "summary": "マーク・ベニオフらがSalesforceを創業し、業務ソフトをインストール不要のWebサービスとして月額課金で提供するモデルを打ち出した。「No Software」を掲げ、パッケージ販売への挑戦を宣言した。\n\n**所有から利用へ**という転換の出発点であり、後にSaaSと呼ばれる事業モデルの原型となった。収益が一括販売から継続課金へ変わることで、資本市場の評価軸(資本市場レイヤー)も後年書き換えられていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Salesforce",
+          "url": "https://en.wikipedia.org/wiki/Salesforce"
+        }
+      ]
+    },
+    {
+      "date": "2004-06-23",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "資本市場",
+      "title": "SalesforceがNYSE上場",
+      "summary": "Salesforceがニューヨーク証券取引所に上場した。継続課金型の企業向けソフト企業として資本市場に受け入れられ、SaaSという事業モデルの妥当性を示す試金石となった。\n\n当時は先行投資で赤字が続く継続課金モデルを評価する物差しが定まっておらず、解約率やLTVといったSaaS固有の指標が投資家に浸透するのは、この後の10年をかけてのことである。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Salesforce",
+          "url": "https://en.wikipedia.org/wiki/Salesforce"
+        }
+      ]
+    },
+    {
+      "date": "2006-03-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "プロダクトと企業",
+      "title": "AWSがS3を公開、クラウドインフラ時代へ",
+      "summary": "AmazonがストレージサービスS3を公開し、同年には仮想サーバーのEC2も登場した。サーバーを買わずに従量課金で計算資源を使えるクラウドインフラが実用段階に入った。\n\n自前でデータセンターを持てない小さなチームでもSaaSを立ち上げられるようになり、起業のコストが劇的に下がった。2010年代のSaaSスタートアップ急増と資本流入(資本市場レイヤー)を支える土台である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Amazon S3",
+          "url": "https://en.wikipedia.org/wiki/Amazon_S3"
+        }
+      ]
+    },
+    {
+      "date": "2011-08-20",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "資本市場",
+      "title": "「ソフトウェアが世界を飲み込む」論考",
+      "summary": "投資家マーク・アンドリーセンがウォール・ストリート・ジャーナル紙に「Why Software Is Eating the World」を寄稿し、あらゆる産業の中核企業がソフトウェア企業に置き換わると論じた。\n\nクラウド(プロダクトと企業レイヤーのAWS)とスマートフォンの普及を背景に、ベンチャー資本が業務ソフトへ本格的に向かう転換点とされる。以後、SaaSはベンチャー投資の主要カテゴリーとなっていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Marc Andreessen, \"Why Software Is Eating the World\" (WSJ, 2011-08-20)",
+          "url": "https://a16z.com/why-software-is-eating-the-world/"
+        }
+      ]
+    },
+    {
+      "date": "2012-07-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "プロダクトと企業",
+      "title": "クラウド会計のfreeeが創業",
+      "summary": "佐々木大輔がクラウド会計ソフトのfreeeを創業した(サービス公開は翌2013年3月)。銀行口座やカードの明細と連携して記帳を自動化する発想で、中小企業の会計業務をクラウドへ移し始めた。\n\n日本のSaaSは会計・人事労務など**バックオフィスの自動化**から立ち上がった。税理士や商習慣と深く関わる領域だけに、導入と商習慣レイヤーの制度変化が普及の追い風となっていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "freee株式会社 会社情報・沿革",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2014-02-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "プロダクトと企業",
+      "title": "Slack一般公開、ボトムアップ導入の型を作る",
+      "summary": "ゲーム開発の社内ツールから生まれたSlackが一般公開され、メール中心だった社内コミュニケーションをチャンネル型チャットへ置き換え始めた。公開初年度から利用者が急増した。\n\nまず現場のチームが無料で使い始め、後から会社契約に広がる「ボトムアップ導入」というSaaS特有の普及経路を確立した点が重要である。導入と商習慣レイヤーのテレワーク転換で需要が爆発する伏線となる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Slack (software)",
+          "url": "https://en.wikipedia.org/wiki/Slack_(software)"
+        }
+      ]
+    },
+    {
+      "date": "2015-02-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "資本市場",
+      "title": "「T2D3」提唱、SaaS成長指標が共通言語に",
+      "summary": "米VC Battery Venturesのニーラジ・アグラワルが、ARRを3倍・3倍・2倍・2倍・2倍と5年で伸ばす「T2D3」という成長モデルを提唱し、SaaS企業の成長目標として広く参照されるようになった。\n\nARR・解約率・NRRといったSaaS固有の指標体系が投資判断の共通言語になった時期であり、**成長速度そのものを企業価値とみなす**評価文化が、後のバブルと調整(同レイヤー)の下地を作った。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Neeraj Agrawal, \"The SaaS Adventure\" (TechCrunch, 2015)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2019-04-01",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "導入と商習慣",
+      "title": "働き方改革関連法施行、HR SaaSの追い風に",
+      "summary": "残業時間の罰則付き上限規制や年5日の有給取得義務が始まり、労働時間の客観的な把握が企業に求められるようになった。\n\n勤怠管理や人事労務のSaaS導入を法制度が直接後押しした形で、SmartHRなどHR領域の急成長(資本市場レイヤー)の背景となった。日本のSaaSが**制度対応を入口に広がる**構図を示す典型例である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "厚生労働省「働き方改革関連法の概要」",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2019-06-19",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "資本市場",
+      "title": "Sansan上場、国内SaaS上場ラッシュの先駆け",
+      "summary": "名刺管理サービスのSansanが東証マザーズに上場し、同年12月にはfreeeも続いた。国内SaaSの上場が相次ぎ、「SaaS株」がひとつの投資カテゴリーとして意識され始めた。\n\nARRや解約率を開示する日本企業が増え、T2D3など米国流の評価指標(同レイヤー)が国内にも定着していく。赤字のまま成長投資を続ける経営が日本市場で受け入れられるかを試す試金石でもあった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Sansan株式会社「東京証券取引所マザーズ上場に関するお知らせ」(2019-06-19)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2020-04-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "導入と商習慣",
+      "title": "テレワーク急拡大で業務SaaSの導入が加速",
+      "summary": "新型コロナで在宅勤務が広がり、Zoom・Slack・電子契約など業務SaaSの導入が一気に進んだ。Zoomは1日あたりの会議参加者が前年の10倍を超える3億人に達したと発表した。\n\n「まず現場が使う」ボトムアップ導入(プロダクトと企業レイヤー)が危機対応として正当化され、稟議や対面を前提とする商習慣が崩れた。SaaS株への資金流入(資本市場レイヤー)もここから過熱していく。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "Zoomの「1日3億人」は延べ参加者数の自社発表であり、当初「利用者数」と表記して後に訂正された経緯があるなど、数値の解釈には注意が要る。",
+      "sources": [
+        {
+          "title": "Zoom公式ブログ発表(2020年4月)および各社報道",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2020-11-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "導入と商習慣",
+      "title": "押印廃止の方針で電子契約が急速に普及",
+      "summary": "政府が行政手続の押印を原則廃止する方針を打ち出し、民間でも電子契約サービスの導入が急速に進んだ。クラウドサインなど国内サービスの導入社数がこの前後で急増した。\n\n「ハンコを押すために出社する」という象徴的な非効率が世論の後押しで崩れた局面であり、紙と対面を前提としてきた日本の商習慣の転換が、制度の側から一気に進んだ事例である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "内閣府「押印を求める行政手続の見直し」(2020年)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2021-06-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "資本市場",
+      "title": "SmartHRが約156億円のシリーズD調達",
+      "summary": "人事労務SaaSのSmartHRが約156億円のシリーズD資金調達を発表し、評価額は約1700億円とされ「ユニコーン」入りと報じられた。国内SaaSでは突出した規模の調達だった。\n\n低金利下で高成長企業に資金が集まる世界的な潮流が日本のSaaSにも届いたことを示す。評価額は自社・報道ベースの数値であり、翌年以降の金利上昇局面(同レイヤー)で未上場企業の評価の妥当性が問われていく。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "調達額は自社発表、評価額約1700億円は報道ベースの推定であり、第三者による確定的な開示はない。",
+      "sources": [
+        {
+          "title": "SmartHR プレスリリース「シリーズDで約156億円の資金調達を実施」(2021年6月)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2022-01-01",
+      "precision": "month",
+      "end_date": "2022-12-31",
+      "type": "period",
+      "layer": "資本市場",
+      "title": "金利上昇でSaaS株が世界的に急落",
+      "summary": "米国の急速な利上げを受け、高成長・赤字容認で買われてきたSaaS株が世界的に急落した。米国のクラウド株指数は年間で半値近くに沈み、国内SaaS株も軒並み大幅安となった。\n\n**成長一辺倒から採算重視へ**と評価軸が転換し、成長率と利益率の合計をみる「40%ルール」など効率性指標が再び重視された。各社は人員削減と黒字化を迫られ、プロダクトレイヤーではAIへの再投資が始まる。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "下落率は参照する指数・銘柄・期間の取り方によって大きく異なり、「半値」という水準は代表的なクラウド株指数に基づく概数である。",
+      "sources": [
+        {
+          "title": "BVP Nasdaq Emerging Cloud Indexの推移および各社報道",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2023-03-16",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "プロダクトと企業",
+      "title": "Microsoft 365 Copilot発表、SaaSにAIを実装",
+      "summary": "MicrosoftがWordやExcelなどに生成AIを組み込むMicrosoft 365 Copilotを発表した。既存SaaSにAIを載せる路線が業界標準となり、SalesforceやNotionなど各社が一斉に追随した。\n\nGPT-4公開のわずか2日後という時期は、基盤モデルの進化が業務ソフトの機能競争に直結し始めたことを示す。AI機能が既存SaaSの価格体系と競争力を再定義する局面の始まりである。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Microsoft Official Blog: Introducing Microsoft 365 Copilot (2023-03-16)",
+          "url": "https://blogs.microsoft.com/blog/2023/03/16/introducing-microsoft-365-copilot-your-copilot-for-work/"
+        }
+      ]
+    },
+    {
+      "date": "2024-07-19",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "導入と商習慣",
+      "title": "CrowdStrike障害、クラウド依存のリスク露呈",
+      "summary": "セキュリティ企業CrowdStrikeの更新プログラムの不具合により、世界で約850万台のWindows端末が起動不能となり、航空・医療・金融などの業務が広範囲で停止した。\n\n特定のクラウドサービスへの依存が社会全体の単一障害点になりうることを史上最大級の規模で示した事例であり、SaaS前提の業務設計に対して、依存先の集中リスクという論点を突きつけた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Microsoft公式ブログによる影響台数の推計(2024-07-20)および各社報道",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2024-09-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "導入と商習慣",
+      "title": "Klarna CEOの「SaaS解約」発言が波紋",
+      "summary": "決済企業KlarnaのCEOが、自社開発のAIシステムでSalesforceやWorkdayの利用をやめると発言し、「AIはSaaSを不要にするのか」という議論を業界全体に呼び起こした。\n\n発言はその後軌道修正が報じられ実態には諸説あるが、AIエージェント(プロダクトと企業レイヤー)が**SaaSの存在意義を問い直す**時代の空気を象徴する出来事として、繰り返し引用され続けている。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "発言の内容と実際の解約範囲については報道ベースで、後にCEO自身が発言を部分的に修正したとされるなど、実態は確定していない。",
+      "sources": [
+        {
+          "title": "Reuters等によるKlarna CEO発言の報道(2024年9月)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2024-09-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "プロダクトと企業",
+      "title": "SalesforceがAgentforce発表、エージェントへ",
+      "summary": "SalesforceがAIエージェント基盤Agentforceを発表し、人が画面を操作するSaaSから、AIが業務そのものを代行するエージェントへの転換を打ち出した。\n\nSaaSの代名詞だった企業自身がエージェント化を主導する点が象徴的であり、席数課金から実行回数・成果に応じた課金への移行を含め、四半世紀続いたSaaSの事業モデル自体が再設計され始めたことを示す。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Salesforce プレスリリース: Agentforce発表(Dreamforce 2024)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2025-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "導入と商習慣",
+      "title": "国内SaaS市場、1兆円超えの推計が定着",
+      "summary": "民間調査各社が国内SaaS市場を1兆円超の規模と推計するようになり、業務ソフトの新規導入はクラウドが前提という状況が定着した。\n\n推計値は調査会社によって定義も数値も異なり幅があるが、四半世紀前に「No Software」(プロダクトと企業レイヤー)が掲げた**所有から利用への転換**が、日本の商習慣としても既定路線になったことを示す指標といえる。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "市場規模はSaaSの定義や集計範囲が調査会社ごとに異なる推計値であり、公的統計による裏付けはない。",
+      "sources": [
+        {
+          "title": "富士キメラ総研・ITR等の国内SaaS市場調査",
+          "url": null
+        }
+      ]
+    }
+  ]
+}

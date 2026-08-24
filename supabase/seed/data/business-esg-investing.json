@@ -1,0 +1,389 @@
+{
+  "slug": "business-esg-investing",
+  "title": "ESG投資の潮流",
+  "description": "「ESG」という言葉の誕生からGPIFの参入、グリーンウォッシング摘発と反ESGの逆風まで。投資マネー・規制と基準・社会の圧力を重ね、金融が気候と倫理を織り込んでいく20年を追う。",
+  "category": "business",
+  "language": "ja",
+  "start_year": 2004,
+  "end_year": 2025,
+  "layers": [
+    {
+      "name": "投資と市場",
+      "color": "orange"
+    },
+    {
+      "name": "規制と基準",
+      "color": "teal"
+    },
+    {
+      "name": "社会と気候",
+      "color": "green"
+    }
+  ],
+  "events": [
+    {
+      "date": "2004-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と基準",
+      "title": "国連報告書「Who Cares Wins」でESGの語が登場",
+      "summary": "国連グローバル・コンパクトが金融機関と共同で報告書「Who Cares Wins」を公表。環境(E)・社会(S)・企業統治(G)の要素を投資分析に組み込むべきだと提言し、**「ESG」という言葉**が国際的な公式文書に登場した。\n\nそれまで「社会的責任投資(SRI)」と呼ばれ倫理色の強かった潮流を、リスクとリターンという投資の言葉で語り直した点が新しかった。以後の20年は、この語が金融の中心語彙になり、やがて政治の争点になっていく過程でもある。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "ESGという語の初出をこの報告書とする説が広く引用されるが、それ以前の使用例を指摘する研究もあり確定的ではない。",
+      "sources": [
+        {
+          "title": "UN Global Compact: Who Cares Wins - Connecting Financial Markets to a Changing World (2004)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2006-04-27",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と基準",
+      "title": "責任投資原則(PRI)がNY証券取引所で発足",
+      "summary": "アナン国連事務総長の主導で責任投資原則(PRI)が発足した。署名機関は、ESGを投資判断と株主行動に組み込む6つの原則にコミットする。\n\n発足時の署名は数十機関にとどまったが、後に世界で数千機関・運用資産100兆ドル規模にまで拡大する。法的拘束力のない自主原則という設計は、規制ではなく市場の同調圧力でESGを広げるという、この分野に特有の進み方の原型となった。署名の有無自体が運用受託の条件になっていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "PRI: About the PRI",
+          "url": "https://www.unpri.org/about-us/about-the-pri"
+        }
+      ]
+    },
+    {
+      "date": "2008-09-15",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "投資と市場",
+      "title": "リーマン・ショック、短期主義への反省",
+      "summary": "リーマン・ブラザーズの経営破綻を引き金に世界金融危機が発生した。短期の利益を追い、リスクを外部化してきた金融のあり方への批判が世界的に高まった。\n\n危機後の反省は、四半期主義から長期投資への転換論や、機関投資家に企業との対話を求めるスチュワードシップ・コードの整備(規制と基準レイヤー)へつながる。ESGが「危機後の金融の正統性回復」という文脈で主流に押し上げられていく、その出発点にあたる出来事である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: リーマン・ショック",
+          "url": "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%BC%E3%83%9E%E3%83%B3%E3%83%BB%E3%82%B7%E3%83%A7%E3%83%83%E3%82%AF"
+        }
+      ]
+    },
+    {
+      "date": "2015-09-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "投資と市場",
+      "title": "GPIFが責任投資原則(PRI)に署名",
+      "summary": "世界最大級の年金基金であるGPIF(年金積立金管理運用独立行政法人)が責任投資原則に署名した。\n\n運用資産100兆円超の「クジラ」の参加は、年金の受託者責任とESG考慮は矛盾しないという解釈を日本市場に事実上定着させ、国内の運用機関が一斉にESG対応へ動く引き金となった。**アセットオーナーが動けば市場全体が動く**という構図を示す代表例であり、日本のESG投資拡大は実質的にここから始まったと評される。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "GPIF: 国連責任投資原則への署名について (2015年9月)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2015-09-25",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と基準",
+      "title": "国連総会がSDGsを採択",
+      "summary": "国連総会が持続可能な開発目標(SDGs)を全会一致で採択した。2030年までの17目標・169ターゲットを掲げ、政府だけでなく企業を変革の主体と位置づけた。\n\n法的拘束力はないが、企業報告やESG評価の項目がSDGsに紐付けられていくことで、投資と市場レイヤーに「何を測るか」の共通枠組みを提供した。日本では経団連の企業行動憲章改定などを通じて浸透し、統合報告書にアイコンが並ぶ光景が定着していく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "国際連合広報センター: 持続可能な開発目標(SDGs)とは",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2015-12-12",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と基準",
+      "title": "COP21でパリ協定採択",
+      "summary": "国連気候変動枠組条約のCOP21で、気温上昇を産業革命前比2度未満、努力目標1.5度に抑えるパリ協定が採択された。\n\n「今世紀後半に排出実質ゼロ」という長期目標は金融の言葉に翻訳され、化石燃料資産が価値を失う「座礁資産」や炭素予算の概念が投資と市場レイヤーの用語として一般化する。気候変動が倫理の問題から**運用リスクの問題**へ置き換えられた分水嶺であり、TCFDやネットゼロ連合はこの延長線上にある。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "UNFCCC: The Paris Agreement",
+          "url": "https://unfccc.int/process-and-meetings/the-paris-agreement"
+        }
+      ]
+    },
+    {
+      "date": "2017-07-03",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "投資と市場",
+      "title": "GPIFがESG指数を選定、約1兆円の運用開始",
+      "summary": "GPIFが3つのESG指数を選定し、これに連動する約1兆円のパッシブ運用を始めると発表した。日本株のESG投資として当時最大規模だった。\n\n指数に組み入れられるかどうかが資金の流入を左右するため、企業側に情報開示とESGスコア改善への強い動機が生まれた。同時に、評価機関ごとにスコアが食い違う「ESG評価のばらつき」への批判も本格化し、評価手法の透明化という規制と基準レイヤーの論点を呼び込んだ。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "GPIF: ESG指数を選定しました (2017-07-03)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2018-08-20",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と気候",
+      "title": "グレタ・トゥーンベリが学校ストライキを開始",
+      "summary": "15歳のグレタ・トゥーンベリがスウェーデン議会前で「気候のための学校ストライキ」を一人で始めた。\n\nこの抗議はFridays for Futureとして世界の若者運動に拡大し、翌年の国連気候行動サミットでの演説で頂点に達する。株主総会での気候関連決議や機関投資家への働きかけが増えるなど、**社会の圧力が投資行動を動かす**回路がはっきり可視化された時期の象徴であり、企業のネットゼロ宣言が相次ぐ背景となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Greta Thunberg",
+          "url": "https://en.wikipedia.org/wiki/Greta_Thunberg"
+        }
+      ]
+    },
+    {
+      "date": "2019-08-19",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "投資と市場",
+      "title": "米ビジネス・ラウンドテーブルが企業の目的を再定義",
+      "summary": "米主要企業の経営者団体ビジネス・ラウンドテーブルが「企業の目的に関する声明」を発表。株主至上主義を改め、顧客・従業員・取引先・地域社会を含む全ステークホルダーへの価値提供を掲げ、181人のCEOが署名した。\n\n株主資本主義の総本山による転換宣言として象徴的意義は大きかったが、その後の経営行動が伴っていないとする検証も相次いだ。言葉と行動の差というグリーンウォッシング問題の構図を、企業統治の文脈で先取りした出来事といえる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Business Roundtable: Statement on the Purpose of a Corporation (2019-08-19)",
+          "url": "https://opportunity.businessroundtable.org/ourcommitment/"
+        }
+      ]
+    },
+    {
+      "date": "2019-09-20",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と気候",
+      "title": "世界気候ストライキ、数百万人が参加",
+      "summary": "国連気候行動サミットを前に世界各地で一斉の気候ストライキが行われ、主催者発表で数百万人が参加したとされる。若者だけでなく従業員として参加を表明する企業も現れた。\n\n消費者・従業員・市民としての意識の変化は、企業が脱炭素目標を掲げる際の社会的背景となり、翌年以降のESGファンドへの資金流入加速(投資と市場レイヤー)と並走した。ただし参加者数は主催者の集計であり、運動の規模の評価には幅がある。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "参加人数(世界で400万人超などとされる)は主催団体の集計に基づくもので、第三者による検証はない。",
+      "sources": [
+        {
+          "title": "The Guardian: Global climate strike coverage (2019-09-20)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2020-01-14",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "投資と市場",
+      "title": "ブラックロックのフィンク書簡「気候リスクは投資リスク」",
+      "summary": "世界最大の資産運用会社ブラックロックのラリー・フィンクCEOが企業経営者への年頭書簡で「気候リスクは投資リスクである」と宣言し、サステナビリティを運用の中心に据えると表明した。\n\n運用資産7兆ドル規模の同社の転換はESGの主流化を決定づけた一方、5年後には同社自身がネットゼロ連合を離脱する(2025年・同じ投資と市場レイヤー)。**運用会社の旗色は政治環境で変わり得る**ことを示す、頂点と転落の両方の起点となった書簡である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "BlackRock: Larry Fink's 2020 Letter to CEOs - A Fundamental Reshaping of Finance",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2020-10-26",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と基準",
+      "title": "菅首相が2050年カーボンニュートラルを宣言",
+      "summary": "菅義偉首相が所信表明演説で、2050年までに温室効果ガスの排出を全体としてゼロにする「カーボンニュートラル」を目指すと宣言した。\n\n主要排出国の長期目標が出そろい始めた時期にあたり、国内ではGX(グリーントランスフォーメーション)関連の政策やトランジション・ファイナンスの制度設計が動き出す。政府目標の明示は企業の脱炭素計画と開示の前提条件を変え、投資と市場レイヤーの国内ESG投資残高拡大を後押しした。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "首相官邸: 第二百三回国会における菅内閣総理大臣所信表明演説 (2020-10-26)",
+          "url": "https://www.kantei.go.jp/jp/99_suga/statement/2020/1026shoshinhyomei.html"
+        }
+      ]
+    },
+    {
+      "date": "2021-03-10",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と基準",
+      "title": "EUでサステナブルファイナンス開示規則(SFDR)適用開始",
+      "summary": "EUでSFDRの適用が始まり、運用会社は金融商品をサステナビリティ特性に応じて分類し(8条・9条など)、その根拠を開示することを求められるようになった。\n\n自主的な看板にすぎなかった「ESGファンド」に定義と説明責任を課す世界初の本格的試みで、基準の厳格化に伴い9条から8条への「格下げ」が相次ぐなど、**ラベルの信頼性**を巡る攻防が始まった。米欧のグリーンウォッシング規制・摘発の流れの先行例である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "EUR-Lex: Regulation (EU) 2019/2088 (SFDR)",
+          "url": "https://eur-lex.europa.eu/eli/reg/2019/2088/oj"
+        }
+      ]
+    },
+    {
+      "date": "2021-11-03",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "投資と市場",
+      "title": "COP26でGFANZが「130兆ドル」の資金動員を表明",
+      "summary": "グラスゴーのCOP26で、金融機関の連合GFANZ(グラスゴー金融同盟)が、ネットゼロにコミットする加盟機関の資産が計130兆ドルに達したと表明した。\n\n金融の総動員を印象づけ、ESGの高揚が頂点に達した瞬間とされるが、集計の重複や実効性への懐疑は直後から指摘されていた。数年後に米大手の脱退が相次ぎ連合が縮小していく(同じ投資と市場レイヤー)ことを踏まえると、宣言と実行の距離を測る基準点として振り返られる出来事である。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "130兆ドルは加盟機関の運用・融資資産の合算であり、実際にネットゼロへ振り向けられる資金額ではないとの批判がある。",
+      "sources": [
+        {
+          "title": "GFANZ: Amount of finance committed to achieving 1.5°C now at scale needed to deliver the transition (2021-11-03)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2022-01-01",
+      "precision": "year",
+      "end_date": "2025-12-31",
+      "type": "period",
+      "layer": "社会と気候",
+      "title": "米国で反ESG運動が拡大",
+      "summary": "米国の共和党系の州を中心に、ESGを考慮する運用会社を州資金の運用から排除する法律や、エネルギー企業へのボイコットを禁じる法律が相次いで成立した。連邦議会や大統領選でもESGは攻撃の的となった。\n\nESGが政治的対立軸に組み込まれた結果、大手運用会社は文書からESGという語を減らし、気候連合から脱退する動きを見せる。**言葉の退潮と実務の定着**が併存する複雑な局面であり、欧州・日本の制度化の進展とは対照的な分岐が生じた。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "反ESG運動の起点と範囲の切り方は論者により異なり、この期間は州レベルの立法が集中した時期の目安である。",
+      "sources": [
+        {
+          "title": "Harvard Law School Forum on Corporate Governance: ESG Battlegrounds - How the States Are Shaping the Regulatory Landscape (2023)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2022-02-24",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "社会と気候",
+      "title": "ロシアのウクライナ侵攻、エネルギー危機でESGに逆風",
+      "summary": "ロシアがウクライナへ全面侵攻した。エネルギー価格が急騰し、各国は化石燃料の調達確保とロシア産資源からの脱却を同時に迫られた。\n\nエネルギー安全保障が優先される中で石油・ガス関連株が上昇し、それらを除外するESGファンドの成績は相対的に悪化。「ESGはリターンを犠牲にするのか」という古い問いが再燃した。防衛産業を投資対象に含めるかの見直しも進み、**ESGの線引きの恣意性**が正面から問われることになった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: ロシアのウクライナ侵攻 (2022年)",
+          "url": "https://ja.wikipedia.org/wiki/%E3%83%AD%E3%82%B7%E3%82%A2%E3%81%AE%E3%82%A6%E3%82%AF%E3%83%A9%E3%82%A4%E3%83%8A%E4%BE%B5%E6%94%BB_(2022%E5%B9%B4)"
+        }
+      ]
+    },
+    {
+      "date": "2022-05-31",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "投資と市場",
+      "title": "独DWSにグリーンウォッシング疑いで強制捜査",
+      "summary": "ドイツ銀行系の運用大手DWSに対し、ESG運用の実態を誇張した疑い(グリーンウォッシング)で独検察当局などが強制捜査を実施。翌日にCEOが辞任を発表した。\n\n元サステナビリティ責任者の内部告発に端を発した事件で、後に同社は米SECとの間でも制裁金の支払いに至った。「ESGを名乗ること」自体が法的リスクになった転換点であり、SFDRなど規制と基準レイヤーの開示規制強化と呼応して、業界の看板の掛け直しを促した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Reuters: German police raid DWS and Deutsche Bank in greenwashing probe (2022-05-31)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2023-06-26",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と基準",
+      "title": "ISSBがサステナビリティ開示の国際基準を公表",
+      "summary": "国際サステナビリティ基準審議会(ISSB)が、サステナビリティ開示の国際基準IFRS S1(全般)とS2(気候関連)を公表した。\n\nTCFDやSASBなど乱立していた開示枠組みを統合する「グローバル・ベースライン」であり、任意の取り組みだった開示が各国の制度に組み込まれていく基盤となった。日本でもSSBJが国内基準を策定し、プライム市場上場企業への段階適用が議論される。開示の標準化は、投資と市場レイヤーの評価のばらつき問題への一つの答えでもある。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "IFRS Foundation: ISSB issues inaugural global sustainability disclosure standards (2023-06-26)",
+          "url": "https://www.ifrs.org/news-and-events/news/2023/06/issb-issues-ifrs-s1-ifrs-s2/"
+        }
+      ]
+    },
+    {
+      "date": "2024-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "規制と基準",
+      "title": "EUで企業サステナビリティ報告指令(CSRD)適用開始",
+      "summary": "EUのCSRDが2024年度から段階的に適用され、大企業は欧州サステナビリティ報告基準(ESRS)に基づく詳細な開示を義務付けられた。対象はEU域内で事業を行う域外企業にも及ぶ広範な設計だった。\n\nしかし報告負担への反発は強く、2025年には適用対象を大幅に絞り込む「オムニバス」簡素化案が提示され、規制の振り子は緩和方向へ揺れ始めた。開示規制の到達点と、その行き過ぎの修正が同時に観察できる事例である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "EUR-Lex: Directive (EU) 2022/2464 (CSRD)",
+          "url": "https://eur-lex.europa.eu/eli/dir/2022/2464/oj"
+        }
+      ]
+    },
+    {
+      "date": "2025-01-13",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "投資と市場",
+      "title": "ネットゼロ運用連合NZAMが活動停止",
+      "summary": "ブラックロックの脱退表明を受け、運用会社の連合Net Zero Asset Managers(NZAM)が活動の一時停止と枠組みの見直しを発表した。前月までに米大手銀行の間でも銀行連合NZBAからの脱退が相次いでいた。\n\n米国の政治的圧力(社会と気候レイヤーの反ESG運動)が国際的な金融連合を解体に向かわせた形だが、欧州や日本では開示の制度化と企業の脱炭素投資が続いており、ESGは「旗印の時代」から「実務の時代」へ移行したと評されている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Net Zero Asset Managers initiative: Statement (2025-01-13)",
+          "url": null
+        },
+        {
+          "title": "Reuters: BlackRock quits climate group NZAM (2025-01-09)",
+          "url": null
+        }
+      ]
+    }
+  ]
+}

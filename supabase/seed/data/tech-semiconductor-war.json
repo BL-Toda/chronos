@@ -1,0 +1,367 @@
+{
+  "slug": "tech-semiconductor-war",
+  "title": "半導体戦争の50年",
+  "description": "日米摩擦から米中対立まで。製造技術・企業と市場・国家と地政学の3層を重ね、半導体が「産業のコメ」から安全保障の要へと変わっていく50年を俯瞰する年表。",
+  "category": "technology",
+  "language": "ja",
+  "start_year": 1976,
+  "end_year": 2025,
+  "layers": [
+    {
+      "name": "技術と製造",
+      "color": "blue"
+    },
+    {
+      "name": "企業と市場",
+      "color": "orange"
+    },
+    {
+      "name": "国家と地政学",
+      "color": "teal"
+    }
+  ],
+  "events": [
+    {
+      "date": "1976-01-01",
+      "precision": "year",
+      "end_date": "1980-03-31",
+      "type": "period",
+      "layer": "国家と地政学",
+      "title": "日本で超LSI技術研究組合が発足",
+      "summary": "通商産業省の主導で、富士通・日立・三菱電機・NEC・東芝が参加する超LSI技術研究組合が発足した。約4年間、微細加工技術などの基礎を競合企業が共同で研究する体制が組まれた。\n\n**国家が半導体を戦略産業として育てる**モデルの原型であり、この成果が1980年代の日本製DRAMの品質優位につながったと評価される。半世紀後の米CHIPS法やRapidusまで続く、産業政策と半導体の関係の出発点である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "超LSI技術研究組合(1976–1980)に関する通商産業政策史資料",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1986-09-02",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "国家と地政学",
+      "title": "日米半導体協定に調印",
+      "summary": "ダンピング提訴と貿易摩擦の激化を受け、日米両政府が半導体協定に調印した。日本製品の価格監視と、日本市場での外国製半導体のシェア拡大が柱で、1991年の第2次協定では「外国系20%」の目安が明記された。\n\n民間の競争に政府が介入し、**半導体が貿易摩擦の主戦場**となった最初の事例である。翌年には第301条に基づく対日制裁関税も発動され、この構図は約30年後の米中対立で形を変えて再現される。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "日米半導体協定(1986年9月2日調印)関連資料",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1987-02-21",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "企業と市場",
+      "title": "台湾でTSMC設立、ファウンドリ業の発明",
+      "summary": "台湾の工業技術研究院を母体に、モリス・チャン(張忠謀)が台湾積体電路製造(TSMC)を設立した。自社製品を持たず他社の設計チップの製造だけを請け負う、世界初の専業ファウンドリである。\n\n**設計と製造の分離**という新しい分業は、工場を持たない設計企業の勃興を可能にし、半導体産業の構造を根本から変えた。約30年後、最先端製造がTSMCに集中したことが台湾の地政学的重要性(国家と地政学レイヤー)を一変させる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: TSMC",
+          "url": "https://en.wikipedia.org/wiki/TSMC"
+        }
+      ]
+    },
+    {
+      "date": "1988-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "企業と市場",
+      "title": "日本勢が世界半導体シェアの約半分を占める",
+      "summary": "NEC・東芝・日立が世界売上上位を占め、日本メーカー全体で世界の半導体市場の5割前後を握ったとされる。DRAMでは対米で圧倒的な品質と価格の優位を築いていた。\n\n超LSI組合(国家と地政学レイヤー)以来の投資が頂点に達した瞬間だが、同時に日米協定による制約が効き始めた時期でもある。以後、韓国サムスンの追い上げとPC時代の到来で、日本の優位は10年を待たずに崩れていく。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "「シェア5割」は調査会社の統計に基づく概数で、集計範囲と年により数値が異なり、ピーク時期にも諸説ある。",
+      "sources": [
+        {
+          "title": "Dataquest/SIA 半導体市場統計に基づく各種文献",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1992-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "企業と市場",
+      "title": "Intelが売上首位、サムスンがDRAM首位に",
+      "summary": "この年、Intelが日本勢を抜いて半導体売上世界一となり、サムスン電子がDRAMで首位に立ったとされる。米国はメモリからMPUへ主戦場を移して復活し、韓国は国家的投資でメモリを制した。\n\n日本の一強時代の終わりを示す首位交代である。汎用品のメモリで規模の投資競争に敗れた日本と、設計で付加価値を取った米国という明暗は、その後の各国の産業政策(国家と地政学レイヤー)の教訓として繰り返し参照される。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "首位交代の年は調査会社の集計基準により1992年前後で異なり、単一の確定値はない。",
+      "sources": [
+        {
+          "title": "Dataquest 1992年 世界半導体売上ランキング",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1997-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と製造",
+      "title": "EUV LLC結成、極端紫外線露光の研究開始",
+      "summary": "Intelが主導し米エネルギー省傘下の国立研究所と組んで、波長13.5nmの極端紫外線(EUV)露光を研究する共同事業体EUV LLCが結成された。ASMLやMotorolaなども参加した。\n\n露光波長の限界を一気に超える構想だったが、実用化には20年以上を要する。この超長期の研究開発を最終的に製品化できたのがオランダのASML一社だったことが、後の輸出規制(国家と地政学レイヤー)の急所を生むことになる。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "結成時期は資料により1996〜1997年と幅があり、参加企業の構成も時期によって変動している。",
+      "sources": [
+        {
+          "title": "Wikipedia: Extreme ultraviolet lithography",
+          "url": "https://en.wikipedia.org/wiki/Extreme_ultraviolet_lithography"
+        }
+      ]
+    },
+    {
+      "date": "2007-06-29",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "企業と市場",
+      "title": "iPhone発売、半導体需要の主役がモバイルへ",
+      "summary": "AppleがiPhoneを米国で発売した。高性能な省電力チップへの需要が爆発し、半導体の主戦場はPC向けからモバイル向けSoCへ移っていく。\n\n設計はArmアーキテクチャのライセンス、製造は台湾のファウンドリという分業(技術と製造レイヤー)がモバイルで標準となり、自前工場を持つIntelの優位が相対化された。Appleが後に自社設計チップをTSMCの最先端プロセスで独占的に製造する関係も、ここから始まる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: iPhone (1st generation)",
+          "url": "https://en.wikipedia.org/wiki/IPhone_(1st_generation)"
+        }
+      ]
+    },
+    {
+      "date": "2012-07-09",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と製造",
+      "title": "IntelがASMLに共同出資、EUV開発を加速",
+      "summary": "IntelがASMLの次世代露光技術開発への共同投資プログラムに参加し、株式取得を含め最大約41億ドルを投じると発表した。TSMCとサムスンも同様の出資プログラムに続いた。\n\n競合する半導体メーカー3社がそろって装置メーカー1社に資金を出すという異例の構図であり、EUV実用化の資金難がそれだけ深刻だったことを示す。結果としてASMLの独占(企業と市場レイヤー)は決定的になり、露光装置は産業全体の共有インフラと化した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Intel News Release: Intel and ASML customer co-investment program (2012-07-09)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2015-05-08",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "国家と地政学",
+      "title": "中国が「中国製造2025」を発表",
+      "summary": "中国国務院が製造強国化の10年計画「中国製造2025」を公表した。半導体は中核分野に位置づけられ、国家集積回路産業投資基金(大基金)を通じた巨額の投資が加速した。\n\n輸入額が原油を上回る半導体の国産化は中国の悲願であり、この計画が米国の警戒を決定的にした。紫光集団による米メモリ企業への買収提案など攻勢が続き、数年後のZTE・ファーウェイへの制裁(同レイヤー)の伏線となる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "中国国務院: 中国製造2025 (2015年5月8日公布)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2018-04-16",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "国家と地政学",
+      "title": "米国がZTEへの部品輸出を禁止",
+      "summary": "米商務省が、対イラン制裁違反の和解条件に背いたとして中国の通信機器大手ZTEへの米国製部品の輸出を7年間禁止した。米国製チップに依存するZTEは主要業務の停止に追い込まれ、後に罰金と経営陣刷新で解除された。\n\n**米国製半導体を断てば大企業が数週間で止まる**ことを世界に示した事件であり、中国は国産化投資をさらに加速する。供給網が武器になり得るという認識が、以後の各国の政策(企業と市場レイヤーの再編を含む)を規定していく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "米商務省BIS: ZTE Denial Order (2018-04)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2019-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と製造",
+      "title": "EUV露光が量産適用、微細化の限界を突破",
+      "summary": "TSMCとサムスンが7nm世代のロジック半導体でEUV露光の量産適用を開始した。1997年のEUV LLC結成から20年余り、装置1台150億円超のASML製EUV露光機がようやく製造ラインに入った。\n\n最先端の微細化を続けられる企業はこの時点でTSMC・サムスン・(遅れて)Intelの3社に絞られた。EUV機を持つことが国力の指標のように扱われはじめ、対中輸出の管理対象(国家と地政学レイヤー)にもEUVが真っ先に挙がった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Extreme ultraviolet lithography",
+          "url": "https://en.wikipedia.org/wiki/Extreme_ultraviolet_lithography"
+        }
+      ]
+    },
+    {
+      "date": "2019-05-16",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "国家と地政学",
+      "title": "米国がファーウェイをエンティティリストに追加",
+      "summary": "米商務省が華為技術(ファーウェイ)を輸出管理のエンティティリストに追加し、米国技術を用いた製品の供給を許可制にした。翌2020年には米国製装置で作られた半導体全般へ規制が拡大され、TSMCも取引を停止した。\n\n世界2位のスマートフォンメーカーが最先端チップを調達できなくなり、**技術覇権をめぐる米中の分断**が決定的になった。サプライチェーンの各社(企業と市場レイヤー)は、地政学リスクを前提とした再編を迫られる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "米商務省BIS: Entity List追加発表 (2019年5月)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2020-12-01",
+      "precision": "month",
+      "end_date": "2023-06-30",
+      "type": "period",
+      "layer": "企業と市場",
+      "title": "世界的な半導体不足",
+      "summary": "コロナ禍の需要急変と供給網の混乱により、車載半導体を発端とする世界的な供給不足が発生した。自動車各社は減産を余儀なくされ、ゲーム機や家電まで品薄が広がった。\n\n数十円のチップ1個の欠品が数百万円の自動車の生産を止めるという事実は、各国政府に半導体を経済安全保障の問題として認識させた。米CHIPS法や日本のTSMC誘致(国家と地政学レイヤー)への政治的な追い風は、この不足が作ったといえる。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "不足の開始・終息時期は製品分野により大きく異なり、期間の区切り方には業界内でも幅がある。",
+      "sources": [
+        {
+          "title": "Wikipedia: 2020–2023 global chip shortage",
+          "url": "https://en.wikipedia.org/wiki/2020%E2%80%932023_global_chip_shortage"
+        }
+      ]
+    },
+    {
+      "date": "2022-08-09",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "国家と地政学",
+      "title": "米CHIPS法成立、527億ドルの半導体支援",
+      "summary": "バイデン大統領がCHIPS・科学法に署名した。米国内の半導体製造と研究開発に527億ドルの補助金を投じ、支援を受けた企業の対中先端投資を10年間制限するガードレール条項を付けた。\n\n自由貿易を掲げてきた米国が**補助金による産業政策へ回帰**した転換点である。半導体不足(企業と市場レイヤー)と台湾有事への懸念が超党派の合意を生み、EU・日本・インドも同様の巨額支援策で追随した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: CHIPS and Science Act",
+          "url": "https://en.wikipedia.org/wiki/CHIPS_and_Science_Act"
+        }
+      ]
+    },
+    {
+      "date": "2022-10-07",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "国家と地政学",
+      "title": "米国が先端半導体の対中輸出規制を発表",
+      "summary": "米商務省が、先端ロジック・メモリの製造装置と高性能AIチップの対中輸出を包括的に規制した。米国人技術者が中国の先端半導体開発を支援することまで許可制とする、異例に踏み込んだ内容だった。\n\n特定企業ではなく中国の産業全体の技術水準を凍結しようとする設計であり、日本とオランダも2023年に装置規制で歩調を合わせた。露光装置の急所(技術と製造レイヤー)を握る同盟国の協調が規制の実効性を支えている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "米商務省産業安全保障局(BIS) 2022年10月7日発表 輸出管理規則改正",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2022-11-11",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "企業と市場",
+      "title": "Rapidus設立、日本が2nmへ再挑戦",
+      "summary": "トヨタ・ソニー・NTTなど8社の出資で設立されたRapidusが発表され、IBMとの提携で2027年の2nm世代量産を目指す計画が示された。政府は研究開発拠点LSTCの設立と数千億円規模の支援を決めた。\n\n40nm世代で止まった日本の先端ロジック製造への、四半世紀ぶりの再挑戦である。超LSI組合の成功体験と、その後の国策プロジェクトの失敗の記憶の両方を背負っており、国家と地政学レイヤーの追い風をどこまで実装力に変えられるかが問われている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "経済産業省: 次世代半導体の設計・製造基盤確立に向けて (2022-11-11)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2024-02-24",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "企業と市場",
+      "title": "TSMC熊本工場が開所",
+      "summary": "TSMCが日本のソニー・デンソーなどと合弁で建設した熊本第一工場(JASM)が開所式を迎えた。日本政府は最大4760億円を補助し、着工から2年足らずという異例の速さで完成した。\n\n最先端ではなく成熟世代の工場だが、**製造拠点の分散が国家の保険になる**という新しい常識を体現する。台湾一極集中への懸念(国家と地政学レイヤー)が、補助金と速度で立地を動かした代表例であり、第二工場の建設も決まった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "JASM/TSMC 熊本第一工場開所式 (2024-02-24)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2024-06-18",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "企業と市場",
+      "title": "NVIDIAが時価総額世界一に",
+      "summary": "生成AI向けGPU需要の爆発を受け、NVIDIAの時価総額が一時Microsoftを抜いて世界一となった。1993年創業のゲーム用チップ企業が、AIデータセンター投資の中心に立った。\n\n売れているGPUの製造はTSMCの最先端プロセスと先端パッケージングに全面依存しており、設計(米)・製造(台)・装置(蘭・日)という分業の相互依存を象徴する。AIチップの対中輸出規制(国家と地政学レイヤー)は同社の売上構成をも直接左右している。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Reuters: Nvidia becomes world's most valuable company (2024-06-18)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2025-08-22",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "国家と地政学",
+      "title": "米政府がIntel株式の約10%を取得",
+      "summary": "米政府がCHIPS法の補助金等を株式に転換する形でIntelの株式約10%を取得することで同社と合意した。経営不振が続く同社に対し、政府が大株主として関与する異例の枠組みである。\n\n補助金による支援からさらに踏み込み、**国家が半導体企業の株主になる**段階に達した。自由市場の旗手だった米国の変化は50年前の日本の産業政策すら超えるもので、政府の企業介入の是非をめぐる論争を呼んでいる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Intel Newsroom: 米政府による出資合意の発表 (2025-08-22)",
+          "url": null
+        }
+      ]
+    }
+  ]
+}

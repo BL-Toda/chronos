@@ -1,0 +1,367 @@
+{
+  "slug": "business-startup-failures",
+  "title": "スタートアップ失敗学",
+  "description": "ドットコムバブル崩壊からFTXまで、破綻したスタートアップと資本の熱狂、そこから生まれた教訓を3層で重ねる。失敗のパターンが時代を超えて繰り返されることが見えてくる年表。",
+  "category": "business",
+  "language": "ja",
+  "start_year": 2000,
+  "end_year": 2023,
+  "layers": [
+    {
+      "name": "破綻の記録",
+      "color": "orange"
+    },
+    {
+      "name": "資本と熱狂",
+      "color": "gold"
+    },
+    {
+      "name": "検証と教訓",
+      "color": "teal"
+    }
+  ],
+  "events": [
+    {
+      "date": "2000-03-10",
+      "precision": "day",
+      "end_date": "2002-10-09",
+      "type": "period",
+      "layer": "資本と熱狂",
+      "title": "ドットコムバブル崩壊",
+      "summary": "2000年3月10日、ナスダック総合指数は5048の史上最高値を付けた直後に急落へ転じ、2002年10月には約1100まで下落した。株式市場から数兆ドル規模の時価総額が消えた。\n\n「ネット企業なら収益より成長」という前提が崩れ、破綻の記録レイヤーのPets.comやWebvanはこの期間に集中する。**熱狂の頂点では、資本は最も高く買い、最も速く逃げる**。本年表の出発点となる期間である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Dot-com bubble",
+          "url": "https://en.wikipedia.org/wiki/Dot-com_bubble"
+        }
+      ]
+    },
+    {
+      "date": "2000-05-18",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "破綻の記録",
+      "title": "Boo.com破綻、欧州ドットコムの象徴的な失敗",
+      "summary": "欧州発のファッションEC、Boo.comが創業から約18か月で資金枯渇により清算された。18か国同時展開や当時の回線には重すぎる3D表示など、インフラが追いつかない野心的な設計が裏目に出た。\n\n調達額はおよそ1億3500万ドルとされるが算定には幅がある。バブル崩壊(資本と熱狂レイヤー)の2か月後の破綻であり、「大きく始めて後から稼ぐ」戦略の脆さを欧州で最初に示した事例となった。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "調達・消費額は報道により約1億3500万〜1億8800万ドルと幅があり、確定的な数字はない。",
+      "sources": [
+        {
+          "title": "Wikipedia: Boo.com",
+          "url": "https://en.wikipedia.org/wiki/Boo.com"
+        }
+      ]
+    },
+    {
+      "date": "2000-11-07",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "破綻の記録",
+      "title": "Pets.com清算、IPOから268日での退場",
+      "summary": "ペット用品ECのPets.comが事業清算を発表した。2000年2月のIPOからわずか268日での退場で、ドットコム崩壊の象徴として記憶されることになった。\n\nスーパーボウルCMなど巨額の広告費に対し、送料負けする低粗利の商品構成という構造的欠陥を抱えていた。**認知度は売上ではない**という教訓は、検証と教訓レイヤーの失敗分析で繰り返し引用されることになる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Pets.com",
+          "url": "https://en.wikipedia.org/wiki/Pets.com"
+        }
+      ]
+    },
+    {
+      "date": "2001-07-09",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "破綻の記録",
+      "title": "Webvan事業停止、「早すぎた」生鮮EC",
+      "summary": "生鮮食品配達のWebvanが事業停止を発表し、その後破産申請に至った。全米26都市への展開を掲げ、自動化倉庫に先行投資する拡大戦略が需要の実態に先行した。\n\n累計で8億ドル規模を投じたとされるが、確定的な集計は報じられていない。約20年後にネットスーパーが定着したことから「早すぎた失敗」の代表例とされ、アイデアの正しさとタイミングが別問題であることを示す。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "累計投資額(8億ドル超とされる)は報道による概算で、確定的な集計は確認できない。",
+      "sources": [
+        {
+          "title": "Wikipedia: Webvan",
+          "url": "https://en.wikipedia.org/wiki/Webvan"
+        }
+      ]
+    },
+    {
+      "date": "2008-10-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "資本と熱狂",
+      "title": "セコイアの「R.I.P. Good Times」資料",
+      "summary": "リーマン・ショック直後、セコイア・キャピタルが投資先の経営者を集め、「R.I.P. Good Times」と題した資料で徹底したコスト削減と生存優先を説いたとされる。\n\n資料は社外に流出して広く読まれ、危機時のVCの行動様式を示す文書として定着した。2000年の崩壊を生き延びた投資家による危機対応であり、熱狂と引き締めのサイクルが繰り返されることを示している。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "流出資料と報道に基づく出来事で、提示日や対象範囲についてセコイアの公式発表はない。",
+      "sources": [
+        {
+          "title": "Sequoia Capital「R.I.P. Good Times」プレゼンテーション資料(2008年10月、流出版)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2009-10-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "検証と教訓",
+      "title": "失敗を語る会議「FailCon」始まる",
+      "summary": "起業家が自らの失敗事例を公開の場で語るカンファレンス「FailCon」が、サンフランシスコで始まったとされる。\n\n失敗を隠すものから共有し学ぶものへと位置づけ直す動きの象徴で、のちの失敗事例データベースや「ポストモーテム」文化につながっていく。破綻の記録レイヤーに並ぶ事例群を「教材」へ変える回路が、この時期に生まれた。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "初回開催の正確な日付・規模を一次資料で確認できず、開催時期は2009年10月とする報道に依拠する。",
+      "sources": [
+        {
+          "title": "FailCon 公式サイトおよび開催報道",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2011-03-23",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "資本と熱狂",
+      "title": "Color、公開前に4100万ドルを調達",
+      "summary": "写真共有アプリのColorが、製品公開と同時にセコイア等から計4100万ドルの調達を明らかにし、大きな話題となった。アプリは公開直後から酷評され、利用は伸びなかった。\n\n「チームと構想への先行投資」の極端な例として過熱の象徴となり、会社は翌年に事実上解体された。製品の検証より先に資本が積み上がる構図は、のちのユニコーン時代を先取りしていた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Color Labs",
+          "url": "https://en.wikipedia.org/wiki/Color_Labs"
+        }
+      ]
+    },
+    {
+      "date": "2011-09-13",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "検証と教訓",
+      "title": "『リーン・スタートアップ』刊行",
+      "summary": "エリック・リースの『リーン・スタートアップ』が刊行され、仮説検証を高速で回して「作るべきでないものを作る無駄」を避ける方法論が世界的に普及した。\n\nドットコム崩壊やWebvan(破綻の記録レイヤー)の教訓を方法論に昇華したものといえ、MVPやピボットという語彙を定着させた。一方でその後のユニコーン時代には、巨額資本が検証を省略させる逆流も起きることになる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: The Lean Startup",
+          "url": "https://en.wikipedia.org/wiki/The_Lean_Startup"
+        }
+      ]
+    },
+    {
+      "date": "2013-11-02",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "資本と熱狂",
+      "title": "「ユニコーン」という言葉の誕生",
+      "summary": "投資家アイリーン・リーが、評価額10億ドル超の未上場企業を「ユニコーン」と名付ける記事をTechCrunchに発表した。当時39社とされた希少な存在は、数年で数百社に膨らむ。\n\n希少性を示すはずの言葉が目標値へと転化し、評価額を吊り上げる資金調達競争を助長したと指摘される。資本と熱狂レイヤーの後半に並ぶWeWorkやFTXは、この言葉の時代の産物である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "TechCrunch: Welcome To The Unicorn Club (2013-11-02)",
+          "url": "https://techcrunch.com/2013/11/02/welcome-to-the-unicorn-club/"
+        }
+      ]
+    },
+    {
+      "date": "2014-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "検証と教訓",
+      "title": "CB Insightsが「失敗理由トップ20」を公開",
+      "summary": "調査会社CB Insightsが、スタートアップの死後検証を集計した「失敗理由トップ20」を公開した。最上位は**「市場が求めていないものを作った」**であった。\n\n個別の破綻談を横断データに変えた点で失敗学の画期であり、以後継続的に改訂されている。「市場ニーズなし42%」という数値は集計対象により変動するが、需要検証の軽視が最大の死因という結論は一貫している。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "初出時期と「市場ニーズなし42%」という数値は改訂版ごとに変動があり、集計対象も自主的に公開された事例に限られる。",
+      "sources": [
+        {
+          "title": "CB Insights: The Top Reasons Startups Fail",
+          "url": "https://www.cbinsights.com/research/report/startup-failure-reasons-top/"
+        }
+      ]
+    },
+    {
+      "date": "2015-10-15",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "破綻の記録",
+      "title": "WSJがTheranosの技術疑惑を報道",
+      "summary": "ウォール・ストリート・ジャーナルのジョン・キャリールー記者が、血液検査企業Theranosの技術が主張どおりに機能していない疑いを報道した。\n\n評価額90億ドルとされた同社は、著名人の並ぶ取締役会と創業者の物語で信頼を積み上げており、**物語が検証を上回るとき詐欺の余地が生まれる**ことを示した。この報道を起点に規制当局の調査が進み、会社は解散へ向かう。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "WSJ: Hot Startup Theranos Has Struggled With Its Blood-Test Technology (2015-10-15)",
+          "url": "https://www.wsj.com/articles/theranos-has-struggled-with-blood-tests-1444881901"
+        }
+      ]
+    },
+    {
+      "date": "2017-09-01",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "破綻の記録",
+      "title": "Juicero事業終了、過剰設計の教材に",
+      "summary": "1億ドル超を調達した高級ジュース機のJuiceroが事業終了を発表した。専用パックが手で搾れることを示した同年4月のBloomberg報道が致命傷となった。\n\n400ドルのWi-Fi接続ジューサーという製品自体が「解決すべき課題の不在」の教材となり、ハードウェアとサブスクの過剰設計を戒める事例として定着した。調達額の大きさが失敗を防がないことも改めて示した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Juicero",
+          "url": "https://en.wikipedia.org/wiki/Juicero"
+        }
+      ]
+    },
+    {
+      "date": "2018-09-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "破綻の記録",
+      "title": "Theranos解散、評価額90億ドルがゼロに",
+      "summary": "Theranosが会社の解散手続きに入ると株主に通知した。2015年の疑惑報道から約3年で、一時90億ドルとされた評価額は事実上ゼロになった。\n\n同年6月には創業者ホームズと元社長バルワニが詐欺罪で起訴されている。検証と教訓レイヤーの有罪評決(2022年)まで含め、スタートアップの失敗が犯罪と認定されるまでの過程を最も克明に残した事例である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Theranos",
+          "url": "https://en.wikipedia.org/wiki/Theranos"
+        }
+      ]
+    },
+    {
+      "date": "2019-09-30",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "資本と熱狂",
+      "title": "WeWorkがIPO申請を撤回",
+      "summary": "WeWorkの親会社We CompanyがIPO申請の撤回を発表した。S-1開示でガバナンスと損失構造への批判が噴出し、470億ドルとされた評価額は数週間で崩れた。\n\n直前には創業者CEOの退任も発表され、ソフトバンクによる救済(資本と熱狂レイヤーのビジョン・ファンド損失)につながる。**上場審査が私募市場の評価額を検証した**瞬間であり、以後「利益なき成長」への投資姿勢は転換していく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: WeWork",
+          "url": "https://en.wikipedia.org/wiki/WeWork"
+        }
+      ]
+    },
+    {
+      "date": "2020-05-18",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "資本と熱狂",
+      "title": "ビジョン・ファンド、約1.9兆円の営業損失",
+      "summary": "ソフトバンクグループが2019年度決算で、ソフトバンク・ビジョン・ファンド事業の営業損失約1.9兆円を計上した。WeWorkやUberなど投資先の評価損が主因である。\n\n10兆円ファンドによる大量の資金供給は評価額の高騰そのものを生む一因だったと指摘され、供給側の熱狂が失敗の規模を拡大する構図を示した。コロナ禍の金融緩和により、市場はこの直後から再び過熱へ向かう。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "ソフトバンクグループ 2020年3月期 決算発表(2020年5月18日)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2020-10-21",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "破綻の記録",
+      "title": "Quibi、開始から半年でサービス終了",
+      "summary": "モバイル特化の短尺動画サービスQuibiが、開始からわずか半年でのサービス終了を発表した。事前の調達額は17.5億ドルに上っていた。\n\nハリウッドの実績ある経営陣と潤沢な資金という「成功の条件」が揃いながら、需要の検証を欠いたまま大規模に始めた点でWebvanと同型の失敗である。豪華な布陣と資本は市場の不在を補えないことを、20年の時を隔てて再確認させた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Quibi",
+          "url": "https://en.wikipedia.org/wiki/Quibi"
+        }
+      ]
+    },
+    {
+      "date": "2022-01-03",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "検証と教訓",
+      "title": "ホームズ被告に有罪評決",
+      "summary": "元Theranos CEOエリザベス・ホームズに対し、投資家への詐欺等の罪で有罪評決が下った。のちに禁錮11年余りの量刑が言い渡される。\n\nスタートアップ文化の誇張(fake it till you make it)と刑事上の詐欺の境界を司法が引いた事例とされる。破綻の記録レイヤーに並ぶ一連のTheranos事件を、失敗学の題材から法の領域へと接続した評決である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "米司法省 北カリフォルニア地区連邦検事局 発表(2022年1月)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2022-11-11",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "破綻の記録",
+      "title": "FTX破産申請、暗号資産バブルの決算",
+      "summary": "暗号資産取引所FTXが、グループ約130社とともに米連邦破産法11条の適用を申請した。直前の1週間で顧客資金の流用疑惑が表面化し、取り付けが発生していた。\n\n著名投資家が並ぶ株主構成にもかかわらず基本的な内部統制を欠いており、**熱狂は最も基本的な検証を省略させる**ことを改めて示した。翌2023年11月、創業者バンクマン-フリードは詐欺罪で有罪評決を受けた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Bankruptcy of FTX",
+          "url": "https://en.wikipedia.org/wiki/Bankruptcy_of_FTX"
+        }
+      ]
+    },
+    {
+      "date": "2023-03-10",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "資本と熱狂",
+      "title": "シリコンバレー銀行が破綻",
+      "summary": "スタートアップ業界の中核銀行だったシリコンバレー銀行(SVB)が経営破綻し、米規制当局の管理下に置かれた。当時、米国史上2番目の規模の銀行破綻となった。\n\n低金利期に膨らんだ預金を長期債で運用した金利リスクに、VC業界のSNS上の呼びかけで加速した史上最速級の取り付けが重なった。個社の失敗ではなく、エコシステム全体の資金基盤が揺らいだ点で特異な事例である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Collapse of Silicon Valley Bank",
+          "url": "https://en.wikipedia.org/wiki/Collapse_of_Silicon_Valley_Bank"
+        }
+      ]
+    }
+  ]
+}

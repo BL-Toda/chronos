@@ -1,0 +1,349 @@
+{
+  "slug": "science-dinosaur-research",
+  "title": "恐竜研究の進化",
+  "description": "最初の化石記載から羽毛恐竜、絶滅論争、化石の競売まで。発見・学説・大衆文化の3層を重ね、恐竜像が「愚鈍な爬虫類」から「鳥の祖先」へ塗り替えられる200年を追う。",
+  "category": "science-nature",
+  "language": "ja",
+  "start_year": 1824,
+  "end_year": 2020,
+  "layers": [
+    {
+      "name": "発見と化石",
+      "color": "green"
+    },
+    {
+      "name": "学説の転換",
+      "color": "blue"
+    },
+    {
+      "name": "大衆文化と市場",
+      "color": "pink"
+    }
+  ],
+  "events": [
+    {
+      "date": "1824-02-20",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "発見と化石",
+      "title": "バックランドがメガロサウルスを記載",
+      "summary": "オックスフォード大学のバックランドがロンドン地質学会でメガロサウルスを報告し、のちに恐竜と呼ばれることになる動物として世界で初めて学名が与えられた。\n\n当時は「巨大なトカゲ」と理解され、恐竜という枠組み自体がまだ存在しなかった。顎と歯など断片からの記載であり、**化石の断片から動物の姿を復元する**という古生物学の方法の出発点でもある。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Megalosaurus",
+          "url": "https://en.wikipedia.org/wiki/Megalosaurus"
+        }
+      ]
+    },
+    {
+      "date": "1842-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "学説の転換",
+      "title": "オーウェンが「恐竜(Dinosauria)」を命名",
+      "summary": "解剖学者オーウェンが、メガロサウルス、イグアノドン、ヒラエオサウルスの3属を、直立した四肢を持つ独自のグループとしてまとめ、「恐ろしく大きなトカゲ」を意味するDinosauriaと命名した。\n\n個別の化石(発見と化石レイヤー)に共通する体の設計を見抜いた概念の発明であり、この命名によって初めて「恐竜」は研究対象になった。オーウェンがこの枠組みを進化論への反証として構想していたという皮肉も残る。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "命名の年は、もととなった学会報告の年(1841年)と報告書の刊行年(1842年)のどちらを取るかで資料により記載が分かれる。",
+      "sources": [
+        {
+          "title": "Wikipedia: Richard Owen",
+          "url": "https://en.wikipedia.org/wiki/Richard_Owen"
+        }
+      ]
+    },
+    {
+      "date": "1853-12-31",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "大衆文化と市場",
+      "title": "イグアノドン模型の中での晩餐会",
+      "summary": "ロンドンの水晶宮公園に展示される実物大恐竜模型の完成を前に、彫刻家ホーキンスとオーウェンらが、未完成のイグアノドン模型の鋳型の中で約20人の晩餐会を開いた。\n\n翌年公開された模型群は世界初の恐竜テーマの常設展示となり、恐竜を**科学者だけのものから見世物へ**と押し広げた。復元姿勢は現在の知見と大きく異なるが、模型は歴史遺産として今も同じ公園に保存されている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Crystal Palace Dinosaurs",
+          "url": "https://en.wikipedia.org/wiki/Crystal_Palace_Dinosaurs"
+        }
+      ]
+    },
+    {
+      "date": "1861-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "発見と化石",
+      "title": "始祖鳥の化石が発見される",
+      "summary": "ドイツ・ゾルンホーフェンの石灰岩から、羽毛の印象と爬虫類的な骨格を併せ持つ始祖鳥(アーケオプテリクス)の化石が発見され、標本は大英博物館が購入した。\n\n『種の起源』刊行のわずか2年後に現れた「中間的な生物」は、進化論争の象徴として即座に注目された。恐竜と鳥を結ぶ議論はここに始まり、1世紀後のデイノニクスの記載(学説の転換レイヤー)で本格的に再燃する。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Archaeopteryx",
+          "url": "https://en.wikipedia.org/wiki/Archaeopteryx"
+        }
+      ]
+    },
+    {
+      "date": "1877-01-01",
+      "precision": "year",
+      "end_date": "1892-01-01",
+      "type": "period",
+      "layer": "発見と化石",
+      "title": "コープ対マーシュ、「化石戦争」の時代",
+      "summary": "米国の古生物学者コープとマーシュが化石の発見を競い、発掘隊の引き抜きや発掘地の妨害まで伴う激しい争いを繰り広げた。両者あわせて130種以上の恐竜を命名し、トリケラトプスやステゴサウルスもこの時期に見つかった。\n\n私財を投じた競争は科学を一気に加速させると同時に、拙速な記載による分類の混乱も残した。**発見の量が学問を作り、競争がそれを歪める**という構図の原型である。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "「化石戦争」の開始・終了をいつと見るかは諸説あり、両者の対立自体は1870年代前半から続いていた。",
+      "sources": [
+        {
+          "title": "Wikipedia: Bone Wars",
+          "url": "https://en.wikipedia.org/wiki/Bone_Wars"
+        }
+      ]
+    },
+    {
+      "date": "1902-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "発見と化石",
+      "title": "ブラウンがティラノサウルスを発見",
+      "summary": "アメリカ自然史博物館のバーナム・ブラウンがモンタナ州ヘルクリークの地層で大型肉食恐竜の部分骨格を発掘した。1905年にオズボーンがティラノサウルス・レックスと命名する。\n\n「暴君トカゲの王」という命名と巨大骨格の展示は博物館の集客力を証明し、恐竜が博物館の看板になる時代を開いた。T. rexは以後1世紀にわたり、映画から競売まで大衆文化と市場レイヤーの主役であり続ける。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Barnum Brown",
+          "url": "https://en.wikipedia.org/wiki/Barnum_Brown"
+        }
+      ]
+    },
+    {
+      "date": "1969-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "学説の転換",
+      "title": "オストロムがデイノニクスを記載",
+      "summary": "イェール大学のオストロムが、大きな鉤爪を持つ軽量で俊敏な肉食恐竜デイノニクスを記載し、恐竜が活発で代謝の高い動物だった可能性を骨格の証拠から論じた。\n\n「のろまな爬虫類」という半世紀来の常識を覆し、始祖鳥との骨格の類似から鳥類の恐竜起源説も再提起した。**恐竜ルネサンス**と呼ばれる研究の刷新はこの記載を起点とし、教え子のバッカーが論争の顔となっていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Deinonychus",
+          "url": "https://en.wikipedia.org/wiki/Deinonychus"
+        }
+      ]
+    },
+    {
+      "date": "1975-04-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "学説の転換",
+      "title": "バッカー「恐竜ルネサンス」を発表",
+      "summary": "バッカーがサイエンティフィック・アメリカン誌に記事「恐竜ルネサンス」を寄稿し、恐竜温血説と鳥類の恐竜起源説を一般読者に向けて鮮烈に主張した。\n\n学界内の論争を大衆に開いた記事であり、活発でしなやかな恐竜像は後の映画『ジュラシック・パーク』(大衆文化と市場レイヤー)の描写を用意した。温血か冷血かという単純な二分法はその後修正されていくが、議論の枠組みを変えた影響は大きい。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Dinosaur renaissance",
+          "url": "https://en.wikipedia.org/wiki/Dinosaur_renaissance"
+        }
+      ]
+    },
+    {
+      "date": "1980-06-06",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "学説の転換",
+      "title": "アルバレス父子が隕石衝突絶滅説を発表",
+      "summary": "物理学者ルイス・アルバレスと地質学者ウォルターの父子らが、白亜紀末の地層境界に高濃度のイリジウムを見いだし、小惑星衝突が恐竜を含む大量絶滅を引き起こしたとサイエンス誌で提唱した。\n\n天文学・地質学・古生物学をまたぐ仮説は当初強い抵抗を受けたが、分野横断で証拠を検証する新しい研究様式を持ち込んだ。決定的な物証となるクレーターの特定(発見と化石レイヤーの地質版)は11年後を待つことになる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Alvarez hypothesis",
+          "url": "https://en.wikipedia.org/wiki/Alvarez_hypothesis"
+        }
+      ]
+    },
+    {
+      "date": "1990-08-12",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "発見と化石",
+      "title": "史上最も完全なT. rex「スー」発見",
+      "summary": "化石ハンターのスー・ヘンドリクソンがサウスダコタ州で、骨格の約9割が残るティラノサウルスを発見した。標本は発見者にちなみ「スー」と名付けられた。\n\n保存状態のよさから研究価値は際立っていたが、発掘地の権利をめぐり連邦政府・先住民部族・地主・発掘団体の間で法廷闘争となり、化石は連邦当局に差し押さえられた。**化石は誰のものか**という問いが表面化し、7年後の競売につながっていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Sue (dinosaur)",
+          "url": "https://en.wikipedia.org/wiki/Sue_(dinosaur)"
+        }
+      ]
+    },
+    {
+      "date": "1991-09-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "学説の転換",
+      "title": "チクシュルーブ・クレーターを衝突痕と同定",
+      "summary": "ヒルデブランドらが、メキシコ・ユカタン半島の地下に埋もれた直径約180kmの円形構造を、白亜紀末の小惑星衝突の痕跡として地質学誌ジオロジーで報告した。\n\n1980年の衝突説(同じ学説の転換レイヤー)に欠けていた「現場」がそろい、仮説は定説へ大きく前進した。構造の発見に石油会社の探査データが決め手となった点も、産業と科学の意外な接点として語られる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Chicxulub crater",
+          "url": "https://en.wikipedia.org/wiki/Chicxulub_crater"
+        }
+      ]
+    },
+    {
+      "date": "1993-06-11",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "大衆文化と市場",
+      "title": "映画『ジュラシック・パーク』公開",
+      "summary": "スピルバーグ監督の『ジュラシック・パーク』が米国で公開され、当時の世界興行収入記録を塗り替えた。CGとアニマトロニクスによる恐竜は「本物らしさ」の基準を一変させた。\n\n描かれた俊敏で賢い恐竜像は恐竜ルネサンス(学説の転換レイヤー)の成果を反映したもので、オストロムらの研究が下敷きになっている。この映画を見て古生物学者を志した世代が、2000年代以降の羽毛恐竜研究などを担っていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Jurassic Park (film)",
+          "url": "https://en.wikipedia.org/wiki/Jurassic_Park_(film)"
+        }
+      ]
+    },
+    {
+      "date": "1996-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "発見と化石",
+      "title": "中国で羽毛恐竜シノサウロプテリクスを発見",
+      "summary": "中国遼寧省の約1億2500万年前の地層から、原始的な羽毛の痕跡をまとう小型獣脚類シノサウロプテリクスが報告された。飛べない恐竜が羽毛を持っていたことを示す初の直接証拠となった。\n\n鳥は恐竜の子孫という仮説(学説の転換レイヤー)に決定的な物証を与え、以後、遼寧の熱河層群からは羽毛恐竜の発見が相次ぐ。**羽毛は鳥の発明ではなかった**という事実が、恐竜の復元像を根本から書き換えた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Sinosauropteryx",
+          "url": "https://en.wikipedia.org/wiki/Sinosauropteryx"
+        }
+      ]
+    },
+    {
+      "date": "1997-10-04",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "大衆文化と市場",
+      "title": "「スー」が競売で約836万ドルで落札",
+      "summary": "法廷闘争の末に競売へかけられたスーを、シカゴのフィールド自然史博物館がディズニーやマクドナルドなどの資金協力を得て約836万ドルで落札した。化石の取引額として桁違いの記録だった。\n\n重要標本が公的機関に残った点では安堵を呼んだ一方、化石に巨額の市場価値がつく前例は商業発掘を刺激するという懸念も現実のものにした。この構図は2020年の「スタン」競売でさらに極端な形で繰り返される。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Sue (dinosaur)",
+          "url": "https://en.wikipedia.org/wiki/Sue_(dinosaur)"
+        }
+      ]
+    },
+    {
+      "date": "2005-03-25",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "学説の転換",
+      "title": "T. rex化石から軟組織様の構造を報告",
+      "summary": "シュヴァイツァーらが、約6800万年前のティラノサウルスの大腿骨から、弾力を保った血管様の構造やコラーゲン様タンパク質を回収したとサイエンス誌で報告した。\n\n「化石に有機物は残らない」という前提を揺るがし、分子レベルで古生物を調べる分子古生物学を活気づけた。ただし汚染や生物膜による偽陽性の可能性も指摘されており、何がどこまで残るのかの検証は現在も続いている。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "軟組織様構造やコラーゲンの検出については、汚染や細菌由来の生物膜による偽陽性の可能性が指摘され、解釈をめぐる議論が続いている。",
+      "sources": [
+        {
+          "title": "Schweitzer et al., Science 307: Soft-Tissue Vessels and Cellular Preservation in Tyrannosaurus rex (2005)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2010-01-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "学説の転換",
+      "title": "化石から恐竜の「色」を初めて推定",
+      "summary": "張福成らが、羽毛化石に残るメラノソーム(色素を作る細胞小器官)の形状から、シノサウロプテリクスが赤褐色の縞模様の尾を持っていたと推定し、ネイチャー誌に発表した。\n\n想像で塗られてきた恐竜の体色が**証拠から推定できる対象**へ変わった転換点である。1996年の羽毛発見(発見と化石レイヤー)から14年、標本の微細構造まで読み取る技術の進歩が、復元画の常識を変えた。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "復元される色はメラノソームの形状と現生鳥類との対応関係に基づく推定であり、部位や保存状態によって確度が異なる。",
+      "sources": [
+        {
+          "title": "Zhang et al., Nature 463: Fossilized melanosomes and the colour of Cretaceous dinosaurs and birds (2010)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2014-09-11",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "学説の転換",
+      "title": "スピノサウルス半水生説の提唱",
+      "summary": "イブラヒムらがモロッコの新標本に基づき、スピノサウルスが短い後肢と密な骨を持つ半水生の恐竜だったとサイエンス誌で発表した。「恐竜に水生の種はいない」という長年の通説への挑戦だった。\n\nその後もひれ状の尾の発見と、遊泳能力を疑う解析が交互に発表され、論争は現在進行形である。断片的な化石(発見と化石レイヤー)から生態をどこまで復元できるかという、この分野の方法論そのものが試されている。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "半水生説には骨密度や遊泳能力の解析からの異論があり、水中を泳いだのか水辺で待ち伏せたのかは決着していない。",
+      "sources": [
+        {
+          "title": "Wikipedia: Spinosaurus",
+          "url": "https://en.wikipedia.org/wiki/Spinosaurus"
+        }
+      ]
+    },
+    {
+      "date": "2020-10-06",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "大衆文化と市場",
+      "title": "T. rex「スタン」が約3,180万ドルで落札",
+      "summary": "クリスティーズの競売で、ティラノサウルス骨格「スタン」が手数料込み約3,180万ドルで落札され、化石の落札額の記録をおよそ4倍に更新した。落札者は当初明かされなかった。\n\n後にアブダビに建設中の自然史博物館へ収蔵されることが判明したが、研究上重要な標本が市場で取引される状況への懸念が改めて示された。1997年のスー以来の**科学と市場の緊張**が、より大きな金額で反復されている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Stan (dinosaur)",
+          "url": "https://en.wikipedia.org/wiki/Stan_(dinosaur)"
+        }
+      ]
+    }
+  ]
+}

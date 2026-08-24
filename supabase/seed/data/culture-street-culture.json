@@ -1,0 +1,331 @@
+{
+  "slug": "culture-street-culture",
+  "title": "ストリートカルチャー",
+  "description": "ブロックパーティーのDJ、地下鉄のグラフィティ、路上のスケーター。3つの路上文化が交差しながら美術館・オークション・五輪へ迎えられていく半世紀を、層を重ねて見る年表。",
+  "category": "culture",
+  "language": "ja",
+  "start_year": 1970,
+  "end_year": 2024,
+  "layers": [
+    {
+      "name": "音楽とダンス",
+      "color": "orange"
+    },
+    {
+      "name": "グラフィティとアート",
+      "color": "pink"
+    },
+    {
+      "name": "スケートとファッション",
+      "color": "green"
+    }
+  ],
+  "events": [
+    {
+      "date": "1970-01-01",
+      "precision": "year",
+      "end_date": "1989-05-31",
+      "type": "period",
+      "layer": "グラフィティとアート",
+      "title": "ニューヨーク地下鉄グラフィティの時代",
+      "summary": "ニューヨークの地下鉄車両が、名前を書き残すタギングから色彩豊かな大作「ピース」まで、グラフィティの巨大なキャンバスとなった時代。車両基地に忍び込むライターたちが技法とスタイルを競い合った。\n\n市当局は犯罪として撲滅作戦を続け、1989年5月に「グラフィティのない地下鉄」を宣言してこの時代は幕を閉じる。**街全体がギャラリーだった**約20年の車両と写真の記録が、後の世界的なストリートアート評価の原点となった。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "地下鉄グラフィティの「時代」の起点に明確な定義はなく、1960年代末とする資料もある。終点は1989年5月のMTAによる宣言を採った。",
+      "sources": [
+        {
+          "title": "Wikipedia: Graffiti in New York City",
+          "url": "https://en.wikipedia.org/wiki/Graffiti_in_New_York_City"
+        }
+      ]
+    },
+    {
+      "date": "1971-07-21",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "グラフィティとアート",
+      "title": "NYタイムズが「TAKI 183」を報道",
+      "summary": "ニューヨーク・タイムズが、市内のいたる所に「TAKI 183」と書き残すギリシャ系の配達員の若者を記事で取り上げた。名前を街に刻むタギング文化が、初めて主要メディアに登場した瞬間である。\n\n記事を読んだ若者たちは競って自分の名前を書き始め、タグは市内で爆発的に増殖した。**メディアに載ることが文化を加速させる**というストリートカルチャーの逆説は、この最初期からすでに作動していた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "The New York Times: 'Taki 183' Spawns Pen Pals (1971-07-21)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "1973-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "スケートとファッション",
+      "title": "ウレタンウィールがスケートを変える",
+      "summary": "フランク・ナスワージーが開発したウレタン製ウィール「キャデラック・ホイール」が販売され、それまでの金属や粘土系の車輪に比べて格段のグリップと滑らかさをもたらした。\n\n路面を選ばず滑走できるようになったことで、スケートボードは坂道や空のプールの壁面へと進出し、サーフィンの陸上での模倣から独自の身体文化へ離陸した。用具の小さな革新が、表現の全体を変えた例である。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "ウレタンウィールの開発・発売の時期は1972年から1973年にかけてとされ、資料により記述に幅がある。",
+      "sources": [
+        {
+          "title": "Wikipedia: Skateboarding",
+          "url": "https://en.wikipedia.org/wiki/Skateboarding"
+        }
+      ]
+    },
+    {
+      "date": "1973-08-11",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "音楽とダンス",
+      "title": "ブロンクスのパーティー、ヒップホップの神話",
+      "summary": "ニューヨーク・ブロンクスのアパートの集会室で、DJクール・ハークが妹の新学期の費用を集めるパーティーを開いた。レコードの間奏部分(ブレイク)を2枚使いで反復する手法が、ここで披露されたとされる。\n\nこのパーティーは後年**ヒップホップ誕生の日**として記念されることになる。ブレイクで踊るB-Boyたち、MCの語り、そして壁のグラフィティ(グラフィティとアートレイヤー)が、同じ街区で一つの文化として束ねられていく。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "この日を「ヒップホップ誕生日」とする位置づけは後年の回顧と記念行事により定着したもので、当時の一次記録は乏しい。",
+      "sources": [
+        {
+          "title": "Wikipedia: DJ Kool Herc",
+          "url": "https://en.wikipedia.org/wiki/DJ_Kool_Herc"
+        }
+      ]
+    },
+    {
+      "date": "1978-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "スケートとファッション",
+      "title": "オーリー誕生、都市が遊び場になる",
+      "summary": "フロリダのスケートパークで、アラン・ゲレファンドが手を使わずに板ごと跳び上がる技を編み出し、仲間から「オーリー」と呼ばれた。垂直の壁面での浮遊技として生まれたこの動作が、スケートボードの語彙を根本から変えていく。\n\n後にロドニー・ミュレンが平地でのオーリーを確立し、街の縁石や階段、手すりのすべてが技の対象と化した。都市そのものを遊び場に読み替えるストリートスケートの、技術的な前提である。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "オーリー考案の時期は1977年とも1978年ともされ、正確な日付を示す記録はない。",
+      "sources": [
+        {
+          "title": "Wikipedia: Ollie (skateboarding)",
+          "url": "https://en.wikipedia.org/wiki/Ollie_(skateboarding)"
+        }
+      ]
+    },
+    {
+      "date": "1979-09-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "音楽とダンス",
+      "title": "「ラッパーズ・ディライト」がヒット",
+      "summary": "シュガーヒル・ギャングの「ラッパーズ・ディライト」が発売され、ヒップホップのレコードとして初めて全米チャートのヒットとなった。\n\nパーティーの現場の即興だったMCの語りが、レコードという商品になって世界へ流通した瞬間である。一方でシーンの当事者からは「よそ者が先に商品化した」という批判も受け、路上の文化と商業の間の緊張関係が、ヒップホップには最初から刻み込まれていた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Rapper's Delight",
+          "url": "https://en.wikipedia.org/wiki/Rapper's_Delight"
+        }
+      ]
+    },
+    {
+      "date": "1982-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "グラフィティとアート",
+      "title": "バスキア、路上から画廊へ",
+      "summary": "SAMOの署名で街に詩的な言葉を残していたジャン=ミシェル・バスキアが、ニューヨークのギャラリーで個展を開き、美術市場に本格的に迎え入れられた。\n\n**路上から画廊へ**という回路が開いた瞬間であり、キース・ヘリングらもこれに続いた。落書きとして排除される者と作家として買われる者の線引きは誰がするのかという問いは、以後のストリートアートに常につきまとうことになる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Jean-Michel Basquiat",
+          "url": "https://en.wikipedia.org/wiki/Jean-Michel_Basquiat"
+        }
+      ]
+    },
+    {
+      "date": "1982-01-01",
+      "precision": "year",
+      "end_date": "1984-12-31",
+      "type": "period",
+      "layer": "音楽とダンス",
+      "title": "ヒップホップ映画ブーム、世界への伝播",
+      "summary": "「ワイルド・スタイル」「フラッシュダンス」「ビート・ストリート」など、ヒップホップ文化を描く映画が相次いで公開され、ブレイクダンスとグラフィティの映像が世界中の若者に届いた。\n\nブロンクスの路上の文化は映画を通じて日本を含む各国へ一挙に伝播し、各地でブレイクダンスのチームが生まれた。**映像が文化の輸出路になった**時期であり、40年後のパリ五輪でのブレイキン採用に至る国際的な裾野は、ここで形成された。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Wild Style",
+          "url": "https://en.wikipedia.org/wiki/Wild_Style"
+        }
+      ]
+    },
+    {
+      "date": "1986-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "音楽とダンス",
+      "title": "Run-D.M.C.、ヒップホップを主流へ",
+      "summary": "Run-D.M.C.がアルバム「Raising Hell」を発表した。エアロスミスと共演した「Walk This Way」でロックの聴衆にまで到達し、「My Adidas」を機にアディダスとの大型契約を結んだ。\n\nヒップホップのグループとスポーツ用品ブランドの先駆的な契約とされ、ストリートファッション(スケートとファッションレイヤー)と音楽が市場で合流する原型となった。何を履くかが何者であるかを語るという路上の記号の文化が、ここで産業と接続した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Raising Hell (album)",
+          "url": "https://en.wikipedia.org/wiki/Raising_Hell_(album)"
+        }
+      ]
+    },
+    {
+      "date": "1994-04-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "スケートとファッション",
+      "title": "Supreme、ラファイエット通りに開店",
+      "summary": "ジェームス・ジェビアがニューヨークのラファイエット通りにスケートショップSupremeを開いた。中央を広く空けた売り場はボードに乗ったまま入店できる設計で、店員も現役のスケーターだった。\n\n少量生産と口コミで飢餓感を作る「ドロップ」の手法により熱狂的な支持を集め、ストリートウェアを高級ブランドが参照する存在へと育っていく。2017年のルイ・ヴィトンとの協業に至る長い助走が、この小さな店から始まった。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "開店は1994年4月とされることが多いが、正確な開店日を示す一次記録は乏しい。",
+      "sources": [
+        {
+          "title": "Wikipedia: Supreme (brand)",
+          "url": "https://en.wikipedia.org/wiki/Supreme_(brand)"
+        }
+      ]
+    },
+    {
+      "date": "1999-06-27",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "スケートとファッション",
+      "title": "トニー・ホークが900を成功",
+      "summary": "サンフランシスコのXゲームズで、トニー・ホークが大会史上初の900(空中2回転半)を成功させた。同年発売のゲーム「トニー・ホーク プロ・スケーター」も世界的なヒットとなる。\n\nヒップホップがレコードと映画(音楽とダンスレイヤー)を通って主流化した過程を、スケートはテレビ中継とゲームでなぞった。不良の遊びから子供部屋の憧れへとイメージが変わる一方、競技化と商業化が進み、路上の文化との距離も広がり始める。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Tony Hawk",
+          "url": "https://en.wikipedia.org/wiki/Tony_Hawk"
+        }
+      ]
+    },
+    {
+      "date": "2008-05-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "グラフィティとアート",
+      "title": "テート・モダンが「Street Art」展",
+      "summary": "ロンドンのテート・モダンが、美術館の外壁そのものを会場にした「Street Art」展を開催し、世界の6組のアーティストが巨大壁画を制作した。\n\n犯罪として排除されてきた表現を、国立級の美術館が正面から展示した画期である。同じ時期、路上ではバンクシーの神出鬼没の作品が話題を集めており、制度の内と外の境界線は誰が引くのかという問いが、美術の世界で表面化した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Tate Modern: Street Art exhibition (2008)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2017-01-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "スケートとファッション",
+      "title": "ルイ・ヴィトンがSupremeと協業発表",
+      "summary": "ルイ・ヴィトンがパリのメンズコレクションでSupremeとの協業を発表した。2000年に自社の柄を無断使用したSupremeのデッキに法的措置をとった過去を持つ、両者の合流だった。\n\n**ラグジュアリーがストリートを迎え入れた**象徴とされ、以後、高級ブランドはストリートウェアの手法と人材を次々に取り込んだ。翌年にはストリート出身のヴァージル・アブローがルイ・ヴィトンのメンズ・デザイナーに就任する。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Louis Vuitton 2017-18秋冬メンズコレクション(Supremeとの協業)報道",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2017-05-18",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "グラフィティとアート",
+      "title": "バスキア作品、1億ドルで落札",
+      "summary": "バスキアが1982年に描いた頭蓋骨の絵「Untitled」がサザビーズで1億1050万ドルで落札された。米国人作家のオークション最高額であり、落札者は日本の起業家、前澤友作だった。\n\n路上に言葉を書くことから出発した画家の作品が、美術市場の最高価格帯に到達した出来事である。1988年に27歳で没した作家の評価の高騰は、ストリート出自の表現が投資対象の資産として扱われる時代の到来を告げた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Sotheby's: Jean-Michel Basquiat, Untitled (1982) 落札(2017年5月)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2018-10-05",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "グラフィティとアート",
+      "title": "バンクシー、落札直後の自動裁断",
+      "summary": "サザビーズのオークションで、バンクシーの「風船と少女」が約104万ポンドで落札された直後、額縁に仕込まれたシュレッダーが作動し、絵の下半分が裁断された。\n\n美術市場への批評として仕掛けられたパフォーマンスだったが、裁断された作品は「愛はごみ箱の中に」と改題され、2021年には約16倍の価格で再落札された。市場への挑発すらも市場価値へ変換されるという、ストリートアートの現在地を露呈させた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Sotheby's: Banksy, Love is in the Bin (2018)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2021-07-25",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "スケートとファッション",
+      "title": "スケートボードが五輪競技デビュー",
+      "summary": "東京五輪でスケートボードが五輪競技として初めて実施され、ストリート種目で堀米雄斗が初代金メダリストとなった。女子では13歳の西矢椛が優勝した。\n\n警察に追われる遊びだったスケートボードが、**路上の遊びから五輪種目へ**と公認された到達点である。一方で、競技化が路上の文化の自由さを損なうという当事者の異論も根強く、公認と自律のあいだの緊張はいまも続いている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Skateboarding at the 2020 Summer Olympics",
+          "url": "https://en.wikipedia.org/wiki/Skateboarding_at_the_2020_Summer_Olympics"
+        }
+      ]
+    },
+    {
+      "date": "2024-08-09",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "音楽とダンス",
+      "title": "ブレイキンがパリ五輪で正式競技に",
+      "summary": "パリ五輪でブレイキン(ブレイクダンス)が五輪競技として初めて実施され、B-GirlsとB-Boysの各種目で世界のダンサーがバトルを繰り広げた。\n\nブロンクスの路上で生まれた踊りが、半世紀でオリンピックの正式競技に至った。グラフィティが美術館へ(グラフィティとアートレイヤー)、スケートボードが五輪へ(スケートとファッションレイヤー)進んだのと同じ道であり、3つの層が同じ結末に収束したことを示す本年表の終着点である。なお次のロサンゼルス大会では実施されない。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Breaking at the 2024 Summer Olympics",
+          "url": "https://en.wikipedia.org/wiki/Breaking_at_the_2024_Summer_Olympics"
+        }
+      ]
+    }
+  ]
+}

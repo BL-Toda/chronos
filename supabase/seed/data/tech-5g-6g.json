@@ -1,0 +1,256 @@
+{
+  "slug": "tech-5g-6g",
+  "title": "5G/6G通信の進化",
+  "description": "通信の世代交代は技術だけでは進まない。国際標準化・事業者の市場競争・各国の政策と地政学の3層を重ね、5Gの理想と現実、そして6Gへの助走を俯瞰する年表。",
+  "category": "technology",
+  "language": "ja",
+  "start_year": 2015,
+  "end_year": 2026,
+  "layers": [
+    {"name": "技術と標準化", "color": "blue"},
+    {"name": "事業者と市場", "color": "orange"},
+    {"name": "政策と地政学", "color": "teal"}
+  ],
+  "events": [
+    {
+      "date": "2015-09-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と標準化",
+      "title": "ITU-Rが5Gビジョン勧告「IMT-2020」を承認",
+      "summary": "国際電気通信連合の無線通信部門が勧告M.2083を承認し、高速大容量・超低遅延・多数同時接続という5Gの3つの利用シナリオと、2020年頃の実用化という目標を国際的に定めた。\n\n通信の世代交代は各社の発明の積み上げではなく、**国際的な目標設定から逆算して進む**。以後は3GPPが仕様策定を担い、各国が周波数割当と免許で追走する。本年表の3層構造が動き出す起点である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "ITU-R勧告 M.2083: IMT Vision - Framework and overall objectives of the future development of IMT for 2020 and beyond", "url": "https://www.itu.int/rec/R-REC-M.2083"}
+      ]
+    },
+    {
+      "date": "2017-12-21",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と標準化",
+      "title": "3GPPが最初の5G NR仕様(NSA)を完成",
+      "summary": "標準化団体3GPPがリスボン会合で、4Gのコアネットワークに5G無線を組み合わせるノンスタンドアロン(NSA)方式の仕様をRelease 15の一部として完成させた。最初の5G標準の確定である。\n\n早期商用化を急ぐ主要事業者(事業者と市場レイヤー)の要望を受け、当初計画から前倒しで策定された経緯があり、標準化のスケジュールそのものが各国・各社の競争の対象であることを示した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "3GPP発表: First 5G NR specs approved (2017-12-21)", "url": null}
+      ]
+    },
+    {
+      "date": "2018-06-14",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と標準化",
+      "title": "Release 15完成、単独運用できる5G標準が確定",
+      "summary": "3GPPが米サンディエゴ近郊の会合で、5G専用コアネットワークを含むスタンドアロン(SA)方式の仕様を承認し、Release 15として完全な5G標準の初版が揃った。\n\nこれを受けて機器開発と各国の周波数オークション(事業者と市場・政策レイヤー)が本格化する。ただし実際の商用サービスは当面NSA方式で始まり、SA方式への移行は当初の想定より長い時間を要することになる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "3GPP発表: Release 15 SA仕様承認 (2018-06)", "url": null}
+      ]
+    },
+    {
+      "date": "2019-04-03",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "事業者と市場",
+      "title": "韓国と米国が「世界初の5G商用化」を競う",
+      "summary": "韓国の通信3社が4月3日夜に一般向け5Gサービスを一斉に開始し、米Verizonも予定を繰り上げて同日の開始を発表。「世界初の5G商用化」の座を両国が争った。\n\n開始時刻を繰り上げてまで初物の称号を奪い合った背景には、5Gを国家と企業のブランドに使う思惑がある。**「世界初」争いそのものが5Gの政治性**を象徴しており、通信世代が国力の指標として扱われる時代の幕開けだった。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "どちらが「世界初」かは、開始時刻の定義や対象(一般向けか限定提供か)によって主張が分かれている。",
+      "sources": [
+        {"title": "韓国科学技術情報通信部発表・Reuters報道 (2019-04)", "url": null}
+      ]
+    },
+    {
+      "date": "2019-05-15",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "政策と地政学",
+      "title": "米国がファーウェイへ事実上の禁輸措置",
+      "summary": "米政権が情報通信サプライチェーンを守るとする大統領令に署名し、商務省はファーウェイをエンティティリストへ追加すると発表。米国由来の技術・部品の供給が原則許可制となった。\n\n5G基地局シェア首位の企業を狙い撃つ措置は、通信インフラが**安全保障の最前線**になったことを示した。以後、同盟国へ排除への同調圧力が広がり、機器市場の勢力図(事業者と市場レイヤー)を書き換えていく。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "米商務省産業安全保障局(BIS)発表 (2019-05)", "url": null}
+      ]
+    },
+    {
+      "date": "2019-06-06",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "政策と地政学",
+      "title": "中国が5G商用免許を交付、国家主導の整備へ",
+      "summary": "中国の工業情報化部が通信大手4社に5G商用免許を交付した。米国による制裁発動のわずか3週間後というタイミングで、当初の想定より前倒しの交付と報じられた。\n\n以後、中国は国家主導で基地局整備を進め、数年で世界の5G基地局の過半を占める規模に達する。標準・市場・政策が一体となって動く中国モデルと、同盟国連携で対抗する米国という対立軸がここで固まった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "中国工業情報化部発表・新華社報道 (2019-06-06)", "url": null}
+      ]
+    },
+    {
+      "date": "2020-03-25",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "事業者と市場",
+      "title": "日本で5G商用サービス開始",
+      "summary": "NTTドコモが日本初の5G商用サービスを開始し、同じ週にKDDI、ソフトバンクも続いた。当初は都市部のごく限られたスポットからの出発だった。\n\n直後に新型コロナの外出制限が重なり、5Gを体験する機会自体が限られたまま推移する。エリアの狭さと対応端末の少なさから「つながらない5G」との批判も受け、規格への期待と利用実態のギャップが早くも表面化した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "NTTドコモ報道発表 (2020-03-25)", "url": null}
+      ]
+    },
+    {
+      "date": "2020-04-08",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "事業者と市場",
+      "title": "楽天モバイル本格開始、完全仮想化網を主張",
+      "summary": "楽天モバイルが自社回線での本格サービスを開始。ネットワーク機能をソフトウェアで実現する「世界初の完全仮想化クラウドネイティブ網」を掲げ、単一の低価格プランで市場に参入した。\n\n専用ハードウェアに依存しない構成は、基地局のオープン化(O-RAN)の潮流を先取りするものとして海外の事業者からも注目された。ただし「世界初」という位置づけは同社の発表に基づく主張である。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "「世界初の完全仮想化モバイルネットワーク」は同社の主張であり、仮想化の定義や範囲をめぐって業界内で見解が分かれる。",
+      "sources": [
+        {"title": "楽天モバイル報道発表 (2020-04-08)", "url": null}
+      ]
+    },
+    {
+      "date": "2020-07-14",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "政策と地政学",
+      "title": "英国が5G網からのファーウェイ排除を決定",
+      "summary": "英政府が、2020年末以降のファーウェイ製5G機器の新規購入禁止と、2027年までの既設機器の完全撤去を決定した。同年1月の「限定的に容認」からわずか半年での方針転換だった。\n\n転換の直接の契機は米国による対ファーウェイ半導体規制の強化で、機器の安全性評価の前提が変わったためと説明された。**同盟国の政策が連鎖する構図**が鮮明になり、欧州各国でも排除・制限の決定が続いた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "英政府(DCMS)発表 (2020-07-14)", "url": null}
+      ]
+    },
+    {
+      "date": "2021-02-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "事業者と市場",
+      "title": "米C帯オークション、落札総額約810億ドルで史上最大",
+      "summary": "米FCCの周波数オークション(オークション107)で、5Gの本命周波数とされるミッドバンドのC帯免許の落札総額が約810億ドルに達し、過去最大となった。VerizonとAT&Tが大半を投じた。\n\nミリ波偏重だった米国の5G戦略の軌道修正を意味し、周波数という有限資源の配分が市場の勝敗を左右することを改めて示した。巨額の免許料は事業者の投資余力を圧迫し、その後の固定無線(FWA)注力にも影を落とす。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "FCC Auction 107 (3.7 GHz Service) 結果公表", "url": "https://www.fcc.gov/auction/107"}
+      ]
+    },
+    {
+      "date": "2022-01-01",
+      "precision": "year",
+      "end_date": "2024-12-31",
+      "type": "period",
+      "layer": "事業者と市場",
+      "title": "「期待と現実」の調整期、FWAが想定外の主役に",
+      "summary": "各国で5Gエリアは拡大したものの、収益の柱と期待された法人向け用途や自動運転は立ち上がらず、米国では5Gを使った固定無線アクセス(FWA)が家庭向け回線として急伸するという想定外の展開になった。\n\nSA方式への移行も調査会社の推計では想定より遅れ、**華々しい標語と収益の実態の乖離**がこの時期の主題となる。6Gの議論が「5Gの反省」から始まる素地は、この数年間に形づくられた。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "SA移行率やFWA契約数は調査会社・事業者発表による推計値で、業界全体の確定的な統計は存在しない。",
+      "sources": [
+        {"title": "Ericsson Mobility Report", "url": "https://www.ericsson.com/en/reports-and-papers/mobility-report"}
+      ]
+    },
+    {
+      "date": "2022-06-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と標準化",
+      "title": "Release 17完成、衛星通信と省電力IoTを標準に",
+      "summary": "3GPPがRelease 17を完成させ、衛星を経由して5G端末と直接通信するNTN(非地上系ネットワーク)や、簡易なIoT端末向けのRedCapが携帯電話の標準仕様に加わった。\n\n地上基地局を前提に発展してきた携帯標準が宇宙へ拡張された画期であり、スマートフォンと衛星の直接通信への道を開いた。5Gの「完成度を上げる」段階から「適用範囲を広げる」段階へ、標準化の軸足が移った節目でもある。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "3GPP: Release 17", "url": "https://www.3gpp.org/specifications-technologies/releases/release-17"}
+      ]
+    },
+    {
+      "date": "2023-11-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と標準化",
+      "title": "ITU-Rが6Gの枠組み勧告「IMT-2030」を承認",
+      "summary": "ITUの無線通信総会が6Gの枠組み勧告M.2160を承認した。没入型通信、AIと通信の融合、通信とセンシングの統合など6つの利用シナリオと、2030年頃の実用化という目標が示された。\n\n2015年のIMT-2020ビジョンと同じ手順の反復であり、**世代交代は10年周期の国際的な合意形成**として進むことがよく分かる。各国・各社の6G研究開発は、以後この座標系に沿って整列し始めた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "ITU-R勧告 M.2160: Framework and overall objectives of the future development of IMT for 2030 and beyond", "url": "https://www.itu.int/rec/R-REC-M.2160"}
+      ]
+    },
+    {
+      "date": "2024-03-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と標準化",
+      "title": "Release 18(5G-Advanced)の主要仕様が固まる",
+      "summary": "3GPPが5G-Advancedの最初の版となるRelease 18の主要仕様を凍結した。無線区間へのAI・機械学習の適用、ネットワーク省電力化、衛星通信(NTN)の拡張などが盛り込まれた。\n\n5Gと6Gをつなぐ橋渡しと位置づけられ、6Gの本命とされるAIネイティブなネットワークの予行演習という意味を持つ。収益化に苦しむ事業者(事業者と市場レイヤー)にとっては、追加投資に値するかを測る試金石ともなった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "3GPP: Release 18", "url": "https://www.3gpp.org/specifications-technologies/releases/release-18"}
+      ]
+    },
+    {
+      "date": "2025-03-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と標準化",
+      "title": "3GPPが6G標準化に向けた検討を正式に開始",
+      "summary": "3GPPが韓国・仁川で6Gワークショップを開催し、Release 20における6Gの研究項目を始動させた。世界の通信事業者・機器ベンダー・研究機関から技術提案が一斉に持ち寄られた。\n\n標準化の開始は次世代競争の号砲でもある。AIとの融合を押し出す米欧、独自路線もにらむ中国など、この場には政策レイヤーの技術覇権争いがそのまま持ち込まれており、5Gで起きた分断の再現が早くも懸念されている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {"title": "3GPP発表: 6G Workshop, Incheon (2025-03)", "url": null}
+      ]
+    },
+    {
+      "date": "2026-01-01",
+      "precision": "year",
+      "end_date": null,
+      "type": "point",
+      "layer": "技術と標準化",
+      "title": "6G仕様策定は2026年以降へ、商用化目標は2030年頃",
+      "summary": "3GPPの工程表では、Release 20での研究を経て2026年以降にRelease 21で6Gの仕様策定段階へ入り、2020年代末の初版完成、2030年頃の商用化開始が見込まれている。\n\nただしこれは現時点の計画にすぎない。5Gで起きた標準化の前倒し圧力、「世界初」競争、地政学的な分断が6Gでも再現される可能性は高く、標準・市場・政策の3層が再び同じ順序で動くのかが、本年表の続きを決める。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "仕様策定と商用化の時期はいずれも標準化団体・各社の計画・見込みであり、今後変動しうる。",
+      "sources": [
+        {"title": "3GPP発表・主要各社6Gホワイトペーパー", "url": null}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,385 @@
+{
+  "slug": "tech-cybersecurity",
+  "title": "サイバーセキュリティの進化",
+  "description": "Morrisワームからランサムウェアの産業化まで。攻撃と脅威・防御と技術・法と国家の3層を重ね、個人の悪戯だった攻撃が国家戦と社会インフラの問題へ拡大する過程を追う。",
+  "category": "technology",
+  "language": "ja",
+  "start_year": 1986,
+  "end_year": 2024,
+  "layers": [
+    {
+      "name": "攻撃と脅威",
+      "color": "pink"
+    },
+    {
+      "name": "防御と技術",
+      "color": "blue"
+    },
+    {
+      "name": "法と国家",
+      "color": "teal"
+    }
+  ],
+  "events": [
+    {
+      "date": "1986-10-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "法と国家",
+      "title": "米国でコンピュータ詐欺濫用法(CFAA)成立",
+      "summary": "権限のないコンピュータへのアクセスを連邦犯罪と定めるコンピュータ詐欺濫用法が米国で成立した。映画「ウォー・ゲーム」が象徴したハッカーへの社会不安を背景に、サイバー犯罪を裁く初の本格的な法枠組みとなった。\n\nまだ大きな実害が出る前に法が先行した珍しい例で、2年後のMorrisワーム(攻撃と脅威レイヤー)はこの法律による最初の重要判例を生む。「不正アクセス」の定義の広さは、今日まで論争が続いている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Computer Fraud and Abuse Act",
+          "url": "https://en.wikipedia.org/wiki/Computer_Fraud_and_Abuse_Act"
+        }
+      ]
+    },
+    {
+      "date": "1988-11-02",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "攻撃と脅威",
+      "title": "Morrisワーム、インターネットを初めて麻痺させる",
+      "summary": "コーネル大学の大学院生ロバート・モリスが放った自己増殖プログラムが、当時のインターネット接続機の約1割にあたる推定6000台を停止させた。悪意より実験目的だったとされるが、被害は全米に及んだ。\n\n**ネットワークそのものが攻撃の媒介になる**ことを初めて示した事件であり、対応組織CERT/CCの設立(防御と技術レイヤー)を直接生んだ。モリスはCFAAによる最初期の有罪判決を受け、法と技術の追いかけ合いが始まった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Morris worm",
+          "url": "https://en.wikipedia.org/wiki/Morris_worm"
+        }
+      ]
+    },
+    {
+      "date": "1991-06-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "防御と技術",
+      "title": "PGP公開、強い暗号が市民の手に",
+      "summary": "フィル・ジマーマンが公開鍵暗号を誰でも使えるメール暗号化ソフトPGPを無償公開した。軍事技術と扱われてきた強い暗号が、初めて一般市民の手に渡った。\n\n米政府は暗号の輸出規制違反としてジマーマンを捜査し、「暗号戦争」と呼ばれる政府と技術者の対立(法と国家レイヤー)が始まった。捜査は後に打ち切られ、この対立の構図は2013年のスノーデン事件を経て現在の暗号化論争まで続いている。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Pretty Good Privacy",
+          "url": "https://en.wikipedia.org/wiki/Pretty_Good_Privacy"
+        }
+      ]
+    },
+    {
+      "date": "2000-05-04",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "攻撃と脅威",
+      "title": "ILOVEYOUワームが世界数千万台に感染",
+      "summary": "「ILOVEYOU」という件名のメールで広がるワームがフィリピンから放たれ、数時間で世界の数千万台に感染した。被害総額は数十億ドルから100億ドル超と推計され、各国の政府機関や企業がメールシステムを停止した。\n\n人の心理を突いて開封させる手口は、後のフィッシングの原型といえる。作成者は当時のフィリピンに処罰法がなく訴追されず、各国にサイバー犯罪立法(法と国家レイヤー)を急がせる契機となった。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "感染台数・被害総額はいずれもセキュリティ企業等の推計で、集計方法により大きな幅がある。",
+      "sources": [
+        {
+          "title": "Wikipedia: ILOVEYOU",
+          "url": "https://en.wikipedia.org/wiki/ILOVEYOU"
+        }
+      ]
+    },
+    {
+      "date": "2007-04-27",
+      "precision": "day",
+      "end_date": "2007-05-18",
+      "type": "period",
+      "layer": "攻撃と脅威",
+      "title": "エストニアに大規模サイバー攻撃",
+      "summary": "ソ連兵士像の移設をめぐるロシアとの対立を背景に、エストニアの政府・銀行・報道機関のサイトが約3週間にわたり大規模なDDoS攻撃を受けた。電子政府先進国の行政サービスが断続的に停止した。\n\n**国家全体が攻撃対象になった**初の事例と位置づけられ、翌年NATOはタリンにサイバー防衛協力センターを設立(法と国家レイヤー)した。国家間攻撃の交戦規定を論じる「タリン・マニュアル」もここから生まれた。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "ロシア政府の関与は状況証拠から広く疑われているが、公式には立証されておらず帰属が確定していない。",
+      "sources": [
+        {
+          "title": "Wikipedia: 2007 cyberattacks on Estonia",
+          "url": "https://en.wikipedia.org/wiki/2007_cyberattacks_on_Estonia"
+        }
+      ]
+    },
+    {
+      "date": "2010-06-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "攻撃と脅威",
+      "title": "Stuxnet発見、物理設備を破壊したマルウェア",
+      "summary": "イランのウラン濃縮施設の遠心分離機を狙ったマルウェアStuxnetが発見された。制御システムに潜り込み、正常値を装いながら遠心分離機を破壊するという、前例のない精密さを持っていた。\n\n**コードが物理世界を破壊した**初の事例とされ、報道では米国とイスラエルの共同作戦と伝えられている。サイバー攻撃が外交・軍事の手段であることが公然の事実となり、各国の攻撃能力開発(法と国家レイヤー)が加速した。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "米国・イスラエルの関与は複数の報道と研究者の分析に基づくもので、両政府とも公式には認めていない。",
+      "sources": [
+        {
+          "title": "Wikipedia: Stuxnet",
+          "url": "https://en.wikipedia.org/wiki/Stuxnet"
+        }
+      ]
+    },
+    {
+      "date": "2013-06-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "法と国家",
+      "title": "スノーデンがNSAの大規模監視を告発",
+      "summary": "元NSA契約職員エドワード・スノーデンが、米政府による通信の大規模収集プログラムの内部文書を暴露した。同盟国の首脳や一般市民の通信までが収集対象だったことが明らかになった。\n\n敵は犯罪者だけでなく**自国の政府でもあり得る**という認識が広がり、通信の常時暗号化(防御と技術レイヤー)が業界標準へと一気に進んだ。プライバシーと安全保障のバランスをめぐる議論の前提を変えた告発である。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Edward Snowden",
+          "url": "https://en.wikipedia.org/wiki/Edward_Snowden"
+        }
+      ]
+    },
+    {
+      "date": "2014-11-06",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "法と国家",
+      "title": "日本でサイバーセキュリティ基本法が成立",
+      "summary": "サイバーセキュリティ政策の基本理念と国・重要インフラ事業者の責務を定める基本法が成立した。内閣サイバーセキュリティセンター(NISC)が法定組織となり、司令塔機能が整備された。\n\n政府機関への標的型攻撃の増加と2020年東京五輪の招致決定が立法を後押しした。翌年の日本年金機構の情報流出(攻撃と脅威レイヤー)は、この体制が最初に直面した大規模事案となり、法改正による監視対象の拡大につながった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "サイバーセキュリティ基本法(平成26年法律第104号)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2015-06-01",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "攻撃と脅威",
+      "title": "日本年金機構から125万件の年金情報が流出",
+      "summary": "日本年金機構が標的型メール攻撃を受け、氏名・基礎年金番号など約125万件の個人情報が流出したと発表した。職員が添付ファイルを開いたことを起点に、内部ネットワークへ侵入された。\n\n日本の公的機関を狙った標的型攻撃の深刻さを国民に知らしめた事案であり、成立直後のサイバーセキュリティ基本法(法と国家レイヤー)の下で初の大規模検証が行われた。マイナンバー制度開始前夜という時期も、行政のセキュリティ議論を加速させた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "日本年金機構: 不正アクセスによる情報流出事案について (2015年6月)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2015-12-03",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "防御と技術",
+      "title": "Let's Encryptが公開ベータ、常時HTTPS時代へ",
+      "summary": "無料でサーバー証明書を自動発行する認証局Let's Encryptが公開ベータを開始した。年間数万円の費用と煩雑な手続きを要した通信の暗号化が、誰でも無料で自動化できるようになった。\n\nスノーデンの告発(法と国家レイヤー)後に高まった暗号化の要請を、費用の壁を壊すことで実装した取り組みである。主要ブラウザの後押しもあり、ウェブの暗号化率は数年で過半から9割超へ達し、**平文の通信が例外になる**時代を作った。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Let's Encrypt",
+          "url": "https://en.wikipedia.org/wiki/Let%27s_Encrypt"
+        }
+      ]
+    },
+    {
+      "date": "2017-05-12",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "攻撃と脅威",
+      "title": "WannaCryが世界150か国を襲う",
+      "summary": "ランサムウェアWannaCryが150か国の推定20万台以上に感染し、英国では国民保健サービス(NHS)の病院が診療停止に追い込まれた。感染に使われた脆弱性攻撃ツールは、NSAから流出したものだった。\n\n国家の攻撃ツールが流出して犯罪者と他国に使われるという、攻撃能力の拡散(法と国家レイヤー)の危うさを示した。米英政府は後に北朝鮮の犯行と公式に非難し、身代金要求型の攻撃が医療という人命に関わる領域へ達した事件でもある。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: WannaCry ransomware attack",
+          "url": "https://en.wikipedia.org/wiki/WannaCry_ransomware_attack"
+        }
+      ]
+    },
+    {
+      "date": "2020-12-13",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "攻撃と脅威",
+      "title": "SolarWinds事件、供給網攻撃の衝撃",
+      "summary": "米SolarWinds社の運用管理ソフトの更新プログラムにバックドアが仕込まれ、同ソフトを導入する米政府機関や大手企業など約1万8000組織に配布されていたことが発覚した。米政府はロシア対外情報庁(SVR)の関与を指摘した。\n\n信頼して受け取る正規のアップデート自体が攻撃経路となるサプライチェーン攻撃の代表例となり、ソフトウェア部品表(SBOM)の義務化など翌年の米大統領令(法と国家レイヤー)に直結した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: 2020 United States federal government data breach",
+          "url": "https://en.wikipedia.org/wiki/2020_United_States_federal_government_data_breach"
+        }
+      ]
+    },
+    {
+      "date": "2021-05-07",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "攻撃と脅威",
+      "title": "Colonial Pipelineがランサムウェアで停止",
+      "summary": "米東海岸の燃料供給の約45%を担うパイプラインがランサムウェア攻撃を受け、5日間の操業停止に追い込まれた。ガソリンの買いだめが起き、複数の州が非常事態を宣言した。同社は身代金約440万ドルを支払ったと認めた。\n\n**ランサムウェアが社会インフラを人質に取った**事件として、サイバー犯罪を国家安全保障問題へ格上げした。犯行グループRaaS(サービス化された攻撃)の分業構造も注目され、米政府の対応(法と国家レイヤー)が一変する。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Colonial Pipeline ransomware attack",
+          "url": "https://en.wikipedia.org/wiki/Colonial_Pipeline_ransomware_attack"
+        }
+      ]
+    },
+    {
+      "date": "2021-05-12",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "法と国家",
+      "title": "米大統領令14028、ゼロトラストを国家方針に",
+      "summary": "バイデン大統領がサイバーセキュリティ強化の大統領令に署名した。連邦政府機関へのゼロトラスト・アーキテクチャ導入、多要素認証の義務化、ソフトウェア部品表(SBOM)の整備などを求める包括的な内容である。\n\nColonial Pipeline停止のわずか5日後、SolarWinds事件(攻撃と脅威レイヤー)の半年後という時期が示すとおり、相次ぐ実害への直接の応答だった。「境界の内側は信用する」という従来の防御思想の公式な転換点となった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Executive Order 14028: Improving the Nation's Cybersecurity (2021-05-12)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2022-02-24",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "法と国家",
+      "title": "ウクライナ侵攻、サイバー戦が実戦の一部に",
+      "summary": "ロシアのウクライナ全面侵攻の直前、ウクライナ軍も利用する衛星通信網Viasatがワイパー型マルウェアで妨害された。EUと米英は後にロシアの犯行と公式に認定した。\n\n物理侵攻とサイバー攻撃が統合されたハイブリッド戦が現実となった一方、ウクライナ側もIT義勇軍や民間クラウドへのデータ退避(防御と技術レイヤー)で対抗し、民間企業が戦争の当事者に近い役割を担う前例のない構図が生まれた。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "EU理事会: Viasatへのサイバー攻撃に関するロシア非難声明 (2022-05-10)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2023-07-01",
+      "precision": "month",
+      "end_date": null,
+      "type": "point",
+      "layer": "攻撃と脅威",
+      "title": "生成AIを悪用する攻撃ツールの出現が報告",
+      "summary": "フィッシングメール作成やマルウェア作成支援をうたう「WormGPT」「FraudGPT」などの生成AIツールが闇市場で売買されていると、セキュリティ研究者が相次いで報告した。\n\n流暢な文面のフィッシングを誰でも量産できるようになり、不自然な日本語で見分けるといった従来の注意喚起が通用しにくくなった。防御側も検知への生成AI活用(防御と技術レイヤー)を進めており、AIをめぐる攻防の入口にあたる。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "これらのツールの実際の性能と流通規模はセキュリティ企業の報告に基づくもので、誇大宣伝の可能性も指摘されている。",
+      "sources": [
+        {
+          "title": "SlashNext: WormGPT – The Generative AI Tool Cybercriminals Are Using (2023-07)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2024-02-20",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "法と国家",
+      "title": "国際共同捜査がLockBitの基盤を摘発",
+      "summary": "英国家犯罪対策庁と米FBIなど10か国の共同捜査「オペレーション・クロノス」が、世界最大級のランサムウェア組織LockBitの攻撃基盤を差し押さえ、リークサイトを押収したと発表した。\n\n匿名性を盾にしてきた攻撃組織に対し、国境を越えた法執行の連合で応じる段階に入ったことを示す。ただし組織は数日で活動再開を宣言しており、基盤の摘発と犯人の逮捕の間にある壁も同時に露呈した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "英国家犯罪対策庁(NCA): Operation Cronos発表 (2024-02-20)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2024-06-08",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "攻撃と脅威",
+      "title": "KADOKAWAへのランサムウェア攻撃でニコニコ動画停止",
+      "summary": "KADOKAWAグループがランサムウェア攻撃を受け、ニコニコ動画をはじめとするサービスが長期間停止した。出版・経理システムにも障害が及び、後に約25万人分の個人情報の流出が確認された。\n\n日本のコンテンツ産業を代表する企業が数か月にわたり機能不全に陥り、ランサムウェア被害の深刻さを日本社会に印象づけた。復旧過程の情報開示のあり方や、身代金交渉をめぐる報道の是非など、事後対応の論点(法と国家レイヤー)も多く残した。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "KADOKAWA: 不正アクセスに関するお知らせ・調査結果 (2024年)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2024-07-19",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "防御と技術",
+      "title": "CrowdStrike更新不具合で世界的システム障害",
+      "summary": "セキュリティ企業CrowdStrikeの検知ソフトの更新プログラム不具合により、世界のWindows端末約850万台がブルースクリーンで起動不能になった。空港・病院・銀行が停止し、航空便は数千便が欠航した。\n\n攻撃ではなく**防御ソフトそのものが単一障害点**となった皮肉な事件で、少数のベンダーへの依存が生む集中リスクを露呈した。カーネルへの深いアクセスを持つ防御手法の是非という、防御と技術レイヤーの設計論争を引き起こした。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "影響台数850万台はMicrosoftの推計であり、実際の影響範囲の全体像は確定していない。",
+      "sources": [
+        {
+          "title": "CrowdStrike: Falcon Content Update Remediation and Guidance Hub (2024-07)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2024-08-13",
+      "precision": "day",
+      "end_date": null,
+      "type": "point",
+      "layer": "防御と技術",
+      "title": "NISTがポスト量子暗号の最初の標準を発表",
+      "summary": "米国立標準技術研究所(NIST)が、量子コンピュータでも解読困難な暗号方式の最初の連邦標準3件(FIPS 203/204/205)を発表した。約8年の国際公募と評価を経た成果である。\n\n将来の量子計算機で現在の暗号が破られる前に、いま流れている通信を守るための移行が始まった。「今のうちに暗号文を集めて後で解読する」攻撃(攻撃と脅威レイヤー)への備えでもあり、防御が初めて攻撃の実現より先回りした事例といえる。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "NIST: Post-Quantum Cryptography Project",
+          "url": "https://csrc.nist.gov/projects/post-quantum-cryptography"
+        }
+      ]
+    }
+  ]
+}
