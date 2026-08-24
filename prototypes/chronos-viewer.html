@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Apple の歴史 — Chronos</title>
+<title>年表ビューア — Chronos</title>
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<meta property="og:title" content="Apple の歴史 — Chronos">
-<meta property="og:description" content="1976年の創業から現在まで。製品・経営・業界の3レイヤーで読み解くApple年表。">
+<meta property="og:title" content="年表ビューア — Chronos">
+<meta property="og:description" content="複数レイヤーで文脈を重ねて読む年表。">
 <link href="https://api.fontshare.com/v2/css?f[]=erode@300,400,500,600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -595,7 +595,7 @@
 <header class="header">
   <a href="#" class="header-brand" style="text-decoration:none"><img src="assets/chronos-logo.svg" alt="Chronos" style="height:40px;width:auto;display:block"></a>
   <div style="flex:1;text-align:center;padding:0 12px;overflow:hidden">
-    <div style="font-family:var(--f-display);font-size:14px;font-weight:500;color:var(--text-h);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Apple の歴史</div>
+    <div style="font-family:var(--f-display);font-size:14px;font-weight:500;color:var(--text-h);white-space:nowrap;overflow:hidden;text-overflow:ellipsis" id="hdrTitle"></div>
   </div>
   <button class="hdr-btn" onclick="openShare()">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
@@ -605,34 +605,23 @@
 
 <!-- Public Hero -->
 <div class="pub-hero">
-  <div class="pub-emoji">🍎</div>
-  <div class="pub-title">Apple の歴史</div>
+  <div class="pub-title" id="pubTitle">読み込み中…</div>
   <div class="pub-meta">
     <div class="pub-author">
-      <div class="pub-avatar">T</div>
-      <span>@toda</span>
+      <div class="pub-avatar">C</div>
+      <span id="pubAuthor">@chronos</span>
     </div>
-    <span class="pub-stat">14 events · 3 layers · 1976–2019</span>
-    <button class="like-btn" id="likeBtn" type="button" aria-pressed="false" onclick="toggleTimelineLike()" aria-label="この年表にいいね">
+    <span class="pub-stat" id="pubStat"></span>
+    <button class="like-btn" id="likeBtn" type="button" aria-pressed="false" onclick="toggleTimelineLike()" aria-label="この年表にいいね" style="display:none">
       <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-      <span class="like-count" id="likeCount">3,049</span>
+      <span class="like-count" id="likeCount"></span>
     </button>
   </div>
-  <div class="pub-desc">1976年の創業から現在まで。製品リリース・経営判断・業界動向の3つの視点で読み解く、Apple 43年の歩み。</div>
+  <div class="pub-desc" id="pubDesc"></div>
 </div>
 
 <!-- Layer Controls -->
-<div class="layer-controls">
-  <button class="layer-chip active" data-layer="product" onclick="toggleLayer('product',this)">
-    <span class="chip-dot" style="background:var(--c-blue)"></span>製品
-  </button>
-  <button class="layer-chip active" data-layer="management" onclick="toggleLayer('management',this)">
-    <span class="chip-dot" style="background:var(--c-pink)"></span>経営
-  </button>
-  <button class="layer-chip active" data-layer="industry" onclick="toggleLayer('industry',this)">
-    <span class="chip-dot" style="background:var(--c-teal)"></span>業界動向
-  </button>
-</div>
+<div class="layer-controls" id="layerControls"></div>
 
 <div class="legend">
   <div class="legend-item"><div class="legend-dot-icon"></div>点のイベント</div>
@@ -640,382 +629,7 @@
 </div>
 
 <div class="tl-wrap" id="timeline">
-
-  <!-- ======= 1970s–1980s ======= -->
-  <div class="tl-row visible" data-layers="all">
-    <div class="tl-lanes"></div>
-    <div class="connector-spacer"></div>
-    <div class="tl-axis"><div style="margin-top:28px"></div></div>
-    <div class="tl-content">
-      <div class="tl-year"><div class="tl-year-text">1970s</div><div class="tl-year-line"></div></div>
-    </div>
-  </div>
-
-  <!-- POINT: Apple設立 -->
-  <div class="tl-row" data-layers="management">
-    <div class="tl-lanes">
-      <div class="lane spacer" data-period="jobs-away"></div>
-      <div class="lane spacer" data-period="windows-era"></div>
-      <div class="lane spacer" data-period="cook-era"></div>
-    </div>
-    <div class="connector-spacer"></div>
-    <div class="tl-axis"><div class="axis-dot history"></div></div>
-    <div class="tl-content">
-      <div class="ev-card history" onclick="toggleEvAccordion(this)">
-        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
-        <div class="ev-date">1976.04</div>
-        <div class="ev-title">Apple Computer 設立</div>
-        <div class="ev-accordion-body">
-          <div class="ev-summary">Steve Jobs、Steve Wozniak、Ronald Wayneの3人がカリフォルニア州ロスアルトスのガレージで創業。Apple Iは666.66ドルで販売された。</div>
-          <div class="ev-tags"><span class="ev-tag history">経営</span><span class="ev-tag cred">✓ 確認済み</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- POINT: Macintosh -->
-  <div class="tl-row" data-layers="product">
-    <div class="tl-lanes">
-      <div class="lane spacer" data-period="jobs-away"></div>
-      <div class="lane spacer" data-period="windows-era"></div>
-      <div class="lane spacer" data-period="cook-era"></div>
-    </div>
-    <div class="connector-spacer"></div>
-    <div class="tl-axis"><div class="axis-dot art"></div></div>
-    <div class="tl-content">
-      <div class="ev-card art" onclick="toggleEvAccordion(this)">
-        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
-        <div class="ev-date">1984.01</div>
-        <div class="ev-title">Macintosh 発売</div>
-        <div class="ev-accordion-body">
-          <div class="ev-summary">GUIとマウスを搭載した革新的PC。リドリー・スコット監督の「1984」CMは広告史に残る名作。</div>
-          <div class="ev-tags"><span class="ev-tag art">製品</span><span class="ev-tag cred">✓ 確認済み</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PERIOD START: Jobs不在期 -->
-  <div class="tl-row" data-layers="management" data-period-id="jobs-away" data-period-action="start">
-    <div class="tl-lanes">
-      <div class="lane history start active" data-period="jobs-away"></div>
-      <div class="lane spacer" data-period="windows-era"></div>
-      <div class="lane spacer" data-period="cook-era"></div>
-    </div>
-    <div class="period-connector history"></div>
-    <div class="tl-axis"><div class="axis-period-mark start history"></div></div>
-    <div class="tl-content">
-      <div class="period-card-start history" onclick="toggleAccordion(this)">
-        <div class="period-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
-        <div class="ev-date">1985 — 1997</div>
-        <div class="ev-title">Steve Jobs 不在期</div>
-        <div class="period-bar-inline">
-          <span class="period-bar-year">1985</span>
-          <div class="period-bar-track history"><div class="period-bar-fill"></div></div>
-          <span class="period-bar-year">1997</span>
-        </div>
-        <div class="period-accordion-body">
-          <div class="ev-summary">取締役会との対立でJobsが退社。12年間で3人のCEOが交代し業績は低迷。NeXT買収を機にJobsが復帰するまで暗黒時代が続いた。</div>
-          <div class="ev-tags"><span class="ev-tag history">経営</span><span class="ev-tag period">期間 12年</span><span class="ev-tag cred">✓ 確認済み</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ======= 1990s ======= -->
-  <div class="tl-row visible" data-layers="all">
-    <div class="tl-lanes">
-      <div class="lane history active" data-period="jobs-away"></div>
-      <div class="lane spacer" data-period="windows-era"></div>
-      <div class="lane spacer" data-period="cook-era"></div>
-    </div>
-    <div class="connector-spacer"></div>
-    <div class="tl-axis"><div style="margin-top:28px"></div></div>
-    <div class="tl-content">
-      <div class="tl-year"><div class="tl-year-text">1990s</div><div class="tl-year-line"></div></div>
-    </div>
-  </div>
-
-  <!-- PERIOD START: Windows全盛期 -->
-  <div class="tl-row" data-layers="industry" data-period-id="windows-era" data-period-action="start">
-    <div class="tl-lanes">
-      <div class="lane history active" data-period="jobs-away"></div>
-      <div class="lane science start active" data-period="windows-era"></div>
-      <div class="lane spacer" data-period="cook-era"></div>
-    </div>
-    <div class="period-connector science"></div>
-    <div class="tl-axis"><div class="axis-period-mark start science"></div></div>
-    <div class="tl-content">
-      <div class="period-card-start science" onclick="toggleAccordion(this)">
-        <div class="period-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
-        <div class="ev-date">1995 — 2007</div>
-        <div class="ev-title">Windows / PC全盛期</div>
-        <div class="period-bar-inline">
-          <span class="period-bar-year">1995</span>
-          <div class="period-bar-track science"><div class="period-bar-fill"></div></div>
-          <span class="period-bar-year">2007</span>
-        </div>
-        <div class="period-accordion-body">
-          <div class="ev-summary">Windows 95の登場でMicrosoftがOS市場を独占。Appleのシェアは一桁台に低下し、iPhone登場まで劣勢が続いた。</div>
-          <div class="ev-tags"><span class="ev-tag science">業界動向</span><span class="ev-tag period">期間 12年</span><span class="ev-tag cred">✓ 確認済み</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PERIOD END: Jobs不在期 + POINT: Jobs復帰 -->
-  <div class="tl-row" data-layers="management" data-period-id="jobs-away" data-period-action="end">
-    <div class="tl-lanes">
-      <div class="lane history end active" data-period="jobs-away"></div>
-      <div class="lane science active" data-period="windows-era"></div>
-      <div class="lane spacer" data-period="cook-era"></div>
-    </div>
-    <div class="period-connector history end"></div>
-    <div class="tl-axis"><div class="axis-period-mark end history"></div></div>
-    <div class="tl-content">
-      <div class="ev-card history" onclick="toggleEvAccordion(this)">
-        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
-        <div class="ev-date">1997.07</div>
-        <div class="ev-title">Steve Jobs 復帰</div>
-        <div class="ev-accordion-body">
-          <div class="ev-summary">NeXTを4.29億ドルで買収したことを機に復帰。製品ラインを70%削減し「Think Different」でブランドを再構築。</div>
-          <div class="ev-tags"><span class="ev-tag history">経営</span><span class="ev-tag cred">✓ 確認済み</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- POINT: iMac G3 -->
-  <div class="tl-row" data-layers="product">
-    <div class="tl-lanes">
-      <div class="lane spacer" data-period="jobs-away"></div>
-      <div class="lane science active" data-period="windows-era"></div>
-      <div class="lane spacer" data-period="cook-era"></div>
-    </div>
-    <div class="connector-spacer"></div>
-    <div class="tl-axis"><div class="axis-dot art"></div></div>
-    <div class="tl-content">
-      <div class="ev-card art" onclick="toggleEvAccordion(this)">
-        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
-        <div class="ev-date">1998.08</div>
-        <div class="ev-title">iMac G3 発売</div>
-        <div class="ev-accordion-body">
-          <div class="ev-summary">ボンダイブルーの半透明筐体。Jony Iveのデザインが世界的注目を集めた、Jobs復帰後の最初のヒット。</div>
-          <div class="ev-tags"><span class="ev-tag art">製品</span><span class="ev-tag cred">✓ 確認済み</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ======= 2000s ======= -->
-  <div class="tl-row visible" data-layers="all">
-    <div class="tl-lanes">
-      <div class="lane spacer" data-period="jobs-away"></div>
-      <div class="lane science active" data-period="windows-era"></div>
-      <div class="lane spacer" data-period="cook-era"></div>
-    </div>
-    <div class="connector-spacer"></div>
-    <div class="tl-axis"><div style="margin-top:28px"></div></div>
-    <div class="tl-content">
-      <div class="tl-year"><div class="tl-year-text">2000s</div><div class="tl-year-line"></div></div>
-    </div>
-  </div>
-
-  <!-- POINT: iPod -->
-  <div class="tl-row" data-layers="product">
-    <div class="tl-lanes">
-      <div class="lane spacer" data-period="jobs-away"></div>
-      <div class="lane science active" data-period="windows-era"></div>
-      <div class="lane spacer" data-period="cook-era"></div>
-    </div>
-    <div class="connector-spacer"></div>
-    <div class="tl-axis"><div class="axis-dot art"></div></div>
-    <div class="tl-content">
-      <div class="ev-card art" onclick="toggleEvAccordion(this)">
-        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
-        <div class="ev-date">2001.10</div>
-        <div class="ev-title">iPod 発表</div>
-        <div class="ev-accordion-body">
-          <div class="ev-summary">「1000曲をポケットに」。iTunes Storeと連携し、音楽のデジタル販売モデルを確立した。</div>
-          <div class="ev-tags"><span class="ev-tag art">製品</span><span class="ev-tag cred">✓ 確認済み</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PERIOD END: Windows全盛期 + POINT: iPhone -->
-  <div class="tl-row" data-layers="product,industry" data-period-id="windows-era" data-period-action="end">
-    <div class="tl-lanes">
-      <div class="lane spacer" data-period="jobs-away"></div>
-      <div class="lane science end active" data-period="windows-era"></div>
-      <div class="lane spacer" data-period="cook-era"></div>
-    </div>
-    <div class="period-connector science end"></div>
-    <div class="tl-axis"><div class="axis-dot art"></div></div>
-    <div class="tl-content">
-      <div class="ev-card art" onclick="toggleEvAccordion(this)">
-        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
-        <div class="ev-date">2007.01</div>
-        <div class="ev-title">iPhone 発表</div>
-        <div class="ev-accordion-body">
-          <div class="ev-summary">Steve JobsがMacworld 2007で「電話を再発明する」と宣言。iPod＋電話＋インターネットの3機能を統合し、モバイル産業を変革した。</div>
-          <div class="ev-tags"><span class="ev-tag art">製品</span><span class="ev-tag cred">✓ 確認済み</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- POINT: App Store -->
-  <div class="tl-row" data-layers="industry">
-    <div class="tl-lanes">
-      <div class="lane spacer" data-period="jobs-away"></div>
-      <div class="lane spacer" data-period="windows-era"></div>
-      <div class="lane spacer" data-period="cook-era"></div>
-    </div>
-    <div class="connector-spacer"></div>
-    <div class="tl-axis"><div class="axis-dot science"></div></div>
-    <div class="tl-content">
-      <div class="ev-card science" onclick="toggleEvAccordion(this)">
-        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
-        <div class="ev-date">2008.07</div>
-        <div class="ev-title">App Store 開設</div>
-        <div class="ev-accordion-body">
-          <div class="ev-summary">サードパーティアプリ配信プラットフォーム。初年度で約10億DL。モバイルアプリ経済という巨大市場を創出した。</div>
-          <div class="ev-tags"><span class="ev-tag science">業界動向</span><span class="ev-tag cred">✓ 確認済み</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ======= 2010s ======= -->
-  <div class="tl-row visible" data-layers="all">
-    <div class="tl-lanes">
-      <div class="lane spacer" data-period="jobs-away"></div>
-      <div class="lane spacer" data-period="windows-era"></div>
-      <div class="lane spacer" data-period="cook-era"></div>
-    </div>
-    <div class="connector-spacer"></div>
-    <div class="tl-axis"><div style="margin-top:28px"></div></div>
-    <div class="tl-content">
-      <div class="tl-year"><div class="tl-year-text">2010s</div><div class="tl-year-line"></div></div>
-    </div>
-  </div>
-
-  <!-- POINT: iPad -->
-  <div class="tl-row" data-layers="product">
-    <div class="tl-lanes">
-      <div class="lane spacer" data-period="jobs-away"></div>
-      <div class="lane spacer" data-period="windows-era"></div>
-      <div class="lane spacer" data-period="cook-era"></div>
-    </div>
-    <div class="connector-spacer"></div>
-    <div class="tl-axis"><div class="axis-dot art"></div></div>
-    <div class="tl-content">
-      <div class="ev-card art" onclick="toggleEvAccordion(this)">
-        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
-        <div class="ev-date">2010.04</div>
-        <div class="ev-title">iPad 発表</div>
-        <div class="ev-accordion-body">
-          <div class="ev-summary">タブレットという新カテゴリを確立。教育・ビジネス・エンタメに広く普及した。</div>
-          <div class="ev-tags"><span class="ev-tag art">製品</span><span class="ev-tag cred">✓ 確認済み</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- POINT: Jobs逝去 -->
-  <div class="tl-row" data-layers="management">
-    <div class="tl-lanes">
-      <div class="lane spacer" data-period="jobs-away"></div>
-      <div class="lane spacer" data-period="windows-era"></div>
-      <div class="lane spacer" data-period="cook-era"></div>
-    </div>
-    <div class="connector-spacer"></div>
-    <div class="tl-axis"><div class="axis-dot history"></div></div>
-    <div class="tl-content">
-      <div class="ev-card history" onclick="toggleEvAccordion(this)">
-        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
-        <div class="ev-date">2011.10</div>
-        <div class="ev-title">Steve Jobs 逝去</div>
-        <div class="ev-accordion-body">
-          <div class="ev-summary">膵臓神経内分泌腫瘍により56歳で死去。Tim Cookが後任CEOに就任した。</div>
-          <div class="ev-tags"><span class="ev-tag history">経営</span><span class="ev-tag cred">✓ 確認済み</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PERIOD START: Tim Cook時代 -->
-  <div class="tl-row" data-layers="management" data-period-id="cook-era" data-period-action="start">
-    <div class="tl-lanes">
-      <div class="lane spacer" data-period="jobs-away"></div>
-      <div class="lane spacer" data-period="windows-era"></div>
-      <div class="lane history start active" data-period="cook-era"></div>
-    </div>
-    <div class="period-connector history"></div>
-    <div class="tl-axis"><div class="axis-period-mark start history"></div></div>
-    <div class="tl-content">
-      <div class="period-card-start history" onclick="toggleAccordion(this)">
-        <div class="period-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
-        <div class="ev-date">2011 — 現在</div>
-        <div class="ev-title">Tim Cook CEO時代</div>
-        <div class="period-bar-inline">
-          <span class="period-bar-year">2011</span>
-          <div class="period-bar-track history"><div class="period-bar-fill" style="width:85%"></div></div>
-          <span class="period-bar-year">現在</span>
-        </div>
-        <div class="period-accordion-body">
-          <div class="ev-summary">ハードウェア中心からサービス事業への転換を推進。Apple Watch、AirPods、Apple TV+で収益源を多角化。時価総額世界一を達成。</div>
-          <div class="ev-tags"><span class="ev-tag history">経営</span><span class="ev-tag period">期間 14年+</span><span class="ev-tag cred">✓ 確認済み</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- POINT: Apple Watch -->
-  <div class="tl-row" data-layers="product">
-    <div class="tl-lanes">
-      <div class="lane spacer" data-period="jobs-away"></div>
-      <div class="lane spacer" data-period="windows-era"></div>
-      <div class="lane history active" data-period="cook-era"></div>
-    </div>
-    <div class="connector-spacer"></div>
-    <div class="tl-axis"><div class="axis-dot art"></div></div>
-    <div class="tl-content">
-      <div class="ev-card art" onclick="toggleEvAccordion(this)">
-        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
-        <div class="ev-date">2015.04</div>
-        <div class="ev-title">Apple Watch 発売</div>
-        <div class="ev-accordion-body">
-          <div class="ev-summary">ウェアラブル市場に参入。心拍数モニタリングや転倒検出などヘルスケア機能が高く評価された。</div>
-          <div class="ev-tags"><span class="ev-tag art">製品</span><span class="ev-tag cred">✓ 確認済み</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- POINT: Apple TV+ -->
-  <div class="tl-row" data-layers="product">
-    <div class="tl-lanes">
-      <div class="lane spacer" data-period="jobs-away"></div>
-      <div class="lane spacer" data-period="windows-era"></div>
-      <div class="lane history active" data-period="cook-era"></div>
-    </div>
-    <div class="connector-spacer"></div>
-    <div class="tl-axis"><div class="axis-dot art"></div></div>
-    <div class="tl-content">
-      <div class="ev-card art" onclick="toggleEvAccordion(this)">
-        <div class="ev-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
-        <div class="ev-date">2019.11</div>
-        <div class="ev-title">Apple TV+ 開始</div>
-        <div class="ev-accordion-body">
-          <div class="ev-summary">オリジナルコンテンツ配信サービス。ハードからサービスへの戦略転換を象徴する事業。</div>
-          <div class="ev-tags"><span class="ev-tag art">製品</span><span class="ev-tag cred">✓ 確認済み</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  <div id="tlStatus" style="text-align:center;padding:70px 0;color:var(--text3);font-size:13px;font-family:var(--f-mono)">読み込み中…</div>
 </div>
 
 <!-- CTA Footer -->
@@ -1033,7 +647,7 @@
     <div class="share-handle"></div>
     <div class="share-title">この年表を共有</div>
     <div class="share-url">
-      <span class="share-url-text">https://chronos.app/t/apple-history-toda</span>
+      <span class="share-url-text" id="shareUrlText"></span>
       <button class="share-url-copy" onclick="copyURL()">コピー</button>
     </div>
     <div class="share-btns">
@@ -1048,156 +662,289 @@
 <div class="toast" id="toast">コピーしました</div>
 
 <script>
-const activeLayers = new Set(['product','management','industry']);
-// Map layer names to CSS classes
-const layerToClass = {product:'art', management:'history', industry:'science'};
-let activePeriod = null;
+// ───────── Chronos viewer — Supabase データ駆動版
+// 公開年表を publishable key(公開可・RLSでSELECTのみ)で読む。?slug= で年表を指定。
+const SUPA_URL = 'https://dtysaqogcvnklxtvciyn.supabase.co/rest/v1';
+const SUPA_KEY = 'sb_publishable_Xhyzh9YugRP8MCevtf_7YA_x1IumMC6';
+const DEFAULT_SLUG = 'tech-ai-revolution';
+const COLOR_HEX = {blue:'#5B9BD5',green:'#7BC67E',pink:'#D4849A',gold:'#C8B87E',purple:'#9E7EC8',teal:'#5BBCB4',orange:'#D4A05A'};
+const CRED = {verified:['✓ 検証済み','cred'],disputed:['諸説あり','cred-d'],unverified:['未検証','cred-u']};
 
-function toggleLayer(layer, chip) {
-  if (activeLayers.has(layer)) {
-    if (activeLayers.size <= 1) return;
-    activeLayers.delete(layer);
-    chip.classList.remove('active');
-  } else {
-    activeLayers.add(layer);
-    chip.classList.add('active');
+// 7色ぶんのレーン/カード/バー系スタイルを動的生成(art/history/science固定クラスの一般化)
+(function(){
+  let css = '.ev-tag.cred-d{background:rgba(212,160,90,0.1);color:var(--c-orange)}\n.ev-tag.cred-u{background:rgba(138,134,128,0.12);color:var(--text2)}\n';
+  css += '.ev-summary p+p{margin-top:8px}\n.ev-summary strong{color:var(--text-h);font-weight:500;background:linear-gradient(transparent 45%,rgba(200,168,126,0.42) 45%)}\n';
+  css += '.ev-note{margin-top:8px;font-size:11px;color:var(--c-orange);background:rgba(212,160,90,0.07);border-left:2px solid rgba(212,160,90,0.4);padding:6px 10px;border-radius:0 8px 8px 0;line-height:1.6}\n';
+  css += '.ev-note b{font-family:var(--f-mono);font-size:10px;font-weight:400;letter-spacing:0.1em;display:block;margin-bottom:2px}\n';
+  css += '.ev-srcs{margin-top:8px;border-top:1px solid var(--border);padding-top:7px;display:flex;flex-direction:column;gap:2px}\n';
+  css += '.ev-src{font-size:11px;color:var(--text3);line-height:1.6}\n.ev-src a{color:var(--text2);text-decoration:underline;text-decoration-color:var(--border2);text-underline-offset:2px;word-break:break-all}\n';
+  css += '.ev-card .ev-accordion-body,.period-card-start .period-accordion-body{transition:max-height 0.5s cubic-bezier(0.16,1,0.3,1),opacity 0.3s ease}\n';
+  css += '.ev-card.expanded .ev-accordion-body,.period-card-start.expanded .period-accordion-body{max-height:1200px}\n';
+  for (const [name, hex] of Object.entries(COLOR_HEX)) {
+    const rgb = [parseInt(hex.slice(1,3),16), parseInt(hex.slice(3,5),16), parseInt(hex.slice(5,7),16)].join(',');
+    const dim = `rgba(${rgb},0.12)`, bar = `rgba(${rgb},0.22)`;
+    css += `.lane.c-${name}{background:${bar}}\n`;
+    css += `.axis-dot.c-${name}{background:${hex};box-shadow:0 0 0 3px ${dim}}\n`;
+    css += `.axis-period-mark.start.c-${name}{background:${hex}}\n.axis-period-mark.end.c-${name}{background:${hex};opacity:0.4}\n`;
+    css += `.period-connector.c-${name}::before{border-color:${hex};opacity:0.45}\n`;
+    css += `.ev-card.c-${name}::before,.period-card-start.c-${name}::before{background:${hex}}\n`;
+    css += `.ev-tag.c-${name}{background:${dim};color:${hex}}\n`;
+    css += `.period-bar-track.c-${name}{background:${dim}}\n.period-bar-track.c-${name} .period-bar-fill{background:${hex};opacity:0.45}\n`;
+    css += `.period-label-end .pl-bar.c-${name}{background:${hex}}\n`;
+    css += `.layer-chip.c-${name}.active{border-color:${hex};background:${dim};color:${hex}}\n`;
   }
-  clearPeriodHighlight();
-  updateVisibility();
-}
-
-function updateVisibility() {
-  document.querySelectorAll('.tl-row').forEach(row => {
-    const layers = row.dataset.layers;
-    if (layers === 'all') return;
-    const rowLayers = layers.split(',').map(s=>s.trim());
-    const visible = rowLayers.some(l => activeLayers.has(l));
-    if (visible) { row.classList.remove('hidden'); row.classList.add('visible'); }
-    else { row.classList.add('hidden'); row.classList.remove('visible'); }
-  });
-  document.querySelectorAll('.lane').forEach(lane => {
-    if (lane.classList.contains('spacer')) return;
-    const lc = ['art','history','science'].find(c => lane.classList.contains(c));
-    // Map CSS class back to layer name
-    const classToLayer = {art:'product', history:'management', science:'industry'};
-    const layerName = classToLayer[lc];
-    if (layerName && !activeLayers.has(layerName)) { lane.classList.remove('active'); lane.classList.add('inactive'); }
-    else { lane.classList.add('active'); lane.classList.remove('inactive'); }
-  });
-}
-
-function highlightPeriod(periodId) {
-  const wrap = document.getElementById('timeline');
-  if (activePeriod === periodId) { clearPeriodHighlight(); return; }
-  activePeriod = periodId;
-  wrap.classList.add('has-highlight');
-  document.querySelectorAll('.period-highlight').forEach(el => el.classList.remove('period-highlight'));
-  document.querySelectorAll('.lane-glow').forEach(el => el.classList.remove('lane-glow'));
-  document.querySelectorAll('.tl-row').forEach(row => {
-    const lanes = row.querySelectorAll('.lane[data-period="'+periodId+'"]:not(.spacer)');
-    const isPeriodRow = row.dataset.periodId === periodId;
-    if (lanes.length > 0 || isPeriodRow) {
-      row.classList.add('period-highlight');
-      lanes.forEach(l => l.classList.add('lane-glow'));
-    }
-  });
-}
-function clearPeriodHighlight() {
-  activePeriod = null;
-  const wrap = document.getElementById('timeline');
-  wrap.classList.remove('has-highlight');
-  document.querySelectorAll('.period-highlight').forEach(el => el.classList.remove('period-highlight'));
-  document.querySelectorAll('.lane-glow').forEach(el => el.classList.remove('lane-glow'));
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.lane:not(.spacer)').forEach(lane => {
-    lane.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const periodId = lane.dataset.period;
-      if (periodId) highlightPeriod(periodId);
-    });
-  });
-  document.addEventListener('click', (e) => {
-    if (activePeriod && !e.target.closest('.lane:not(.spacer)')) clearPeriodHighlight();
-  });
-});
-
-function toggleAccordion(card) { card.classList.toggle('expanded'); }
-function toggleEvAccordion(card) { card.classList.toggle('expanded'); }
-
-// Stagger animation
-window.addEventListener('DOMContentLoaded', () => {
-  const rows = document.querySelectorAll('.tl-row');
-  rows.forEach((row, i) => {
-    row.style.transitionDelay = (0.06 * i) + 's';
-    setTimeout(() => row.classList.add('visible'), 80);
-  });
-});
-
-// Center-focus highlight
-(function() {
-  let currentFocus = null;
-  const allCards = document.querySelectorAll('.ev-card, .period-card-start');
-  function tick() {
-    const vh = Math.min(window.innerHeight||Infinity,document.documentElement.clientHeight||Infinity);
-    const center = vh * 0.42;
-    let closest=null, closestDist=Infinity;
-    allCards.forEach(card => {
-      const rect = card.getBoundingClientRect();
-      if (rect.bottom < 0 || rect.top > vh) return;
-      const dist = Math.abs(rect.top + rect.height/2 - center);
-      if (dist < closestDist) { closestDist=dist; closest=card; }
-    });
-    if (closest !== currentFocus) {
-      if (currentFocus) currentFocus.classList.remove('center-focus');
-      if (closest) closest.classList.add('center-focus');
-      currentFocus = closest;
-    }
-  }
-  setInterval(tick, 120);
-  ['scroll','touchmove','touchend'].forEach(evt => {
-    window.addEventListener(evt, tick, {passive:true, capture:true});
-    document.addEventListener(evt, tick, {passive:true, capture:true});
-  });
-  tick(); setTimeout(tick,100); setTimeout(tick,500);
+  const st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
 })();
 
-// Share
-function openShare(){document.getElementById('shareOverlay').classList.add('open');document.body.style.overflow='hidden';}
-function closeShare(){document.getElementById('shareOverlay').classList.remove('open');document.body.style.overflow='';}
-function copyURL(){const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000);}
-// Escキーで共有シートを閉じる（オーバーレイクリックはHTML側のonclickで対応済み）
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && document.getElementById('shareOverlay').classList.contains('open')) closeShare();
-});
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const md = s => '<p>' + esc(s).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>').replace(/\n{2,}/g, '</p><p>') + '</p>';
 
-// ===== Like (Explore v3と共通のlocalStorageスキーマ) =====
-const LIKE_KEY = 'chronos_likes_v1';
-const TIMELINE_ID = 'apple-history';
-const LIKE_BASE = 3049;
-
-function getLikedIds() {
-  try {
-    const v = JSON.parse(localStorage.getItem(LIKE_KEY));
-    return Array.isArray(v) ? v : [];
-  } catch (e) { return []; }
+// "0044-03-15 BC" / "2020-05-28" → {y(負=BC), m, d, key}
+function parseDate(str){
+  const bc = /\sBC$/.test(str);
+  const [y, m, d] = str.replace(/\sBC$/, '').split('-').map(Number);
+  const yy = bc ? -y : y;
+  return {y: yy, m, d, key: yy * 10000 + m * 100 + d};
 }
-function renderLike() {
-  const liked = getLikedIds().includes(TIMELINE_ID);
+const yearLabel = y => y < 0 ? `前${-y}` : String(y);
+function fmtDate(dateStr, precision){
+  const p = parseDate(dateStr);
+  const y = yearLabel(p.y);
+  if (precision === 'year') return y;
+  const mm = String(p.m).padStart(2, '0');
+  if (precision === 'month') return `${y}.${mm}`;
+  return `${y}.${mm}.${String(p.d).padStart(2, '0')}`;
+}
+
+let TL = null;            // 取得した年表
+let activeLayers = new Set();
+
+async function loadTimeline(){
+  const slug = new URLSearchParams(location.search).get('slug') || DEFAULT_SLUG;
+  const sel = 'slug,title,description,category,start_year,end_year,like_count,'
+    + 'layers(id,name,color,position),'
+    + 'events(id,event_date,end_date,date_precision,event_type,title,summary,credibility,credibility_note,layer_id,position,event_sources(title,url))';
+  try {
+    const res = await fetch(`${SUPA_URL}/timelines?slug=eq.${encodeURIComponent(slug)}&select=${encodeURIComponent(sel)}&limit=1`,
+      {headers: {apikey: SUPA_KEY, Authorization: `Bearer ${SUPA_KEY}`}});
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const rows = await res.json();
+    if (!rows.length) throw new Error('not found');
+    TL = rows[0];
+  } catch (err) {
+    document.getElementById('tlStatus').innerHTML =
+      `年表を読み込めませんでした（${esc(err.message)}）<br><br>` +
+      `<a href="?slug=${esc(DEFAULT_SLUG)}" style="color:var(--accent)">サンプル年表を開く</a>`;
+    document.getElementById('pubTitle').textContent = '年表が見つかりません';
+    return;
+  }
+  render();
+}
+
+function render(){
+  const t = TL;
+  t.layers.sort((a,b) => a.position - b.position);
+  t.events.forEach(e => { e._d = parseDate(e.event_date); e._e = e.end_date ? parseDate(e.end_date) : null; });
+  t.events.sort((a,b) => a._d.key - b._d.key || a.position - b.position);
+  const layerById = Object.fromEntries(t.layers.map(l => [l.id, l]));
+
+  // ヘッダー・ヒーロー
+  document.title = `${t.title} — Chronos`;
+  document.getElementById('hdrTitle').textContent = t.title;
+  document.getElementById('pubTitle').textContent = t.title;
+  document.getElementById('pubDesc').textContent = t.description;
+  const era = `${yearLabel(t.start_year)}–${yearLabel(t.end_year)}`;
+  document.getElementById('pubStat').textContent = `${t.events.length} events · ${t.layers.length} layers · ${era}`;
+  document.getElementById('shareUrlText').textContent = location.href;
+
+  // レイヤーチップ
+  activeLayers = new Set(t.layers.map(l => l.id));
+  document.getElementById('layerControls').innerHTML = t.layers.map(l =>
+    `<button class="layer-chip c-${l.color} active" data-layer="${l.id}" onclick="toggleLayer('${l.id}',this)">` +
+    `<span class="chip-dot" style="background:${COLOR_HEX[l.color]}"></span>${esc(l.name)}</button>`).join('');
+
+  // 期間イベント(レーン割当・時系列順)
+  const periods = t.events.filter(e => e.event_type === 'period' && e._e).map((e, i) => ({ev: e, pid: 'p' + i}));
+
+  // 描画アイテム列: 点/期間開始(=イベント) + 期間終了マーカー を日付順に混ぜる
+  const items = [];
+  t.events.forEach(e => items.push({kind: e.event_type === 'period' && e._e ? 'pstart' : 'point', ev: e, key: e._d.key}));
+  periods.forEach(p => items.push({kind: 'pend', ev: p.ev, pid: p.pid, key: p.ev._e.key + 0.5}));
+  items.sort((a,b) => a.key - b.key);
+
+  const laneState = {}; periods.forEach(p => laneState[p.pid] = 'before'); // before | active | after
+  const lanesHTML = (opts = {}) => periods.map(p => {
+    const st = laneState[p.pid];
+    if (st !== 'active' && opts.startPid !== p.pid && opts.endPid !== p.pid)
+      return `<div class="lane spacer" data-period="${p.pid}"></div>`;
+    const color = (layerById[p.ev.layer_id] || {}).color || 'gold';
+    const cap = opts.startPid === p.pid ? ' start' : opts.endPid === p.pid ? ' end' : '';
+    return `<div class="lane c-${color}${cap} active" data-period="${p.pid}"></div>`;
+  }).join('');
+
+  let html = '', lastYear = null;
+  const pidOf = ev => (periods.find(p => p.ev === ev) || {}).pid;
+  for (const it of items) {
+    const ev = it.ev;
+    const layer = layerById[ev.layer_id] || {name: '', color: 'gold', id: ''};
+    const y = it.kind === 'pend' ? ev._e.y : ev._d.y;
+    if (it.kind !== 'pend' && y !== lastYear) {
+      lastYear = y;
+      html += `<div class="tl-row" data-layers="all"><div class="tl-lanes">${lanesHTML()}</div><div class="connector-spacer"></div>` +
+        `<div class="tl-axis"><div style="margin-top:28px"></div></div>` +
+        `<div class="tl-content"><div class="tl-year"><div class="tl-year-text">${yearLabel(y)}</div><div class="tl-year-line"></div></div></div></div>`;
+    }
+    const caret = '<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>';
+    const credTag = CRED[ev.credibility] || CRED.unverified;
+    const note = ev.credibility_note ? `<div class="ev-note"><b>${ev.credibility === 'disputed' ? '諸説ありの理由' : '未検証の理由'}</b>${esc(ev.credibility_note)}</div>` : '';
+    const srcs = (ev.event_sources || []).map(sc => sc.url
+      ? `<div class="ev-src">出典: <a href="${esc(sc.url)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">${esc(sc.title)}</a></div>`
+      : `<div class="ev-src">出典: ${esc(sc.title)}</div>`).join('');
+    const body = `<div class="ev-summary">${md(ev.summary)}</div>${note}${srcs ? `<div class="ev-srcs">${srcs}</div>` : ''}` +
+      `<div class="ev-tags"><span class="ev-tag c-${layer.color}">${esc(layer.name)}</span>%%PERIODTAG%%<span class="ev-tag ${credTag[1]}">${credTag[0]}</span></div>`;
+
+    if (it.kind === 'point') {
+      html += `<div class="tl-row" data-layers="${layer.id}"><div class="tl-lanes">${lanesHTML()}</div><div class="connector-spacer"></div>` +
+        `<div class="tl-axis"><div class="axis-dot c-${layer.color}"></div></div>` +
+        `<div class="tl-content"><div class="ev-card c-${layer.color}" onclick="toggleEvAccordion(this)">` +
+        `<div class="ev-caret">${caret}</div><div class="ev-date">${fmtDate(ev.event_date, ev.date_precision)}</div>` +
+        `<div class="ev-title">${esc(ev.title)}</div><div class="ev-accordion-body">${body.replace('%%PERIODTAG%%','')}</div></div></div></div>`;
+    } else if (it.kind === 'pstart') {
+      const pid = pidOf(ev); laneState[pid] = 'active';
+      const years = Math.max(1, ev._e.y - ev._d.y);
+      html += `<div class="tl-row" data-layers="${layer.id}" data-period-id="${pid}" data-period-action="start">` +
+        `<div class="tl-lanes">${lanesHTML({startPid: pid})}</div><div class="period-connector c-${layer.color}"></div>` +
+        `<div class="tl-axis"><div class="axis-period-mark start c-${layer.color}"></div></div>` +
+        `<div class="tl-content"><div class="period-card-start c-${layer.color}" onclick="toggleAccordion(this)">` +
+        `<div class="period-caret">${caret}</div><div class="ev-date">${fmtDate(ev.event_date, ev.date_precision)} — ${fmtDate(ev.end_date, ev.date_precision)}</div>` +
+        `<div class="ev-title">${esc(ev.title)}</div>` +
+        `<div class="period-bar-inline"><span class="period-bar-year">${yearLabel(ev._d.y)}</span><div class="period-bar-track c-${layer.color}"><div class="period-bar-fill"></div></div><span class="period-bar-year">${yearLabel(ev._e.y)}</span></div>` +
+        `<div class="period-accordion-body">${body.replace('%%PERIODTAG%%', `<span class="ev-tag period">期間 ${years}年</span>`)}</div></div></div></div>`;
+    } else { // pend
+      const pid = it.pid;
+      html += `<div class="tl-row" data-layers="${layer.id}" data-period-id="${pid}" data-period-action="end">` +
+        `<div class="tl-lanes">${lanesHTML({endPid: pid})}</div><div class="period-connector c-${layer.color} end"></div>` +
+        `<div class="tl-axis"><div class="axis-period-mark end c-${layer.color}"></div></div>` +
+        `<div class="tl-content"><div class="period-label-end"><div class="pl-bar c-${layer.color}"></div>` +
+        `<div class="pl-text">${esc(ev.title)}<span class="pl-end-note">ここまで（${yearLabel(ev._e.y)}）</span></div></div></div></div>`;
+      laneState[pid] = 'after';
+    }
+  }
+  document.getElementById('timeline').innerHTML = html;
+
+  setupReveal();
+  setupLaneClicks();
+  setupCenterFocus();
+  renderLike();
+  document.getElementById('likeBtn').style.display = '';
+}
+
+// ── レイヤー表示切替
+function toggleLayer(layerId, chip){
+  if (activeLayers.has(layerId)) { if (activeLayers.size === 1) return; activeLayers.delete(layerId); chip.classList.remove('active'); }
+  else { activeLayers.add(layerId); chip.classList.add('active'); }
+  updateVisibility();
+}
+function updateVisibility(){
+  document.querySelectorAll('.tl-row').forEach(row => {
+    const l = row.dataset.layers;
+    row.classList.toggle('hidden', !(l === 'all' || activeLayers.has(l)));
+  });
+}
+
+// ── 期間ハイライト
+let highlightedPeriod = null;
+function highlightPeriod(pid){
+  const wrap = document.getElementById('timeline');
+  wrap.classList.add('has-highlight');
+  document.querySelectorAll('.tl-row').forEach(row => {
+    const hasLane = row.querySelector(`.lane[data-period="${pid}"]:not(.spacer)`);
+    row.classList.toggle('period-highlight', !!hasLane || row.dataset.periodId === pid);
+  });
+  document.querySelectorAll(`.lane[data-period="${pid}"]:not(.spacer)`).forEach(l => l.classList.add('lane-glow'));
+}
+function clearPeriodHighlight(){
+  document.getElementById('timeline').classList.remove('has-highlight');
+  document.querySelectorAll('.period-highlight').forEach(r => r.classList.remove('period-highlight'));
+  document.querySelectorAll('.lane-glow').forEach(l => l.classList.remove('lane-glow'));
+  highlightedPeriod = null;
+}
+function setupLaneClicks(){
+  document.querySelectorAll('.lane:not(.spacer)').forEach(lane => {
+    lane.addEventListener('click', e => {
+      e.stopPropagation();
+      const pid = lane.dataset.period;
+      if (highlightedPeriod === pid) { clearPeriodHighlight(); return; }
+      clearPeriodHighlight(); highlightedPeriod = pid; highlightPeriod(pid);
+    });
+  });
+  document.addEventListener('click', e => { if (highlightedPeriod && !e.target.closest('.lane')) clearPeriodHighlight(); });
+}
+
+// ── アコーディオン
+function toggleAccordion(card){ card.classList.toggle('expanded'); }
+function toggleEvAccordion(card){ card.classList.toggle('expanded'); }
+
+// ── スクロールリビール
+function setupReveal(){
+  const rows = document.querySelectorAll('.tl-row');
+  const io = new IntersectionObserver(es => es.forEach(en => {
+    if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); }
+  }), {rootMargin: '0px 0px -8% 0px'});
+  rows.forEach(r => io.observe(r));
+}
+
+// ── 中央フォーカス
+function setupCenterFocus(){
+  const allCards = document.querySelectorAll('.ev-card, .period-card-start');
+  function tick(){
+    const vh = Math.min(window.innerHeight || Infinity, document.documentElement.clientHeight || Infinity);
+    const center = vh * 0.42;
+    let best = null, bestDist = Infinity;
+    allCards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      if (!rect.height) return;
+      const dist = Math.abs(rect.top + rect.height / 2 - center);
+      if (dist < bestDist) { bestDist = dist; best = card; }
+    });
+    allCards.forEach(c => c.classList.toggle('center-focus', c === best && bestDist < vh * 0.25));
+  }
+  let raf = null;
+  addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(() => { raf = null; tick(); }); }, {passive: true});
+  tick();
+}
+
+// ── 共有
+function openShare(){ document.getElementById('shareOverlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeShare(){ document.getElementById('shareOverlay').classList.remove('open'); document.body.style.overflow = ''; }
+function copyURL(){
+  navigator.clipboard && navigator.clipboard.writeText(location.href).catch(() => {});
+  const t = document.getElementById('toast');
+  t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+// ── いいね(localStorageで画面間連携: chronos_likes_v1)
+const LIKE_KEY = 'chronos_likes_v1';
+function likeId(){ return TL ? TL.slug : ''; }
+function getLikedIds(){
+  try { const v = JSON.parse(localStorage.getItem(LIKE_KEY)); return Array.isArray(v) ? v : []; } catch { return []; }
+}
+function renderLike(){
+  const liked = getLikedIds().includes(likeId());
   const btn = document.getElementById('likeBtn');
   btn.classList.toggle('liked', liked);
-  btn.setAttribute('aria-pressed', liked ? 'true' : 'false');
-  document.getElementById('likeCount').textContent = (LIKE_BASE + (liked ? 1 : 0)).toLocaleString('ja-JP');
+  btn.setAttribute('aria-pressed', String(liked));
+  document.getElementById('likeCount').textContent = ((TL.like_count || 0) + (liked ? 1 : 0)).toLocaleString();
 }
-function toggleTimelineLike() {
+function toggleTimelineLike(){
   let ids = getLikedIds();
-  if (ids.includes(TIMELINE_ID)) ids = ids.filter(id => id !== TIMELINE_ID);
-  else ids.push(TIMELINE_ID);
+  if (ids.includes(likeId())) ids = ids.filter(id => id !== likeId());
+  else ids.push(likeId());
   localStorage.setItem(LIKE_KEY, JSON.stringify(ids));
   renderLike();
 }
-renderLike();
+
+loadTimeline();
 </script>
 </body>
 </html>

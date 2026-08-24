@@ -15,6 +15,7 @@
 ## ディレクトリ構成
 
 - `prototypes/` — 単一HTMLのUIプロトタイプ（各画面が独立して動作）
+  - **DB接続済み（2026-08-25）**: viewer=`?slug=`でSupabase RESTから実データ描画（紀元前対応・信憑性バッジ・出典・強調/段落描画・レイヤー7色可変）/ explore=実90本をフィード表示（取得失敗時は旧モックにフォールバック）/ explore・profileのカードは `chronos-viewer.html?slug=` にリンク。publishable keyは公開可のため埋め込みOK（RLSで公開年表のSELECTのみ）
   - **現行版（2026-07-31確定）**: Explore=`chronos-explore.html`(v2・作業対象) / 閲覧の正=`chronos-viewer.html`（作成者ビューは「viewer+編集モード」方針、独立画面なし） / LP=`chronos-lp-v4.html`（ゼロから再設計、v3は参照用） / オンボーディング=`chronos-onboarding-v2.html` / 主要画面=`chronos-screens.html`
   - **アーカイブ**: `prototypes/archive/`（Explore写真カバー旧案2本）, chronos.html, chronos-v2, chronos-v3-multilayer, period-lanes, period-ui, onboarding(v1), lp, lp-v2, lp-v3, lp-brand, lp-launch, logo系2種, font系2種（参照時は歴史資料として扱う）
 - `assets/chronos-logo.svg` — **確定ロゴ原本**（グラデーション円シンボル+白ワードマーク、5.7MB）
