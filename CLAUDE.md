@@ -56,6 +56,13 @@ spec-v2-addendum の公開系UIを実装済み:
 - 実装時は `docs/legal/implementation-requirements.md`（64要件）を spec-v2-addendum と併読。多法域版は `docs/legal/archive/multi-jurisdiction/`
 - 残TODO: 会社情報（登記商号・代表者・番地・電話）、責任上限額の可否、日本の弁護士レビュー
 
+## シードコンテンツ — 全90本完成（2026-08-25）
+
+- `supabase/seed/data/*.json` に90本（explore TITLESの6カテゴリ×15、1,719イベント）。フォーマットは `supabase/seed/CONTENT_SPEC.md`（統合本文2段落・`**強調**`4〜8箇所/本・detail廃止）、生成手順は `supabase/seed/GENERATION_BRIEF.md`
+- `node supabase/seed/build-seed.mjs` → `supabase/seed.sql`（Supabase SQL Editorで schema.sql の後に実行。冪等）。紀元前はPostgresの `BC` 日付形式・start_year負数（viewer実装時に「前◯◯年」表示対応が必要）
+- レビュー用ページ: `prototypes/chronos-seed-review.html`（`node supabase/seed/build-review.mjs` で再生成。カバー写真はexploreのPHOTO_POOLをビルド時抽出）
+- 各生成エージェントの「自信の低い箇所」リストはセッション記録にあり。公開前の人手チェック推奨（日付精度・報道ベース数値・未実査URL）
+
 ## 次の実装候補
 
 - Next.js + Supabase + Cloudflare の雛形構築（再実装方針）
