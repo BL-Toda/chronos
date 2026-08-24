@@ -93,6 +93,8 @@ h1.page-title{font-family:var(--f-d);font-weight:500;font-size:clamp(24px,4vw,34
 .cred.unverified{color:var(--text3);border-color:rgba(154,149,144,0.35)}
 .ev-title{font-size:17px;font-weight:500;color:var(--text-h);line-height:1.55;padding-bottom:10px;border-bottom:1px solid var(--border);margin-bottom:12px}
 .ev-summary{font-size:15px;color:var(--text);line-height:1.75;margin-bottom:8px}
+.ev-summary strong,.ev-detail strong{color:var(--text-h);font-weight:500;background:linear-gradient(transparent 62%,var(--accent-med) 62%)}
+.ev-summary p+p,.ev-detail p+p{margin-top:10px}
 .ev-detail{font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:8px}
 .ev-note{font-size:13px;color:#D4A05A;background:rgba(212,160,90,0.07);border-left:2px solid rgba(212,160,90,0.4);padding:7px 12px;border-radius:0 8px 8px 0;margin-bottom:8px;line-height:1.7}
 .ev-srcs{display:flex;flex-direction:column;gap:3px;border-top:1px solid var(--border);padding-top:8px;margin-top:4px}
@@ -142,6 +144,7 @@ const CAT = {
 const COLOR = {blue:"var(--c-blue)",green:"var(--c-green)",pink:"var(--c-pink)",gold:"var(--c-gold)",purple:"var(--c-purple)",teal:"var(--c-teal)",orange:"var(--c-orange)"};
 const CRED = {verified:"検証済み",disputed:"諸説あり",unverified:"未検証"};
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const md = s => "<p>" + esc(s).replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>").replace(/\n{2,}/g, "</p><p>") + "</p>";
 
 function fmtDate(e){
   const [y,m,d] = e.date.split("-");
@@ -187,7 +190,7 @@ function renderDetail(t){
     const y = e.date.slice(0,4);
     if(y !== lastYear){ evs += `<div class="year-mark">${y}</div>`; lastYear = y; }
     const note = e.credibility_note ? `<div class="ev-note">${esc(e.credibility_note)}</div>` : "";
-    const detail = e.detail ? `<div class="ev-detail">${esc(e.detail)}</div>` : "";
+    const detail = e.detail ? `<div class="ev-detail">${md(e.detail)}</div>` : "";
     const srcs = (e.sources || []).filter(s => s && s.title).map(s =>
       s.url ? `<div class="ev-src">出典: <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.title)}</a></div>`
             : `<div class="ev-src">出典: ${esc(s.title)}</div>`).join("");
@@ -200,7 +203,7 @@ function renderDetail(t){
           <span class="cred ${e.credibility}">${CRED[e.credibility] || esc(e.credibility)}</span>
         </div>
         <div class="ev-title">${esc(e.title)}</div>
-        <div class="ev-summary">${esc(e.summary)}</div>
+        <div class="ev-summary">${md(e.summary)}</div>
         ${detail}${note}${srcs ? `<div class="ev-srcs">${srcs}</div>` : ""}
       </div>
     </div>`;

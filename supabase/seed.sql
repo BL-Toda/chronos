@@ -1985,121 +1985,181 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '技術'),
-          '2012-10-01', null, 'month', 'point', 'AlexNetがILSVRCで圧勝、深層学習ブームの起点', 'トロント大学のKrizhevsky、Sutskever、HintonによるGPU学習の深層CNNが、画像認識コンペILSVRCで従来手法を大差で破り、深層学習の実用性を示した。以後の研究資源が深層学習へ集中する契機となり、GPUを学習に用いる手法もここで定着。後年のNVIDIAの資本市場での躍進(企業と資本レイヤー)の伏線となる、生成AI以前の「下地」にあたる出来事。', null,
+          '2012-10-01', null, 'month', 'point', 'AlexNetがILSVRCで圧勝、深層学習ブームの起点', 'トロント大学のKrizhevsky、Sutskever、HintonによるGPU学習の深層CNNが、画像認識コンペILSVRCで従来手法を大差で破り、深層学習の実用性を示した。
+
+以後の研究資源が深層学習へ集中する契機となり、GPUを学習に用いる手法もここで定着。後年のNVIDIAの資本市場での躍進(企業と資本レイヤー)の伏線となる、生成AI以前の「下地」にあたる出来事。', null,
           'verified', null, 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: AlexNet', 'https://en.wikipedia.org/wiki/AlexNet')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '技術'),
-          '2017-06-12', null, 'day', 'point', 'Transformer論文公開、大規模言語モデルの基盤に', 'Googleの研究者らが再帰構造を捨てAttentionのみで系列変換を行うTransformerを提案。並列学習に適した構造により、モデルとデータの規模を拡大するほど性能が伸びる「スケーリング」の道を開き、GPTシリーズもBERTもこの構造の上に成立する。この時点で産業界のAIはまだ研究投資の対象であり、資本市場や規制当局の主要関心事ではなかった点が、5年後との対比として重要である。', null,
+          '2017-06-12', null, 'day', 'point', 'Transformer論文公開、大規模言語モデルの基盤に', 'Googleの研究者らが再帰構造を捨てAttentionのみで系列変換を行うTransformerを提案。並列学習に適した構造により、モデルとデータの規模を拡大するほど性能が伸びる「スケーリング」の道を開き、GPTシリーズもBERTもこの構造の上に成立する。
+
+この時点で産業界のAIはまだ研究投資の対象であり、資本市場や規制当局の主要関心事ではなかった点が、5年後との対比として重要である。', null,
           'verified', null, 'user', 1) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('arXiv: Attention Is All You Need (1706.03762)', 'https://arxiv.org/abs/1706.03762')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '企業と資本'),
-          '2019-07-22', null, 'day', 'point', 'MicrosoftがOpenAIに10億ドル出資', 'MicrosoftがOpenAIとの提携と10億ドルの出資を発表し、Azureを独占的クラウド基盤とする計算資源の供給関係が始まった。非営利として出発したOpenAIが営利子会社(capped-profit)を設けた直後の出資であり、この資本と計算資源の結合が翌年のGPT-3(技術レイヤー)を可能にした。以後、生成AI競争はモデル開発企業とクラウド大手の連合という構図で進む。', null,
+          '2019-07-22', null, 'day', 'point', 'MicrosoftがOpenAIに10億ドル出資', 'MicrosoftがOpenAIとの提携と10億ドルの出資を発表し、Azureを独占的クラウド基盤とする計算資源の供給関係が始まった。
+
+非営利として出発したOpenAIが営利子会社(capped-profit)を設けた直後の出資であり、この**資本と計算資源の結合が翌年のGPT-3(技術レイヤー)を可能にした**。以後、生成AI競争はモデル開発企業とクラウド大手の連合という構図で進む。', null,
           'verified', null, 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Microsoft News: OpenAI forms exclusive computing partnership with Microsoft (2019-07-22)', 'https://news.microsoft.com/2019/07/22/openai-forms-exclusive-computing-partnership-with-microsoft-to-build-new-azure-ai-supercomputing-technologies/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '技術'),
-          '2020-05-28', null, 'day', 'point', 'GPT-3論文公開、1750億パラメータの言語モデル', 'OpenAIが1750億パラメータのGPT-3を発表。少数例を示すだけで多様なタスクをこなす「few-shot」能力を示し、規模の拡大が汎用的な能力をもたらすことを実証した。前年のMicrosoft出資による計算資源が結実した成果で、同年6月にはAPIとして限定公開され、AIが「研究成果」から「サービス基盤」へ移る転換点となる。社会と規制の側では新型コロナ対応が優先され、AI規制の議論はまだEU域内の準備段階にとどまっていた。', null,
+          '2020-05-28', null, 'day', 'point', 'GPT-3論文公開、1750億パラメータの言語モデル', 'OpenAIが1750億パラメータのGPT-3を発表。少数例を示すだけで多様なタスクをこなす「few-shot」能力を示し、規模の拡大が汎用的な能力をもたらすことを実証した。
+
+前年のMicrosoft出資による計算資源が結実した成果で、同年6月にはAPIとして限定公開され、AIが「研究成果」から「サービス基盤」へ移る転換点となる。
+
+社会と規制の側では新型コロナ対応が優先され、AI規制の議論はまだEU域内の準備段階にとどまっていた。', null,
           'verified', null, 'user', 3) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('arXiv: Language Models are Few-Shot Learners (2005.14165)', 'https://arxiv.org/abs/2005.14165')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '社会と規制'),
-          '2021-04-21', null, 'day', 'point', '欧州委員会がAI規則(AI Act)案を提案', '欧州委員会が、用途ごとにリスクを4段階に分け高リスク用途に義務を課す、リスクベースの包括的AI規制案を公表。世界初の横断的AI法制に向けた立法プロセスが始まった。提案時点では生成AIは想定の中心になく、2022年末のChatGPT登場(技術レイヤー)後に汎用AIモデル条項が追加されるなど、技術の進展が立法途中の修正を迫る。規制が技術に追いつこうとする構図の出発点である。', null,
+          '2021-04-21', null, 'day', 'point', '欧州委員会がAI規則(AI Act)案を提案', '欧州委員会が、用途ごとにリスクを4段階に分け高リスク用途に義務を課す、リスクベースの包括的AI規制案を公表。世界初の横断的AI法制に向けた立法プロセスが始まった。
+
+提案時点では生成AIは想定の中心になく、2022年末のChatGPT登場(技術レイヤー)後に汎用AIモデル条項が追加されるなど、技術の進展が立法途中の修正を迫る。**規制が技術に追いつこうとする構図の出発点**である。', null,
           'verified', null, 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('EUR-Lex: Proposal COM(2021) 206 final', 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52021PC0206')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '技術'),
-          '2022-08-22', null, 'day', 'point', 'Stable Diffusion公開、画像生成AIがオープンに', 'Stability AIらが画像生成モデルStable Diffusionの重みを公開し、個人のPCで動く生成AIが一気に広まった。同年4月のDALL·E 2、7月のMidjourneyに続く動きだが、モデル自体をオープンに配布した点で影響が大きく、派生モデルやツールが爆発的に増えた。一方で学習データの著作権をめぐる訴訟が翌年以降に相次ぎ、社会と規制レイヤーの論点を先取りする。生成AIが「見て分かる」形で一般に届いた最初の波である。', null,
+          '2022-08-22', null, 'day', 'point', 'Stable Diffusion公開、画像生成AIがオープンに', 'Stability AIらが画像生成モデルStable Diffusionの重みを公開し、個人のPCで動く生成AIが一気に広まった。
+
+同年4月のDALL·E 2、7月のMidjourneyに続く動きだが、モデル自体をオープンに配布した点で影響が大きく、派生モデルやツールが爆発的に増えた。
+
+一方で学習データの著作権をめぐる訴訟が翌年以降に相次ぎ、社会と規制レイヤーの論点を先取りする。生成AIが「見て分かる」形で一般に届いた最初の波である。', null,
           'verified', null, 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Stability AI: Stable Diffusion Public Release', 'https://stability.ai/news/stable-diffusion-public-release')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '社会と規制'),
-          '2022-10-07', null, 'day', 'point', '米国が先端半導体の対中輸出規制を発表', '米商務省が先端AIチップと製造装置の対中輸出を制限し、計算資源が安全保障と地政学の対象になった。規制はNVIDIAのA100/H100級のGPUを対象とし、以後段階的に強化される。この制約が中国側の効率的な学習手法の追求を促し、2025年のDeepSeek-R1(技術レイヤー)の衝撃につながったとの見方もある。AIの覇権争いが企業間競争にとどまらず国家戦略として扱われ始めた、最初の明確な出来事である。', null,
+          '2022-10-07', null, 'day', 'point', '米国が先端半導体の対中輸出規制を発表', '米商務省が先端AIチップと製造装置の対中輸出を制限し、**計算資源が安全保障と地政学の対象になった**。規制はNVIDIAのA100/H100級のGPUを対象とし、以後段階的に強化される。
+
+この制約が中国側の効率的な学習手法の追求を促し、2025年のDeepSeek-R1(技術レイヤー)の衝撃につながったとの見方もある。AIの覇権争いが企業間競争にとどまらず国家戦略として扱われ始めた、最初の明確な出来事である。', null,
           'verified', null, 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('米商務省産業安全保障局(BIS) 2022年10月7日発表 輸出管理規則改正', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '技術'),
-          '2022-11-30', null, 'day', 'point', 'ChatGPT公開', 'OpenAIが対話型AI「ChatGPT」を無料公開。GPT-3.5系モデルに人間のフィードバックによる強化学習(RLHF)を施し対話UIで提供したもので、技術的な飛躍というより「届け方」の転換だったが、誰でも自然言語で使える体験が生成AIを一般社会の関心事に変え、公開から2か月で推定1億ユーザーに達した(社会と規制レイヤー)。翌年1月にはMicrosoftの追加出資が発表され、大手各社が生成AIへ一斉に舵を切る。以後の年表の全レイヤーがここを分岐点とする。', null,
+          '2022-11-30', null, 'day', 'point', 'ChatGPT公開', 'OpenAIが対話型AI「ChatGPT」を無料公開。GPT-3.5系モデルに人間のフィードバックによる強化学習(RLHF)を施し対話UIで提供したもので、技術的な飛躍というより「届け方」の転換だったが、誰でも自然言語で使える体験が生成AIを一般社会の関心事に変え、公開から2か月で推定1億ユーザーに達した(社会と規制レイヤー)。
+
+翌年1月にはMicrosoftの追加出資が発表され、大手各社が生成AIへ一斉に舵を切る。**以後の年表の全レイヤーがここを分岐点とする**。', null,
           'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('OpenAI: Introducing ChatGPT', 'https://openai.com/index/chatgpt/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '企業と資本'),
-          '2023-01-23', null, 'day', 'point', 'MicrosoftがOpenAIへ数十億ドル規模の追加出資', 'MicrosoftがOpenAIとの提携延長と複数年・数十億ドル規模の投資を発表(報道では総額100億ドルとされた)。ChatGPT公開からわずか2か月後で、生成AIが資本市場の中心テーマになったことを象徴する。翌月にはBing、続いてOffice製品への組み込みが進み、Googleも対抗発表を急いだ。技術レイヤーでは3月にGPT-4の公開が控え、資本と技術の投入サイクルが極端に短くなった時期である。', null,
+          '2023-01-23', null, 'day', 'point', 'MicrosoftがOpenAIへ数十億ドル規模の追加出資', 'MicrosoftがOpenAIとの提携延長と複数年・数十億ドル規模の投資を発表(報道では総額100億ドルとされた)。ChatGPT公開からわずか2か月後で、生成AIが資本市場の中心テーマになったことを象徴する。
+
+翌月にはBing、続いてOffice製品への組み込みが進み、Googleも対抗発表を急いだ。技術レイヤーでは3月にGPT-4の公開が控え、資本と技術の投入サイクルが極端に短くなった時期である。', null,
           'disputed', 'Microsoftの公式発表は金額を明示しておらず、100億ドルという数字は報道ベースの推定にとどまる。', 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Microsoft Official Blog: Microsoft and OpenAI extend partnership (2023-01-23)', 'https://blogs.microsoft.com/blog/2023/01/23/microsoftandopenaiextendpartnership/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '社会と規制'),
-          '2023-02-01', null, 'month', 'point', 'ChatGPTが公開2か月で推定1億ユーザーに到達', 'UBSの分析として、ChatGPTの月間利用者が公開2か月で1億人に達したと報じられ、史上最速の普及と評された。教育現場での利用制限や企業の情報漏えい懸念など社会的な反応が一斉に噴出し、イタリアのデータ保護当局が3月末に一時利用停止を命じるなど、規制当局の初動もこの普及速度が引き金となった。技術レイヤーの「届け方の転換」が社会レイヤーに波及するまでの時間の短さを示す指標である。', null,
+          '2023-02-01', null, 'month', 'point', 'ChatGPTが公開2か月で推定1億ユーザーに到達', 'UBSの分析として、ChatGPTの月間利用者が公開2か月で1億人に達したと報じられ、史上最速の普及と評された。
+
+教育現場での利用制限や企業の情報漏えい懸念など社会的な反応が一斉に噴出し、イタリアのデータ保護当局が3月末に一時利用停止を命じるなど、規制当局の初動もこの普及速度が引き金となった。技術レイヤーの「届け方の転換」が社会レイヤーに波及するまでの時間の短さを示す指標である。', null,
           'disputed', '1億人はUBSがSimilarweb等のデータから推定した数値で、OpenAIの公式開示ではない。集計方法により数値は前後する。', 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Reuters: ChatGPT sets record for fastest-growing user base - analyst note (2023-02-02)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '技術'),
-          '2023-03-14', null, 'day', 'point', 'GPT-4公開、マルチモーダル対応へ', 'OpenAIがGPT-4を発表。画像入力に対応し、司法試験など多くの試験で人間上位層に匹敵する成績を示した。技術報告書ではモデル規模や学習データを非公開とし、競争と安全性を理由にオープンな研究文化から距離を置いた点も注目された。同月にはGoogle Bard、AnthropicのClaudeも公開され(企業と資本レイヤー)、1週間後には開発一時停止を求める公開書簡(社会と規制レイヤー)が出されるなど、加速と警戒が同時進行した。', null,
+          '2023-03-14', null, 'day', 'point', 'GPT-4公開、マルチモーダル対応へ', 'OpenAIがGPT-4を発表。画像入力に対応し、司法試験など多くの試験で人間上位層に匹敵する成績を示した。
+
+技術報告書ではモデル規模や学習データを非公開とし、競争と安全性を理由にオープンな研究文化から距離を置いた点も注目された。
+
+同月にはGoogle Bard、AnthropicのClaudeも公開され(企業と資本レイヤー)、1週間後には開発一時停止を求める公開書簡(社会と規制レイヤー)が出されるなど、加速と警戒が同時進行した。', null,
           'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('OpenAI: GPT-4 Research', 'https://openai.com/index/gpt-4-research/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '社会と規制'),
-          '2023-03-22', null, 'day', 'point', '「巨大AI実験の一時停止」を求める公開書簡', 'Future of Life InstituteがGPT-4を超えるAIの開発を6か月停止するよう求める書簡を公開し、著名研究者や経営者が署名した。GPT-4公開の8日後という時期が示すとおり、技術レイヤーの加速への直接の反応である。実際に停止した企業はなく、むしろ投資と開発は加速したが、AIの存在論的リスクを一般議論の俎上に載せ、同年10月の米大統領令や11月の英国AI安全サミットなど各国政府の動きを後押ししたと評価される。', null,
+          '2023-03-22', null, 'day', 'point', '「巨大AI実験の一時停止」を求める公開書簡', 'Future of Life InstituteがGPT-4を超えるAIの開発を6か月停止するよう求める書簡を公開し、著名研究者や経営者が署名した。GPT-4公開の8日後という時期が示すとおり、技術レイヤーの加速への直接の反応である。
+
+実際に停止した企業はなく、むしろ投資と開発は加速したが、AIの存在論的リスクを一般議論の俎上に載せ、同年10月の米大統領令や11月の英国AI安全サミットなど各国政府の動きを後押ししたと評価される。', null,
           'unverified', '書簡の署名者数(3万人超とされる)は主催団体の集計で、第三者による検証はない。', 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Future of Life Institute: Pause Giant AI Experiments: An Open Letter', 'https://futureoflife.org/open-letter/pause-giant-ai-experiments/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '社会と規制'),
-          '2023-10-30', null, 'day', 'point', '米国でAIに関する大統領令14110号に署名', 'バイデン大統領が「安全で信頼できるAI」に関する大統領令14110号に署名し、計算量の閾値を基準に大規模モデルの開発者へ安全性テスト結果の報告を求めた。米国初の包括的なAI政策であり、EUのAI Actが立法の最終段階にあった時期と重なり、大西洋の両側で規制枠組みが並走した。なお本大統領令は2025年1月の政権交代直後に撤回され、規制の方向性が政治に左右されることを示す事例ともなった。', null,
+          '2023-10-30', null, 'day', 'point', '米国でAIに関する大統領令14110号に署名', 'バイデン大統領が「安全で信頼できるAI」に関する大統領令14110号に署名し、計算量の閾値を基準に大規模モデルの開発者へ安全性テスト結果の報告を求めた。
+
+米国初の包括的なAI政策であり、EUのAI Actが立法の最終段階にあった時期と重なり、大西洋の両側で規制枠組みが並走した。
+
+なお本大統領令は2025年1月の政権交代直後に撤回され、規制の方向性が政治に左右されることを示す事例ともなった。', null,
           'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Executive Order 14110: Safe, Secure, and Trustworthy Development and Use of Artificial Intelligence', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '企業と資本'),
-          '2023-11-17', '2023-11-22', 'day', 'period', 'OpenAI取締役会がアルトマンCEOを解任、5日後に復帰', 'OpenAI取締役会がサム・アルトマンCEOを解任。従業員の大量離反表明とMicrosoftの介入を経て、5日後に復帰した。非営利の理念に基づく統治構造と巨額資本を受け入れた営利事業の間の緊張が表面化した出来事であり、再編後は実質的に企業としての方向性が優先される結果となった。前月に米大統領令、同月に英国AI安全サミットが行われた時期で、AI企業の内部統治が公共的関心事として扱われるようになった。', null,
+          '2023-11-17', '2023-11-22', 'day', 'period', 'OpenAI取締役会がアルトマンCEOを解任、5日後に復帰', 'OpenAI取締役会がサム・アルトマンCEOを解任。従業員の大量離反表明とMicrosoftの介入を経て、5日後に復帰した。
+
+非営利の理念に基づく統治構造と巨額資本を受け入れた営利事業の間の緊張が表面化した出来事であり、再編後は実質的に企業としての方向性が優先される結果となった。
+
+前月に米大統領令、同月に英国AI安全サミットが行われた時期で、AI企業の内部統治が公共的関心事として扱われるようになった。', null,
           'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('OpenAI: OpenAI announces leadership transition (2023-11-17)', 'https://openai.com/index/openai-announces-leadership-transition/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '社会と規制'),
-          '2024-03-13', null, 'day', 'point', '欧州議会がAI Actを可決', '欧州議会が世界初の包括的AI規制であるAI Actを可決。2021年の提案時にはなかった汎用AI(GPAI)モデルへの透明性義務は、ChatGPT以後の技術レイヤーの変化を受けて追加された。理事会の承認を経て2024年8月1日に発効し、禁止事項、GPAI義務、高リスク義務の順に段階的に適用される。企業と資本レイヤーでは、規制コストを理由に欧州での提供を遅らせる企業も現れた。', null,
+          '2024-03-13', null, 'day', 'point', '欧州議会がAI Actを可決', '欧州議会が世界初の包括的AI規制であるAI Actを可決。
+
+2021年の提案時にはなかった汎用AI(GPAI)モデルへの透明性義務は、ChatGPT以後の技術レイヤーの変化を受けて追加された。理事会の承認を経て2024年8月1日に発効し、禁止事項、GPAI義務、高リスク義務の順に段階的に適用される。
+
+企業と資本レイヤーでは、規制コストを理由に欧州での提供を遅らせる企業も現れた。', null,
           'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('EUR-Lex: Regulation (EU) 2024/1689 (AI Act)', 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '社会と規制'),
-          '2024-08-01', '2026-08-02', 'day', 'period', 'EU AI Actの段階的適用期間', 'AI Actが発効し、禁止事項(2025年2月)、汎用AIモデル義務(2025年8月)、高リスク義務(2026年8月)の順に、2年かけて段階的に適用が進む。この間、企業と資本レイヤーでは適用延期を求めるロビー活動が続き、技術レイヤーではモデルの更新周期が数か月単位に短縮された。「規制の時間」と「技術の時間」の速度差が最も可視化される期間であり、本年表の終点でもある。', null,
+          '2024-08-01', '2026-08-02', 'day', 'period', 'EU AI Actの段階的適用期間', 'AI Actが発効し、禁止事項(2025年2月)、汎用AIモデル義務(2025年8月)、高リスク義務(2026年8月)の順に、2年かけて段階的に適用が進む。
+
+この間、企業と資本レイヤーでは適用延期を求めるロビー活動が続き、技術レイヤーではモデルの更新周期が数か月単位に短縮された。**「規制の時間」と「技術の時間」の速度差**が最も可視化される期間であり、本年表の終点でもある。', null,
           'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('EUR-Lex: Regulation (EU) 2024/1689 (AI Act) 第113条 適用期日', 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '技術'),
-          '2025-01-20', null, 'day', 'point', 'DeepSeek-R1公開、低コスト推論モデルの衝撃', '中国のDeepSeekが推論特化モデルR1をオープンウェイトで公開し、少ない計算資源で最先端に迫る性能を示したと主張した。米国の輸出規制(社会と規制レイヤー)で先端GPUの入手が制限される中での成果とされ、「計算資源の量が競争力を決める」という前提を揺さぶった。1週間後にはNVIDIA株が急落し(企業と資本レイヤー)、AI投資の妥当性をめぐる議論が広がった。オープンウェイト戦略が地政学的な意味を持つことも示した。', null,
+          '2025-01-20', null, 'day', 'point', 'DeepSeek-R1公開、低コスト推論モデルの衝撃', '中国のDeepSeekが推論特化モデルR1をオープンウェイトで公開し、少ない計算資源で最先端に迫る性能を示したと主張した。
+
+米国の輸出規制(社会と規制レイヤー)で先端GPUの入手が制限される中での成果とされ、**「計算資源の量が競争力を決める」という前提を揺さぶった**。
+
+1週間後にはNVIDIA株が急落し(企業と資本レイヤー)、AI投資の妥当性をめぐる議論が広がった。オープンウェイト戦略が地政学的な意味を持つことも示した。', null,
           'disputed', '学習コストが数百万ドル規模とする主張は自社発表に基づき、算定範囲(最終学習のみか研究開発全体か)をめぐって見解が分かれる。', 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('arXiv: DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning (2501.12948)', 'https://arxiv.org/abs/2501.12948')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '企業と資本'),
-          '2025-01-21', null, 'day', 'point', '「Stargate」構想発表、最大5000億ドルのAIインフラ投資', 'OpenAI、SoftBank、Oracleらが米国内にAIデータセンターを建設する合弁「Stargate」を発表し、投資規模を4年間で最大5000億ドルと表明した。政権交代の翌日にホワイトハウスで発表され、AIインフラが国家的プロジェクトとして扱われることを印象づけた。同じ週にDeepSeek-R1(技術レイヤー)が「少ない計算資源」で注目を集めており、巨額投資の前提が同時に問われる対照的な構図が生まれた。電力とデータセンター立地が新たな争点となる。', null,
+          '2025-01-21', null, 'day', 'point', '「Stargate」構想発表、最大5000億ドルのAIインフラ投資', 'OpenAI、SoftBank、Oracleらが米国内にAIデータセンターを建設する合弁「Stargate」を発表し、投資規模を4年間で最大5000億ドルと表明した。
+
+政権交代の翌日にホワイトハウスで発表され、AIインフラが国家的プロジェクトとして扱われることを印象づけた。
+
+同じ週にDeepSeek-R1(技術レイヤー)が「少ない計算資源」で注目を集めており、巨額投資の前提が同時に問われる対照的な構図が生まれた。電力とデータセンター立地が新たな争点となる。', null,
           'unverified', '5000億ドルは表明額であり、実際の資金調達と投資実行の規模・時期は発表時点で確定していない。', 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('OpenAI: Announcing The Stargate Project', 'https://openai.com/index/announcing-the-stargate-project/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '企業と資本'),
-          '2025-01-27', null, 'day', 'point', 'NVIDIA株が急落、時価総額が1日で約6000億ドル減', 'DeepSeekの低コスト主張を受けNVIDIA株が約17%下落し、1日の時価総額減少額(約6000億ドル)として米国市場史上最大級とされた。2012年のAlexNet以来GPUと歩み、生成AIブームで時価総額世界首位級に躍進していた同社の急落は、AI投資の収益性と「計算資源の必要量」への疑念を映す。DeepSeek-R1公開(技術レイヤー)の1週間後の出来事で、その後株価は回復したが、輸出規制(社会と規制レイヤー)をめぐる政策も揺れ続けた。', null,
+          '2025-01-27', null, 'day', 'point', 'NVIDIA株が急落、時価総額が1日で約6000億ドル減', 'DeepSeekの低コスト主張を受けNVIDIA株が約17%下落し、1日の時価総額減少額(約6000億ドル)として米国市場史上最大級とされた。
+
+2012年のAlexNet以来GPUと歩み、生成AIブームで時価総額世界首位級に躍進していた同社の急落は、AI投資の収益性と「計算資源の必要量」への疑念を映す。
+
+DeepSeek-R1公開(技術レイヤー)の1週間後の出来事で、その後株価は回復したが、輸出規制(社会と規制レイヤー)をめぐる政策も揺れ続けた。', null,
           'unverified', '減少額は終値ベースの報道による概算で、媒体により5900億ドル前後と数値に幅がある。', 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Reuters: Nvidia loses nearly $600 billion in market value (2025-01-27)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '社会と規制'),
-          '2025-05-28', null, 'day', 'point', '日本でAI推進法が成立', '人工知能関連技術の研究開発・活用の推進に関する法律が参議院で可決・成立。罰則を設けず振興を主眼とする日本初のAI基本法で、EUのAI Actが義務と罰則で臨むのに対し、事業者の協力義務と政府の基本計画を柱とする「ソフトロー寄り」の設計を選んだ。同時期の米国では前政権の大統領令が撤回されており、主要国の規制姿勢が分岐した年といえる。企業と資本レイヤーでは国内データセンター投資の呼び込みが政策目標に据えられた。', null,
+          '2025-05-28', null, 'day', 'point', '日本でAI推進法が成立', '人工知能関連技術の研究開発・活用の推進に関する法律が参議院で可決・成立。罰則を設けず振興を主眼とする日本初のAI基本法で、EUのAI Actが義務と罰則で臨むのに対し、事業者の協力義務と政府の基本計画を柱とする「ソフトロー寄り」の設計を選んだ。
+
+同時期の米国では前政権の大統領令が撤回されており、主要国の規制姿勢が分岐した年といえる。
+
+企業と資本レイヤーでは国内データセンター投資の呼び込みが政策目標に据えられた。', null,
           'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('内閣府: 人工知能関連技術の研究開発及び活用の推進に関する法律(令和7年)', null)) as v(title, url);
 
