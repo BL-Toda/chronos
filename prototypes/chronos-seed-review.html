@@ -86,7 +86,8 @@ h1.page-title{font-family:var(--f-d);font-weight:500;font-size:clamp(24px,4vw,34
 .ev:last-child .ev-rail::before{display:none}
 .ev-dot{position:absolute;left:2px;top:9px;width:9px;height:9px;border-radius:50%;border:1.5px solid var(--bg)}
 .ev-dot.period{border-radius:3px}
-.ev-body{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:14px;min-width:0}
+.ev-body{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:14px;min-width:0;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:rgba(200,168,126,0.08)}
+.ev.open .ev-body{cursor:auto}
 .ev-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:6px}
 .ev-date{font-family:var(--f-m);font-size:12px;color:var(--accent);letter-spacing:0.06em}
 .ev-layer{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--text2)}
@@ -97,7 +98,7 @@ h1.page-title{font-family:var(--f-d);font-weight:500;font-size:clamp(24px,4vw,34
 .cred.disputed{color:#D4A05A;border-color:rgba(212,160,90,0.4)}
 .cred.unverified{color:var(--text3);border-color:rgba(154,149,144,0.35)}
 .ev-title{font-size:17px;font-weight:500;color:var(--text-h);line-height:1.55}
-.ev-head{display:block;width:100%;text-align:left;position:relative;padding-right:28px}
+.ev-head{display:block;width:100%;text-align:left;position:relative;padding-right:28px;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:rgba(200,168,126,0.08)}
 .ev-head::after{content:"";position:absolute;right:6px;top:50%;width:8px;height:8px;border-right:1.5px solid var(--text3);border-bottom:1.5px solid var(--text3);transform:translateY(-70%) rotate(45deg);transition:transform .3s var(--ease)}
 .ev.open .ev-head::after{transform:translateY(-30%) rotate(-135deg)}
 .ev-x{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s var(--ease)}
@@ -283,11 +284,16 @@ document.getElementById("cats").addEventListener("click", e => {
   if(card) location.hash = card.dataset.slug;
 });
 document.getElementById("detail").addEventListener("click", ev => {
-  const head = ev.target.closest(".ev-head");
-  if(head){
-    const item = head.closest(".ev");
-    const open = item.classList.toggle("open");
-    head.setAttribute("aria-expanded", String(open));
+  const body = ev.target.closest(".ev-body");
+  if(body && !ev.target.closest("a")){
+    const item = body.closest(".ev");
+    const open = item.classList.contains("open");
+    // 展開中の本文タップでは閉じない（リンク・文章選択のため）
+    if(!(open && ev.target.closest(".ev-x"))){
+      item.classList.toggle("open", !open);
+      body.querySelector(".ev-head").setAttribute("aria-expanded", String(!open));
+      return;
+    }
     return;
   }
   const all = ev.target.closest(".ev-expall");
