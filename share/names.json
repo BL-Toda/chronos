@@ -55,6 +55,10 @@
       "name": "法務ページ（利用規約・プライバシーポリシー・特商法）",
       "group": "ドキュメント"
     },
+    "chronos-seed-review.html": {
+      "name": "シードコンテンツ確認（サンプル年表18本）",
+      "group": "ドキュメント"
+    },
     "chronos-design-system.html": {
       "name": "デザインシステム",
       "group": "ドキュメント"

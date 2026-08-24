@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>シードコンテンツ確認 — Chronos</title>
+<meta name="description" content="Supabaseシード18本の内容レビュー用ページ。">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=erode@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400&family=Shippori+Mincho:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0A0C;--bg2:#0E0E11;--card:#16161A;
+  --accent:#C8A87E;--accent-soft:rgba(200,168,126,0.10);--accent-med:rgba(200,168,126,0.18);
+  --text:#E8E4DE;--text-h:#F5F2ED;--text2:#9A9590;--text3:#7A7570;
+  --border:rgba(200,168,126,0.10);--border2:rgba(200,168,126,0.20);
+  --f-d:'Erode','Shippori Mincho',serif;--f-b:'DM Sans',sans-serif;--f-m:'JetBrains Mono',monospace;
+  --hdr:100px;--ease:cubic-bezier(0.16,1,0.3,1);
+  --c-blue:#5B9BD5;--c-green:#7BC67E;--c-pink:#D4849A;--c-gold:#C8B87E;--c-purple:#9E7EC8;--c-teal:#5BBCB4;--c-orange:#D4A05A;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;background:var(--bg);color-scheme:dark;overflow-x:clip;scroll-padding-top:calc(var(--hdr) + 16px)}
+body{font-family:var(--f-b);background:var(--bg);color:var(--text);line-height:1.8}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+button{font-family:inherit;font-size:inherit;color:inherit;background:none;border:none;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+header.site{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,12,0.78);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.hdr-inner{max-width:1080px;margin:0 auto;padding:0 24px;height:var(--hdr);display:flex;align-items:center;justify-content:space-between}
+.hdr-logo{display:flex;align-items:center;padding:20px 0}
+.hdr-logo img{height:40px;width:auto}
+.hdr-back{font-size:0.78rem;color:var(--text2);text-decoration:none;letter-spacing:0.06em;transition:color .3s;padding:8px 0}
+.hdr-back:hover{color:var(--text)}
+
+.wrap{max-width:1080px;margin:0 auto;padding:calc(var(--hdr) + 40px) 24px 96px}
+.page-label{font-family:var(--f-m);font-size:0.66rem;letter-spacing:0.22em;color:var(--accent);text-transform:uppercase;margin-bottom:12px}
+h1.page-title{font-family:var(--f-d);font-weight:500;font-size:clamp(1.5rem,4vw,2.1rem);letter-spacing:0.08em;color:var(--text-h);margin-bottom:14px}
+.page-lead{font-size:0.86rem;color:var(--text2);max-width:640px;margin-bottom:48px}
+
+/* ─ home: category sections */
+.cat-sec{margin-bottom:52px}
+.cat-head{display:flex;align-items:baseline;gap:14px;margin-bottom:18px;border-bottom:1px solid var(--border);padding-bottom:10px}
+.cat-name{font-family:var(--f-d);font-weight:500;font-size:1.05rem;letter-spacing:0.1em;color:var(--text-h)}
+.cat-count{font-family:var(--f-m);font-size:0.68rem;color:var(--text3)}
+.tl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
+.tl-card{display:block;text-align:left;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 20px 16px;transition:border-color .3s,transform .3s var(--ease);width:100%}
+.tl-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.tl-years{font-family:var(--f-m);font-size:0.66rem;color:var(--accent);letter-spacing:0.12em;margin-bottom:8px}
+.tl-title{font-size:0.98rem;font-weight:500;color:var(--text-h);line-height:1.5;margin-bottom:8px}
+.tl-desc{font-size:0.78rem;color:var(--text2);line-height:1.7;margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.tl-meta{display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.layer-chip{display:inline-flex;align-items:center;gap:6px;font-size:0.68rem;color:var(--text2)}
+.layer-chip i{width:8px;height:8px;border-radius:2px;flex:none}
+.tl-evcount{margin-left:auto;font-family:var(--f-m);font-size:0.64rem;color:var(--text3)}
+
+/* ─ detail */
+.detail{display:none}
+.detail.on{display:block}
+.home.off{display:none}
+.d-back{display:inline-flex;align-items:center;gap:8px;font-size:0.78rem;color:var(--text2);margin-bottom:28px;transition:color .3s}
+.d-back:hover{color:var(--text)}
+.d-cat{font-family:var(--f-m);font-size:0.64rem;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;margin-bottom:10px}
+.d-title{font-family:var(--f-d);font-weight:500;font-size:clamp(1.35rem,3.6vw,1.9rem);letter-spacing:0.06em;color:var(--text-h);line-height:1.5;margin-bottom:12px}
+.d-desc{font-size:0.88rem;color:var(--text2);max-width:680px;margin-bottom:20px}
+.d-stats{display:flex;flex-wrap:wrap;gap:18px;font-family:var(--f-m);font-size:0.68rem;color:var(--text3);margin-bottom:28px}
+.d-stats b{color:var(--text);font-weight:400}
+.d-layers{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:44px}
+.d-layer{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:999px;padding:6px 14px;font-size:0.75rem}
+.d-layer i{width:10px;height:10px;border-radius:3px;flex:none}
+
+/* events */
+.ev-list{position:relative;padding-left:2px}
+.ev{position:relative;display:grid;grid-template-columns:14px 1fr;gap:16px;padding-bottom:8px}
+.ev-rail{position:relative}
+.ev-rail::before{content:"";position:absolute;left:6px;top:22px;bottom:-4px;width:1px;background:var(--border)}
+.ev:last-child .ev-rail::before{display:none}
+.ev-dot{position:absolute;left:2px;top:9px;width:9px;height:9px;border-radius:50%;border:1.5px solid var(--bg)}
+.ev-dot.period{border-radius:3px}
+.ev-body{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:14px;min-width:0}
+.ev-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:6px}
+.ev-date{font-family:var(--f-m);font-size:0.7rem;color:var(--accent);letter-spacing:0.06em}
+.ev-layer{display:inline-flex;align-items:center;gap:5px;font-size:0.66rem;color:var(--text2)}
+.ev-layer i{width:7px;height:7px;border-radius:2px}
+.cred{font-size:0.62rem;letter-spacing:0.08em;padding:2px 9px;border-radius:999px;border:1px solid;white-space:nowrap}
+.cred.verified{color:#7BC67E;border-color:rgba(123,198,126,0.35)}
+.cred.disputed{color:#D4A05A;border-color:rgba(212,160,90,0.4)}
+.cred.unverified{color:var(--text3);border-color:rgba(154,149,144,0.35)}
+.ev-title{font-size:0.92rem;font-weight:500;color:var(--text-h);line-height:1.55;margin-bottom:6px}
+.ev-summary{font-size:0.8rem;color:var(--text);line-height:1.75;margin-bottom:8px}
+.ev-detail{font-size:0.76rem;color:var(--text2);line-height:1.8;margin-bottom:8px}
+.ev-note{font-size:0.72rem;color:#D4A05A;background:rgba(212,160,90,0.07);border-left:2px solid rgba(212,160,90,0.4);padding:7px 12px;border-radius:0 8px 8px 0;margin-bottom:8px;line-height:1.7}
+.ev-srcs{display:flex;flex-direction:column;gap:3px;border-top:1px solid var(--border);padding-top:8px;margin-top:4px}
+.ev-src{font-size:0.7rem;color:var(--text3);line-height:1.6}
+.ev-src a{color:var(--text2);text-decoration:underline;text-decoration-color:var(--border2);text-underline-offset:3px;word-break:break-all}
+.ev-src a:hover{color:var(--accent)}
+.year-mark{grid-column:1 / -1;font-family:var(--f-m);font-size:0.72rem;letter-spacing:0.18em;color:var(--text3);padding:14px 0 12px;border-bottom:1px dashed var(--border);margin-bottom:16px}
+
+@media (max-width:560px){
+  .hdr-inner{padding:0 18px}
+  .wrap{padding:calc(var(--hdr) + 28px) 18px 72px}
+  .tl-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important}
+}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="hdr-inner">
+    <a class="hdr-logo" href="./" aria-label="Chronos"><img src="assets/chronos-logo.svg" alt="Chronos"></a>
+    <a class="hdr-back" href="./">プロトタイプ一覧へ</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="home" id="home">
+    <p class="page-label">Seed Content Review</p>
+    <h1 class="page-title">シードコンテンツ確認</h1>
+    <p class="page-lead">Supabaseに投入する公式サンプル年表18本（6カテゴリ×3本）の内容レビュー用ページ。カードを開くと全イベント・信憑性ラベル・出典を確認できます。データの正本は supabase/seed/data/ の JSON です。</p>
+    <div id="cats"></div>
+  </div>
+  <div class="detail" id="detail"></div>
+</main>
+
+<script>
+const DATA = /*__DATA__*/[];
+const CAT = {
+  "technology": "テクノロジー",
+  "history-politics": "歴史・政治",
+  "culture": "カルチャー",
+  "science-nature": "科学・自然",
+  "business": "ビジネス",
+  "personal-life": "個人・ライフ"
+};
+const COLOR = {blue:"var(--c-blue)",green:"var(--c-green)",pink:"var(--c-pink)",gold:"var(--c-gold)",purple:"var(--c-purple)",teal:"var(--c-teal)",orange:"var(--c-orange)"};
+const CRED = {verified:"検証済み",disputed:"諸説あり",unverified:"未検証"};
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function fmtDate(e){
+  const [y,m,d] = e.date.split("-");
+  if(e.precision === "year") return y;
+  if(e.precision === "month") return `${y}.${m}`;
+  return `${y}.${m}.${d}`;
+}
+function fmtEnd(e){
+  if(e.type !== "period" || !e.end_date) return "";
+  const [y,m] = e.end_date.split("-");
+  return e.precision === "year" ? ` — ${y}` : ` — ${y}.${m}`;
+}
+
+function renderHome(){
+  const byCat = {};
+  for(const t of DATA) (byCat[t.category] ??= []).push(t);
+  let html = "";
+  for(const key of Object.keys(CAT)){
+    const list = byCat[key] || [];
+    if(!list.length) continue;
+    html += `<section class="cat-sec"><div class="cat-head"><h2 class="cat-name">${CAT[key]}</h2><span class="cat-count">${list.length} TIMELINES</span></div><div class="tl-grid">`;
+    for(const t of list){
+      const chips = t.layers.map(l => `<span class="layer-chip"><i style="background:${COLOR[l.color]}"></i>${esc(l.name)}</span>`).join("");
+      html += `<button class="tl-card" data-slug="${esc(t.slug)}">
+        <div class="tl-years">${t.start_year}–${t.end_year}</div>
+        <div class="tl-title">${esc(t.title)}</div>
+        <div class="tl-desc">${esc(t.description)}</div>
+        <div class="tl-meta">${chips}<span class="tl-evcount">${t.events.length}件</span></div>
+      </button>`;
+    }
+    html += `</div></section>`;
+  }
+  document.getElementById("cats").innerHTML = html;
+}
+
+function renderDetail(t){
+  const colorOf = name => COLOR[(t.layers.find(l => l.name === name) || {}).color] || "var(--text3)";
+  const cred = t.events.reduce((a,e) => (a[e.credibility] = (a[e.credibility]||0)+1, a), {});
+  const layers = t.layers.map(l => `<span class="d-layer"><i style="background:${COLOR[l.color]}"></i>${esc(l.name)}</span>`).join("");
+  let evs = "", lastYear = null;
+  const sorted = [...t.events].sort((a,b) => a.date < b.date ? -1 : a.date > b.date ? 1 : 0);
+  for(const e of sorted){
+    const y = e.date.slice(0,4);
+    if(y !== lastYear){ evs += `<div class="year-mark">${y}</div>`; lastYear = y; }
+    const note = e.credibility_note ? `<div class="ev-note">${esc(e.credibility_note)}</div>` : "";
+    const detail = e.detail ? `<div class="ev-detail">${esc(e.detail)}</div>` : "";
+    const srcs = (e.sources || []).filter(s => s && s.title).map(s =>
+      s.url ? `<div class="ev-src">出典: <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.title)}</a></div>`
+            : `<div class="ev-src">出典: ${esc(s.title)}</div>`).join("");
+    evs += `<div class="ev">
+      <div class="ev-rail"><span class="ev-dot ${e.type === "period" ? "period" : ""}" style="background:${colorOf(e.layer)}"></span></div>
+      <div class="ev-body">
+        <div class="ev-top">
+          <span class="ev-date">${fmtDate(e)}${fmtEnd(e)}</span>
+          <span class="ev-layer"><i style="background:${colorOf(e.layer)}"></i>${esc(e.layer)}</span>
+          <span class="cred ${e.credibility}">${CRED[e.credibility] || esc(e.credibility)}</span>
+        </div>
+        <div class="ev-title">${esc(e.title)}</div>
+        <div class="ev-summary">${esc(e.summary)}</div>
+        ${detail}${note}${srcs ? `<div class="ev-srcs">${srcs}</div>` : ""}
+      </div>
+    </div>`;
+  }
+  document.getElementById("detail").innerHTML = `
+    <button class="d-back" id="back">← 一覧に戻る</button>
+    <div class="d-cat">${CAT[t.category] || esc(t.category)}</div>
+    <h1 class="d-title">${esc(t.title)}</h1>
+    <p class="d-desc">${esc(t.description)}</p>
+    <div class="d-stats">
+      <span>期間 <b>${t.start_year}–${t.end_year}</b></span>
+      <span>イベント <b>${t.events.length}</b></span>
+      <span>検証済み <b>${cred.verified || 0}</b></span>
+      <span>諸説あり <b>${cred.disputed || 0}</b></span>
+      <span>未検証 <b>${cred.unverified || 0}</b></span>
+      <span>slug <b>${esc(t.slug)}</b></span>
+    </div>
+    <div class="d-layers">${layers}</div>
+    <div class="ev-list">${evs}</div>`;
+  document.getElementById("back").addEventListener("click", () => { location.hash = ""; });
+}
+
+function route(){
+  const slug = decodeURIComponent(location.hash.replace(/^#/, ""));
+  const t = DATA.find(x => x.slug === slug);
+  const home = document.getElementById("home"), detail = document.getElementById("detail");
+  if(t){
+    renderDetail(t);
+    home.classList.add("off"); detail.classList.add("on");
+    window.scrollTo(0, 0);
+  } else {
+    home.classList.remove("off"); detail.classList.remove("on");
+  }
+}
+
+renderHome();
+document.getElementById("cats").addEventListener("click", e => {
+  const card = e.target.closest(".tl-card");
+  if(card) location.hash = card.dataset.slug;
+});
+window.addEventListener("hashchange", route);
+route();
+</script>
+</body>
+</html>
