@@ -96,6 +96,7 @@ h1.page-title{font-family:var(--f-d);font-weight:500;font-size:clamp(24px,4vw,34
 .ev-summary strong,.ev-detail strong{color:var(--text-h);font-weight:500;background:linear-gradient(transparent 62%,var(--accent-med) 62%)}
 .ev-summary p+p,.ev-detail p+p{margin-top:10px}
 .ev-detail{font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:8px}
+.ev-note-label{display:block;font-family:var(--f-m);font-size:11px;letter-spacing:0.14em;color:#D4A05A;margin-bottom:4px}
 .ev-note{font-size:13px;color:#D4A05A;background:rgba(212,160,90,0.07);border-left:2px solid rgba(212,160,90,0.4);padding:7px 12px;border-radius:0 8px 8px 0;margin-bottom:8px;line-height:1.7}
 .ev-srcs{display:flex;flex-direction:column;gap:3px;border-top:1px solid var(--border);padding-top:8px;margin-top:4px}
 .ev-src{font-size:13px;color:var(--text3);line-height:1.6}
@@ -189,7 +190,7 @@ function renderDetail(t){
   for(const e of sorted){
     const y = e.date.slice(0,4);
     if(y !== lastYear){ evs += `<div class="year-mark">${y}</div>`; lastYear = y; }
-    const note = e.credibility_note ? `<div class="ev-note">${esc(e.credibility_note)}</div>` : "";
+    const note = e.credibility_note ? `<div class="ev-note"><span class="ev-note-label">${e.credibility === "disputed" ? "諸説ありの理由" : "未検証の理由"}</span>${esc(e.credibility_note)}</div>` : "";
     const detail = e.detail ? `<div class="ev-detail">${md(e.detail)}</div>` : "";
     const srcs = (e.sources || []).filter(s => s && s.title).map(s =>
       s.url ? `<div class="ev-src">出典: <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.title)}</a></div>`
