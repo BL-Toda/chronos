@@ -72,6 +72,12 @@ h1.page-title{font-family:var(--f-d);font-weight:500;font-size:clamp(24px,4vw,34
 .home.off{display:none}
 .d-back{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--text2);margin-bottom:28px;transition:color .3s}
 .d-back:hover{color:var(--text)}
+.d-cover{position:relative;height:clamp(160px,28vw,280px);border-radius:16px;overflow:hidden;margin-bottom:28px;background:var(--card);border:1px solid var(--border)}
+.d-cover img{width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s var(--ease)}
+.d-cover img.loaded{opacity:1}
+.d-cover-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,12,0.05) 40%,rgba(10,10,12,0.55))}
+.d-cover-credit{position:absolute;right:12px;bottom:10px;font-family:var(--f-m);font-size:10px;letter-spacing:0.05em;color:rgba(232,228,222,0.75)}
+.d-cover-credit a{color:inherit;text-decoration:underline;text-decoration-color:rgba(232,228,222,0.35);text-underline-offset:2px}
 .d-cat{font-family:var(--f-m);font-size:11px;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;margin-bottom:10px}
 .d-title{font-family:var(--f-d);font-weight:500;font-size:clamp(24px,4vw,34px);letter-spacing:0.06em;color:var(--text-h);line-height:1.5;margin-bottom:12px}
 .d-desc{font-size:16px;color:var(--text2);max-width:680px;margin-bottom:20px}
@@ -161,6 +167,16 @@ h1.page-title{font-family:var(--f-d);font-weight:500;font-size:clamp(24px,4vw,34
 
 <script>
 const DATA = /*__DATA__*/[];
+const PHOTO_POOL = /*__PHOTO_POOL__*/{};
+const UNSPLASH_UTM = "?utm_source=chronos&utm_medium=referral";
+const CATKEY = {"technology":"tech","history-politics":"history","culture":"culture","science-nature":"science","business":"business","personal-life":"personal"};
+function hashStr(s){let h=5381;for(let i=0;i<s.length;i++){h=(((h<<5)+h)+s.charCodeAt(i))>>>0}return h}
+function pickPhoto(t){
+  const pool = PHOTO_POOL[CATKEY[t.category]];
+  if(!pool || !pool.length) return null;
+  return pool[(hashStr(CATKEY[t.category] + "|" + t.title) >>> 8) % pool.length];
+}
+function photoURL(p, w, h){return `${p.raw}?w=${w}&h=${h}&fit=crop&auto=format&q=70`}
 const CAT = {
   "technology": "テクノロジー",
   "history-politics": "歴史・政治",
@@ -242,6 +258,7 @@ function renderDetail(t){
   }
   document.getElementById("detail").innerHTML = `
     <button class="d-back" id="back">← 一覧に戻る</button>
+    ${(() => { const ph = pickPhoto(t); if(!ph) return ""; return `<div class="d-cover"><img src="${photoURL(ph, 1080, 480)}" alt="" loading="lazy" decoding="async" onload="this.classList.add(&quot;loaded&quot;)" onerror="this.parentElement.remove()"><div class="d-cover-shade"></div><span class="d-cover-credit">Photo: <a href="${esc(ph.user)}${UNSPLASH_UTM}" target="_blank" rel="noopener noreferrer">${esc(ph.name)}</a> / <a href="https://unsplash.com/${UNSPLASH_UTM}" target="_blank" rel="noopener noreferrer">Unsplash</a></span></div>`; })()}
     <div class="d-cat">${CAT[t.category] || esc(t.category)}</div>
     <h1 class="d-title">${esc(t.title)}</h1>
     <p class="d-desc">${esc(t.description)}</p>
