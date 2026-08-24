@@ -42,12 +42,15 @@ html.scrolled .hdr-logo img{height:26px}
 
 .readbar{position:fixed;top:var(--hdr);left:0;right:0;height:2px;z-index:99;pointer-events:none;transition:top .35s var(--ease)}
 .readbar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#D4A05A);transform-origin:0 50%;transform:scaleX(0);transition:transform .12s linear}
+.year-now{position:fixed;top:calc(var(--hdr) + 12px);left:50%;transform:translate(-50%,-6px);z-index:98;font-family:var(--f-m);font-size:12px;letter-spacing:0.14em;color:var(--accent);background:rgba(10,10,12,0.72);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--border2);border-radius:999px;padding:4px 14px;opacity:0;pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease),top .35s var(--ease)}
+.year-now.show{opacity:1;transform:translate(-50%,0)}
 .wrap{max-width:1080px;margin:0 auto;padding:140px 24px 96px}
 .page-label{font-family:var(--f-m);font-size:12px;letter-spacing:0.22em;color:var(--accent);text-transform:uppercase;margin-bottom:12px}
 h1.page-title{font-family:var(--f-d);font-weight:500;font-size:clamp(24px,4vw,34px);letter-spacing:0.08em;color:var(--text-h);margin-bottom:14px}
 .page-lead{font-size:15px;color:var(--text2);max-width:640px;margin-bottom:48px}
 
 /* ─ home: category sections */
+.stamp{padding-top:48px;font-family:var(--f-m);font-size:10px;letter-spacing:0.1em;color:var(--text3);opacity:.55}
 .cat-sec{margin-bottom:52px}
 .cat-head{display:flex;align-items:baseline;gap:14px;margin-bottom:18px;border-bottom:1px solid var(--border);padding-bottom:10px}
 .cat-name{font-family:var(--f-d);font-weight:500;font-size:19px;letter-spacing:0.1em;color:var(--text-h)}
@@ -75,12 +78,14 @@ h1.page-title{font-family:var(--f-d);font-weight:500;font-size:clamp(24px,4vw,34
 .d-stats{display:flex;flex-wrap:wrap;gap:18px;font-family:var(--f-m);font-size:12px;color:var(--text3);margin-bottom:28px}
 .d-stats b{color:var(--text);font-weight:400}
 .d-layers{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:44px}
-.d-layer{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:999px;padding:7px 16px;font-size:13px}
+.d-layer{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:999px;padding:7px 16px;font-size:13px;cursor:pointer;transition:border-color .3s,background .3s}
+.d-layer.active{border-color:var(--accent);background:var(--accent-soft)}
 .d-layer i{width:10px;height:10px;border-radius:3px;flex:none}
 
 /* events */
 .ev-list{position:relative;padding-left:2px}
-.ev{position:relative;display:grid;grid-template-columns:14px 1fr;gap:16px;padding-bottom:8px}
+.ev{position:relative;display:grid;grid-template-columns:14px 1fr;gap:16px;padding-bottom:8px;transition:opacity .35s var(--ease),filter .35s var(--ease)}
+.ev.dim{opacity:.22;filter:saturate(.4)}
 .ev-rail{position:relative}
 .ev-rail::before{content:"";position:absolute;left:6px;top:22px;bottom:-4px;width:1px;background:var(--border)}
 .ev:last-child .ev-rail::before{display:none}
@@ -101,14 +106,17 @@ h1.page-title{font-family:var(--f-d);font-weight:500;font-size:clamp(24px,4vw,34
 .ev-head{display:block;width:100%;text-align:left;position:relative;padding-right:28px;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:rgba(200,168,126,0.08)}
 .ev-head::after{content:"";position:absolute;right:6px;top:50%;width:8px;height:8px;border-right:1.5px solid var(--text3);border-bottom:1.5px solid var(--text3);transform:translateY(-70%) rotate(45deg);transition:transform .3s var(--ease)}
 .ev.open .ev-head::after{transform:translateY(-30%) rotate(-135deg)}
-.ev-x{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s var(--ease)}
-.ev-xi{overflow:hidden;min-height:0}
-.ev-xd{border-top:1px solid var(--border);margin-top:12px;padding-top:12px}
+.ev-x{overflow:hidden;max-height:0;transition:max-height .5s var(--ease)}
+.ev.open .ev-x{max-height:3000px}
+.ev-xi{overflow:hidden}
+.ev-xd{border-top:1px solid var(--border);margin-top:12px;padding-top:12px;opacity:0;transition:opacity .3s var(--ease)}
+.ev.open .ev-xd{opacity:1;transition-delay:.1s}
 .ev-tools{display:flex;justify-content:flex-end;margin-bottom:14px}
 .ev-expall{font-size:13px;color:var(--text2);border:1px solid var(--border2);border-radius:999px;padding:6px 16px;transition:color .3s,border-color .3s}
 .ev-expall:hover{color:var(--text);border-color:var(--accent)}
 .ev-summary{font-size:15px;color:var(--text);line-height:1.75;margin-bottom:8px}
-.ev-summary strong,.ev-detail strong{color:#FFFFFF;font-weight:500;background:linear-gradient(transparent 45%,rgba(200,168,126,0.42) 45%);padding:0 1px}
+.ev-summary strong,.ev-detail strong{color:#FFFFFF;font-weight:500;background:linear-gradient(transparent 45%,rgba(200,168,126,0.42) 45%);background-repeat:no-repeat;background-size:0% 100%;padding:0 1px;transition:background-size .6s var(--ease) .15s}
+.ev-summary strong.mk,.ev-detail strong.mk{background-size:100% 100%}
 .ev-summary p+p,.ev-detail p+p{margin-top:10px}
 .ev-detail{font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:8px}
 .ev-note-label{display:block;font-family:var(--f-m);font-size:11px;letter-spacing:0.14em;color:#D4A05A;margin-bottom:4px}
@@ -126,6 +134,7 @@ h1.page-title{font-family:var(--f-d);font-weight:500;font-size:clamp(24px,4vw,34
 }
 @media (prefers-reduced-motion:reduce){
   *{transition:none !important}
+  .ev-summary strong,.ev-detail strong{background-size:100% 100%}
 }
 </style>
 </head>
@@ -137,6 +146,7 @@ h1.page-title{font-family:var(--f-d);font-weight:500;font-size:clamp(24px,4vw,34
   </div>
 </header>
 <div class="readbar" aria-hidden="true"><i></i></div>
+<div class="year-now" aria-hidden="true"></div>
 
 <main class="wrap">
   <div class="home" id="home">
@@ -146,6 +156,7 @@ h1.page-title{font-family:var(--f-d);font-weight:500;font-size:clamp(24px,4vw,34
     <div id="cats"></div>
   </div>
   <div class="detail" id="detail"></div>
+<div class="stamp" aria-hidden="true">build 2026-08-25 07:12 JST</div>
 </main>
 
 <script>
@@ -200,7 +211,7 @@ function renderHome(){
 function renderDetail(t){
   const colorOf = name => COLOR[(t.layers.find(l => l.name === name) || {}).color] || "var(--text3)";
   const cred = t.events.reduce((a,e) => (a[e.credibility] = (a[e.credibility]||0)+1, a), {});
-  const layers = t.layers.map(l => `<span class="d-layer"><i style="background:${COLOR[l.color]}"></i>${esc(l.name)}</span>`).join("");
+  const layers = t.layers.map(l => `<button class="d-layer" data-layer="${esc(l.name)}"><i style="background:${COLOR[l.color]}"></i>${esc(l.name)}</button>`).join("");
   let evs = "", lastYear = null;
   const sorted = [...t.events].sort((a,b) => a.date < b.date ? -1 : a.date > b.date ? 1 : 0);
   for(const e of sorted){
@@ -211,7 +222,7 @@ function renderDetail(t){
     const srcs = (e.sources || []).filter(s => s && s.title).map(s =>
       s.url ? `<div class="ev-src">出典: <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.title)}</a></div>`
             : `<div class="ev-src">出典: ${esc(s.title)}</div>`).join("");
-    evs += `<div class="ev">
+    evs += `<div class="ev" data-layer="${esc(e.layer)}">
       <div class="ev-rail"><span class="ev-dot ${e.type === "period" ? "period" : ""}" style="background:${colorOf(e.layer)}"></span></div>
       <div class="ev-body">
         <button class="ev-head" aria-expanded="false">
@@ -246,6 +257,7 @@ function renderDetail(t){
     <div class="ev-tools"><button class="ev-expall">すべて開く</button></div>
     <div class="ev-list">${evs}</div>`;
   document.getElementById("back").addEventListener("click", () => { location.hash = ""; });
+  observeMarkers();
 }
 
 function route(){
@@ -269,11 +281,34 @@ function updateReadbar(){
 function recalcReadbar(){
   rbMax = Math.max(1, document.documentElement.scrollHeight - innerHeight);
   updateReadbar();
+  recalcYears();
+  updateYearNow();
+}
+const yearNow = document.querySelector(".year-now");
+let yearPts = [];
+function recalcYears(){
+  yearPts = [...document.querySelectorAll("#detail .year-mark")].map(m => ({y: m.textContent, top: m.getBoundingClientRect().top + scrollY}));
+}
+function updateYearNow(){
+  if(!document.getElementById("detail").classList.contains("on")){ yearNow.classList.remove("show"); return; }
+  const line = scrollY + 170;
+  let cur = null;
+  for(const pt of yearPts){ if(pt.top <= line) cur = pt.y; else break; }
+  if(cur){ yearNow.textContent = cur; yearNow.classList.add("show"); } else { yearNow.classList.remove("show"); }
+}
+let mkIO = null;
+function observeMarkers(){
+  if(mkIO) mkIO.disconnect();
+  mkIO = new IntersectionObserver(es => es.forEach(en => {
+    if(en.isIntersecting){ en.target.classList.add("mk"); mkIO.unobserve(en.target); }
+  }), {threshold: 0.6});
+  document.querySelectorAll("#detail strong").forEach(el => mkIO.observe(el));
 }
 addEventListener("scroll", () => {
   const c = document.documentElement.classList;
   if (scrollY > 80) c.add("scrolled"); else if (scrollY < 30) c.remove("scrolled");
   updateReadbar();
+  updateYearNow();
 }, {passive: true});
 addEventListener("resize", recalcReadbar, {passive: true});
 new ResizeObserver(recalcReadbar).observe(document.body);
@@ -284,6 +319,17 @@ document.getElementById("cats").addEventListener("click", e => {
   if(card) location.hash = card.dataset.slug;
 });
 document.getElementById("detail").addEventListener("click", ev => {
+  const chip = ev.target.closest(".d-layer");
+  if(chip){
+    const on = chip.classList.contains("active");
+    document.querySelectorAll("#detail .d-layer").forEach(c => c.classList.remove("active"));
+    document.querySelectorAll("#detail .ev").forEach(x => x.classList.remove("dim"));
+    if(!on){
+      chip.classList.add("active");
+      document.querySelectorAll("#detail .ev").forEach(x => x.classList.toggle("dim", x.dataset.layer !== chip.dataset.layer));
+    }
+    return;
+  }
   const body = ev.target.closest(".ev-body");
   if(body && !ev.target.closest("a")){
     const item = body.closest(".ev");
@@ -300,10 +346,17 @@ document.getElementById("detail").addEventListener("click", ev => {
   if(all){
     const items = [...document.querySelectorAll("#detail .ev")];
     const anyClosed = items.some(x => !x.classList.contains("open"));
-    items.forEach(x => {
+    items.forEach((x, i) => {
+      const d = anyClosed ? `${i * 28}ms` : "0ms";
+      x.querySelector(".ev-x").style.transitionDelay = d;
+      x.querySelector(".ev-xd").style.transitionDelay = anyClosed ? `${i * 28 + 100}ms` : "0ms";
       x.classList.toggle("open", anyClosed);
       x.querySelector(".ev-head").setAttribute("aria-expanded", String(anyClosed));
     });
+    setTimeout(() => items.forEach(x => {
+      x.querySelector(".ev-x").style.transitionDelay = "";
+      x.querySelector(".ev-xd").style.transitionDelay = "";
+    }), items.length * 28 + 600);
     all.textContent = anyClosed ? "すべて閉じる" : "すべて開く";
   }
 });
