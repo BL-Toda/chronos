@@ -7,9 +7,18 @@
   "start_year": 1896,
   "end_year": 2024,
   "layers": [
-    {"name": "科学の発見", "color": "blue"},
-    {"name": "観測と現象", "color": "teal"},
-    {"name": "政策と社会", "color": "orange"}
+    {
+      "name": "科学の発見",
+      "color": "blue"
+    },
+    {
+      "name": "観測と現象",
+      "color": "teal"
+    },
+    {
+      "name": "政策と社会",
+      "color": "orange"
+    }
   ],
   "events": [
     {
@@ -19,12 +28,15 @@
       "type": "point",
       "layer": "科学の発見",
       "title": "アレニウス、CO2濃度と地表温度の関係を定量化",
-      "summary": "スウェーデンの化学者アレニウスが、大気中CO2が倍増すると地表温度が数℃上昇するとの計算結果を発表。",
-      "detail": "アレニウスは氷期の成因を探る中で、CO2の赤外吸収が地表温度に与える影響を手計算で見積もった。倍増時の昇温を5〜6℃としたが、当時は温暖化を有益と考えていた。産業起源のCO2が問題になるとは想定されず、実際に濃度上昇が観測で示されるのは60年以上後のキーリングの測定を待つことになる。",
+      "summary": "スウェーデンの化学者アレニウスが、大気中のCO2が倍増すると地表温度が数℃上昇するとの計算結果を発表。氷期の成因を探る中で、CO2の赤外吸収が地表温度に与える影響を手計算で見積もり、倍増時の昇温を5〜6℃とした。\n\nただし当時は温暖化を有益と考えており、産業起源のCO2が問題になるとは想定されていなかった。**濃度上昇が観測で示されるのは60年以上後**のキーリングの測定であり、知見と検証の長い時差の出発点にあたる。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Arrhenius, S. (1896) On the Influence of Carbonic Acid in the Air upon the Temperature of the Ground. Philosophical Magazine", "url": "https://doi.org/10.1080/14786449608620846"}
+        {
+          "title": "Arrhenius, S. (1896) On the Influence of Carbonic Acid in the Air upon the Temperature of the Ground. Philosophical Magazine",
+          "url": "https://doi.org/10.1080/14786449608620846"
+        }
       ]
     },
     {
@@ -34,13 +46,19 @@
       "type": "point",
       "layer": "観測と現象",
       "title": "キーリング、マウナロアでCO2の連続観測を開始",
-      "summary": "国際地球観測年を機に、ハワイ・マウナロア山頂で大気中CO2濃度の高精度な定常観測が始まる。",
-      "detail": "スクリップス海洋研究所のチャールズ・キーリングが開始した観測は、季節変動を伴いながら右肩上がりに増える「キーリング曲線」を生んだ。開始時の濃度は約315ppm。人為的なCO2増加を初めて連続データで示した観測であり、1960年代以降の理論研究や1965年の大統領諮問報告が依拠する基礎となった。",
+      "summary": "国際地球観測年を機に、スクリップス海洋研究所のチャールズ・キーリングがハワイ・マウナロア山頂で大気中CO2濃度の高精度な定常観測を開始。開始時の濃度は約315ppmだった。\n\n観測は季節変動を伴いながら右肩上がりに増える「キーリング曲線」を生み、人為的なCO2増加を初めて連続データで示した。1960年代以降の理論研究や1965年の大統領諮問報告が依拠する基礎となる。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Scripps Institution of Oceanography: The Keeling Curve", "url": "https://keelingcurve.ucsd.edu/"},
-        {"title": "NOAA Global Monitoring Laboratory: Trends in Atmospheric Carbon Dioxide", "url": "https://gml.noaa.gov/ccgg/trends/"}
+        {
+          "title": "Scripps Institution of Oceanography: The Keeling Curve",
+          "url": "https://keelingcurve.ucsd.edu/"
+        },
+        {
+          "title": "NOAA Global Monitoring Laboratory: Trends in Atmospheric Carbon Dioxide",
+          "url": "https://gml.noaa.gov/ccgg/trends/"
+        }
       ]
     },
     {
@@ -50,12 +68,15 @@
       "type": "point",
       "layer": "政策と社会",
       "title": "米大統領科学諮問委員会がCO2の気候影響を報告",
-      "summary": "ジョンソン政権の科学諮問委員会が環境報告書の付録でCO2増加による気候変化の可能性を政府に警告。",
-      "detail": "報告書「Restoring the Quality of Our Environment」の付録は、キーリングの観測開始から7年で得られたデータを根拠に、2000年までにCO2が約25%増え気候に「著しい変化」を起こしうると述べた。米政府文書が温暖化に言及した最初期の例だが、具体的な政策には結びつかなかった。",
+      "summary": "ジョンソン政権の科学諮問委員会が報告書「Restoring the Quality of Our Environment」の付録で、CO2増加による気候変化の可能性を政府に警告。キーリングの観測開始から7年で得られたデータを根拠に、2000年までにCO2が約25%増え気候に「著しい変化」を起こしうると述べた。\n\n米政府文書が温暖化に言及した最初期の例だが、**警告は具体的な政策には結びつかなかった**。科学の知見が政策の言葉になるまでの長い空白がここから始まる。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "President's Science Advisory Committee (1965) Restoring the Quality of Our Environment, Appendix Y4", "url": null}
+        {
+          "title": "President's Science Advisory Committee (1965) Restoring the Quality of Our Environment, Appendix Y4",
+          "url": null
+        }
       ]
     },
     {
@@ -65,13 +86,19 @@
       "type": "point",
       "layer": "科学の発見",
       "title": "真鍋淑郎らがCO2倍増時の昇温を約2.3℃と算出",
-      "summary": "真鍋淑郎とウェザラルドが放射対流平衡モデルにより、CO2倍増で地表が約2.3℃昇温すると計算。",
-      "detail": "水蒸気フィードバックを含む物理モデルによる初の定量評価で、以後の気候モデルの原型となった。同年代の観測レイヤーではキーリング曲線が10年分の上昇を刻んでおり、理論と観測が初めてかみ合い始めた時期にあたる。真鍋はこの業績を含む研究で2021年にノーベル物理学賞を受賞した。",
+      "summary": "真鍋淑郎とウェザラルドが、水蒸気フィードバックを含む放射対流平衡モデルにより、CO2倍増で地表が約2.3℃昇温すると計算。物理モデルによる初の定量評価で、以後の気候モデルの原型となった。\n\n同年代の観測レイヤーではキーリング曲線が10年分の上昇を刻んでおり、理論と観測が初めてかみ合い始めた時期にあたる。真鍋はこの業績を含む研究で2021年にノーベル物理学賞を受賞した。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Manabe, S. & Wetherald, R. T. (1967) Thermal Equilibrium of the Atmosphere with a Given Distribution of Relative Humidity. Journal of the Atmospheric Sciences", "url": null},
-        {"title": "The Nobel Prize in Physics 2021", "url": "https://www.nobelprize.org/prizes/physics/2021/summary/"}
+        {
+          "title": "Manabe, S. & Wetherald, R. T. (1967) Thermal Equilibrium of the Atmosphere with a Given Distribution of Relative Humidity. Journal of the Atmospheric Sciences",
+          "url": null
+        },
+        {
+          "title": "The Nobel Prize in Physics 2021",
+          "url": "https://www.nobelprize.org/prizes/physics/2021/summary/"
+        }
       ]
     },
     {
@@ -81,12 +108,15 @@
       "type": "point",
       "layer": "科学の発見",
       "title": "チャーニー報告、気候感度を1.5〜4.5℃と推定",
-      "summary": "米科学アカデミーの委員会がCO2倍増時の昇温を1.5〜4.5℃と評価。数十年にわたり基準となる推定幅。",
-      "detail": "ジュール・チャーニーを長とする委員会は、真鍋らのモデルとハンセンらのモデルを比較し、CO2倍増で「無視できる昇温は考えにくい」と結論した。同年2月にはWMO主催の第1回世界気候会議がジュネーブで開かれており、科学者コミュニティが政策側へ警告を発し始めた年でもある。",
+      "summary": "ジュール・チャーニーを長とする米科学アカデミーの委員会が、真鍋らとハンセンらのモデルを比較し、CO2倍増時の昇温を1.5〜4.5℃と評価。「無視できる昇温は考えにくい」と結論し、この推定幅は数十年にわたり基準となった。\n\n同年2月にはWMO主催の第1回世界気候会議がジュネーブで開かれており、科学者コミュニティが政策側へ警告を発し始めた年でもある。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "National Research Council (1979) Carbon Dioxide and Climate: A Scientific Assessment", "url": "https://doi.org/10.17226/12181"}
+        {
+          "title": "National Research Council (1979) Carbon Dioxide and Climate: A Scientific Assessment",
+          "url": "https://doi.org/10.17226/12181"
+        }
       ]
     },
     {
@@ -96,12 +126,15 @@
       "type": "point",
       "layer": "政策と社会",
       "title": "ハンセン、米上院で「温暖化は始まっている」と証言",
-      "summary": "NASAのジェームズ・ハンセンが猛暑の中の上院公聴会で、温暖化が高い確度で進行中と証言し注目を集める。",
-      "detail": "記録的猛暑と干ばつに見舞われた夏の公聴会で、ハンセンは温室効果と観測された昇温の関係を「99%の確度」と述べた。この証言は温暖化を米国の政治課題に押し上げ、同年11月のIPCC設立とも重なった。1979年の科学的評価から約10年を経て、科学レイヤーの知見が政策レイヤーに本格的に接続した転換点。",
+      "summary": "記録的猛暑と干ばつに見舞われた夏、NASAのジェームズ・ハンセンが米上院公聴会で、温室効果と観測された昇温の関係を「99%の確度」と述べ、温暖化が高い確度で進行中と証言した。\n\nこの証言は温暖化を米国の政治課題に押し上げ、同年11月のIPCC設立とも重なった。1979年の科学的評価から約10年を経て、**科学レイヤーの知見が政策レイヤーに本格的に接続した転換点**である。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "U.S. Senate Committee on Energy and Natural Resources, Hearing on the Greenhouse Effect and Global Climate Change (June 23, 1988)", "url": null}
+        {
+          "title": "U.S. Senate Committee on Energy and Natural Resources, Hearing on the Greenhouse Effect and Global Climate Change (June 23, 1988)",
+          "url": null
+        }
       ]
     },
     {
@@ -111,12 +144,15 @@
       "type": "point",
       "layer": "科学の発見",
       "title": "IPCC第1次評価報告書を公表",
-      "summary": "1988年に設立されたIPCCが初の評価報告書をまとめ、人為的排出が温室効果を強めていることを確認。",
-      "detail": "報告書は温室効果ガス排出が続けば21世紀に10年あたり約0.3℃の昇温が起きうると予測し、観測された昇温の人為的寄与についてはなお不確実と慎重に記した。この科学的評価が同年の第2回世界気候会議を経て、1992年の気候変動枠組条約の交渉に直接つながった。",
+      "summary": "1988年に設立されたIPCCが初の評価報告書をまとめ、人為的排出が温室効果を強めていることを確認。排出が続けば21世紀に10年あたり約0.3℃の昇温が起きうると予測する一方、観測された昇温の人為的寄与についてはなお不確実と慎重に記した。\n\nこの科学的評価が同年の第2回世界気候会議を経て、1992年の気候変動枠組条約の交渉に直接つながった。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "IPCC (1990) Climate Change: The IPCC Scientific Assessment (First Assessment Report)", "url": "https://www.ipcc.ch/reports/"}
+        {
+          "title": "IPCC (1990) Climate Change: The IPCC Scientific Assessment (First Assessment Report)",
+          "url": "https://www.ipcc.ch/reports/"
+        }
       ]
     },
     {
@@ -126,12 +162,15 @@
       "type": "point",
       "layer": "政策と社会",
       "title": "地球サミットで気候変動枠組条約が署名開放",
-      "summary": "リオデジャネイロの国連環境開発会議で、温室効果ガス濃度の安定化を目的とする枠組条約に各国が署名。",
-      "detail": "条約は「気候系に危険な人為的干渉を及ぼさない水準」で濃度を安定させることを究極目的とし、1994年に発効した。数値目標を伴わない枠組みだったため、具体的な削減義務は1997年の京都議定書へ持ち越された。IPCC第1次報告から2年、ハンセン証言から4年での国際合意である。",
+      "summary": "リオデジャネイロの国連環境開発会議で、温室効果ガス濃度を「気候系に危険な人為的干渉を及ぼさない水準」で安定させることを究極目的とする気候変動枠組条約に各国が署名。条約は1994年に発効した。\n\n数値目標を伴わない枠組みだったため、具体的な削減義務は1997年の京都議定書へ持ち越された。IPCC第1次報告から2年、ハンセン証言から4年での国際合意である。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "UNFCCC: What is the United Nations Framework Convention on Climate Change?", "url": "https://unfccc.int/process-and-meetings/the-convention/what-is-the-united-nations-framework-convention-on-climate-change"}
+        {
+          "title": "UNFCCC: What is the United Nations Framework Convention on Climate Change?",
+          "url": "https://unfccc.int/process-and-meetings/the-convention/what-is-the-united-nations-framework-convention-on-climate-change"
+        }
       ]
     },
     {
@@ -141,12 +180,15 @@
       "type": "point",
       "layer": "政策と社会",
       "title": "京都議定書を採択",
-      "summary": "COP3で先進国に法的拘束力ある削減目標を課す京都議定書が採択。日本は6%削減を約束。",
-      "detail": "先進国全体で2008〜2012年に1990年比約5%削減を義務づけた。米国は署名したが批准せず、発効は2005年まで待つことになる。採択の翌年、観測レイヤーでは強いエルニーニョで1998年が当時の観測史上最高気温を記録し、科学レイヤーでは過去1000年の気温復元が発表されるなど、政策・観測・科学が同時に動いた時期。",
+      "summary": "COP3で先進国に法的拘束力ある削減目標を課す京都議定書が採択。先進国全体で2008〜2012年に1990年比約5%、日本は6%の削減を約束した。米国は署名したが批准せず、発効は2005年まで待つことになる。\n\n採択の翌年、観測レイヤーでは強いエルニーニョで1998年が当時の観測史上最高気温を記録し、科学レイヤーでは過去1000年の気温復元が発表されるなど、政策・観測・科学が同時に動いた時期だった。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "UNFCCC: Kyoto Protocol", "url": "https://unfccc.int/kyoto_protocol"}
+        {
+          "title": "UNFCCC: Kyoto Protocol",
+          "url": "https://unfccc.int/kyoto_protocol"
+        }
       ]
     },
     {
@@ -156,13 +198,19 @@
       "type": "point",
       "layer": "科学の発見",
       "title": "マンら、過去600年の気温復元「ホッケースティック」を発表",
-      "summary": "年輪などの代替指標から北半球の気温変動を復元し、20世紀の昇温が突出していると示した論文がNatureに掲載。",
-      "detail": "翌年には復元期間が過去1000年に延長され、IPCC第3次報告（2001年）に採用されて温暖化の象徴的な図となった。一方で統計手法や代替指標の選択をめぐる批判が続き、2006年の米国研究評議会の検証では大筋の結論が支持されたが、中世の気温との比較の確からしさは議論が残った。",
+      "summary": "マンらが年輪などの代替指標から北半球の気温変動を復元し、20世紀の昇温が突出していると示した論文がNatureに掲載。翌年には復元期間が過去1000年に延長された。\n\nIPCC第3次報告（2001年）に採用されて温暖化の象徴的な図となった一方、統計手法や代替指標の選択をめぐる批判が続いた。2006年の米国研究評議会の検証では大筋の結論が支持されたが、中世の気温との比較の確からしさには議論が残った。",
+      "detail": null,
       "credibility": "disputed",
       "credibility_note": "復元手法（主成分分析の中心化や代替指標の選択）に対する批判があり、20世紀以前の詳細な気温変動については専門家間で評価が分かれる。",
       "sources": [
-        {"title": "Mann, M. E., Bradley, R. S. & Hughes, M. K. (1998) Global-scale temperature patterns and climate forcing over the past six centuries. Nature", "url": "https://doi.org/10.1038/33859"},
-        {"title": "National Research Council (2006) Surface Temperature Reconstructions for the Last 2,000 Years", "url": null}
+        {
+          "title": "Mann, M. E., Bradley, R. S. & Hughes, M. K. (1998) Global-scale temperature patterns and climate forcing over the past six centuries. Nature",
+          "url": "https://doi.org/10.1038/33859"
+        },
+        {
+          "title": "National Research Council (2006) Surface Temperature Reconstructions for the Last 2,000 Years",
+          "url": null
+        }
       ]
     },
     {
@@ -172,13 +220,19 @@
       "type": "point",
       "layer": "観測と現象",
       "title": "欧州熱波、初めて人為的寄与が定量評価される",
-      "summary": "西欧を襲った記録的熱波で数万人規模の超過死亡。翌年、人間活動が発生確率を高めたとする研究が発表。",
-      "detail": "フランスなどで8月上旬に40℃前後が続き、高齢者を中心に多数の死者が出た。翌2004年、ストットらは人為的な温室効果ガスがこの規模の熱波の発生リスクを少なくとも2倍にしたと推定し、個別の異常気象に人為的寄与を割り当てる「イベント・アトリビューション」の先駆けとなった。政策レイヤーでは京都議定書がなお未発効だった。",
+      "summary": "西欧を襲った記録的熱波で、フランスなどでは8月上旬に40℃前後が続き、高齢者を中心に数万人規模の超過死亡が生じた。\n\n翌2004年、ストットらは人為的な温室効果ガスがこの規模の熱波の発生リスクを少なくとも2倍にしたと推定し、個別の異常気象に人為的寄与を割り当てる「イベント・アトリビューション」の先駆けとなった。政策レイヤーでは京都議定書がなお未発効だった。",
+      "detail": null,
       "credibility": "unverified",
       "credibility_note": "超過死亡数は約3万人から7万人超まで推計に幅があり、対象国や集計期間によって数値が異なる。",
       "sources": [
-        {"title": "Stott, P. A., Stone, D. A. & Allen, M. R. (2004) Human contribution to the European heatwave of 2003. Nature", "url": "https://doi.org/10.1038/nature03089"},
-        {"title": "Robine, J.-M. et al. (2008) Death toll exceeded 70,000 in Europe during the summer of 2003. Comptes Rendus Biologies", "url": "https://doi.org/10.1016/j.crvi.2007.12.001"}
+        {
+          "title": "Stott, P. A., Stone, D. A. & Allen, M. R. (2004) Human contribution to the European heatwave of 2003. Nature",
+          "url": "https://doi.org/10.1038/nature03089"
+        },
+        {
+          "title": "Robine, J.-M. et al. (2008) Death toll exceeded 70,000 in Europe during the summer of 2003. Comptes Rendus Biologies",
+          "url": "https://doi.org/10.1016/j.crvi.2007.12.001"
+        }
       ]
     },
     {
@@ -188,13 +242,19 @@
       "type": "point",
       "layer": "科学の発見",
       "title": "IPCC第4次報告「温暖化は疑う余地がない」",
-      "summary": "第1作業部会が気候系の温暖化を「疑う余地がない」と断定し、人為的要因である可能性が非常に高いと評価。",
-      "detail": "20世紀半ば以降の昇温の大部分が人為的温室効果ガスによる可能性を90%以上とした。同年10月にはIPCCとアル・ゴアがノーベル平和賞を受賞し、9月には北極海の夏季海氷面積が当時の観測史上最小を記録。科学の断定、観測の異変、社会的評価が同じ年に重なった。",
+      "summary": "IPCC第1作業部会が気候系の温暖化を「疑う余地がない」と断定し、20世紀半ば以降の昇温の大部分が人為的温室効果ガスによる可能性を90%以上と評価した。\n\n同年9月には北極海の夏季海氷面積が当時の観測史上最小を記録し、10月にはIPCCとアル・ゴアがノーベル平和賞を受賞。科学の断定、観測の異変、社会的評価が同じ年に重なった。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "IPCC (2007) Climate Change 2007: The Physical Science Basis. Summary for Policymakers", "url": "https://www.ipcc.ch/report/ar4/wg1/"},
-        {"title": "The Nobel Peace Prize 2007", "url": "https://www.nobelprize.org/prizes/peace/2007/summary/"}
+        {
+          "title": "IPCC (2007) Climate Change 2007: The Physical Science Basis. Summary for Policymakers",
+          "url": "https://www.ipcc.ch/report/ar4/wg1/"
+        },
+        {
+          "title": "The Nobel Peace Prize 2007",
+          "url": "https://www.nobelprize.org/prizes/peace/2007/summary/"
+        }
       ]
     },
     {
@@ -204,13 +264,19 @@
       "type": "period",
       "layer": "政策と社会",
       "title": "京都議定書 第一約束期間",
-      "summary": "先進国が削減義務を負う5年間。日本は6%削減目標を森林吸収と海外クレジットを含めて達成。",
-      "detail": "採択から11年を経てようやく始まった義務期間。米国不参加のうえ、カナダは2011年に離脱を表明し、排出が急増する中国・インドには義務がなかった。期間中の2009年COP15コペンハーゲンでは次期枠組みの合意に失敗し、全ての国が参加する仕組みへの転換が2015年のパリ協定まで持ち越された。",
+      "summary": "先進国が削減義務を負う5年間が始まる。日本は6%削減目標を森林吸収と海外クレジットを含めて達成した。\n\n**採択から11年を経てようやく始まった義務期間**だったが、米国不参加のうえカナダは2011年に離脱を表明し、排出が急増する中国・インドには義務がなかった。期間中の2009年COP15コペンハーゲンでは次期枠組みの合意に失敗し、全ての国が参加する仕組みへの転換は2015年のパリ協定まで持ち越された。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "UNFCCC: Kyoto Protocol", "url": "https://unfccc.int/kyoto_protocol"},
-        {"title": "環境省: 京都議定書目標達成計画の進捗状況", "url": null}
+        {
+          "title": "UNFCCC: Kyoto Protocol",
+          "url": "https://unfccc.int/kyoto_protocol"
+        },
+        {
+          "title": "環境省: 京都議定書目標達成計画の進捗状況",
+          "url": null
+        }
       ]
     },
     {
@@ -220,13 +286,19 @@
       "type": "point",
       "layer": "観測と現象",
       "title": "マウナロアの日平均CO2濃度が初めて400ppmを超える",
-      "summary": "キーリングの観測開始から55年、大気中CO2の日平均値が400ppmの節目に到達。",
-      "detail": "1958年の観測開始時は約315ppmだった。400ppmは少なくとも数十万年ぶりの水準とされ、報道を通じて象徴的な数字として広まった。以後、年平均でも2015年に400ppmを超え、季節的な低下でも下回らなくなった。同年9月にはIPCC第5次報告が公表され、人為的影響の確からしさが「極めて高い」に引き上げられている。",
+      "summary": "キーリングの観測開始から55年、マウナロアの大気中CO2の日平均値が400ppmの節目に到達した。1958年の観測開始時は約315ppmだった。\n\n400ppmは少なくとも数十万年ぶりの水準とされ、報道を通じて象徴的な数字として広まった。以後、年平均でも2015年に400ppmを超え、季節的な低下でも下回らなくなる。同年9月にはIPCC第5次報告が公表され、人為的影響の確からしさが「極めて高い」に引き上げられた。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "NOAA Global Monitoring Laboratory: Trends in Atmospheric Carbon Dioxide", "url": "https://gml.noaa.gov/ccgg/trends/"},
-        {"title": "Scripps Institution of Oceanography: The Keeling Curve", "url": "https://keelingcurve.ucsd.edu/"}
+        {
+          "title": "NOAA Global Monitoring Laboratory: Trends in Atmospheric Carbon Dioxide",
+          "url": "https://gml.noaa.gov/ccgg/trends/"
+        },
+        {
+          "title": "Scripps Institution of Oceanography: The Keeling Curve",
+          "url": "https://keelingcurve.ucsd.edu/"
+        }
       ]
     },
     {
@@ -236,13 +308,19 @@
       "type": "period",
       "layer": "観測と現象",
       "title": "2015〜16年の強いエルニーニョ",
-      "summary": "1997〜98年に匹敵する強いエルニーニョが発生し、地球温暖化の長期傾向に上乗せして世界平均気温を押し上げた。",
-      "detail": "太平洋赤道域の海面水温上昇に伴い、2015年、2016年が相次いで観測史上最高気温を更新した。エルニーニョは自然変動であり、温暖化の傾向に周期的に重なる。パリ協定の交渉が進んだ2015年12月はまさにこの現象の最盛期で、記録的な暖冬や熱波が交渉の背景にあった。",
+      "summary": "1997〜98年に匹敵する強いエルニーニョが発生。太平洋赤道域の海面水温上昇に伴い、地球温暖化の長期傾向に上乗せして世界平均気温を押し上げ、2015年、2016年が相次いで観測史上最高気温を更新した。\n\nエルニーニョは自然変動であり、温暖化の傾向に周期的に重なる。パリ協定の交渉が進んだ2015年12月はまさにこの現象の最盛期で、記録的な暖冬や熱波が交渉の背景にあった。",
+      "detail": null,
       "credibility": "disputed",
       "credibility_note": "発生期間の定義は機関により異なり、気象庁は2014年夏〜2016年春、NOAAは2015年春〜2016年春を発生期間としている。",
       "sources": [
-        {"title": "NOAA Climate Prediction Center: Oceanic Niño Index (ONI)", "url": "https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php"},
-        {"title": "気象庁: エルニーニョ現象およびラニーニャ現象の発生期間", "url": null}
+        {
+          "title": "NOAA Climate Prediction Center: Oceanic Niño Index (ONI)",
+          "url": "https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php"
+        },
+        {
+          "title": "気象庁: エルニーニョ現象およびラニーニャ現象の発生期間",
+          "url": null
+        }
       ]
     },
     {
@@ -252,12 +330,15 @@
       "type": "point",
       "layer": "政策と社会",
       "title": "パリ協定を採択",
-      "summary": "COP21で全ての国が参加する枠組みに合意。産業革命前比で2℃を十分下回り、1.5℃に抑える努力を追求。",
-      "detail": "京都議定書と異なり、各国が自ら削減目標を掲げて5年ごとに更新する仕組みをとった。1.5℃目標は島嶼国の要求で盛り込まれ、その科学的根拠の整理がIPCCに要請されて2018年の特別報告書につながる。採択の年、観測レイヤーでは強いエルニーニョのもと世界平均気温が初めて産業革命前比1℃を超えたと報告された。",
+      "summary": "COP21で全ての国が参加する枠組みに合意。産業革命前比で2℃を十分下回り、1.5℃に抑える努力を追求するとし、京都議定書と異なり各国が自ら削減目標を掲げて5年ごとに更新する仕組みをとった。\n\n1.5℃目標は島嶼国の要求で盛り込まれ、その科学的根拠の整理がIPCCに要請されて2018年の特別報告書につながる。採択の年、観測レイヤーでは強いエルニーニョのもと世界平均気温が初めて産業革命前比1℃を超えたと報告された。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "UNFCCC: The Paris Agreement", "url": "https://unfccc.int/process-and-meetings/the-paris-agreement"}
+        {
+          "title": "UNFCCC: The Paris Agreement",
+          "url": "https://unfccc.int/process-and-meetings/the-paris-agreement"
+        }
       ]
     },
     {
@@ -267,12 +348,15 @@
       "type": "point",
       "layer": "科学の発見",
       "title": "IPCC「1.5℃特別報告書」を公表",
-      "summary": "1.5℃と2℃の影響の差を示し、1.5℃に抑えるには2030年頃までにCO2排出をほぼ半減、2050年頃に実質ゼロが必要と提示。",
-      "detail": "パリ協定の要請を受けた報告書は、現在のペースでは2030〜2052年に1.5℃に達すると見積もった。「2050年ネットゼロ」という時間軸はこの報告書から各国政策と企業目標に広がった。公表の翌年には若者の気候ストライキが世界に拡大し、科学の提示した期限が社会運動の言葉となった。",
+      "summary": "パリ協定の要請を受けたIPCCの特別報告書が1.5℃と2℃の影響の差を示し、1.5℃に抑えるには2030年頃までにCO2排出をほぼ半減、2050年頃に実質ゼロが必要と提示。現在のペースでは2030〜2052年に1.5℃に達すると見積もった。\n\n「2050年ネットゼロ」という時間軸はこの報告書から各国政策と企業目標に広がり、公表の翌年には若者の気候ストライキが世界に拡大。**科学の提示した期限が社会運動の言葉となった**。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "IPCC (2018) Global Warming of 1.5°C. Special Report", "url": "https://www.ipcc.ch/sr15/"}
+        {
+          "title": "IPCC (2018) Global Warming of 1.5°C. Special Report",
+          "url": "https://www.ipcc.ch/sr15/"
+        }
       ]
     },
     {
@@ -282,13 +366,19 @@
       "type": "point",
       "layer": "政策と社会",
       "title": "世界気候ストライキ、数百万人規模に拡大",
-      "summary": "スウェーデンの学生の座り込みから広がった運動が世界150か国以上で一斉行動。参加者は主催者発表で約400万人。",
-      "detail": "国連気候行動サミットの直前に行われ、若者主導の気候運動が最大規模となった。1.5℃特別報告書が示した「2030年まで」の期限を運動が掲げ、科学レイヤーの数字がスローガンになった例といえる。同年、EUと英国は2050年カーボンニュートラルを法制化・宣言し、企業や自治体の目標設定も加速した。",
+      "summary": "スウェーデンの学生の座り込みから広がった運動が、国連気候行動サミットの直前に世界150か国以上で一斉行動を実施。参加者は主催者発表で約400万人と、若者主導の気候運動として最大規模となった。\n\n運動は1.5℃特別報告書が示した「2030年まで」の期限を掲げ、科学レイヤーの数字がスローガンになった例といえる。同年、EUと英国は2050年カーボンニュートラルを法制化・宣言し、企業や自治体の目標設定も加速した。",
+      "detail": null,
       "credibility": "unverified",
       "credibility_note": "参加人数は主催者発表に基づく推計で、独立した集計はなく、報道により300万〜760万人と幅がある。",
       "sources": [
-        {"title": "Fridays for Future: Global Climate Strike, September 2019", "url": null},
-        {"title": "The Guardian (2019-09-21) Climate crisis: 6 million people join latest wave of global protests", "url": null}
+        {
+          "title": "Fridays for Future: Global Climate Strike, September 2019",
+          "url": null
+        },
+        {
+          "title": "The Guardian (2019-09-21) Climate crisis: 6 million people join latest wave of global protests",
+          "url": null
+        }
       ]
     },
     {
@@ -298,12 +388,15 @@
       "type": "point",
       "layer": "科学の発見",
       "title": "IPCC第6次報告「人間の影響が温暖化させたことは疑う余地がない」",
-      "summary": "第1作業部会が人為的影響を初めて断定的に記述。20年間の観測とモデルの進歩が「疑う余地なし」を支えた。",
-      "detail": "1990年の第1次報告が人為的寄与を「不確実」とし、2007年に「可能性が非常に高い」、2013年に「極めて高い」としてきた表現が、ついに断定に至った。同じ年、真鍋淑郎らが気候モデルの基礎を築いた功績でノーベル物理学賞を受賞。11月のCOP26では1.5℃目標の追求を確認し、石炭火力の段階的削減が初めて合意文書に入った。",
+      "summary": "IPCC第1作業部会が人為的影響を初めて断定的に記述。1990年の第1次報告が「不確実」とし、2007年に「可能性が非常に高い」、2013年に「極めて高い」としてきた表現が、20年間の観測とモデルの進歩に支えられ、ついに「疑う余地なし」に至った。\n\n同じ年、真鍋淑郎らが気候モデルの基礎を築いた功績でノーベル物理学賞を受賞。11月のCOP26では1.5℃目標の追求を確認し、石炭火力の段階的削減が初めて合意文書に入った。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "IPCC (2021) Climate Change 2021: The Physical Science Basis. Summary for Policymakers", "url": "https://www.ipcc.ch/report/ar6/wg1/"}
+        {
+          "title": "IPCC (2021) Climate Change 2021: The Physical Science Basis. Summary for Policymakers",
+          "url": "https://www.ipcc.ch/report/ar6/wg1/"
+        }
       ]
     },
     {
@@ -313,13 +406,19 @@
       "type": "point",
       "layer": "観測と現象",
       "title": "2024年、初めて年平均で産業革命前比1.5℃を超過",
-      "summary": "観測史上最も暑い年となり、複数のデータセットで年平均気温が産業革命前比1.5℃を上回ったと報告。",
-      "detail": "2023年に続く記録更新で、エルニーニョと長期的な温暖化が重なった。パリ協定の1.5℃目標は20〜30年平均で評価されるため単年の超過は目標の失敗を意味しないが、アレニウスの計算から128年、パリ協定から9年で象徴的な水準に達した。政策レイヤーでは各国の削減目標の積み上げがなお2℃経路にも届いていない。",
+      "summary": "観測史上最も暑い年となり、複数のデータセットで年平均気温が産業革命前比1.5℃を上回ったと報告された。2023年に続く記録更新で、エルニーニョと長期的な温暖化が重なった。\n\nパリ協定の1.5℃目標は20〜30年平均で評価されるため単年の超過は目標の失敗を意味しないが、**アレニウスの計算から128年、パリ協定から9年**で象徴的な水準に達した。政策レイヤーでは各国の削減目標の積み上げがなお2℃経路にも届いていない。",
+      "detail": null,
       "credibility": "disputed",
       "credibility_note": "コペルニクスは1.60℃、WMOは1.55±0.13℃と報告し、データセットや基準期間の取り方によっては1.5℃をわずかに下回る評価もある。",
       "sources": [
-        {"title": "Copernicus Climate Change Service: Global Climate Highlights 2024", "url": null},
-        {"title": "WMO: State of the Global Climate 2024", "url": null}
+        {
+          "title": "Copernicus Climate Change Service: Global Climate Highlights 2024",
+          "url": null
+        },
+        {
+          "title": "WMO: State of the Global Climate 2024",
+          "url": null
+        }
       ]
     }
   ]

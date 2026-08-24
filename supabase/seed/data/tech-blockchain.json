@@ -7,9 +7,18 @@
   "start_year": 2008,
   "end_year": 2025,
   "layers": [
-    {"name": "技術", "color": "blue"},
-    {"name": "市場と資本", "color": "gold"},
-    {"name": "規制と事件", "color": "pink"}
+    {
+      "name": "技術",
+      "color": "blue"
+    },
+    {
+      "name": "市場と資本",
+      "color": "gold"
+    },
+    {
+      "name": "規制と事件",
+      "color": "pink"
+    }
   ],
   "events": [
     {
@@ -19,12 +28,15 @@
       "type": "point",
       "layer": "技術",
       "title": "Bitcoin論文「P2P電子通貨システム」公開",
-      "summary": "サトシ・ナカモトを名乗る人物が暗号学メーリングリストに9ページの論文を投稿。中央管理者なしで二重支払いを防ぐ仕組みを示した。",
-      "detail": "リーマン・ブラザーズ破綻から約1か月半後という時期は、金融機関への不信が背景にあったとしばしば語られる。Proof of Workによる合意形成と公開台帳という設計は、後のEthereum(技術)や無数の暗号資産の原型となった。著者の正体は現在も不明で、規制と事件レイヤーの多くの騒動もこの匿名性に根ざす。",
+      "summary": "サトシ・ナカモトを名乗る人物が暗号学メーリングリストに9ページの論文を投稿し、中央管理者なしで二重支払いを防ぐ仕組みを示した。リーマン・ブラザーズ破綻から約1か月半後という時期は、金融機関への不信が背景にあったとしばしば語られる。\n\nProof of Workによる合意形成と公開台帳という設計は、後のEthereum(技術)や無数の暗号資産の原型となった。著者の正体は現在も不明で、規制と事件レイヤーの多くの騒動もこの匿名性に根ざす。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Bitcoin: A Peer-to-Peer Electronic Cash System", "url": "https://bitcoin.org/bitcoin.pdf"}
+        {
+          "title": "Bitcoin: A Peer-to-Peer Electronic Cash System",
+          "url": "https://bitcoin.org/bitcoin.pdf"
+        }
       ]
     },
     {
@@ -34,12 +46,15 @@
       "type": "point",
       "layer": "技術",
       "title": "Bitcoinのジェネシスブロック生成",
-      "summary": "Bitcoinネットワークの最初のブロックが生成され、稼働開始。ブロックには英紙の銀行救済に関する見出しが埋め込まれていた。",
-      "detail": "埋め込まれた「Chancellor on brink of second bailout for banks」の見出しは、金融危機下での既存金融への批評と読まれている。当初は暗号学者や愛好家の実験にすぎず、市場価格は存在しなかった。1年半後のピザ取引(市場と資本)で初めて実物との交換価値が示され、価格を持つ資産としての歴史が始まる。",
+      "summary": "Bitcoinネットワークの最初のブロックが生成され、稼働開始。ブロックに埋め込まれた英紙の見出し「Chancellor on brink of second bailout for banks」は、金融危機下での既存金融への批評と読まれている。\n\n当初は暗号学者や愛好家の実験にすぎず、市場価格は存在しなかった。1年半後のピザ取引(市場と資本)で初めて実物との交換価値が示され、価格を持つ資産としての歴史が始まる。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia: Bitcoin", "url": "https://en.wikipedia.org/wiki/Bitcoin"}
+        {
+          "title": "Wikipedia: Bitcoin",
+          "url": "https://en.wikipedia.org/wiki/Bitcoin"
+        }
       ]
     },
     {
@@ -49,12 +64,15 @@
       "type": "point",
       "layer": "市場と資本",
       "title": "1万BTCでピザ2枚、初の実物取引",
-      "summary": "フロリダのプログラマーが1万BTCと引き換えにピザ2枚を受け取ったと掲示板に報告。Bitcoinの最初の商取引として知られる。",
-      "detail": "当時の1万BTCは約41ドル相当だったが、後年の価格では数億ドルに相当し、「ビットコイン・ピザ・デー」として毎年言及される。技術(ジェネシスブロック)から1年半で価格発見が始まった事例であり、翌年以降の取引所の乱立とMt.Goxの台頭(規制と事件)につながる。投機資産としての性格はこの時点ではまだ薄かった。",
+      "summary": "フロリダのプログラマーが1万BTCと引き換えにピザ2枚を受け取ったと掲示板に報告。Bitcoinの最初の商取引として知られ、当時の1万BTCは約41ドル相当だったが、後年の価格では数億ドルに相当し、「ビットコイン・ピザ・デー」として毎年言及される。\n\n技術(ジェネシスブロック)から1年半で価格発見が始まった事例であり、翌年以降の取引所の乱立とMt.Goxの台頭(規制と事件)につながる。投機資産としての性格はこの時点ではまだ薄かった。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Bitcointalk: Pizza for bitcoins? (2010)", "url": "https://bitcointalk.org/index.php?topic=137.0"}
+        {
+          "title": "Bitcointalk: Pizza for bitcoins? (2010)",
+          "url": "https://bitcointalk.org/index.php?topic=137.0"
+        }
       ]
     },
     {
@@ -64,12 +82,15 @@
       "type": "point",
       "layer": "規制と事件",
       "title": "闇市場Silk Roadを米当局が閉鎖",
-      "summary": "FBIがBitcoin決済の違法商品市場Silk Roadを閉鎖し運営者を逮捕。Bitcoinと犯罪の結びつきが広く報じられた。",
-      "detail": "Torと暗号資産の匿名性を利用した市場の摘発は、規制当局が暗号資産を本格的に監視対象とする契機となった。同年12月には中国人民銀行が金融機関のBitcoin取扱いを禁止し、価格が急落している(市場と資本)。技術の中立性と利用の違法性を分けて論じる枠組みは、この事件を通じて形成された。",
+      "summary": "FBIがBitcoin決済の違法商品市場Silk Roadを閉鎖し運営者を逮捕。Bitcoinと犯罪の結びつきが広く報じられ、Torと暗号資産の匿名性を利用した市場の摘発は、規制当局が暗号資産を本格的に監視対象とする契機となった。\n\n同年12月には中国人民銀行が金融機関のBitcoin取扱いを禁止し、価格が急落している(市場と資本)。技術の中立性と利用の違法性を分けて論じる枠組みは、この事件を通じて形成された。",
+      "detail": null,
       "credibility": "unverified",
       "credibility_note": "当局が押収したBitcoinの数量は報道により約2.6万〜17万BTCと幅があり、押収時期の区別も含めて数値は未確定。",
       "sources": [
-        {"title": "Wikipedia: Silk Road (marketplace)", "url": "https://en.wikipedia.org/wiki/Silk_Road_(marketplace)"}
+        {
+          "title": "Wikipedia: Silk Road (marketplace)",
+          "url": "https://en.wikipedia.org/wiki/Silk_Road_(marketplace)"
+        }
       ]
     },
     {
@@ -79,12 +100,15 @@
       "type": "point",
       "layer": "規制と事件",
       "title": "Mt.Goxが民事再生を申請、大量のBitcoin消失",
-      "summary": "東京の取引所Mt.Goxが取引を停止し民事再生を申請。顧客資産を含む大量のBitcoinが失われたと発表し、業界最大級の破綻となった。",
-      "detail": "世界のBitcoin取引の大半を扱っていた取引所の破綻は、価格の長期低迷を招くとともに、取引所への規制の必要性を各国に認識させた。日本では利用者保護の議論が進み、2017年の改正資金決済法(規制と事件)で取引所登録制が導入される。技術そのものではなく取引所という「入口」が最大の弱点であることを示した事件である。",
+      "summary": "東京の取引所Mt.Goxが取引を停止し民事再生を申請。顧客資産を含む大量のBitcoinが失われたと発表し、業界最大級の破綻となった。世界のBitcoin取引の大半を扱っていた取引所の破綻は、価格の長期低迷を招いた。\n\n各国に取引所規制の必要性を認識させ、日本では利用者保護の議論が進み、2017年の改正資金決済法(規制と事件)で取引所登録制が導入される。技術そのものではなく**取引所という「入口」が最大の弱点**であることを示した事件である。",
+      "detail": null,
       "credibility": "disputed",
       "credibility_note": "消失額は当初約85万BTCと発表されたが、後に約20万BTCが発見されるなど、実際の損失規模と原因(外部からのハッキングか内部要因か)には諸説ある。",
       "sources": [
-        {"title": "Wikipedia: Mt. Gox", "url": "https://en.wikipedia.org/wiki/Mt._Gox"}
+        {
+          "title": "Wikipedia: Mt. Gox",
+          "url": "https://en.wikipedia.org/wiki/Mt._Gox"
+        }
       ]
     },
     {
@@ -94,12 +118,15 @@
       "type": "point",
       "layer": "技術",
       "title": "Ethereumメインネット稼働開始",
-      "summary": "スマートコントラクトを実行できる汎用ブロックチェーンEthereumが稼働。「通貨」から「プログラム可能な台帳」へ用途が広がった。",
-      "detail": "ヴィタリック・ブテリンが2013年に構想し、2014年のクラウドセールで資金を集めて開発された。任意のプログラムをチェーン上で動かせる設計は、翌年のThe DAO(技術・事件)や2017年のICOブーム(市場と資本)、後のDeFiやNFTの基盤となった。Bitcoinが「価値の保存」に特化する一方、Ethereumは応用の実験場となる。",
+      "summary": "スマートコントラクトを実行できる汎用ブロックチェーンEthereumが稼働開始。ヴィタリック・ブテリンが2013年に構想し、2014年のクラウドセールで資金を集めて開発された。「通貨」から「プログラム可能な台帳」へ用途が広がった。\n\n任意のプログラムをチェーン上で動かせる設計は、翌年のThe DAO(技術・事件)や2017年のICOブーム(市場と資本)、後のDeFiやNFTの基盤となった。Bitcoinが「価値の保存」に特化する一方、Ethereumは応用の実験場となる。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia: Ethereum", "url": "https://en.wikipedia.org/wiki/Ethereum"}
+        {
+          "title": "Wikipedia: Ethereum",
+          "url": "https://en.wikipedia.org/wiki/Ethereum"
+        }
       ]
     },
     {
@@ -109,12 +136,15 @@
       "type": "point",
       "layer": "技術",
       "title": "The DAOハッキング、Ethereumがハードフォークへ",
-      "summary": "Ethereum上の投資ファンドThe DAOの脆弱性が突かれ、集めたETHの約3分の1が流出。取り消しのためのハードフォークで議論が割れた。",
-      "detail": "「コードが法」という理念と、被害回復のためにチェーンを巻き戻すかという実務判断が衝突し、7月のハードフォークで巻き戻さない側がEthereum Classicとして分離した。スマートコントラクトの脆弱性が巨額損失に直結することを示し、後の監査産業やDeFiハックの系譜(規制と事件)の起点となった。",
+      "summary": "Ethereum上の投資ファンドThe DAOの脆弱性が突かれ、集めたETHの約3分の1が流出。「コードが法」という理念と、被害回復のためにチェーンを巻き戻すかという実務判断が衝突し、取り消しのためのハードフォークをめぐって議論が割れた。\n\n7月のハードフォークで巻き戻さない側がEthereum Classicとして分離した。スマートコントラクトの脆弱性が巨額損失に直結することを示し、後の監査産業やDeFiハックの系譜(規制と事件)の起点となった。",
+      "detail": null,
       "credibility": "unverified",
       "credibility_note": "流出額は約360万ETHとされるが、当時のドル換算額は5000万〜7000万ドルと資料により幅がある。",
       "sources": [
-        {"title": "Wikipedia: The DAO", "url": "https://en.wikipedia.org/wiki/The_DAO"}
+        {
+          "title": "Wikipedia: The DAO",
+          "url": "https://en.wikipedia.org/wiki/The_DAO"
+        }
       ]
     },
     {
@@ -124,12 +154,15 @@
       "type": "period",
       "layer": "市場と資本",
       "title": "ICOブーム",
-      "summary": "Ethereum上でトークンを発行して資金を集めるICOが急増。2017年に数十億ドル規模の調達が行われ、多くが後に価値を失った。",
-      "detail": "Ethereumのスマートコントラクト(技術)がなければ成立しなかった資金調達手法で、ホワイトペーパー1枚で巨額を集める例が続出した。2017年9月には中国がICOを全面禁止し、米SECも証券法違反の警告を出すなど、規制と事件レイヤーの対応を招いた。同年末のBitcoin高騰と重なり、暗号資産が一般投資家の関心事となる。",
+      "summary": "Ethereum上でトークンを発行して資金を集めるICOが急増し、2017年に数十億ドル規模の調達が行われた。Ethereumのスマートコントラクト(技術)がなければ成立しなかった資金調達手法で、ホワイトペーパー1枚で巨額を集める例が続出し、多くが後に価値を失った。\n\n2017年9月には中国がICOを全面禁止し、米SECも証券法違反の警告を出すなど、規制と事件レイヤーの対応を招いた。同年末のBitcoin高騰と重なり、暗号資産が一般投資家の関心事となる。",
+      "detail": null,
       "credibility": "unverified",
       "credibility_note": "ブームの開始・終了時期は明確な定義がなく、調達総額も集計機関により大きく異なる。",
       "sources": [
-        {"title": "Wikipedia: Initial coin offering", "url": "https://en.wikipedia.org/wiki/Initial_coin_offering"}
+        {
+          "title": "Wikipedia: Initial coin offering",
+          "url": "https://en.wikipedia.org/wiki/Initial_coin_offering"
+        }
       ]
     },
     {
@@ -139,12 +172,15 @@
       "type": "point",
       "layer": "規制と事件",
       "title": "日本で改正資金決済法が施行、仮想通貨交換業を登録制に",
-      "summary": "仮想通貨を法的に定義し、交換業者に金融庁への登録を義務づける改正法が施行。主要国で初の包括的な取引所規制となった。",
-      "detail": "Mt.Gox破綻(2014年)の教訓を受けた立法で、利用者財産の分別管理や本人確認を義務化した。同年、日本は世界のBitcoin取引で大きなシェアを占め、価格高騰(市場と資本)を支えた一因ともされる。しかし翌年のCoincheck事件は、登録制のみでは資産保全が不十分であることを露呈させた。",
+      "summary": "仮想通貨を法的に定義し、交換業者に金融庁への登録を義務づける改正資金決済法が施行。主要国で初の包括的な取引所規制であり、Mt.Gox破綻(2014年)の教訓を受けて利用者財産の分別管理や本人確認を義務化した。\n\n同年、日本は世界のBitcoin取引で大きなシェアを占め、価格高騰(市場と資本)を支えた一因ともされる。しかし翌年のCoincheck事件は、登録制のみでは資産保全が不十分であることを露呈させた。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "金融庁: 仮想通貨交換業者登録一覧・資金決済に関する法律", "url": null}
+        {
+          "title": "金融庁: 仮想通貨交換業者登録一覧・資金決済に関する法律",
+          "url": null
+        }
       ]
     },
     {
@@ -154,12 +190,15 @@
       "type": "point",
       "layer": "技術",
       "title": "Bitcoin Cashが分岐、ブロックサイズ論争の決着",
-      "summary": "取引処理能力をめぐる数年来の対立の末、ブロックサイズを拡大したBitcoin Cashが分岐。Bitcoin本体はSegWitを有効化した。",
-      "detail": "分散型ネットワークの仕様変更を誰がどう決めるかというガバナンス問題が、実際にチェーンの分裂という形で表れた。技術論争は市場にも波及し、分岐前後の価格変動や取引所の対応(市場と資本)が投資家を翻弄した。この後Bitcoinはレイヤー2で拡張する路線を、Ethereumはやがてコンセンサス転換(2022年のMerge)を選ぶ。",
+      "summary": "取引処理能力をめぐる数年来の対立の末、ブロックサイズを拡大したBitcoin Cashが分岐し、Bitcoin本体はSegWitを有効化した。分散型ネットワークの仕様変更を誰がどう決めるかというガバナンス問題が、実際にチェーンの分裂という形で表れた。\n\n技術論争は市場にも波及し、分岐前後の価格変動や取引所の対応(市場と資本)が投資家を翻弄した。この後Bitcoinはレイヤー2で拡張する路線を、Ethereumはやがてコンセンサス転換(2022年のMerge)を選ぶ。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia: Bitcoin Cash", "url": "https://en.wikipedia.org/wiki/Bitcoin_Cash"}
+        {
+          "title": "Wikipedia: Bitcoin Cash",
+          "url": "https://en.wikipedia.org/wiki/Bitcoin_Cash"
+        }
       ]
     },
     {
@@ -169,12 +208,15 @@
       "type": "point",
       "layer": "市場と資本",
       "title": "Bitcoinが約2万ドルの史上最高値、初のバブル頂点",
-      "summary": "Bitcoin価格が主要取引所で2万ドル前後に達し当時の最高値を記録。ICOブームとCME先物上場を背景に、個人投資家が殺到した。",
-      "detail": "年初の約1000ドルから20倍近い上昇で、テレビや新聞が連日報じる社会現象となった。同月にCBOEとCMEがBitcoin先物を上場し、機関投資家の参入が期待されたが、翌年には8割以上下落する「暗号資産の冬」に入る。技術(SegWit、Bitcoin Cash分岐)や規制(日本の登録制、中国のICO禁止)がすべて同じ年に集中していた。",
+      "summary": "Bitcoin価格が主要取引所で2万ドル前後に達し、当時の史上最高値を記録。年初の約1000ドルから20倍近い上昇で、ICOブームを背景に個人投資家が殺到し、テレビや新聞が連日報じる社会現象となった。\n\n同月にCBOEとCMEがBitcoin先物を上場し、機関投資家の参入が期待されたが、翌年には8割以上下落する「暗号資産の冬」に入る。技術(SegWit、Bitcoin Cash分岐)や規制(日本の登録制、中国のICO禁止)がすべて同じ年に集中していた。",
+      "detail": null,
       "credibility": "disputed",
       "credibility_note": "最高値は取引所により1万9000〜2万ドル台と異なり、日付も12月16〜18日の間で資料により差がある。",
       "sources": [
-        {"title": "CoinMarketCap: Bitcoin 価格履歴", "url": null}
+        {
+          "title": "CoinMarketCap: Bitcoin 価格履歴",
+          "url": null
+        }
       ]
     },
     {
@@ -184,12 +226,15 @@
       "type": "point",
       "layer": "規制と事件",
       "title": "コインチェックからNEM約580億円分が流出",
-      "summary": "国内取引所コインチェックから約5.2億XEM(当時約580億円相当)が不正送金された。単一事件としては当時最大規模の流出となった。",
-      "detail": "改正資金決済法(2017年)の登録審査中だった業者で起きた事件で、ホットウォレット管理の不備が指摘された。金融庁は立入検査と業務改善命令を出し、以後の審査は厳格化。バブル頂点(市場と資本)からわずか1か月後の出来事であり、熱狂の直後に事件が起きるという本年表の反復パターンを象徴する。",
+      "summary": "国内取引所コインチェックから約5.2億XEM(当時約580億円相当)が不正送金された。単一事件としては当時最大規模の流出で、改正資金決済法(2017年)の登録審査中だった業者で起き、ホットウォレット管理の不備が指摘された。\n\n金融庁は立入検査と業務改善命令を出し、以後の審査は厳格化。バブル頂点(市場と資本)からわずか1か月後の出来事であり、**熱狂の直後に事件が起きるという本年表の反復パターン**を象徴する。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia: Coincheck", "url": "https://en.wikipedia.org/wiki/Coincheck"}
+        {
+          "title": "Wikipedia: Coincheck",
+          "url": "https://en.wikipedia.org/wiki/Coincheck"
+        }
       ]
     },
     {
@@ -199,12 +244,15 @@
       "type": "point",
       "layer": "規制と事件",
       "title": "エルサルバドルがBitcoinを法定通貨に",
-      "summary": "エルサルバドルで世界初となるBitcoin法定通貨法が施行。国家が暗号資産を通貨として採用する実験が始まった。",
-      "detail": "ドル化経済の国が送金コスト削減と金融包摂を掲げて導入したが、国民の利用は限定的で、IMFは金融リスクを警告し続けた。2025年にはIMF融資の条件として法定通貨としての受け入れ義務が撤回されている。同月、中国は暗号資産取引を全面禁止しており、国家の対応が正反対に分かれた月である。",
+      "summary": "エルサルバドルで世界初となるBitcoin法定通貨法が施行。ドル化経済の同国が送金コスト削減と金融包摂を掲げ、国家が暗号資産を通貨として採用する実験が始まった。\n\n国民の利用は限定的で、IMFは金融リスクを警告し続け、2025年にはIMF融資の条件として法定通貨としての受け入れ義務が撤回されている。同月、中国は暗号資産取引を全面禁止しており、国家の対応が正反対に分かれた月である。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia: Bitcoin Law", "url": "https://en.wikipedia.org/wiki/Bitcoin_Law"}
+        {
+          "title": "Wikipedia: Bitcoin Law",
+          "url": "https://en.wikipedia.org/wiki/Bitcoin_Law"
+        }
       ]
     },
     {
@@ -214,12 +262,15 @@
       "type": "point",
       "layer": "規制と事件",
       "title": "中国が暗号資産取引とマイニングを全面禁止",
-      "summary": "中国人民銀行など10機関が暗号資産関連の取引を違法とする通知を公表。同年5月のマイニング規制と合わせ、事実上の全面禁止となった。",
-      "detail": "世界のBitcoinマイニングの過半を担っていた中国からハッシュレートが流出し、米国などへ移転した(技術)。取引禁止は市場に短期的な下落をもたらしたが、同年11月にはBitcoinが史上最高値を更新しており(市場と資本)、単一国家の禁止では市場が止まらないことも示した。エルサルバドルの法定通貨化と同じ月の出来事である。",
+      "summary": "中国人民銀行など10機関が暗号資産関連の取引を違法とする通知を公表。同年5月のマイニング規制と合わせ事実上の全面禁止となり、世界のBitcoinマイニングの過半を担っていた中国からハッシュレートが米国などへ流出した(技術)。\n\n取引禁止は市場に短期的な下落をもたらしたが、同年11月にはBitcoinが史上最高値を更新しており(市場と資本)、単一国家の禁止では市場が止まらないことも示した。エルサルバドルの法定通貨化と同じ月の出来事である。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "中国人民銀行: 关于进一步防范和处置虚拟货币交易炒作风险的通知(2021年9月24日)", "url": null}
+        {
+          "title": "中国人民銀行: 关于进一步防范和处置虚拟货币交易炒作风险的通知(2021年9月24日)",
+          "url": null
+        }
       ]
     },
     {
@@ -229,12 +280,15 @@
       "type": "point",
       "layer": "市場と資本",
       "title": "Bitcoinが約6万9000ドルの史上最高値",
-      "summary": "コロナ禍の金融緩和とTeslaなど企業の購入、米国での先物ETF承認を背景に、Bitcoinが約6万9000ドルの最高値をつけた。",
-      "detail": "2017年の頂点(約2万ドル)から3年半で3倍超の水準に達し、NFTやDeFiのブームも重なった。翌2022年の利上げ局面でTerra崩壊とFTX破綻(規制と事件)が続き、価格は1万6000ドル台まで下落する。低金利下の資本(市場と資本)が暗号資産へ流入し、引き締めとともに退潮する構図が明確に表れた。",
+      "summary": "コロナ禍の金融緩和とTeslaなど企業の購入、米国での先物ETF承認を背景に、Bitcoinが約6万9000ドルの史上最高値をつけた。2017年の頂点(約2万ドル)から3年半で3倍超の水準に達し、NFTやDeFiのブームも重なった。\n\n翌2022年の利上げ局面でTerra崩壊とFTX破綻(規制と事件)が続き、価格は1万6000ドル台まで下落する。低金利下の資本(市場と資本)が暗号資産へ流入し、引き締めとともに退潮する構図が明確に表れた。",
+      "detail": null,
       "credibility": "disputed",
       "credibility_note": "最高値は取引所により6万8000〜6万9000ドル台と異なる。",
       "sources": [
-        {"title": "CoinMarketCap: Bitcoin 価格履歴", "url": null}
+        {
+          "title": "CoinMarketCap: Bitcoin 価格履歴",
+          "url": null
+        }
       ]
     },
     {
@@ -244,12 +298,15 @@
       "type": "period",
       "layer": "市場と資本",
       "title": "Terra/USTの崩壊",
-      "summary": "アルゴリズム型ステーブルコインUSTがドル連動を失い、姉妹通貨LUNAとともに1週間でほぼ無価値に。約400億ドル規模の時価総額が消失した。",
-      "detail": "担保ではなくアルゴリズムで価格を維持する設計(技術)の脆弱性が、市場の売り圧力で一気に露呈した。連鎖的にヘッジファンドや貸付業者が破綻し、11月のFTX破綻(規制と事件)へ続く信用収縮の起点となった。米国や日本でステーブルコイン規制の議論が急加速し、日本では翌年、改正資金決済法でステーブルコインの発行者が限定された。",
+      "summary": "アルゴリズム型ステーブルコインUSTがドル連動を失い、姉妹通貨LUNAとともに1週間でほぼ無価値になり、約400億ドル規模の時価総額が消失した。担保ではなくアルゴリズムで価格を維持する設計(技術)の脆弱性が、市場の売り圧力で一気に露呈した。\n\n連鎖的にヘッジファンドや貸付業者が破綻し、**11月のFTX破綻(規制と事件)へ続く信用収縮の起点**となった。米国や日本でステーブルコイン規制の議論が急加速し、日本では翌年、改正資金決済法でステーブルコインの発行者が限定された。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia: Terra (blockchain)", "url": "https://en.wikipedia.org/wiki/Terra_(blockchain)"}
+        {
+          "title": "Wikipedia: Terra (blockchain)",
+          "url": "https://en.wikipedia.org/wiki/Terra_(blockchain)"
+        }
       ]
     },
     {
@@ -259,12 +316,15 @@
       "type": "point",
       "layer": "技術",
       "title": "Ethereumが「The Merge」でProof of Stakeへ移行",
-      "summary": "EthereumがProof of WorkからProof of Stakeへ移行するアップグレードを完了。消費電力を99%以上削減したとされる。",
-      "detail": "稼働中のネットワークを止めずに合意形成の仕組みを入れ替えた大規模な移行で、数年来の開発の集大成だった。環境負荷への批判(規制と事件レイヤーの論点)に技術で応えた形だが、同時期の市場はTerra崩壊とFTX破綻に挟まれた「冬」の最中で、価格への影響は限定的だった。技術と市場の時間軸のずれを示す事例である。",
+      "summary": "EthereumがProof of WorkからProof of Stakeへ移行するアップグレード「The Merge」を完了し、消費電力を99%以上削減したとされる。稼働中のネットワークを止めずに合意形成の仕組みを入れ替えた大規模な移行で、数年来の開発の集大成だった。\n\n環境負荷への批判(規制と事件レイヤーの論点)に技術で応えた形だが、同時期の市場はTerra崩壊とFTX破綻に挟まれた「冬」の最中で、価格への影響は限定的だった。**技術と市場の時間軸のずれ**を示す事例である。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "ethereum.org: The Merge", "url": "https://ethereum.org/en/roadmap/merge/"}
+        {
+          "title": "ethereum.org: The Merge",
+          "url": "https://ethereum.org/en/roadmap/merge/"
+        }
       ]
     },
     {
@@ -274,12 +334,15 @@
       "type": "point",
       "layer": "規制と事件",
       "title": "FTXが破産申請、顧客資産流用が発覚",
-      "summary": "世界2位級の取引所FTXが米国で連邦破産法11条を申請。関連会社への顧客資産流用が明らかになり、創業者は後に有罪となった。",
-      "detail": "Mt.Gox(2014年)以来、再び「取引所」が最大の弱点となった事件で、規制当局と政界に深く食い込んでいた企業の破綻は業界全体の信頼を失墜させた。米国では取引所規制の議論が加速し、日本では分別管理義務により国内利用者の資産返還が比較的速やかに進んだ点が対照的だった。市場(市場と資本)は底値圏に沈む。",
+      "summary": "世界2位級の取引所FTXが米国で連邦破産法11条を申請。関連会社への顧客資産流用が明らかになり、創業者は後に有罪となった。Mt.Gox(2014年)以来、再び「取引所」が最大の弱点となった事件で、規制当局と政界に深く食い込んでいた企業の破綻は業界全体の信頼を失墜させた。\n\n米国では取引所規制の議論が加速し、日本では分別管理義務により国内利用者の資産返還が比較的速やかに進んだ点が対照的だった。市場(市場と資本)は底値圏に沈む。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia: Bankruptcy of FTX", "url": "https://en.wikipedia.org/wiki/Bankruptcy_of_FTX"}
+        {
+          "title": "Wikipedia: Bankruptcy of FTX",
+          "url": "https://en.wikipedia.org/wiki/Bankruptcy_of_FTX"
+        }
       ]
     },
     {
@@ -289,12 +352,15 @@
       "type": "point",
       "layer": "市場と資本",
       "title": "米SECが現物Bitcoin ETFを承認",
-      "summary": "米証券取引委員会が11本の現物Bitcoin ETFを承認。証券口座で買える商品となり、機関投資家と個人の資金流入が加速した。",
-      "detail": "10年以上却下され続けた申請が、裁判所の判断を経て承認に至った。FTX破綻(規制と事件)から1年余りでの転換であり、投機的な「取引所」経由から規制された金融商品へと入口が広がったことを意味する。同年4月の半減期と重なり、Bitcoinは同年末に初めて10万ドルを超えた。技術ではなく制度が価格を動かした局面である。",
+      "summary": "米証券取引委員会が11本の現物Bitcoin ETFを承認。10年以上却下され続けた申請が裁判所の判断を経て承認に至り、証券口座で買える商品となって機関投資家と個人の資金流入が加速した。\n\nFTX破綻(規制と事件)から1年余りでの転換であり、投機的な「取引所」経由から規制された金融商品へと入口が広がったことを意味する。同年4月の半減期と重なり、Bitcoinは同年末に初めて10万ドルを超えた。**技術ではなく制度が価格を動かした**局面である。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "SEC: Statement on the Approval of Spot Bitcoin Exchange-Traded Products (2024-01-10)", "url": "https://www.sec.gov/newsroom/speeches-statements/gensler-statement-spot-bitcoin-011023"}
+        {
+          "title": "SEC: Statement on the Approval of Spot Bitcoin Exchange-Traded Products (2024-01-10)",
+          "url": "https://www.sec.gov/newsroom/speeches-statements/gensler-statement-spot-bitcoin-011023"
+        }
       ]
     },
     {
@@ -304,12 +370,15 @@
       "type": "point",
       "layer": "規制と事件",
       "title": "米国でステーブルコイン規制法(GENIUS法)が成立",
-      "summary": "ドル連動ステーブルコインの発行者に準備資産の全額裏付けなどを義務づける連邦法が成立。米国初の包括的な暗号資産法制となった。",
-      "detail": "Terra崩壊(2022年)で露呈したステーブルコインの危うさに対する立法上の回答であり、同時にドル建てステーブルコインを制度に取り込む産業政策でもある。ETF承認(市場と資本)と並び、暗号資産が「規制の外」から「規制の内側」へ移る流れを決定づけた。Bitcoin論文から17年、興亡の末に制度化へ至った現在地を示す。",
+      "summary": "ドル連動ステーブルコインの発行者に準備資産の全額裏付けなどを義務づけるGENIUS法が成立し、米国初の包括的な暗号資産法制となった。Terra崩壊(2022年)で露呈したステーブルコインの危うさに対する立法上の回答であり、同時にドル建てステーブルコインを制度に取り込む産業政策でもある。\n\nETF承認(市場と資本)と並び、暗号資産が**「規制の外」から「規制の内側」へ**移る流れを決定づけた。Bitcoin論文から17年、興亡の末に制度化へ至った現在地を示す。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia: GENIUS Act", "url": "https://en.wikipedia.org/wiki/GENIUS_Act"}
+        {
+          "title": "Wikipedia: GENIUS Act",
+          "url": "https://en.wikipedia.org/wiki/GENIUS_Act"
+        }
       ]
     }
   ]

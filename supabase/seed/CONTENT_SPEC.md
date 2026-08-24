@@ -24,8 +24,8 @@
       "type": "point",                     // point | period（1年表に1〜3件は period を入れる）
       "layer": "技術",                     // layers[].name のいずれか
       "title": "Transformer論文「Attention Is All You Need」公開",  // ≤ 40字
-      "summary": "…",                     // 40〜80字。カード表示用の一文
-      "detail": "…",                      // 120〜240字。背景・因果・他レイヤーとのつながりに触れる
+      "summary": "…",                     // 統合本文150〜260字（2026-08-25改定・下記「本文フォーマット」参照）
+      "detail": null,                      // 使用しない（常にnull。旧2階層フォーマットは廃止）
       "credibility": "verified",          // verified | disputed | unverified（配分の目安: 70% / 15% / 15%）
       "credibility_note": null,            // disputed/unverified のとき必須: 何が諸説あり・未検証なのか一文
       "sources": [                         // 1〜2件。実在する出典。URLは確からしいものだけ（不確かなら url: null で title のみ）
@@ -35,6 +35,13 @@
   ]
 }
 ```
+
+## 本文フォーマット（summary。2026-08-25改定、見本: tech-ai-revolution.json）
+
+- 旧「summary+detail」2階層を廃止し、1本の統合本文を `summary` に入れる（`detail` は常にnull）
+- 長さ150〜260字。**2段落構成**（段落区切りは `\n\n`）: 第1段落=出来事そのもの / 第2段落=背景・因果・他レイヤーとのつながり
+- **強調**: 年表のテーマ（descriptionの視点）に直結するキーフレーズを `**フレーズ**` で囲む。1年表20イベント中4〜8箇所・1イベント1箇所まで。劇的な事実ではなく「この年表が何を見せたいか」を体現する句だけに付ける
+- credibility_note と重なる留保表現（「報道ベース」等）は本文からも落とさない
 
 ## 品質基準
 - **史実の正確さ最優先**。確信がない日付・数値は precision を粗くするか credibility を `unverified`/`disputed` にして note に理由を書く（Chronosの思想: 分からないことは分からないと表示する）

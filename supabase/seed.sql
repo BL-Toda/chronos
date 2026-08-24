@@ -20,121 +20,161 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-gafa'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-gafa') and name = '買収と資本'),
-          '1976-04-01', null, 'day', 'point', 'Apple Computer 創業', 'スティーブ・ジョブズ、スティーブ・ウォズニアック、ロナルド・ウェインがカリフォルニア州でApple Computerを創業した。', 'ガレージ企業として始まり、翌1977年のApple IIで個人向けコンピュータ市場を開いた。GAFA四社の中で最も古く、ほかの三社が生まれるインターネット時代より20年近く前の出来事である。1980年の株式公開で得た資本と、のちの経営危機と復活が、2007年のiPhoneに至る長い前史をつくった。',
+          '1976-04-01', null, 'day', 'point', 'Apple Computer 創業', 'スティーブ・ジョブズ、スティーブ・ウォズニアック、ロナルド・ウェインがカリフォルニア州でApple Computerを創業した。ガレージ企業として始まり、翌1977年のApple IIで個人向けコンピュータ市場を開いた。
+
+GAFA四社の中で最も古く、ほかの三社が生まれるインターネット時代より20年近く前の出来事である。1980年の株式公開で得た資本と、のちの経営危機と復活が、2007年のiPhoneに至る長い前史をつくった。', null,
           'verified', null, 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: History of Apple Inc.', 'https://en.wikipedia.org/wiki/History_of_Apple_Inc.')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-gafa'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-gafa') and name = '買収と資本'),
-          '1994-07-05', null, 'day', 'point', 'Amazon 創業（当初社名Cadabra）', 'ジェフ・ベゾスがワシントン州でCadabraを設立。翌1995年7月にオンライン書店Amazon.comを開設した。', 'ウェブの商用利用が始まった直後の創業で、書籍を入り口に「あらゆるものを売る店」を目指した。1997年の株式公開で調達した資本を長期にわたり物流と技術に再投資し、利益より成長を優先する姿勢が投資家に受け入れられた。この方針が2006年のクラウド事業AWSの立ち上げを可能にする。',
+          '1994-07-05', null, 'day', 'point', 'Amazon 創業（当初社名Cadabra）', 'ジェフ・ベゾスがワシントン州でCadabraを設立し、翌1995年7月にオンライン書店Amazon.comを開設した。ウェブの商用利用が始まった直後の創業で、書籍を入り口に「あらゆるものを売る店」を目指した。
+
+1997年の株式公開で調達した資本を長期にわたり物流と技術に再投資し、利益より成長を優先する姿勢が投資家に受け入れられた。この方針が2006年のクラウド事業AWSの立ち上げを可能にする。', null,
           'verified', null, 'user', 1) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: History of Amazon', 'https://en.wikipedia.org/wiki/History_of_Amazon')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-gafa'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-gafa') and name = '買収と資本'),
-          '1995-01-01', '2000-12-31', 'year', 'period', 'ドットコム・ブーム', 'インターネット関連企業への投資が過熱し、NASDAQは2000年3月に史上最高値を付けたのち急落した。', 'AmazonとGoogleはこの熱狂の中で創業・成長し、Amazonはバブル崩壊後の株価急落と資金繰りの不安を乗り越えた。Googleは崩壊直後の2000年に検索連動広告AdWordsを開始し、収益モデルを確立する。バブル期に敷設された通信インフラの過剰投資が、その後の安価な帯域と2000年代のプラットフォーム成長の土台になったとされる。',
+          '1995-01-01', '2000-12-31', 'year', 'period', 'ドットコム・ブーム', 'インターネット関連企業への投資が過熱し、NASDAQは2000年3月に史上最高値を付けたのち急落した。AmazonとGoogleはこの熱狂の中で創業・成長し、Amazonはバブル崩壊後の株価急落と資金繰りの不安を乗り越えた。
+
+Googleは崩壊直後の2000年に検索連動広告AdWordsを開始し、収益モデルを確立する。バブル期に敷設された通信インフラの過剰投資が、その後の安価な帯域と2000年代のプラットフォーム成長の土台になったとされる。', null,
           'unverified', 'ブームの開始・終了年は定義により異なり、ここでは概ね1995年から2000年の崩壊までを目安として示す。', 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Dot-com bubble', 'https://en.wikipedia.org/wiki/Dot-com_bubble')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-gafa'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-gafa') and name = '買収と資本'),
-          '1998-09-04', null, 'day', 'point', 'Google 設立', 'スタンフォード大学の研究プロジェクトを母体に、ラリー・ペイジとセルゲイ・ブリンがGoogleを法人化した。', '被リンクを評価するPageRankを核にした検索エンジンで、ドットコム・ブームの渦中に創業した。1999年にベンチャーキャピタルから大型調達を行い、2004年に株式公開する。技術面では2000年のAdWordsによって「検索と広告」の結合が完成し、これがのちのYouTubeやAndroidの買収資金の源泉となった。',
+          '1998-09-04', null, 'day', 'point', 'Google 設立', 'スタンフォード大学の研究プロジェクトを母体に、ラリー・ペイジとセルゲイ・ブリンがGoogleを法人化した。被リンクを評価するPageRankを核にした検索エンジンで、ドットコム・ブームの渦中の創業である。
+
+1999年にベンチャーキャピタルから大型調達を行い、2004年に株式公開する。技術面では2000年のAdWordsによって「検索と広告」の結合が完成し、これがのちのYouTubeやAndroidの買収資金の源泉となった。', null,
           'verified', null, 'user', 3) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: History of Google', 'https://en.wikipedia.org/wiki/History_of_Google')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-gafa'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-gafa') and name = '製品とプラットフォーム'),
-          '2000-10-23', null, 'day', 'point', 'Google AdWords 開始', 'Googleがセルフサービス型の検索連動広告AdWordsを開始。検索行動を広告収益に変える仕組みが確立した。', 'ドットコム・バブル崩壊の年に、無料検索の裏側で収益を生むモデルが登場した意味は大きい。以後、Googleの売上の大半を広告が占め、この資本力が2005年のAndroid、2006年のYouTube買収を支える。規制レイヤーでは、この検索と広告の結合が2020年の米司法省提訴と2024年の独占認定の中心論点になる。',
+          '2000-10-23', null, 'day', 'point', 'Google AdWords 開始', 'Googleがセルフサービス型の検索連動広告AdWordsを開始し、**検索行動を広告収益に変える仕組み**が確立した。ドットコム・バブル崩壊の年に、無料検索の裏側で収益を生むモデルが登場した意味は大きい。
+
+以後、Googleの売上の大半を広告が占め、この資本力が2005年のAndroid、2006年のYouTube買収を支える。規制レイヤーでは、この検索と広告の結合が2020年の米司法省提訴と2024年の独占認定の中心論点になる。', null,
           'verified', null, 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Google Ads', 'https://en.wikipedia.org/wiki/Google_Ads')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-gafa'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-gafa') and name = '製品とプラットフォーム'),
-          '2004-02-04', null, 'day', 'point', 'Thefacebook 開設', 'マーク・ザッカーバーグらがハーバード大学の学生向けにThefacebook.comを公開。大学から一般へと段階的に開放された。', '実名を前提としたソーシャルネットワークで、2006年に一般公開、2007年に外部開発者向けプラットフォームを開始した。同じ2004年にはGoogleが株式公開しており、検索とソーシャルという二つの広告基盤が並行して立ち上がった年である。実名データの集積は成長の源泉であると同時に、2018年のケンブリッジ・アナリティカ問題の火種にもなる。',
+          '2004-02-04', null, 'day', 'point', 'Thefacebook 開設', 'マーク・ザッカーバーグらがハーバード大学の学生向けにThefacebook.comを公開した。実名を前提としたソーシャルネットワークで、2006年に一般公開、2007年に外部開発者向けプラットフォームを開始し、大学から一般へと段階的に開放された。
+
+同じ2004年にはGoogleが株式公開しており、検索とソーシャルという二つの広告基盤が並行して立ち上がった年である。実名データの集積は成長の源泉であると同時に、2018年のケンブリッジ・アナリティカ問題の火種にもなる。', null,
           'verified', null, 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: History of Facebook', 'https://en.wikipedia.org/wiki/History_of_Facebook')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-gafa'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-gafa') and name = '買収と資本'),
-          '2005-08-01', null, 'month', 'point', 'GoogleがAndroidを買収', 'Googleがモバイル向けOSを開発するスタートアップAndroidを買収。買収額は非公表で、約5,000万ドルと報じられた。', '当時は小さな買収と受け止められたが、2007年のiPhone登場後にAndroidをオープンソースで端末メーカーに提供し、モバイル検索と広告の入り口を確保した。製品レイヤーではiPhoneとApp Storeが先行し、Androidは2008年秋に最初の端末が発売される。買収時の金額は公式には明らかにされていない。',
+          '2005-08-01', null, 'month', 'point', 'GoogleがAndroidを買収', 'Googleがモバイル向けOSを開発するスタートアップAndroidを買収した。買収額は公式には明らかにされておらず、約5,000万ドルと報じられている。当時は小さな買収と受け止められた。
+
+しかし2007年のiPhone登場後、GoogleはAndroidをオープンソースで端末メーカーに提供し、モバイル検索と広告の入り口を確保する。製品レイヤーではiPhoneとApp Storeが先行し、Androidは2008年秋に最初の端末が発売される。', null,
           'unverified', '買収の事実と時期は確かだが、買収額は非公表で報道による推計値。', 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Android (operating system)', 'https://en.wikipedia.org/wiki/Android_(operating_system)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-gafa'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-gafa') and name = '製品とプラットフォーム'),
-          '2006-08-25', null, 'day', 'point', 'Amazon EC2 ベータ公開', 'AmazonがEC2の限定ベータを開始。同年3月のS3と合わせ、計算資源を時間貸しするクラウド事業AWSが本格化した。', '小売の余剰インフラから生まれたと語られることが多いが、実際には社内の開発効率化の取り組みが出発点とされる。スタートアップが初期投資なしにサービスを立ち上げられる環境は、のちのInstagramなど買収対象となる企業を育てる土壌にもなった。AWSは2010年代にAmazonの営業利益の柱となり、規制当局が同社を評価する際の重要な論点となる。',
+          '2006-08-25', null, 'day', 'point', 'Amazon EC2 ベータ公開', 'AmazonがEC2の限定ベータを開始。同年3月のS3と合わせ、計算資源を時間貸しするクラウド事業AWSが本格化した。小売の余剰インフラから生まれたと語られることが多いが、実際には社内の開発効率化の取り組みが出発点とされる。
+
+スタートアップが初期投資なしにサービスを立ち上げられる環境は、のちのInstagramなど買収対象となる企業を育てる土壌にもなった。AWSは2010年代にAmazonの営業利益の柱となり、規制当局が同社を評価する際の重要な論点となる。', null,
           'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Amazon Elastic Compute Cloud', 'https://en.wikipedia.org/wiki/Amazon_Elastic_Compute_Cloud')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-gafa'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-gafa') and name = '買収と資本'),
-          '2006-10-09', null, 'day', 'point', 'GoogleがYouTubeを16.5億ドルで買収', 'Googleが動画共有サービスYouTubeを約16.5億ドルの株式交換で買収すると発表した。', '創業から2年に満たない企業への大型買収で、AdWordsで築いた資本力を用いて成長領域を取り込む戦略が明確になった。製品面では同年にAmazonがEC2を公開しており、動画のような大容量サービスを支えるインフラ競争も始まっていた。動画広告市場の支配は、のちの各国の競争法調査でも繰り返し検討対象となる。',
+          '2006-10-09', null, 'day', 'point', 'GoogleがYouTubeを16.5億ドルで買収', 'Googleが動画共有サービスYouTubeを約16.5億ドルの株式交換で買収すると発表した。創業から2年に満たない企業への大型買収で、AdWordsで築いた資本力を用いて成長領域を取り込む戦略が明確になった。
+
+製品面では同年にAmazonがEC2を公開しており、動画のような大容量サービスを支えるインフラ競争も始まっていた。動画広告市場の支配は、のちの各国の競争法調査でも繰り返し検討対象となる。', null,
           'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: YouTube', 'https://en.wikipedia.org/wiki/YouTube')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-gafa'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-gafa') and name = '製品とプラットフォーム'),
-          '2007-01-09', null, 'day', 'point', 'iPhone 発表', 'スティーブ・ジョブズがMacworldでiPhoneを発表。同年6月に米国で発売され、スマートフォンの形を定義した。', '電話・iPod・インターネット端末を一体化した製品で、タッチ操作を前提としたモバイルOSの標準をつくった。Googleは2005年に買収していたAndroidの設計を見直し、2008年に対抗端末を投入する。翌2008年のApp Storeによって、端末とアプリ流通を一社が握る「プラットフォーム」の構図が完成し、これが2020年代の日欧の規制の対象となる。',
+          '2007-01-09', null, 'day', 'point', 'iPhone 発表', 'スティーブ・ジョブズがMacworldでiPhoneを発表した。電話・iPod・インターネット端末を一体化した製品は同年6月に米国で発売され、タッチ操作を前提としたモバイルOSの標準をつくり、スマートフォンの形を定義した。
+
+Googleは2005年に買収していたAndroidの設計を見直し、2008年に対抗端末を投入する。翌2008年のApp Storeによって、端末とアプリ流通を一社が握る「プラットフォーム」の構図が完成し、これが2020年代の日欧の規制の対象となる。', null,
           'verified', null, 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Apple Newsroom: Apple Reinvents the Phone with iPhone', 'https://www.apple.com/newsroom/2007/01/09Apple-Reinvents-the-Phone-with-iPhone/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-gafa'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-gafa') and name = '製品とプラットフォーム'),
-          '2008-07-10', null, 'day', 'point', 'App Store 開始', 'AppleがiPhone向けアプリ配信のApp Storeを開始。約500本のアプリでスタートし、開発者に売上の70%を配分するモデルを示した。', 'アプリ流通を単一の窓口に集約し、審査と手数料の仕組みを標準化した。Googleも同年にAndroid Marketを開始し、二大モバイルプラットフォームの並立が固まる。手数料率と審査の裁量はのちに開発者との対立を生み、EUのデジタル市場法（2022年発効）や日本のスマホソフトウェア競争促進法（2024年成立）で直接の規制対象となった。',
+          '2008-07-10', null, 'day', 'point', 'App Store 開始', 'AppleがiPhone向けアプリ配信のApp Storeを開始。約500本のアプリでスタートし、開発者に売上の70%を配分するモデルを示した。**アプリ流通を単一の窓口に集約し、審査と手数料の仕組みを標準化した**点が核心である。
+
+Googleも同年にAndroid Marketを開始し、二大モバイルプラットフォームの並立が固まる。手数料率と審査の裁量はのちに開発者との対立を生み、EUのデジタル市場法（2022年発効）や日本のスマホソフトウェア競争促進法（2024年成立）で直接の規制対象となった。', null,
           'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: App Store (Apple)', 'https://en.wikipedia.org/wiki/App_Store_(Apple)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-gafa'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-gafa') and name = '買収と資本'),
-          '2012-04-09', null, 'day', 'point', 'FacebookがInstagramを買収', 'Facebookが写真共有アプリInstagramを現金と株式で約10億ドルで買収すると発表。従業員13人の企業への大型買収だった。', 'スマートフォンとApp Storeの普及で急成長した若い企業を、株式公開直前のFacebookが取り込んだ。発表額は約10億ドルだが、Facebook株の下落により完了時の価値は7億ドル台と報じられる。この買収は2020年の米連邦取引委員会（FTC）による提訴で「競争相手の芽を摘む買収」として問題視され、事後的な規制の焦点になった。',
+          '2012-04-09', null, 'day', 'point', 'FacebookがInstagramを買収', 'Facebookが写真共有アプリInstagramを現金と株式で約10億ドルで買収すると発表した。従業員13人の企業への大型買収であり、スマートフォンとApp Storeの普及で急成長した若い企業を、株式公開直前のFacebookが取り込んだ形である。発表額は約10億ドルだが、Facebook株の下落により完了時の価値は7億ドル台と報じられる。
+
+この買収は2020年の米連邦取引委員会（FTC）による提訴で**「競争相手の芽を摘む買収」**として問題視され、事後的な規制の焦点になった。', null,
           'disputed', '発表時の約10億ドルという金額と、株価変動後の完了時価値は異なり、報道により数値が分かれる。', 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Instagram', 'https://en.wikipedia.org/wiki/Instagram')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-gafa'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-gafa') and name = '買収と資本'),
-          '2014-02-19', null, 'day', 'point', 'FacebookがWhatsAppを買収', 'Facebookがメッセージアプリ WhatsAppを約190億ドルで買収すると発表。完了時には株価上昇で200億ドルを超えた。', 'モバイルのメッセージ領域を押さえる目的で、Instagramに続く大型買収となった。EUの企業結合審査ではデータ統合を行わないとの説明が前提とされ、のちに実態との相違で制裁金が科される。2018年のGDPR施行やケンブリッジ・アナリティカ問題を経て、こうしたデータを軸にした買収の審査は各国で厳格化していく。',
+          '2014-02-19', null, 'day', 'point', 'FacebookがWhatsAppを買収', 'Facebookがメッセージアプリ WhatsAppを約190億ドルで買収すると発表。完了時には株価上昇で200億ドルを超えた。モバイルのメッセージ領域を押さえる目的で、Instagramに続く大型買収となった。
+
+EUの企業結合審査ではデータ統合を行わないとの説明が前提とされ、のちに実態との相違で制裁金が科される。2018年のGDPR施行やケンブリッジ・アナリティカ問題を経て、こうしたデータを軸にした買収の審査は各国で厳格化していく。', null,
           'disputed', '発表額は約190億ドルだが、株式部分の価値変動により最終的な取引額は約218億ドルとされ、資料により金額が異なる。', 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: WhatsApp', 'https://en.wikipedia.org/wiki/WhatsApp')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-gafa'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-gafa') and name = '規制と社会'),
-          '2018-03-17', null, 'day', 'point', 'ケンブリッジ・アナリティカ問題が発覚', '英ガーディアン等の報道で、Facebook利用者のデータが選挙コンサル会社に不正利用されていたことが明らかになった。', '外部アプリを通じて最大8,700万人分のデータが取得されたとされ、ザッカーバーグは米議会で証言した。2004年の実名SNSという製品設計と、2012年以降の買収によるデータ集積が、社会的な信頼の問題として噴出した形である。約2か月後にEUでGDPRが施行され、2019年のFTC制裁金へとつながる規制強化の起点となった。',
+          '2018-03-17', null, 'day', 'point', 'ケンブリッジ・アナリティカ問題が発覚', '英ガーディアン等の報道で、Facebook利用者のデータが選挙コンサル会社に不正利用されていたことが明らかになった。外部アプリを通じて最大8,700万人分のデータが取得されたとされ、ザッカーバーグは米議会で証言した。
+
+2004年の実名SNSという製品設計と、2012年以降の買収によるデータ集積が、**社会的な信頼の問題として噴出した**出来事である。約2か月後にEUでGDPRが施行され、2019年のFTC制裁金へとつながる規制強化の起点となった。', null,
           'disputed', '影響を受けた利用者数は当初約5,000万人と報じられ、後にFacebookが最大約8,700万人と発表しており、数値に幅がある。', 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Facebook–Cambridge Analytica data scandal', 'https://en.wikipedia.org/wiki/Facebook%E2%80%93Cambridge_Analytica_data_scandal')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-gafa'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-gafa') and name = '規制と社会'),
-          '2018-05-25', null, 'day', 'point', 'EU一般データ保護規則（GDPR）施行', 'EUで個人データ保護を包括的に定めるGDPRが適用開始。違反時は世界売上の最大4%の制裁金が可能となった。', '2016年に採択され2年の準備期間を経て施行された。ケンブリッジ・アナリティカ問題の直後というタイミングで、広告を収益源とするGoogleとFacebookのデータ利用に直接影響した。同意取得の設計や越境データ移転を巡り、以後GAFA各社への制裁金決定が相次ぐ。2022年のデジタル市場法と並び、EUがプラットフォーム規制の先行地域となる基盤である。',
+          '2018-05-25', null, 'day', 'point', 'EU一般データ保護規則（GDPR）施行', 'EUで個人データ保護を包括的に定めるGDPRの適用が始まり、違反時は世界売上の最大4%の制裁金が可能となった。2016年に採択され、2年の準備期間を経ての施行である。
+
+ケンブリッジ・アナリティカ問題の直後というタイミングで、広告を収益源とするGoogleとFacebookのデータ利用に直接影響した。同意取得の設計や越境データ移転を巡り、以後GAFA各社への制裁金決定が相次ぐ。2022年のデジタル市場法と並び、EUがプラットフォーム規制の先行地域となる基盤である。', null,
           'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: General Data Protection Regulation', 'https://en.wikipedia.org/wiki/General_Data_Protection_Regulation')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-gafa'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-gafa') and name = '規制と社会'),
-          '2019-07-24', null, 'day', 'point', 'FTCがFacebookに50億ドルの制裁金', '米連邦取引委員会がプライバシー侵害を理由にFacebookへ50億ドルの制裁金と監督強化を科すと発表した。', 'ケンブリッジ・アナリティカ問題を受けた処分で、消費者保護分野では過去最大級の金額となった。制裁と同時に取締役会レベルのプライバシー監督体制が義務付けられた。同年はGoogleに対する州司法長官の調査も始まり、翌2020年の司法省提訴とFTCによるFacebook提訴へ続く。買収レイヤーで拡大した企業が、規制レイヤーで初めて大きな代償を払った出来事である。',
+          '2019-07-24', null, 'day', 'point', 'FTCがFacebookに50億ドルの制裁金', '米連邦取引委員会がプライバシー侵害を理由に、Facebookへ50億ドルの制裁金と監督強化を科すと発表した。ケンブリッジ・アナリティカ問題を受けた処分で、消費者保護分野では過去最大級の金額となり、取締役会レベルのプライバシー監督体制も義務付けられた。
+
+同年はGoogleに対する州司法長官の調査も始まり、翌2020年の司法省提訴とFTCによるFacebook提訴へ続く。**買収と資本で拡大した企業が、規制の側で初めて大きな代償を払った**出来事である。', null,
           'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('FTC Press Release (2019-07-24)', 'https://www.ftc.gov/news-events/news/press-releases/2019/07/ftc-imposes-5-billion-penalty-sweeping-new-privacy-restrictions-facebook')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-gafa'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-gafa') and name = '規制と社会'),
-          '2020-10-20', null, 'day', 'point', '米司法省がGoogleを反トラスト法違反で提訴', '米司法省と11州がGoogleを検索と検索広告市場の独占維持で提訴。1998年のMicrosoft訴訟以来の大型事件となった。', 'Appleなど端末メーカーへの巨額の支払いでデフォルト検索を確保した行為が違法な独占維持にあたるかが争点となった。製品レイヤーではiPhoneとAndroidの二大プラットフォームが検索の入り口を握る構図が背景にある。同年12月にはFTCがFacebookのInstagram・WhatsApp買収を問題視して提訴し、GAFAへの競争法執行が本格化した。',
+          '2020-10-20', null, 'day', 'point', '米司法省がGoogleを反トラスト法違反で提訴', '米司法省と11州がGoogleを検索と検索広告市場の独占維持で提訴し、1998年のMicrosoft訴訟以来の大型事件となった。Appleなど端末メーカーへの巨額の支払いでデフォルト検索を確保した行為が、違法な独占維持にあたるかが争点である。
+
+製品レイヤーではiPhoneとAndroidの二大プラットフォームが検索の入り口を握る構図が背景にある。同年12月にはFTCがFacebookのInstagram・WhatsApp買収を問題視して提訴し、GAFAへの競争法執行が本格化した。', null,
           'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('U.S. Department of Justice: Justice Department Sues Monopolist Google', 'https://www.justice.gov/opa/pr/justice-department-sues-monopolist-google-violating-antitrust-laws')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-gafa'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-gafa') and name = '規制と社会'),
-          '2022-11-01', null, 'day', 'point', 'EUデジタル市場法（DMA）発効', 'EUで大規模プラットフォームを「ゲートキーパー」に指定し事前規制するデジタル市場法が発効。2023年から順次適用された。', '自社サービスの優遇禁止やアプリストアの開放などを事前に義務付ける枠組みで、事後的な競争法執行の限界を補う狙いがある。2023年9月にAlphabet・Amazon・Apple・Metaなど6社がゲートキーパーに指定された。2008年のApp Storeに始まる閉じた流通モデルが直接の規制対象となり、日本も2024年に類似の法律を成立させた。',
+          '2022-11-01', null, 'day', 'point', 'EUデジタル市場法（DMA）発効', 'EUで大規模プラットフォームを「ゲートキーパー」に指定し事前規制するデジタル市場法が発効し、2023年から順次適用された。自社サービスの優遇禁止やアプリストアの開放などを事前に義務付ける枠組みで、事後的な競争法執行の限界を補う狙いがある。
+
+2023年9月にはAlphabet・Amazon・Apple・Metaなど6社がゲートキーパーに指定された。2008年のApp Storeに始まる閉じた流通モデルが直接の規制対象となり、日本も2024年に類似の法律を成立させた。', null,
           'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('European Commission: The Digital Markets Act', 'https://digital-markets-act.ec.europa.eu/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-gafa'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-gafa') and name = '規制と社会'),
-          '2024-06-12', null, 'day', 'point', '日本でスマホソフトウェア競争促進法が成立', 'スマートフォンのOS・アプリストア等を対象に、公正取引委員会が事前規制を行う新法が国会で成立した。', 'EUのデジタル市場法を参照し、AppleとGoogleを主な対象として代替アプリストアの許容や自社優遇の禁止を定めた。2008年のApp Store以来続いてきた手数料や審査の裁量が、日本でも法律で制約されることになる。米国では同年8月にGoogleの検索独占が認定されており、日米欧で規制が同時期に収束した年である。',
+          '2024-06-12', null, 'day', 'point', '日本でスマホソフトウェア競争促進法が成立', 'スマートフォンのOS・アプリストア等を対象に、公正取引委員会が事前規制を行うスマホソフトウェア競争促進法が国会で成立した。EUのデジタル市場法を参照し、AppleとGoogleを主な対象として代替アプリストアの許容や自社優遇の禁止を定めている。
+
+2008年のApp Store以来続いてきた手数料や審査の裁量が、日本でも法律で制約されることになる。米国では同年8月にGoogleの検索独占が認定されており、日米欧で規制が同時期に収束した年である。', null,
           'unverified', '成立日は国会記録に基づくが、全面施行時期（2025年12月と発表）や指定事業者の範囲は施行後の運用で確定するため未確認とする。', 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('公正取引委員会 スマートフォンにおいて利用される特定ソフトウェアに係る競争の促進に関する法律', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-gafa'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-gafa') and name = '規制と社会'),
-          '2024-08-05', null, 'day', 'point', '米連邦地裁がGoogleの検索独占を認定', 'ワシントンD.C.連邦地裁が、Googleが検索市場で違法に独占を維持したと判断。2020年提訴の司法省訴訟で原告側が勝訴した。', 'Appleへの巨額支払いによるデフォルト契約が独占維持の手段と認定された。2000年のAdWords以来の「検索と広告」の結合モデルが司法によって問い直された節目であり、是正措置の審理が続いた。同年6月に日本のスマホ新法が成立し、EUではDMAの執行が始まっており、GAFAの事業構造そのものが日米欧で同時に規制対象となった年として位置づけられる。',
+          '2024-08-05', null, 'day', 'point', '米連邦地裁がGoogleの検索独占を認定', 'ワシントンD.C.連邦地裁が、Googleが検索市場で違法に独占を維持したと判断し、2020年提訴の司法省訴訟で原告側が勝訴した。Appleへの巨額支払いによるデフォルト契約が独占維持の手段と認定され、是正措置の審理が続いた。
+
+**2000年のAdWords以来の「検索と広告」の結合モデルが司法によって問い直された**節目である。同年6月に日本のスマホ新法が成立し、EUではDMAの執行が始まっており、GAFAの事業構造そのものが日米欧で同時に規制対象となった年として位置づけられる。', null,
           'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: United States v. Google LLC (2020)', 'https://en.wikipedia.org/wiki/United_States_v._Google_LLC_(2020)')) as v(title, url);
 
@@ -151,121 +191,161 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-japan-unicorns') and name = '技術とトレンド'),
-          '2010-01-01', '2015-12-31', 'year', 'period', 'スマートフォン普及期', '総務省調査でスマートフォンの世帯保有率は2010年の約1割から2015年には7割超へ急伸した。', 'iPhoneのソフトバンク独占販売終了とAndroid端末の拡大を背景に、日本の生活者は数年で常時接続の端末を手にした。この普及が、2013年に創業するメルカリなど「スマホ前提」のサービスの土台となる。同時期の制度面では2013年の日本再興戦略が開業率目標を掲げており、需要側と政策側の条件が並行して整った。',
+          '2010-01-01', '2015-12-31', 'year', 'period', 'スマートフォン普及期', '総務省の通信利用動向調査によれば、スマートフォンの世帯保有率は2010年の約1割から2015年には7割超へ急伸した。iPhoneのソフトバンク独占販売終了とAndroid端末の拡大を背景に、日本の生活者は数年で常時接続の端末を手にした。
+
+この普及が、2013年に創業するメルカリなど「スマホ前提」のサービスの土台となる。同時期の制度面では2013年の日本再興戦略が開業率目標を掲げており、需要側と政策側の条件が並行して整った。', null,
           'verified', null, 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('総務省 通信利用動向調査', 'https://www.soumu.go.jp/johotsusintokei/statistics/statistics05.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-japan-unicorns') and name = '企業と資金調達'),
-          '2013-02-01', null, 'day', 'point', 'メルカリ創業（当時コウゾウ）', '山田進太郎らが株式会社コウゾウを設立。同年7月にフリマアプリ「メルカリ」を公開し、スマホ完結の個人間取引を広げた。', '創業年の日本はスマートフォン普及期の真っ只中にあり、写真を撮って出品するという操作がそのまま「スマホ前提」の設計に結びついた。同じ2013年6月には政府が日本再興戦略を閣議決定し、開業率の引き上げを掲げている。企業側の挑戦と政策側の号令が同じ年に始まった点は、後年の資金流入を読む上で重要である。',
+          '2013-02-01', null, 'day', 'point', 'メルカリ創業（当時コウゾウ）', '山田進太郎らが株式会社コウゾウを設立し、同年7月にフリマアプリ「メルカリ」を公開してスマホ完結の個人間取引を広げた。写真を撮って出品するという操作は、スマートフォン普及期の真っ只中という環境をそのまま「スマホ前提」の設計に結びつけたものである。
+
+同じ2013年6月には政府が日本再興戦略を閣議決定し、開業率の引き上げを掲げている。**企業側の挑戦と政策側の号令が同じ年に始まった**点は、後年の資金流入を読む上で重要である。', null,
           'verified', null, 'user', 1) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('株式会社メルカリ 会社概要', 'https://about.mercari.com/'), ('Wikipedia: Mercari', 'https://en.wikipedia.org/wiki/Mercari')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-japan-unicorns') and name = '制度と市場'),
-          '2013-06-14', null, 'day', 'point', '日本再興戦略を閣議決定', '成長戦略として開業率10%台を目標に掲げ、ベンチャー支援や規制改革を成長政策の柱に据えた。', 'アベノミクス「三本の矢」の三本目にあたる成長戦略で、開業率・廃業率を米英並みの10%台にする目標が明記された。同年はメルカリ創業やスマホ普及の加速と重なり、政策と市場の機運が同期している。この目標自体は達成されず、開業率は5%前後にとどまったが、以降のJ-Startupや育成5か年計画に続く政策系譜の起点となった。',
+          '2013-06-14', null, 'day', 'point', '日本再興戦略を閣議決定', 'アベノミクス「三本の矢」の三本目にあたる成長戦略が閣議決定され、開業率・廃業率を米英並みの10%台にする目標が明記された。ベンチャー支援や規制改革が成長政策の柱に据えられ、同年はメルカリ創業やスマホ普及の加速と重なり、政策と市場の機運が同期している。
+
+この目標自体は達成されず、開業率は5%前後にとどまったが、以降のJ-Startupやスタートアップ育成5か年計画に続く政策系譜の起点となった。', null,
           'verified', null, 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('首相官邸: 日本再興戦略 -JAPAN is BACK-', 'https://www.kantei.go.jp/jp/singi/keizaisaisei/pdf/saikou_jpn.pdf')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-japan-unicorns') and name = '企業と資金調達'),
-          '2014-03-26', null, 'day', 'point', 'Preferred Networks 設立', '西川徹・岡野原大輔らがPreferred Infrastructureから分社する形でPFNを設立。深層学習の産業応用に特化した。', '研究者主導のスタートアップで、設立の翌2015年には自社の深層学習フレームワークChainerを公開する。学術発の技術と大企業の資本を結びつける方針は、2017年のトヨタからの大型出資に結実した。同時期の制度面では公的な支援策は限られており、事業会社との資本提携が国内AIスタートアップの主要な資金源になった。',
+          '2014-03-26', null, 'day', 'point', 'Preferred Networks 設立', '西川徹・岡野原大輔らがPreferred Infrastructureから分社する形でPreferred Networksを設立し、深層学習の産業応用に特化した。研究者主導のスタートアップで、翌2015年には自社の深層学習フレームワークChainerを公開する。
+
+学術発の技術と大企業の資本を結びつける方針は、2017年のトヨタからの大型出資に結実した。同時期の制度面では公的な支援策は限られており、事業会社との資本提携が国内AIスタートアップの主要な資金源になった。', null,
           'verified', null, 'user', 3) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Preferred Networks 会社概要', 'https://www.preferred.jp/ja/'), ('Wikipedia: Preferred Networks', 'https://en.wikipedia.org/wiki/Preferred_Networks')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-japan-unicorns') and name = '技術とトレンド'),
-          '2015-06-01', null, 'month', 'point', '深層学習フレームワークChainer公開', 'PFNがChainerをオープンソースとして公開。国産の深層学習基盤として研究者や企業に広がった。', 'Define-by-Runと呼ばれる動的計算グラフの設計はのちのPyTorchにも影響を与えたとされる。2016年の囲碁AIの話題化とともに国内でもAIブームが加速し、AIを掲げるスタートアップへの投資が増えた。PFNは2019年12月にChainerの開発終了とPyTorchへの移行を発表しており、国産基盤の限界と国際標準化の流れを示す出来事でもある。',
+          '2015-06-01', null, 'month', 'point', '深層学習フレームワークChainer公開', 'PFNがChainerをオープンソースとして公開し、国産の深層学習基盤として研究者や企業に広がった。Define-by-Runと呼ばれる動的計算グラフの設計は、のちのPyTorchにも影響を与えたとされる。
+
+2016年の囲碁AIの話題化とともに国内でもAIブームが加速し、AIを掲げるスタートアップへの投資が増えた。PFNは2019年12月にChainerの開発終了とPyTorchへの移行を発表しており、国産基盤の限界と国際標準化の流れを示す出来事でもある。', null,
           'verified', null, 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Chainer', 'https://en.wikipedia.org/wiki/Chainer')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-japan-unicorns') and name = '企業と資金調達'),
-          '2016-03-01', null, 'month', 'point', 'メルカリ、評価額1,000億円超と報道', 'メルカリが約84億円の資金調達を実施。企業評価額は1,000億円を超えたと報じられ、「日本初のユニコーン」と呼ばれた。', '非上場のまま評価額10億ドル超に達したとされ、日本のスタートアップ資金調達が数十億円単位から百億円単位へ移る象徴となった。同年は制度面で大きな動きは少なく、民間の大型調達が先行した形である。ただし評価額は各社が公表した数値ではなく報道ベースであり、「日本初」の呼称もPFNなどとの比較で見解が分かれる。',
+          '2016-03-01', null, 'month', 'point', 'メルカリ、評価額1,000億円超と報道', 'メルカリが約84億円の資金調達を実施。企業評価額は1,000億円を超えたと報じられ、「日本初のユニコーン」と呼ばれた。非上場のまま評価額10億ドル超に達したとされ、日本のスタートアップ資金調達が数十億円単位から百億円単位へ移る象徴となった。
+
+同年は制度面で大きな動きが少なく、民間の大型調達が先行した形である。ただし**評価額は各社の公表値ではなく報道ベースの推計**であり、「日本初」の呼称もPFNなどとの比較で見解が分かれる。', null,
           'disputed', '評価額は非公表で報道による推計値。「日本初のユニコーン」の呼称もPFNとの比較で報道により見解が異なる。', 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('日本経済新聞 報道（2016年3月、メルカリの資金調達）', null), ('Wikipedia: Mercari', 'https://en.wikipedia.org/wiki/Mercari')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-japan-unicorns') and name = '企業と資金調達'),
-          '2017-08-04', null, 'day', 'point', 'トヨタがPFNに105億円を追加出資', 'トヨタ自動車がPreferred Networksへ約105億円の追加出資を発表。事業会社による国内AI企業への大型投資となった。', '自動運転やモビリティ分野での協業強化が目的とされ、国内では独立系VCよりも事業会社（CVC）が大型ラウンドを担う構図を象徴した。技術レイヤーではChainerの普及やAIブームが背景にあり、翌2018年には政府がJ-Startupを開始する。PFNはこの出資以降、企業評価額が国内最大級と報じられるようになった。',
+          '2017-08-04', null, 'day', 'point', 'トヨタがPFNに105億円を追加出資', 'トヨタ自動車がPreferred Networksへ約105億円の追加出資を発表した。自動運転やモビリティ分野での協業強化が目的とされ、国内では**独立系VCよりも事業会社が大型ラウンドを担う構図**を象徴する投資となった。
+
+技術レイヤーではChainerの普及やAIブームが背景にあり、翌2018年には政府がJ-Startupを開始する。PFNはこの出資以降、企業評価額が国内最大級と報じられるようになった。', null,
           'verified', null, 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('トヨタ自動車 ニュースリリース（2017年8月）', null), ('Wikipedia: Preferred Networks', 'https://en.wikipedia.org/wiki/Preferred_Networks')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-japan-unicorns') and name = '制度と市場'),
-          '2018-06-11', null, 'day', 'point', '経済産業省がJ-Startupを開始', '経産省とJETRO等が有望スタートアップを選定し、官民で集中支援するJ-Startupプログラムを開始した。', '初回選定92社にはメルカリやPFNが含まれ、政府がスタートアップを名指しで支援する初の枠組みとなった。開始から1週間後にはメルカリが東証マザーズに上場しており、政策と市場の節目が重なった月である。技術面ではこの年の秋にPayPayがサービスを開始し、キャッシュレス分野への注目も高まっていた。',
+          '2018-06-11', null, 'day', 'point', '経済産業省がJ-Startupを開始', '経産省とJETRO等が有望スタートアップを選定し、官民で集中支援するJ-Startupプログラムが始まった。初回選定92社にはメルカリやPFNが含まれ、政府がスタートアップを名指しで支援する初の枠組みとなった。
+
+開始から1週間後にはメルカリが東証マザーズに上場しており、**政策と市場の節目が同じ月に重なった**。技術面ではこの年の秋にPayPayがサービスを開始し、キャッシュレス分野への注目も高まっていた。', null,
           'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('J-Startup 公式サイト', 'https://www.j-startup.go.jp/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-japan-unicorns') and name = '企業と資金調達'),
-          '2018-06-19', null, 'day', 'point', 'メルカリが東証マザーズに上場', 'メルカリが東証マザーズに上場。初値は公開価格3,000円を大きく上回る5,000円で、時価総額は7,000億円規模と報じられた。', '国内スタートアップとして異例の規模のIPOで、未上場段階で大型調達を重ねてから上場する米国型の経路が日本でも成立することを示した。同月にはJ-Startupが始動し、上場後の海外展開や暗号資産事業への挑戦も注目された。市場レイヤーでは2022年の東証再編で「グロース市場」が生まれるまで、マザーズが新興企業の主要な出口であった。',
+          '2018-06-19', null, 'day', 'point', 'メルカリが東証マザーズに上場', 'メルカリが東証マザーズに上場した。初値は公開価格3,000円を大きく上回る5,000円で時価総額は7,000億円規模と報じられ、未上場段階で大型調達を重ねてから上場する米国型の経路が日本でも成立することを示した。
+
+同月にはJ-Startupが始動し、上場後の海外展開や暗号資産事業への挑戦も注目された。市場レイヤーでは2022年の東証再編で「グロース市場」が生まれるまで、マザーズが新興企業の主要な出口であった。', null,
           'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('株式会社メルカリ IR情報', 'https://about.mercari.com/'), ('日本取引所グループ 新規上場会社情報', 'https://www.jpx.co.jp/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-japan-unicorns') and name = '技術とトレンド'),
-          '2018-10-05', null, 'day', 'point', 'PayPayがサービス開始', 'ソフトバンクとヤフーの合弁PayPayがQRコード決済を開始。12月の「100億円あげちゃうキャンペーン」で一気に認知を得た。', 'スマートフォンの普及を前提に、少額決済のデジタル化が加速した。翌2019年10月には政府のキャッシュレス・ポイント還元事業が始まり、民間の投資合戦と公的なインセンティブが同時に働く形でキャッシュレス比率が上昇する。決済データを起点とした金融サービスの拡張は、後のPaidyへの大型買収にも通じるトレンドである。',
+          '2018-10-05', null, 'day', 'point', 'PayPayがサービス開始', 'ソフトバンクとヤフーの合弁PayPayがQRコード決済を開始し、12月の「100億円あげちゃうキャンペーン」で一気に認知を得た。スマートフォンの普及を前提に、少額決済のデジタル化が加速した。
+
+翌2019年10月には政府のキャッシュレス・ポイント還元事業が始まり、民間の投資合戦と公的なインセンティブが同時に働く形でキャッシュレス比率が上昇する。決済データを起点とした金融サービスの拡張は、後のPaidyへの大型買収にも通じるトレンドである。', null,
           'verified', null, 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: PayPay', 'https://en.wikipedia.org/wiki/PayPay')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-japan-unicorns') and name = '制度と市場'),
-          '2019-10-01', '2020-06-30', 'day', 'period', 'キャッシュレス・ポイント還元事業', '消費税率引き上げに合わせ、中小店舗でのキャッシュレス決済に最大5%を還元する国の事業が9か月間実施された。', 'PayPayをはじめとするコード決済各社の顧客獲得競争と時期が重なり、決済スタートアップの利用者数が急増した。事業終了直前の2020年春には新型コロナの緊急事態宣言が出され、非接触決済の需要がさらに高まる。政策・技術・社会情勢が同じ方向に働いた稀な期間である。',
+          '2019-10-01', '2020-06-30', 'day', 'period', 'キャッシュレス・ポイント還元事業', '消費税率引き上げに合わせ、中小店舗でのキャッシュレス決済に最大5%を還元する国の事業が9か月間実施された。PayPayをはじめとするコード決済各社の顧客獲得競争と時期が重なり、決済スタートアップの利用者数が急増した。
+
+事業終了直前の2020年春には新型コロナの緊急事態宣言が出され、非接触決済の需要がさらに高まる。**政策・技術・社会情勢が同じ方向に働いた稀な期間**である。', null,
           'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('経済産業省 キャッシュレス・ポイント還元事業', 'https://cashless.go.jp/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-japan-unicorns') and name = '制度と市場'),
-          '2020-04-01', null, 'month', 'point', 'オープンイノベーション促進税制の創設', '事業会社がスタートアップへ一定額以上出資した場合に所得控除を認める税制が2020年度税制改正で創設された。', 'CVCによる出資を後押しする狙いで、トヨタとPFNのような事業会社主導の資金供給を制度面から支える意味を持った。同月には新型コロナの緊急事態宣言が発出され、対面事業のスタートアップは打撃を受ける一方、リモートワーク関連の需要が拡大した。制度の設計時と施行時で市場環境が大きく変わった例である。',
+          '2020-04-01', null, 'month', 'point', 'オープンイノベーション促進税制の創設', '事業会社がスタートアップへ一定額以上出資した場合に所得控除を認める税制が、2020年度税制改正で創設された。CVCによる出資を後押しする狙いで、トヨタとPFNのような事業会社主導の資金供給を制度面から支える意味を持った。
+
+同月には新型コロナの緊急事態宣言が発出され、対面事業のスタートアップは打撃を受ける一方、リモートワーク関連の需要が拡大した。制度の設計時と施行時で市場環境が大きく変わった例である。', null,
           'unverified', '2020年度税制改正で創設された点は確かだが、適用開始日や出資要件の細部は法令原文で未確認。', 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('経済産業省 オープンイノベーション促進税制', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-japan-unicorns') and name = '技術とトレンド'),
-          '2020-04-07', '2020-05-25', 'day', 'period', '緊急事態宣言とリモートワークの急拡大', '新型コロナで初の緊急事態宣言が発出。在宅勤務やオンライン化が急速に広がり、SaaSやEC関連の需要が伸びた。', '労務のクラウド化を進めるSmartHRやオンライン診療、決済など非対面領域のスタートアップに追い風となり、翌2021年の大型調達につながった。ただし「DXの加速」がどこまで定着したかは業種により差があり、行動制限の解除後に需要が反転した分野もある。政策面では同月にオープンイノベーション促進税制が施行されていた。',
+          '2020-04-07', '2020-05-25', 'day', 'period', '緊急事態宣言とリモートワークの急拡大', '新型コロナウイルスの感染拡大を受け、初の緊急事態宣言が発出された。在宅勤務やオンライン化が急速に広がり、SaaSやEC関連の需要が伸びた。
+
+労務のクラウド化を進めるSmartHRやオンライン診療、決済など非対面領域のスタートアップに追い風となり、翌2021年の大型調達につながった。ただし「DXの加速」がどこまで定着したかは業種により差があり、行動制限の解除後に需要が反転した分野もある。政策面では同月にオープンイノベーション促進税制が施行されていた。', null,
           'disputed', '宣言の期間は事実だが、スタートアップ需要への影響の大きさや持続性は業種や調査により評価が分かれる。', 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('内閣官房 新型コロナウイルス感染症対策', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-japan-unicorns') and name = '企業と資金調達'),
-          '2021-06-01', null, 'month', 'point', 'SmartHRが156億円を調達', 'クラウド労務ソフトのSmartHRがシリーズDで約156億円を調達。企業評価額は1,700億円超と報じられ、ユニコーン入りとされた。', 'コロナ禍でのリモートワーク拡大が労務のクラウド化需要を押し上げ、SaaS企業の評価額が国内でも急上昇した局面を象徴する。海外投資家が主導した点も特徴で、同年はSmartNewsやPaidyの大型案件も相次いだ。国内スタートアップの年間資金調達額はこの前後で過去最高水準に達したとされる。',
+          '2021-06-01', null, 'month', 'point', 'SmartHRが156億円を調達', 'クラウド労務ソフトのSmartHRがシリーズDで約156億円を調達。企業評価額は1,700億円超と報じられ、ユニコーン入りとされた。コロナ禍でのリモートワーク拡大が労務のクラウド化需要を押し上げ、SaaS企業の評価額が国内でも急上昇した局面を象徴する。
+
+海外投資家が主導した点も特徴で、同年はSmartNewsやPaidyの大型案件も相次いだ。国内スタートアップの年間資金調達額は、この前後で過去最高水準に達したとされる。', null,
           'unverified', '調達額は同社発表だが、企業評価額は非公表で報道ベースの推計値。', 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('株式会社SmartHR プレスリリース（2021年6月）', 'https://smarthr.co.jp/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-japan-unicorns') and name = '企業と資金調達'),
-          '2021-09-01', null, 'month', 'point', 'SmartNewsが評価額20億ドルと報道', 'ニュースアプリのSmartNewsが約2.3億ドルを調達し、企業評価額は20億ドルに達したと報じられた。', '米国市場でのユーザー拡大が評価され、日米で事業を展開する国内発スタートアップの代表例となった。同月にはPayPalによるPaidy買収も発表され、2021年は国内スタートアップの評価額と資金調達額がともに高水準となった年として記録される。ただし評価額は同社が公式に確認した数値ではなく、報道と投資家筋の情報に基づく。',
+          '2021-09-01', null, 'month', 'point', 'SmartNewsが評価額20億ドルと報道', 'ニュースアプリのSmartNewsが約2.3億ドルを調達し、企業評価額は20億ドルに達したと報じられた。米国市場でのユーザー拡大が評価され、日米で事業を展開する国内発スタートアップの代表例となった。
+
+同月にはPayPalによるPaidy買収も発表され、2021年は国内スタートアップの評価額と資金調達額がともに高水準となった年として記録される。ただし評価額は同社が公式に確認した数値ではなく、報道と投資家筋の情報に基づく。', null,
           'unverified', '評価額は非公表で報道ベース。同社は調達額のみ公表している。', 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: SmartNews', 'https://en.wikipedia.org/wiki/SmartNews')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-japan-unicorns') and name = '企業と資金調達'),
-          '2021-09-08', null, 'day', 'point', 'PayPalがPaidyを約3,000億円で買収', '米PayPalが後払い決済のPaidyを約3,000億円で買収すると発表。国内スタートアップの大型M&Aとして注目された。', 'IPO以外の出口として海外大手による買収が成立し、投資家の回収手段が広がった意味を持つ。技術面ではPayPay以降のキャッシュレス化と、コロナ禍でのEC拡大が後払い決済の需要を押し上げていた。制度面では翌2022年の東証再編と育成5か年計画を控え、出口の多様化が政策課題として意識され始めた時期でもある。',
+          '2021-09-08', null, 'day', 'point', 'PayPalがPaidyを約3,000億円で買収', '米PayPalが後払い決済のPaidyを約3,000億円で買収すると発表し、国内スタートアップの大型M&Aとして注目された。IPO以外の出口として海外大手による買収が成立し、投資家の回収手段が広がった意味を持つ。
+
+技術面ではPayPay以降のキャッシュレス化と、コロナ禍でのEC拡大が後払い決済の需要を押し上げていた。制度面では翌2022年の東証再編と育成5か年計画を控え、出口の多様化が政策課題として意識され始めた時期でもある。', null,
           'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('PayPal ニュースリリース（2021年9月8日）', null), ('Wikipedia: Paidy', 'https://en.wikipedia.org/wiki/Paidy')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-japan-unicorns') and name = '制度と市場'),
-          '2022-04-04', null, 'day', 'point', '東証がプライム・スタンダード・グロースへ再編', '東京証券取引所が市場区分を再編し、マザーズはグロース市場へ移行。新興企業の上場市場が再定義された。', 'メルカリが上場したマザーズは「グロース市場」となり、上場維持基準に時価総額の要件が明確化された。同年11月には政府がスタートアップ育成5か年計画を決定し、投資額10兆円という数値目標を掲げる。市場側の制度と政策側の目標が同じ年に更新されたことで、小型IPOへの依存からの脱却が課題として共有された。',
+          '2022-04-04', null, 'day', 'point', '東証がプライム・スタンダード・グロースへ再編', '東京証券取引所が市場区分をプライム・スタンダード・グロースへ再編し、メルカリが上場したマザーズはグロース市場へ移行した。上場維持基準に時価総額の要件が明確化され、新興企業の上場市場が再定義された。
+
+同年11月には政府がスタートアップ育成5か年計画を決定し、投資額10兆円という数値目標を掲げる。市場側の制度と政策側の目標が同じ年に更新されたことで、小型IPOへの依存からの脱却が課題として共有された。', null,
           'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('日本取引所グループ 市場区分の見直し', 'https://www.jpx.co.jp/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-japan-unicorns') and name = '制度と市場'),
-          '2022-11-28', null, 'day', 'point', 'スタートアップ育成5か年計画を決定', '政府が2027年度にスタートアップ投資額10兆円、ユニコーン100社創出などを掲げる5か年計画を決定した。', '新しい資本主義実現会議で決定され、人材・資金・オープンイノベーションの3本柱で構成される。同じ2022年11月末には米国でChatGPTが公開され、翌年以降の生成AIスタートアップの勃興と政策支援が重なる。2013年の日本再興戦略から続く政策系譜の中で、初めて具体的なユニコーン数を目標に置いた計画である。',
+          '2022-11-28', null, 'day', 'point', 'スタートアップ育成5か年計画を決定', '政府が新しい資本主義実現会議で、2027年度にスタートアップ投資額10兆円、ユニコーン100社創出などを掲げる5か年計画を決定した。人材・資金・オープンイノベーションの3本柱で構成される。
+
+同じ2022年11月末には米国でChatGPTが公開され、翌年以降の生成AIスタートアップの勃興と政策支援が重なる。2013年の日本再興戦略から続く政策系譜の中で、初めて具体的なユニコーン数を目標に置いた計画である。', null,
           'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('内閣官房 新しい資本主義実現本部', 'https://www.cas.go.jp/jp/seisaku/atarashii_sihonsyugi/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-japan-unicorns') and name = '技術とトレンド'),
-          '2022-11-30', null, 'day', 'point', 'ChatGPT公開と生成AIブーム', 'OpenAIがChatGPTを公開。生成AIへの関心が世界的に高まり、日本でも基盤モデルや応用サービスの起業が相次いだ。', '育成5か年計画の決定からわずか2日後の出来事で、政策の追い風と技術の転換点が同時に訪れた。国内では2023年以降に生成AI関連の資金調達が増え、2024年にはSakana AIが短期間でユニコーンと報じられる。技術レイヤーの起点としては2015年のChainer公開以来の大きな波であり、AIスタートアップの資金源が事業会社中心から海外VCへ広がる契機ともなった。',
+          '2022-11-30', null, 'day', 'point', 'ChatGPT公開と生成AIブーム', 'OpenAIがChatGPTを公開し、生成AIへの関心が世界的に高まった。スタートアップ育成5か年計画の決定からわずか2日後の出来事で、**政策の追い風と技術の転換点が同時に訪れた**。
+
+国内では2023年以降に基盤モデルや応用サービスの起業と生成AI関連の資金調達が相次ぎ、2024年にはSakana AIが短期間でユニコーンと報じられる。技術レイヤーの起点としては2015年のChainer公開以来の大きな波であり、AIスタートアップの資金源が事業会社中心から海外VCへ広がる契機ともなった。', null,
           'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: ChatGPT', 'https://en.wikipedia.org/wiki/ChatGPT')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-japan-unicorns') and name = '企業と資金調達'),
-          '2024-09-01', null, 'month', 'point', 'Sakana AIが約300億円を調達', '東京拠点のSakana AIがシリーズAで約300億円を調達。設立から約1年で評価額10億ドル超と報じられ、国内最速級のユニコーンとされた。', '元Googleの研究者らが2023年に創業した企業で、ChatGPT以降の生成AIブームと育成5か年計画の追い風を受けた。海外VCと国内大手金融機関が共同で出資し、事業会社中心だった国内AI投資の構図が変わりつつあることを示す。ただし評価額は非公表で、報道により金額に幅があるため確定値ではない。',
+          '2024-09-01', null, 'month', 'point', 'Sakana AIが約300億円を調達', '東京拠点のSakana AIがシリーズAで約300億円を調達。設立から約1年で評価額10億ドル超と報じられ、国内最速級のユニコーンとされた。元Googleの研究者らが2023年に創業した企業で、ChatGPT以降の生成AIブームと育成5か年計画の追い風を受けた。
+
+海外VCと国内大手金融機関が共同で出資しており、事業会社中心だった国内AI投資の構図が変わりつつあることを示す。ただし評価額は非公表で、報道により金額に幅があるため確定値ではない。', null,
           'disputed', '調達額は同社発表だが、企業評価額は非公表で報道により数値が異なる。', 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Sakana AI 公式サイト', 'https://sakana.ai/'), ('Wikipedia: Sakana AI', 'https://en.wikipedia.org/wiki/Sakana_AI')) as v(title, url);
 
@@ -282,121 +362,161 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-toyota-production'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-toyota-production') and name = '生産技術と現場'),
-          '1933-09-01', null, 'day', 'point', '豊田自動織機製作所に自動車部を設置', '豊田喜一郎の主導で豊田自動織機製作所に自動車部が設けられ、国産乗用車の開発が始まった。', '父・豊田佐吉が完成させた自動織機の事業を資金源に、喜一郎は欧米視察を経て自動車事業に踏み出した。糸が切れると機械が自ら止まる織機の思想は、のちに「自働化」としてトヨタ生産方式の二本柱の一つになる。1930年代は満州事変以降の統制経済へ向かう時期で、自動車製造事業法（1936年）が国産化を後押しした。',
+          '1933-09-01', null, 'day', 'point', '豊田自動織機製作所に自動車部を設置', '豊田喜一郎の主導で豊田自動織機製作所に自動車部が設けられ、国産乗用車の開発が始まった。父・豊田佐吉が完成させた自動織機の事業を資金源に、喜一郎は欧米視察を経て自動車事業に踏み出した。
+
+**糸が切れると機械が自ら止まる織機の思想**は、のちに「自働化」としてトヨタ生産方式の二本柱の一つになる。1930年代は満州事変以降の統制経済へ向かう時期で、自動車製造事業法（1936年）が国産化を後押しした。', null,
           'verified', null, 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('トヨタ自動車75年史', 'https://www.toyota.co.jp/jpn/company/history/75years/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-toyota-production'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-toyota-production') and name = '経営と危機'),
-          '1937-08-28', null, 'day', 'point', 'トヨタ自動車工業を設立', '自動車部が独立し、資本金1,200万円でトヨタ自動車工業株式会社が設立された。喜一郎が副社長として実務を率いた。', '自動織機の利益に頼っていた自動車事業が独立採算の会社となり、翌年の挙母工場建設に向けて資本を集めた。1937年は日中戦争の開始と重なり、以後は軍需のトラック生産が中心となる。生産技術の面では喜一郎が「必要なものを、必要なときに、必要なだけ」という考えを掲げ始めた時期にあたる。',
+          '1937-08-28', null, 'day', 'point', 'トヨタ自動車工業を設立', '自動車部が独立し、資本金1,200万円でトヨタ自動車工業株式会社が設立された。喜一郎が副社長として実務を率い、自動織機の利益に頼っていた自動車事業は独立採算の会社となって、翌年の挙母工場建設に向けて資本を集めた。
+
+1937年は日中戦争の開始と重なり、以後は軍需のトラック生産が中心となる。生産技術の面では、喜一郎が「必要なものを、必要なときに、必要なだけ」という考えを掲げ始めた時期にあたる。', null,
           'verified', null, 'user', 1) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('トヨタ自動車75年史', 'https://www.toyota.co.jp/jpn/company/history/75years/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-toyota-production'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-toyota-production') and name = '生産技術と現場'),
-          '1938-11-03', null, 'day', 'point', '挙母工場完成と「ジャスト・イン・タイム」構想', '愛知県挙母町に本社工場が完成。喜一郎が工程間の流れを重視した「ジャスト・イン・タイム」の考えを工場運営に持ち込んだとされる。', '設立翌年に完成した挙母（現・豊田市）工場は、工程を流れ順に配置し中間在庫を減らす構想で設計されたと社史は伝える。ただし喜一郎がいつどのように「ジャスト・イン・タイム」という言葉を用いたかは一次資料が乏しく、後年の回想に依るところが大きい。戦時統制で構想の実現は遅れ、本格的な体系化は戦後の大野耐一を待つことになる。',
+          '1938-11-03', null, 'day', 'point', '挙母工場完成と「ジャスト・イン・タイム」構想', '愛知県挙母町（現・豊田市）に本社工場が完成した。設立翌年に完成したこの工場は、工程を流れ順に配置し中間在庫を減らす構想で設計されたと社史は伝え、喜一郎が「ジャスト・イン・タイム」の考えを工場運営に持ち込んだとされる。
+
+ただし喜一郎がいつどのようにこの言葉を用いたかは一次資料が乏しく、後年の回想に依るところが大きい。戦時統制で構想の実現は遅れ、本格的な体系化は戦後の大野耐一を待つことになる。', null,
           'disputed', '工場完成日は社史で確認できるが、喜一郎による「ジャスト・イン・タイム」提唱の時期と表現は後年の回想に基づき諸説ある。', 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('トヨタ自動車75年史', 'https://www.toyota.co.jp/jpn/company/history/75years/'), ('Wikipedia: Kiichiro Toyoda', 'https://en.wikipedia.org/wiki/Kiichiro_Toyoda')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-toyota-production'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-toyota-production') and name = '経営と危機'),
-          '1950-04-01', '1950-06-30', 'month', 'period', '経営危機と労働争議、喜一郎の退任', '戦後の金融引き締めで資金繰りが悪化し、人員整理を巡る労働争議が発生。約2か月の争議の末、豊田喜一郎が社長を退いた。', '銀行団の融資条件として販売会社の分離（トヨタ自動車販売）と人員整理が求められ、希望退職者は1,600人前後とされる。争議収束直後の6月に朝鮮戦争が始まり、米軍のトラック特需が会社を救った。この危機の教訓が「在庫を持たず、売れる分だけつくる」という生産方式の徹底と、以後の無借金経営志向につながった。',
+          '1950-04-01', '1950-06-30', 'month', 'period', '経営危機と労働争議、喜一郎の退任', '戦後の金融引き締めで資金繰りが悪化し、人員整理を巡る労働争議が発生。約2か月の争議の末、豊田喜一郎が社長を退いた。銀行団の融資条件として販売会社の分離（トヨタ自動車販売）と人員整理が求められ、希望退職者は1,600人前後とされる。
+
+争議収束直後の6月に朝鮮戦争が始まり、米軍のトラック特需が会社を救った。**この危機の教訓が「在庫を持たず、売れる分だけつくる」という生産方式の徹底**と、以後の無借金経営志向につながった。', null,
           'disputed', '争議の期間と喜一郎退任は社史で確認できるが、退職者数は資料により1,500〜2,100人台と幅がある。', 'user', 3) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('トヨタ自動車75年史', 'https://www.toyota.co.jp/jpn/company/history/75years/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-toyota-production'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-toyota-production') and name = '生産技術と現場'),
-          '1953-01-01', null, 'year', 'point', '機械工場で「かんばん」方式を試行', '大野耐一が米国のスーパーマーケットに着想を得た後工程引取り方式を機械工場で試み、かんばんによる指示が始まった。', '客が必要な分だけ棚から取り、店が補充するスーパーマーケットの仕組みを工程間に適用したもので、大野は1956年に渡米して実際の店舗を見学している。1950年の危機で在庫の重さを痛感した経営側の意向と現場の工夫が結びついた形である。ただし開始年は社史や大野の著書で1953年頃と記されるものの、正確な時期には諸説ある。',
+          '1953-01-01', null, 'year', 'point', '機械工場で「かんばん」方式を試行', '大野耐一が、客が必要な分だけ棚から取り店が補充する米国のスーパーマーケットの仕組みに着想を得て、後工程引取り方式を機械工場で試み、かんばんによる指示が始まった。大野は1956年に渡米して実際の店舗を見学している。
+
+1950年の危機で在庫の重さを痛感した経営側の意向と、現場の工夫が結びついた形である。ただし開始年は社史や大野の著書で1953年頃と記されるものの、正確な時期には諸説ある。', null,
           'disputed', 'かんばん方式の試行開始は1953年頃とされるが、大野の著書と社史で年の記述が一致せず、正確な開始時期は特定できない。', 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Toyota Production System', 'https://en.wikipedia.org/wiki/Toyota_Production_System'), ('大野耐一『トヨタ生産方式』ダイヤモンド社、1978年', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-toyota-production'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-toyota-production') and name = '世界への波及'),
-          '1957-10-31', null, 'day', 'point', '米国トヨタ自動車販売を設立', 'トヨタが米国ロサンゼルスに販売会社を設立し、乗用車クラウンで対米輸出を開始した。', '初期のクラウンは高速走行に耐えられず一時撤退に近い状態となり、米国市場に合わせた製品開発の必要性を痛感させた。国内では同時期にかんばん方式が機械工場から広がりつつあり、輸出の失敗と現場改善が並行して進んでいた。1980年代のNUMMIや現地工場に至る海外展開の起点である。',
+          '1957-10-31', null, 'day', 'point', '米国トヨタ自動車販売を設立', 'トヨタが米国ロサンゼルスに販売会社を設立し、乗用車クラウンで対米輸出を開始した。しかし初期のクラウンは高速走行に耐えられず一時撤退に近い状態となり、米国市場に合わせた製品開発の必要性を痛感させた。
+
+国内では同時期にかんばん方式が機械工場から広がりつつあり、輸出の失敗と現場改善が並行して進んでいた。1980年代のNUMMIや現地工場に至る海外展開の起点である。', null,
           'verified', null, 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('トヨタ自動車75年史', 'https://www.toyota.co.jp/jpn/company/history/75years/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-toyota-production'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-toyota-production') and name = '生産技術と現場'),
-          '1962-01-01', null, 'year', 'point', 'かんばん方式を全社に展開', '機械工場で始まったかんばん方式が組立や部品供給を含む全社へ広がり、生産方式の骨格が固まった。', '1960年代前半は乗用車の量産体制づくりが進んだ時期で、1966年のカローラ発売に向けて工程を貫く仕組みが必要とされた。全社展開に伴い、外注先の部品メーカーへもかんばんが広がっていく。同時期の経営面では1965年にデミング賞を受賞しており、品質管理と生産方式が並行して整備された。',
+          '1962-01-01', null, 'year', 'point', 'かんばん方式を全社に展開', '機械工場で始まったかんばん方式が組立や部品供給を含む全社へ広がり、生産方式の骨格が固まった。1960年代前半は乗用車の量産体制づくりが進んだ時期で、1966年のカローラ発売に向けて工程を貫く仕組みが必要とされた。
+
+全社展開に伴い、外注先の部品メーカーへもかんばんが広がっていく。同時期の経営面では1965年にデミング賞を受賞しており、品質管理と生産方式が並行して整備された。', null,
           'unverified', '全社展開の年は社史で1962〜1963年頃と記されるが、何をもって「全社」とするかの定義が資料で一致しないため年を確定できない。', 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('トヨタ自動車75年史', 'https://www.toyota.co.jp/jpn/company/history/75years/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-toyota-production'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-toyota-production') and name = '経営と危機'),
-          '1973-10-01', null, 'month', 'point', '第一次オイルショック', '第四次中東戦争を機に原油価格が急騰。高度成長が終わる中で、トヨタの低在庫・省資源の生産方式が注目を集めた。', '国内の多くの企業が減産と在庫調整で赤字に陥る一方、トヨタは比較的早く収益を回復し、その要因として生産方式が語られるようになった。これを機に社外や海外からの見学が増え、大野が1978年に著書で体系を公表する流れにつながる。危機が生産技術の価値を経営の言葉に翻訳した転換点である。',
+          '1973-10-01', null, 'month', 'point', '第一次オイルショック', '第四次中東戦争を機に原油価格が急騰し、高度成長が終わった。国内の多くの企業が減産と在庫調整で赤字に陥る一方、トヨタは比較的早く収益を回復し、その要因として低在庫・省資源の生産方式が語られ、注目を集めるようになった。
+
+これを機に社外や海外からの見学が増え、大野が1978年に著書で体系を公表する流れにつながる。**危機が生産技術の価値を経営の言葉に翻訳した**転換点である。', null,
           'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 1973 oil crisis', 'https://en.wikipedia.org/wiki/1973_oil_crisis'), ('トヨタ自動車75年史', 'https://www.toyota.co.jp/jpn/company/history/75years/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-toyota-production'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-toyota-production') and name = '生産技術と現場'),
-          '1978-05-01', null, 'month', 'point', '大野耐一『トヨタ生産方式』刊行', '大野耐一がダイヤモンド社から『トヨタ生産方式―脱規模の経営をめざして』を刊行し、体系を初めて社外に公開した。', 'ジャスト・イン・タイムと自働化を二本柱とし、七つのムダや標準作業などの概念が本人の言葉で整理された。オイルショック後の関心の高まりを受けた出版で、英訳は1988年に刊行される。1980年代の米国での研究や1990年の『リーン生産方式が、世界の自動車産業をこう変える。』はこの本を重要な参照元とした。',
+          '1978-05-01', null, 'month', 'point', '大野耐一『トヨタ生産方式』刊行', '大野耐一がダイヤモンド社から『トヨタ生産方式―脱規模の経営をめざして』を刊行し、体系を初めて社外に公開した。ジャスト・イン・タイムと自働化を二本柱とし、七つのムダや標準作業などの概念が本人の言葉で整理された。
+
+オイルショック後の関心の高まりを受けた出版で、英訳は1988年に刊行される。1980年代の米国での研究や1990年の『リーン生産方式が、世界の自動車産業をこう変える。』は、この本を重要な参照元とした。', null,
           'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('大野耐一『トヨタ生産方式』ダイヤモンド社、1978年', null), ('Wikipedia: Taiichi Ohno', 'https://en.wikipedia.org/wiki/Taiichi_Ohno')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-toyota-production'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-toyota-production') and name = '世界への波及'),
-          '1984-02-01', null, 'month', 'point', 'GMとの合弁NUMMIを設立', 'トヨタとGMが米カリフォルニア州フリーモントに合弁会社NUMMIを設立。同年12月に生産を開始した。', '閉鎖されていたGM工場を引き継ぎ、旧来の従業員を再雇用しながらトヨタ生産方式を導入した実験場となった。日米貿易摩擦の中で現地生産を迫られた経営判断と、TPSが米国の労使環境でも機能するかという検証が同時に進んだ。ここでの成果が1988年のケンタッキー工場と、GM側のリーン生産導入につながる。',
+          '1984-02-01', null, 'month', 'point', 'GMとの合弁NUMMIを設立', 'トヨタとGMが米カリフォルニア州フリーモントに合弁会社NUMMIを設立し、同年12月に生産を開始した。閉鎖されていたGM工場を引き継ぎ、旧来の従業員を再雇用しながらトヨタ生産方式を導入した実験場となった。
+
+日米貿易摩擦の中で現地生産を迫られた経営判断と、TPSが米国の労使環境でも機能するかという検証が同時に進んだ。ここでの成果が1988年のケンタッキー工場と、GM側のリーン生産導入につながる。', null,
           'verified', null, 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: NUMMI', 'https://en.wikipedia.org/wiki/NUMMI')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-toyota-production'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-toyota-production') and name = '世界への波及'),
-          '1988-05-01', null, 'month', 'point', 'ケンタッキー工場（TMMK）が生産開始', 'トヨタ単独の米国工場としてケンタッキー州ジョージタウンでカムリの生産を開始した。', 'NUMMIで得た知見を基に、現地採用の従業員に対してトレーナーが「なぜそうするか」から教える方式が採られた。同年に大野の著書の英訳が刊行され、TPSの用語が英語圏に広がる。貿易摩擦への対応という経営課題と、現場手法の移植という生産技術の課題が同じ工場で扱われた点で象徴的である。',
+          '1988-05-01', null, 'month', 'point', 'ケンタッキー工場（TMMK）が生産開始', 'トヨタ単独の米国工場として、ケンタッキー州ジョージタウンでカムリの生産が始まった。NUMMIで得た知見を基に、現地採用の従業員に対してトレーナーが「なぜそうするか」から教える方式が採られた。
+
+同年には大野の著書の英訳が刊行され、TPSの用語が英語圏に広がる。貿易摩擦への対応という経営課題と、現場手法の移植という生産技術の課題が同じ工場で扱われた点で象徴的である。', null,
           'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Toyota Motor Manufacturing Kentucky', 'https://en.wikipedia.org/wiki/Toyota_Motor_Manufacturing_Kentucky')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-toyota-production'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-toyota-production') and name = '世界への波及'),
-          '1990-01-01', null, 'year', 'point', '『The Machine That Changed the World』刊行', 'MITの国際自動車研究プログラムの成果として刊行され、トヨタの方式を「リーン生産」と名付けて世界に広めた。', 'ウォマック、ジョーンズ、ルースによる同書は、大量生産と対比してトヨタの手法を一般化した。NUMMIやTMMKで米国でも機能することが示された直後の出版で、自動車以外の製造業や医療、サービス業へ「リーン」の概念が波及する起点となった。日本ではバブル経済の末期にあたり、国内では生産方式よりも金融の話題が優勢だった。',
+          '1990-01-01', null, 'year', 'point', '『The Machine That Changed the World』刊行', 'MITの国際自動車研究プログラムの成果として、ウォマック、ジョーンズ、ルースによる同書が刊行され、トヨタの方式を「リーン生産」と名付けて世界に広めた。大量生産と対比してトヨタの手法を一般化した書である。
+
+NUMMIやTMMKで米国でも機能することが示された直後の出版で、自動車以外の製造業や医療、サービス業へ「リーン」の概念が波及する起点となった。日本ではバブル経済の末期にあたり、国内では生産方式よりも金融の話題が優勢だった。', null,
           'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: The Machine That Changed the World (book)', 'https://en.wikipedia.org/wiki/The_Machine_That_Changed_the_World_(book)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-toyota-production'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-toyota-production') and name = '生産技術と現場'),
-          '2001-04-01', null, 'month', 'point', '「トヨタウェイ2001」を策定', '海外拠点の拡大を受け、「知恵と改善」「人間性尊重」を柱とする価値観をトヨタウェイ2001として文書化した。', '1980年代以降の海外生産の広がりで、現場のOJTだけでは伝えきれない考え方を明文化する必要が生じた。生産方式の手法（かんばん等）と、それを支える価値観を分けて示した点が特徴である。同時期の経営面では海外販売の拡大が続き、2000年代後半の生産台数世界一と、その直後の品質問題の両方をこの拡大が準備した。',
+          '2001-04-01', null, 'month', 'point', '「トヨタウェイ2001」を策定', '海外拠点の拡大を受け、「知恵と改善」「人間性尊重」を柱とする価値観がトヨタウェイ2001として文書化された。1980年代以降の海外生産の広がりで、現場のOJTだけでは伝えきれない考え方を明文化する必要が生じていた。
+
+生産方式の手法（かんばん等）と、それを支える価値観を分けて示した点が特徴である。同時期の経営面では海外販売の拡大が続き、2000年代後半の生産台数世界一と、その直後の品質問題の両方をこの拡大が準備した。', null,
           'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: The Toyota Way', 'https://en.wikipedia.org/wiki/The_Toyota_Way')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-toyota-production'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-toyota-production') and name = '世界への波及'),
-          '2008-01-01', null, 'year', 'point', '世界販売台数でGMを上回る', '2008年の世界販売台数でトヨタがGMを上回り、77年ぶりに首位が交代したと報じられた。', '1957年の対米輸出の失敗から半世紀を経た到達点で、NUMMIやTMMKなど現地生産の積み重ねが背景にある。ただし同年秋にはリーマン・ショックが起き、翌2009年3月期にトヨタは戦後初の営業赤字を計上した。首位到達と赤字転落がほぼ同時に起きたことは、規模拡大と生産方式の関係を問い直す契機になった。',
+          '2008-01-01', null, 'year', 'point', '世界販売台数でGMを上回る', '2008年の世界販売台数でトヨタがGMを上回り、77年ぶりに首位が交代したと報じられた。1957年の対米輸出の失敗から半世紀を経た到達点で、NUMMIやTMMKなど現地生産の積み重ねが背景にある。
+
+ただし同年秋にはリーマン・ショックが起き、翌2009年3月期にトヨタは戦後初の営業赤字を計上した。首位到達と赤字転落がほぼ同時に起きたことは、規模拡大と生産方式の関係を問い直す契機になった。', null,
           'unverified', '台数の集計基準（生産・販売、グループ会社の範囲）が発表主体により異なり、首位交代の年や差は資料で一致しない。', 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('トヨタ自動車 ニュースリリース（2009年1月）', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-toyota-production'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-toyota-production') and name = '経営と危機'),
-          '2009-05-08', null, 'day', 'point', '2009年3月期に戦後初の営業赤字', 'リーマン・ショック後の需要急減で、トヨタは2009年3月期決算で約4,610億円の営業赤字を発表した。', '前年に世界販売首位に立った直後の急転で、生産能力の拡大が固定費として重くのしかかった。生産方式の観点では、需要変動に合わせて生産量を柔軟に変える「平準化」の限界が議論となり、以後は生産能力の増強を抑える方針へ転じる。この決算発表は豊田章男が社長に就任する直前にあたる。',
+          '2009-05-08', null, 'day', 'point', '2009年3月期に戦後初の営業赤字', 'リーマン・ショック後の需要急減で、トヨタは2009年3月期決算で約4,610億円の営業赤字を発表した。前年に世界販売首位に立った直後の急転で、生産能力の拡大が固定費として重くのしかかった。
+
+生産方式の観点では、需要変動に合わせて生産量を柔軟に変える「平準化」の限界が議論となり、以後は生産能力の増強を抑える方針へ転じる。この決算発表は、豊田章男が社長に就任する直前にあたる。', null,
           'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('トヨタ自動車 2009年3月期 決算発表', null), ('トヨタ自動車 有価証券報告書（2009年3月期）', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-toyota-production'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-toyota-production') and name = '経営と危機'),
-          '2010-02-24', null, 'day', 'point', '大規模リコールと米下院公聴会', 'アクセルペダル等を巡る大規模リコールを受け、豊田章男社長が米下院の公聴会に出席し、品質問題について証言した。', '2009年から2010年にかけて世界で数百万台規模のリコールが相次ぎ、急拡大した海外生産と品質保証の体制が問われた。公聴会で社長は「成長のスピードが人材育成を上回った」との趣旨を述べている。この危機を受け、生産方式の原点である「品質を工程でつくり込む」考えを再徹底する動きが社内で進み、2015年のTNGAにつながる。',
+          '2010-02-24', null, 'day', 'point', '大規模リコールと米下院公聴会', 'アクセルペダル等を巡る大規模リコールを受け、豊田章男社長が米下院の公聴会に出席し、品質問題について証言した。2009年から2010年にかけて世界で数百万台規模のリコールが相次ぎ、急拡大した海外生産と品質保証の体制が問われた。
+
+公聴会で社長は「成長のスピードが人材育成を上回った」との趣旨を述べている。この危機を受け、**生産方式の原点である「品質を工程でつくり込む」考えを再徹底する動き**が社内で進み、2015年のTNGAにつながる。', null,
           'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 2009–2011 Toyota vehicle recalls', 'https://en.wikipedia.org/wiki/2009%E2%80%932011_Toyota_vehicle_recalls')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-toyota-production'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-toyota-production') and name = '経営と危機'),
-          '2011-03-11', null, 'day', 'point', '東日本大震災でサプライチェーンが寸断', '東北の部品・素材メーカーが被災して供給網が寸断され、国内外の工場が数か月にわたる減産を余儀なくされた。', '低在庫のジャスト・イン・タイムが災害に弱いとの批判が起きた一方、トヨタは寸断の原因を特定の部品や素材の一極集中に求め、サプライチェーンの可視化に取り組んだ。同年はタイの洪水も重なり、部品供給網の情報を集めるデータベース整備が進む。この教訓は2020年代の半導体不足で一定の効果を発揮したとされる。',
+          '2011-03-11', null, 'day', 'point', '東日本大震災でサプライチェーンが寸断', '東北の部品・素材メーカーが被災して供給網が寸断され、国内外の工場が数か月にわたる減産を余儀なくされた。低在庫のジャスト・イン・タイムが災害に弱いとの批判も起きた。
+
+一方でトヨタは寸断の原因を特定の部品や素材の一極集中に求め、**危機を機にサプライチェーンの可視化へ踏み出した**。同年はタイの洪水も重なり、部品供給網の情報を集めるデータベース整備が進む。この教訓は2020年代の半導体不足で一定の効果を発揮したとされる。', null,
           'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('トヨタ自動車 ニュースリリース（2011年）', null), ('Wikipedia: Toyota Production System', 'https://en.wikipedia.org/wiki/Toyota_Production_System')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-toyota-production'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-toyota-production') and name = '世界への波及'),
-          '2011-09-01', null, 'month', 'point', '『リーン・スタートアップ』刊行', 'エリック・リースが『The Lean Startup』を刊行。TPS由来のリーンの考え方をソフトウェアと起業の方法論に転用した。', '小さくつくり検証を繰り返す手法は、TPSのムダ排除や「現地現物」の発想を参照したと著者が述べている。1990年の『The Machine That Changed the World』が製造業に広げた概念が、2010年代にはIT産業や公共部門にまで及んだ形である。同年の日本では東日本大震災でTPSの弱点が議論されており、原産地と応用先で評価が分かれた年でもある。',
+          '2011-09-01', null, 'month', 'point', '『リーン・スタートアップ』刊行', 'エリック・リースが『The Lean Startup』を刊行し、TPS由来のリーンの考え方をソフトウェアと起業の方法論に転用した。小さくつくり検証を繰り返す手法は、TPSのムダ排除や「現地現物」の発想を参照したと著者が述べている。
+
+1990年の『The Machine That Changed the World』が製造業に広げた概念が、2010年代にはIT産業や公共部門にまで及んだ形である。同年の日本では東日本大震災でTPSの弱点が議論されており、原産地と応用先で評価が分かれた年でもある。', null,
           'unverified', '刊行時期は確かだが、TPSからの影響の程度は著者の言及に基づく評価であり、方法論の系譜として定説化しているとは言い切れない。', 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: The Lean Startup', 'https://en.wikipedia.org/wiki/The_Lean_Startup')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-toyota-production'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-toyota-production') and name = '生産技術と現場'),
-          '2015-12-01', null, 'month', 'point', 'TNGA採用の初の車種（4代目プリウス）発売', '車両の基本骨格と生産ラインを共通化するTNGAを採用した最初の車種として4代目プリウスが発売された。', 'リコール問題後の「もっといいクルマづくり」の方針を受け、設計と生産を一体で見直す取り組みである。生産ラインの設備を低く簡素にし、生産量の増減に合わせて組み替えやすくする方向は、2009年の営業赤字で明らかになった固定費の重さへの応答でもある。世界の工場に順次展開され、2020年代の半導体不足下でも工程を柔軟に組み替える基盤となった。',
+          '2015-12-01', null, 'month', 'point', 'TNGA採用の初の車種（4代目プリウス）発売', '車両の基本骨格と生産ラインを共通化するTNGAを採用した最初の車種として、4代目プリウスが発売された。リコール問題後の「もっといいクルマづくり」の方針を受け、設計と生産を一体で見直す取り組みである。
+
+生産ラインの設備を低く簡素にし、生産量の増減に合わせて組み替えやすくする方向は、2009年の営業赤字で明らかになった固定費の重さへの応答でもある。世界の工場に順次展開され、2020年代の半導体不足下でも工程を柔軟に組み替える基盤となった。', null,
           'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Toyota New Global Architecture', 'https://en.wikipedia.org/wiki/Toyota_New_Global_Architecture')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-toyota-production'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-toyota-production') and name = '経営と危機'),
-          '2021-08-19', '2022-12-31', 'day', 'period', '半導体不足による長期減産', 'トヨタが2021年9月の世界生産を計画比約4割減らすと発表。半導体と部品の不足による減産は2022年まで断続的に続いた。', '新型コロナ後の需要回復と東南アジアの感染拡大が重なり、半導体を含む部品供給が滞った。2011年以降に整備したサプライチェーンの可視化により当初は他社より影響が小さかったとされるが、長期化には耐えきれず減産に至った。ジャスト・イン・タイムの適用範囲と、戦略的な在庫の持ち方が改めて議論される契機となった。',
+          '2021-08-19', '2022-12-31', 'day', 'period', '半導体不足による長期減産', 'トヨタが2021年9月の世界生産を計画比約4割減らすと発表し、半導体と部品の不足による減産は2022年まで断続的に続いた。新型コロナ後の需要回復と東南アジアの感染拡大が重なり、半導体を含む部品供給が滞った。
+
+2011年以降に整備したサプライチェーンの可視化により当初は他社より影響が小さかったとされるが、長期化には耐えきれず減産に至った。**ジャスト・イン・タイムの適用範囲と戦略的な在庫の持ち方**が、改めて議論される契機となった。', null,
           'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('トヨタ自動車 ニュースリリース（2021年8月19日）', null), ('Wikipedia: 2020–2023 global chip shortage', 'https://en.wikipedia.org/wiki/2020%E2%80%932023_global_chip_shortage')) as v(title, url);
 
@@ -413,121 +533,161 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '技術'),
-          '1895-12-28', null, 'day', 'point', 'リュミエール兄弟、パリのグラン・カフェで有料上映', 'シネマトグラフによる有料公開上映。撮影・映写・複製を1台でこなす装置が「映画の誕生」の通説的な起点となった。', 'エジソンのキネトスコープ（1894年）は覗き箱で個人鑑賞だったのに対し、スクリーンに投影して複数人が同時に見る形式が興行の原型を作った。作品はまだ1分足らずの実写だが、観客が集まり料金を払う「産業と観客」のレイヤーがこの日から始まる。翌年には世界各地へ巡回興行が広がった。',
+          '1895-12-28', null, 'day', 'point', 'リュミエール兄弟、パリのグラン・カフェで有料上映', 'リュミエール兄弟がパリのグラン・カフェで、撮影・映写・複製を1台でこなすシネマトグラフによる有料公開上映を行い、「映画の誕生」の通説的な起点となった。
+
+エジソンのキネトスコープ（1894年）が覗き箱での個人鑑賞だったのに対し、スクリーンに投影して複数人が同時に見る形式が興行の原型を作った。作品はまだ1分足らずの実写だが、**観客が集まり料金を払う「産業と観客」のレイヤー**がこの日から始まり、翌年には世界各地へ巡回興行が広がった。', null,
           'disputed', '「最初の映画上映」の定義は諸説あり、同年11月にベルリンでスクラダノフスキー兄弟が行った有料上映や、エジソン社の先行装置を起点とする見方がある。', 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Institut Lumière (公式)', 'https://www.institut-lumiere.org/'), ('Wikipedia: Auguste and Louis Lumière', 'https://en.wikipedia.org/wiki/Auguste_and_Louis_Lumi%C3%A8re')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '作品と作家'),
-          '1902-09-01', null, 'month', 'point', 'メリエス『月世界旅行』公開', '舞台の手品師出身のメリエスが、セットと特殊効果で約14分の物語映画を作り、映画を「見世物」から「語り」へ導いた。', '多重露光やストップ・トリックといった技術レイヤーの発明を、物語のために体系的に用いた最初期の作品。無許可の複製が米国で流通して収益を奪われた経緯は、産業レイヤーで著作権と配給の仕組みが未整備だったことを示す。着色版が近年再発見され、修復のうえ上映されている。',
+          '1902-09-01', null, 'month', 'point', 'メリエス『月世界旅行』公開', '舞台の手品師出身のメリエスが、セットと特殊効果で約14分の物語映画『月世界旅行』を作り、映画を「見世物」から「語り」へ導いた。多重露光やストップ・トリックといった技術レイヤーの発明を、物語のために体系的に用いた最初期の作品である。
+
+無許可の複製が米国で流通して収益を奪われた経緯は、産業レイヤーで著作権と配給の仕組みが未整備だったことを示す。着色版が近年再発見され、修復のうえ上映されている。', null,
           'verified', null, 'user', 1) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: A Trip to the Moon', 'https://en.wikipedia.org/wiki/A_Trip_to_the_Moon')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '産業と観客'),
-          '1912-09-10', null, 'day', 'point', '日本活動写真株式会社（日活）設立', '国内4社が合併して日活が誕生。製作・配給・興行を束ねる日本最初期の大手映画会社が生まれた。', '欧米でも同時期にスタジオが形成されており、日本の映画産業が世界とほぼ同時に企業化したことを示す。技術レイヤーでは輸入映写機と国産フィルムの整備が進み、作品レイヤーでは弁士付きの上映が独自の受容文化を作っていた。以後、松竹（1920年）などの参入で競争構造が形作られる。',
+          '1912-09-10', null, 'day', 'point', '日本活動写真株式会社（日活）設立', '国内4社が合併して日本活動写真株式会社（日活）が誕生し、製作・配給・興行を束ねる日本最初期の大手映画会社が生まれた。
+
+欧米でも同時期にスタジオが形成されており、日本の映画産業が世界とほぼ同時に企業化したことを示す。技術レイヤーでは輸入映写機と国産フィルムの整備が進み、作品レイヤーでは弁士付きの上映が独自の受容文化を作っていた。以後、松竹（1920年）などの参入で競争構造が形作られる。', null,
           'verified', null, 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('日活: 会社沿革（公式）', 'https://www.nikkatsu.com/company/history.html'), ('Wikipedia: 日活', 'https://ja.wikipedia.org/wiki/%E6%97%A5%E6%B4%BB')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '技術'),
-          '1927-10-06', null, 'day', 'point', '『ジャズ・シンガー』公開、トーキーの商業的成功', 'ワーナー・ブラザースのヴァイタフォン方式で同期音声を持つ長編が公開。数年でサイレントは主流から退いた。', '音の導入は撮影所の防音化、俳優の声、音楽著作権と、技術・作品・産業のすべてを組み替えた。同じ年、産業レイヤーでは映画芸術科学アカデミーが設立され、業界の自己組織化が進む。日本では弁士文化のためトーキー化が数年遅れた。部分トーキーながら興行の成功が各社の設備投資を決定づけた。',
+          '1927-10-06', null, 'day', 'point', '『ジャズ・シンガー』公開、トーキーの商業的成功', 'ワーナー・ブラザースのヴァイタフォン方式で同期音声を持つ長編『ジャズ・シンガー』が公開され、部分トーキーながら興行の成功が各社の設備投資を決定づけた。数年でサイレントは主流から退く。
+
+**音の導入は撮影所の防音化、俳優の声、音楽著作権と、技術・作品・産業のすべてを組み替えた**。同じ年には映画芸術科学アカデミーが設立され、業界の自己組織化が進む。日本では弁士文化のためトーキー化が数年遅れた。', null,
           'verified', null, 'user', 3) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: The Jazz Singer', 'https://en.wikipedia.org/wiki/The_Jazz_Singer')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '産業と観客'),
-          '1930-01-01', '1948-05-03', 'year', 'period', 'ハリウッド・スタジオシステムの全盛期', '大手5社が製作・配給・興行を垂直統合し、専属契約の俳優と監督で量産した時代。1948年の反トラスト判決で崩れ始める。', 'トーキー化に伴う設備投資が寡占を強め、大恐慌下でも週7,000万人以上が映画館に通った。作品レイヤーではジャンル映画とスターシステムが確立し、1934年の製作倫理規定（ヘイズ・コード）の厳格運用で表現の枠も産業側が決めた。技術レイヤーではテクニカラーが浸透していく。',
+          '1930-01-01', '1948-05-03', 'year', 'period', 'ハリウッド・スタジオシステムの全盛期', '大手5社が製作・配給・興行を垂直統合し、専属契約の俳優と監督で量産した時代。トーキー化に伴う設備投資が寡占を強め、大恐慌下でも週7,000万人以上が映画館に通った。
+
+作品レイヤーではジャンル映画とスターシステムが確立し、1934年の製作倫理規定（ヘイズ・コード）の厳格運用で表現の枠も産業側が決めた。技術レイヤーではテクニカラーが浸透していく。1948年の反トラスト判決で体制は崩れ始める。', null,
           'disputed', '始点と終点は論者により異なる（トーキー化の1927〜1929年を起点とする説、テレビ普及の1950年代までとする説など）。', 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Studio system', 'https://en.wikipedia.org/wiki/Studio_system')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '作品と作家'),
-          '1941-05-01', null, 'day', 'point', 'オーソン・ウェルズ『市民ケーン』公開', 'パンフォーカス、非線形の語り、天井の見える構図。25歳の監督が撮影所の慣習を組み替え、後世の批評で最高作と繰り返し評された。', '撮影監督グレッグ・トーランドの深い被写界深度は高感度フィルムと照明技術の進歩という技術レイヤーに支えられた。モデルとされた新聞王ハーストの妨害で興行は振るわず、産業レイヤーではスタジオが有力者の圧力に弱いことを露呈した。アカデミー賞は脚本賞のみの受賞に終わった。',
+          '1941-05-01', null, 'day', 'point', 'オーソン・ウェルズ『市民ケーン』公開', '25歳のオーソン・ウェルズが『市民ケーン』を発表。パンフォーカス、非線形の語り、天井の見える構図で撮影所の慣習を組み替え、後世の批評で最高作と繰り返し評された。撮影監督グレッグ・トーランドの深い被写界深度は、高感度フィルムと照明技術の進歩という技術レイヤーに支えられていた。
+
+モデルとされた新聞王ハーストの妨害で興行は振るわず、産業レイヤーではスタジオが有力者の圧力に弱いことを露呈した。アカデミー賞は脚本賞のみの受賞に終わった。', null,
           'verified', null, 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Citizen Kane', 'https://en.wikipedia.org/wiki/Citizen_Kane')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '産業と観客'),
-          '1948-05-03', null, 'day', 'point', '米最高裁「パラマウント判決」、スタジオの劇場所有を違法と判断', '製作会社による映画館チェーンの所有と抱き合わせ配給を反トラスト法違反と認定。垂直統合が解体へ向かった。', '同時期にテレビが家庭に入り始め、観客動員は減少に転じる。スタジオは大作主義と技術的な差別化（ワイドスクリーン、立体）で対抗し、独立プロと監督の裁量が拡大した。2020年に同意判決が終了するまで、70年以上ハリウッドの産業構造を規定した。判決の翌年からスタジオは劇場部門の分離を進めた。',
+          '1948-05-03', null, 'day', 'point', '米最高裁「パラマウント判決」、スタジオの劇場所有を違法と判断', '米最高裁が製作会社による映画館チェーンの所有と抱き合わせ配給を反トラスト法違反と認定し、スタジオの垂直統合が解体へ向かった。判決の翌年からスタジオは劇場部門の分離を進め、2020年に同意判決が終了するまで70年以上ハリウッドの産業構造を規定した。
+
+同時期にテレビが家庭に入り始め、観客動員は減少に転じる。スタジオは大作主義とワイドスクリーンや立体といった技術的な差別化で対抗し、独立プロと監督の裁量が拡大した。', null,
           'verified', null, 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: United States v. Paramount Pictures, Inc.', 'https://en.wikipedia.org/wiki/United_States_v._Paramount_Pictures,_Inc.')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '作品と作家'),
-          '1951-09-10', null, 'day', 'point', '黒澤明『羅生門』、ヴェネツィア国際映画祭で金獅子賞', '前年公開の作品が最高賞を受賞し、日本映画が国際的に発見された。以後、溝口・小津らが欧州の映画祭で評価される。', '国内では評価が割れた作品を海外の映画祭という制度が押し上げた例。産業レイヤーでは日本の映画館入場者数が急増期にあり、1950年代を通じて年10億人規模に達する。技術レイヤーでは宮川一夫が太陽に直接カメラを向ける撮影を試み、表現の常識を更新した。',
+          '1951-09-10', null, 'day', 'point', '黒澤明『羅生門』、ヴェネツィア国際映画祭で金獅子賞', '前年公開の黒澤明『羅生門』がヴェネツィア国際映画祭で最高賞の金獅子賞を受賞し、日本映画が国際的に発見された。国内では評価が割れた作品を、海外の映画祭という制度が押し上げた例である。
+
+以後、溝口・小津らが欧州の映画祭で評価される。産業レイヤーでは日本の映画館入場者数が急増期にあり、1950年代を通じて年10億人規模に達する。技術レイヤーでは宮川一夫が太陽に直接カメラを向ける撮影を試み、表現の常識を更新した。', null,
           'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 羅生門 (1950年の映画)', 'https://ja.wikipedia.org/wiki/%E7%BE%85%E7%94%9F%E9%96%80_(1950%E5%B9%B4%E3%81%AE%E6%98%A0%E7%94%BB)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '産業と観客'),
-          '1958-01-01', null, 'year', 'point', '日本の映画館入場者数が約11億2,700万人でピーク', '日本映画製作者連盟の統計で年間入場者数が過去最高を記録。翌年のテレビ普及本格化とともに急減に転じる。', '作品レイヤーでは大手6社が週替わり2本立てで年500本以上を製作した黄金期。技術レイヤーではテレビ受像機が皇太子成婚（1959年）を機に普及し、家庭が「観客席」になっていく。1960年代を通じ入場者数は3分の1以下に落ち込み、撮影所システムの再編を促した。',
+          '1958-01-01', null, 'year', 'point', '日本の映画館入場者数が約11億2,700万人でピーク', '日本映画製作者連盟の統計で年間入場者数が約11億2,700万人の過去最高を記録。作品レイヤーでは大手6社が週替わり2本立てで年500本以上を製作した黄金期である。
+
+技術レイヤーではテレビ受像機が皇太子成婚（1959年）を機に普及し、**家庭が「観客席」になっていく**。翌年のテレビ普及本格化とともに入場者数は急減に転じ、1960年代を通じて3分の1以下に落ち込んで撮影所システムの再編を促した。', null,
           'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('日本映画製作者連盟: 過去データ一覧（入場人員）', 'http://www.eiren.org/toukei/data.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '作品と作家'),
-          '1959-05-01', '1968-05-31', 'month', 'period', 'ヌーヴェルヴァーグの時代', 'トリュフォー『大人は判ってくれない』のカンヌ受賞からゴダールらの活動を経て、1968年のカンヌ中止まで。作家主義が世界に広がった。', '軽量カメラと高感度フィルム、同時録音機という技術レイヤーの進歩が、撮影所を出て街頭で撮る手法を可能にした。批評誌『カイエ・デュ・シネマ』出身の監督たちは「作家」という概念を定着させ、産業レイヤーではスタジオ外の低予算製作が興行として成立することを示した。',
+          '1959-05-01', '1968-05-31', 'month', 'period', 'ヌーヴェルヴァーグの時代', 'トリュフォー『大人は判ってくれない』のカンヌ受賞からゴダールらの活動を経て、1968年のカンヌ中止までの時代。作家主義が世界に広がった。
+
+**軽量カメラと高感度フィルム、同時録音機という技術レイヤーの進歩が、撮影所を出て街頭で撮る手法を可能にした**。批評誌『カイエ・デュ・シネマ』出身の監督たちは「作家」という概念を定着させ、産業レイヤーではスタジオ外の低予算製作が興行として成立することを示した。', null,
           'disputed', '運動の始点・終点には諸説あり（1958年『美しきセルジュ』を起点、1960年代前半で終わるとする見方など）。本項は便宜的な区切り。', 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: French New Wave', 'https://en.wikipedia.org/wiki/French_New_Wave')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '産業と観客'),
-          '1975-06-20', null, 'day', 'point', '『ジョーズ』公開、ブロックバスター興行の原型に', '全米400館超の同時公開とテレビCMの大量投下で夏興行を制し、公開規模とマーケティングの型を作った。', 'それまで大作は都市部の少数館から順次拡大するのが通例で、広域一斉公開は例外だった。作品レイヤーではスピルバーグら「映画学校世代」が主流に入り、技術レイヤーでは1977年の『スター・ウォーズ』がモーションコントロール撮影とドルビーステレオで続く。以後、夏と年末の大作商戦が産業のリズムになる。',
+          '1975-06-20', null, 'day', 'point', '『ジョーズ』公開、ブロックバスター興行の原型に', '『ジョーズ』が全米400館超の同時公開とテレビCMの大量投下で夏興行を制し、公開規模とマーケティングの型を作った。それまで大作は都市部の少数館から順次拡大するのが通例で、広域一斉公開は例外だった。
+
+作品レイヤーではスピルバーグら「映画学校世代」が主流に入り、技術レイヤーでは1977年の『スター・ウォーズ』がモーションコントロール撮影とドルビーステレオで続く。以後、夏と年末の大作商戦が産業のリズムになる。', null,
           'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Jaws (film)', 'https://en.wikipedia.org/wiki/Jaws_(film)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '技術'),
-          '1976-09-01', null, 'month', 'point', '日本ビクターがVHS方式のビデオデッキを発売', '家庭で映画を録画・再生できる時代へ。ベータマックスとの規格競争を経てVHSが標準となり、レンタルビデオ市場を生んだ。', '産業レイヤーでは映画会社が当初は違法録画を恐れて訴訟を起こしたが（ベータマックス訴訟）、1980年代にはビデオ販売とレンタルが劇場興行を上回る収益源となった。作品レイヤーでは旧作や小規模作品が「棚」で発見される機会が生まれ、後の配信時代の視聴形態を先取りした。',
+          '1976-09-01', null, 'month', 'point', '日本ビクターがVHS方式のビデオデッキを発売', '日本ビクターがVHS方式のビデオデッキを発売し、家庭で映画を録画・再生できる時代が始まった。ベータマックスとの規格競争を経てVHSが標準となり、レンタルビデオ市場を生む。
+
+産業レイヤーでは映画会社が当初は違法録画を恐れて訴訟を起こしたが（ベータマックス訴訟）、1980年代にはビデオ販売とレンタルが劇場興行を上回る収益源となった。作品レイヤーでは旧作や小規模作品が「棚」で発見される機会が生まれ、**後の配信時代の視聴形態を先取り**した。', null,
           'unverified', '発表は1976年9月、発売は同年10月とする資料もあり、月の特定は要確認。', 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: VHS', 'https://en.wikipedia.org/wiki/VHS')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '技術'),
-          '1995-11-22', null, 'day', 'point', '『トイ・ストーリー』公開、全編CGによる初の長編', 'ピクサーがコンピュータ・グラフィックスだけで長編を完成させ、アニメーションと実写の双方に転換をもたらした。', '1993年『ジュラシック・パーク』の恐竜が実写合成の壁を越えたのに続く節目。産業レイヤーではディズニーとの配給契約が長編CG映画の商業モデルを確立し、2000年代の手描きアニメ縮小につながる。作品レイヤーでは「デジタルの作家」という新しい職能が生まれた。',
+          '1995-11-22', null, 'day', 'point', '『トイ・ストーリー』公開、全編CGによる初の長編', 'ピクサーがコンピュータ・グラフィックスだけで長編『トイ・ストーリー』を完成させ、アニメーションと実写の双方に転換をもたらした。1993年『ジュラシック・パーク』の恐竜が実写合成の壁を越えたのに続く節目である。
+
+産業レイヤーではディズニーとの配給契約が長編CG映画の商業モデルを確立し、2000年代の手描きアニメ縮小につながる。作品レイヤーでは「デジタルの作家」という新しい職能が生まれた。', null,
           'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Toy Story', 'https://en.wikipedia.org/wiki/Toy_Story')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '産業と観客'),
-          '1997-12-19', null, 'day', 'point', '『タイタニック』公開、世界興行収入が初めて10億ドルを突破', '製作費超過で不安視された大作が記録的なロングランとなり、世界同時マーケティングとリピート鑑賞の力を示した。', '技術レイヤーではCGと大規模セットの併用が標準になり、作品レイヤーではメロドラマと災害映画の合体という古典的な語りが最新技術で再生された。同年、DVDが米国で発売され、家庭視聴の画質が上がる一方、映画館は「大画面でしか味わえない体験」を売る方向へ向かう。',
+          '1997-12-19', null, 'day', 'point', '『タイタニック』公開、世界興行収入が初めて10億ドルを突破', '製作費超過で不安視された大作『タイタニック』が記録的なロングランとなり、世界興行収入が初めて10億ドルを突破。世界同時マーケティングとリピート鑑賞の力を示した。
+
+技術レイヤーではCGと大規模セットの併用が標準になり、作品レイヤーではメロドラマと災害映画の合体という古典的な語りが最新技術で再生された。同年、DVDが米国で発売されて家庭視聴の画質が上がる一方、映画館は「大画面でしか味わえない体験」を売る方向へ向かう。', null,
           'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Titanic (1997 film)', 'https://en.wikipedia.org/wiki/Titanic_(1997_film)'), ('Box Office Mojo: Titanic', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '技術'),
-          '2005-01-01', '2014-12-31', 'year', 'period', 'フィルム上映からデジタル上映への転換期', 'DCI規格の策定を起点に、主要国の映画館がフィルム映写機をデジタルプロジェクターへ置き換えた期間。', '2009年『アバター』の3D興行がデジタル化の投資を一気に正当化し、2012年にはコダックが連邦破産法を申請した。産業レイヤーでは配給コストが激減する一方、小規模館の設備投資負担が問題化した。作品レイヤーではデジタルカメラでの撮影が標準となり、フィルムは一部作家の選択肢に退いた。',
+          '2005-01-01', '2014-12-31', 'year', 'period', 'フィルム上映からデジタル上映への転換期', 'DCI規格の策定を起点に、主要国の映画館がフィルム映写機をデジタルプロジェクターへ置き換えた期間。2009年『アバター』の3D興行がデジタル化の投資を一気に正当化し、2012年にはコダックが連邦破産法を申請した。
+
+産業レイヤーでは配給コストが激減する一方、小規模館の設備投資負担が問題化した。作品レイヤーではデジタルカメラでの撮影が標準となり、フィルムは一部作家の選択肢に退いた。', null,
           'unverified', '始点・終点は規格策定と主要国の移行完了時期から概略で置いたもので、国別の移行時期は大きく異なる。', 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Digital cinema', 'https://en.wikipedia.org/wiki/Digital_cinema')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '技術'),
-          '2007-01-01', null, 'month', 'point', 'Netflixがストリーミング配信を開始', 'DVD郵送レンタルから始まった同社がオンライン視聴を導入。映画が「届く」から「呼び出す」ものへ変わる起点。', 'ブロードバンドの普及という技術基盤の上で、月額定額のライブラリという新しい消費形態が定着した。産業レイヤーでは劇場・ビデオ・テレビという公開順序（ウィンドウ）が揺らぎ、作品レイヤーでは2010年代半ばから配信会社の自社製作が映画祭と賞レースに参入していく。',
+          '2007-01-01', null, 'month', 'point', 'Netflixがストリーミング配信を開始', 'DVD郵送レンタルから始まったNetflixがオンライン視聴を導入し、**映画が「届く」から「呼び出す」ものへ変わる**起点となった。ブロードバンドの普及という技術基盤の上で、月額定額のライブラリという新しい消費形態が定着する。
+
+産業レイヤーでは劇場・ビデオ・テレビという公開順序（ウィンドウ）が揺らぎ、作品レイヤーでは2010年代半ばから配信会社の自社製作が映画祭と賞レースに参入していく。', null,
           'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Netflix', 'https://en.wikipedia.org/wiki/Netflix')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '技術'),
-          '2009-12-18', null, 'day', 'point', '『アバター』公開、3Dとデジタル上映を興行の主流に押し上げる', 'パフォーマンス・キャプチャと立体撮影を組み合わせた大作が世界興行収入の記録を更新し、3D上映の設備投資を加速させた。', '1950年代の3Dブームがテレビ対策として短命に終わったのに対し、今回はデジタル上映への移行と結びついて劇場の設備を恒久的に変えた。産業レイヤーでは3D追加料金が興行収入を押し上げ、作品レイヤーではその後数年、大作の3D化が半ば義務のようになった。',
+          '2009-12-18', null, 'day', 'point', '『アバター』公開、3Dとデジタル上映を興行の主流に押し上げる', 'パフォーマンス・キャプチャと立体撮影を組み合わせた大作『アバター』が世界興行収入の記録を更新し、3D上映の設備投資を加速させた。
+
+1950年代の3Dブームがテレビ対策として短命に終わったのに対し、今回はデジタル上映への移行と結びついて劇場の設備を恒久的に変えた。産業レイヤーでは3D追加料金が興行収入を押し上げ、作品レイヤーではその後数年、大作の3D化が半ば義務のようになった。', null,
           'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Avatar (2009 film)', 'https://en.wikipedia.org/wiki/Avatar_(2009_film)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '作品と作家'),
-          '2020-02-09', null, 'day', 'point', '『パラサイト 半地下の家族』、非英語作品で初のアカデミー作品賞', 'ポン・ジュノ監督作が作品賞・監督賞など4部門を受賞。前年のカンヌ最高賞に続き、英語圏中心の評価軸が動いた。', '韓国映画産業の1990年代以降の投資と映画振興策の成果が国際的な制度で認められた。技術・産業レイヤーでは字幕付き作品が配信で日常的に視聴される環境が受容の土壌を作っており、翌月にはパンデミックで世界の映画館が休業し、配信への移行が一気に進む。',
+          '2020-02-09', null, 'day', 'point', '『パラサイト 半地下の家族』、非英語作品で初のアカデミー作品賞', 'ポン・ジュノ監督『パラサイト 半地下の家族』が非英語作品で初めてアカデミー作品賞を受賞し、監督賞など4部門を制した。前年のカンヌ最高賞に続き、英語圏中心の評価軸が動いた。
+
+韓国映画産業の1990年代以降の投資と映画振興策の成果が国際的な制度で認められた形である。技術・産業レイヤーでは字幕付き作品が配信で日常的に視聴される環境が受容の土壌を作っており、翌月にはパンデミックで世界の映画館が休業し、配信への移行が一気に進む。', null,
           'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Parasite (2019 film)', 'https://en.wikipedia.org/wiki/Parasite_(2019_film)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '産業と観客'),
-          '2020-12-03', null, 'day', 'point', 'ワーナー、2021年全作品を劇場と配信で同日公開と発表', 'パンデミック下でHBO Maxとの同日公開を発表。劇場優先の公開順序（ウィンドウ）が大手スタジオによって公然と崩された。', '映画館の休業と配信加入者の急増という産業レイヤーの変化が、技術レイヤーで整っていた配信基盤に一気に流れ込んだ。作家や劇場チェーンからの反発を受け、翌年には劇場独占期間を短縮した形で折り合いがついたが、45日ウィンドウなど新しい慣行が定着した。同年、日本では『劇場版「鬼滅の刃」無限列車編』が興行収入の国内記録を更新し、劇場体験の需要が消えていないことも示された。',
+          '2020-12-03', null, 'day', 'point', 'ワーナー、2021年全作品を劇場と配信で同日公開と発表', 'パンデミック下でワーナーが2021年全作品の劇場とHBO Maxでの同日公開を発表し、**劇場優先の公開順序（ウィンドウ）が大手スタジオによって公然と崩された**。
+
+映画館の休業と配信加入者の急増という産業レイヤーの変化が、技術レイヤーで整っていた配信基盤に一気に流れ込んだ形である。作家や劇場チェーンの反発を受けて翌年には劇場独占期間を短縮した形で折り合いがついたが、45日ウィンドウなど新しい慣行が定着した。同年、日本では『劇場版「鬼滅の刃」無限列車編』が興行収入の国内記録を更新し、劇場体験の需要が消えていないことも示された。', null,
           'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: HBO Max (Warner Bros. day-and-date releases)', null), ('Warner Bros. Discovery: プレスリリース (2020年12月3日)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '産業と観客'),
-          '2023-07-21', null, 'day', 'point', '『バービー』と『オッペンハイマー』が同日公開、劇場に観客が戻る', '対照的な2作の同日公開が「バーベンハイマー」現象を生み、パンデミック後の劇場興行回復を象徴した。', 'SNS上の観客発の話題化がマーケティングを上回る効果を持った例で、技術レイヤーではIMAX70mmフィルム上映が話題になるなど、配信では代替できない体験が再評価された。同時期に全米で脚本家・俳優組合のストライキが起き、配信時代の報酬とAI利用をめぐる産業構造の再交渉が並行していた。',
+          '2023-07-21', null, 'day', 'point', '『バービー』と『オッペンハイマー』が同日公開、劇場に観客が戻る', '対照的な『バービー』と『オッペンハイマー』の同日公開が「バーベンハイマー」現象を生み、パンデミック後の劇場興行回復を象徴した。SNS上の観客発の話題化がマーケティングを上回る効果を持った例である。
+
+技術レイヤーではIMAX70mmフィルム上映が話題になるなど、配信では代替できない体験が再評価された。同時期に全米で脚本家・俳優組合のストライキが起き、配信時代の報酬とAI利用をめぐる産業構造の再交渉が並行していた。', null,
           'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Barbenheimer', 'https://en.wikipedia.org/wiki/Barbenheimer')) as v(title, url);
 
@@ -544,121 +704,161 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '制度と市場'),
-          '1874-04-15', '1886-06-15', 'day', 'period', '印象派展の時代（全8回の自主展）', '1874年から1886年まで計8回開かれた自主展。サロンに代わる発表と販売の回路を画商デュラン=リュエルらと築いた。', '官展一極の発表制度に対し、グループ展と画商が結びつく近代的な市場モデルが形成された時期。参加者は毎回入れ替わり、最終回の1886年展にはスーラの点描が登場し、運動の内部から次の様式が生まれた。同じ頃、写真の商業化と鉄道網の拡大が郊外での制作と流通を後押ししていた。',
+          '1874-04-15', '1886-06-15', 'day', 'period', '印象派展の時代（全8回の自主展）', '1874年から1886年まで計8回開かれた印象派の自主展の時代。官展サロン一極の発表制度に対し、グループ展と画商デュラン=リュエルらが結びつく**サロンに代わる発表と販売の回路**が築かれ、近代的な市場モデルが形成された。
+
+参加者は毎回入れ替わり、最終回の1886年展にはスーラの点描が登場し、運動の内部から次の様式が生まれた。同じ頃、写真の商業化と鉄道網の拡大が郊外での制作と流通を後押ししていた。', null,
           'verified', null, 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Impressionism (Exhibitions)', 'https://en.wikipedia.org/wiki/Impressionism'), ('National Gallery of Art: Paul Durand-Ruel and the Impressionists', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '作品と運動'),
-          '1874-04-15', null, 'day', 'point', '第1回印象派展、パリのナダール旧写真スタジオで開幕', 'モネ、ルノワール、ドガらの「画家・彫刻家・版画家等芸術家匿名協会」がサロンの外で自主展を開催。', '官展サロンの審査に依存しない自主展。会場が写真家ナダールの旧スタジオだった点は象徴的で、写真という新技術が絵画の役割を問い直していた時期と重なる。批評家ルイ・ルロワがモネ《印象、日の出》を揶揄した記事が「印象派」の呼称の起源とされる。展覧会は約1か月続き、入場者は限られたが批評は活発だった。',
+          '1874-04-15', null, 'day', 'point', '第1回印象派展、パリのナダール旧写真スタジオで開幕', 'モネ、ルノワール、ドガらの「画家・彫刻家・版画家等芸術家匿名協会」が、官展サロンの審査に依存しない自主展をパリで開催した。批評家ルイ・ルロワがモネ《印象、日の出》を揶揄した記事が「印象派」の呼称の起源とされる。
+
+会場が写真家ナダールの旧スタジオだった点は象徴的で、写真という新技術が絵画の役割を問い直していた時期と重なる。展覧会は約1か月続き、入場者は限られたが批評は活発だった。', null,
           'verified', null, 'user', 1) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Musée d''Orsay: 1874 Inventing Impressionism (展覧会解説)', 'https://www.musee-orsay.fr/en/whats-on/exhibitions/paris-1874-inventing-impressionism'), ('Wikipedia: First Impressionist Exhibition', 'https://en.wikipedia.org/wiki/First_Impressionist_Exhibition')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '制度と市場'),
-          '1886-04-10', null, 'day', 'point', 'デュラン=リュエル、ニューヨークで大規模な印象派展を開催', '画商ポール・デュラン=リュエルがアメリカ美術協会で約300点を展示。印象派の米国市場が開かれた。', 'パリで売れ残った在庫を抱えた画商が新大陸に活路を求めた。以後、米国の実業家コレクターが印象派の主要な買い手となり、20世紀の米国美術館コレクションの基礎を築く。同年パリでは最後の印象派展が開かれ、運動が制度化と拡散の段階に入ったことを示す。',
+          '1886-04-10', null, 'day', 'point', 'デュラン=リュエル、ニューヨークで大規模な印象派展を開催', '画商ポール・デュラン=リュエルがニューヨークのアメリカ美術協会で約300点を展示し、印象派の米国市場が開かれた。パリで売れ残った在庫を抱えた画商が新大陸に活路を求めた展覧会だった。
+
+以後、米国の実業家コレクターが印象派の主要な買い手となり、20世紀の米国美術館コレクションの基礎を築く。同年パリでは最後の印象派展が開かれており、運動が制度化と拡散の段階に入ったことを示す。', null,
           'verified', null, 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Paul Durand-Ruel', 'https://en.wikipedia.org/wiki/Paul_Durand-Ruel')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '技術と社会'),
-          '1888-01-01', null, 'year', 'point', 'コダック、初のロールフィルム式カメラを発売', '「あなたはボタンを押すだけ」。撮影の大衆化が始まり、絵画の「記録」としての役割はいっそう後退した。', 'ジョージ・イーストマンのコダック・カメラは現像・焼付をメーカーが代行する仕組みで、写真を専門家から一般へ解放した。画家たちは同時期にスナップ的な構図や瞬間の光へと関心を移し、写真と絵画の役割分担が明確になる。後年のグラフィティ記録やSNS拡散へ続く「誰もが記録者になる」流れの起点でもある。',
+          '1888-01-01', null, 'year', 'point', 'コダック、初のロールフィルム式カメラを発売', 'ジョージ・イーストマンのコダック・カメラが「あなたはボタンを押すだけ」を掲げて発売。現像・焼付をメーカーが代行する仕組みで写真を専門家から一般へ解放し、撮影の大衆化が始まった。
+
+絵画の「記録」としての役割はいっそう後退し、画家たちは同時期にスナップ的な構図や瞬間の光へと関心を移して、写真と絵画の役割分担が明確になる。後年のグラフィティ記録やSNS拡散へ続く**「誰もが記録者になる」流れ**の起点でもある。', null,
           'verified', null, 'user', 3) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Kodak (History)', 'https://en.wikipedia.org/wiki/Kodak')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '制度と市場'),
-          '1913-02-17', null, 'day', 'point', 'アーモリー・ショー開幕、米国にヨーロッパ前衛が紹介される', 'ニューヨークの兵器庫で開かれた国際現代美術展。デュシャン《階段を降りる裸体No.2》が騒動を呼んだ。', '印象派から後期印象派、キュビスムまでを一望させ、米国の批評と市場に前衛の受容を迫った。会場は軍の兵器庫という非美術館空間で、後のオルタナティブ・スペースの先例でもある。同年、ヨーロッパでは翌年の大戦を控え、未来派やロシア前衛が急進化していた。',
+          '1913-02-17', null, 'day', 'point', 'アーモリー・ショー開幕、米国にヨーロッパ前衛が紹介される', 'ニューヨークの兵器庫で国際現代美術展「アーモリー・ショー」が開幕。印象派から後期印象派、キュビスムまでを一望させ、デュシャン《階段を降りる裸体No.2》が騒動を呼ぶなど、米国の批評と市場に前衛の受容を迫った。
+
+会場は軍の兵器庫という非美術館空間で、後のオルタナティブ・スペースの先例でもある。同年、ヨーロッパでは翌年の大戦を控え、未来派やロシア前衛が急進化していた。', null,
           'verified', null, 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Armory Show', 'https://en.wikipedia.org/wiki/Armory_Show')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '作品と運動'),
-          '1917-04-01', null, 'month', 'point', 'デュシャン《泉》、独立芸術家協会展への出品を拒否される', '「R. Mutt」と署名した男性用小便器。既製品を作品とするレディメイドの概念が広まる契機となった。', '「審査なし」を掲げた協会展が展示を拒んだことで、何が芸術かを決めるのは制度か作家かという問いが顕在化した。オリジナルは失われ、スティーグリッツの写真とレプリカで知られる。作者をエルザ・フォン・フライターク=ローリングホーフェンとする説もあり、帰属は現在も議論がある。',
+          '1917-04-01', null, 'month', 'point', 'デュシャン《泉》、独立芸術家協会展への出品を拒否される', 'デュシャンが「R. Mutt」と署名した男性用小便器《泉》を独立芸術家協会展に出品し、展示を拒否された。既製品を作品とするレディメイドの概念が広まる契機となる。
+
+「審査なし」を掲げた協会展が展示を拒んだことで、**何が芸術かを決めるのは制度か作家かという問い**が顕在化した。オリジナルは失われ、スティーグリッツの写真とレプリカで知られる。作者をエルザ・フォン・フライターク=ローリングホーフェンとする説もあり、帰属は現在も議論がある。', null,
           'disputed', '出品者がデュシャン本人か、エルザ・フォン・フライターク=ローリングホーフェンかについて研究者間で見解が分かれる。', 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Fountain (Duchamp)', 'https://en.wikipedia.org/wiki/Fountain_(Duchamp)'), ('Tate: Fountain 1917, replica 1964 (作品解説)', 'https://www.tate.org.uk/art/artworks/duchamp-fountain-t07573')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '制度と市場'),
-          '1929-11-07', null, 'day', 'point', 'ニューヨーク近代美術館（MoMA）開館', '開館展は「セザンヌ、ゴーガン、スーラ、ファン・ゴッホ」。近代美術を収集・体系化する美術館が誕生した。', 'ウォール街大暴落の直後に開館。印象派以後の美術を「近代美術」として正典化し、収蔵と展示を通じて価値を定める制度が確立した。同時期、ドイツではバウハウスが機能主義を掲げ、モダニズムは制度と教育の両面から広がっていた。開館当初は貸しビルの数室から始まった。開館当初は貸しビルの数室から始まり、1939年に現在地へ移った。',
+          '1929-11-07', null, 'day', 'point', 'ニューヨーク近代美術館（MoMA）開館', 'ニューヨーク近代美術館（MoMA）が開館。開館展は「セザンヌ、ゴーガン、スーラ、ファン・ゴッホ」で、近代美術を収集・体系化する美術館が誕生した。
+
+ウォール街大暴落の直後の開館だった。印象派以後の美術を「近代美術」として正典化し、収蔵と展示を通じて価値を定める制度が確立する。同時期ドイツではバウハウスが機能主義を掲げ、モダニズムは制度と教育の両面から広がっていた。開館当初は貸しビルの数室から始まり、1939年に現在地へ移った。', null,
           'verified', null, 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('MoMA: History (公式)', 'https://www.moma.org/about/who-we-are/moma-history'), ('Wikipedia: Museum of Modern Art', 'https://en.wikipedia.org/wiki/Museum_of_Modern_Art')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '技術と社会'),
-          '1937-07-19', null, 'day', 'point', 'ナチス政権、ミュンヘンで「退廃芸術展」を開催', '表現主義や抽象などを「退廃」として見せしめ展示。国家による美術の統制と没収が公然化した。', '美術館から約1万6千点が押収され、一部は国外で売却・破棄された。多くの作家が亡命し、戦後の抽象表現主義がニューヨークで開花する遠因となる。作品と制度が政治に従属した極端な例で、同じ年パリ万博ではピカソ《ゲルニカ》がスペイン館に展示されていた。',
+          '1937-07-19', null, 'day', 'point', 'ナチス政権、ミュンヘンで「退廃芸術展」を開催', 'ナチス政権がミュンヘンで「退廃芸術展」を開催。表現主義や抽象などを「退廃」として見せしめ展示し、国家による美術の統制と没収が公然化した。美術館からは約1万6千点が押収され、一部は国外で売却・破棄された。
+
+多くの作家が亡命し、戦後の抽象表現主義がニューヨークで開花する遠因となる。作品と制度が政治に従属した極端な例で、同じ年のパリ万博ではピカソ《ゲルニカ》がスペイン館に展示されていた。', null,
           'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Degenerate Art exhibition', 'https://en.wikipedia.org/wiki/Degenerate_Art_exhibition')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '作品と運動'),
-          '1947-01-01', null, 'year', 'point', 'ポロック、床置きキャンバスへの「ドリップ」を本格化', '絵具を垂らし飛ばすオールオーヴァーの画面。1949年の『ライフ』誌特集で大衆的にも知られる存在に。', '工業用エナメル塗料と巨大なキャンバスという素材の変化が、身体の運動を画面に記録する手法を可能にした。冷戦下で抽象表現主義は「自由な米国美術」として国務省や美術館の海外展に組み込まれ、制度と政治が作品の評価を後押しした。',
+          '1947-01-01', null, 'year', 'point', 'ポロック、床置きキャンバスへの「ドリップ」を本格化', 'ポロックが床置きキャンバスに絵具を垂らし飛ばす「ドリップ」を本格化させ、オールオーヴァーの画面を生んだ。工業用エナメル塗料と巨大なキャンバスという素材の変化が、身体の運動を画面に記録する手法を可能にした。
+
+1949年の『ライフ』誌特集で大衆的にも知られる存在となる。冷戦下で抽象表現主義は「自由な米国美術」として国務省や美術館の海外展に組み込まれ、制度と政治が作品の評価を後押しした。', null,
           'disputed', 'ドリップ技法の「開始年」は諸説あり、1936年のシケイロス工房での実験や1943年頃の試作を起点とする見方もある。', 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('MoMA: Jackson Pollock (作家解説)', 'https://www.moma.org/artists/4675'), ('Wikipedia: Jackson Pollock', 'https://en.wikipedia.org/wiki/Jackson_Pollock')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '作品と運動'),
-          '1962-07-09', null, 'day', 'point', 'ウォーホル《キャンベル・スープ缶》をロサンゼルスで初展示', 'フェラス画廊で32点の缶詰を並べた初個展。大量生産品と広告のイメージが美術館の壁に入った。', 'スーパーマーケットの陳列を模した展示は、消費社会そのものを主題にした。同年、シルクスクリーンによる複製技法を採用し、作家の手仕事という価値観を揺さぶる。テレビと雑誌広告が家庭に浸透した時期と重なり、後のストリートアートが広告的手法を用いる伏線となる。',
+          '1962-07-09', null, 'day', 'point', 'ウォーホル《キャンベル・スープ缶》をロサンゼルスで初展示', 'ウォーホルがロサンゼルスのフェラス画廊で32点の缶詰を並べた初個展を開催。スーパーマーケットの陳列を模した展示で、大量生産品と広告のイメージが美術館の壁に入り、消費社会そのものが主題になった。
+
+同年にはシルクスクリーンによる複製技法を採用し、作家の手仕事という価値観を揺さぶる。テレビと雑誌広告が家庭に浸透した時期と重なり、後のストリートアートが広告的手法を用いる伏線となる。', null,
           'verified', null, 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('MoMA: Campbell''s Soup Cans (作品解説)', 'https://www.moma.org/collection/works/79809'), ('Wikipedia: Campbell''s Soup Cans', 'https://en.wikipedia.org/wiki/Campbell%27s_Soup_Cans')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '技術と社会'),
-          '1970-01-01', '1989-05-12', 'year', 'period', 'ニューヨーク地下鉄グラフィティの時代', '車両全面のピースからワイルドスタイルまで様式が発達。1989年、MTAが「グラフィティのない地下鉄」を宣言し終息。', '1970年代の財政危機と治安悪化を背景に、地下鉄は最大のキャンバスとなった。写真家マーサ・クーパーらの記録と、1983年の映画『ワイルド・スタイル』や写真集『Subway Art』が世界に様式を伝え、ヨーロッパや日本へ波及した。行政は洗浄と車両更新で対抗し、80年代後半に路上へと舞台が移る。',
+          '1970-01-01', '1989-05-12', 'year', 'period', 'ニューヨーク地下鉄グラフィティの時代', '1970年代の財政危機と治安悪化を背景に、ニューヨークの地下鉄が最大のキャンバスとなった時代。車両全面のピースからワイルドスタイルまで様式が発達し、1989年にMTAが「グラフィティのない地下鉄」を宣言して終息した。
+
+写真家マーサ・クーパーらの記録と、1983年の映画『ワイルド・スタイル』や写真集『Subway Art』が世界に様式を伝え、ヨーロッパや日本へ波及した。行政は洗浄と車両更新で対抗し、80年代後半に舞台は路上へ移る。', null,
           'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Graffiti in New York City', 'https://en.wikipedia.org/wiki/Graffiti_in_New_York_City'), ('Martha Cooper & Henry Chalfant『Subway Art』(1984)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '技術と社会'),
-          '1971-07-21', null, 'day', 'point', '『ニューヨーク・タイムズ』が「TAKI 183」を報道', 'マンハッタン中に名前を書き残す少年を紹介した記事。地下鉄グラフィティが社会現象として認知される。', 'スプレー缶とマーカーという安価な道具、地下鉄という移動する画面が「タグ」の文化を生んだ。記事は模倣者を急増させ、都市財政危機下のニューヨークで行政との攻防が始まる。同じ1970年代初頭、美術界ではコンセプチュアル・アートが「もの」を離れつつあり、路上では逆に名前を可視化する欲望が噴出していた。',
+          '1971-07-21', null, 'day', 'point', '『ニューヨーク・タイムズ』が「TAKI 183」を報道', '『ニューヨーク・タイムズ』がマンハッタン中に名前を書き残す少年「TAKI 183」を紹介し、地下鉄グラフィティが社会現象として認知された。記事は模倣者を急増させ、都市財政危機下のニューヨークで行政との攻防が始まる。
+
+スプレー缶とマーカーという安価な道具、地下鉄という移動する画面が「タグ」の文化を生んだ。同じ1970年代初頭、美術界ではコンセプチュアル・アートが「もの」を離れつつあり、路上では逆に名前を可視化する欲望が噴出していた。', null,
           'disputed', 'TAKI 183を「最初のグラフィティ・ライター」とする通説には異論があり、フィラデルフィアのCornbreadら先行例を挙げる見方がある。', 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: TAKI 183', 'https://en.wikipedia.org/wiki/TAKI_183')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '制度と市場'),
-          '1973-10-18', null, 'day', 'point', 'スカル・コレクション競売、現代美術の投機時代を告げる', 'ロバートとエセルのスカル夫妻が所蔵50点をサザビー・パーク・バーネットで競売。落札額が購入価格を大きく上回った。', 'ラウシェンバーグ《Thaw》は約900ドルで購入された作品が8万5千ドルで落札され、作家が会場でコレクターに詰め寄った逸話が残る。存命作家の作品が短期間で値上がりする構図が可視化され、以後オークションが現代美術の価格形成の中心となる。作家への再販利益還元（追及権）の議論も高まった。',
+          '1973-10-18', null, 'day', 'point', 'スカル・コレクション競売、現代美術の投機時代を告げる', 'ロバートとエセルのスカル夫妻が所蔵50点をサザビー・パーク・バーネットで競売にかけ、落札額が購入価格を大きく上回った。約900ドルで購入されたラウシェンバーグ《Thaw》は8万5千ドルで落札され、作家が会場でコレクターに詰め寄った逸話が残る。
+
+存命作家の作品が短期間で値上がりする構図が可視化され、以後オークションが現代美術の価格形成の中心となる。作家への再販利益還元（追及権）の議論も高まった。', null,
           'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Robert C. Scull', 'https://en.wikipedia.org/wiki/Robert_C._Scull')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '作品と運動'),
-          '1980-06-01', null, 'month', 'point', '「タイムズ・スクエア・ショー」開催', '作家集団コラボが空きビルで開いた雑居展。バスキア、ヘリングら路上系の若手が美術界と接続した。', '元マッサージ店の廃屋を会場に、グラフィティ、パンク、ポルノ地区の風景を取り込んだ展示は「最初のラディカルな80年代アートショー」と評された。同年ニューヨーク市は財政再建の途上にあり、空き家と低家賃が若手の実験を可能にしていた。数年後、同じ作家たちがソーホーの画廊と競売に吸収されていく。',
+          '1980-06-01', null, 'month', 'point', '「タイムズ・スクエア・ショー」開催', '作家集団コラボが元マッサージ店の廃屋で雑居展「タイムズ・スクエア・ショー」を開催。グラフィティ、パンク、ポルノ地区の風景を取り込んだ展示は「最初のラディカルな80年代アートショー」と評され、バスキア、ヘリングら路上系の若手が美術界と接続した。
+
+同年のニューヨーク市は財政再建の途上にあり、空き家と低家賃が若手の実験を可能にしていた。数年後、同じ作家たちがソーホーの画廊と競売に吸収されていく。', null,
           'unverified', '開催期間の正確な日付と参加作家の全リストは資料により異同があり、本項は6月開催という概略のみ記載。', 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: The Times Square Show', 'https://en.wikipedia.org/wiki/The_Times_Square_Show')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '制度と市場'),
-          '1987-03-30', null, 'day', 'point', 'ゴッホ《ひまわり》、約2,475万ポンドで落札', 'クリスティーズ・ロンドンで当時の美術品最高額を記録。落札者は安田火災海上保険で、日本マネーの本格参入を示す。', '1874年に嘲笑された印象派・後期印象派が、一世紀後には最も高価な資産となった。プラザ合意後の円高と日本のバブル経済が価格を押し上げ、1990年には斎藤了英がゴッホ《医師ガシェの肖像》を8,250万ドルで落札する。制度と市場のレイヤーが作品評価を規定する時代の頂点。',
+          '1987-03-30', null, 'day', 'point', 'ゴッホ《ひまわり》、約2,475万ポンドで落札', 'クリスティーズ・ロンドンでゴッホ《ひまわり》が約2,475万ポンドで落札され、当時の美術品最高額を記録。落札者は安田火災海上保険で、日本マネーの本格参入を示した。
+
+**1874年に嘲笑された印象派が、一世紀後には最も高価な資産となった**。プラザ合意後の円高と日本のバブル経済が価格を押し上げ、1990年には斎藤了英がゴッホ《医師ガシェの肖像》を8,250万ドルで落札する。制度と市場のレイヤーが作品評価を規定する時代の頂点である。', null,
           'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('SOMPO美術館: ゴッホ《ひまわり》(所蔵作品解説)', 'https://www.sompo-museum.org/collections/sunflowers/'), ('Wikipedia: Sunflowers (Van Gogh series)', 'https://en.wikipedia.org/wiki/Sunflowers_(Van_Gogh_series)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '作品と運動'),
-          '2005-08-01', null, 'month', 'point', 'バンクシー、ヨルダン川西岸の分離壁に9点の壁画', '少女が風船で壁を越える図像など。壁面を政治的メッセージの媒体にし、匿名の作家像が国際的に知られる。', 'ステンシル技法は短時間で高精度の図像を残せる。パレスチナでの制作は、路上の表現が観光地化と報道を通じて拡散する初期の例で、写真がウェブで共有される時代の到来と一体だった。作家は匿名を保ち、公式サイトと代理人以外の「認証」がないため、帰属の確認は常に困難を伴う。',
+          '2005-08-01', null, 'month', 'point', 'バンクシー、ヨルダン川西岸の分離壁に9点の壁画', 'バンクシーがヨルダン川西岸の分離壁に、少女が風船で壁を越える図像など9点の壁画を制作。壁面を政治的メッセージの媒体にし、匿名の作家像が国際的に知られるようになった。
+
+短時間で高精度の図像を残せるステンシル技法によるパレスチナでの制作は、路上の表現が観光地化と報道を通じて拡散する初期の例で、写真がウェブで共有される時代の到来と一体だった。作家は匿名を保ち、公式サイトと代理人以外の「認証」がないため、帰属の確認は常に困難を伴う。', null,
           'unverified', '制作時期は報道と作家側の発表に基づく概略で、日付レベルの一次資料は確認できていない。', 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Banksy', 'https://en.wikipedia.org/wiki/Banksy')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '制度と市場'),
-          '2008-05-23', null, 'day', 'point', 'テート・モダン、外壁を舞台に「Street Art」展を開催', '国立美術館の建物正面に6組の作家が巨大壁画を制作。ストリートアートが公的制度に正面から迎え入れられた。', '同じ月、ロンドン・ウォータールーの地下道ではバンクシー主催の「カンズ・フェスティバル」が開かれ、公的制度と自主企画が並走した。地下鉄グラフィティが洗浄された20年前と比べ、行政と美術館の態度は反転した。以後、路上作品の切り出し販売や保護をめぐる法的議論が続く。',
+          '2008-05-23', null, 'day', 'point', 'テート・モダン、外壁を舞台に「Street Art」展を開催', 'テート・モダンが建物正面の外壁を舞台に「Street Art」展を開催し、6組の作家が巨大壁画を制作。**ストリートアートが公的制度に正面から迎え入れられた**。
+
+同じ月、ロンドン・ウォータールーの地下道ではバンクシー主催の「カンズ・フェスティバル」が開かれ、公的制度と自主企画が並走した。地下鉄グラフィティが洗浄された20年前と比べ、行政と美術館の態度は反転している。以後、路上作品の切り出し販売や保護をめぐる法的議論が続く。', null,
           'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Tate: Street Art (2008年展覧会ページ)', 'https://www.tate.org.uk/whats-on/tate-modern/street-art')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '技術と社会'),
-          '2010-10-06', null, 'day', 'point', 'Instagramがサービス開始', 'スマートフォンで撮影と共有が一体化。壁画は現地に行かなくても「消える前に」世界へ届く画像となった。', '1888年のコダックが撮影を大衆化したように、Instagramは発表と流通を大衆化した。ストリートアートは制作直後に撮影・共有され、消去や上書きを前提とした表現が画像として残る。作家の匿名性とフォロワー数が価値の一部となり、美術館や画廊を経由しない評価回路が形成された。',
+          '2010-10-06', null, 'day', 'point', 'Instagramがサービス開始', 'Instagramがサービスを開始し、スマートフォンで撮影と共有が一体化した。壁画は現地に行かなくても「消える前に」世界へ届く画像となる。
+
+1888年のコダックが撮影を大衆化したように、Instagramは発表と流通を大衆化した。ストリートアートは制作直後に撮影・共有され、消去や上書きを前提とした表現が画像として残る。作家の匿名性とフォロワー数が価値の一部となり、美術館や画廊を経由しない評価回路が形成された。', null,
           'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Instagram', 'https://en.wikipedia.org/wiki/Instagram')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '作品と運動'),
-          '2013-10-01', '2013-10-31', 'day', 'period', 'バンクシー「Better Out Than In」ニューヨーク滞在制作', '10月の1か月間、毎日1点をニューヨーク市内に発表。作品の場所はウェブとSNSで公表され、市民が探し歩いた。', '作品と技術と社会のレイヤーが同時に動いた例。発表はInstagramと専用サイト、鑑賞は市民のスマートフォン、市長は「器物損壊」と非難し、一部作品は数時間で上書きされた。セントラルパークで本人の作品を1点60ドルで無名販売する企画は、市場が値付けする「作家名」の機能を露わにした。',
+          '2013-10-01', '2013-10-31', 'day', 'period', 'バンクシー「Better Out Than In」ニューヨーク滞在制作', 'バンクシーが10月の1か月間、毎日1点をニューヨーク市内に発表する滞在制作「Better Out Than In」を実施。作品の場所はウェブとSNSで公表され、市民が探し歩いた。
+
+発表はInstagramと専用サイト、鑑賞は市民のスマートフォン、市長は「器物損壊」と非難し、一部作品は数時間で上書きされるなど、作品と技術と社会のレイヤーが同時に動いた例である。セントラルパークで本人の作品を1点60ドルで無名販売する企画は、市場が値付けする「作家名」の機能を露わにした。', null,
           'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Better Out Than In', 'https://en.wikipedia.org/wiki/Better_Out_Than_In')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '制度と市場'),
-          '2018-10-05', null, 'day', 'point', 'サザビーズで落札直後、バンクシー《風船と少女》が自ら裁断', '落札額約104万ポンドの直後、額縁内のシュレッダーが作動。半分裁断された作品は《愛はごみ箱の中に》と改題された。', '市場批判のパフォーマンスが、結果として作品価値を高めるという逆説。2021年の再出品では約1,870万ポンドで落札された。1973年のスカル競売で作家が抗議した構図から半世紀、抗議そのものが商品化される段階に達した。実行の映像はSNSで拡散され、技術と社会のレイヤーが市場の出来事を即時に世界化した。',
+          '2018-10-05', null, 'day', 'point', 'サザビーズで落札直後、バンクシー《風船と少女》が自ら裁断', 'サザビーズでバンクシー《風船と少女》が約104万ポンドで落札された直後、額縁内のシュレッダーが作動。半分裁断された作品は《愛はごみ箱の中に》と改題された。実行の映像はSNSで拡散され、技術と社会のレイヤーが市場の出来事を即時に世界化した。
+
+市場批判のパフォーマンスが結果として作品価値を高める逆説となり、2021年の再出品では約1,870万ポンドで落札される。1973年のスカル競売で作家が抗議した構図から半世紀、**抗議そのものが商品化される段階**に達した。', null,
           'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Love is in the Bin', 'https://en.wikipedia.org/wiki/Love_is_in_the_Bin'), ('Sotheby''s: Banksy, Love is in the Bin (2021年セール解説)', null)) as v(title, url);
 
@@ -675,121 +875,161 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '産業と制度'),
-          '1988-10-01', null, 'day', 'point', 'J-WAVE開局、「J-POP」の呼称が広まる', '東京のFM局J-WAVEが開局。洋楽中心の編成の中で流す邦楽を指す言葉として「J-POP」が使われ始めたとされる。', '「歌謡曲」でも「ニューミュージック」でもない、洋楽と並べても違和感のない邦楽というカテゴリの誕生。放送局という制度側の命名がジャンル意識を作った例で、90年代のCDバブルとともにレコード店の棚区分やチャートの語彙として定着した。以後この語は業界の標準語彙になる。',
+          '1988-10-01', null, 'day', 'point', 'J-WAVE開局、「J-POP」の呼称が広まる', '東京のFM局J-WAVEが開局。洋楽中心の編成の中で流す邦楽を指す言葉として「J-POP」が使われ始めたとされる。「歌謡曲」でも「ニューミュージック」でもない、洋楽と並べても違和感のない邦楽というカテゴリの誕生だった。
+
+放送局という制度側の命名がジャンル意識を作った例で、90年代のCDバブルとともにレコード店の棚区分やチャートの語彙として定着し、以後この語は業界の標準語彙になる。', null,
           'disputed', '呼称の起源はJ-WAVE開局前後の局内用語とする説が有力だが、命名者・時期には諸説あり一次資料で確定していない。', 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: J-POP', 'https://ja.wikipedia.org/wiki/J-POP'), ('烏賀陽弘道『Jポップとは何か』岩波新書 (2005)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '産業と制度'),
-          '1991-01-01', '1998-12-31', 'year', 'period', 'CDバブル：音楽ソフト生産額が右肩上がりの時代', 'ドラマ・CMタイアップとミリオンセラーが量産され、1998年に音楽ソフト生産金額が過去最高を記録するまで拡大が続いた。', '8cmシングルとタイアップ、カラオケの普及が「知っている曲を買う」循環を生んだ。同時期の流通と技術レイヤーではCDが完全にレコードを置き換え、レンタル店網が全国に広がる。ピークの1998年に宇多田ヒカルがデビューし、翌年からは市場が縮小に転じる。',
+          '1991-01-01', '1998-12-31', 'year', 'period', 'CDバブル：音楽ソフト生産額が右肩上がりの時代', 'ドラマ・CMタイアップとミリオンセラーが量産され、1998年に音楽ソフト生産金額が過去最高を記録するまで拡大が続いた時代。8cmシングルとタイアップ、カラオケの普及が**「知っている曲を買う」循環**を生んだ。
+
+同時期の流通と技術レイヤーではCDが完全にレコードを置き換え、レンタル店網が全国に広がる。ピークの1998年に宇多田ヒカルがデビューし、翌年からは市場が縮小に転じる。', null,
           'verified', null, 'user', 1) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('日本レコード協会: 音楽ソフト種類別生産金額推移', 'https://www.riaj.or.jp/g/data/annual/ms_m.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '作品とアーティスト'),
-          '1992-05-27', null, 'day', 'point', '米米CLUB「君がいるだけで」発売、ドラマ主題歌が大ヒット', 'ドラマ『素顔のままで』主題歌としてシングル約289万枚を売り上げ、タイアップ型ヒットの代表例となった。', 'テレビドラマの主題歌が毎週流れ、CDショップとレンタル店で回収されるという90年代型のヒット構造。同年、産業レイヤーではミリオンセラーが相次ぎ、シングル市場が拡大の局面に入る。作品はメディア露出とセットで設計される時代へ移った。翌年以降もタイアップ曲がミリオンを量産した。',
+          '1992-05-27', null, 'day', 'point', '米米CLUB「君がいるだけで」発売、ドラマ主題歌が大ヒット', '米米CLUB「君がいるだけで」がドラマ『素顔のままで』主題歌としてシングル約289万枚を売り上げ、タイアップ型ヒットの代表例となった。
+
+テレビドラマの主題歌が毎週流れ、CDショップとレンタル店で回収されるという90年代型のヒット構造の典型である。同年、産業レイヤーではミリオンセラーが相次いでシングル市場が拡大の局面に入り、作品はメディア露出とセットで設計される時代へ移った。翌年以降もタイアップ曲がミリオンを量産した。', null,
           'verified', null, 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 君がいるだけで', 'https://ja.wikipedia.org/wiki/%E5%90%9B%E3%81%8C%E3%81%84%E3%82%8B%E3%81%A0%E3%81%91%E3%81%A7')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '作品とアーティスト'),
-          '1994-01-01', '1998-12-31', 'year', 'period', '小室哲哉プロデュース作品の全盛期', 'TRF、globe、安室奈美恵らのプロデュース作がチャート上位を占め、「小室サウンド」がJ-POPの音像を規定した。', 'シンセサイザーとダンスビートを軸にした制作は、デジタル機材の低価格化という技術レイヤーの変化を背景にしていた。プロデューサーの名前で売れる構造は、後のアイドル運営型や動画発のヒットと対照的な「作り手中心」のモデル。市場拡大期と重なり、CD売上のピークを支えた。',
+          '1994-01-01', '1998-12-31', 'year', 'period', '小室哲哉プロデュース作品の全盛期', 'TRF、globe、安室奈美恵らのプロデュース作がチャート上位を占め、「小室サウンド」がJ-POPの音像を規定した全盛期。シンセサイザーとダンスビートを軸にした制作は、デジタル機材の低価格化という技術レイヤーの変化を背景にしていた。
+
+プロデューサーの名前で売れる構造は、後のアイドル運営型や動画発のヒットと対照的な「作り手中心」のモデルであり、市場拡大期と重なってCD売上のピークを支えた。', null,
           'disputed', '全盛期の始点・終点は論者により異なり、本項は主要ヒットの集中した1994〜1998年を便宜的に採用。', 'user', 3) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 小室哲哉', 'https://ja.wikipedia.org/wiki/%E5%B0%8F%E5%AE%A4%E5%93%B2%E5%93%89')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '産業と制度'),
-          '1998-01-01', null, 'year', 'point', '音楽ソフト生産金額が約6,075億円で過去最高に', '日本レコード協会統計で音楽ソフト生産金額がピーク。以後、CD市場は長期の縮小局面に入る。', '同じ年、宇多田ヒカルがデビューし、翌年『First Love』が史上最多のアルバム売上を記録する。作品の頂点と市場の頂点が重なった転換点。技術レイヤーではMP3プレーヤーとCD-Rが普及し始め、「複製できる音楽」への移行が静かに始まっていた。',
+          '1998-01-01', null, 'year', 'point', '音楽ソフト生産金額が約6,075億円で過去最高に', '日本レコード協会統計で音楽ソフト生産金額が約6,075億円のピークに達し、以後CD市場は長期の縮小局面に入る。
+
+同じ年に宇多田ヒカルがデビューし、翌年『First Love』が史上最多のアルバム売上を記録する。作品の頂点と市場の頂点が重なった転換点である。技術レイヤーではMP3プレーヤーとCD-Rが普及し始め、「複製できる音楽」への移行が静かに始まっていた。', null,
           'verified', null, 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('日本レコード協会: 音楽ソフト種類別生産金額推移', 'https://www.riaj.or.jp/g/data/annual/ms_m.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '作品とアーティスト'),
-          '1999-03-10', null, 'day', 'point', '宇多田ヒカル『First Love』発売、日本史上最多売上アルバムに', 'デビューアルバムが累計約765万枚（オリコン）を記録。CD時代の到達点となる数字を残した。', 'R&Bを土台にした音作りと15歳でのデビューは、J-POPの語法を更新した。産業レイヤーでは前年に生産金額がピークを打っており、この記録は「上り坂の最後」ではなく「下り坂の始まり」に立った作品として位置づけられる。以後この枚数を超えるアルバムは現れていない。',
+          '1999-03-10', null, 'day', 'point', '宇多田ヒカル『First Love』発売、日本史上最多売上アルバムに', '宇多田ヒカルのデビューアルバム『First Love』が累計約765万枚（オリコン）を記録し、日本史上最多売上アルバムとなった。R&Bを土台にした音作りと15歳でのデビューは、J-POPの語法を更新した。
+
+産業レイヤーでは前年に生産金額がピークを打っており、この記録は「上り坂の最後」ではなく「下り坂の始まり」に立った作品として位置づけられる。以後この枚数を超えるアルバムは現れていない。', null,
           'verified', null, 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: First Love (宇多田ヒカルのアルバム)', 'https://ja.wikipedia.org/wiki/First_Love_(%E5%AE%87%E5%A4%9A%E7%94%B0%E3%83%92%E3%82%AB%E3%83%AB%E3%81%AE%E3%82%A2%E3%83%AB%E3%83%90%E3%83%A0)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '流通と技術'),
-          '2002-03-01', null, 'month', 'point', 'エイベックス、国内初のコピーコントロールCDを発売', 'PCでの複製を防ぐCCCDを導入。再生互換性の問題で批判を受け、数年で各社が撤退した。', 'CD-Rとファイル交換ソフトによる複製への防衛策だったが、規格外ディスクの再生トラブルと音質への不満で利用者の反発を招いた。産業と制度レイヤーでは同時期に違法コピー対策の議論が本格化し、技術で流通を縛る路線から配信で稼ぐ路線への転換を促す反面教師となった。',
+          '2002-03-01', null, 'month', 'point', 'エイベックス、国内初のコピーコントロールCDを発売', 'エイベックスがPCでの複製を防ぐ国内初のコピーコントロールCD（CCCD）を発売。CD-Rとファイル交換ソフトによる複製への防衛策だったが、規格外ディスクの再生トラブルと音質への不満で利用者の反発を招き、数年で各社が撤退した。
+
+産業と制度レイヤーでは同時期に違法コピー対策の議論が本格化しており、技術で流通を縛る路線から配信で稼ぐ路線への転換を促す反面教師となった。', null,
           'verified', null, 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: コピーコントロールCD', 'https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%94%E3%83%BC%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%ABCD')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '流通と技術'),
-          '2002-12-01', null, 'month', 'point', 'auが「着うた」サービスを開始', '携帯電話で楽曲の一部を着信音として購入する仕組み。日本独自の音楽配信市場が携帯電話上で立ち上がった。', 'PC向け配信が普及する前に、携帯キャリアの課金基盤を使った配信が先に成立した点が日本の特徴。2004年の「着うたフル」で1曲丸ごとの購入が可能になり、2000年代後半には有料配信売上の大半を占めた。産業レイヤーではCD縮小を配信が一部補う構図が生まれる。',
+          '2002-12-01', null, 'month', 'point', 'auが「着うた」サービスを開始', 'auが携帯電話で楽曲の一部を着信音として購入する「着うた」サービスを開始し、日本独自の音楽配信市場が携帯電話上で立ち上がった。
+
+PC向け配信が普及する前に、**携帯キャリアの課金基盤を使った配信が先に成立した**点が日本の特徴である。2004年の「着うたフル」で1曲丸ごとの購入が可能になり、2000年代後半には有料配信売上の大半を占めた。産業レイヤーではCD縮小を配信が一部補う構図が生まれる。', null,
           'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 着うた', 'https://ja.wikipedia.org/wiki/%E7%9D%80%E3%81%86%E3%81%9F')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '流通と技術'),
-          '2002-12-01', '2016-12-31', 'month', 'period', '着うた時代：携帯電話が音楽配信の主戦場', '着うた・着うたフルが有料配信の中心を占めた期間。スマートフォン普及とともに縮小し、2010年代半ばに役割を終えた。', 'ガラケーの課金基盤とキャリア主導の流通が、iTunesのようなPC中心のモデルとは別の道を作った。作品レイヤーでは「サビが着うたで売れる曲」が意識され、産業レイヤーでは配信売上が2008〜2009年頃に一度ピークを迎える。iPhone以降、主導権はアプリ事業者へ移った。',
+          '2002-12-01', '2016-12-31', 'month', 'period', '着うた時代：携帯電話が音楽配信の主戦場', '着うた・着うたフルが有料配信の中心を占めた期間。ガラケーの課金基盤とキャリア主導の流通が、iTunesのようなPC中心のモデルとは別の道を作った。
+
+作品レイヤーでは「サビが着うたで売れる曲」が意識され、産業レイヤーでは配信売上が2008〜2009年頃に一度ピークを迎える。iPhone以降は主導権がアプリ事業者へ移り、スマートフォンの普及とともに縮小して2010年代半ばに役割を終えた。', null,
           'unverified', '終期は主要キャリアのサービス終了時期から概略で置いており、正確な終了日は事業者・サービス名により異なる。', 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 着うた', 'https://ja.wikipedia.org/wiki/%E7%9D%80%E3%81%86%E3%81%9F'), ('日本レコード協会: 有料音楽配信売上実績', 'https://www.riaj.or.jp/g/data/annual/dg_m.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '産業と制度'),
-          '2005-01-01', null, 'day', 'point', '改正著作権法施行、「還流防止措置（レコード輸入権）」導入', '海外向けに安価に製造された邦楽CDの逆輸入を止める規定が施行。国内価格維持のための制度的措置。', 'アジア市場向けの廉価盤が日本に還流するのを防ぐ狙いで、洋楽輸入盤への影響を懸念する反対運動も起きた。再販売価格維持制度と並び、CDの価格を守る制度が整備された時期だが、同年8月にはiTunes Music Storeが日本で開始し、流通と技術レイヤーは価格統制の外側で動き始めていた。',
+          '2005-01-01', null, 'day', 'point', '改正著作権法施行、「還流防止措置（レコード輸入権）」導入', '海外向けに安価に製造された邦楽CDの逆輸入を止める「還流防止措置（レコード輸入権）」を導入した改正著作権法が施行された。アジア市場向けの廉価盤が日本に還流するのを防ぐ狙いで、洋楽輸入盤への影響を懸念する反対運動も起きた。
+
+再販売価格維持制度と並び、CDの価格を守る制度が整備された時期だが、同年8月にはiTunes Music Storeが日本で開始し、流通と技術レイヤーは価格統制の外側で動き始めていた。', null,
           'verified', null, 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('文化庁: 著作権法の一部を改正する法律（平成16年法律第92号）概要', null), ('Wikipedia: 音楽レコードの還流防止措置', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '流通と技術'),
-          '2007-08-31', null, 'day', 'point', '歌声合成ソフト「初音ミク」発売', 'クリプトン・フューチャー・メディアがVOCALOID製品を発売。ニコニコ動画を舞台に個人制作の楽曲文化が広がった。', '前年に始まったニコニコ動画と組み合わさり、レーベルを経由せず楽曲が公開・評価される回路が生まれた。ここから出た作り手が2010年代後半以降のヒットを担う。産業レイヤーではCD売上減が続く中、作品レイヤーの「発表の場」が先に変わった例。当初の想定を超える売れ行きで、関連楽曲の投稿が急増した。',
+          '2007-08-31', null, 'day', 'point', '歌声合成ソフト「初音ミク」発売', 'クリプトン・フューチャー・メディアがVOCALOID製品「初音ミク」を発売。当初の想定を超える売れ行きで、前年に始まったニコニコ動画を舞台に個人制作の楽曲文化が広がり、関連楽曲の投稿が急増した。
+
+**レーベルを経由せず楽曲が公開・評価される回路**が生まれ、ここから出た作り手が2010年代後半以降のヒットを担う。産業レイヤーではCD売上減が続く中、作品レイヤーの「発表の場」が先に変わった例である。', null,
           'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('クリプトン・フューチャー・メディア: 初音ミク公式サイト', 'https://ec.crypton.co.jp/pages/prod/virtualsinger/cv01'), ('Wikipedia: 初音ミク', 'https://ja.wikipedia.org/wiki/%E5%88%9D%E9%9F%B3%E3%83%9F%E3%82%AF')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '作品とアーティスト'),
-          '2010-10-27', null, 'day', 'point', 'AKB48「Beginner」発売、初週ミリオンを記録', 'オリコン週間で初週100万枚超。特典付きCDの大量購入を前提とした販売手法がシングル市場を支えた。', '握手券や投票券を同梱する手法は、CDを「音楽を聴くための媒体」から「体験と権利のチケット」へと変えた。産業レイヤーではシングルの枚数が回復して見える一方、実際の聴取は配信と動画へ移っており、指標としてのCD売上と実態の乖離が広がった時期。一方で音楽性の評価とは別の議論も呼んだ。',
+          '2010-10-27', null, 'day', 'point', 'AKB48「Beginner」発売、初週ミリオンを記録', 'AKB48「Beginner」がオリコン週間で初週100万枚超を記録。握手券や投票券を同梱する特典付きCDの大量購入を前提とした販売手法がシングル市場を支えた。
+
+この手法は**CDを「音楽を聴くための媒体」から「体験と権利のチケット」へ**と変えた。産業レイヤーではシングルの枚数が回復して見える一方、実際の聴取は配信と動画へ移っており、指標としてのCD売上と実態の乖離が広がった時期である。一方で音楽性の評価とは別の議論も呼んだ。', null,
           'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Beginner (AKB48の曲)', 'https://ja.wikipedia.org/wiki/Beginner_(AKB48%E3%81%AE%E6%9B%B2)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '産業と制度'),
-          '2012-10-01', null, 'day', 'point', '改正著作権法施行、違法ダウンロードに刑事罰', '違法にアップロードされた音楽・映像と知りつつダウンロードする行為に刑事罰が導入された。', '業界団体の要望を受けた立法で、CD・配信の縮小を違法流通の問題として捉える発想に立つ。だが同時期の技術レイヤーではYouTubeとスマートフォンが標準になり、翌年以降のストリーミング解禁で「無料で聴ける合法の場」を作る方向へ産業の戦略が転換していく。',
+          '2012-10-01', null, 'day', 'point', '改正著作権法施行、違法ダウンロードに刑事罰', '違法にアップロードされた音楽・映像と知りつつダウンロードする行為に刑事罰を導入する改正著作権法が施行された。業界団体の要望を受けた立法で、CD・配信の縮小を違法流通の問題として捉える発想に立つ。
+
+だが同時期の技術レイヤーではYouTubeとスマートフォンが標準になり、翌年以降のストリーミング解禁で「無料で聴ける合法の場」を作る方向へ産業の戦略が転換していく。', null,
           'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('文化庁: 平成24年通常国会 著作権法改正について', 'https://www.bunka.go.jp/seisaku/chosakuken/hokaisei/h24_hokaisei/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '流通と技術'),
-          '2015-05-27', null, 'day', 'point', 'AWA・LINE MUSICが開始、国内で定額制配信が本格化', 'AWA（5月27日）、LINE MUSIC（6月11日）が相次いで開始し、同年7月にはApple Musicも日本で開始した。', '定額聴き放題が国内でも選択肢になった年。当初は主要邦楽アーティストの楽曲が揃わず、産業レイヤーではCD売上と配信収益のバランスをめぐりレーベル各社の判断が分かれた。作品レイヤーでは以後、再生回数がヒットの指標として意識され始める。月額1,000円前後という価格帯もここで定まった。',
+          '2015-05-27', null, 'day', 'point', 'AWA・LINE MUSICが開始、国内で定額制配信が本格化', 'AWA（5月27日）、LINE MUSIC（6月11日）が相次いで開始し、同年7月にはApple Musicも日本で開始。定額聴き放題が国内でも選択肢になった年で、月額1,000円前後という価格帯もここで定まった。
+
+当初は主要邦楽アーティストの楽曲が揃わず、産業レイヤーではCD売上と配信収益のバランスをめぐりレーベル各社の判断が分かれた。作品レイヤーでは以後、再生回数がヒットの指標として意識され始める。', null,
           'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: AWA (音楽配信サービス)', null), ('Wikipedia: LINE MUSIC', 'https://ja.wikipedia.org/wiki/LINE_MUSIC')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '流通と技術'),
-          '2016-09-29', null, 'day', 'point', 'Spotifyが日本でサービス開始', '世界最大手の定額制配信が日本に上陸。無料プランを含むフリーミアムモデルが国内でも提供された。', '欧米より約8年遅れの参入。無料プランの是非をめぐり産業レイヤーで議論があったが、以後数年で主要レーベルの楽曲提供が進む。作品レイヤーでは2018年の「Lemon」以降、配信起点のロングヒットが標準となり、CD初動偏重のチャートから複合指標へ移る動きを後押しした。',
+          '2016-09-29', null, 'day', 'point', 'Spotifyが日本でサービス開始', '世界最大手の定額制配信Spotifyが欧米より約8年遅れで日本に上陸し、無料プランを含むフリーミアムモデルが国内でも提供された。
+
+無料プランの是非をめぐり産業レイヤーで議論があったが、以後数年で主要レーベルの楽曲提供が進む。作品レイヤーでは2018年の「Lemon」以降、配信起点のロングヒットが標準となり、CD初動偏重のチャートから複合指標へ移る動きを後押しした。', null,
           'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Spotify', 'https://ja.wikipedia.org/wiki/Spotify')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '作品とアーティスト'),
-          '2018-03-14', null, 'day', 'point', '米津玄師「Lemon」発売、配信時代のロングヒットの原型に', 'ドラマ主題歌として発売され、Billboard JAPAN Hot 100で2018年・2019年の年間1位を連続で獲得した。', 'ボーカロイド出身の作り手が、テレビ主題歌という90年代型タイアップと動画・配信という2010年代型の流通を両立させた作品。CD初週ではなく数年単位の累積で評価される「ロングヒット」の代表例で、産業レイヤーではストリーミング認定制度導入の動機となる状況を作った。',
+          '2018-03-14', null, 'day', 'point', '米津玄師「Lemon」発売、配信時代のロングヒットの原型に', '米津玄師「Lemon」がドラマ主題歌として発売され、Billboard JAPAN Hot 100で2018年・2019年の年間1位を連続で獲得した。
+
+ボーカロイド出身の作り手が、テレビ主題歌という90年代型タイアップと動画・配信という2010年代型の流通を両立させた作品である。**CD初週ではなく数年単位の累積で評価される「ロングヒット」**の代表例で、産業レイヤーではストリーミング認定制度導入の動機となる状況を作った。', null,
           'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Lemon (米津玄師の曲)', 'https://ja.wikipedia.org/wiki/Lemon_(%E7%B1%B3%E6%B4%A5%E7%8E%84%E5%B8%AB%E3%81%AE%E6%9B%B2)'), ('Billboard JAPAN: 年間チャート', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '作品とアーティスト'),
-          '2019-12-15', null, 'day', 'point', 'YOASOBI「夜に駆ける」配信開始、翌年の年間チャート1位に', '小説を原作にした楽曲。CDを出さない配信専門のデビューで、Billboard JAPAN Hot 100の2020年年間1位を獲得した。', 'ボーカロイド出身の作曲者による、動画とストリーミングだけで到達したヒット。CDが売上指標から外れても頂点に立てることを示し、産業レイヤーの2020年ストリーミング認定制度導入と歩調が合う。作品の作られ方（原作小説）と届き方（配信）の両方が新しかった。CDを介さないデビュー曲としては異例の到達点だった。',
+          '2019-12-15', null, 'day', 'point', 'YOASOBI「夜に駆ける」配信開始、翌年の年間チャート1位に', 'YOASOBIが小説を原作にした「夜に駆ける」を配信開始。CDを出さない配信専門のデビューで、Billboard JAPAN Hot 100の2020年年間1位を獲得した。ボーカロイド出身の作曲者による、動画とストリーミングだけで到達したヒットである。
+
+CDが売上指標から外れても頂点に立てることを示し、産業レイヤーの2020年ストリーミング認定制度導入と歩調が合う。作品の作られ方（原作小説）と届き方（配信）の両方が新しく、CDを介さないデビュー曲としては異例の到達点だった。', null,
           'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 夜に駆ける', 'https://ja.wikipedia.org/wiki/%E5%A4%9C%E3%81%AB%E9%A7%86%E3%81%91%E3%82%8B')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '産業と制度'),
-          '2020-04-01', null, 'month', 'point', '日本レコード協会がストリーミング認定制度を開始', '累計再生回数に基づくゴールド（5,000万回）などの認定を導入。「売上枚数」に代わる公式の指標が生まれた。', '業界団体がCD枚数と並ぶ評価軸として再生回数を公認した転換点。同年、有料音楽配信売上に占めるストリーミングの割合が大半を占め、コロナ禍でライブ収入が途絶える中、配信が産業の中心であることが数字でも明確になった。',
+          '2020-04-01', null, 'month', 'point', '日本レコード協会がストリーミング認定制度を開始', '日本レコード協会が累計再生回数に基づくゴールド（5,000万回）などのストリーミング認定を開始。業界団体がCD枚数と並ぶ評価軸として再生回数を公認した転換点で、**「売上枚数」に代わる公式の指標**が生まれた。
+
+同年、有料音楽配信売上に占めるストリーミングの割合が大半を占め、コロナ禍でライブ収入が途絶える中、配信が産業の中心であることが数字でも明確になった。', null,
           'unverified', '認定基準の閾値と開始月は協会発表に基づくが、初回認定の対象作品や制度の細部は要確認。', 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('日本レコード協会: ストリーミング認定', 'https://www.riaj.or.jp/f/data/cert/streaming.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '作品とアーティスト'),
-          '2023-04-12', null, 'day', 'point', 'YOASOBI「アイドル」、日本語曲初のBillboard世界チャート1位', 'アニメ主題歌として配信され、同年6月にBillboard Global Excl. U.S.で日本語楽曲として初めて1位を獲得した。', 'アニメという映像コンテンツの世界流通と、国境のない配信プラットフォームが結びついた結果。CD時代には物理流通の制約で困難だった海外チャート上位が、流通と技術レイヤーの変化で現実になった。翌年にはCreepy Nuts「Bling-Bang-Bang-Born」も同チャート1位を獲得し、単発ではない流れになる。',
+          '2023-04-12', null, 'day', 'point', 'YOASOBI「アイドル」、日本語曲初のBillboard世界チャート1位', 'YOASOBI「アイドル」がアニメ主題歌として配信され、同年6月にBillboard Global Excl. U.S.で日本語楽曲として初めて1位を獲得した。
+
+アニメという映像コンテンツの世界流通と、国境のない配信プラットフォームが結びついた結果であり、CD時代には物理流通の制約で困難だった海外チャート上位が、流通と技術レイヤーの変化で現実になった。翌年にはCreepy Nuts「Bling-Bang-Bang-Born」も同チャート1位を獲得し、単発ではない流れになる。', null,
           'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: アイドル (YOASOBIの曲)', 'https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB_(YOASOBI%E3%81%AE%E6%9B%B2)'), ('Billboard: Global Excl. U.S. chart', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '作品とアーティスト'),
-          '2024-01-07', null, 'day', 'point', 'Creepy Nuts「Bling-Bang-Bang-Born」世界1位', 'アニメ主題歌として配信され、ダンス動画の拡散を経てBillboard Global Excl. U.S.で1位を記録した。', 'TikTokなどショート動画での二次創作が再生回数を押し上げる回路が定着した例。作品はアニメと一体で届き、流通と技術レイヤーではプラットフォームのアルゴリズムがヒットの経路になった。30年前のドラマ主題歌タイアップと構造は似ているが、媒体がテレビから動画アプリへ、指標が枚数から再生回数へ置き換わった。',
+          '2024-01-07', null, 'day', 'point', 'Creepy Nuts「Bling-Bang-Bang-Born」世界1位', 'Creepy Nuts「Bling-Bang-Bang-Born」がアニメ主題歌として配信され、ダンス動画の拡散を経てBillboard Global Excl. U.S.で1位を記録した。TikTokなどショート動画での二次創作が再生回数を押し上げる回路が定着した例である。
+
+作品はアニメと一体で届き、流通と技術レイヤーではプラットフォームのアルゴリズムがヒットの経路になった。30年前のドラマ主題歌タイアップと構造は似ているが、**媒体がテレビから動画アプリへ、指標が枚数から再生回数へ**置き換わった。', null,
           'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Bling-Bang-Bang-Born', 'https://ja.wikipedia.org/wiki/Bling-Bang-Bang-Born')) as v(title, url);
 
@@ -806,121 +1046,161 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-bakumatsu-meiji'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-bakumatsu-meiji') and name = '外交と世界'),
-          '1853-07-08', null, 'day', 'point', 'ペリー艦隊、浦賀に来航', '米国東インド艦隊の蒸気船を含む4隻が浦賀沖に現れ、開国を求める大統領親書を幕府に渡した。', '旧暦では嘉永6年6月3日。米国は太平洋航路と捕鯨船の補給地を求めており、清のアヘン戦争敗北を知る幕府にとって列強の軍事力は現実の脅威だった。老中阿部正弘は親書を諸大名に示して意見を求め、幕府の専決という慣行が崩れる。ここから「幕府と諸藩」レイヤーの権力構造の変化と、「思想と人物」レイヤーの尊王攘夷論が同時に動き出す。',
+          '1853-07-08', null, 'day', 'point', 'ペリー艦隊、浦賀に来航', '米国東インド艦隊の蒸気船を含む4隻が浦賀沖に現れ、開国を求める大統領親書を幕府に渡した。旧暦では嘉永6年6月3日。米国は太平洋航路と捕鯨船の補給地を求めており、清のアヘン戦争敗北を知る幕府にとって列強の軍事力は現実の脅威だった。
+
+老中阿部正弘は親書を諸大名に示して意見を求め、**幕府の専決という慣行が崩れる**。ここから幕府と諸藩レイヤーの権力構造の変化と、思想と人物レイヤーの尊王攘夷論が同時に動き出す。', null,
           'verified', null, 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（日本語版）: 黒船来航', 'https://ja.wikipedia.org/wiki/黒船来航')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-bakumatsu-meiji'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-bakumatsu-meiji') and name = '外交と世界'),
-          '1858-07-29', null, 'day', 'point', '日米修好通商条約に調印、勅許を得ず', '大老井伊直弼のもと、天皇の許可を得ないまま調印。領事裁判権と関税自主権の欠如を含む内容だった。', '旧暦安政5年6月19日。ハリスは英仏が清との戦争(アロー戦争)を終えて日本に向かうと説き、調印を急がせた。同年中に蘭露英仏とも同様の条約を結ぶ(安政五カ国条約)。無勅許調印は朝廷と諸藩の反発を招き、幕府レイヤーでは安政の大獄、思想レイヤーでは攘夷論の激化として跳ね返る。不平等条項の改正は明治政府の長年の課題となった。',
+          '1858-07-29', null, 'day', 'point', '日米修好通商条約に調印、勅許を得ず', '大老井伊直弼のもと、天皇の許可を得ないまま日米修好通商条約に調印した。領事裁判権と関税自主権の欠如を含む内容で、旧暦安政5年6月19日にあたる。ハリスは英仏が清との戦争(アロー戦争)を終えて日本に向かうと説き、調印を急がせた。同年中に蘭露英仏とも同様の条約を結ぶ(安政五カ国条約)。
+
+無勅許調印は朝廷と諸藩の反発を招き、幕府レイヤーでは安政の大獄、思想レイヤーでは攘夷論の激化として跳ね返る。不平等条項の改正は明治政府の長年の課題となった。', null,
           'verified', null, 'user', 1) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（日本語版）: 日米修好通商条約', 'https://ja.wikipedia.org/wiki/日米修好通商条約')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-bakumatsu-meiji'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-bakumatsu-meiji') and name = '思想と人物'),
-          '1859-11-21', null, 'day', 'point', '安政の大獄で吉田松陰が処刑される', '幕政批判者を弾圧した安政の大獄で、松下村塾を主宰した吉田松陰が江戸で刑死。享年30。', '旧暦安政6年10月27日。大獄は前年の無勅許調印(外交レイヤー)と将軍継嗣問題への批判を封じるため、井伊直弼が主導した。松陰の門下からは高杉晋作、久坂玄瑞、伊藤博文、山県有朋らが出ており、処刑は長州藩の若手を過激化させる転機となった。弾圧の反動は翌年の桜田門外の変(幕府レイヤー)として現れる。',
+          '1859-11-21', null, 'day', 'point', '安政の大獄で吉田松陰が処刑される', '幕政批判者を弾圧した安政の大獄で、松下村塾を主宰した吉田松陰が江戸で刑死した。享年30、旧暦安政6年10月27日。大獄は前年の無勅許調印(外交レイヤー)と将軍継嗣問題への批判を封じるため、井伊直弼が主導した。
+
+松陰の門下からは高杉晋作、久坂玄瑞、伊藤博文、山県有朋らが出ており、処刑は長州藩の若手を過激化させる転機となった。弾圧の反動は翌年の桜田門外の変(幕府レイヤー)として現れる。', null,
           'verified', null, 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（日本語版）: 安政の大獄', 'https://ja.wikipedia.org/wiki/安政の大獄'), ('Wikipedia（日本語版）: 吉田松陰', 'https://ja.wikipedia.org/wiki/吉田松陰')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-bakumatsu-meiji'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-bakumatsu-meiji') and name = '幕府と諸藩'),
-          '1860-03-24', null, 'day', 'point', '桜田門外の変、大老井伊直弼が暗殺される', '水戸藩脱藩者らが江戸城桜田門外で井伊直弼を襲撃。幕府の最高権力者が白昼に討たれた。', '旧暦安政7年3月3日、雪の朝の出来事。前年の安政の大獄(思想レイヤー)への報復であり、幕府の権威は決定的に傷ついた。以後幕府は朝廷との融和(公武合体)に舵を切り、和宮降嫁へ向かう。同じ年、外交レイヤーでは条約批准のため遣米使節が渡米し、咸臨丸が太平洋を横断していた。弾圧と開国が同時に進む幕府の二面性が表れている。',
+          '1860-03-24', null, 'day', 'point', '桜田門外の変、大老井伊直弼が暗殺される', '水戸藩脱藩者らが江戸城桜田門外で大老井伊直弼を襲撃し、幕府の最高権力者が白昼に討たれた。旧暦安政7年3月3日、雪の朝の出来事で、前年の安政の大獄(思想レイヤー)への報復だった。
+
+幕府の権威は決定的に傷つき、以後幕府は朝廷との融和(公武合体)に舵を切り、和宮降嫁へ向かう。同じ年、外交レイヤーでは条約批准のため遣米使節が渡米し、咸臨丸が太平洋を横断していた。弾圧と開国が同時に進む幕府の二面性が表れている。', null,
           'verified', null, 'user', 3) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（日本語版）: 桜田門外の変', 'https://ja.wikipedia.org/wiki/桜田門外の変')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-bakumatsu-meiji'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-bakumatsu-meiji') and name = '外交と世界'),
-          '1862-09-14', null, 'day', 'point', '生麦事件、薩摩藩士が英国人を殺傷', '島津久光の行列を横切った英国人を薩摩藩士が斬り、1名死亡。翌年の薩英戦争の引き金となった。', '旧暦文久2年8月21日。英国は幕府と薩摩に賠償と犯人処罰を要求し、翌1863年8月に鹿児島を砲撃した(薩英戦争)。薩摩は城下を焼かれたが英国側にも損害を与え、以後両者は接近し、薩摩は英国から軍艦や技術を得る。攘夷の実行が結果的に開国派を生んだ逆説であり、思想レイヤーの薩長同盟や、幕府レイヤーの倒幕への布石となる。',
+          '1862-09-14', null, 'day', 'point', '生麦事件、薩摩藩士が英国人を殺傷', '島津久光の行列を横切った英国人を薩摩藩士が斬り、1名が死亡した。旧暦文久2年8月21日。英国は幕府と薩摩に賠償と犯人処罰を要求し、翌1863年8月に鹿児島を砲撃する(薩英戦争)。
+
+薩摩は城下を焼かれたが英国側にも損害を与え、以後両者は接近して、薩摩は英国から軍艦や技術を得る。**攘夷の実行が結果的に開国派を生んだ逆説**であり、思想レイヤーの薩長同盟や、幕府レイヤーの倒幕への布石となる。', null,
           'verified', null, 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（日本語版）: 生麦事件', 'https://ja.wikipedia.org/wiki/生麦事件'), ('Wikipedia（日本語版）: 薩英戦争', 'https://ja.wikipedia.org/wiki/薩英戦争')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-bakumatsu-meiji'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-bakumatsu-meiji') and name = '幕府と諸藩'),
-          '1864-08-20', null, 'day', 'point', '禁門の変、長州藩が御所で敗れる', '前年の政変で京都を追われた長州藩が挙兵し、会津・薩摩藩兵と御所周辺で交戦して敗退した。', '旧暦元治元年7月19日。1863年の八月十八日の政変で長州は京都から排除されており、その巻き返しだった。御所に発砲した長州は「朝敵」となり、幕府は第一次長州征討を発令する。同じ月、外交レイヤーでは英仏米蘭の四国艦隊が下関を砲撃しており、長州は国内と国外の敵に同時に直面していた。京都の市街は戦火で広範囲が焼失した。',
+          '1864-08-20', null, 'day', 'point', '禁門の変、長州藩が御所で敗れる', '前年の八月十八日の政変で京都を追われた長州藩が挙兵し、会津・薩摩藩兵と御所周辺で交戦して敗退した。旧暦元治元年7月19日。御所に発砲した長州は「朝敵」となり、幕府は第一次長州征討を発令する。京都の市街は戦火で広範囲が焼失した。
+
+同じ月、外交レイヤーでは英仏米蘭の四国艦隊が下関を砲撃しており、**長州は国内と国外の敵に同時に直面していた**。', null,
           'verified', null, 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（日本語版）: 禁門の変', 'https://ja.wikipedia.org/wiki/禁門の変')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-bakumatsu-meiji'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-bakumatsu-meiji') and name = '外交と世界'),
-          '1864-09-05', null, 'day', 'point', '四国艦隊、下関を砲撃', '英仏米蘭の連合艦隊が長州藩の砲台を攻撃・占拠。前年からの外国船砲撃への報復だった。', '旧暦元治元年8月5日から数日間。長州は1863年に攘夷実行として関門海峡を通る外国船を砲撃していた。講和交渉には高杉晋作が臨み、賠償金は幕府が負担することになる。禁門の変で朝敵となった直後(幕府レイヤー)の敗戦で、長州藩内では攘夷の非現実性が認識され、翌年の高杉らの藩政掌握、そして薩長同盟(思想レイヤー)へと方向が変わる。',
+          '1864-09-05', null, 'day', 'point', '四国艦隊、下関を砲撃', '英仏米蘭の連合艦隊が長州藩の砲台を攻撃・占拠した。旧暦元治元年8月5日から数日間で、長州が1863年に攘夷実行として関門海峡を通る外国船を砲撃したことへの報復だった。講和交渉には高杉晋作が臨み、賠償金は幕府が負担することになる。
+
+禁門の変で朝敵となった直後(幕府レイヤー)の敗戦で、長州藩内では攘夷の非現実性が認識され、翌年の高杉らの藩政掌握、そして薩長同盟(思想レイヤー)へと方向が変わる。', null,
           'verified', null, 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（日本語版）: 下関戦争', 'https://ja.wikipedia.org/wiki/下関戦争')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-bakumatsu-meiji'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-bakumatsu-meiji') and name = '思想と人物'),
-          '1866-03-07', null, 'day', 'point', '薩長同盟、京都で成立', '対立していた薩摩と長州が坂本龍馬らの仲介で提携。倒幕への政治的枠組みが生まれた。', '旧暦慶応2年1月21日とされる。禁門の変で交戦した両藩だが、幕府による長州再征を前に、薩摩が長州を支援する六か条に合意した。合意内容は木戸孝允の書簡裏に龍馬が朱書きで裏書きした形で残る。同年、幕府レイヤーでは第二次長州征討が始まり、この同盟によって薩摩は出兵を拒む。外交レイヤーで英国が薩長に接近していた動きとも連動している。',
+          '1866-03-07', null, 'day', 'point', '薩長同盟、京都で成立', '対立していた薩摩と長州が坂本龍馬らの仲介で提携し、倒幕への政治的枠組みが生まれた。旧暦慶応2年1月21日とされる。禁門の変で交戦した両藩だが、幕府による長州再征を前に、薩摩が長州を支援する六か条に合意した。合意内容は木戸孝允の書簡裏に龍馬が朱書きで裏書きした形で残る。
+
+同年、幕府レイヤーでは第二次長州征討が始まり、この同盟によって薩摩は出兵を拒む。外交レイヤーで英国が薩長に接近していた動きとも連動している。', null,
           'disputed', '成立日は1月21日説と22日説があり、龍馬の仲介がどの程度決定的だったかも研究者間で評価が分かれる。「同盟」の性格(軍事同盟か政治的提携か)についても議論がある。', 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（日本語版）: 薩長同盟', 'https://ja.wikipedia.org/wiki/薩長同盟')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-bakumatsu-meiji'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-bakumatsu-meiji') and name = '幕府と諸藩'),
-          '1866-07-18', '1866-09-29', 'day', 'period', '第二次長州征討、幕府軍が敗退', '幕府は諸藩を動員して長州を攻めたが各方面で敗れ、将軍家茂の死を機に休戦。幕府の軍事的威信が失われた。', '旧暦慶応2年6月から8月。薩摩は薩長同盟(思想レイヤー)を理由に出兵を拒み、長州は英国経由で得た新式銃で対抗した。7月20日(旧暦)に将軍家茂が大坂城で死去し、停戦の勅命で終結する。同じ年、諸国で世直し一揆や打ちこわしが頻発し、物価高騰の中での動員は幕府への不満を高めた。徳川慶喜が年末に将軍となるが、幕府の主導権はすでに揺らいでいた。',
+          '1866-07-18', '1866-09-29', 'day', 'period', '第二次長州征討、幕府軍が敗退', '幕府は諸藩を動員して長州を攻めたが各方面で敗れ、将軍家茂の死を機に休戦した。旧暦慶応2年6月から8月。薩摩は薩長同盟(思想レイヤー)を理由に出兵を拒み、長州は英国経由で得た新式銃で対抗した。7月20日(旧暦)に将軍家茂が大坂城で死去し、停戦の勅命で終結する。
+
+同じ年、諸国で世直し一揆や打ちこわしが頻発し、物価高騰の中での動員は幕府への不満を高めた。年末に徳川慶喜が将軍となるが、幕府の軍事的威信と主導権はすでに失われていた。', null,
           'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（日本語版）: 長州征討', 'https://ja.wikipedia.org/wiki/長州征討')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-bakumatsu-meiji'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-bakumatsu-meiji') and name = '思想と人物'),
-          '1867-01-30', null, 'day', 'point', '孝明天皇崩御、政局の均衡が崩れる', '公武合体を支持し倒幕に否定的だった孝明天皇が35歳で急逝。翌月、明治天皇が14歳で践祚した。', '旧暦慶応2年12月25日。孝明天皇は攘夷を強く求めつつ幕府との協調を重んじ、倒幕派にとっては壁でもあった。崩御により幼い明治天皇のもとで岩倉具視ら倒幕派公家が復権し、幕府レイヤーの王政復古へ道が開く。同じ冬、徳川慶喜が将軍に就いており、幕府と朝廷の両方で指導者が交代した数週間だった。',
+          '1867-01-30', null, 'day', 'point', '孝明天皇崩御、政局の均衡が崩れる', '公武合体を支持し倒幕に否定的だった孝明天皇が35歳で急逝し、翌月、明治天皇が14歳で践祚した。旧暦慶応2年12月25日。孝明天皇は攘夷を強く求めつつ幕府との協調を重んじ、倒幕派にとっては壁でもあった。
+
+崩御により幼い明治天皇のもとで岩倉具視ら倒幕派公家が復権し、幕府レイヤーの王政復古へ道が開く。同じ冬、徳川慶喜が将軍に就いており、幕府と朝廷の両方で指導者が交代した数週間だった。', null,
           'disputed', '死因は天然痘とする記録が公式だが、回復期に急変したことから毒殺説が古くから唱えられており、史料上の決着はついていない。', 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（日本語版）: 孝明天皇', 'https://ja.wikipedia.org/wiki/孝明天皇')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-bakumatsu-meiji'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-bakumatsu-meiji') and name = '幕府と諸藩'),
-          '1867-11-09', null, 'day', 'point', '大政奉還、慶喜が政権を朝廷に返上', '徳川慶喜が二条城で政権返上を上表。武力倒幕の名分を先回りして奪う狙いがあったとされる。', '旧暦慶応3年10月14日。土佐藩の建白を受けた決断で、同じ日に薩長には討幕の密勅が下されていた。政権を返しても徳川家が諸侯会議の中心に残ることを想定していたとみられる。思想レイヤーではこの1か月後に坂本龍馬が暗殺され、翌月には王政復古の大号令が発せられる。260年余の幕府政治が形式上終わり、外交上も列強への対応主体が問われる状況となった。',
+          '1867-11-09', null, 'day', 'point', '大政奉還、慶喜が政権を朝廷に返上', '徳川慶喜が二条城で政権返上を上表した。旧暦慶応3年10月14日。土佐藩の建白を受けた決断で、武力倒幕の名分を先回りして奪う狙いがあったとされ、**同じ日に薩長には討幕の密勅が下されていた**。政権を返しても徳川家が諸侯会議の中心に残ることを想定していたとみられる。
+
+思想レイヤーではこの1か月後に坂本龍馬が暗殺され、翌月には王政復古の大号令が発せられる。260年余の幕府政治が形式上終わり、外交上も列強への対応主体が問われる状況となった。', null,
           'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（日本語版）: 大政奉還', 'https://ja.wikipedia.org/wiki/大政奉還')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-bakumatsu-meiji'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-bakumatsu-meiji') and name = '思想と人物'),
-          '1867-12-10', null, 'day', 'point', '坂本龍馬、京都近江屋で暗殺される', '大政奉還の1か月後、龍馬と中岡慎太郎が京都の宿で襲われ死亡。龍馬は33歳だった。', '旧暦慶応3年11月15日。龍馬は薩長同盟の仲介、海援隊、大政奉還につながる建白などに関わり、新政府構想「船中八策」の伝承でも知られる。幕府レイヤーで大政奉還が実現し、王政復古を目前にした時期の死であり、以後の政局は西郷・大久保・岩倉らの主導で武力による決着へ進む。外交レイヤーでは兵庫開港が翌月に迫っていた。',
+          '1867-12-10', null, 'day', 'point', '坂本龍馬、京都近江屋で暗殺される', '大政奉還の1か月後、坂本龍馬と中岡慎太郎が京都の宿・近江屋で襲われ死亡した。龍馬は33歳、旧暦慶応3年11月15日。龍馬は薩長同盟の仲介、海援隊、大政奉還につながる建白などに関わり、新政府構想「船中八策」の伝承でも知られる。
+
+幕府レイヤーで大政奉還が実現し、王政復古を目前にした時期の死であり、以後の政局は西郷・大久保・岩倉らの主導で武力による決着へ進む。外交レイヤーでは兵庫開港が翌月に迫っていた。', null,
           'disputed', '実行犯は京都見廻組とする説が有力だが、新選組説や薩摩藩関与説など諸説があり、確定していない。「船中八策」の史料的裏付けにも疑義がある。', 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（日本語版）: 近江屋事件', 'https://ja.wikipedia.org/wiki/近江屋事件')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-bakumatsu-meiji'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-bakumatsu-meiji') and name = '幕府と諸藩'),
-          '1868-01-03', null, 'day', 'point', '王政復古の大号令、新政府樹立を宣言', '岩倉具視・薩摩らが御所を固めて幕府と摂関の廃止を宣言。同夜の小御所会議で慶喜の辞官納地を決めた。', '旧暦慶応3年12月9日。大政奉還後も残る徳川家の影響力を排除するための政変で、天皇親政の名の下に総裁・議定・参与の三職を置いた。孝明天皇の崩御(思想レイヤー)で倒幕派公家が復権していたことが背景にある。慶喜側は反発し、翌月の鳥羽・伏見の戦いで武力衝突に至る。外交面では列強がどちらを日本政府と認めるかが焦点となった。',
+          '1868-01-03', null, 'day', 'point', '王政復古の大号令、新政府樹立を宣言', '岩倉具視・薩摩らが御所を固めて幕府と摂関の廃止を宣言し、同夜の小御所会議で慶喜の辞官納地を決めた。旧暦慶応3年12月9日。大政奉還後も残る徳川家の影響力を排除するための政変で、天皇親政の名の下に総裁・議定・参与の三職を置いた。
+
+孝明天皇の崩御(思想レイヤー)で倒幕派公家が復権していたことが背景にある。慶喜側は反発し、翌月の鳥羽・伏見の戦いで武力衝突に至る。外交面では列強がどちらを日本政府と認めるかが焦点となった。', null,
           'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（日本語版）: 王政復古 (日本)', 'https://ja.wikipedia.org/wiki/王政復古_(日本)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-bakumatsu-meiji'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-bakumatsu-meiji') and name = '幕府と諸藩'),
-          '1868-01-27', '1869-06-27', 'day', 'period', '戊辰戦争、鳥羽・伏見から箱館まで', '新政府軍と旧幕府勢力の内戦。鳥羽・伏見に始まり、江戸開城、東北諸藩の戦い、箱館五稜郭の降伏で終結した。', '旧暦慶応4年1月3日に開戦、明治2年5月18日に終結。錦の御旗を掲げた新政府軍が緒戦で勝ち、慶喜は江戸へ退いて恭順した。江戸城は西郷と勝海舟の交渉で無血開城となる。思想レイヤーでは戦争中の1868年4月に五箇条の御誓文が出され、外交レイヤーでは列強が局外中立を宣言して旧幕府への武器供給を止めた。会津・長岡などの戦いは深い遺恨を残した。',
+          '1868-01-27', '1869-06-27', 'day', 'period', '戊辰戦争、鳥羽・伏見から箱館まで', '新政府軍と旧幕府勢力の内戦。旧暦慶応4年1月3日の鳥羽・伏見に始まり、江戸開城、東北諸藩の戦いを経て、明治2年5月18日の箱館五稜郭の降伏で終結した。錦の御旗を掲げた新政府軍が緒戦で勝ち、慶喜は江戸へ退いて恭順、江戸城は西郷と勝海舟の交渉で無血開城となる。
+
+思想レイヤーでは戦争中の1868年4月に五箇条の御誓文が出され、外交レイヤーでは列強が局外中立を宣言して旧幕府への武器供給を止めた。会津・長岡などの戦いは深い遺恨を残した。', null,
           'unverified', '戦死者総数は約8,000人前後とする推計が多いが、資料により幅があり確定値はない。', 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（日本語版）: 戊辰戦争', 'https://ja.wikipedia.org/wiki/戊辰戦争')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-bakumatsu-meiji'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-bakumatsu-meiji') and name = '思想と人物'),
-          '1868-04-06', null, 'day', 'point', '五箇条の御誓文、新政府の基本方針を示す', '「広く会議を興し万機公論に決すべし」など五か条を天皇が神々に誓う形で公布。新政府の理念となった。', '旧暦慶応4年3月14日。由利公正の原案を福岡孝弟、木戸孝允が修正した。戊辰戦争(幕府レイヤー)のさなか、諸藩や列強に新政府の方向性を示す必要があった。「公論」の理念は後の自由民権運動が政府に約束の履行を迫る根拠にもなる。翌日には民衆向けの五榜の掲示が出され、キリスト教禁止など旧幕府の政策を継承した点で、理念と現実の差もあった。',
+          '1868-04-06', null, 'day', 'point', '五箇条の御誓文、新政府の基本方針を示す', '「広く会議を興し万機公論に決すべし」など五か条を天皇が神々に誓う形で公布し、新政府の理念となった。旧暦慶応4年3月14日。由利公正の原案を福岡孝弟、木戸孝允が修正した。戊辰戦争(幕府レイヤー)のさなか、諸藩や列強に新政府の方向性を示す必要があった。
+
+「公論」の理念は後の自由民権運動が政府に約束の履行を迫る根拠にもなる。翌日には民衆向けの五榜の掲示が出され、キリスト教禁止など旧幕府の政策を継承した点で、理念と現実の差もあった。', null,
           'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（日本語版）: 五箇条の御誓文', 'https://ja.wikipedia.org/wiki/五箇条の御誓文'), ('国立公文書館デジタルアーカイブ「五箇条の御誓文」', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-bakumatsu-meiji'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-bakumatsu-meiji') and name = '幕府と諸藩'),
-          '1871-08-29', null, 'day', 'point', '廃藩置県、藩が消え中央集権国家へ', '261の藩を廃して府県を置き、知藩事を東京に集めた。薩長土の兵力を背景に、抵抗なく断行された。', '1869年の版籍奉還で藩主は知藩事となっていたが、徴税と軍事は藩に残っていた。西郷隆盛の主導で薩長土三藩の兵1万を御親兵として集め、その武力を背景に一挙に実施した。旧藩主は東京居住を命じられ、藩債と家臣の俸禄は政府が引き継ぐ。数か月後の岩倉使節団派遣(外交レイヤー)は、この改革で内政の骨格が固まったことを前提としていた。',
+          '1871-08-29', null, 'day', 'point', '廃藩置県、藩が消え中央集権国家へ', '261の藩を廃して府県を置き、知藩事を東京に集めた。1869年の版籍奉還で藩主は知藩事となっていたが、徴税と軍事は藩に残っていた。西郷隆盛の主導で薩長土三藩の兵1万を御親兵として集め、その武力を背景に一挙に実施し、抵抗なく断行された。
+
+旧藩主は東京居住を命じられ、藩債と家臣の俸禄は政府が引き継ぐ。数か月後の岩倉使節団派遣(外交レイヤー)は、**この改革で内政の骨格が固まったことを前提としていた**。', null,
           'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（日本語版）: 廃藩置県', 'https://ja.wikipedia.org/wiki/廃藩置県')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-bakumatsu-meiji'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-bakumatsu-meiji') and name = '外交と世界'),
-          '1871-12-23', null, 'day', 'point', '岩倉使節団、横浜を出航', '岩倉具視を全権に、大久保・木戸・伊藤ら政府首脳が米欧12か国を約1年10か月かけて視察した。', '旧暦明治4年11月12日出発。当初の目的だった条約改正の予備交渉は米国で行き詰まり、以後は制度・産業の視察に重点を移した。津田梅子ら女子留学生も同行している。使節団不在の間、留守政府は学制・徴兵令・地租改正を進め、帰国後には征韓論をめぐって明治六年政変(思想レイヤー)が起きる。幕府レイヤーの廃藩置県の直後という時期も注目される。',
+          '1871-12-23', null, 'day', 'point', '岩倉使節団、横浜を出航', '岩倉具視を全権に、大久保・木戸・伊藤ら政府首脳が米欧12か国を約1年10か月かけて視察した。旧暦明治4年11月12日出発。当初の目的だった条約改正の予備交渉は米国で行き詰まり、以後は制度・産業の視察に重点を移した。津田梅子ら女子留学生も同行している。
+
+使節団不在の間、留守政府は学制・徴兵令・地租改正を進め、帰国後には征韓論をめぐって明治六年政変(思想レイヤー)が起きる。幕府レイヤーの廃藩置県の直後という時期も注目される。', null,
           'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（日本語版）: 岩倉使節団', 'https://ja.wikipedia.org/wiki/岩倉使節団')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-bakumatsu-meiji'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-bakumatsu-meiji') and name = '外交と世界'),
-          '1873-01-01', null, 'day', 'point', '太陽暦を採用、明治5年12月3日が明治6年1月1日に', '太陰太陽暦を廃止しグレゴリオ暦へ切り替え。この年表の日付も、これ以前は旧暦を新暦に換算している。', '改暦の布告は1872年12月9日(旧暦11月9日)と急で、1か月足らずで実施された。西洋との条約・貿易実務に合わせる狙いがあった。この年表では、それ以前の出来事はすべて旧暦を新暦に換算した日付で表し、detailに旧暦を併記している。同じ年、幕府レイヤーの旧士族には徴兵令が、思想レイヤーでは政変が待っており、暦の切替は近代化の一区切りだった。',
+          '1873-01-01', null, 'day', 'point', '太陽暦を採用、明治5年12月3日が明治6年1月1日に', '太陰太陽暦を廃止しグレゴリオ暦へ切り替え、明治5年12月3日が明治6年1月1日となった。改暦の布告は1872年12月9日(旧暦11月9日)と急で、1か月足らずで実施された。西洋との条約・貿易実務に合わせる狙いがあった。
+
+この年表では、これ以前の出来事はすべて旧暦を新暦に換算した日付で表し、本文に旧暦を併記している。同じ年、幕府レイヤーの旧士族には徴兵令が、思想レイヤーでは政変が待っており、暦の切替は近代化の一区切りだった。', null,
           'unverified', '改暦を急いだ理由として「明治6年に閏月があり官吏の給与を13か月分払う財政負担を避けた」とする説は大隈重信の回想に基づき、一次史料による裏付けは限定的。', 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（日本語版）: 明治改暦', 'https://ja.wikipedia.org/wiki/明治改暦')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-bakumatsu-meiji'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-bakumatsu-meiji') and name = '思想と人物'),
-          '1873-10-24', null, 'day', 'point', '明治六年政変、西郷・板垣らが下野', '朝鮮への使節派遣をめぐり政府が分裂。西郷隆盛、板垣退助、江藤新平ら参議が辞職し政府を去った。', '岩倉使節団(外交レイヤー)の帰国後、内治優先を唱える大久保・岩倉と、西郷の朝鮮派遣を決めていた留守政府が対立した。西郷の辞表は10月24日に受理され、翌年には板垣らが民撰議院設立建白書を出して自由民権運動が始まる。西郷は鹿児島に帰り、士族の不満の受け皿となる。ここから佐賀の乱、西南戦争(幕府と諸藩レイヤー)へと不平士族の反乱が続く。',
+          '1873-10-24', null, 'day', 'point', '明治六年政変、西郷・板垣らが下野', '朝鮮への使節派遣をめぐり政府が分裂し、西郷隆盛、板垣退助、江藤新平ら参議が辞職して政府を去った。岩倉使節団(外交レイヤー)の帰国後、内治優先を唱える大久保・岩倉と、西郷の朝鮮派遣を決めていた留守政府が対立し、西郷の辞表は10月24日に受理された。
+
+翌年には板垣らが民撰議院設立建白書を出して自由民権運動が始まる。西郷は鹿児島に帰り、士族の不満の受け皿となる。ここから佐賀の乱、西南戦争(幕府と諸藩レイヤー)へと不平士族の反乱が続く。', null,
           'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（日本語版）: 明治六年政変', 'https://ja.wikipedia.org/wiki/明治六年政変')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-bakumatsu-meiji'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-bakumatsu-meiji') and name = '幕府と諸藩'),
-          '1877-01-29', '1877-09-24', 'day', 'period', '西南戦争、最後の士族反乱', '鹿児島の私学校党が西郷隆盛を擁して蜂起。熊本城攻防、田原坂の激戦を経て、城山で西郷が自刃し終結。', '1月29日の私学校生徒による火薬庫襲撃に始まり、9月24日に鹿児島城山で終わった。徴兵制の政府軍が旧武士の反乱を鎮圧したことで、武力による政変の時代は終わり、以後の反政府運動は言論と自由民権運動(思想レイヤー)へ向かう。戦費は政府財政を圧迫し、不換紙幣の増発がインフレを招いた。同年、大久保利通は内務卿として殖産興業を進めていたが、翌年に暗殺される。',
+          '1877-01-29', '1877-09-24', 'day', 'period', '西南戦争、最後の士族反乱', '鹿児島の私学校党が西郷隆盛を擁して蜂起した。1月29日の私学校生徒による火薬庫襲撃に始まり、熊本城攻防、田原坂の激戦を経て、9月24日に鹿児島城山で西郷が自刃し終結した。
+
+徴兵制の政府軍が旧武士の反乱を鎮圧したことで、**武力による政変の時代は終わり**、以後の反政府運動は言論と自由民権運動(思想レイヤー)へ向かう。戦費は政府財政を圧迫し、不換紙幣の増発がインフレを招いた。同年、大久保利通は内務卿として殖産興業を進めていたが、翌年に暗殺される。', null,
           'unverified', '両軍の戦死者数は政府軍約6,400人、薩軍約6,500人前後とされるが、資料により数値に幅がある。', 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（日本語版）: 西南戦争', 'https://ja.wikipedia.org/wiki/西南戦争')) as v(title, url);
 
@@ -937,121 +1217,161 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-cold-war'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-cold-war') and name = '軍事と核'),
-          '1945-08-06', null, 'day', 'point', '広島に原子爆弾が投下される', '人類史上初めて核兵器が実戦使用され、3日後には長崎にも投下された。核時代の始まりとなった。', '米国はマンハッタン計画で開発した原爆を広島(8月6日)と長崎(8月9日)に投下した。8月8日にはソ連が対日参戦し、8月15日に日本は降伏する。核の独占は米国の交渉力を高める一方、ソ連に開発を急がせ、外交レイヤーの戦後秩序をめぐる対立を「核を持つ二国の対峙」へと変えた。死者数は年末までに広島で約14万人と推計されるが、幅がある。',
+          '1945-08-06', null, 'day', 'point', '広島に原子爆弾が投下される', '人類史上初めて核兵器が実戦使用された。米国はマンハッタン計画で開発した原爆を広島(8月6日)と長崎(8月9日)に投下し、8月8日にはソ連が対日参戦、8月15日に日本は降伏する。死者数は年末までに広島で約14万人と推計されるが、幅がある。
+
+核の独占は米国の交渉力を高める一方でソ連に開発を急がせ、外交レイヤーの戦後秩序をめぐる対立を**「核を持つ二国の対峙」**へと変えた。核時代の始まりである。', null,
           'verified', null, 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Atomic bombings of Hiroshima and Nagasaki', 'https://en.wikipedia.org/wiki/Atomic_bombings_of_Hiroshima_and_Nagasaki'), ('広島平和記念資料館', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-cold-war'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-cold-war') and name = '外交と危機'),
-          '1947-03-12', null, 'day', 'point', 'トルーマン・ドクトリン、封じ込め政策を表明', 'ギリシャ・トルコ支援を議会に求める演説で、共産主義の拡大に対抗する方針を宣言した。', '英国がギリシャ支援を続けられないと通告したことを受け、米国が肩代わりする形で表明された。前年のケナン長文電報とチャーチルの「鉄のカーテン」演説に続き、ヤルタ会談時の米ソ協調は封じ込めへ転換する。6月のマーシャル・プラン発表と合わせ、欧州の東西分断が固定化していく。文化と社会レイヤーでは同年秋、ハリウッドへの下院非米活動委員会の公聴会が始まった。',
+          '1947-03-12', null, 'day', 'point', 'トルーマン・ドクトリン、封じ込め政策を表明', 'ギリシャ・トルコ支援を議会に求める演説で、共産主義の拡大に対抗する方針を宣言した。英国がギリシャ支援を続けられないと通告したことを受け、米国が肩代わりする形で表明された。
+
+前年のケナン長文電報とチャーチルの「鉄のカーテン」演説に続き、ヤルタ会談時の米ソ協調は封じ込めへ転換する。6月のマーシャル・プラン発表と合わせ、欧州の東西分断が固定化していく。文化と社会レイヤーでは同年秋、ハリウッドへの下院非米活動委員会の公聴会が始まった。', null,
           'verified', null, 'user', 1) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Truman Doctrine', 'https://en.wikipedia.org/wiki/Truman_Doctrine')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-cold-war'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-cold-war') and name = '外交と危機'),
-          '1948-06-24', '1949-05-12', 'day', 'period', 'ベルリン封鎖と大空輸', 'ソ連が西ベルリンへの陸路を遮断。米英は約11か月にわたり空輸で200万人の都市を支え、封鎖は解除された。', '西側占領地区の通貨改革に反発したソ連が、鉄道・道路・水路を封鎖した。米英は食料と石炭を航空機で運び続け、最盛期には数十秒間隔で着陸した。封鎖中の1949年4月4日にNATOが設立され、5月には西ドイツ基本法が公布される。冷戦初の直接対決が武力に至らなかった経験は、以後の危機管理の原型となった。同じ1949年8月、軍事レイヤーではソ連が初の核実験に成功する。',
+          '1948-06-24', '1949-05-12', 'day', 'period', 'ベルリン封鎖と大空輸', '西側占領地区の通貨改革に反発したソ連が、西ベルリンへの鉄道・道路・水路を遮断した。米英は食料と石炭を航空機で運び続けて約11か月にわたり200万人の都市を支え、最盛期には数十秒間隔で着陸した。封鎖は解除される。
+
+封鎖中の1949年4月4日にNATOが設立され、5月には西ドイツ基本法が公布される。**冷戦初の直接対決が武力に至らなかった経験は、以後の危機管理の原型となった**。同じ1949年8月、軍事レイヤーではソ連が初の核実験に成功する。', null,
           'verified', null, 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Berlin Blockade', 'https://en.wikipedia.org/wiki/Berlin_Blockade')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-cold-war'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-cold-war') and name = '軍事と核'),
-          '1949-08-29', null, 'day', 'point', 'ソ連、初の核実験に成功', 'カザフスタンのセミパラチンスクでRDS-1が爆発。米国の核独占は4年で終わり、軍拡競争が始まった。', '米国の予測より早い成功で、スパイによる情報入手も一因とされる。米国は翌1950年1月に水爆開発を決定し、1952年に初の水爆実験、ソ連も1953年に続く。外交レイヤーではこの年にNATOが発足し、10月には中華人民共和国が成立した。核の均衡は以後、外交と危機レイヤーの全交渉の背景となり、文化と社会レイヤーでは核シェルターや民間防衛が日常に入り込む。',
+          '1949-08-29', null, 'day', 'point', 'ソ連、初の核実験に成功', 'カザフスタンのセミパラチンスクでRDS-1が爆発し、米国の核独占は4年で終わった。米国の予測より早い成功で、スパイによる情報入手も一因とされる。米国は翌1950年1月に水爆開発を決定し、1952年に初の水爆実験、ソ連も1953年に続く軍拡競争が始まった。
+
+外交レイヤーではこの年にNATOが発足し、10月には中華人民共和国が成立した。核の均衡は以後、外交と危機レイヤーの全交渉の背景となり、文化と社会レイヤーでは核シェルターや民間防衛が日常に入り込む。', null,
           'verified', null, 'user', 3) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: RDS-1', 'https://en.wikipedia.org/wiki/RDS-1')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-cold-war'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-cold-war') and name = '文化と社会'),
-          '1950-02-09', null, 'day', 'point', 'マッカーシー、国務省に共産主義者がいると演説', '上院議員マッカーシーが「名簿を持っている」と述べ、以後数年続く反共の告発と社会的圧力の象徴となった。', 'ソ連核実験と中国革命の翌年、国内の「裏切り者」を探す空気が広がっていた。ハリウッド、大学、公務員に忠誠審査とブラックリストが及び、公職を追われる人が相次ぐ。1954年の陸軍公聴会のテレビ中継で世論が離れ、上院はマッカーシーを非難する。外交・軍事の緊張が国内社会の自由を狭めた典型例であり、同年6月には朝鮮戦争が始まる。',
+          '1950-02-09', null, 'day', 'point', 'マッカーシー、国務省に共産主義者がいると演説', '上院議員マッカーシーが国務省に共産主義者がいるとして「名簿を持っている」と述べ、以後数年続く反共の告発と社会的圧力の象徴となった。ソ連核実験と中国革命の翌年、国内の「裏切り者」を探す空気が広がっていた。
+
+ハリウッド、大学、公務員に忠誠審査とブラックリストが及び、公職を追われる人が相次ぐ。1954年の陸軍公聴会のテレビ中継で世論が離れ、上院はマッカーシーを非難する。**外交・軍事の緊張が国内社会の自由を狭めた**典型例であり、同年6月には朝鮮戦争が始まる。', null,
           'disputed', '演説で挙げた人数は「205人」と報じられたが、本人はのちに「57人」と主張し、原稿が残っていないため正確な発言内容は確定していない。', 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: McCarthyism', 'https://en.wikipedia.org/wiki/McCarthyism')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-cold-war'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-cold-war') and name = '軍事と核'),
-          '1950-06-25', '1953-07-27', 'day', 'period', '朝鮮戦争、冷戦初の大規模な熱戦', '北朝鮮軍の南進で始まり、国連軍と中国義勇軍が参戦。3年後に休戦協定が結ばれたが、平和条約は結ばれていない。', '38度線を越えた北朝鮮軍に対し、米国主導の国連軍が介入し、中国が参戦して膠着した。マッカーサーの核使用検討は却下され、核保有国同士が直接対決を避ける「限定戦争」の型ができる。日本では特需で経済が回復し、警察予備隊が発足した。文化と社会レイヤーではマッカーシズムが最盛期にあり、外交レイヤーではスターリンの死(1953年3月)が休戦を後押しした。',
+          '1950-06-25', '1953-07-27', 'day', 'period', '朝鮮戦争、冷戦初の大規模な熱戦', '38度線を越えた北朝鮮軍の南進で始まり、米国主導の国連軍が介入、中国義勇軍が参戦して膠着した。3年後に休戦協定が結ばれたが、平和条約は結ばれていない。マッカーサーの核使用検討は却下され、核保有国同士が直接対決を避ける「限定戦争」の型ができる。
+
+日本では特需で経済が回復し、警察予備隊が発足した。文化と社会レイヤーではマッカーシズムが最盛期にあり、外交レイヤーではスターリンの死(1953年3月)が休戦を後押しした。', null,
           'unverified', '軍人・民間人の死者数は数百万人規模とされるが、推計は資料により大きく異なり確定値がない。', 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Korean War', 'https://en.wikipedia.org/wiki/Korean_War')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-cold-war'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-cold-war') and name = '外交と危機'),
-          '1961-08-13', null, 'day', 'point', 'ベルリンの壁、一夜で築かれる', '東ドイツが西ベルリンとの境界を有刺鉄線で封鎖し、後にコンクリートの壁に。分断の象徴が生まれた。', '1949年以降、東から西へ約250万人以上が流出しており、東独政府は人口流出を止めるために境界を閉じた。米国は西ベルリンの権利が侵されない限り軍事対応せず、10月にはチェックポイント・チャーリーで米ソ戦車が対峙した。同年4月にはガガーリンの宇宙飛行、5月にケネディの月着陸表明があり、宇宙と地上の両方で対抗が激しくなっていた。',
+          '1961-08-13', null, 'day', 'point', 'ベルリンの壁、一夜で築かれる', '東ドイツが西ベルリンとの境界を有刺鉄線で封鎖し、後にコンクリートの壁となって分断の象徴が生まれた。1949年以降、東から西へ約250万人以上が流出しており、東独政府は人口流出を止めるために境界を閉じた。
+
+米国は西ベルリンの権利が侵されない限り軍事対応せず、10月にはチェックポイント・チャーリーで米ソ戦車が対峙した。同年4月にはガガーリンの宇宙飛行、5月にケネディの月着陸表明があり、宇宙と地上の両方で対抗が激しくなっていた。', null,
           'verified', null, 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Berlin Wall', 'https://en.wikipedia.org/wiki/Berlin_Wall')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-cold-war'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-cold-war') and name = '外交と危機'),
-          '1962-10-16', '1962-10-28', 'day', 'period', 'キューバ危機、核戦争に最も近づいた13日間', 'キューバのソ連ミサイル基地を米国が発見。海上封鎖と交渉の末、ソ連が撤去に応じて危機は回避された。', 'ケネディは空爆案を退けて海上封鎖を選び、フルシチョフとの書簡交渉で解決した。米国のキューバ不侵攻約束に加え、トルコの米ミサイル撤去を密約していたことは後年まで公表されなかった。翌年、米ソ間にホットラインが設けられ、部分的核実験禁止条約が結ばれる。軍事レイヤーの核軍拡が外交を極限まで追い込んだ事例であり、以後の軍備管理交渉の出発点になった。',
+          '1962-10-16', '1962-10-28', 'day', 'period', 'キューバ危機、核戦争に最も近づいた13日間', 'キューバのソ連ミサイル基地を米国が発見。ケネディは空爆案を退けて海上封鎖を選び、フルシチョフとの書簡交渉の末、ソ連が撤去に応じて危機は回避された。米国のキューバ不侵攻約束に加え、トルコの米ミサイル撤去を密約していたことは後年まで公表されなかった。
+
+**軍事レイヤーの核軍拡が外交を極限まで追い込んだ**事例であり、翌年には米ソ間にホットラインが設けられ、部分的核実験禁止条約が結ばれる。以後の軍備管理交渉の出発点になった。', null,
           'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Cuban Missile Crisis', 'https://en.wikipedia.org/wiki/Cuban_Missile_Crisis')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-cold-war'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-cold-war') and name = '軍事と核'),
-          '1968-07-01', null, 'day', 'point', '核拡散防止条約(NPT)が署名開放', '核保有を米ソ英仏中の5か国に限り、他国の取得を禁じる枠組み。1970年発効、日本は1976年に批准。', 'キューバ危機後の米ソは、核の拡散を共通の脅威とみなして協調した。条約は非核保有国に平和利用の権利を認め、核保有国に軍縮交渉義務を課す。署名開放の翌月、外交レイヤーではソ連軍がプラハの春を鎮圧しており、緊張緩和と抑圧が同時に進んでいた。翌1969年7月にはアポロ11号(文化と社会レイヤー)が月に着陸し、米ソ競争の一つの局面が閉じる。',
+          '1968-07-01', null, 'day', 'point', '核拡散防止条約(NPT)が署名開放', '核保有を米ソ英仏中の5か国に限り、他国の取得を禁じる核拡散防止条約が署名開放された。1970年発効、日本は1976年に批准。キューバ危機後の米ソは、核の拡散を共通の脅威とみなして協調した。条約は非核保有国に平和利用の権利を認め、核保有国に軍縮交渉義務を課す。
+
+署名開放の翌月、外交レイヤーではソ連軍がプラハの春を鎮圧しており、緊張緩和と抑圧が同時に進んでいた。翌1969年7月にはアポロ11号(文化と社会レイヤー)が月に着陸し、米ソ競争の一つの局面が閉じる。', null,
           'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Treaty on the Non-Proliferation of Nuclear Weapons', 'https://en.wikipedia.org/wiki/Treaty_on_the_Non-Proliferation_of_Nuclear_Weapons'), ('外務省: 核兵器不拡散条約（NPT）', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-cold-war'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-cold-war') and name = '文化と社会'),
-          '1969-07-20', null, 'day', 'point', 'アポロ11号の月面着陸、世界が同時に見た中継', '人類初の月面着陸が各国にテレビ中継され、冷戦の競争が同時に世界共通の体験にもなった。', '1957年のスプートニクに始まる宇宙競争は、軍事レイヤーのICBM技術と表裏一体だった。着陸の中継は日本を含む多くの国で放送され、日本時間では7月21日午前に当たる。同じ年に外交レイヤーではニクソン政権が発足し、米中接近の下準備が始まる。ソ連は同月に月ロケットN1の爆発事故を起こしていたが、公表されなかった。',
+          '1969-07-20', null, 'day', 'point', 'アポロ11号の月面着陸、世界が同時に見た中継', '人類初の月面着陸が各国にテレビ中継され、冷戦の競争が同時に世界共通の体験にもなった。中継は日本を含む多くの国で放送され、日本時間では7月21日午前に当たる。
+
+1957年のスプートニクに始まる宇宙競争は、軍事レイヤーのICBM技術と表裏一体だった。同じ年に外交レイヤーではニクソン政権が発足し、米中接近の下準備が始まる。ソ連は同月に月ロケットN1の爆発事故を起こしていたが、公表されなかった。', null,
           'unverified', '「世界で約6億人が視聴した」とする数字が広く引用されるが、当時の視聴率調査に基づく推計であり、算出根拠は明確でない。', 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Apollo 11', 'https://en.wikipedia.org/wiki/Apollo_11')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-cold-war'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-cold-war') and name = '外交と危機'),
-          '1972-02-21', null, 'day', 'point', 'ニクソン訪中、米中が対立から接近へ', '米大統領が初めて中華人民共和国を訪問し毛沢東と会談。中ソ対立を背景に、冷戦の二極構造が揺らいだ。', '前年のキッシンジャー秘密訪問を経て実現し、上海コミュニケで台湾問題を棚上げしつつ関係正常化の方向を示した。3か月後の5月にはニクソンがモスクワを訪れ、SALT I(第一次戦略兵器制限交渉)とABM条約に署名する。中国と関係を結ぶことでソ連に圧力をかける三角外交の始まりであり、日本でも同年9月に日中国交正常化が実現した。',
+          '1972-02-21', null, 'day', 'point', 'ニクソン訪中、米中が対立から接近へ', '米大統領が初めて中華人民共和国を訪問し毛沢東と会談した。前年のキッシンジャー秘密訪問を経て実現し、上海コミュニケで台湾問題を棚上げしつつ関係正常化の方向を示した。中ソ対立を背景に、冷戦の二極構造が揺らいだ。
+
+3か月後の5月にはニクソンがモスクワを訪れ、SALT I(第一次戦略兵器制限交渉)とABM条約に署名する。中国と関係を結ぶことでソ連に圧力をかける三角外交の始まりであり、日本でも同年9月に日中国交正常化が実現した。', null,
           'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: 1972 visit by Richard Nixon to China', 'https://en.wikipedia.org/wiki/1972_visit_by_Richard_Nixon_to_China')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-cold-war'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-cold-war') and name = '軍事と核'),
-          '1979-12-24', null, 'day', 'point', 'ソ連軍、アフガニスタンに侵攻', '12月24日に空輸を開始し、27日にアミン政権を倒してカルマル政権を樹立。デタントは終わった。', '米国は穀物禁輸とモスクワ五輪ボイコット(文化と社会レイヤー・1980年)で応じ、SALT IIの批准は見送られた。ムジャヒディンへの米国・パキスタン・サウジの支援が続き、ソ連軍は1989年まで撤退できず、経済と体制の疲弊を深める。同じ12月にNATOは中距離核ミサイルの欧州配備を決めており(二重決定)、1980年代前半の「新冷戦」がここから始まる。',
+          '1979-12-24', null, 'day', 'point', 'ソ連軍、アフガニスタンに侵攻', 'ソ連軍が12月24日に空輸を開始し、27日にアミン政権を倒してカルマル政権を樹立した。デタントは終わり、米国は穀物禁輸とモスクワ五輪ボイコット(文化と社会レイヤー・1980年)で応じ、SALT IIの批准は見送られた。
+
+ムジャヒディンへの米国・パキスタン・サウジの支援が続き、ソ連軍は1989年まで撤退できず、経済と体制の疲弊を深める。同じ12月にNATOは中距離核ミサイルの欧州配備を決めており(二重決定)、1980年代前半の「新冷戦」がここから始まる。', null,
           'disputed', '侵攻の動機については、周辺同盟国の崩壊を防ぐ防衛的判断とみる説と、南方への勢力拡張とみる説があり、ソ連側史料の公開後も評価が分かれる。', 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Soviet–Afghan War', 'https://en.wikipedia.org/wiki/Soviet%E2%80%93Afghan_War')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-cold-war'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-cold-war') and name = '文化と社会'),
-          '1980-08-31', null, 'day', 'point', 'ポーランドで「連帯」が誕生', 'グダニスク造船所のストライキが政府との協定に至り、東側で初の独立自主管理労組「連帯」が認められた。', '食料価格の値上げに端を発した労働者の抗議を、ワレサらが組織化した。1975年のヘルシンキ最終文書で東側諸国も人権条項に署名しており、これが市民の運動の根拠となる。翌1981年12月に戒厳令で非合法化されるが地下で存続し、1989年の円卓会議と部分自由選挙で政権交代を導く。軍事レイヤーのアフガン侵攻で西側の対ソ姿勢が硬化していた時期でもあった。',
+          '1980-08-31', null, 'day', 'point', 'ポーランドで「連帯」が誕生', 'グダニスク造船所のストライキが政府との協定に至り、東側で初の独立自主管理労組「連帯」が認められた。食料価格の値上げに端を発した労働者の抗議を、ワレサらが組織化した。
+
+1975年のヘルシンキ最終文書で東側諸国も人権条項に署名しており、これが市民の運動の根拠となる。翌1981年12月に戒厳令で非合法化されるが地下で存続し、1989年の円卓会議と部分自由選挙で政権交代を導く。軍事レイヤーのアフガン侵攻で西側の対ソ姿勢が硬化していた時期でもあった。', null,
           'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Solidarity (Polish trade union)', 'https://en.wikipedia.org/wiki/Solidarity_(Polish_trade_union)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-cold-war'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-cold-war') and name = '軍事と核'),
-          '1983-11-07', null, 'day', 'point', 'NATO演習「エイブル・アーチャー83」', '核攻撃手順を含むNATO指揮所演習を、ソ連側が本物の攻撃準備と疑ったとされる。11月7日から11日。', '同年3月のレーガンの「悪の帝国」演説とSDI(戦略防衛構想)発表、9月の大韓航空機撃墜で緊張は高まっていた。9月26日にはソ連の早期警戒システムが米ミサイル発射を誤検知している。演習は無事終わったが、後年の情報公開で東側の警戒レベルが上げられていたことが判明した。文化と社会レイヤーでは同月、核戦争を描くドラマ「ザ・デイ・アフター」が放送される。',
+          '1983-11-07', null, 'day', 'point', 'NATO演習「エイブル・アーチャー83」', '核攻撃手順を含むNATO指揮所演習が11月7日から11日にかけて行われ、ソ連側が本物の攻撃準備と疑ったとされる。同年3月のレーガンの「悪の帝国」演説とSDI(戦略防衛構想)発表、9月の大韓航空機撃墜で緊張は高まっており、9月26日にはソ連の早期警戒システムが米ミサイル発射を誤検知している。
+
+演習は無事終わったが、後年の情報公開で東側の警戒レベルが上げられていたことが判明した。文化と社会レイヤーでは同月、核戦争を描くドラマ「ザ・デイ・アフター」が放送される。', null,
           'disputed', 'ソ連指導部が実際に先制攻撃を懸念していた程度は、二重スパイの証言と公開文書の解釈をめぐって研究者間で評価が分かれる。', 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Able Archer 83', 'https://en.wikipedia.org/wiki/Able_Archer_83')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-cold-war'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-cold-war') and name = '文化と社会'),
-          '1983-11-20', null, 'day', 'point', 'テレビ映画「ザ・デイ・アフター」全米放送', '核戦争後の米中西部を描くABCのドラマが放送され、視聴者は1億人規模とされる。核への不安が可視化された。', '軍事レイヤーのエイブル・アーチャー演習の直後という時期に放送された。レーガンは日記に「大いに気が滅入った」と記し、後年INF条約への姿勢に影響したと自ら回想している。欧州では中距離核ミサイル配備に反対する大規模デモが続き、日本でも反核運動が広がっていた。翌1984年、レーガンは対ソ対話への転換を演説で示し、1985年のゴルバチョフ登場を迎える。',
+          '1983-11-20', null, 'day', 'point', 'テレビ映画「ザ・デイ・アフター」全米放送', '核戦争後の米中西部を描くABCのテレビ映画が全米放送され、視聴者は1億人規模とされる。軍事レイヤーのエイブル・アーチャー演習の直後という時期で、核への不安が可視化された。
+
+レーガンは日記に「大いに気が滅入った」と記し、後年INF条約への姿勢に影響したと自ら回想しており、**茶の間の不安が軍縮の交渉に跳ね返った**事例といえる。欧州では中距離核ミサイル配備に反対する大規模デモが続き、日本でも反核運動が広がっていた。翌1984年、レーガンは対ソ対話への転換を演説で示し、1985年のゴルバチョフ登場を迎える。', null,
           'unverified', '視聴者数「約1億人」は放送局の推計に基づき、正確な視聴者数は確定していない。レーガンの日記の記述は公刊されている。', 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: The Day After', 'https://en.wikipedia.org/wiki/The_Day_After')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-cold-war'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-cold-war') and name = '外交と危機'),
-          '1985-03-11', null, 'day', 'point', 'ゴルバチョフ、ソ連共産党書記長に就任', '54歳の書記長が誕生。ペレストロイカとグラスノスチを掲げ、対外的には「新思考外交」で軍縮に転じた。', 'アフガニスタンの戦費と軍事支出、石油価格の下落でソ連経済は行き詰まっていた。ゴルバチョフは同年11月にレーガンとジュネーブで会談し、1986年のレイキャビク会談を経て1987年のINF条約(軍事レイヤー)に至る。1986年4月のチェルノブイリ事故は情報公開の必要性を印象づけた。文化と社会レイヤーでは検閲の緩和が東欧の市民運動を勢いづけることになる。',
+          '1985-03-11', null, 'day', 'point', 'ゴルバチョフ、ソ連共産党書記長に就任', '54歳の書記長が誕生し、ペレストロイカとグラスノスチを掲げ、対外的には「新思考外交」で軍縮に転じた。アフガニスタンの戦費と軍事支出、石油価格の下落でソ連経済は行き詰まっていた。
+
+同年11月にレーガンとジュネーブで会談し、1986年のレイキャビク会談を経て1987年のINF条約(軍事レイヤー)に至る。1986年4月のチェルノブイリ事故は情報公開の必要性を印象づけた。文化と社会レイヤーでは検閲の緩和が東欧の市民運動を勢いづけることになる。', null,
           'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Mikhail Gorbachev', 'https://en.wikipedia.org/wiki/Mikhail_Gorbachev')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-cold-war'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-cold-war') and name = '軍事と核'),
-          '1987-12-08', null, 'day', 'point', 'INF全廃条約に米ソが署名', '射程500〜5,500kmの地上発射ミサイルを全廃。核兵器の一カテゴリーを丸ごとなくした初の条約となった。', 'ワシントンでレーガンとゴルバチョフが署名し、現地査察を含む検証制度が導入された。1979年のNATO二重決定から8年、配備と反対運動(文化と社会レイヤー)を経ての合意である。米ソ首脳の関係改善は外交レイヤーの1989年マルタ会談へつながる。条約は2019年に米国が離脱して失効するが、冷戦終結期の軍縮の到達点として位置づけられる。',
+          '1987-12-08', null, 'day', 'point', 'INF全廃条約に米ソが署名', '射程500〜5,500kmの地上発射ミサイルを全廃する条約に、ワシントンでレーガンとゴルバチョフが署名した。核兵器の一カテゴリーを丸ごとなくした初の条約で、現地査察を含む検証制度が導入された。
+
+1979年のNATO二重決定から8年、配備と反対運動(文化と社会レイヤー)を経ての合意である。米ソ首脳の関係改善は外交レイヤーの1989年マルタ会談へつながる。条約は2019年に米国が離脱して失効するが、冷戦終結期の軍縮の到達点として位置づけられる。', null,
           'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Intermediate-Range Nuclear Forces Treaty', 'https://en.wikipedia.org/wiki/Intermediate-Range_Nuclear_Forces_Treaty')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-cold-war'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-cold-war') and name = '文化と社会'),
-          '1989-11-09', null, 'day', 'point', 'ベルリンの壁崩壊', '東独政府の記者会見での旅行自由化発表を受けて市民が検問所に殺到し、壁は事実上その夜に開いた。', '報道官シャボウスキーが新規則の発効時期を「ただちに」と答えたことで、準備のないまま国境が開いた。背景にはポーランドの円卓会議(連帯の合法化)、ハンガリーの国境開放、ライプツィヒの月曜デモなど、市民の動きの連鎖がある。ソ連は軍事介入せず、外交レイヤーでは3週間後にマルタ会談で冷戦終結が宣言される。1961年に一夜で築かれた壁は、28年後に一夜で開いた。',
+          '1989-11-09', null, 'day', 'point', 'ベルリンの壁崩壊', '東独政府の記者会見での旅行自由化発表を受けて市民が検問所に殺到し、壁は事実上その夜に開いた。報道官シャボウスキーが新規則の発効時期を「ただちに」と答えたことで、準備のないまま国境が開いた。
+
+背景にはポーランドの円卓会議(連帯の合法化)、ハンガリーの国境開放、ライプツィヒの月曜デモなど、市民の動きの連鎖がある。ソ連は軍事介入せず、外交レイヤーでは3週間後にマルタ会談で冷戦終結が宣言される。1961年に一夜で築かれた壁は、28年後に一夜で開いた。', null,
           'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Fall of the Berlin Wall', 'https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-cold-war'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-cold-war') and name = '外交と危機'),
-          '1989-12-03', null, 'day', 'point', 'マルタ会談、米ソ首脳が冷戦の終結を宣言', 'ブッシュとゴルバチョフが地中海のマルタ沖で会談し、対立の時代が終わったことを共同で表明した。', '12月2日と3日、荒天の中ソ連客船上で行われた。ベルリンの壁崩壊(文化と社会レイヤー)から1か月足らずで、東欧各国では共産党政権が相次いで退陣していた。翌1990年10月にドイツが統一し、1991年7月にはSTART I(軍事レイヤーの延長線)が署名される。会談は制度的な合意より象徴的意味が大きく、「ヤルタからマルタへ」と表現された。',
+          '1989-12-03', null, 'day', 'point', 'マルタ会談、米ソ首脳が冷戦の終結を宣言', 'ブッシュとゴルバチョフが地中海のマルタ沖で会談し、対立の時代が終わったことを共同で表明した。12月2日と3日、荒天の中ソ連客船上で行われた。
+
+ベルリンの壁崩壊(文化と社会レイヤー)から1か月足らずで、東欧各国では共産党政権が相次いで退陣していた。翌1990年10月にドイツが統一し、1991年7月にはSTART I(軍事レイヤーの延長線)が署名される。会談は制度的な合意より象徴的意味が大きく、「ヤルタからマルタへ」と表現された。', null,
           'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Malta Summit', 'https://en.wikipedia.org/wiki/Malta_Summit')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-cold-war'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-cold-war') and name = '外交と危機'),
-          '1991-12-25', null, 'day', 'point', 'ソ連解体、ゴルバチョフが大統領を辞任', 'クレムリンの赤旗が降ろされ、翌26日に最高会議がソ連の消滅を宣言。69年続いた国家が終わった。', '8月の保守派クーデター未遂で党の権威が崩れ、12月8日にロシア・ウクライナ・ベラルーシが独立国家共同体(CIS)創設を宣言した。核兵器はロシアが継承し、ウクライナなどの核はその後の交渉で撤去される。文化と社会レイヤーで見た東欧の市民運動、軍事レイヤーの軍拡負担、外交レイヤーの新思考が重なった帰結であり、この年表の終点となる。',
+          '1991-12-25', null, 'day', 'point', 'ソ連解体、ゴルバチョフが大統領を辞任', 'クレムリンの赤旗が降ろされ、ゴルバチョフが大統領を辞任、翌26日に最高会議が69年続いたソ連の消滅を宣言した。8月の保守派クーデター未遂で党の権威が崩れ、12月8日にロシア・ウクライナ・ベラルーシが独立国家共同体(CIS)創設を宣言していた。
+
+核兵器はロシアが継承し、ウクライナなどの核はその後の交渉で撤去される。東欧の市民運動(文化と社会)、軍拡の負担(軍事と核)、新思考(外交と危機)という**三層の流れが重なり合った帰結**であり、この年表の終点となる。', null,
           'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Dissolution of the Soviet Union', 'https://en.wikipedia.org/wiki/Dissolution_of_the_Soviet_Union')) as v(title, url);
 
@@ -1068,121 +1388,161 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-space-race'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-space-race') and name = '技術'),
-          '1957-10-04', null, 'day', 'point', 'スプートニク1号、世界初の人工衛星に', 'ソ連がR-7ロケットで直径58cmの人工衛星を軌道に投入。地上でも受信できるビープ音が世界を駆けた。', '国際地球観測年に合わせた打ち上げだったが、R-7は本来ICBMとして開発されたロケットで、核弾頭を米本土に届けうる能力の実証でもあった。技術上の成功は同じ日に「社会の動き」レイヤーで始まるスプートニク・ショックを引き起こし、翌年のNASA設立という「人の決断」へと連鎖する。設計主任コロリョフの名は公表されなかった。',
+          '1957-10-04', null, 'day', 'point', 'スプートニク1号、世界初の人工衛星に', 'ソ連がR-7ロケットで直径58cmの人工衛星を軌道に投入し、地上でも受信できるビープ音が世界を駆けた。国際地球観測年に合わせた打ち上げだったが、R-7は本来ICBMとして開発されたロケットで、核弾頭を米本土に届けうる能力の実証でもあった。
+
+技術上の成功は同じ日に社会の動きレイヤーで始まるスプートニク・ショックを引き起こし、**翌年のNASA設立という「人の決断」へと連鎖する**。設計主任コロリョフの名は公表されなかった。', null,
           'verified', null, 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Sputnik 1', 'https://en.wikipedia.org/wiki/Sputnik_1'), ('NASA History: Sputnik and the Dawn of the Space Age', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-space-race'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-space-race') and name = '社会の動き'),
-          '1957-10-04', '1958-09-02', 'day', 'period', 'スプートニク・ショックと米国の科学教育改革', 'ソ連の先行に米国世論が動揺。議会は科学教育への連邦投資を拡大し、国防教育法(NDEA)成立に至る。', '衛星そのものより「ソ連が先に到達した」事実が米国社会を揺さぶった。12月のヴァンガード打ち上げ失敗が焦りを増幅し、1958年9月2日の国防教育法で理数・外国語教育に連邦資金が投じられる。同年7月にはNASA設立法が署名され、この期間の世論が「人の決断」レイヤーの政策判断を後押しした構図が読み取れる。',
+          '1957-10-04', '1958-09-02', 'day', 'period', 'スプートニク・ショックと米国の科学教育改革', '衛星そのものより「ソ連が先に到達した」事実が米国世論を揺さぶり、12月のヴァンガード打ち上げ失敗が焦りを増幅した。
+
+議会は科学教育への連邦投資を拡大し、1958年9月2日の国防教育法(NDEA)で理数・外国語教育に連邦資金が投じられる。同年7月にはNASA設立法が署名されており、この期間の世論が「人の決断」レイヤーの政策判断を後押しした構図が読み取れる。', null,
           'disputed', 'アイゼンハワー政権自身は衛星を脅威と見ておらず、「ショック」は主にメディアと議会の反応だったとする研究があり、当時の危機感の実態は評価が分かれる。', 'user', 1) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Sputnik crisis', 'https://en.wikipedia.org/wiki/Sputnik_crisis'), ('Wikipedia（英語版）: National Defense Education Act', 'https://en.wikipedia.org/wiki/National_Defense_Education_Act')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-space-race'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-space-race') and name = '人の決断'),
-          '1958-07-29', null, 'day', 'point', 'アイゼンハワー、NASA設立法に署名', '軍ではなく文民機関に宇宙開発を担わせる決断。国家航空宇宙法が成立し、10月1日にNASAが発足した。', '陸海空軍がそれぞれ宇宙計画を競っていた状況を整理し、既存のNACA(航空諮問委員会)を母体に文民機関を置いた。「平和目的」を掲げる建て付けは、のちの宇宙条約や国際協力の前提となる。同じ年、技術レイヤーではエクスプローラー1号がヴァン・アレン帯を発見し、社会レイヤーではスプートニク・ショックが議会を動かしていた。',
+          '1958-07-29', null, 'day', 'point', 'アイゼンハワー、NASA設立法に署名', 'アイゼンハワーが国家航空宇宙法に署名し、軍ではなく文民機関に宇宙開発を担わせる決断を下した。10月1日にNASAが発足する。陸海空軍がそれぞれ宇宙計画を競っていた状況を整理し、既存のNACA(航空諮問委員会)を母体とした。
+
+「平和目的」を掲げる建て付けは、のちの宇宙条約や国際協力の前提となる。同じ年、技術レイヤーではエクスプローラー1号がヴァン・アレン帯を発見し、社会レイヤーではスプートニク・ショックが議会を動かしていた。', null,
           'verified', null, 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: National Aeronautics and Space Act', 'https://en.wikipedia.org/wiki/National_Aeronautics_and_Space_Act')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-space-race'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-space-race') and name = '技術'),
-          '1961-04-12', null, 'day', 'point', 'ガガーリン、人類初の有人宇宙飛行', 'ボストーク1号が地球を1周、108分の飛行。人類が初めて地球の外から地球を見た日となった。', '飛行は完全自動制御で、ガガーリンは高度約7kmで機体から射出されパラシュートで着地した。この点は当時、国際航空連盟の記録要件を満たすため公表されなかった。技術的勝利は6週間後のケネディ演説という「人の決断」を直接引き出し、米ソの競争は月へと舞台を移す。同年8月にはベルリンの壁が築かれ、冷戦の緊張が最高潮にあった。',
+          '1961-04-12', null, 'day', 'point', 'ガガーリン、人類初の有人宇宙飛行', 'ボストーク1号が地球を1周、108分の飛行で、人類が初めて地球の外から地球を見た日となった。飛行は完全自動制御で、ガガーリンは高度約7kmで機体から射出されパラシュートで着地したが、この点は国際航空連盟の記録要件を満たすため当時公表されなかった。
+
+技術的勝利は6週間後のケネディ演説という「人の決断」を直接引き出し、米ソの競争は月へと舞台を移す。同年8月にはベルリンの壁が築かれ、冷戦の緊張が最高潮にあった。', null,
           'verified', null, 'user', 3) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Vostok 1', 'https://en.wikipedia.org/wiki/Vostok_1')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-space-race'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-space-race') and name = '人の決断'),
-          '1961-05-25', null, 'day', 'point', 'ケネディ、「10年以内に月へ」と議会に表明', 'ガガーリン飛行とピッグス湾失敗の直後、議会特別教書で1960年代中の有人月着陸を国家目標に掲げた。', '4月12日のガガーリン飛行、4月17日のピッグス湾侵攻失敗という二つの打撃を受け、ケネディは副大統領ジョンソンに「ソ連に勝てる分野」を諮問。5月5日にシェパードが弾道飛行に成功したことも後押しとなり、この演説に至った。技術面の見通しは未確定のまま政治判断が先行した点が、以後の予算膨張(社会の動きレイヤー・1966年)につながる。',
+          '1961-05-25', null, 'day', 'point', 'ケネディ、「10年以内に月へ」と議会に表明', 'ガガーリン飛行とピッグス湾侵攻失敗という二つの打撃の直後、ケネディは議会特別教書で1960年代中の有人月着陸を国家目標に掲げた。副大統領ジョンソンへの「ソ連に勝てる分野」の諮問と、5月5日のシェパードの弾道飛行成功がこの演説を後押しした。
+
+**技術面の見通しは未確定のまま政治判断が先行した**点が、以後の予算膨張(社会の動きレイヤー・1966年)につながる。', null,
           'verified', null, 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('JFK Library: Address to Joint Session of Congress, May 25, 1961', 'https://www.jfklibrary.org/learn/about-jfk/historic-speeches/address-to-joint-session-of-congress-may-25-1961')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-space-race'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-space-race') and name = '社会の動き'),
-          '1966-01-01', null, 'year', 'point', 'NASA予算、連邦予算の約4.4%でピーク', 'アポロ計画の人員は40万人規模に達し、NASA予算は連邦支出比で史上最高水準となった。', '1961年の決断から5年、予算は毎年拡大し1966会計年度に頂点を迎えた。同時期にベトナム戦争の戦費と「偉大な社会」政策の支出が膨らみ、以後NASA予算は月着陸前から削減局面に入る。技術レイヤーではこの年にコロリョフが死去し、翌年にはアポロ1号火災が起きる。予算の山と現場の緊張が同時に存在していた。',
+          '1966-01-01', null, 'year', 'point', 'NASA予算、連邦予算の約4.4%でピーク', 'アポロ計画の人員は40万人規模に達し、NASA予算は連邦支出比約4.4%と史上最高水準になった。1961年の決断から5年、予算は毎年拡大し1966会計年度に頂点を迎えた。
+
+同時期にベトナム戦争の戦費と「偉大な社会」政策の支出が膨らみ、以後NASA予算は月着陸前から削減局面に入る。技術レイヤーではこの年にコロリョフが死去し、翌年にはアポロ1号火災が起きる。予算の山と現場の緊張が同時に存在していた。', null,
           'unverified', '「約4.4%」は連邦予算に対する比率としてよく引用されるが、算出方法により4.4〜4.5%と幅があり、雇用者数の40万人も概数である。', 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Budget of NASA', 'https://en.wikipedia.org/wiki/Budget_of_NASA')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-space-race'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-space-race') and name = '人の決断'),
-          '1966-01-14', null, 'day', 'point', 'コロリョフ死去、ソ連月計画の指揮系統に空白', 'ソ連宇宙開発を率いた「主任設計者」が手術中に死去。存命中は匿名だった名がこの時初めて公表された。', 'スプートニクとガガーリン飛行を実現した人物だが、機密のため生前は「主任設計者」としか呼ばれなかった。死後、N1月ロケットの開発はミーシンが引き継ぐが、設計局間の対立と資源分散は解消されない。同じ年、社会の動きレイヤーで米国のNASA予算がピークを迎えていたのと対照的に、ソ連側は指揮の統合を失っていた。',
+          '1966-01-14', null, 'day', 'point', 'コロリョフ死去、ソ連月計画の指揮系統に空白', 'ソ連宇宙開発を率いた「主任設計者」コロリョフが手術中に死去した。スプートニクとガガーリン飛行を実現した人物だが、機密のため生前は匿名で、その名はこの時初めて公表された。
+
+死後、N1月ロケットの開発はミーシンが引き継ぐが、設計局間の対立と資源分散は解消されない。同じ年、社会の動きレイヤーで米国のNASA予算がピークを迎えていたのと対照的に、**ソ連側は指揮の統合を失っていた**。', null,
           'disputed', 'コロリョフの死がソ連月計画失敗の主因だったかは評価が分かれる。N1のエンジン構成や資金・組織の問題を重視する研究者も多い。', 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Sergei Korolev', 'https://en.wikipedia.org/wiki/Sergei_Korolev')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-space-race'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-space-race') and name = '社会の動き'),
-          '1967-10-10', null, 'day', 'point', '宇宙条約が発効、天体の領有を禁止', '宇宙空間の平和利用と天体の国家領有禁止を定めた条約が発効。宇宙法の基礎となった。', '米ソ英が1月に署名し、10月に発効。核兵器の軌道配備禁止や天体の領有禁止は、月着陸を目前にした両国が「先に着いた側が月を領有する」事態を避ける枠組みでもあった。同年1月にはアポロ1号火災、4月にはソユーズ1号事故で両国が犠牲者を出しており、技術レイヤーの試練と並行して法的秩序が整えられた。',
+          '1967-10-10', null, 'day', 'point', '宇宙条約が発効、天体の領有を禁止', '宇宙空間の平和利用と天体の国家領有禁止を定めた条約が発効し、宇宙法の基礎となった。米ソ英が1月に署名し、核兵器の軌道配備禁止も定めた。
+
+月着陸を目前にした両国が「先に着いた側が月を領有する」事態を避ける枠組みでもあった。同年1月にはアポロ1号火災、4月にはソユーズ1号事故で両国が犠牲者を出しており、技術レイヤーの試練と並行して法的秩序が整えられた。', null,
           'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Outer Space Treaty', 'https://en.wikipedia.org/wiki/Outer_Space_Treaty'), ('国連宇宙部（UNOOSA）: Outer Space Treaty', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-space-race'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-space-race') and name = '社会の動き'),
-          '1968-12-24', null, 'day', 'point', 'アポロ8号「地球の出」写真が世界に届く', '初めて月周回軌道に入った乗員が撮影した地球の写真が、環境意識と「一つの地球」の感覚を広めた。', 'アポロ8号は月着陸船の遅れを受けて計画を急きょ変更し、司令船のみで月周回に向かった決断の産物だった。撮影された「Earthrise」は翌年以降の環境運動の象徴となり、1970年の最初のアースデイにも影響したとされる。1968年は暗殺やベトナム反戦運動が続いた年で、年末のこの中継は米国内で異例の共有体験として受け止められた。',
+          '1968-12-24', null, 'day', 'point', 'アポロ8号「地球の出」写真が世界に届く', '初めて月周回軌道に入ったアポロ8号の乗員が撮影した地球の写真「Earthrise」が世界に届いた。月着陸船の遅れを受けて計画を急きょ変更し、司令船のみで月周回に向かった決断の産物だった。
+
+写真は翌年以降の環境運動の象徴となり、1970年の最初のアースデイにも影響したとされ、環境意識と「一つの地球」の感覚を広めた。暗殺やベトナム反戦運動が続いた1968年の年末、この中継は米国内で異例の共有体験として受け止められた。', null,
           'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Earthrise', 'https://en.wikipedia.org/wiki/Earthrise')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-space-race'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-space-race') and name = '技術'),
-          '1969-07-03', null, 'day', 'point', 'ソ連N1ロケット、発射台で爆発', 'ソ連の月ロケットN1が2回目の打ち上げで発射直後に落下・爆発。アポロ11号の17日前だった。', 'N1は30基のエンジンを束ねる設計で、4回の打ち上げすべてに失敗した。この爆発は発射施設を大きく損壊し、ソ連の有人月着陸の可能性を事実上絶った。ソ連は月競争への参加自体を長く公式に認めず、計画の存在が公表されたのは1989年である。人の決断レイヤーで見たコロリョフ死去後の混乱が、技術面の結果として現れた形といえる。',
+          '1969-07-03', null, 'day', 'point', 'ソ連N1ロケット、発射台で爆発', 'ソ連の月ロケットN1が2回目の打ち上げで発射直後に落下・爆発した。アポロ11号の17日前だった。30基のエンジンを束ねる設計のN1は4回の打ち上げすべてに失敗し、この爆発は発射施設を大きく損壊して、ソ連の有人月着陸の可能性を事実上絶った。
+
+ソ連は月競争への参加自体を長く公式に認めず、計画の存在が公表されたのは1989年である。人の決断レイヤーで見たコロリョフ死去後の混乱が、技術面の結果として現れた形といえる。', null,
           'unverified', 'N1計画はソ連が1989年まで存在を公表せず、打ち上げ経過や被害規模は後年公開された資料と関係者証言に基づく。爆発規模の推定値も資料により異なる。', 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: N1 (rocket)', 'https://en.wikipedia.org/wiki/N1_(rocket)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-space-race'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-space-race') and name = '技術'),
-          '1969-07-20', null, 'day', 'point', 'アポロ11号、人類初の月面着陸', 'アームストロングとオルドリンが月面に立ち、ケネディの目標を期限内に達成。日本時間では7月21日。', '着陸は協定世界時7月20日20時17分、最初の一歩は21日2時56分で、日本では21日午前の出来事だった。1961年の政治決断から8年、社会の動きレイヤーの予算ピークを経て到達した頂点だが、NASA予算はすでに削減期に入っており、アポロ計画は17号で打ち切られる。同月3日にはソ連N1が爆発しており、競争の帰趨は事実上この月に決した。',
+          '1969-07-20', null, 'day', 'point', 'アポロ11号、人類初の月面着陸', 'アームストロングとオルドリンが月面に立ち、ケネディの目標を期限内に達成した。着陸は協定世界時7月20日20時17分、最初の一歩は21日2時56分で、日本では21日午前の出来事だった。
+
+1961年の政治決断から8年、社会の動きレイヤーの予算ピークを経て到達した頂点だが、NASA予算はすでに削減期に入っており、アポロ計画は17号で打ち切られる。同月3日にはソ連N1が爆発しており、競争の帰趨は事実上この月に決した。', null,
           'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Apollo 11', 'https://en.wikipedia.org/wiki/Apollo_11')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-space-race'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-space-race') and name = '人の決断'),
-          '1972-01-05', null, 'day', 'point', 'ニクソン、スペースシャトル計画を承認', '月の次に「再使用型」を選ぶ決断。火星有人飛行案は退けられ、以後30年の米有人宇宙の形が決まった。', 'アポロ後の計画として宇宙ステーションと火星飛行を含む構想があったが、予算制約の中でシャトル単体が選ばれた。初飛行は1981年4月12日、ガガーリン飛行のちょうど20年後だった。低コスト・高頻度という当初の想定は達成されず、1986年のチャレンジャー事故(技術レイヤー)で計画の前提そのものが問われることになる。',
+          '1972-01-05', null, 'day', 'point', 'ニクソン、スペースシャトル計画を承認', 'ニクソンがスペースシャトル計画を承認し、月の次に「再使用型」を選ぶ決断を下した。アポロ後の構想には宇宙ステーションと火星有人飛行案もあったが、予算制約の中でシャトル単体が選ばれ、**以後30年の米有人宇宙の形がこの一つの選択で決まった**。
+
+初飛行は1981年4月12日、ガガーリン飛行のちょうど20年後だった。低コスト・高頻度という当初の想定は達成されず、1986年のチャレンジャー事故(技術レイヤー)で計画の前提そのものが問われることになる。', null,
           'disputed', '承認の主因を、大統領選の年にカリフォルニア州の航空宇宙雇用を守る政治判断とみる説と、国家威信や軍の要求を重視する説があり、解釈が分かれる。', 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Space Shuttle program', 'https://en.wikipedia.org/wiki/Space_Shuttle_program')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-space-race'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-space-race') and name = '社会の動き'),
-          '1975-07-17', null, 'day', 'point', 'アポロ・ソユーズ、軌道上で米ソがドッキング', 'デタント(緊張緩和)の象徴として、競争相手だった両国の宇宙船が軌道上で握手を交わした。', '1972年のニクソン訪ソで合意された共同飛行。同じ夏にヘルシンキ最終文書が採択されており、外交の緊張緩和がそのまま宇宙に映し出された。技術面では両国のドッキング機構が異なるため中間モジュールを新設した。この協力は1979年のアフガニスタン侵攻で途絶え、再開は1990年代のシャトル・ミール計画まで待つことになる。',
+          '1975-07-17', null, 'day', 'point', 'アポロ・ソユーズ、軌道上で米ソがドッキング', 'デタント(緊張緩和)の象徴として、競争相手だった米ソの宇宙船が軌道上でドッキングし、握手を交わした。1972年のニクソン訪ソで合意された共同飛行である。
+
+同じ夏にヘルシンキ最終文書が採択されており、外交の緊張緩和がそのまま宇宙に映し出された。技術面では両国のドッキング機構が異なるため中間モジュールを新設した。この協力は1979年のアフガニスタン侵攻で途絶え、再開は1990年代のシャトル・ミール計画まで待つことになる。', null,
           'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Apollo–Soyuz', 'https://en.wikipedia.org/wiki/Apollo%E2%80%93Soyuz')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-space-race'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-space-race') and name = '技術'),
-          '1986-01-28', null, 'day', 'point', 'チャレンジャー号、打ち上げ73秒後に空中分解', '固体ロケットブースターのOリング破損が原因。乗員7名が死亡し、シャトルは約2年半飛行を停止した。', '前夜、製造元の技術者が低温下での打ち上げに反対していたことが調査委員会で明らかになり、技術的欠陥だけでなく組織の意思決定が問われた。教員宇宙飛行士の搭乗で全米の学校が生中継を見ており、社会的衝撃は大きかった。同年2月にはソ連が宇宙ステーション・ミールの中核モジュールを打ち上げており、両国の明暗が分かれた月でもある。',
+          '1986-01-28', null, 'day', 'point', 'チャレンジャー号、打ち上げ73秒後に空中分解', 'チャレンジャー号が打ち上げ73秒後に空中分解し、乗員7名が死亡した。原因は固体ロケットブースターのOリング破損で、シャトルは約2年半飛行を停止する。
+
+前夜、製造元の技術者が低温下での打ち上げに反対していたことが調査委員会で明らかになり、**技術的欠陥だけでなく組織の意思決定が問われた**。教員宇宙飛行士の搭乗で全米の学校が生中継を見ており、社会的衝撃は大きかった。同年2月にはソ連が宇宙ステーション・ミールの中核モジュールを打ち上げており、両国の明暗が分かれた月でもある。', null,
           'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Space Shuttle Challenger disaster', 'https://en.wikipedia.org/wiki/Space_Shuttle_Challenger_disaster')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-space-race'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-space-race') and name = '社会の動き'),
-          '1998-11-20', null, 'day', 'point', 'ISS最初のモジュール「ザーリャ」打ち上げ', '冷戦後の米露協力を軸に、日欧加を含む15か国が参加する国際宇宙ステーションの建設が始まった。', 'ザーリャはロシア製だが米国の資金で建造されており、冷戦期のライバルが同じ構造物を組み立てる象徴となった。ソ連解体後、ロシアの宇宙技術者を計画に組み込む狙いもあった。日本は実験棟「きぼう」で参加し、2008年から取り付けが始まる。技術レイヤーではこの後、シャトルによる組み立て飛行が2011年の退役まで続く。',
+          '1998-11-20', null, 'day', 'point', 'ISS最初のモジュール「ザーリャ」打ち上げ', '冷戦後の米露協力を軸に、日欧加を含む15か国が参加する国際宇宙ステーションの建設が始まった。最初のモジュール「ザーリャ」はロシア製だが米国の資金で建造され、冷戦期のライバルが同じ構造物を組み立てる象徴となった。
+
+ソ連解体後、ロシアの宇宙技術者を計画に組み込む狙いもあった。日本は実験棟「きぼう」で参加し、2008年から取り付けが始まる。技術レイヤーではこの後、シャトルによる組み立て飛行が2011年の退役まで続く。', null,
           'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Zarya', 'https://en.wikipedia.org/wiki/Zarya'), ('JAXA: 国際宇宙ステーション（ISS）', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-space-race'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-space-race') and name = '技術'),
-          '2003-10-15', null, 'day', 'point', '神舟5号、中国が3番目の有人宇宙飛行国に', '楊利偉が地球を14周。ソ連・米国に続き、独自ロケットで人を軌道に送った3か国目となった。', 'ソユーズ設計を参考にした神舟宇宙船と長征2Fロケットによる飛行。同年2月にはコロンビア号事故で米シャトルが飛行停止しており、有人宇宙飛行の担い手が多極化する転機だった。中国はISSに参加しておらず、以後独自ステーション「天宮」へ向かう。社会の動きレイヤーで見る国際協力の枠外に、もう一つの軸が生まれた年である。',
+          '2003-10-15', null, 'day', 'point', '神舟5号、中国が3番目の有人宇宙飛行国に', '楊利偉を乗せた神舟5号が地球を14周し、中国はソ連・米国に続き、独自ロケットで人を軌道に送った3か国目となった。ソユーズ設計を参考にした神舟宇宙船と長征2Fロケットによる飛行である。
+
+同年2月にはコロンビア号事故で米シャトルが飛行停止しており、有人宇宙飛行の担い手が多極化する転機だった。中国はISSに参加しておらず、以後独自ステーション「天宮」へ向かう。社会の動きレイヤーで見る国際協力の枠外に、もう一つの軸が生まれた年である。', null,
           'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Shenzhou 5', 'https://en.wikipedia.org/wiki/Shenzhou_5')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-space-race'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-space-race') and name = '人の決断'),
-          '2006-08-18', null, 'day', 'point', 'NASA、民間に貨物輸送を委ねるCOTS契約', 'ISSへの物資輸送を「自前開発」から「民間からの購入」へ。設立4年のスペースXが選ばれた。', '商業軌道輸送サービス(COTS)は、NASAが仕様と成果に対して段階的に支払う方式で、従来の受託開発とは異なる。この決断が2010年代の民間宇宙の土台となり、2015年12月のファルコン9第1段着陸(技術)、2020年の民間有人飛行へつながる。同年、政府はコンステレーション計画で月再訪を目指していたが、後に中止される。',
+          '2006-08-18', null, 'day', 'point', 'NASA、民間に貨物輸送を委ねるCOTS契約', 'NASAがISSへの物資輸送を「自前開発」から「民間からの購入」へ切り替える商業軌道輸送サービス(COTS)契約を結び、設立4年のスペースXが選ばれた。仕様と成果に対して段階的に支払う方式で、従来の受託開発とは異なる。
+
+**この決断が2010年代の民間宇宙の土台となり**、2015年12月のファルコン9第1段着陸(技術)、2020年の民間有人飛行へつながる。同年、政府はコンステレーション計画で月再訪を目指していたが、後に中止される。', null,
           'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Commercial Orbital Transportation Services', 'https://en.wikipedia.org/wiki/Commercial_Orbital_Transportation_Services')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-space-race'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-space-race') and name = '社会の動き'),
-          '2011-07-21', '2020-05-30', 'day', 'period', 'シャトル退役後、米国が有人打ち上げ能力を失った9年間', 'STS-135の帰還を最後にシャトルは退役。米国飛行士はISSへ行くためロシアのソユーズに依存した。', '退役の背景にはコロンビア号事故後の安全性評価と運用コストがある。この間、米国はソユーズの座席を購入し続け、宇宙開発の主導権をめぐる議論と民間活用への期待が高まった。人の決断レイヤーで2006年に始まった民間委託が、2020年5月30日のクルードラゴン初有人飛行(技術)で空白を埋める形となる。',
+          '2011-07-21', '2020-05-30', 'day', 'period', 'シャトル退役後、米国が有人打ち上げ能力を失った9年間', 'STS-135の帰還を最後にシャトルが退役し、米国飛行士はISSへ行くためロシアのソユーズに依存することになった。退役の背景にはコロンビア号事故後の安全性評価と運用コストがある。
+
+この間、米国はソユーズの座席を購入し続け、宇宙開発の主導権をめぐる議論と民間活用への期待が高まった。人の決断レイヤーで2006年に始まった民間委託が、2020年5月30日のクルードラゴン初有人飛行(技術)で空白を埋める形となる。', null,
           'unverified', 'ソユーズ座席の購入単価は契約年により異なり、報道値に幅があるため本項では金額を示していない。', 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: STS-135', 'https://en.wikipedia.org/wiki/STS-135')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-space-race'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-space-race') and name = '技術'),
-          '2020-05-30', null, 'day', 'point', 'クルードラゴン、民間宇宙船初の有人軌道飛行', 'スペースXの宇宙船がNASA飛行士2名をISSへ運び、民間企業が有人軌道飛行を担う時代が始まった。', 'ファルコン9第1段は洋上のドローン船に着陸し、2015年以来の再使用技術が有人飛行にも適用された。2006年のCOTS契約(人の決断)から14年、シャトル退役後の空白(社会の動き)を終わらせた飛行でもある。同年、新型コロナウイルスの流行下で観客を制限した打ち上げとなり、10月にはアルテミス合意が署名され月探査の国際枠組みが動き出した。',
+          '2020-05-30', null, 'day', 'point', 'クルードラゴン、民間宇宙船初の有人軌道飛行', 'スペースXの宇宙船クルードラゴンがNASA飛行士2名をISSへ運び、民間企業が有人軌道飛行を担う時代が始まった。ファルコン9第1段は洋上のドローン船に着陸し、2015年以来の再使用技術が有人飛行にも適用された。
+
+2006年のCOTS契約(人の決断)から14年、シャトル退役後の空白(社会の動き)を終わらせた飛行でもある。新型コロナウイルスの流行下で観客を制限した打ち上げとなり、同年10月にはアルテミス合意が署名され月探査の国際枠組みが動き出した。', null,
           'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Crew Dragon Demo-2', 'https://en.wikipedia.org/wiki/Crew_Dragon_Demo-2')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-space-race'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-space-race') and name = '社会の動き'),
-          '2020-10-13', null, 'day', 'point', 'アルテミス合意に日本など8か国が署名', '月探査の行動原則を定めた合意。1967年宇宙条約を土台に、資源利用や安全区域の考え方を示した。', '米国主導のアルテミス計画に参加する国々が、透明性・相互運用性・宇宙資源の利用などの原則に合意した。ロシアと中国は加わっておらず、月探査は再び複数の陣営に分かれつつある。技術レイヤーで民間有人飛行が実現した同じ年に、法と外交の枠組みが更新された点は、1967年に宇宙条約と有人計画が並走した構図の再来ともいえる。',
+          '2020-10-13', null, 'day', 'point', 'アルテミス合意に日本など8か国が署名', '月探査の行動原則を定めたアルテミス合意に日本など8か国が署名した。1967年の宇宙条約を土台に、透明性・相互運用性・宇宙資源の利用や安全区域の考え方を示したもので、米国主導のアルテミス計画に参加する国々による合意である。
+
+ロシアと中国は加わっておらず、月探査は再び複数の陣営に分かれつつある。技術レイヤーで民間有人飛行が実現した同じ年に法と外交の枠組みが更新された点は、1967年に宇宙条約と有人計画が並走した構図の再来ともいえる。', null,
           'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia（英語版）: Artemis Accords', 'https://en.wikipedia.org/wiki/Artemis_Accords')) as v(title, url);
 
@@ -1199,121 +1559,161 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '社会と制度'),
-          '2016-02-01', null, 'month', 'point', '「保育園落ちた」ブログが国会で取り上げられる', '認可保育所に入れなかった保護者の匿名ブログが広まり、待機児童問題が国会審議の場でも論点になった。', '2月中旬に投稿された匿名ブログが SNS で拡散し、月末の衆議院予算委員会で言及された。「保活」という言葉が一般に広まり、都市部の待機児童問題が政策課題として前景化した年。この年の秋に第一子を迎える家族にとって、生まれる前から入園の心配をするのが当たり前という空気が、すでにできあがっていた。',
+          '2016-02-01', null, 'month', 'point', '「保育園落ちた」ブログが国会で取り上げられる', '2月中旬に投稿された、認可保育所に入れなかった保護者の匿名ブログがSNSで拡散し、月末の衆議院予算委員会で言及された。「保活」という言葉が一般に広まり、都市部の待機児童問題が政策課題として前景化した年。
+
+この年の秋に第一子を迎える家族にとって、生まれる前から入園の心配をするのが当たり前という空気が、すでにできあがっていた。', null,
           'verified', null, 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('衆議院: 第190回国会 予算委員会 会議録（平成28年2月29日）', null), ('厚生労働省: 保育所等関連状況取りまとめ（平成28年4月1日）', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '子どもの成長'),
-          '2016-11-08', null, 'day', 'point', '第一子、誕生', '予定日より4日遅れて、都内の病院で長女が生まれる。体重3,120グラム。名前は決めるのに一晩かかった。', '陣痛から18時間。夫は職場から駆けつけて立ち会った。生まれた年は待機児童問題が国会で取り上げられた年で、退院の日に受け取った区の案内には、すでに翌々年度の保育所申込みの説明が入っていた。抱いている赤ん坊の1年半後を考えるのは奇妙な感覚だったが、それがこの街で子を育てるということだった。',
+          '2016-11-08', null, 'day', 'point', '第一子、誕生', '予定日より4日遅れて、都内の病院で長女が生まれる。体重3,120グラム。陣痛から18時間、夫は職場から駆けつけて立ち会った。名前は決めるのに一晩かかった。
+
+待機児童問題が国会で取り上げられた年で、退院の日に受け取った区の案内には、すでに翌々年度の保育所申込みの説明が入っていた。抱いている赤ん坊の1年半後を考えるのは奇妙な感覚だったが、**それがこの街で子を育てるということだった**。', null,
           'verified', null, 'user', 1) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '親の仕事と暮らし'),
-          '2016-11-08', '2017-10-31', 'day', 'period', '母の産休・育休、ほぼ1年', '出産日から翌年10月末まで、産後休業と育児休業を取得。復職は認可外保育園への入園と同時。', '当初は1歳の誕生日で復職する予定だったが、認可保育所の一次選考に落ちて計画を組み替えた。育休期間中の10月に育児・介護休業法が改正され、保育所に入れない場合の育休が最長2歳まで延長可能になったが、家計と職場の事情から延長はせず、認可外に入園させて復職した。制度の変化と自分の状況が、少しずれて重なった一年。',
+          '2016-11-08', '2017-10-31', 'day', 'period', '母の産休・育休、ほぼ1年', '出産日から翌年10月末まで、産後休業と育児休業を取得。当初は1歳の誕生日で復職する予定だったが、認可保育所の一次選考に落ちて計画を組み替えた。
+
+育休期間中の10月に育児・介護休業法が改正され、保育所に入れない場合の育休が最長2歳まで延長可能になったが、家計と職場の事情から延長はせず、認可外保育園に入園させて復職した。制度の変化と自分の状況が、少しずれて重なった一年。', null,
           'verified', null, 'user', 2) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '社会と制度'),
-          '2017-10-01', null, 'day', 'point', '育児休業が最長2歳まで延長可能に', '改正育児・介護休業法が施行。保育所に入れないなどの場合、育休を子が2歳になるまで再延長できるようになった。', '従来は1歳6か月までだった育休の延長上限を、待機児童対策の一環として2歳まで引き上げた。同時に、事業主による育休制度の個別周知が努力義務化された。この家族の母は、ちょうど育休の終盤にこの改正を迎えたが、延長せず認可外への入園を選んだ。制度が整うことと、それを使えるかどうかは別の問題だと知った。',
+          '2017-10-01', null, 'day', 'point', '育児休業が最長2歳まで延長可能に', '改正育児・介護休業法が施行され、保育所に入れないなどの場合、従来1歳6か月までだった育休の延長上限が、待機児童対策の一環として子が2歳になるまで引き上げられた。同時に、事業主による育休制度の個別周知が努力義務化された。
+
+この家族の母は、ちょうど育休の終盤にこの改正を迎えたが、延長せず認可外への入園を選んだ。**制度が整うことと、それを使えるかどうかは別の問題**だと知った。', null,
           'verified', null, 'user', 3) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('厚生労働省: 育児・介護休業法の改正について（平成29年10月1日施行）', 'https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000130583.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '親の仕事と暮らし'),
-          '2017-11-01', null, 'month', 'point', '母が時短勤務で復職', '1日6時間の短時間勤務で復職。認可外保育園の送迎は母、迎えは週2回だけ父が担当することにした。', '職場は理解があったが、17時に席を立つとき、まだ会議が続いている部屋を後にする気まずさは残った。認可外の保育料は月7万円を超え、時短で減った給与とほぼ相殺された。それでも辞めない選択をしたのは、翌年に認可へ移れる可能性を残すためだった。この年の秋、長女は初めて一人で立った。',
+          '2017-11-01', null, 'month', 'point', '母が時短勤務で復職', '1日6時間の短時間勤務で復職。認可外保育園の送迎は母、迎えは週2回だけ父が担当することにした。職場は理解があったが、17時に席を立つとき、まだ会議が続いている部屋を後にする気まずさは残った。
+
+認可外の保育料は月7万円を超え、時短で減った給与とほぼ相殺された。それでも辞めない選択をしたのは、翌年に認可へ移れる可能性を残すためだった。この年の秋、長女は初めて一人で立った。', null,
           'verified', null, 'user', 4) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '親の仕事と暮らし'),
-          '2018-02-01', null, 'month', 'point', '認可保育所の二度目の申込みで内定', '前年は落選、今年は第3希望の園に内定。復職実績が加点になり、ようやく4月から認可へ移れることになった。', '区から届いた封筒を開けるまで、夫婦とも仕事が手につかなかった。認可外に預けて働いた実績が選考指数を押し上げたと考えられ、前年の「落ちたから認可外に入れて働く」という選択が結果的に効いた。ブログが国会で話題になった年に生まれた子が、2年越しで認可の門をくぐる。制度の順番待ちが、家族の暦を決めていた。',
+          '2018-02-01', null, 'month', 'point', '認可保育所の二度目の申込みで内定', '前年は落選、今年は第3希望の園に内定。区から届いた封筒を開けるまで、夫婦とも仕事が手につかなかった。認可外に預けて働いた復職実績が選考指数を押し上げたと考えられ、前年の「落ちたから認可外に入れて働く」という選択が結果的に効いた。
+
+ブログが国会で話題になった年に生まれた子が、2年越しで認可の門をくぐる。**制度の順番待ちが、家族の暦を決めていた**。', null,
           'verified', null, 'user', 5) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '子どもの成長'),
-          '2018-04-02', null, 'day', 'point', '認可保育所へ転園', '1歳児クラスに転園。慣らし保育の2週間は毎朝泣いたが、3週目には自分から靴を履くようになった。', '認可外の小さな園から、園庭のある認可保育所へ。人数も部屋の広さも違い、最初は戸惑いが大きかった。園長からは、泣くのは前の園が好きだった証拠だと言われた。転園を境に、母は時短を1時間縮めて7時間勤務に戻し、父の迎え担当を週3回に増やした。家族の時間割が、園の生活リズムに合わせて組み直された。',
+          '2018-04-02', null, 'day', 'point', '認可保育所へ転園', '認可外の小さな園から、園庭のある認可保育所の1歳児クラスへ転園。人数も部屋の広さも違って最初は戸惑いが大きく、慣らし保育の2週間は毎朝泣いたが、3週目には自分から靴を履くようになった。園長からは、泣くのは前の園が好きだった証拠だと言われた。
+
+転園を境に、母は時短を1時間縮めて7時間勤務に戻し、父の迎え担当を週3回に増やした。家族の時間割が、園の生活リズムに合わせて組み直された。', null,
           'verified', null, 'user', 6) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '社会と制度'),
-          '2019-10-01', null, 'day', 'point', '幼児教育・保育の無償化が始まる', '3〜5歳児の認可保育所・幼稚園等の利用料が原則無償に。消費税率10%への引き上げと同日に実施された。', '消費税増収分を財源とし、子育て世帯の負担軽減と少子化対策を掲げて導入された。0〜2歳児は住民税非課税世帯に限られ、給食費や延長保育料は対象外。この家族の長女は2歳児クラスだったため恩恵は翌年度から。認可外に7万円を払っていた頃と比べると、制度の谷間にいた時期の記憶が改めてよみがえった。',
+          '2019-10-01', null, 'day', 'point', '幼児教育・保育の無償化が始まる', '3〜5歳児の認可保育所・幼稚園等の利用料が原則無償に。消費税率10%への引き上げと同日に実施され、増収分を財源に子育て世帯の負担軽減と少子化対策を掲げて導入された。0〜2歳児は住民税非課税世帯に限られ、給食費や延長保育料は対象外。
+
+この家族の長女は2歳児クラスだったため恩恵は翌年度から。認可外に7万円を払っていた頃と比べると、制度の谷間にいた時期の記憶が改めてよみがえった。', null,
           'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('内閣府: 幼児教育・保育の無償化について', 'https://www8.cao.go.jp/shoushi/shinseido/musyouka/index.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '社会と制度'),
-          '2020-02-27', null, 'day', 'point', '全国の小中高校に一斉休校を要請', '新型コロナの感染拡大を受け、政府が3月2日からの臨時休校を要請。保育所は原則開所とされたが、登園自粛が広がった。', '突然の要請に、共働き世帯の間で子どもの居場所をどうするかという問題が一気に表面化した。保育所は開所を続けたが、4月の緊急事態宣言後は多くの自治体が登園自粛や休園に踏み切った。この家族も4月から2か月近く、3歳の長女を家で見ながら在宅勤務をすることになる。制度の空白を、家庭が埋める時期の始まりだった。',
+          '2020-02-27', null, 'day', 'point', '全国の小中高校に一斉休校を要請', '新型コロナの感染拡大を受け、政府が全国の小中高校に3月2日からの臨時休校を要請。突然の要請に、共働き世帯の間で子どもの居場所をどうするかという問題が一気に表面化した。
+
+保育所は原則開所とされたが、4月の緊急事態宣言後は多くの自治体が登園自粛や休園に踏み切った。この家族も4月から2か月近く、3歳の長女を家で見ながら在宅勤務をすることになる。**制度の空白を、家庭が埋める時期**の始まりだった。', null,
           'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('文部科学省: 新型コロナウイルス感染症対策のための小学校、中学校、高等学校及び特別支援学校等における一斉臨時休業について（令和2年2月28日）', 'https://www.mext.go.jp/content/202002228-mxt_kouhou01-000004520_1.pdf')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '子どもの成長'),
-          '2020-04-11', '2020-05-31', 'day', 'period', '休園中、家で過ごした7週間', '緊急事態宣言下、区の要請で登園を自粛。3歳の長女と両親が、ひとつの部屋で在宅勤務と保育を続けた。', '午前は父、午後は母が仕事を止めて子どもを見る交代制にした。公園は使えず、ベランダで水遊びをし、絵本を何十回も読んだ。長女はこの時期に平仮名を読み始め、両親は会議中に画面に子どもが映り込むことに慣れた。6月に登園が再開したとき、園の友達の名前をほとんど忘れていたが、1週間で取り戻した。',
+          '2020-04-11', '2020-05-31', 'day', 'period', '休園中、家で過ごした7週間', '緊急事態宣言下、区の要請で登園を自粛し、3歳の長女と両親がひとつの部屋で在宅勤務と保育を続けた7週間。午前は父、午後は母が仕事を止めて子どもを見る交代制にした。公園は使えず、ベランダで水遊びをし、絵本を何十回も読んだ。
+
+長女はこの時期に平仮名を読み始め、両親は会議中に画面に子どもが映り込むことに慣れた。6月に登園が再開したとき、園の友達の名前をほとんど忘れていたが、1週間で取り戻した。', null,
           'verified', null, 'user', 9) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '社会と制度'),
-          '2021-04-01', null, 'month', 'point', 'GIGAスクール構想で小中学生に一人一台端末', 'コロナ禍で前倒しされ、2020年度末までに全国の大半の自治体で小中学生向け端末の整備が完了したとされる。', 'もともと2023年度までの計画だったが、休校の経験から一気に前倒しされた。文部科学省の調査では2021年3月末時点で9割超の自治体が整備を終えたとされるが、集計時点や「整備完了」の定義により数値は資料ごとに異なる。この家族の長女が2023年に入学した小学校では、1年生から端末を持ち帰る宿題があった。3年前の休校の記憶とつながっている。',
+          '2021-04-01', null, 'month', 'point', 'GIGAスクール構想で小中学生に一人一台端末', 'もともと2023年度までの計画だったGIGAスクール構想が休校の経験から一気に前倒しされ、2020年度末までに全国の大半の自治体で小中学生向け端末の整備が完了したとされる。
+
+文部科学省の調査では2021年3月末時点で9割超の自治体が整備を終えたとされるが、集計時点や「整備完了」の定義により数値は資料ごとに異なる。この家族の長女が2023年に入学した小学校では、1年生から端末を持ち帰る宿題があった。3年前の休校の記憶とつながっている。', null,
           'unverified', '整備完了率は調査時点（2021年3月末／7月末など）と集計単位により文部科学省資料の中でも数値が異なるため、単一の値として確定していない。', 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('文部科学省: GIGAスクール構想の実現に向けた ICT 環境整備の進捗状況について', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '社会と制度'),
-          '2022-10-01', null, 'day', 'point', '産後パパ育休（出生時育児休業）が施行', '子の出生後8週間以内に最大4週間、2回に分けて取得できる新しい育休制度が始まった。', '改正育児・介護休業法の第2段階として施行。男性の育休取得を後押しするため、通常の育休とは別枠で、申出期限も短く設定された。翌2023年4月からは従業員1,000人超の企業に取得率の公表も義務づけられた。この家族の第二子は施行の翌月に生まれ、父はこの新制度を使って4週間の休みを取ることになる。',
+          '2022-10-01', null, 'day', 'point', '産後パパ育休（出生時育児休業）が施行', '子の出生後8週間以内に最大4週間、2回に分けて取得できる出生時育児休業が、改正育児・介護休業法の第2段階として施行。男性の育休取得を後押しするため、通常の育休とは別枠で、申出期限も短く設定された。
+
+翌2023年4月からは、従業員1,000人超の企業に取得率の公表も義務づけられた。この家族の第二子は施行の翌月に生まれ、父はこの新制度を使って4週間の休みを取ることになる。', null,
           'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('厚生労働省: 育児・介護休業法 改正ポイントのご案内（令和4年4月1日から3段階で施行）', 'https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000130583.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '子どもの成長'),
-          '2022-11-14', null, 'day', 'point', '第二子、誕生', '長女が5歳の秋に、次女が生まれる。長女は病院の面会制限で、退院の日まで妹に会えなかった。', 'コロナ禍の面会制限はまだ続いており、立ち会いは夫だけ、長女は玄関で退院を待った。初対面の長女は妹の指を握って、思ったより小さいと言った。前月に施行された産後パパ育休を父が取ることが決まっており、退院の翌日から家に大人が2人いる暮らしが始まった。6年前の第一子のときには、なかった選択肢だった。',
+          '2022-11-14', null, 'day', 'point', '第二子、誕生', '長女が5歳の秋に、次女が生まれる。コロナ禍の面会制限はまだ続いており、立ち会いは夫だけ、長女は退院の日まで妹に会えず玄関で待った。初対面の長女は妹の指を握って、思ったより小さいと言った。
+
+前月に施行された産後パパ育休を父が取ることが決まっており、退院の翌日から家に大人が2人いる暮らしが始まった。6年前の第一子のときには、なかった選択肢だった。', null,
           'verified', null, 'user', 12) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '親の仕事と暮らし'),
-          '2022-11-15', '2022-12-12', 'day', 'period', '父の産後パパ育休、4週間', '施行されたばかりの出生時育児休業を使い、退院翌日から4週間を続けて取得。長女の送迎と家事を父が担った。', '職場では前例がなく、上司と人事に制度の説明資料を渡すところから始めた。育休中は長女の保育園送迎、食事、夜間の授乳補助を分担し、母は産後の回復に専念できた。第一子のとき父が取れたのは有給3日だけで、この差を夫婦ともに実感した。復帰後、同じ部署の後輩が翌年に同じ制度を使ったと聞いた。',
+          '2022-11-15', '2022-12-12', 'day', 'period', '父の産後パパ育休、4週間', '施行されたばかりの出生時育児休業を使い、退院翌日から4週間を続けて取得。職場では前例がなく、上司と人事に制度の説明資料を渡すところから始めた。育休中は長女の保育園送迎、食事、夜間の授乳補助を父が担い、母は産後の回復に専念できた。
+
+第一子のとき父が取れたのは有給3日だけで、この差を夫婦ともに実感した。復帰後、同じ部署の後輩が翌年に同じ制度を使ったと聞いた。', null,
           'verified', null, 'user', 13) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '社会と制度'),
-          '2023-04-01', null, 'day', 'point', 'こども家庭庁が発足', '内閣府と厚生労働省に分かれていた子ども政策を一元化する新しい省庁が発足。保育所も所管に移った。', 'こども基本法の施行と同日。少子化対策や虐待防止、保育行政を担い、翌年には児童手当拡充などを含む政策パッケージが法制化された。この家族にとっては、長女の小学校入学と次女の保活準備が重なる年で、区役所の窓口の書類に印刷された省庁名が変わっていることに気づいた程度の変化だったが、翌年の手当の増額はそこから来ていた。',
+          '2023-04-01', null, 'day', 'point', 'こども家庭庁が発足', '内閣府と厚生労働省に分かれていた子ども政策を一元化する新しい省庁が、こども基本法の施行と同日に発足。少子化対策や虐待防止、保育行政を担い、保育所も所管に移った。翌年には児童手当拡充などを含む政策パッケージが法制化された。
+
+この家族にとっては、長女の小学校入学と次女の保活準備が重なる年で、区役所の窓口の書類に印刷された省庁名が変わっていることに気づいた程度の変化だったが、翌年の手当の増額はそこから来ていた。', null,
           'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('こども家庭庁: こども家庭庁について', 'https://www.cfa.go.jp/about')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '子どもの成長'),
-          '2023-04-06', null, 'day', 'point', '長女、小学校に入学', '区立小学校に入学。配られたタブレット端末を、保育園にはなかった宿題として持ち帰るようになった。', 'ランドセルは祖父母からの贈り物。入学式は保護者2人まで参加でき、コロナ禍の制限がようやく緩んだことを実感した。GIGAスクール構想で整備された端末が1年生から配られ、休園中に平仮名を覚えた子が、今度は画面で足し算の練習をしている。学童保育の申込みも同時に済ませたが、この年に母の働き方を変える必要が生じる。',
+          '2023-04-06', null, 'day', 'point', '長女、小学校に入学', '区立小学校に入学。ランドセルは祖父母からの贈り物。入学式は保護者2人まで参加でき、コロナ禍の制限がようやく緩んだことを実感した。GIGAスクール構想で整備されたタブレット端末が1年生から配られ、保育園にはなかった宿題として持ち帰るようになった。
+
+休園中に平仮名を覚えた子が、今度は画面で足し算の練習をしている。学童保育の申込みも同時に済ませたが、この年に母の働き方を変える必要が生じる。', null,
           'verified', null, 'user', 15) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '親の仕事と暮らし'),
-          '2023-06-01', null, 'month', 'point', '「小1の壁」で母が転職', '学童の閉所時間に迎えが間に合わず、母が在宅中心の職場へ転職。年収は下がったが、夕方の時間を取り戻した。', '保育園は19時まで預かってくれたが、学童は18時で閉まる。時短勤務の対象からも外れ、通勤を含めると毎日間に合わない計算だった。8年勤めた会社を離れ、週4日在宅の職場へ。翌年10月から児童手当が高校生まで拡充され、家計の目減りを少しだけ埋めることになる。制度は追いついてきているが、まだ半歩遅れていると感じた。',
+          '2023-06-01', null, 'month', 'point', '「小1の壁」で母が転職', '保育園は19時まで預かってくれたが、学童は18時で閉まる。時短勤務の対象からも外れ、通勤を含めると毎日迎えが間に合わない計算だった。8年勤めた会社を離れ、週4日在宅の職場へ転職。年収は下がったが、夕方の時間を取り戻した。
+
+翌年10月から児童手当が高校生まで拡充され、家計の目減りを少しだけ埋めることになる。**制度は追いついてきているが、まだ半歩遅れている**と感じた。', null,
           'verified', null, 'user', 16) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '社会と制度'),
-          '2024-10-01', null, 'month', 'point', '児童手当の拡充（所得制限撤廃・高校生まで）', '2024年10月分から所得制限が撤廃され、支給対象が高校生年代まで延長。第3子以降は月3万円に増額された。', 'こども家庭庁が主導した「こども未来戦略」に基づく改正で、支払いも年3回から隔月に変わった。この家族には長女と次女の2人分が該当し、前年の転職で母の収入が下がったあとに届いた。制度の拡充と家計の変化が続けて起きたのは偶然だが、記録として残しておくと、あとで見返したときに因果のように見えてしまう。それも年表の面白さかもしれない。',
+          '2024-10-01', null, 'month', 'point', '児童手当の拡充（所得制限撤廃・高校生まで）', '2024年10月分から児童手当の所得制限が撤廃され、支給対象が高校生年代まで延長、第3子以降は月3万円に増額された。こども家庭庁が主導した「こども未来戦略」に基づく改正で、支払いも年3回から隔月に変わった。
+
+この家族には長女と次女の2人分が該当し、前年の転職で母の収入が下がったあとに届いた。制度の拡充と家計の変化が続けて起きたのは偶然だが、記録として残しておくと、あとで見返したときに因果のように見えてしまう。それも年表の面白さかもしれない。', null,
           'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('こども家庭庁: 児童手当制度のご案内（令和6年10月分からの制度改正）', 'https://www.cfa.go.jp/policies/kokoseido/jidouteate/annai')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '子どもの成長'),
-          '2025-04-01', null, 'day', 'point', '次女、保育所に入園', '2歳児クラスに入園。姉と同じ園で、慣らし保育は3日で終わった。姉のときとは何もかもが早い。', '長女のときは2年かかった認可入園が、次女は一度で決まった。地域の子どもの数が減り、園によっては定員に空きが出始めていると園長から聞いた。同じ4月から改正育児・介護休業法が施行され、3歳未満の子を持つ親のテレワークが事業主の努力義務になった。転職した母の在宅勤務は、制度に先回りしていた形になった。',
+          '2025-04-01', null, 'day', 'point', '次女、保育所に入園', '姉と同じ園の2歳児クラスに入園。長女のときは2年かかった認可入園が、次女は一度で決まり、慣らし保育は3日で終わった。地域の子どもの数が減り、園によっては定員に空きが出始めていると園長から聞いた。姉のときとは何もかもが早い。
+
+同じ4月から改正育児・介護休業法が施行され、3歳未満の子を持つ親のテレワークが事業主の努力義務になった。転職した母の在宅勤務は、制度に先回りしていた形になった。', null,
           'verified', null, 'user', 18) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '社会と制度'),
-          '2026-04-01', null, 'month', 'point', '「こども誰でも通園制度」が全国で本格実施', '親の就労を問わず、生後6か月から3歳未満の子を月一定時間まで保育所等に預けられる制度が全国実施の予定。', '2023年から試行的事業として一部自治体で始まり、2025年度に法律上の給付制度化、2026年度から全自治体での実施が予定されている。この家族の次女はすでに認可に在園しているため直接の対象ではないが、10年前に「保育園落ちた」が国会で語られたことを思うと、預ける理由を問わない制度が全国に広がる予定というだけで、時代の距離を感じる。',
+          '2026-04-01', null, 'month', 'point', '「こども誰でも通園制度」が全国で本格実施', '親の就労を問わず、生後6か月から3歳未満の子を月一定時間まで保育所等に預けられる制度が全国実施の予定。2023年から試行的事業として一部自治体で始まり、2025年度に法律上の給付制度化、2026年度から全自治体での実施が予定されている。
+
+この家族の次女はすでに認可に在園しているため直接の対象ではないが、10年前に「保育園落ちた」が国会で語られたことを思うと、預ける理由を問わない制度が全国に広がる予定というだけで、**時代の距離**を感じる。', null,
           'unverified', '2026年度からの全国実施は制度設計上の予定であり、自治体ごとの実施時期や利用可能時間の運用は本記録作成時点で確定していない。', 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('こども家庭庁: こども誰でも通園制度について', 'https://www.cfa.go.jp/policies/kokoseido/daredemo-tsuen')) as v(title, url);
 
@@ -1330,121 +1730,161 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-reading-log'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-reading-log') and name = '読んだ本と転機'),
-          '1990-07-01', null, 'month', 'point', '小学校の図書室で『モモ』に出会う', '10歳の夏休み前。返却期限を2度延長して読み終えたミヒャエル・エンデの長編が、最初の「自分の本」になった。', '図書室の先生に薦められて借りた。時間泥棒の話を、当時はただの冒険物語として読んだ。読み返すたびに違う本になることを知るのはずっと後で、この記録を始めた動機のひとつでもある。図書室の貸出カードに自分の名前を何度も書いた年。1990年代初め、街の書店はまだ増えており、本は身近な場所にいくらでもあった。',
+          '1990-07-01', null, 'month', 'point', '小学校の図書室で『モモ』に出会う', '10歳の夏休み前、図書室の先生に薦められて借りたミヒャエル・エンデの長編。返却期限を2度延長して読み終え、最初の「自分の本」になった。時間泥棒の話を、当時はただの冒険物語として読んだ。図書室の貸出カードに自分の名前を何度も書いた年。
+
+読み返すたびに違う本になることを知るのはずっと後で、この記録を始めた動機のひとつでもある。1990年代初め、街の書店はまだ増えており、本は身近な場所にいくらでもあった。', null,
           'verified', null, 'user', 0) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-reading-log'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-reading-log') and name = '出版と社会'),
-          '1996-01-01', null, 'year', 'point', '出版物の推定販売金額がピークに', '書籍・雑誌を合わせた紙の出版物の推定販売金額が約2兆6,500億円に達し、これ以降は長期の減少局面に入る。', '雑誌が売上の6割近くを占め、コンビニと駅の書店が日常の本の入口だった時代の頂点。以後、雑誌の落ち込みを中心に市場は縮小を続ける。この年、16歳の「わたし」は高校の帰り道にある書店で『ソフィーの世界』を手に取っている。本がいちばん売れていた年に、自分の読書が本格的に始まっていたことを、あとから統計で知った。',
+          '1996-01-01', null, 'year', 'point', '出版物の推定販売金額がピークに', '書籍・雑誌を合わせた紙の出版物の推定販売金額が約2兆6,500億円に達し、これ以降は長期の減少局面に入る。雑誌が売上の6割近くを占め、コンビニと駅の書店が日常の本の入口だった時代の頂点で、以後は雑誌の落ち込みを中心に市場が縮小を続ける。
+
+この年、16歳の「わたし」は高校の帰り道にある書店で『ソフィーの世界』を手に取っている。**本がいちばん売れていた年に、自分の読書が本格的に始まっていた**ことを、あとから統計で知った。', null,
           'verified', null, 'user', 1) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('出版科学研究所: 出版指標年報（出版物推定販売金額の推移）', 'https://shuppankagaku.com/statistics/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-reading-log'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-reading-log') and name = '読んだ本と転機'),
-          '1996-05-01', null, 'month', 'point', '高校1年、『ソフィーの世界』で哲学に触れる', '前年に日本語版が出て話題だった一冊。哲学の入門書としてより、「問いを持ってよい」と教わった本として残っている。', 'ヨースタイン・ゴルデルによる小説仕立ての哲学史。日本語版は1995年に刊行され、ベストセラーになっていた。読み終えても哲学者の名前は覚えられなかったが、なぜ、と口に出すことに引け目を感じなくなった。紙の出版物がもっとも売れた年に、通学路の書店で新刊台から取った本。その書店は2023年に閉店する。',
+          '1996-05-01', null, 'month', 'point', '高校1年、『ソフィーの世界』で哲学に触れる', 'ヨースタイン・ゴルデルによる小説仕立ての哲学史。日本語版は1995年に刊行され、ベストセラーになっていた。読み終えても哲学者の名前は覚えられなかったが、なぜ、と口に出すことに引け目を感じなくなった。哲学の入門書としてより、「問いを持ってよい」と教わった本として残っている。
+
+紙の出版物がもっとも売れた年に、通学路の書店で新刊台から取った本。その書店は2023年に閉店する。', null,
           'verified', null, 'user', 2) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-reading-log'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-reading-log') and name = '人生の出来事'),
-          '1998-04-01', '1999-03-31', 'day', 'period', '浪人の1年', '大学受験に失敗し、予備校に通う。読んだのは参考書だけ、と当時は思っていたが、通学の電車で文庫を1冊だけ読み続けた。', '本を読む時間はないと決めていたが、鞄の底にいつも『銀河鉄道の夜』の文庫があった。読み進めるというより、開いて閉じるための本。駅前の書店では相変わらず雑誌の棚がいちばん広く、新刊の話題は当時のわたしには遠いものだった。翌春に地方の大学に合格し、この一年は結果的に、読書と自分の距離を測り直す時間になった。',
+          '1998-04-01', '1999-03-31', 'day', 'period', '浪人の1年', '大学受験に失敗し、予備校に通った1年。読んだのは参考書だけ、と当時は思っていたが、鞄の底にはいつも『銀河鉄道の夜』の文庫があった。読み進めるというより、開いて閉じるための本。
+
+駅前の書店では相変わらず雑誌の棚がいちばん広く、新刊の話題は当時のわたしには遠いものだった。翌春に地方の大学に合格し、この一年は結果的に、読書と自分の距離を測り直す時間になった。', null,
           'verified', null, 'user', 3) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-reading-log'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-reading-log') and name = '人生の出来事'),
-          '2002-04-01', null, 'day', 'point', '就職と上京', '地方の大学を卒業し、東京の中堅出版取次の会社に就職。本に近い仕事を選んだつもりが、配属は物流部門だった。', '毎朝、雑誌の束が全国へ出ていくのを倉庫で見た。1996年をピークに市場が縮んでいることは社内の誰もが知っていて、それでも量は圧倒的だった。読む本を選ぶ時間はなくなり、代わりに「売れる本」の情報だけが増えた。この頃、Amazon.co.jp はすでに営業を始めており、書店に行かずに本を買う人が少しずつ現れていた。',
+          '2002-04-01', null, 'day', 'point', '就職と上京', '地方の大学を卒業し、東京の中堅出版取次の会社に就職。本に近い仕事を選んだつもりが、配属は物流部門だった。毎朝、雑誌の束が全国へ出ていくのを倉庫で見た。
+
+1996年をピークに市場が縮んでいることは社内の誰もが知っていて、それでも量は圧倒的だった。読む本を選ぶ時間はなくなり、代わりに「売れる本」の情報だけが増えた。この頃、Amazon.co.jpはすでに営業を始めており、書店に行かずに本を買う人が少しずつ現れていた。', null,
           'verified', null, 'user', 4) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-reading-log'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-reading-log') and name = '読んだ本と転機'),
-          '2003-10-01', null, 'month', 'point', '『博士の愛した数式』を通勤電車で読む', '働き始めて2年目。仕事で本を数として扱う日々のなかで、久しぶりに一冊を最後まで読み、本を「作品」として取り戻した。', '小川洋子による2003年8月刊行の小説。80分しか記憶がもたない数学者と家政婦の物語。取次の倉庫で数字として扱っていた本のひとつが、開いてみれば静かで確かな世界だった。翌2004年に第1回本屋大賞を受けることになるが、そのニュースを職場で聞いたとき、少しだけ自分の手柄のような気がした。',
+          '2003-10-01', null, 'month', 'point', '『博士の愛した数式』を通勤電車で読む', '小川洋子による2003年8月刊行の小説を、働き始めて2年目の通勤電車で読む。80分しか記憶がもたない数学者と家政婦の物語。取次の倉庫で数字として扱っていた本のひとつが、開いてみれば静かで確かな世界だった。
+
+仕事で本を数として扱う日々のなかで、久しぶりに一冊を最後まで読み、本を「作品」として取り戻した。翌2004年に第1回本屋大賞を受けることになるが、そのニュースを職場で聞いたとき、少しだけ自分の手柄のような気がした。', null,
           'verified', null, 'user', 5) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-reading-log'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-reading-log') and name = '出版と社会'),
-          '2004-04-05', null, 'day', 'point', '第1回本屋大賞が発表される', '書店員が選ぶ文学賞として本屋大賞が創設され、第1回大賞に『博士の愛した数式』が選ばれた。', '出版不況と書店の減少が意識され始めた時期に、「売り場からベストセラーをつくる」ことを掲げて始まった賞。以後、受賞作は映像化と大きな売上につながる例が続き、書店員の推薦が読者の選択に影響する構図が定着した。取次で働いていたわたしにとって、前年に通勤電車で読んだ本が最初の受賞作になったのは、小さな符合として記憶に残っている。',
+          '2004-04-05', null, 'day', 'point', '第1回本屋大賞が発表される', '書店員が選ぶ文学賞として本屋大賞が創設され、第1回大賞に『博士の愛した数式』が選ばれた。出版不況と書店の減少が意識され始めた時期に、「売り場からベストセラーをつくる」ことを掲げて始まった賞である。
+
+以後、受賞作は映像化と大きな売上につながる例が続き、書店員の推薦が読者の選択に影響する構図が定着した。取次で働いていたわたしにとって、前年に通勤電車で読んだ本が最初の受賞作になったのは、小さな符合として記憶に残っている。', null,
           'verified', null, 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('本屋大賞 公式サイト: 過去の本屋大賞（2004年）', 'https://www.hontai.or.jp/history/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-reading-log'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-reading-log') and name = '出版と社会'),
-          '2012-10-25', null, 'day', 'point', 'Kindleストアが日本で開始', 'Amazon が日本語の電子書籍ストアを開設。「電子書籍元年」と呼ばれた2010年から2年遅れで、本格的な普及の入口が開いた。', '2010年の iPad 発売を機に電子書籍元年という言葉が広まったが、日本語コンテンツと端末の両方が揃うのはこの年からだった。以後、電子コミックを中心に電子出版市場は年々拡大していく。取次を辞めて出版社の編集に移っていたわたしは、電子版の契約書を初めて読んだ年でもあった。紙の本の物流を見てきた身には、倉庫のない本というものが不思議だった。',
+          '2012-10-25', null, 'day', 'point', 'Kindleストアが日本で開始', 'Amazonが日本語の電子書籍ストアを開設。2010年のiPad発売を機に「電子書籍元年」という言葉が広まったが、日本語コンテンツと端末の両方が揃うのは2年遅れのこの年からで、以後は電子コミックを中心に電子出版市場が年々拡大していく。
+
+取次を辞めて出版社の編集に移っていたわたしは、電子版の契約書を初めて読んだ年でもあった。紙の本の物流を見てきた身には、倉庫のない本というものが不思議だった。', null,
           'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Amazon.co.jp: プレスリリース Kindleストア開設（2012年10月25日）', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-reading-log'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-reading-log') and name = '読んだ本と転機'),
-          '2012-11-01', null, 'month', 'point', '初めて電子書籍を買う', 'Kindleストアの開設からひと月後、通勤中に読むために既読の文庫を電子で買い直した。最初の一冊は『モモ』。', '紙で3冊持っている本を、なぜか電子でも買った。読み比べたかったのだと思う。文字の大きさを変えられることに驚き、ページの厚みで残りを測れないことに戸惑った。以後、移動中は電子、家では紙、という使い分けが定着する。同じ月に第一子が生まれ、片手で読める電子書籍は、思いがけず育児の道具になった。',
+          '2012-11-01', null, 'month', 'point', '初めて電子書籍を買う', 'Kindleストアの開設からひと月後、通勤中に読むために既読の文庫を電子で買い直した。最初の一冊は、紙で3冊持っている『モモ』。なぜか電子でも買ったのは、読み比べたかったのだと思う。文字の大きさを変えられることに驚き、ページの厚みで残りを測れないことに戸惑った。
+
+以後、移動中は電子、家では紙、という使い分けが定着する。同じ月に第一子が生まれ、片手で読める電子書籍は、**思いがけず育児の道具になった**。', null,
           'verified', null, 'user', 8) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-reading-log'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-reading-log') and name = '人生の出来事'),
-          '2012-11-18', null, 'day', 'point', '第一子が生まれる', '32歳。夜中の授乳の合間に、電子書籍を片手で読む習慣がついた。読む本の半分が絵本になった。', '出版社の編集の仕事は続けたが、読書の中身が変わった。自分のための本より、子どもに読む本を選ぶ時間が増え、『ぐりとぐら』や『はらぺこあおむし』を何百回と読んだ。Kindleストアが開いたばかりの月に生まれた子で、片手で持てる端末がなければ、この時期の読書はほとんど途絶えていたと思う。',
+          '2012-11-18', null, 'day', 'point', '第一子が生まれる', '32歳で第一子が生まれる。出版社の編集の仕事は続けたが、読書の中身が変わった。夜中の授乳の合間に電子書籍を片手で読む習慣がつき、自分のための本より子どもに読む本を選ぶ時間が増え、『ぐりとぐら』や『はらぺこあおむし』を何百回と読んだ。読む本の半分が絵本になった。
+
+Kindleストアが開いたばかりの月に生まれた子で、片手で持てる端末がなければ、この時期の読書はほとんど途絶えていたと思う。', null,
           'verified', null, 'user', 9) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-reading-log'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-reading-log') and name = '人生の出来事'),
-          '2016-10-01', '2018-06-30', 'day', 'period', '父の介護と、本を読めなかった1年9か月', '地方の実家に月2回通い、父の入退院に付き添った期間。読書の記録がほとんど空白になった唯一の時期。', '編集の仕事は続けたが、新幹線での往復と病院の待合室で、本を開いても頭に入らなかった。読めない時期にも本は側にあった、という以上のことは書けない。父を見送った2018年6月以降、少しずつ読書が戻ってくる。この期間の空白は、あとから見ると年表の中でいちばん雄弁な部分になった。読まなかったことにも記録の価値がある。',
+          '2016-10-01', '2018-06-30', 'day', 'period', '父の介護と、本を読めなかった1年9か月', '地方の実家に月2回通い、父の入退院に付き添った1年9か月。編集の仕事は続けたが、新幹線での往復と病院の待合室で、本を開いても頭に入らなかった。読書の記録がほとんど空白になった唯一の時期で、読めない時期にも本は側にあった、という以上のことは書けない。
+
+父を見送った2018年6月以降、少しずつ読書が戻ってくる。この空白は、あとから見ると年表の中でいちばん雄弁な部分になった。**読まなかったことにも記録の価値がある**。', null,
           'verified', null, 'user', 10) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-reading-log'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-reading-log') and name = '読んだ本と転機'),
-          '2018-12-01', null, 'month', 'point', '『82年生まれ、キム・ジヨン』を読む', '介護が終わった年の暮れ、日本語版が出たばかりの韓国小説を一晩で読んだ。読書が「戻ってきた」と感じた一冊。', 'チョ・ナムジュによる小説。日本語版は2018年12月に筑摩書房から刊行され、翌年にかけて韓国文学が広く読まれるきっかけのひとつになった。自分と2歳違いの主人公が通ってきた道は、国は違っても地続きに見えた。空白の1年9か月のあと、最初に最後まで読んだ本として、この年表では区切りの位置にある。',
+          '2018-12-01', null, 'month', 'point', '『82年生まれ、キム・ジヨン』を読む', '介護が終わった年の暮れ、チョ・ナムジュの小説の日本語版が筑摩書房から刊行されたばかりのところを一晩で読んだ。翌年にかけて韓国文学が広く読まれるきっかけのひとつになった一冊で、自分と2歳違いの主人公が通ってきた道は、国は違っても地続きに見えた。
+
+空白の1年9か月のあと、最初に最後まで読んだ本。読書が「戻ってきた」と感じた一冊として、この年表では区切りの位置にある。', null,
           'verified', null, 'user', 11) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-reading-log'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-reading-log') and name = '出版と社会'),
-          '2019-01-01', null, 'year', 'point', '紙と電子を合わせた出版市場が前年比プラスに', '紙の販売額は減少が続く一方、電子出版の伸びが上回り、紙+電子の合計で前年を上回ったとされる。', '出版科学研究所の推計で、2019年は紙が前年比マイナス、電子が2割超の伸びとなり、合計では小幅ながらプラスに転じた。「1996年以来」「合算統計で初」といった表現が報道で使われたが、紙と電子を合算した統計自体は2014年からで、比較の基準が資料によって異なる。編集の現場でも、電子の売上を前提に企画を立てることが当たり前になった年。',
+          '2019-01-01', null, 'year', 'point', '紙と電子を合わせた出版市場が前年比プラスに', '出版科学研究所の推計で、2019年は紙の販売額が前年比マイナスとなる一方、電子出版が2割超の伸びでそれを上回り、紙+電子の合計では小幅ながら前年を上回った。
+
+報道では「1996年以来」「合算統計で初」といった表現が使われたが、紙と電子を合算した統計自体は2014年からで、比較の基準は資料によって異なる。編集の現場でも、電子の売上を前提に企画を立てることが当たり前になった年。', null,
           'disputed', '「前年比プラス」自体は出版科学研究所の推計に基づくが、「何年ぶり」「初」といった位置づけは統計の集計範囲（紙+電子の合算開始年）によって異なる。', 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('出版科学研究所: 2019年の出版市場（紙+電子）', 'https://shuppankagaku.com/statistics/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-reading-log'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-reading-log') and name = '出版と社会'),
-          '2020-01-01', null, 'year', 'point', '巣ごもりで電子出版市場が3割近く伸びる', 'コロナ禍の在宅時間の増加で電子コミックを中心に電子出版が急伸し、市場は前年比で約28%増となった。', '出版科学研究所の推計で電子出版市場は約3,900億円、前年比28%増。電子コミックが大半を占めた。書店の休業や外出自粛で紙の販売にも波があったが、児童書や学習参考書は伸びた。この年、わたしは在宅勤務の合間にカミュの『ペスト』を読み返している。本を読む場所と方法が、この年を境にもう一段変わった。',
+          '2020-01-01', null, 'year', 'point', '巣ごもりで電子出版市場が3割近く伸びる', 'コロナ禍の在宅時間の増加で電子コミックを中心に電子出版が急伸し、出版科学研究所の推計で市場は約3,900億円、前年比約28%増となった。書店の休業や外出自粛で紙の販売にも波があったが、児童書や学習参考書は伸びた。
+
+この年、わたしは在宅勤務の合間にカミュの『ペスト』を読み返している。本を読む場所と方法が、この年を境にもう一段変わった。', null,
           'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('出版科学研究所: 2020年の出版市場（紙+電子）', 'https://shuppankagaku.com/statistics/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-reading-log'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-reading-log') and name = '読んだ本と転機'),
-          '2020-05-01', null, 'month', 'point', '『ペスト』を再読する', '緊急事態宣言下、20年ぶりに読み返した。若い頃は寓話として読んだ小説が、この年は記録として読めた。', 'アルベール・カミュの1947年の小説。この年、世界的に再び読まれ、日本でも文庫が増刷された。閉ざされた街の中で人が何を続け、何を諦めるかという描写が、外の空気とそのまま重なった。同じ年に電子出版が急伸し、わたしの本棚も電子の比率が初めて半分を超えた。読む本と読み方の両方が、社会の状況に押されて動いた年。',
+          '2020-05-01', null, 'month', 'point', '『ペスト』を再読する', '緊急事態宣言下、アルベール・カミュの1947年の小説を20年ぶりに読み返した。この年、世界的に再び読まれ、日本でも文庫が増刷された。閉ざされた街の中で人が何を続け、何を諦めるかという描写が外の空気とそのまま重なり、若い頃は寓話として読んだ小説が、記録として読めた。
+
+同じ年に電子出版が急伸し、わたしの本棚も電子の比率が初めて半分を超えた。**読む本と読み方の両方が、社会の状況に押されて動いた年**。', null,
           'verified', null, 'user', 14) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-reading-log'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-reading-log') and name = '人生の出来事'),
-          '2023-03-01', null, 'month', 'point', '地元の書店が閉店する', '高校時代に通い、『ソフィーの世界』を買った書店が閉店。最終日に帰省して、最後の一冊を買った。', '駅前の2階建て、雑誌と参考書と文庫が中心の店だった。店主から、雑誌が売れなくなってからは厳しかったと聞いた。翌年には国が書店振興の検討を始めることになるが、間に合わない店は多い。本を買う場所がなくなることと、本を読まなくなることは同じではない、と自分に言い聞かせながら、それでも寂しかった。最後に買ったのは『モモ』の新版。',
+          '2023-03-01', null, 'month', 'point', '地元の書店が閉店する', '高校時代に通い『ソフィーの世界』を買った、駅前の2階建て、雑誌と参考書と文庫が中心の書店が閉店。最終日に帰省して最後の一冊、『モモ』の新版を買った。店主からは、雑誌が売れなくなってからは厳しかったと聞いた。
+
+翌年には国が書店振興の検討を始めることになるが、間に合わない店は多い。**本を買う場所がなくなることと、本を読まなくなることは同じではない**、と自分に言い聞かせながら、それでも寂しかった。', null,
           'verified', null, 'user', 15) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-reading-log'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-reading-log') and name = '出版と社会'),
-          '2024-03-05', null, 'day', 'point', '経済産業省が書店振興プロジェクトチームを設置', '全国で書店が減り続ける状況を受け、経産省が大臣直属のプロジェクトチームを立ち上げ、書店支援の検討を始めた。', '書店を「文化創造基盤」と位置づけ、キャッシュレス手数料や取引慣行、図書館との連携などを論点として検討が進められた。書店のない自治体が全国の4分の1を超えるとする民間調査も同時期に報じられた。前年に地元の書店が閉店したわたしにとっては、遅すぎるとも、ようやくとも思える動きだった。読書会を始める直接のきっかけのひとつでもある。',
+          '2024-03-05', null, 'day', 'point', '経済産業省が書店振興プロジェクトチームを設置', '全国で書店が減り続ける状況を受け、経産省が大臣直属のプロジェクトチームを設置。書店を「文化創造基盤」と位置づけ、キャッシュレス手数料や取引慣行、図書館との連携などを論点に検討が進められた。書店のない自治体が全国の4分の1を超えるとする民間調査も同時期に報じられた。
+
+前年に地元の書店が閉店したわたしにとっては、遅すぎるとも、ようやくとも思える動きだった。読書会を始める直接のきっかけのひとつでもある。', null,
           'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('経済産業省: 書店振興プロジェクトチームの設置について（2024年3月5日）', 'https://www.meti.go.jp/press/2023/03/20240305001/20240305001.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-reading-log'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-reading-log') and name = '出版と社会'),
-          '2024-08-01', null, 'month', 'point', '書店のない自治体が全国の約3割との調査', '出版文化産業振興財団の調査で、書店が1店もない市区町村が全国の約27%にのぼるとされた。', '調査によれば無書店自治体は約480で、都道府県によっては半数近くに達する。ただし「書店」の定義（新刊書店のみか、古書店やコンビニの書籍売場を含むか）や調査時点で数値は変わり、別の調査では異なる割合が示されている。地元の店を失ったわたしは、この統計の1に自分の町が入っていることを、数字として初めて確認した。',
+          '2024-08-01', null, 'month', 'point', '書店のない自治体が全国の約3割との調査', '出版文化産業振興財団の調査で、書店が1店もない市区町村が全国に約480、約27%にのぼるとされ、都道府県によっては半数近くに達する。
+
+ただし「書店」の定義（新刊書店のみか、古書店やコンビニの書籍売場を含むか）や調査時点で数値は変わり、別の調査では異なる割合が示されている。地元の店を失ったわたしは、この統計の1に自分の町が入っていることを、数字として初めて確認した。', null,
           'unverified', '無書店自治体の割合は「書店」の定義と調査時点により調査ごとに差があり、約27%という値は特定の民間調査に基づく暫定的な数値。', 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('出版文化産業振興財団（JPIC）: 書店のない自治体に関する調査（2024年）', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-reading-log'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-reading-log') and name = '人生の出来事'),
-          '2025-06-01', null, 'month', 'point', '月に一度の読書会を始める', '近所の公民館を借りて、6人から始めた読書会。課題本は毎回参加者が持ち回りで選ぶ。最初の一冊は『モモ』。', '書店がなくなった町で、それでも本の話をする場所は作れると思った。参加者の年齢は20代から70代まで。紙で読む人も電子で読む人もいて、同じ本の違う版を並べて話すのが恒例になった。35年前に図書室で借りた本を、今度は自分が薦める側になった。この年表は、読書会の初回で自己紹介の代わりに配ったものが元になっている。',
+          '2025-06-01', null, 'month', 'point', '月に一度の読書会を始める', '近所の公民館を借りて、6人から始めた読書会。課題本は毎回参加者が持ち回りで選び、最初の一冊は『モモ』。書店がなくなった町で、それでも本の話をする場所は作れると思った。
+
+参加者の年齢は20代から70代まで。紙で読む人も電子で読む人もいて、同じ本の違う版を並べて話すのが恒例になった。35年前に図書室で借りた本を、今度は自分が薦める側になった。この年表は、読書会の初回で自己紹介の代わりに配ったものが元になっている。', null,
           'verified', null, 'user', 18) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-reading-log'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-reading-log') and name = '読んだ本と転機'),
-          '2026-04-01', null, 'month', 'point', '子どもが『モモ』を図書室で借りてくる', '13歳になった子どもが、薦めたわけでもないのに同じ本を学校の図書室から借りてきた。36年ぶりに同じ本を、別々に読む。', '自分が10歳で読んだ本を、子どもは13歳で手に取った。感想は聞かないことにしている。読み返すたびに違う本になるなら、最初の一回は本人だけのものだと思うから。この年表はここでいったん止まるが、続きは子どもの年表になるのかもしれない。本の売れ方も読み方も変わり続けたこの36年で、変わらなかったのは、図書室に本があったことだった。',
+          '2026-04-01', null, 'month', 'point', '子どもが『モモ』を図書室で借りてくる', '13歳になった子どもが、薦めたわけでもないのに、自分が10歳で読んだ同じ本を学校の図書室から借りてきた。36年ぶりに同じ本を、別々に読む。感想は聞かないことにしている。読み返すたびに違う本になるなら、最初の一回は本人だけのものだと思うから。
+
+この年表はここでいったん止まるが、続きは子どもの年表になるのかもしれない。本の売れ方も読み方も変わり続けたこの36年で、**変わらなかったのは、図書室に本があったこと**だった。', null,
           'verified', null, 'user', 19) returning id)
 select 1 from ev;
 
@@ -1461,121 +1901,161 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = '時代の空気'),
-          '2014-04-01', null, 'day', 'point', '消費税率が5%から8%へ', '17年ぶりの消費税率引き上げ。駆け込み需要のあと、春の消費が一時的に冷え込んだ。', '1997年以来の税率引き上げで、社会保障財源の確保が目的とされた。日用品の値札が一斉に書き換わり、街には「増税前セール」の名残があった。この年の5月、ふたりは友人の写真展で初めて言葉を交わす。最初の会話は、缶コーヒーが少し高くなったという他愛のない話題だったと記録にある。',
+          '2014-04-01', null, 'day', 'point', '消費税率が5%から8%へ', '17年ぶり、1997年以来の消費税率引き上げ。社会保障財源の確保が目的とされ、駆け込み需要のあと春の消費は一時的に冷え込んだ。日用品の値札が一斉に書き換わり、街には「増税前セール」の名残があった。
+
+この年の5月、ふたりは友人の写真展で初めて言葉を交わす。最初の会話は、缶コーヒーが少し高くなったという他愛のない話題だったと記録にある。', null,
           'verified', null, 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('財務省: 消費税率の引上げについて（平成26年4月）', 'https://www.mof.go.jp/tax_policy/summary/consumption/consumption_tax/index.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = 'ふたりの出来事'),
-          '2014-05-17', null, 'day', 'point', '友人の写真展で出会う', '神保町の小さなギャラリー。受付を手伝っていたKと、閉場間際に来たわたしが初めて話した日。', '共通の友人の個展の最終日。わたしは会社帰りに滑り込み、Kは受付で片付けを始めていた。缶コーヒーの値段が上がった話から始まり、気づけば搬出まで手伝っていた。連絡先を交換したのはその晩ではなく、友人を介した打ち上げの席だったという。消費税が8%になった春の、なんでもない土曜日の出来事。',
+          '2014-05-17', null, 'day', 'point', '友人の写真展で出会う', '神保町の小さなギャラリーで開かれた、共通の友人の個展の最終日。会社帰りに閉場間際に滑り込んだわたしと、受付で片付けを始めていたKが初めて話した。缶コーヒーの値段が上がった話から始まり、気づけば搬出まで手伝っていた。
+
+連絡先を交換したのはその晩ではなく、友人を介した打ち上げの席だったという。**消費税が8%になった春の、なんでもない土曜日**の出来事。', null,
           'verified', null, 'user', 1) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = 'ふたりの出来事'),
-          '2015-03-21', null, 'day', 'point', '付き合い始める', '出会いから10か月。井の頭公園の桜が咲く前の週末に、どちらからともなく約束をした。', '写真展のあとも月に一度は顔を合わせていたが、関係に名前をつけるまでに時間がかかった。三連休の初日、まだ蕾の桜並木を歩きながら、次の春も一緒に見に来ようという話になった。特別な告白の言葉はなく、帰り道にKが「じゃあ、そういうことで」と言ったのが始まりだったと、わたしの手帳には書いてある。',
+          '2015-03-21', null, 'day', 'point', '付き合い始める', '出会いから10か月。写真展のあとも月に一度は顔を合わせていたが、関係に名前をつけるまでに時間がかかった。三連休の初日、井の頭公園のまだ蕾の桜並木を歩きながら、次の春も一緒に見に来ようという話になった。
+
+特別な告白の言葉はなく、帰り道にKが「じゃあ、そういうことで」と言ったのが始まりだったと、わたしの手帳には書いてある。', null,
           'verified', null, 'user', 2) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = '時代の空気'),
-          '2016-04-14', null, 'day', 'point', '熊本地震が発生', '4月14日と16日に最大震度7を2度観測。東京でも防災意識が再び高まり、備蓄品が品薄になった。', '前震と本震という言葉が広く知られるきっかけとなった地震。関連死を含め270人以上が亡くなり、住宅被害は20万棟近くに及んだ。東日本大震災から5年、東京でも非常食や簡易トイレを買い足す人が増えた。ふたりがこの年の秋に同棲を始めたとき、最初に揃えた共有の持ち物は防災リュックだった。',
+          '2016-04-14', null, 'day', 'point', '熊本地震が発生', '4月14日と16日に最大震度7を2度観測し、前震と本震という言葉が広く知られるきっかけとなった地震。関連死を含め270人以上が亡くなり、住宅被害は20万棟近くに及んだ。
+
+東日本大震災から5年、東京でも防災意識が再び高まり、非常食や簡易トイレを買い足す人が増えて備蓄品が品薄になった。ふたりがこの年の秋に同棲を始めたとき、最初に揃えた共有の持ち物は防災リュックだった。', null,
           'verified', null, 'user', 3) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('気象庁: 平成28年（2016年）熊本地震', 'https://www.data.jma.go.jp/eqev/data/2016_04_14_kumamoto/index.html'), ('内閣府防災: 平成28年熊本地震に係る被害状況等について', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = 'ふたりの出来事'),
-          '2016-11-01', null, 'day', 'point', '三軒茶屋の1LDKで同棲を始める', 'ふたつの部屋を引き払い、築30年の1LDKへ。家賃は折半、食器は片方の実家から譲り受けた。', 'それぞれの更新時期が近かったことが背中を押した。引っ越し当日は本の段ボールが多すぎて業者に呆れられ、夜は床に座って弁当を食べた。春の熊本地震のあとだったので、最初に買い足した共有物は防災リュックと水だった。玄関に置かれたその赤いリュックは、その後の引っ越しにもずっとついてくることになる。',
+          '2016-11-01', null, 'day', 'point', '三軒茶屋の1LDKで同棲を始める', 'ふたつの部屋を引き払い、三軒茶屋の築30年の1LDKへ。それぞれの更新時期が近かったことが背中を押した。家賃は折半、食器は片方の実家から譲り受けた。引っ越し当日は本の段ボールが多すぎて業者に呆れられ、夜は床に座って弁当を食べた。
+
+春の熊本地震のあとだったので、**最初に買い足した共有物は防災リュックと水**だった。玄関に置かれたその赤いリュックは、その後の引っ越しにもずっとついてくることになる。', null,
           'verified', null, 'user', 4) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = '仕事と暮らし'),
-          '2017-06-01', null, 'month', 'point', 'わたしの残業が月80時間を超える', '新規案件が重なり、終電帰りが続いた月。体調を崩し、初めて仕事のペースについて真剣に話し合った。', '深夜のタクシー代が支給される代わりに、休日出勤が当たり前になっていた。6月末に微熱が引かず、Kに促されて受診した。翌年に働き方改革関連法が成立し、残業時間に上限が設けられるが、この時点ではまだ「忙しいのは良いこと」という空気が職場に残っていた。この経験が、のちのフリーランス転向の遠い伏線になる。',
+          '2017-06-01', null, 'month', 'point', 'わたしの残業が月80時間を超える', '新規案件が重なり、終電帰りが続いた月。深夜のタクシー代が支給される代わりに、休日出勤が当たり前になっていた。6月末に微熱が引かず、Kに促されて受診し、初めて仕事のペースについて真剣に話し合った。
+
+翌年に働き方改革関連法が成立し残業時間に上限が設けられるが、この時点ではまだ「忙しいのは良いこと」という空気が職場に残っていた。この経験が、のちのフリーランス転向の遠い伏線になる。', null,
           'verified', null, 'user', 5) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = 'ふたりの出来事'),
-          '2018-04-01', '2019-03-31', 'day', 'period', 'Kの大阪赴任による遠距離の1年', 'Kが大阪支社の立ち上げに参加。月に一度どちらかが新幹線に乗る、遠距離の12か月。', '赴任は1年限定と決まっていたが、始まる前は長く感じられた。ビデオ通話を毎晩つなぎ、互いの夕食を画面越しに見せ合うのが習慣になった。同じ年に働き方改革関連法が成立し、Kの会社でも有給取得が推奨されるようになったおかげで、月一度の往復は最後まで途切れなかった。三軒茶屋の部屋の防災リュックは、この年もわたしが一人で点検した。',
+          '2018-04-01', '2019-03-31', 'day', 'period', 'Kの大阪赴任による遠距離の1年', 'Kが大阪支社の立ち上げに参加し、月に一度どちらかが新幹線に乗る遠距離の12か月。赴任は1年限定と決まっていたが、始まる前は長く感じられた。毎晩ビデオ通話をつなぎ、互いの夕食を画面越しに見せ合うのが習慣になった。
+
+同じ年に働き方改革関連法が成立し、Kの会社でも有給取得が推奨されるようになったおかげで、月一度の往復は最後まで途切れなかった。三軒茶屋の部屋の防災リュックは、この年もわたしが一人で点検した。', null,
           'verified', null, 'user', 6) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = '時代の空気'),
-          '2018-06-29', null, 'day', 'point', '働き方改革関連法が成立', '時間外労働の罰則付き上限規制や有給休暇の取得義務化を含む法律が成立。2019年4月から順次施行。', '長時間労働の是正を柱に、大企業では2019年4月から残業の上限規制が始まった。過労死の社会問題化と、労働力人口の減少という背景がある。前年に残業で体調を崩したわたしにとって、この法律は少し遅れて届いた追い風だった。遠距離中のKが月一度の帰京を続けられたのも、有給取得を促す職場の空気の変化と無関係ではなかった。',
+          '2018-06-29', null, 'day', 'point', '働き方改革関連法が成立', '時間外労働の罰則付き上限規制や有給休暇の取得義務化を含む法律が成立。長時間労働の是正を柱に、大企業では2019年4月から残業の上限規制が始まった。背景には過労死の社会問題化と、労働力人口の減少がある。
+
+前年に残業で体調を崩したわたしにとって、この法律は**少し遅れて届いた追い風**だった。遠距離中のKが月一度の帰京を続けられたのも、有給取得を促す職場の空気の変化と無関係ではなかった。', null,
           'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('厚生労働省: 「働き方改革」の実現に向けて', 'https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000148322.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = '時代の空気'),
-          '2019-05-01', null, 'day', 'point', '元号が令和に改まる', '平成から令和へ。10連休のなか、街のカウントダウンや記帳の列がニュースになった。', '1989年以来30年ぶりの改元。憲政史上初の退位による代替わりで、事前に新元号が公表されるという珍しい経過をたどった。ふたりはこの年の秋に入籍するが、婚姻届の元号欄をどちらで書くか、という小さな会話が残っている。時代の区切りが個人の記録の書式にまで及ぶことを、静かに実感した年だった。',
+          '2019-05-01', null, 'day', 'point', '元号が令和に改まる', '平成から令和へ、1989年以来30年ぶりの改元。憲政史上初の退位による代替わりで、事前に新元号が公表されるという珍しい経過をたどった。10連休のなか、街のカウントダウンや記帳の列がニュースになった。
+
+ふたりはこの年の秋に入籍するが、婚姻届の元号欄をどちらで書くか、という小さな会話が残っている。時代の区切りが個人の記録の書式にまで及ぶことを、静かに実感した年だった。', null,
           'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('首相官邸: 新元号「令和」について（平成31年4月1日）', 'https://www.kantei.go.jp/jp/98_abe/statement/2019/0401singengou.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = 'ふたりの出来事'),
-          '2019-11-03', null, 'day', 'point', '入籍', '遠距離が明けて半年。文化の日の朝、区役所の休日窓口に婚姻届を出した。式は挙げなかった。', '改元の年の秋。婚姻届の日付欄に「令和元年」と書き、平成生まれのふたりが初めて新しい元号を自分の手で書いた日でもあった。証人はあの写真展の主催者の友人に頼んだ。夜は三軒茶屋の行きつけの定食屋で、いつも通りの夕食。式を挙げない代わりに、翌年の春に小さな旅行を計画していたが、それは実現しなかった。',
+          '2019-11-03', null, 'day', 'point', '入籍', '遠距離が明けて半年、文化の日の朝に区役所の休日窓口へ婚姻届を出した。証人はあの写真展の主催者の友人に頼み、式は挙げなかった。夜は三軒茶屋の行きつけの定食屋で、いつも通りの夕食。
+
+改元の年の秋、日付欄に「令和元年」と書き、平成生まれのふたりが**初めて新しい元号を自分の手で書いた日**でもあった。式を挙げない代わりに翌年の春に小さな旅行を計画していたが、それは実現しなかった。', null,
           'verified', null, 'user', 9) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = '時代の空気'),
-          '2020-04-01', null, 'month', 'point', '都内企業のテレワーク導入率が6割超に', '東京都の調査で、従業員30人以上の都内企業のテレワーク導入率が4月に6割を超えたとされる。', '3月時点では2割程度だった導入率が、緊急事態宣言を挟んで急上昇した。ただし調査対象や時期、「導入」の定義によって数値は大きく異なり、中小企業や現場職種では実施率が低かったとする調査もある。ふたりの在宅勤務も、Kの会社が制作業でわたしが企画職だったからこそ可能だった。数字の背後には、在宅にできなかった人々の仕事がある。',
+          '2020-04-01', null, 'month', 'point', '都内企業のテレワーク導入率が6割超に', '東京都の調査で、従業員30人以上の都内企業のテレワーク導入率が4月に6割を超えたとされる。3月時点では2割程度だった導入率が、緊急事態宣言を挟んで急上昇した。
+
+ただし調査対象や時期、「導入」の定義によって数値は大きく異なり、中小企業や現場職種では実施率が低かったとする調査もある。ふたりの在宅勤務も、Kの会社が制作業でわたしが企画職だったからこそ可能だった。数字の背後には、在宅にできなかった人々の仕事がある。', null,
           'unverified', '調査主体・対象企業規模・調査時期によりテレワーク実施率の数値は大きく異なり、単一の値として確定しにくい。', 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('東京都: テレワーク導入率調査結果（2020年4月）', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = '時代の空気'),
-          '2020-04-07', null, 'day', 'point', '新型コロナで初の緊急事態宣言', '東京など7都府県に緊急事態宣言。16日に全国へ拡大され、外出自粛と在宅勤務が一気に広がった。', '3月24日に東京五輪の延期が決まり、4月7日に改正特措法に基づく初の宣言が出された。飲食店の時短、学校の休校、通勤の消失。ふたりの部屋も翌日から在宅勤務の場になり、6畳の居間にふたつの机が並んだ。前年に計画した旅行は取りやめになったが、この宣言下の2か月が、ふたりにとって最も長く一緒に過ごした時間になる。',
+          '2020-04-07', null, 'day', 'point', '新型コロナで初の緊急事態宣言', '東京など7都府県に、改正特措法に基づく初の緊急事態宣言。16日に全国へ拡大され、飲食店の時短、学校の休校、通勤の消失と、外出自粛と在宅勤務が一気に広がった。3月24日には東京五輪の延期も決まっていた。
+
+ふたりの部屋も翌日から在宅勤務の場になり、6畳の居間にふたつの机が並んだ。前年に計画した旅行は取りやめになったが、この宣言下の2か月が、**ふたりにとって最も長く一緒に過ごした時間**になる。', null,
           'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('内閣官房: 新型コロナウイルス感染症緊急事態宣言（令和2年4月7日）', 'https://corona.go.jp/news/pdf/kinkyujitai_sengen_0407.pdf')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = '仕事と暮らし'),
-          '2020-04-08', '2020-05-25', 'day', 'period', '6畳の居間でふたり在宅勤務', '緊急事態宣言の翌日から解除まで、ひとつの部屋にふたつの机。会議の声が重なる日々。', 'Kはリビングのテーブル、わたしは寝室の窓際に折りたたみ机を置いた。互いのオンライン会議の時間を朝に共有し、声が重ならないよう調整した。買い物は週2回にまとめ、防災リュックの中身が初めて役に立った。宣言解除で出社が戻ったあとも、Kの会社は週3日の在宅を継続した。働く場所と暮らす場所の境目が、このときから曖昧になった。',
+          '2020-04-08', '2020-05-25', 'day', 'period', '6畳の居間でふたり在宅勤務', '緊急事態宣言の翌日から解除まで、ひとつの部屋にふたつの机。Kはリビングのテーブル、わたしは寝室の窓際に折りたたみ机を置き、互いのオンライン会議の時間を朝に共有して声が重ならないよう調整した。買い物は週2回にまとめ、防災リュックの中身が初めて役に立った。
+
+宣言解除で出社が戻ったあとも、Kの会社は週3日の在宅を継続した。働く場所と暮らす場所の境目が、このときから曖昧になった。', null,
           'verified', null, 'user', 12) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = '仕事と暮らし'),
-          '2021-10-01', null, 'month', 'point', 'わたしがフリーランスに', '8年勤めた会社を辞め、企画・編集の仕事を個人で受け始める。最初の取引先は元の勤め先。', '在宅勤務の1年半で、会社に行かなくても仕事が回ることを知ってしまった。2017年に体調を崩した経験と、遠距離の間に身についた自分で時間を組み立てる習慣が、決断の土台になった。収入は不安定になったが、朝の時間が自分のものになった。Kは反対も賛成もせず、開業届を出した日に少し良い米を買ってきた。',
+          '2021-10-01', null, 'month', 'point', 'わたしがフリーランスに', '8年勤めた会社を辞め、企画・編集の仕事を個人で受け始める。最初の取引先は元の勤め先。在宅勤務の1年半で、会社に行かなくても仕事が回ることを知ってしまった。
+
+2017年に体調を崩した経験と、遠距離の間に身についた自分で時間を組み立てる習慣が、決断の土台になった。収入は不安定になったが、朝の時間が自分のものになった。Kは反対も賛成もせず、開業届を出した日に少し良い米を買ってきた。', null,
           'verified', null, 'user', 13) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = '仕事と暮らし'),
-          '2022-06-01', null, 'month', 'point', '物価上昇で家計簿を始める', '食用油や小麦製品の値上げが続き、初めて共有の家計簿アプリを入れた。円安が話題になり始めた頃。', '2月のロシアによるウクライナ侵攻以降、エネルギーと食料の価格が上がり、この年の秋には円相場が一時1ドル150円台をつけた。フリーランスになって収入の波が大きくなったこともあり、ふたりの支出を可視化する必要が出てきた。家計簿を続けて分かったのは、いちばん減らせないのが本代とコーヒー代だということだった。',
+          '2022-06-01', null, 'month', 'point', '物価上昇で家計簿を始める', '食用油や小麦製品の値上げが続き、初めて共有の家計簿アプリを入れた。2月のロシアによるウクライナ侵攻以降、エネルギーと食料の価格が上がり、この年の秋には円相場が一時1ドル150円台をつけた。
+
+フリーランスになって収入の波が大きくなったこともあり、ふたりの支出を可視化する必要が出てきた。家計簿を続けて分かったのは、いちばん減らせないのが本代とコーヒー代だということだった。', null,
           'verified', null, 'user', 14) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = '時代の空気'),
-          '2023-01-01', null, 'year', 'point', '東京23区の新築マンション平均価格が1億円超', '民間調査で2023年の23区新築分譲マンション平均価格が初めて1億円を上回ったとされる。', '建築費の高騰と用地不足、都心回帰、海外投資家の需要などが背景に挙げられる。ただし平均価格は大型高額物件の供給に引きずられやすく、調査機関や集計方法によって数値は異なる。ふたりがこの年に8か月かけて家を探し、結局は郊外寄りの中古物件を選んだ背景には、この価格帯の変化があった。',
+          '2023-01-01', null, 'year', 'point', '東京23区の新築マンション平均価格が1億円超', '民間調査で、2023年の東京23区新築分譲マンション平均価格が初めて1億円を上回ったとされる。建築費の高騰と用地不足、都心回帰、海外投資家の需要などが背景に挙げられる。
+
+ただし平均価格は大型高額物件の供給に引きずられやすく、調査機関や集計方法によって数値は異なる。ふたりがこの年に8か月かけて家を探し、結局は郊外寄りの中古物件を選んだ背景には、この価格帯の変化があった。', null,
           'disputed', '平均価格の水準は調査機関（不動産経済研究所など）や集計対象により差があり、「初の1億円超」の解釈も集計方法に依存する。', 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('不動産経済研究所: 首都圏新築分譲マンション市場動向 2023年（年間のまとめ）', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = 'ふたりの出来事'),
-          '2023-04-01', '2023-11-30', 'day', 'period', '家探しの8か月', '三軒茶屋の更新を機に、購入か賃貸かで迷い続けた春から秋。内見は20件を超え、週末はほぼ埋まった。', '都心の新築マンション価格が1億円を超えたと報じられた年で、最初から新築は選択肢になかった。中古の団地、郊外の戸建て、賃貸のまま住み替える案。週末ごとに内見を重ね、11月に東京の西寄りにある築25年のマンションを買うことに決めた。決め手は、Kが「ここなら本棚を壁一面にできる」と言ったことだった。',
+          '2023-04-01', '2023-11-30', 'day', 'period', '家探しの8か月', '三軒茶屋の更新を機に、購入か賃貸かで迷い続けた春から秋。中古の団地、郊外の戸建て、賃貸のまま住み替える案。週末ごとに内見を重ねて20件を超え、週末はほぼ埋まった。
+
+都心の新築マンション価格が1億円を超えたと報じられた年で、最初から新築は選択肢になかった。11月に東京の西寄りにある築25年のマンションを買うことに決めた。決め手は、Kが「ここなら本棚を壁一面にできる」と言ったことだった。', null,
           'verified', null, 'user', 16) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = '仕事と暮らし'),
-          '2024-03-01', null, 'month', 'point', '住宅ローンを固定金利で契約', '日銀のマイナス金利解除と同じ月に契約。迷った末に全期間固定を選び、家計簿の項目がひとつ増えた。', 'フリーランスのわたしは審査に時間がかかり、契約はKの名義が中心になった。金利の先行きが読めない中、返済額が変わらない安心を優先した。2022年から続けていた家計簿が、返済計画を立てるうえで思いがけず役に立った。10年前に缶コーヒーの値段の話をしていたふたりが、金利の話をしている。それが可笑しくもあり、少し感慨深くもあった。',
+          '2024-03-01', null, 'month', 'point', '住宅ローンを固定金利で契約', '日銀のマイナス金利解除と同じ月に住宅ローンを契約。金利の先行きが読めない中、迷った末に返済額が変わらない安心を優先して全期間固定を選んだ。フリーランスのわたしは審査に時間がかかり、契約はKの名義が中心になった。
+
+2022年から続けていた家計簿が返済計画を立てるうえで思いがけず役に立ち、家計簿の項目がひとつ増えた。10年前に缶コーヒーの値段の話をしていたふたりが、金利の話をしている。それが可笑しくもあり、少し感慨深くもあった。', null,
           'verified', null, 'user', 17) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = '時代の空気'),
-          '2024-03-19', null, 'day', 'point', '日銀がマイナス金利政策を解除', '2016年から続いたマイナス金利を解除し、17年ぶりの利上げ。住宅ローン金利の先行きが話題になった。', '賃金と物価の好循環が見通せるとして、大規模金融緩和の枠組みが転換された。長期金利の上昇観測から、住宅ローンを固定にするか変動にするかという議論が身近な話題になった。前年秋に購入を決めたふたりのローン契約が同じ月に重なり、決断の重さを実感することになる。',
+          '2024-03-19', null, 'day', 'point', '日銀がマイナス金利政策を解除', '2016年から続いたマイナス金利政策を解除し、17年ぶりの利上げ。賃金と物価の好循環が見通せるとして、大規模金融緩和の枠組みが転換された。
+
+長期金利の上昇観測から、住宅ローンを固定にするか変動にするかという議論が身近な話題になった。前年秋に購入を決めたふたりのローン契約が同じ月に重なり、決断の重さを実感することになる。', null,
           'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('日本銀行: 金融政策の枠組みの見直しについて（2024年3月19日）', 'https://www.boj.or.jp/mopo/mpmdeci/mpr_2024/k240319a.pdf')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = 'ふたりの出来事'),
-          '2024-05-17', null, 'day', 'point', '出会いから10年、神保町へ', 'あの写真展のギャラリーはもうないが、同じ通りを歩き、同じ喫茶店で缶コーヒーではなく珈琲を飲んだ。', '新居への引っ越しを翌月に控えた土曜日。ギャラリーは別の店に変わっていたが、通りの古書店は変わらずにあった。この10年で消費税は2度上がり、元号が変わり、感染症で街が静まり、金利が動いた。ふたりの記録は、その大きな流れの脇に置かれた小さな注釈のようなものだ。玄関の赤い防災リュックは、次の家にも持っていく。',
+          '2024-05-17', null, 'day', 'point', '出会いから10年、神保町へ', '新居への引っ越しを翌月に控えた土曜日、出会いから10年の日に神保町へ。あの写真展のギャラリーは別の店に変わっていたが、通りの古書店は変わらずにあり、同じ喫茶店で缶コーヒーではなく珈琲を飲んだ。
+
+この10年で消費税は2度上がり、元号が変わり、感染症で街が静まり、金利が動いた。ふたりの記録は、**大きな流れの脇に置かれた小さな注釈**のようなものだ。玄関の赤い防災リュックは、次の家にも持っていく。', null,
           'verified', null, 'user', 19) returning id)
 select 1 from ev;
 
@@ -1592,121 +2072,161 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '理論'),
-          '1915-11-25', null, 'day', 'point', 'アインシュタイン、一般相対性理論の場の方程式を発表', 'プロイセン科学アカデミーで重力を時空の曲がりとして記述する場の方程式を提出。宇宙論と天体物理の基礎となる。', '10年に及ぶ試行の末、11月中に4回の講演で理論を完成させ、水星の近日点移動を説明した。ほぼ同時期にヒルベルトも同等の方程式に到達しており、先取権をめぐる議論が長く続いた。理論の予言する光の湾曲は4年後の日食観測で検証され、膨張宇宙やブラックホールといった以後の理論展開はすべてこの方程式の解として現れる。',
+          '1915-11-25', null, 'day', 'point', 'アインシュタイン、一般相対性理論の場の方程式を発表', 'アインシュタインがプロイセン科学アカデミーで、重力を時空の曲がりとして記述する場の方程式を提出。10年に及ぶ試行の末、11月中に4回の講演で理論を完成させ、水星の近日点移動を説明した。
+
+ほぼ同時期にヒルベルトも同等の方程式に到達しており、先取権をめぐる議論が長く続いた。理論の予言する光の湾曲は4年後の日食観測で検証され、膨張宇宙やブラックホールといった以後の理論展開はすべてこの方程式の解として現れる。', null,
           'disputed', '場の方程式の最終形をヒルベルトが先に得ていたかどうかについて、校正刷りの証拠をめぐり科学史家の見解が分かれる。', 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Einstein, A. (1915) Die Feldgleichungen der Gravitation. Sitzungsberichte der Königlich Preußischen Akademie der Wissenschaften', null), ('Corry, L., Renn, J. & Stachel, J. (1997) Belated Decision in the Hilbert-Einstein Priority Dispute. Science', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '観測と装置'),
-          '1919-05-29', null, 'day', 'point', 'エディントンらが日食観測で光の湾曲を確認', 'プリンシペ島とブラジル・ソブラルの皆既日食観測で、太陽近くの星の位置ずれが一般相対論の予測と一致。', '第一次大戦終結の翌年、英国の遠征隊がドイツの物理学者の理論を検証した。同年11月6日の王立協会での発表を英タイムズ紙が「科学の革命」と報じ、アインシュタインは一夜にして世界的な有名人となった。観測精度と写真乾板の取捨選択には後年疑問も出されたが、再解析では結論が支持されている。理論と観測と社会的反響が半年のうちに連鎖した典型例。',
+          '1919-05-29', null, 'day', 'point', 'エディントンらが日食観測で光の湾曲を確認', '第一次大戦終結の翌年、英国の遠征隊がプリンシペ島とブラジル・ソブラルで皆既日食を観測し、太陽近くの星の位置ずれが一般相対論の予測と一致することを確認した。
+
+同年11月6日の王立協会での発表を英タイムズ紙が「科学の革命」と報じ、アインシュタインは一夜にして世界的な有名人となった。観測精度と写真乾板の取捨選択には後年疑問も出されたが、再解析では結論が支持されている。**理論と観測と社会的反響が半年のうちに連鎖した**典型例である。', null,
           'verified', null, 'user', 1) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Dyson, F. W., Eddington, A. S. & Davidson, C. (1920) A Determination of the Deflection of Light by the Sun''s Gravitational Field. Philosophical Transactions of the Royal Society A', 'https://doi.org/10.1098/rsta.1920.0009')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '理論'),
-          '1927-01-01', null, 'year', 'point', 'ルメートル、膨張宇宙モデルを提唱', 'ベルギーの司祭で物理学者のルメートルが、一般相対論の解として膨張する宇宙を導き、後退速度と距離の比例関係を予言。', '1922年のフリードマンの数学的解に続き、ルメートルは観測データと結びつけて宇宙の膨張率を見積もった。フランス語の地方誌に掲載されたため当初は注目されず、2年後のハッブルの観測が広く知られることになる。2018年、IAUは「ハッブルの法則」を「ハッブル・ルメートルの法則」と呼ぶことを推奨し、先取権の再評価が行われた。1931年には「原始的原子」の着想でビッグバン理論の原型を示した。',
+          '1927-01-01', null, 'year', 'point', 'ルメートル、膨張宇宙モデルを提唱', 'ベルギーの司祭で物理学者のルメートルが、一般相対論の解として膨張する宇宙を導き、後退速度と距離の比例関係を予言。1922年のフリードマンの数学的解に続き、観測データと結びつけて宇宙の膨張率を見積もった。
+
+フランス語の地方誌に掲載されたため当初は注目されず、2年後のハッブルの観測が広く知られることになる。2018年にIAUが「ハッブル・ルメートルの法則」の呼称を推奨して先取権が再評価された。1931年には「原始的原子」の着想でビッグバン理論の原型も示している。', null,
           'verified', null, 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Lemaître, G. (1927) Un Univers homogène de masse constante et de rayon croissant. Annales de la Société Scientifique de Bruxelles', null), ('IAU (2018) Resolution B4 on a suggested renaming of the Hubble Law', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '観測と装置'),
-          '1929-03-15', null, 'day', 'point', 'ハッブル、銀河の後退速度と距離の比例関係を発表', 'ウィルソン山天文台の100インチ望遠鏡で測った銀河の距離と赤方偏移から、遠い銀河ほど速く遠ざかることを示す。', '1924年にアンドロメダが天の川の外の銀河だと示したハッブルは、24個の銀河のデータで比例関係を導いた。当時の距離尺度の誤りから比例定数は現在の約7倍と大きかったが、宇宙が膨張しているという理論レイヤーの予言に観測の裏付けを与え、静的宇宙を信じていたアインシュタインも1931年に宇宙項を撤回した。',
+          '1929-03-15', null, 'day', 'point', 'ハッブル、銀河の後退速度と距離の比例関係を発表', 'ウィルソン山天文台の100インチ望遠鏡で測った24個の銀河の距離と赤方偏移から、ハッブルが遠い銀河ほど速く遠ざかるという比例関係を導いた。1924年にアンドロメダが天の川の外の銀河だと示した観測に続く成果である。
+
+当時の距離尺度の誤りから比例定数は現在の約7倍と大きかったが、**膨張宇宙という理論レイヤーの予言に観測の裏付けを与え**、静的宇宙を信じていたアインシュタインも1931年に宇宙項を撤回した。', null,
           'verified', null, 'user', 3) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Hubble, E. (1929) A relation between distance and radial velocity among extra-galactic nebulae. PNAS', 'https://doi.org/10.1073/pnas.15.3.168')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '観測と装置'),
-          '1933-01-01', null, 'year', 'point', 'ツビッキー、かみのけ座銀河団に「見えない質量」を指摘', '銀河団内の銀河の速度分散から、光る物質だけでは重力的に束縛できないほど大きな質量が必要と推定。', 'ツビッキーはビリアル定理を用いて銀河団の質量を見積もり、光度から推定される質量を大幅に上回るとして「暗黒物質（dunkle Materie）」の語を使った。当時のハッブル定数が過大だったため推定倍率は現在より大きく、結論は数十年間ほとんど顧みられなかった。1970年代のルービンらの銀河回転曲線の観測で問題が再浮上し、暗黒物質は現代宇宙論の中心課題となる。',
+          '1933-01-01', null, 'year', 'point', 'ツビッキー、かみのけ座銀河団に「見えない質量」を指摘', 'ツビッキーがビリアル定理を用いてかみのけ座銀河団の質量を見積もり、銀河の速度分散から、光度から推定される質量を大幅に上回る「見えない質量」が必要だと指摘。「暗黒物質（dunkle Materie）」の語を使った。
+
+当時のハッブル定数が過大だったため推定倍率は現在より大きく、結論は数十年間ほとんど顧みられなかった。1970年代のルービンらの銀河回転曲線の観測で問題が再浮上し、暗黒物質は現代宇宙論の中心課題となる。', null,
           'unverified', 'ツビッキーが示した質量比の数値は当時の距離尺度に依存し、現在の値とは大きく異なる。「暗黒物質発見」と位置づけるかどうかも評価が分かれる。', 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Zwicky, F. (1933) Die Rotverschiebung von extragalaktischen Nebeln. Helvetica Physica Acta', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '人と社会'),
-          '1935-01-11', null, 'day', 'point', 'エディントン、王立天文学会でチャンドラセカールの理論を公然と否定', '白色矮星の質量に上限があるとする24歳のチャンドラセカールの発表に対し、権威エディントンがその場で酷評。', 'チャンドラセカールは相対論的量子統計を白色矮星に適用し、太陽質量の約1.4倍を超えると重力を支えられないと示した。エディントンの否定は若い研究者の評価に長く影を落とし、彼は研究分野を変えた。この上限質量は後に中性子星やブラックホールの形成理解の基礎となり、1983年のノーベル賞で報われた。理論の正しさと学界の受容が数十年ずれた事例として語り継がれる。',
+          '1935-01-11', null, 'day', 'point', 'エディントン、王立天文学会でチャンドラセカールの理論を公然と否定', '白色矮星の質量に上限があるとする24歳のチャンドラセカールの王立天文学会での発表に対し、権威エディントンがその場で酷評した。チャンドラセカールは相対論的量子統計を白色矮星に適用し、太陽質量の約1.4倍を超えると重力を支えられないと示していた。
+
+この否定は若い研究者の評価に長く影を落とし、彼は研究分野を変えた。上限質量は後に中性子星やブラックホールの形成理解の基礎となり、1983年のノーベル賞で報われる。**理論の正しさと学界の受容が数十年ずれた**事例として語り継がれる。', null,
           'verified', null, 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Chandrasekhar, S. (1935) The highly collapsed configurations of a stellar mass (Second paper). Monthly Notices of the Royal Astronomical Society', null), ('The Observatory, Vol. 58 (1935) Report of the RAS meeting of 1935 January 11', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '理論'),
-          '1948-04-01', null, 'day', 'point', 'アルファーとガモフ、高温初期宇宙での元素合成を提唱', '「αβγ論文」として知られる短報で、膨張する高温高密度の初期宇宙で軽元素が作られたと論じる。', 'ガモフが冗談でベーテを著者に加えたことで知られるこの論文は、ビッグバン元素合成の出発点となった。同年アルファーとハーマンは、初期宇宙の名残の放射が現在約5Kの背景放射として残っていると予言したが、観測可能とは考えられず忘れられた。1965年の宇宙マイクロ波背景放射の偶然の発見が、17年越しでこの予言を裏付けることになる。',
+          '1948-04-01', null, 'day', 'point', 'アルファーとガモフ、高温初期宇宙での元素合成を提唱', '「αβγ論文」として知られる短報でアルファーとガモフが、膨張する高温高密度の初期宇宙で軽元素が作られたと論じ、ビッグバン元素合成の出発点となった。ガモフが冗談でベーテを著者に加えたことでも知られる。
+
+同年、アルファーとハーマンは初期宇宙の名残の放射が現在約5Kの背景放射として残っていると予言したが、観測可能とは考えられず忘れられた。1965年の宇宙マイクロ波背景放射の偶然の発見が、17年越しでこの予言を裏付けることになる。', null,
           'verified', null, 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Alpher, R. A., Bethe, H. & Gamow, G. (1948) The Origin of Chemical Elements. Physical Review', 'https://doi.org/10.1103/PhysRev.73.803')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '観測と装置'),
-          '1965-07-01', null, 'month', 'point', 'ペンジアスとウィルソン、宇宙マイクロ波背景放射を発見', 'ベル研究所のホーンアンテナで除去できない雑音が、あらゆる方向から届く約3Kの宇宙背景放射だと判明。', '衛星通信用アンテナの雑音源を探していた2人は、鳩の糞まで疑った末に等方的な放射を確認した。プリンストンのディッケらはちょうど同じ放射を探す観測を準備中で、両グループの論文が同じ号に並んだ。1948年の予言を裏付けるビッグバン理論の決定的証拠となり、定常宇宙論は退場した。2人は1978年にノーベル物理学賞を受賞している。',
+          '1965-07-01', null, 'month', 'point', 'ペンジアスとウィルソン、宇宙マイクロ波背景放射を発見', 'ベル研究所のペンジアスとウィルソンが、衛星通信用ホーンアンテナの除去できない雑音の源を鳩の糞まで疑って探した末、あらゆる方向から届く約3Kの等方的な宇宙背景放射を確認した。
+
+プリンストンのディッケらはちょうど同じ放射を探す観測を準備中で、両グループの論文が同じ号に並んだ。**忘れられていた1948年の予言を17年越しで裏付ける**ビッグバン理論の決定的証拠となり、定常宇宙論は退場した。2人は1978年にノーベル物理学賞を受賞している。', null,
           'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Penzias, A. A. & Wilson, R. W. (1965) A Measurement of Excess Antenna Temperature at 4080 Mc/s. The Astrophysical Journal', 'https://doi.org/10.1086/148307'), ('The Nobel Prize in Physics 1978', 'https://www.nobelprize.org/prizes/physics/1978/summary/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '観測と装置'),
-          '1967-11-28', null, 'day', 'point', 'ジョスリン・ベル、初のパルサーを検出', 'ケンブリッジの大学院生が電波観測の記録紙に規則正しいパルスを見つけ、後に高速回転する中性子星と解釈される。', '1.337秒周期の信号は当初「LGM-1（小さな緑の人）」と冗談交じりに呼ばれた。パルサーの発見により、1930年代に理論的に予想された中性子星の実在が確かめられ、極限状態の物理を試す天体が手に入った。1974年のノーベル物理学賞は指導教官ヒューイッシュに贈られ、発見者のベルが対象外だったことは科学界での貢献の帰属をめぐる議論を呼んだ。',
+          '1967-11-28', null, 'day', 'point', 'ジョスリン・ベル、初のパルサーを検出', 'ケンブリッジの大学院生ジョスリン・ベルが、電波観測の記録紙に1.337秒周期の規則正しいパルスを見つけた。信号は当初「LGM-1（小さな緑の人）」と冗談交じりに呼ばれ、後に高速回転する中性子星と解釈される。
+
+この発見により1930年代に理論的に予想された中性子星の実在が確かめられ、極限状態の物理を試す天体が手に入った。1974年のノーベル物理学賞は指導教官ヒューイッシュに贈られ、発見者のベルが対象外だったことは科学界での貢献の帰属をめぐる議論を呼んだ。', null,
           'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Hewish, A., Bell, S. J., Pilkington, J. D. H., Scott, P. F. & Collins, R. A. (1968) Observation of a Rapidly Pulsating Radio Source. Nature', 'https://doi.org/10.1038/217709a0')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '観測と装置'),
-          '1970-02-01', null, 'month', 'point', 'ルービンとフォード、アンドロメダ銀河の平坦な回転曲線を報告', '銀河外縁部の星が予想より速く回っていることを示し、見えない質量が銀河を包む可能性を観測から提起。', '光る物質だけなら外側ほど回転速度は落ちるはずだが、観測は速度がほぼ一定に保たれることを示した。1970年代末までに多数の渦巻銀河で同じ傾向が確かめられ、1933年のツビッキーの指摘が銀河スケールでも成り立つことになった。暗黒物質の存在は以後の宇宙論の前提となり、その正体は2020年代でも未解明のままである。',
+          '1970-02-01', null, 'month', 'point', 'ルービンとフォード、アンドロメダ銀河の平坦な回転曲線を報告', 'ルービンとフォードがアンドロメダ銀河の分光観測から、外縁部の星が予想より速く回り、回転速度がほぼ一定に保たれることを示した。光る物質だけなら外側ほど速度は落ちるはずで、見えない質量が銀河を包む可能性を観測から提起した。
+
+1970年代末までに多数の渦巻銀河で同じ傾向が確かめられ、1933年のツビッキーの指摘が銀河スケールでも成り立つことになった。暗黒物質の存在は以後の宇宙論の前提となり、その正体は2020年代でも未解明のままである。', null,
           'verified', null, 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Rubin, V. C. & Ford, W. K. Jr. (1970) Rotation of the Andromeda Nebula from a Spectroscopic Survey of Emission Regions. The Astrophysical Journal', 'https://doi.org/10.1086/150317')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '理論'),
-          '1974-03-01', null, 'day', 'point', 'ホーキング、ブラックホールが放射して蒸発すると予言', '量子効果によりブラックホールが熱放射を出し、質量を失って蒸発しうることをNature誌の短報で示す。', '一般相対論と量子論を組み合わせた計算で、ブラックホールに温度とエントロピーがあることを示した。1972年のベッケンシュタインの着想を理論的に裏付け、量子重力と情報パラドックスという長い議論を生んだ。放射は極めて微弱で観測はされていないが、1970年代の理論の飛躍は1988年の著書「ホーキング、宇宙を語る」を通じて社会に広く届き、宇宙物理学の大衆化を象徴した。',
+          '1974-03-01', null, 'day', 'point', 'ホーキング、ブラックホールが放射して蒸発すると予言', 'ホーキングが一般相対論と量子論を組み合わせた計算により、ブラックホールが量子効果で熱放射を出して質量を失い蒸発しうること、温度とエントロピーを持つことをNature誌の短報で示した。
+
+1972年のベッケンシュタインの着想を理論的に裏付け、量子重力と情報パラドックスという長い議論を生んだ。放射は極めて微弱で観測はされていないが、この理論の飛躍は1988年の著書「ホーキング、宇宙を語る」を通じて社会に広く届き、宇宙物理学の大衆化を象徴した。', null,
           'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Hawking, S. W. (1974) Black hole explosions? Nature', 'https://doi.org/10.1038/248030a0')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '理論'),
-          '1981-01-15', null, 'day', 'point', 'グース、インフレーション宇宙論を発表', '初期宇宙が指数関数的に急膨張したとするモデルを提唱し、地平線問題と平坦性問題を同時に解決。', '素粒子論の相転移から着想されたインフレーションは、宇宙の一様性と平坦さを説明し、量子ゆらぎが銀河の種になるという予測を生んだ。その予測は1992年のCOBE、2003年以降のWMAP、プランク衛星の観測で確かめられていく。同時期に佐藤勝彦、スタロビンスキー、リンデらも類似の考えを独立に提案しており、着想の先取権は単一には帰せない。',
+          '1981-01-15', null, 'day', 'point', 'グース、インフレーション宇宙論を発表', 'グースが、初期宇宙が指数関数的に急膨張したとするインフレーション宇宙論を発表し、地平線問題と平坦性問題を同時に解決。素粒子論の相転移から着想され、宇宙の一様性と平坦さを説明し、量子ゆらぎが銀河の種になるという予測を生んだ。
+
+その予測は1992年のCOBE、2003年以降のWMAP、プランク衛星の観測で確かめられていく。同時期に佐藤勝彦、スタロビンスキー、リンデらも類似の考えを独立に提案しており、着想の先取権は単一には帰せない。', null,
           'disputed', '1979〜81年に佐藤勝彦、スタロビンスキー、カザナス、リンデらが独立に類似モデルを発表しており、誰を提唱者とするかは文献により異なる。', 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Guth, A. H. (1981) Inflationary universe: A possible solution to the horizon and flatness problems. Physical Review D', 'https://doi.org/10.1103/PhysRevD.23.347'), ('Sato, K. (1981) First-order phase transition of a vacuum and the expansion of the Universe. Monthly Notices of the Royal Astronomical Society', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '観測と装置'),
-          '1990-04-24', '1993-12-13', 'day', 'period', 'ハッブル宇宙望遠鏡、打ち上げから光学系修理まで', 'スペースシャトルで打ち上げられたが主鏡の研磨誤差が判明。1993年の修理ミッションで本来の性能を取り戻す。', '打ち上げ直後に像がぼやける「球面収差」が見つかり、巨額計画への批判が噴出した。1993年12月のエンデバー号による補正光学系の取り付けで視力を回復し、以後、深宇宙撮像、宇宙年齢の決定、加速膨張の発見など数々の成果を生む。装置の失敗と回復が社会の科学予算への視線を左右した例であり、次世代望遠鏡JWSTの慎重な開発姿勢にも影響した。',
+          '1990-04-24', '1993-12-13', 'day', 'period', 'ハッブル宇宙望遠鏡、打ち上げから光学系修理まで', 'スペースシャトルで打ち上げられたハッブル宇宙望遠鏡に、直後から像がぼやける主鏡の研磨誤差「球面収差」が見つかり、巨額計画への批判が噴出。1993年12月のエンデバー号による補正光学系の取り付けで本来の性能を取り戻した。
+
+以後、深宇宙撮像、宇宙年齢の決定、加速膨張の発見など数々の成果を生む。装置の失敗と回復が社会の科学予算への視線を左右した例であり、次世代望遠鏡JWSTの慎重な開発姿勢にも影響した。', null,
           'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('NASA: Hubble Space Telescope', 'https://science.nasa.gov/mission/hubble/'), ('NASA: STS-61 Mission Archives (First Hubble Servicing Mission)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '観測と装置'),
-          '1998-01-01', null, 'year', 'point', '遠方超新星の観測で宇宙の加速膨張を発見', 'リースらとパールマッターらの2チームがIa型超新星の距離測定から、宇宙膨張が減速でなく加速していると報告。', '重力で膨張が減速するはずという理論レイヤーの前提を覆し、アインシュタインが撤回した宇宙項に相当する「ダークエネルギー」の存在を示唆した。ハッブル宇宙望遠鏡の追観測が精度を支えた。宇宙の組成は通常物質約5%、暗黒物質約27%、ダークエネルギー約68%という現代の描像がここから固まり、3人は2011年にノーベル物理学賞を受賞した。',
+          '1998-01-01', null, 'year', 'point', '遠方超新星の観測で宇宙の加速膨張を発見', 'リースらとパールマッターらの2チームが、Ia型超新星の距離測定から宇宙膨張が減速でなく加速していると報告。重力で膨張が減速するはずという理論レイヤーの前提を覆し、アインシュタインが撤回した宇宙項に相当する「ダークエネルギー」の存在を示唆した。
+
+ハッブル宇宙望遠鏡の追観測が精度を支えた。宇宙の組成は通常物質約5%、暗黒物質約27%、ダークエネルギー約68%という現代の描像がここから固まり、3人は2011年にノーベル物理学賞を受賞した。', null,
           'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Riess, A. G. et al. (1998) Observational Evidence from Supernovae for an Accelerating Universe and a Cosmological Constant. The Astronomical Journal', 'https://doi.org/10.1086/300499'), ('Perlmutter, S. et al. (1999) Measurements of Ω and Λ from 42 High-Redshift Supernovae. The Astrophysical Journal', 'https://doi.org/10.1086/307221')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '人と社会'),
-          '2014-03-17', '2015-01-30', 'day', 'period', 'BICEP2「原始重力波の痕跡」発表から撤回まで', '南極の望遠鏡がインフレーションの証拠となる偏光パターンを検出したと発表し話題となるが、銀河系の塵の影響と判明。', '記者会見と動画で「ノーベル賞級」と報じられ、インフレーション理論の直接証拠として大きく取り上げられた。しかしプランク衛星との共同解析で、信号の大部分は銀河系内の塵によるものと結論され、2015年1月に主張は事実上撤回された。査読前の発表と科学報道のあり方が問われる一方、誤りが公開の場で修正される科学の自己修正機能を示した事例でもある。',
+          '2014-03-17', '2015-01-30', 'day', 'period', 'BICEP2「原始重力波の痕跡」発表から撤回まで', '南極の望遠鏡BICEP2がインフレーションの証拠となる原始重力波起源の偏光パターンを検出したと発表。記者会見と動画で「ノーベル賞級」と報じられ、理論の直接証拠として大きく取り上げられた。
+
+しかしプランク衛星との共同解析で信号の大部分は銀河系内の塵によるものと結論され、2015年1月に主張は事実上撤回された。査読前の発表と科学報道のあり方が問われる一方、誤りが公開の場で修正される科学の自己修正機能を示した事例でもある。', null,
           'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('BICEP2 Collaboration (2014) Detection of B-Mode Polarization at Degree Angular Scales by BICEP2. Physical Review Letters', 'https://doi.org/10.1103/PhysRevLett.112.241101'), ('BICEP2/Keck and Planck Collaborations (2015) Joint Analysis of BICEP2/Keck Array and Planck Data. Physical Review Letters', 'https://doi.org/10.1103/PhysRevLett.114.101301')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '観測と装置'),
-          '2015-09-14', null, 'day', 'point', 'LIGO、重力波を初めて直接検出', '改良後の観測開始直後、約13億光年先のブラックホール連星合体からの重力波GW150914を2台の検出器が同時に捉える。', '一般相対論が1916年に予言してからほぼ100年後の直接検出で、2016年2月11日に公表された。太陽の約36倍と29倍のブラックホールが合体し、約3太陽質量分のエネルギーが重力波として放出されたと解析された。2017年8月には中性子星合体GW170817が電磁波でも同時観測され、マルチメッセンジャー天文学が始まった。ワイス、バリッシュ、ソーンは2017年にノーベル物理学賞を受賞している。',
+          '2015-09-14', null, 'day', 'point', 'LIGO、重力波を初めて直接検出', '改良後の観測開始直後、約13億光年先のブラックホール連星合体からの重力波GW150914を2台の検出器が同時に捉え、2016年2月11日に公表された。太陽の約36倍と29倍のブラックホールが合体し、約3太陽質量分のエネルギーが重力波として放出されたと解析された。
+
+**一般相対論が1916年に予言してからほぼ100年後の直接検出**である。2017年8月には中性子星合体GW170817が電磁波でも同時観測されてマルチメッセンジャー天文学が始まり、ワイス、バリッシュ、ソーンは2017年にノーベル物理学賞を受賞した。', null,
           'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Abbott, B. P. et al. (LIGO Scientific Collaboration and Virgo Collaboration) (2016) Observation of Gravitational Waves from a Binary Black Hole Merger. Physical Review Letters', 'https://doi.org/10.1103/PhysRevLett.116.061102'), ('The Nobel Prize in Physics 2017', 'https://www.nobelprize.org/prizes/physics/2017/summary/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '理論'),
-          '2019-01-01', null, 'year', 'point', '「ハッブル定数の不一致」が統計的に有意と報告される', '近傍宇宙の距離はしごによる測定値と、宇宙背景放射から標準モデルで導く値のずれが約4σ超に達し、新物理の可能性が議論に。', 'リースらのセファイド変光星と超新星による測定は毎秒毎メガパーセクあたり約74km、プランク衛星の背景放射に標準宇宙モデルを当てはめた値は約67kmで、誤差を超えて食い違う。測定の系統誤差か、暗黒エネルギーの性質や初期宇宙の物理に見直しが必要かは決着していない。JWSTによる距離尺度の再検証が2020年代の焦点となっている。',
+          '2019-01-01', null, 'year', 'point', '「ハッブル定数の不一致」が統計的に有意と報告される', '近傍宇宙の距離はしごによる測定値と、宇宙背景放射から標準モデルで導く値のずれが約4σ超に達したと報告された。リースらのセファイド変光星と超新星による測定は毎秒毎メガパーセクあたり約74km、プランク衛星の背景放射に標準宇宙モデルを当てはめた値は約67kmで、誤差を超えて食い違う。
+
+原因が測定の系統誤差か、暗黒エネルギーの性質や初期宇宙の物理の見直しを迫る新物理かは決着していない。JWSTによる距離尺度の再検証が2020年代の焦点となっている。', null,
           'disputed', '不一致の原因が未知の系統誤差か標準宇宙モデルの不備かについて研究者間で見解が分かれ、独立した距離測定法ごとに値も異なる。', 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Riess, A. G. et al. (2019) Large Magellanic Cloud Cepheid Standards Provide a 1% Foundation for the Determination of the Hubble Constant and Stronger Evidence for Physics beyond ΛCDM. The Astrophysical Journal', null), ('Planck Collaboration (2020) Planck 2018 results. VI. Cosmological parameters. Astronomy & Astrophysics', 'https://doi.org/10.1051/0004-6361/201833910')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '人と社会'),
-          '2020-10-06', null, 'day', 'point', 'ペンローズ、ゲンツェル、ゲズにノーベル物理学賞', 'ブラックホール形成が一般相対論の帰結であることの証明と、天の川銀河中心の超大質量天体の発見が評価される。', 'ペンローズは1965年に特異点定理でブラックホールの形成が理論の必然だと示し、ゲンツェルとゲズは1990年代からの星の軌道追跡で銀河中心に太陽の約400万倍の質量を突き止めた。前年2019年4月にはイベント・ホライズン・テレスコープがM87銀河中心のブラックホールの影を初めて撮像しており、理論、観測、社会的評価が105年の時を経て一点に集まった。',
+          '2020-10-06', null, 'day', 'point', 'ペンローズ、ゲンツェル、ゲズにノーベル物理学賞', 'ブラックホール形成が一般相対論の帰結であることの証明と、天の川銀河中心の超大質量天体の発見が評価され、ペンローズ、ゲンツェル、ゲズにノーベル物理学賞。ペンローズは1965年に特異点定理で形成の必然性を示し、ゲンツェルとゲズは1990年代からの星の軌道追跡で銀河中心に太陽の約400万倍の質量を突き止めた。
+
+前年2019年4月にはイベント・ホライズン・テレスコープがM87銀河中心のブラックホールの影を初めて撮像しており、**理論、観測、社会的評価が105年の時を経て一点に集まった**。', null,
           'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('The Nobel Prize in Physics 2020', 'https://www.nobelprize.org/prizes/physics/2020/summary/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '観測と装置'),
-          '2021-12-25', null, 'day', 'point', 'ジェイムズ・ウェッブ宇宙望遠鏡を打ち上げ', '口径6.5mの赤外線宇宙望遠鏡が仏領ギアナからアリアン5で打ち上げられ、2022年7月に最初の科学画像を公開。', '1996年の構想から25年、度重なる延期と予算超過を経て、総額約100億ドルの計画が実現した。太陽・地球のラグランジュ点L2で赤外線観測を行い、最初期の銀河、系外惑星大気、星形成領域を高感度で捉える。ハッブルの後継として距離尺度の再検証にも投入され、2019年の「ハッブル定数の不一致」の解決も期待される。',
+          '2021-12-25', null, 'day', 'point', 'ジェイムズ・ウェッブ宇宙望遠鏡を打ち上げ', '口径6.5mの赤外線宇宙望遠鏡ジェイムズ・ウェッブが仏領ギアナからアリアン5で打ち上げられた。1996年の構想から25年、度重なる延期と予算超過を経て総額約100億ドルの計画が実現し、2022年7月に最初の科学画像が公開された。
+
+太陽・地球のラグランジュ点L2で赤外線観測を行い、最初期の銀河、系外惑星大気、星形成領域を高感度で捉える。ハッブルの後継として距離尺度の再検証にも投入され、2019年の「ハッブル定数の不一致」の解決も期待される。', null,
           'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('NASA: James Webb Space Telescope', 'https://science.nasa.gov/mission/webb/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '観測と装置'),
-          '2023-02-22', null, 'day', 'point', 'JWST、初期宇宙に予想外に重い銀河候補を報告', 'ビッグバンから約5〜7億年の時点で、標準モデルの予想を超える質量を持つとみられる銀河候補がNature誌に報告される。', 'ラベらのチームは赤外線の色から推定した6個の候補天体の質量が、当時の宇宙にある通常物質の量から見て多すぎると指摘し、銀河形成理論の見直しの可能性を提起した。ただし推定は測光に基づき、分光確認や活動銀河核の寄与、質量推定法の違いによって結論が変わりうる。追観測で一部の候補は距離や質量が下方修正されており、評価は継続中である。',
+          '2023-02-22', null, 'day', 'point', 'JWST、初期宇宙に予想外に重い銀河候補を報告', 'ビッグバンから約5〜7億年の時点で、標準モデルの予想を超える質量を持つとみられる銀河候補がNature誌に報告された。ラベらのチームは赤外線の色から推定した6個の候補天体の質量が、当時の宇宙にある通常物質の量から見て多すぎると指摘し、銀河形成理論の見直しの可能性を提起した。
+
+ただし推定は測光に基づき、分光確認や活動銀河核の寄与、質量推定法の違いによって結論が変わりうる。追観測で一部の候補は距離や質量が下方修正されており、評価は継続中である。', null,
           'unverified', '候補天体の距離と質量は測光推定に基づき、分光追観測やモデルの違いで大きく変わりうるため、標準モデルとの矛盾は確定していない。', 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Labbé, I. et al. (2023) A population of red candidate massive galaxies ~600 Myr after the Big Bang. Nature', 'https://doi.org/10.1038/s41586-023-05786-2')) as v(title, url);
 
@@ -1723,121 +2243,161 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '科学の発見'),
-          '1896-01-01', null, 'year', 'point', 'アレニウス、CO2濃度と地表温度の関係を定量化', 'スウェーデンの化学者アレニウスが、大気中CO2が倍増すると地表温度が数℃上昇するとの計算結果を発表。', 'アレニウスは氷期の成因を探る中で、CO2の赤外吸収が地表温度に与える影響を手計算で見積もった。倍増時の昇温を5〜6℃としたが、当時は温暖化を有益と考えていた。産業起源のCO2が問題になるとは想定されず、実際に濃度上昇が観測で示されるのは60年以上後のキーリングの測定を待つことになる。',
+          '1896-01-01', null, 'year', 'point', 'アレニウス、CO2濃度と地表温度の関係を定量化', 'スウェーデンの化学者アレニウスが、大気中のCO2が倍増すると地表温度が数℃上昇するとの計算結果を発表。氷期の成因を探る中で、CO2の赤外吸収が地表温度に与える影響を手計算で見積もり、倍増時の昇温を5〜6℃とした。
+
+ただし当時は温暖化を有益と考えており、産業起源のCO2が問題になるとは想定されていなかった。**濃度上昇が観測で示されるのは60年以上後**のキーリングの測定であり、知見と検証の長い時差の出発点にあたる。', null,
           'verified', null, 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Arrhenius, S. (1896) On the Influence of Carbonic Acid in the Air upon the Temperature of the Ground. Philosophical Magazine', 'https://doi.org/10.1080/14786449608620846')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '観測と現象'),
-          '1958-03-01', null, 'month', 'point', 'キーリング、マウナロアでCO2の連続観測を開始', '国際地球観測年を機に、ハワイ・マウナロア山頂で大気中CO2濃度の高精度な定常観測が始まる。', 'スクリップス海洋研究所のチャールズ・キーリングが開始した観測は、季節変動を伴いながら右肩上がりに増える「キーリング曲線」を生んだ。開始時の濃度は約315ppm。人為的なCO2増加を初めて連続データで示した観測であり、1960年代以降の理論研究や1965年の大統領諮問報告が依拠する基礎となった。',
+          '1958-03-01', null, 'month', 'point', 'キーリング、マウナロアでCO2の連続観測を開始', '国際地球観測年を機に、スクリップス海洋研究所のチャールズ・キーリングがハワイ・マウナロア山頂で大気中CO2濃度の高精度な定常観測を開始。開始時の濃度は約315ppmだった。
+
+観測は季節変動を伴いながら右肩上がりに増える「キーリング曲線」を生み、人為的なCO2増加を初めて連続データで示した。1960年代以降の理論研究や1965年の大統領諮問報告が依拠する基礎となる。', null,
           'verified', null, 'user', 1) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Scripps Institution of Oceanography: The Keeling Curve', 'https://keelingcurve.ucsd.edu/'), ('NOAA Global Monitoring Laboratory: Trends in Atmospheric Carbon Dioxide', 'https://gml.noaa.gov/ccgg/trends/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '政策と社会'),
-          '1965-11-01', null, 'month', 'point', '米大統領科学諮問委員会がCO2の気候影響を報告', 'ジョンソン政権の科学諮問委員会が環境報告書の付録でCO2増加による気候変化の可能性を政府に警告。', '報告書「Restoring the Quality of Our Environment」の付録は、キーリングの観測開始から7年で得られたデータを根拠に、2000年までにCO2が約25%増え気候に「著しい変化」を起こしうると述べた。米政府文書が温暖化に言及した最初期の例だが、具体的な政策には結びつかなかった。',
+          '1965-11-01', null, 'month', 'point', '米大統領科学諮問委員会がCO2の気候影響を報告', 'ジョンソン政権の科学諮問委員会が報告書「Restoring the Quality of Our Environment」の付録で、CO2増加による気候変化の可能性を政府に警告。キーリングの観測開始から7年で得られたデータを根拠に、2000年までにCO2が約25%増え気候に「著しい変化」を起こしうると述べた。
+
+米政府文書が温暖化に言及した最初期の例だが、**警告は具体的な政策には結びつかなかった**。科学の知見が政策の言葉になるまでの長い空白がここから始まる。', null,
           'verified', null, 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('President''s Science Advisory Committee (1965) Restoring the Quality of Our Environment, Appendix Y4', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '科学の発見'),
-          '1967-01-01', null, 'year', 'point', '真鍋淑郎らがCO2倍増時の昇温を約2.3℃と算出', '真鍋淑郎とウェザラルドが放射対流平衡モデルにより、CO2倍増で地表が約2.3℃昇温すると計算。', '水蒸気フィードバックを含む物理モデルによる初の定量評価で、以後の気候モデルの原型となった。同年代の観測レイヤーではキーリング曲線が10年分の上昇を刻んでおり、理論と観測が初めてかみ合い始めた時期にあたる。真鍋はこの業績を含む研究で2021年にノーベル物理学賞を受賞した。',
+          '1967-01-01', null, 'year', 'point', '真鍋淑郎らがCO2倍増時の昇温を約2.3℃と算出', '真鍋淑郎とウェザラルドが、水蒸気フィードバックを含む放射対流平衡モデルにより、CO2倍増で地表が約2.3℃昇温すると計算。物理モデルによる初の定量評価で、以後の気候モデルの原型となった。
+
+同年代の観測レイヤーではキーリング曲線が10年分の上昇を刻んでおり、理論と観測が初めてかみ合い始めた時期にあたる。真鍋はこの業績を含む研究で2021年にノーベル物理学賞を受賞した。', null,
           'verified', null, 'user', 3) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Manabe, S. & Wetherald, R. T. (1967) Thermal Equilibrium of the Atmosphere with a Given Distribution of Relative Humidity. Journal of the Atmospheric Sciences', null), ('The Nobel Prize in Physics 2021', 'https://www.nobelprize.org/prizes/physics/2021/summary/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '科学の発見'),
-          '1979-07-01', null, 'month', 'point', 'チャーニー報告、気候感度を1.5〜4.5℃と推定', '米科学アカデミーの委員会がCO2倍増時の昇温を1.5〜4.5℃と評価。数十年にわたり基準となる推定幅。', 'ジュール・チャーニーを長とする委員会は、真鍋らのモデルとハンセンらのモデルを比較し、CO2倍増で「無視できる昇温は考えにくい」と結論した。同年2月にはWMO主催の第1回世界気候会議がジュネーブで開かれており、科学者コミュニティが政策側へ警告を発し始めた年でもある。',
+          '1979-07-01', null, 'month', 'point', 'チャーニー報告、気候感度を1.5〜4.5℃と推定', 'ジュール・チャーニーを長とする米科学アカデミーの委員会が、真鍋らとハンセンらのモデルを比較し、CO2倍増時の昇温を1.5〜4.5℃と評価。「無視できる昇温は考えにくい」と結論し、この推定幅は数十年にわたり基準となった。
+
+同年2月にはWMO主催の第1回世界気候会議がジュネーブで開かれており、科学者コミュニティが政策側へ警告を発し始めた年でもある。', null,
           'verified', null, 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('National Research Council (1979) Carbon Dioxide and Climate: A Scientific Assessment', 'https://doi.org/10.17226/12181')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '政策と社会'),
-          '1988-06-23', null, 'day', 'point', 'ハンセン、米上院で「温暖化は始まっている」と証言', 'NASAのジェームズ・ハンセンが猛暑の中の上院公聴会で、温暖化が高い確度で進行中と証言し注目を集める。', '記録的猛暑と干ばつに見舞われた夏の公聴会で、ハンセンは温室効果と観測された昇温の関係を「99%の確度」と述べた。この証言は温暖化を米国の政治課題に押し上げ、同年11月のIPCC設立とも重なった。1979年の科学的評価から約10年を経て、科学レイヤーの知見が政策レイヤーに本格的に接続した転換点。',
+          '1988-06-23', null, 'day', 'point', 'ハンセン、米上院で「温暖化は始まっている」と証言', '記録的猛暑と干ばつに見舞われた夏、NASAのジェームズ・ハンセンが米上院公聴会で、温室効果と観測された昇温の関係を「99%の確度」と述べ、温暖化が高い確度で進行中と証言した。
+
+この証言は温暖化を米国の政治課題に押し上げ、同年11月のIPCC設立とも重なった。1979年の科学的評価から約10年を経て、**科学レイヤーの知見が政策レイヤーに本格的に接続した転換点**である。', null,
           'verified', null, 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('U.S. Senate Committee on Energy and Natural Resources, Hearing on the Greenhouse Effect and Global Climate Change (June 23, 1988)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '科学の発見'),
-          '1990-08-01', null, 'month', 'point', 'IPCC第1次評価報告書を公表', '1988年に設立されたIPCCが初の評価報告書をまとめ、人為的排出が温室効果を強めていることを確認。', '報告書は温室効果ガス排出が続けば21世紀に10年あたり約0.3℃の昇温が起きうると予測し、観測された昇温の人為的寄与についてはなお不確実と慎重に記した。この科学的評価が同年の第2回世界気候会議を経て、1992年の気候変動枠組条約の交渉に直接つながった。',
+          '1990-08-01', null, 'month', 'point', 'IPCC第1次評価報告書を公表', '1988年に設立されたIPCCが初の評価報告書をまとめ、人為的排出が温室効果を強めていることを確認。排出が続けば21世紀に10年あたり約0.3℃の昇温が起きうると予測する一方、観測された昇温の人為的寄与についてはなお不確実と慎重に記した。
+
+この科学的評価が同年の第2回世界気候会議を経て、1992年の気候変動枠組条約の交渉に直接つながった。', null,
           'verified', null, 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('IPCC (1990) Climate Change: The IPCC Scientific Assessment (First Assessment Report)', 'https://www.ipcc.ch/reports/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '政策と社会'),
-          '1992-06-01', null, 'month', 'point', '地球サミットで気候変動枠組条約が署名開放', 'リオデジャネイロの国連環境開発会議で、温室効果ガス濃度の安定化を目的とする枠組条約に各国が署名。', '条約は「気候系に危険な人為的干渉を及ぼさない水準」で濃度を安定させることを究極目的とし、1994年に発効した。数値目標を伴わない枠組みだったため、具体的な削減義務は1997年の京都議定書へ持ち越された。IPCC第1次報告から2年、ハンセン証言から4年での国際合意である。',
+          '1992-06-01', null, 'month', 'point', '地球サミットで気候変動枠組条約が署名開放', 'リオデジャネイロの国連環境開発会議で、温室効果ガス濃度を「気候系に危険な人為的干渉を及ぼさない水準」で安定させることを究極目的とする気候変動枠組条約に各国が署名。条約は1994年に発効した。
+
+数値目標を伴わない枠組みだったため、具体的な削減義務は1997年の京都議定書へ持ち越された。IPCC第1次報告から2年、ハンセン証言から4年での国際合意である。', null,
           'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('UNFCCC: What is the United Nations Framework Convention on Climate Change?', 'https://unfccc.int/process-and-meetings/the-convention/what-is-the-united-nations-framework-convention-on-climate-change')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '政策と社会'),
-          '1997-12-11', null, 'day', 'point', '京都議定書を採択', 'COP3で先進国に法的拘束力ある削減目標を課す京都議定書が採択。日本は6%削減を約束。', '先進国全体で2008〜2012年に1990年比約5%削減を義務づけた。米国は署名したが批准せず、発効は2005年まで待つことになる。採択の翌年、観測レイヤーでは強いエルニーニョで1998年が当時の観測史上最高気温を記録し、科学レイヤーでは過去1000年の気温復元が発表されるなど、政策・観測・科学が同時に動いた時期。',
+          '1997-12-11', null, 'day', 'point', '京都議定書を採択', 'COP3で先進国に法的拘束力ある削減目標を課す京都議定書が採択。先進国全体で2008〜2012年に1990年比約5%、日本は6%の削減を約束した。米国は署名したが批准せず、発効は2005年まで待つことになる。
+
+採択の翌年、観測レイヤーでは強いエルニーニョで1998年が当時の観測史上最高気温を記録し、科学レイヤーでは過去1000年の気温復元が発表されるなど、政策・観測・科学が同時に動いた時期だった。', null,
           'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('UNFCCC: Kyoto Protocol', 'https://unfccc.int/kyoto_protocol')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '科学の発見'),
-          '1998-04-01', null, 'month', 'point', 'マンら、過去600年の気温復元「ホッケースティック」を発表', '年輪などの代替指標から北半球の気温変動を復元し、20世紀の昇温が突出していると示した論文がNatureに掲載。', '翌年には復元期間が過去1000年に延長され、IPCC第3次報告（2001年）に採用されて温暖化の象徴的な図となった。一方で統計手法や代替指標の選択をめぐる批判が続き、2006年の米国研究評議会の検証では大筋の結論が支持されたが、中世の気温との比較の確からしさは議論が残った。',
+          '1998-04-01', null, 'month', 'point', 'マンら、過去600年の気温復元「ホッケースティック」を発表', 'マンらが年輪などの代替指標から北半球の気温変動を復元し、20世紀の昇温が突出していると示した論文がNatureに掲載。翌年には復元期間が過去1000年に延長された。
+
+IPCC第3次報告（2001年）に採用されて温暖化の象徴的な図となった一方、統計手法や代替指標の選択をめぐる批判が続いた。2006年の米国研究評議会の検証では大筋の結論が支持されたが、中世の気温との比較の確からしさには議論が残った。', null,
           'disputed', '復元手法（主成分分析の中心化や代替指標の選択）に対する批判があり、20世紀以前の詳細な気温変動については専門家間で評価が分かれる。', 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Mann, M. E., Bradley, R. S. & Hughes, M. K. (1998) Global-scale temperature patterns and climate forcing over the past six centuries. Nature', 'https://doi.org/10.1038/33859'), ('National Research Council (2006) Surface Temperature Reconstructions for the Last 2,000 Years', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '観測と現象'),
-          '2003-08-01', null, 'month', 'point', '欧州熱波、初めて人為的寄与が定量評価される', '西欧を襲った記録的熱波で数万人規模の超過死亡。翌年、人間活動が発生確率を高めたとする研究が発表。', 'フランスなどで8月上旬に40℃前後が続き、高齢者を中心に多数の死者が出た。翌2004年、ストットらは人為的な温室効果ガスがこの規模の熱波の発生リスクを少なくとも2倍にしたと推定し、個別の異常気象に人為的寄与を割り当てる「イベント・アトリビューション」の先駆けとなった。政策レイヤーでは京都議定書がなお未発効だった。',
+          '2003-08-01', null, 'month', 'point', '欧州熱波、初めて人為的寄与が定量評価される', '西欧を襲った記録的熱波で、フランスなどでは8月上旬に40℃前後が続き、高齢者を中心に数万人規模の超過死亡が生じた。
+
+翌2004年、ストットらは人為的な温室効果ガスがこの規模の熱波の発生リスクを少なくとも2倍にしたと推定し、個別の異常気象に人為的寄与を割り当てる「イベント・アトリビューション」の先駆けとなった。政策レイヤーでは京都議定書がなお未発効だった。', null,
           'unverified', '超過死亡数は約3万人から7万人超まで推計に幅があり、対象国や集計期間によって数値が異なる。', 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Stott, P. A., Stone, D. A. & Allen, M. R. (2004) Human contribution to the European heatwave of 2003. Nature', 'https://doi.org/10.1038/nature03089'), ('Robine, J.-M. et al. (2008) Death toll exceeded 70,000 in Europe during the summer of 2003. Comptes Rendus Biologies', 'https://doi.org/10.1016/j.crvi.2007.12.001')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '科学の発見'),
-          '2007-02-02', null, 'day', 'point', 'IPCC第4次報告「温暖化は疑う余地がない」', '第1作業部会が気候系の温暖化を「疑う余地がない」と断定し、人為的要因である可能性が非常に高いと評価。', '20世紀半ば以降の昇温の大部分が人為的温室効果ガスによる可能性を90%以上とした。同年10月にはIPCCとアル・ゴアがノーベル平和賞を受賞し、9月には北極海の夏季海氷面積が当時の観測史上最小を記録。科学の断定、観測の異変、社会的評価が同じ年に重なった。',
+          '2007-02-02', null, 'day', 'point', 'IPCC第4次報告「温暖化は疑う余地がない」', 'IPCC第1作業部会が気候系の温暖化を「疑う余地がない」と断定し、20世紀半ば以降の昇温の大部分が人為的温室効果ガスによる可能性を90%以上と評価した。
+
+同年9月には北極海の夏季海氷面積が当時の観測史上最小を記録し、10月にはIPCCとアル・ゴアがノーベル平和賞を受賞。科学の断定、観測の異変、社会的評価が同じ年に重なった。', null,
           'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('IPCC (2007) Climate Change 2007: The Physical Science Basis. Summary for Policymakers', 'https://www.ipcc.ch/report/ar4/wg1/'), ('The Nobel Peace Prize 2007', 'https://www.nobelprize.org/prizes/peace/2007/summary/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '政策と社会'),
-          '2008-01-01', '2012-12-31', 'year', 'period', '京都議定書 第一約束期間', '先進国が削減義務を負う5年間。日本は6%削減目標を森林吸収と海外クレジットを含めて達成。', '採択から11年を経てようやく始まった義務期間。米国不参加のうえ、カナダは2011年に離脱を表明し、排出が急増する中国・インドには義務がなかった。期間中の2009年COP15コペンハーゲンでは次期枠組みの合意に失敗し、全ての国が参加する仕組みへの転換が2015年のパリ協定まで持ち越された。',
+          '2008-01-01', '2012-12-31', 'year', 'period', '京都議定書 第一約束期間', '先進国が削減義務を負う5年間が始まる。日本は6%削減目標を森林吸収と海外クレジットを含めて達成した。
+
+**採択から11年を経てようやく始まった義務期間**だったが、米国不参加のうえカナダは2011年に離脱を表明し、排出が急増する中国・インドには義務がなかった。期間中の2009年COP15コペンハーゲンでは次期枠組みの合意に失敗し、全ての国が参加する仕組みへの転換は2015年のパリ協定まで持ち越された。', null,
           'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('UNFCCC: Kyoto Protocol', 'https://unfccc.int/kyoto_protocol'), ('環境省: 京都議定書目標達成計画の進捗状況', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '観測と現象'),
-          '2013-05-09', null, 'day', 'point', 'マウナロアの日平均CO2濃度が初めて400ppmを超える', 'キーリングの観測開始から55年、大気中CO2の日平均値が400ppmの節目に到達。', '1958年の観測開始時は約315ppmだった。400ppmは少なくとも数十万年ぶりの水準とされ、報道を通じて象徴的な数字として広まった。以後、年平均でも2015年に400ppmを超え、季節的な低下でも下回らなくなった。同年9月にはIPCC第5次報告が公表され、人為的影響の確からしさが「極めて高い」に引き上げられている。',
+          '2013-05-09', null, 'day', 'point', 'マウナロアの日平均CO2濃度が初めて400ppmを超える', 'キーリングの観測開始から55年、マウナロアの大気中CO2の日平均値が400ppmの節目に到達した。1958年の観測開始時は約315ppmだった。
+
+400ppmは少なくとも数十万年ぶりの水準とされ、報道を通じて象徴的な数字として広まった。以後、年平均でも2015年に400ppmを超え、季節的な低下でも下回らなくなる。同年9月にはIPCC第5次報告が公表され、人為的影響の確からしさが「極めて高い」に引き上げられた。', null,
           'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('NOAA Global Monitoring Laboratory: Trends in Atmospheric Carbon Dioxide', 'https://gml.noaa.gov/ccgg/trends/'), ('Scripps Institution of Oceanography: The Keeling Curve', 'https://keelingcurve.ucsd.edu/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '観測と現象'),
-          '2015-03-01', '2016-05-31', 'month', 'period', '2015〜16年の強いエルニーニョ', '1997〜98年に匹敵する強いエルニーニョが発生し、地球温暖化の長期傾向に上乗せして世界平均気温を押し上げた。', '太平洋赤道域の海面水温上昇に伴い、2015年、2016年が相次いで観測史上最高気温を更新した。エルニーニョは自然変動であり、温暖化の傾向に周期的に重なる。パリ協定の交渉が進んだ2015年12月はまさにこの現象の最盛期で、記録的な暖冬や熱波が交渉の背景にあった。',
+          '2015-03-01', '2016-05-31', 'month', 'period', '2015〜16年の強いエルニーニョ', '1997〜98年に匹敵する強いエルニーニョが発生。太平洋赤道域の海面水温上昇に伴い、地球温暖化の長期傾向に上乗せして世界平均気温を押し上げ、2015年、2016年が相次いで観測史上最高気温を更新した。
+
+エルニーニョは自然変動であり、温暖化の傾向に周期的に重なる。パリ協定の交渉が進んだ2015年12月はまさにこの現象の最盛期で、記録的な暖冬や熱波が交渉の背景にあった。', null,
           'disputed', '発生期間の定義は機関により異なり、気象庁は2014年夏〜2016年春、NOAAは2015年春〜2016年春を発生期間としている。', 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('NOAA Climate Prediction Center: Oceanic Niño Index (ONI)', 'https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php'), ('気象庁: エルニーニョ現象およびラニーニャ現象の発生期間', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '政策と社会'),
-          '2015-12-12', null, 'day', 'point', 'パリ協定を採択', 'COP21で全ての国が参加する枠組みに合意。産業革命前比で2℃を十分下回り、1.5℃に抑える努力を追求。', '京都議定書と異なり、各国が自ら削減目標を掲げて5年ごとに更新する仕組みをとった。1.5℃目標は島嶼国の要求で盛り込まれ、その科学的根拠の整理がIPCCに要請されて2018年の特別報告書につながる。採択の年、観測レイヤーでは強いエルニーニョのもと世界平均気温が初めて産業革命前比1℃を超えたと報告された。',
+          '2015-12-12', null, 'day', 'point', 'パリ協定を採択', 'COP21で全ての国が参加する枠組みに合意。産業革命前比で2℃を十分下回り、1.5℃に抑える努力を追求するとし、京都議定書と異なり各国が自ら削減目標を掲げて5年ごとに更新する仕組みをとった。
+
+1.5℃目標は島嶼国の要求で盛り込まれ、その科学的根拠の整理がIPCCに要請されて2018年の特別報告書につながる。採択の年、観測レイヤーでは強いエルニーニョのもと世界平均気温が初めて産業革命前比1℃を超えたと報告された。', null,
           'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('UNFCCC: The Paris Agreement', 'https://unfccc.int/process-and-meetings/the-paris-agreement')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '科学の発見'),
-          '2018-10-08', null, 'day', 'point', 'IPCC「1.5℃特別報告書」を公表', '1.5℃と2℃の影響の差を示し、1.5℃に抑えるには2030年頃までにCO2排出をほぼ半減、2050年頃に実質ゼロが必要と提示。', 'パリ協定の要請を受けた報告書は、現在のペースでは2030〜2052年に1.5℃に達すると見積もった。「2050年ネットゼロ」という時間軸はこの報告書から各国政策と企業目標に広がった。公表の翌年には若者の気候ストライキが世界に拡大し、科学の提示した期限が社会運動の言葉となった。',
+          '2018-10-08', null, 'day', 'point', 'IPCC「1.5℃特別報告書」を公表', 'パリ協定の要請を受けたIPCCの特別報告書が1.5℃と2℃の影響の差を示し、1.5℃に抑えるには2030年頃までにCO2排出をほぼ半減、2050年頃に実質ゼロが必要と提示。現在のペースでは2030〜2052年に1.5℃に達すると見積もった。
+
+「2050年ネットゼロ」という時間軸はこの報告書から各国政策と企業目標に広がり、公表の翌年には若者の気候ストライキが世界に拡大。**科学の提示した期限が社会運動の言葉となった**。', null,
           'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('IPCC (2018) Global Warming of 1.5°C. Special Report', 'https://www.ipcc.ch/sr15/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '政策と社会'),
-          '2019-09-20', null, 'day', 'point', '世界気候ストライキ、数百万人規模に拡大', 'スウェーデンの学生の座り込みから広がった運動が世界150か国以上で一斉行動。参加者は主催者発表で約400万人。', '国連気候行動サミットの直前に行われ、若者主導の気候運動が最大規模となった。1.5℃特別報告書が示した「2030年まで」の期限を運動が掲げ、科学レイヤーの数字がスローガンになった例といえる。同年、EUと英国は2050年カーボンニュートラルを法制化・宣言し、企業や自治体の目標設定も加速した。',
+          '2019-09-20', null, 'day', 'point', '世界気候ストライキ、数百万人規模に拡大', 'スウェーデンの学生の座り込みから広がった運動が、国連気候行動サミットの直前に世界150か国以上で一斉行動を実施。参加者は主催者発表で約400万人と、若者主導の気候運動として最大規模となった。
+
+運動は1.5℃特別報告書が示した「2030年まで」の期限を掲げ、科学レイヤーの数字がスローガンになった例といえる。同年、EUと英国は2050年カーボンニュートラルを法制化・宣言し、企業や自治体の目標設定も加速した。', null,
           'unverified', '参加人数は主催者発表に基づく推計で、独立した集計はなく、報道により300万〜760万人と幅がある。', 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Fridays for Future: Global Climate Strike, September 2019', null), ('The Guardian (2019-09-21) Climate crisis: 6 million people join latest wave of global protests', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '科学の発見'),
-          '2021-08-09', null, 'day', 'point', 'IPCC第6次報告「人間の影響が温暖化させたことは疑う余地がない」', '第1作業部会が人為的影響を初めて断定的に記述。20年間の観測とモデルの進歩が「疑う余地なし」を支えた。', '1990年の第1次報告が人為的寄与を「不確実」とし、2007年に「可能性が非常に高い」、2013年に「極めて高い」としてきた表現が、ついに断定に至った。同じ年、真鍋淑郎らが気候モデルの基礎を築いた功績でノーベル物理学賞を受賞。11月のCOP26では1.5℃目標の追求を確認し、石炭火力の段階的削減が初めて合意文書に入った。',
+          '2021-08-09', null, 'day', 'point', 'IPCC第6次報告「人間の影響が温暖化させたことは疑う余地がない」', 'IPCC第1作業部会が人為的影響を初めて断定的に記述。1990年の第1次報告が「不確実」とし、2007年に「可能性が非常に高い」、2013年に「極めて高い」としてきた表現が、20年間の観測とモデルの進歩に支えられ、ついに「疑う余地なし」に至った。
+
+同じ年、真鍋淑郎らが気候モデルの基礎を築いた功績でノーベル物理学賞を受賞。11月のCOP26では1.5℃目標の追求を確認し、石炭火力の段階的削減が初めて合意文書に入った。', null,
           'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('IPCC (2021) Climate Change 2021: The Physical Science Basis. Summary for Policymakers', 'https://www.ipcc.ch/report/ar6/wg1/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '観測と現象'),
-          '2024-01-01', null, 'year', 'point', '2024年、初めて年平均で産業革命前比1.5℃を超過', '観測史上最も暑い年となり、複数のデータセットで年平均気温が産業革命前比1.5℃を上回ったと報告。', '2023年に続く記録更新で、エルニーニョと長期的な温暖化が重なった。パリ協定の1.5℃目標は20〜30年平均で評価されるため単年の超過は目標の失敗を意味しないが、アレニウスの計算から128年、パリ協定から9年で象徴的な水準に達した。政策レイヤーでは各国の削減目標の積み上げがなお2℃経路にも届いていない。',
+          '2024-01-01', null, 'year', 'point', '2024年、初めて年平均で産業革命前比1.5℃を超過', '観測史上最も暑い年となり、複数のデータセットで年平均気温が産業革命前比1.5℃を上回ったと報告された。2023年に続く記録更新で、エルニーニョと長期的な温暖化が重なった。
+
+パリ協定の1.5℃目標は20〜30年平均で評価されるため単年の超過は目標の失敗を意味しないが、**アレニウスの計算から128年、パリ協定から9年**で象徴的な水準に達した。政策レイヤーでは各国の削減目標の積み上げがなお2℃経路にも届いていない。', null,
           'disputed', 'コペルニクスは1.60℃、WMOは1.55±0.13℃と報告し、データセットや基準期間の取り方によっては1.5℃をわずかに下回る評価もある。', 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Copernicus Climate Change Service: Global Climate Highlights 2024', null), ('WMO: State of the Global Climate 2024', null)) as v(title, url);
 
@@ -1854,121 +2414,161 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing') and name = '発見と理論'),
-          '1869-01-01', null, 'year', 'point', 'ミーシャー、細胞核から「ヌクレイン」を単離', 'スイスの医師ミーシャーが白血球の核からリンを多く含む未知の物質を取り出し、ヌクレインと命名。', 'テュービンゲンの実験室で包帯の膿から白血球を集め、タンパク質と異なる酸性物質を得た。これが後に核酸（DNA）と呼ばれる物質の最初の記録である。ただし遺伝の担い手はタンパク質と考えられ、DNAが遺伝物質だと確立されるのは75年後の1944年まで待つことになる。',
+          '1869-01-01', null, 'year', 'point', 'ミーシャー、細胞核から「ヌクレイン」を単離', 'スイスの医師ミーシャーがテュービンゲンの実験室で包帯の膿から白血球を集め、その核からリンを多く含むタンパク質とは異なる酸性物質を単離し、「ヌクレイン」と命名した。後に核酸（DNA）と呼ばれる物質の最初の記録である。
+
+ただし当時、遺伝の担い手はタンパク質と考えられており、DNAが遺伝物質だと確立されるのは75年後の1944年まで待つことになる。', null,
           'verified', null, 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Dahm, R. (2005) Friedrich Miescher and the discovery of DNA. Developmental Biology', 'https://doi.org/10.1016/j.ydbio.2004.11.028')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing') and name = '発見と理論'),
-          '1944-02-01', null, 'day', 'point', 'エイブリーら、DNAが形質転換の本体であると報告', '肺炎球菌の形質転換を起こす物質がタンパク質でなくDNAであることを精製実験で示し、遺伝物質の正体に迫る。', '1928年のグリフィスの形質転換実験を出発点に、エイブリー、マクラウド、マッカーティは形質転換因子を精製し、DNA分解酵素でのみ活性が失われることを示した。当初は懐疑的な受け止めもあったが、1952年のハーシーとチェイスの実験で補強され、翌年の二重らせん構造の解明へと道が開かれた。',
+          '1944-02-01', null, 'day', 'point', 'エイブリーら、DNAが形質転換の本体であると報告', 'エイブリー、マクラウド、マッカーティが、肺炎球菌の形質転換を起こす物質がタンパク質でなくDNAであることを精製実験で示した。1928年のグリフィスの形質転換実験を出発点に形質転換因子を精製し、DNA分解酵素でのみ活性が失われることを突き止めた。
+
+当初は懐疑的な受け止めもあったが、1952年のハーシーとチェイスの実験で補強され、翌年の二重らせん構造の解明へと道が開かれた。', null,
           'verified', null, 'user', 1) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Avery, O. T., MacLeod, C. M. & McCarty, M. (1944) Studies on the chemical nature of the substance inducing transformation of pneumococcal types. Journal of Experimental Medicine', 'https://doi.org/10.1084/jem.79.2.137')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing') and name = '発見と理論'),
-          '1953-04-25', null, 'day', 'point', 'ワトソンとクリック、DNAの二重らせん構造を発表', 'Nature誌にDNAの二重らせんモデルを発表。塩基対の相補性が複製の仕組みを示唆すると指摘。', '同じ号にはウィルキンス、フランクリンらのX線回折データの論文が並んで掲載された。フランクリンの「写真51」を含むデータがモデル構築に用いられた経緯と功績の配分は今も議論が続く。1962年のノーベル賞はワトソン、クリック、ウィルキンスに贈られたが、フランクリンは1958年に没していた。この構造理解が遺伝暗号解読と組換えDNA技術の前提となった。',
+          '1953-04-25', null, 'day', 'point', 'ワトソンとクリック、DNAの二重らせん構造を発表', 'ワトソンとクリックがNature誌にDNAの二重らせんモデルを発表し、塩基対の相補性が複製の仕組みを示唆すると指摘した。同じ号にはウィルキンス、フランクリンらのX線回折データの論文が並んで掲載された。
+
+フランクリンの「写真51」を含むデータがモデル構築に用いられた経緯と功績の配分は今も議論が続く。1962年のノーベル賞はワトソン、クリック、ウィルキンスに贈られたが、フランクリンは1958年に没していた。この構造理解が遺伝暗号解読と組換えDNA技術の前提となった。', null,
           'disputed', '構造自体は確立しているが、フランクリンのデータ利用の経緯と各人の貢献の配分については歴史家・科学者の間で評価が分かれる。', 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Watson, J. D. & Crick, F. H. C. (1953) Molecular Structure of Nucleic Acids: A Structure for Deoxyribose Nucleic Acid. Nature', 'https://doi.org/10.1038/171737a0')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing') and name = '発見と理論'),
-          '1961-01-01', '1966-12-31', 'year', 'period', '遺伝暗号の解読', 'ニーレンバーグらのポリU実験を皮切りに、64通りのコドンとアミノ酸の対応表が5年で完成する。', '1961年、ニーレンバーグとマッタイは合成RNA（ポリU）からフェニルアラニンの鎖ができることを示し、最初のコドンを決定した。コラナ、ホリーらの研究と競争を経て1966年までに暗号表が完成し、DNAの塩基配列とタンパク質を結ぶ「翻訳規則」が確定した。配列を読めば意味が分かるという前提が、1970年代の配列決定法と組換え技術の価値を決定づけた。',
+          '1961-01-01', '1966-12-31', 'year', 'period', '遺伝暗号の解読', '1961年、ニーレンバーグとマッタイが合成RNA（ポリU）からフェニルアラニンの鎖ができることを示し、最初のコドンを決定。コラナ、ホリーらの研究と競争を経て、1966年までに64通りのコドンとアミノ酸の対応表が完成した。
+
+DNAの塩基配列とタンパク質を結ぶ「翻訳規則」の確定により、配列を読めば意味が分かるという前提が成立し、1970年代の配列決定法と組換え技術の価値を決定づけた。', null,
           'verified', null, 'user', 3) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Nirenberg, M. W. & Matthaei, J. H. (1961) The dependence of cell-free protein synthesis in E. coli upon naturally occurring or synthetic polyribonucleotides. PNAS', 'https://doi.org/10.1073/pnas.47.10.1588'), ('The Nobel Prize in Physiology or Medicine 1968', 'https://www.nobelprize.org/prizes/medicine/1968/summary/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing') and name = '技術と応用'),
-          '1973-11-01', null, 'month', 'point', 'コーエンとボイヤー、組換えDNA技術を確立', '制限酵素で切断したDNA断片をプラスミドにつなぎ、大腸菌内で複製させることに成功。遺伝子工学の出発点。', '異なる生物由来のDNAを人工的につなぎ増やす技術は、翌年には科学者自身が実験の一時停止を呼びかけるほどの衝撃を与え、1975年のアシロマ会議につながった。技術は1976年のジェネンテック設立と1982年のヒトインスリン承認へ直結し、1980年に成立したコーエン・ボイヤー特許は大学発ライセンスの原型となった。',
+          '1973-11-01', null, 'month', 'point', 'コーエンとボイヤー、組換えDNA技術を確立', 'コーエンとボイヤーが、制限酵素で切断したDNA断片をプラスミドにつなぎ、大腸菌内で複製させることに成功。異なる生物由来のDNAを人工的につなぎ増やす、遺伝子工学の出発点となった。
+
+この技術は翌年には科学者自身が実験の一時停止を呼びかけるほどの衝撃を与え、1975年のアシロマ会議につながった。応用面では1976年のジェネンテック設立と1982年のヒトインスリン承認へ直結し、1980年に成立したコーエン・ボイヤー特許は大学発ライセンスの原型となった。', null,
           'verified', null, 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Cohen, S. N., Chang, A. C. Y., Boyer, H. W. & Helling, R. B. (1973) Construction of Biologically Functional Bacterial Plasmids In Vitro. PNAS', 'https://doi.org/10.1073/pnas.70.11.3240')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing') and name = '倫理と制度'),
-          '1975-02-24', null, 'day', 'point', 'アシロマ会議、組換えDNA研究の自主規制指針を策定', '科学者約140人が集まり、組換えDNA実験のリスク区分と封じ込め基準を自ら定めた。研究者主導の規制の先例。', '1974年にバーグらが呼びかけた実験モラトリアムを受け、カリフォルニア州アシロマで開かれた。物理的・生物学的封じ込めをリスクに応じて定める枠組みは、翌1976年の米NIHガイドラインの基礎となり、日本でも1979年に組換えDNA実験指針が制定された。技術の確立から2年で制度が追いついた例として、後の遺伝子編集をめぐる議論でも繰り返し参照される。',
+          '1975-02-24', null, 'day', 'point', 'アシロマ会議、組換えDNA研究の自主規制指針を策定', '1974年にバーグらが呼びかけた実験モラトリアムを受け、カリフォルニア州アシロマに科学者約140人が集まり、組換えDNA実験のリスク区分と物理的・生物学的封じ込め基準を自ら定めた。
+
+この枠組みは翌1976年の米NIHガイドラインの基礎となり、日本でも1979年に組換えDNA実験指針が制定された。**技術の確立から2年で制度が追いついた**研究者主導の規制の先例として、後の遺伝子編集をめぐる議論でも繰り返し参照される。', null,
           'verified', null, 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Berg, P., Baltimore, D., Brenner, S., Roblin, R. O. & Singer, M. F. (1975) Summary statement of the Asilomar Conference on Recombinant DNA Molecules. PNAS', 'https://doi.org/10.1073/pnas.72.6.1981')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing') and name = '倫理と制度'),
-          '1980-06-16', null, 'day', 'point', '米最高裁、遺伝子操作した生物の特許を認める', 'ダイヤモンド対チャクラバーティ事件で、人が作り出した微生物は特許の対象になりうると5対4で判断。', '石油分解能力を持たせた細菌をめぐる判決は「太陽の下の人工物は何でも」特許になりうるとし、バイオテクノロジー産業の投資を後押しした。同年12月にはコーエン・ボイヤー特許が成立し、同じ年にジェネンテックが株式公開している。技術と資本が制度によって結びついた年であり、後のヒト遺伝子特許やCRISPR特許紛争の遠因ともなった。',
+          '1980-06-16', null, 'day', 'point', '米最高裁、遺伝子操作した生物の特許を認める', 'ダイヤモンド対チャクラバーティ事件で米最高裁が、石油分解能力を持たせた細菌をめぐり、人が作り出した微生物は特許の対象になりうると5対4で判断。「太陽の下の人工物は何でも」特許になりうるとした。
+
+判決はバイオテクノロジー産業の投資を後押しし、同年12月にはコーエン・ボイヤー特許が成立、同じ年にジェネンテックが株式公開している。**技術と資本が制度によって結びついた年**であり、後のヒト遺伝子特許やCRISPR特許紛争の遠因ともなった。', null,
           'verified', null, 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Diamond v. Chakrabarty, 447 U.S. 303 (1980)', 'https://supreme.justia.com/cases/federal/us/447/303/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing') and name = '技術と応用'),
-          '1982-10-01', null, 'month', 'point', '遺伝子組換えヒトインスリンを米FDAが承認', '大腸菌に作らせたヒトインスリン「ヒューマリン」が承認され、組換えDNA技術による初の医薬品が実用化。', 'ジェネンテックが開発しイーライリリーが製造した。それまでのブタ・ウシ由来インスリンに代わり、供給の安定と免疫反応の低減をもたらした。1973年の技術確立から9年、1975年のアシロマ会議で定められた封じ込め基準のもとで開発が進み、規制と産業化が両立しうることを示した。以後、成長ホルモンやワクチンなど組換え医薬品が続いた。',
+          '1982-10-01', null, 'month', 'point', '遺伝子組換えヒトインスリンを米FDAが承認', '大腸菌に作らせたヒトインスリン「ヒューマリン」を米FDAが承認し、組換えDNA技術による初の医薬品が実用化。ジェネンテックが開発しイーライリリーが製造し、それまでのブタ・ウシ由来インスリンに代わって供給の安定と免疫反応の低減をもたらした。
+
+1973年の技術確立から9年、1975年のアシロマ会議で定められた封じ込め基準のもとで開発が進み、規制と産業化が両立しうることを示した。以後、成長ホルモンやワクチンなど組換え医薬品が続いた。', null,
           'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Genentech: Press release, First recombinant DNA drug approved by FDA (1982)', null), ('FDA: Celebrating a Milestone: FDA''s Approval of First Genetically-Engineered Product', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing') and name = '技術と応用'),
-          '1985-12-20', null, 'day', 'point', 'PCR法の論文が発表される', 'マリスの着想に基づくシータス社の研究チームが、DNAの特定領域を試験管内で指数的に増幅する手法を発表。', '1983年にマリスが着想したとされる方法は、1985年のScience誌論文と1988年の耐熱性DNAポリメラーゼの導入で実用技術となった。微量DNAの増幅は診断・法科学・ゲノム計画の全てを支え、マリスは1993年にノーベル化学賞を受賞した。ただし増幅の原理は1971年にクレッペらが記述しており、着想の先取権と貢献の配分には議論がある。',
+          '1985-12-20', null, 'day', 'point', 'PCR法の論文が発表される', 'マリスの着想に基づくシータス社の研究チームが、DNAの特定領域を試験管内で指数的に増幅するPCR法をScience誌に発表。1988年の耐熱性DNAポリメラーゼの導入で実用技術となった。
+
+微量DNAの増幅は診断・法科学・ゲノム計画の全てを支え、マリスは1993年にノーベル化学賞を受賞した。ただし増幅の原理は1971年にクレッペらが記述しており、着想の先取権と貢献の配分には議論がある。', null,
           'disputed', '基本原理は1971年のクレッペらの論文に先例があり、マリス個人の着想とチームの貢献の配分についても関係者の証言が食い違う。', 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Saiki, R. K. et al. (1985) Enzymatic amplification of β-globin genomic sequences and restriction site analysis for diagnosis of sickle cell anemia. Science', 'https://doi.org/10.1126/science.2999980'), ('The Nobel Prize in Chemistry 1993', 'https://www.nobelprize.org/prizes/chemistry/1993/summary/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing') and name = '技術と応用'),
-          '1990-09-14', null, 'day', 'point', '承認された初のヒト遺伝子治療臨床試験を実施', '米NIHでADA欠損症の4歳女児に対し、正常遺伝子を導入したT細胞を戻す治療が行われる。', 'アンダーソン、ブレーズらのチームがレトロウイルスベクターで遺伝子を導入した。患者は長期にわたり良好な経過をたどったが、酵素補充療法（PEG-ADA）を併用していたため遺伝子治療単独の効果を切り分けることは難しい。同じ年の10月にヒトゲノム計画が始動し、「読む」計画と「直す」試みが同時に幕を開けた。1999年のゲルシンガー事件で分野は一度大きく後退する。',
+          '1990-09-14', null, 'day', 'point', '承認された初のヒト遺伝子治療臨床試験を実施', '米NIHでアンダーソン、ブレーズらのチームが、ADA欠損症の4歳女児に対し、レトロウイルスベクターで正常遺伝子を導入したT細胞を戻す、承認された初のヒト遺伝子治療を実施した。
+
+患者は長期にわたり良好な経過をたどったが、酵素補充療法（PEG-ADA）を併用していたため遺伝子治療単独の効果を切り分けることは難しい。同年10月にはヒトゲノム計画が始動し、「読む」計画と「直す」試みが同時に幕を開けた。分野は1999年のゲルシンガー事件で一度大きく後退する。', null,
           'unverified', '臨床的改善への遺伝子治療の寄与度は、併用された酵素補充療法の影響を分離できないため確定していない。', 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Blaese, R. M. et al. (1995) T Lymphocyte-Directed Gene Therapy for ADA-SCID: Initial Trial Results After 4 Years. Science', 'https://doi.org/10.1126/science.270.5235.475')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing') and name = '発見と理論'),
-          '1990-10-01', '2003-04-14', 'month', 'period', 'ヒトゲノム計画', '米英日仏独中の国際共同で約30億塩基対のヒトゲノムを解読。当初15年計画を前倒しで2003年に完了宣言。', '1977年のサンガー法を自動化・大規模化して進められ、1998年にセレラ社が参入して官民の競争となった。2000年6月に草案、2001年2月に論文、2003年4月に二重らせん発表50周年に合わせて完了が宣言された。日本は理化学研究所などが21番・18番染色体などを担当した。全塩基配列という「地図」が、後の疾患遺伝子探索とゲノム編集の標的設計を可能にした。',
+          '1990-10-01', '2003-04-14', 'month', 'period', 'ヒトゲノム計画', '米英日仏独中の国際共同で約30億塩基対のヒトゲノムを解読する計画が始動。1977年のサンガー法を自動化・大規模化して進められ、日本は理化学研究所などが21番・18番染色体などを担当した。
+
+1998年にセレラ社が参入して官民の競争となり、2000年6月に草案、2001年2月に論文発表を経て、二重らせん発表50周年に合わせた2003年4月、当初の15年計画を前倒しして完了が宣言された。全塩基配列という「地図」が、後の疾患遺伝子探索とゲノム編集の標的設計を可能にした。', null,
           'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('National Human Genome Research Institute: The Human Genome Project', 'https://www.genome.gov/human-genome-project'), ('International Human Genome Sequencing Consortium (2001) Initial sequencing and analysis of the human genome. Nature', 'https://doi.org/10.1038/35057062')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing') and name = '倫理と制度'),
-          '1999-09-17', null, 'day', 'point', '遺伝子治療の臨床試験で被験者ジェシー・ゲルシンガーが死亡', 'ペンシルベニア大学の試験でアデノウイルスベクター投与後に18歳の被験者が死亡し、遺伝子治療研究が停滞。', '調査で被験者選定基準の逸脱や有害事象報告の不備、研究者の利益相反が指摘され、FDAは同大学の試験を停止した。1990年の初試験以来の期待は一転し、投資と臨床試験数は数年にわたり落ち込んだ。被験者保護と利益相反開示の制度強化につながり、2010年代の遺伝子治療復活と2018年のゲノム編集ベビー問題の際にも安全性議論の原点として参照された。',
+          '1999-09-17', null, 'day', 'point', '遺伝子治療の臨床試験で被験者ジェシー・ゲルシンガーが死亡', 'ペンシルベニア大学の遺伝子治療臨床試験で、アデノウイルスベクター投与後に18歳の被験者ジェシー・ゲルシンガーが死亡。調査で被験者選定基準の逸脱や有害事象報告の不備、研究者の利益相反が指摘され、FDAは同大学の試験を停止した。
+
+1990年の初試験以来の期待は一転し、投資と臨床試験数は数年にわたり落ち込んだ。**被験者保護と利益相反開示の制度強化**につながり、2010年代の遺伝子治療復活と2018年のゲノム編集ベビー問題の際にも安全性議論の原点として参照された。', null,
           'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wilson, J. M. (2009) Lessons learned from the gene therapy trial for ornithine transcarbamylase deficiency. Molecular Genetics and Metabolism', null), ('FDA (2000) Warning letter to the Institute for Human Gene Therapy, University of Pennsylvania', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing') and name = '発見と理論'),
-          '2000-06-26', null, 'day', 'point', 'ヒトゲノム草案を国際計画とセレラ社が共同発表', 'クリントン米大統領とブレア英首相の立ち会いで、公的計画と民間セレラ社がヒトゲノム草案の完成を同時に発表。', '1998年に参入したセレラ社が全ゲノムショットガン法で公的計画を追い上げ、政治的仲介で「引き分け」の共同発表となった。翌2001年2月、Nature誌とScience誌に別々の論文が掲載された。ヒト遺伝子数が当初の10万前後の予想を大きく下回る2万〜2万5千程度と判明したのはこの成果からで、遺伝子の数より制御の複雑さが問われる時代に入った。',
+          '2000-06-26', null, 'day', 'point', 'ヒトゲノム草案を国際計画とセレラ社が共同発表', 'クリントン米大統領とブレア英首相の立ち会いで、公的な国際計画と民間セレラ社がヒトゲノム草案の完成を同時に発表。1998年に参入したセレラ社が全ゲノムショットガン法で公的計画を追い上げ、政治的仲介で「引き分け」の共同発表となった。
+
+翌2001年2月、Nature誌とScience誌に別々の論文が掲載された。ヒト遺伝子数が当初の10万前後の予想を大きく下回る2万〜2万5千程度と判明したのはこの成果からで、遺伝子の数より制御の複雑さが問われる時代に入った。', null,
           'disputed', '草案の完成度（カバー率）と両陣営の貢献の大きさについては公的計画とセレラ社の主張が食い違い、セレラ社が公的データを利用した程度も論争となった。', 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('International Human Genome Sequencing Consortium (2001) Initial sequencing and analysis of the human genome. Nature', 'https://doi.org/10.1038/35057062'), ('Venter, J. C. et al. (2001) The Sequence of the Human Genome. Science', 'https://doi.org/10.1126/science.1058040')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing') and name = '発見と理論'),
-          '2012-06-28', null, 'day', 'point', 'ダウドナとシャルパンティエ、CRISPR-Cas9を編集ツールとして提示', '細菌の獲得免疫機構CRISPRを、ガイドRNAで任意のDNA配列を切断できる汎用ツールに転用できると示す。', 'Science誌のオンライン公開論文で、Cas9とガイドRNAの組み合わせだけで標的配列を切断できることを試験管内で実証した。翌2013年1月にはチャン、チャーチらがヒト細胞での編集を報告し、以後、技術は爆発的に普及する。ジンクフィンガーやTALENに比べ設計が容易で安価な点が決定的で、同時に特許紛争と倫理議論の火種にもなった。',
+          '2012-06-28', null, 'day', 'point', 'ダウドナとシャルパンティエ、CRISPR-Cas9を編集ツールとして提示', 'ダウドナとシャルパンティエらがScience誌のオンライン公開論文で、細菌の獲得免疫機構CRISPRを、Cas9とガイドRNAの組み合わせだけで任意のDNA配列を切断できる汎用ツールに転用できることを試験管内で実証した。
+
+翌2013年1月にはチャン、チャーチらがヒト細胞での編集を報告し、以後、技術は爆発的に普及する。ジンクフィンガーやTALENに比べ設計が容易で安価な点が決定的で、同時に特許紛争と倫理議論の火種にもなった。', null,
           'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Jinek, M. et al. (2012) A Programmable Dual-RNA-Guided DNA Endonuclease in Adaptive Bacterial Immunity. Science', 'https://doi.org/10.1126/science.1225829'), ('Cong, L. et al. (2013) Multiplex Genome Engineering Using CRISPR/Cas Systems. Science', 'https://doi.org/10.1126/science.1231143')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing') and name = '倫理と制度'),
-          '2015-12-01', null, 'day', 'point', '第1回ヒトゲノム編集国際サミット開催', '米英中の科学アカデミーがワシントンで開催。生殖細胞系列の臨床応用は「現時点で無責任」との声明を発表。', '同年4月に中国のチームが受精しない三倍体ヒト胚での編集実験を報告し、生殖細胞系列編集の是非が急浮上したことを受けて開かれた。基礎研究は容認しつつ、安全性と社会的合意が得られるまで妊娠につながる応用は行うべきでないとした。CRISPR論文からわずか3年半でのルール形成だったが、2018年の香港での第2回サミットの直前に、その線を越える事例が公表される。',
+          '2015-12-01', null, 'day', 'point', '第1回ヒトゲノム編集国際サミット開催', '米英中の科学アカデミーが第1回ヒトゲノム編集国際サミットをワシントンで開催。基礎研究は容認しつつ、生殖細胞系列の臨床応用は安全性と社会的合意が得られるまで行うべきでなく「現時点で無責任」との声明を発表した。
+
+同年4月に中国のチームが受精しない三倍体ヒト胚での編集実験を報告し、是非が急浮上したことを受けた対応で、**CRISPR論文からわずか3年半でのルール形成**だった。しかし2018年の香港での第2回サミット直前に、その線を越える事例が公表される。', null,
           'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('National Academies of Sciences, Engineering, and Medicine (2015) On Human Gene Editing: International Summit Statement', null), ('Liang, P. et al. (2015) CRISPR/Cas9-mediated gene editing in human tripronuclear zygotes. Protein & Cell', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing') and name = '倫理と制度'),
-          '2017-02-15', null, 'day', 'point', '米特許審判部、CRISPR特許紛争でブロード研究所側を支持', '真核細胞でのCRISPR-Cas9利用に関する特許について、カリフォルニア大学側の主張を退けブロード研究所側の特許を維持。', '2012年のダウドナらの発表と2013年のチャンらの実証のどちらが真核細胞での編集の発明にあたるかが争点となった。米国では2022年にも審判部がブロード側に有利な判断を示した一方、欧州特許庁では判断が異なり、地域ごとに権利関係が分かれている。ライセンス構造の複雑さは治療開発企業の契約に影響し、2023年の治療承認まで続く背景となった。',
+          '2017-02-15', null, 'day', 'point', '米特許審判部、CRISPR特許紛争でブロード研究所側を支持', '真核細胞でのCRISPR-Cas9利用に関する特許について、米特許審判部がカリフォルニア大学側の主張を退けブロード研究所側の特許を維持。2012年のダウドナらの発表と2013年のチャンらの実証のどちらが発明にあたるかが争点となった。
+
+米国では2022年にも審判部がブロード側に有利な判断を示した一方、欧州特許庁では判断が異なり、地域ごとに権利関係が分かれている。ライセンス構造の複雑さは治療開発企業の契約に影響し、2023年の治療承認まで続く背景となった。', null,
           'disputed', '発明の先取権をめぐる争いは控訴や地域ごとの判断の違いが続いており、最終的な権利関係は確定していない。', 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('USPTO Patent Trial and Appeal Board, Interference No. 106,048 (Decision on Motions, Feb. 15, 2017)', null), ('Nature News (2017) Broad Institute wins bitter battle over CRISPR patents', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing') and name = '倫理と制度'),
-          '2018-11-26', null, 'day', 'point', '賀建奎、ゲノム編集した双子の誕生を公表', '中国の研究者がCRISPRでCCR5遺伝子を改変した受精卵から双子が生まれたと発表し、国際的な非難を招く。', '香港での第2回ヒトゲノム編集国際サミット直前の公表で、2015年の第1回サミット声明が「無責任」とした生殖細胞系列の臨床応用が実際に行われたことが明らかになった。中国当局は違法な医療行為として2019年12月に懲役3年の判決を下し、WHOは登録制度と各国規制の整備を勧告した。1975年のアシロマ以来の「研究者の自主規制」モデルの限界が問われた事件でもある。',
+          '2018-11-26', null, 'day', 'point', '賀建奎、ゲノム編集した双子の誕生を公表', '中国の研究者・賀建奎が、CRISPRでCCR5遺伝子を改変した受精卵から双子が生まれたと香港での第2回ヒトゲノム編集国際サミット直前に公表し、国際的な非難を招いた。2015年の第1回サミット声明が「無責任」とした生殖細胞系列の臨床応用が実際に行われたことが明らかになった。
+
+中国当局は違法な医療行為として2019年12月に懲役3年の判決を下し、WHOは登録制度と各国規制の整備を勧告。**1975年のアシロマ以来の「研究者の自主規制」モデルの限界**が問われた事件でもある。', null,
           'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Nature News (2018) Genome-edited baby claim provokes international outcry', 'https://doi.org/10.1038/d41586-018-07545-0'), ('新華社 (2019-12-30) 「基因編輯嬰兒」案一審宣判', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing') and name = '発見と理論'),
-          '2020-10-07', null, 'day', 'point', 'シャルパンティエとダウドナにノーベル化学賞', 'CRISPR-Cas9による「遺伝子のはさみ」の開発が評価され、女性2人のみの共同受賞として初のノーベル賞となる。', '2012年の論文発表から8年という異例の早さでの受賞で、技術の影響の大きさを示した。同じ時期、技術レイヤーでは鎌状赤血球症へのCRISPR治療の臨床試験結果が報告され、制度レイヤーでは特許紛争と生殖細胞系列編集の国際ルール作りが続いていた。受賞対象は基礎的発見であり、真核細胞での応用をめぐる特許の争点とは別に評価された。',
+          '2020-10-07', null, 'day', 'point', 'シャルパンティエとダウドナにノーベル化学賞', 'CRISPR-Cas9による「遺伝子のはさみ」の開発が評価され、シャルパンティエとダウドナにノーベル化学賞。女性2人のみの共同受賞として初であり、2012年の論文発表から8年という異例の早さでの受賞は技術の影響の大きさを示した。
+
+同じ時期、技術レイヤーでは鎌状赤血球症へのCRISPR治療の臨床試験結果が報告され、制度レイヤーでは特許紛争と生殖細胞系列編集の国際ルール作りが続いていた。受賞対象は基礎的発見であり、真核細胞での応用をめぐる特許の争点とは別に評価された。', null,
           'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('The Nobel Prize in Chemistry 2020', 'https://www.nobelprize.org/prizes/chemistry/2020/summary/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing') and name = '技術と応用'),
-          '2023-11-16', null, 'day', 'point', '世界初のCRISPR治療「カスジェビー」を英国が承認', '鎌状赤血球症とβサラセミアに対するCRISPR-Cas9を用いた治療を英MHRAが承認。12月には米FDAも承認。', '患者自身の造血幹細胞を体外で編集し胎児型ヘモグロビンの産生を回復させる治療で、バーテックス社とCRISPRセラピューティクス社が開発した。2012年の論文から11年で臨床承認に至った。一方で価格は1回あたり約220万ドルとされ、患者数の多いアフリカなどでの利用可能性が新たな倫理・制度の課題となった。',
+          '2023-11-16', null, 'day', 'point', '世界初のCRISPR治療「カスジェビー」を英国が承認', '鎌状赤血球症とβサラセミアに対するCRISPR-Cas9を用いた世界初の治療「カスジェビー」を英MHRAが承認し、12月には米FDAも承認した。患者自身の造血幹細胞を体外で編集し胎児型ヘモグロビンの産生を回復させる治療で、バーテックス社とCRISPRセラピューティクス社が開発した。
+
+2012年の論文から11年で臨床承認に至った一方、価格は1回あたり約220万ドルとされ、**患者数の多いアフリカなどでの利用可能性**が新たな倫理・制度の課題となった。', null,
           'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('FDA (2023-12-08) FDA Approves First Gene Therapies to Treat Patients with Sickle Cell Disease', 'https://www.fda.gov/news-events/press-announcements/fda-approves-first-gene-therapies-treat-patients-sickle-cell-disease'), ('MHRA (2023-11-16) MHRA authorises world-first gene therapy that aims to cure sickle-cell disease and transfusion-dependent β-thalassemia', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing') and name = '技術と応用'),
-          '2025-05-15', null, 'day', 'point', '個別化した塩基編集治療を乳児に初めて適用と報告', '希少な代謝疾患CPS1欠損症の乳児1人のために設計された塩基編集治療の投与結果がNEJMに報告される。', '米国の研究チームが患者固有の変異に合わせて約6か月で治療を設計・製造し、肝臓を標的に脂質ナノ粒子で投与した。DNA二本鎖を切らずに一塩基を書き換える塩基編集の体内投与例であり、「1人のための薬」の規制上の枠組みも同時に試された。ただし1例の短期報告であり、長期の安全性と有効性は今後の追跡による。',
+          '2025-05-15', null, 'day', 'point', '個別化した塩基編集治療を乳児に初めて適用と報告', '希少な代謝疾患CPS1欠損症の乳児1人のために設計された塩基編集治療の投与結果がNEJMに報告された。米国の研究チームが患者固有の変異に合わせて約6か月で治療を設計・製造し、肝臓を標的に脂質ナノ粒子で投与した。
+
+DNA二本鎖を切らずに一塩基を書き換える塩基編集の体内投与例であり、「1人のための薬」の規制上の枠組みも同時に試された。ただし1例の短期報告であり、長期の安全性と有効性は今後の追跡による。', null,
           'unverified', '症例1例の短期経過報告にとどまり、長期的な安全性・有効性は未確認。', 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Musunuru, K. et al. (2025) Patient-Specific In Vivo Gene Editing to Treat a Rare Genetic Disease. New England Journal of Medicine', null)) as v(title, url);
 
@@ -2176,121 +2776,161 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '技術'),
-          '2008-10-31', null, 'day', 'point', 'Bitcoin論文「P2P電子通貨システム」公開', 'サトシ・ナカモトを名乗る人物が暗号学メーリングリストに9ページの論文を投稿。中央管理者なしで二重支払いを防ぐ仕組みを示した。', 'リーマン・ブラザーズ破綻から約1か月半後という時期は、金融機関への不信が背景にあったとしばしば語られる。Proof of Workによる合意形成と公開台帳という設計は、後のEthereum(技術)や無数の暗号資産の原型となった。著者の正体は現在も不明で、規制と事件レイヤーの多くの騒動もこの匿名性に根ざす。',
+          '2008-10-31', null, 'day', 'point', 'Bitcoin論文「P2P電子通貨システム」公開', 'サトシ・ナカモトを名乗る人物が暗号学メーリングリストに9ページの論文を投稿し、中央管理者なしで二重支払いを防ぐ仕組みを示した。リーマン・ブラザーズ破綻から約1か月半後という時期は、金融機関への不信が背景にあったとしばしば語られる。
+
+Proof of Workによる合意形成と公開台帳という設計は、後のEthereum(技術)や無数の暗号資産の原型となった。著者の正体は現在も不明で、規制と事件レイヤーの多くの騒動もこの匿名性に根ざす。', null,
           'verified', null, 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Bitcoin: A Peer-to-Peer Electronic Cash System', 'https://bitcoin.org/bitcoin.pdf')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '技術'),
-          '2009-01-03', null, 'day', 'point', 'Bitcoinのジェネシスブロック生成', 'Bitcoinネットワークの最初のブロックが生成され、稼働開始。ブロックには英紙の銀行救済に関する見出しが埋め込まれていた。', '埋め込まれた「Chancellor on brink of second bailout for banks」の見出しは、金融危機下での既存金融への批評と読まれている。当初は暗号学者や愛好家の実験にすぎず、市場価格は存在しなかった。1年半後のピザ取引(市場と資本)で初めて実物との交換価値が示され、価格を持つ資産としての歴史が始まる。',
+          '2009-01-03', null, 'day', 'point', 'Bitcoinのジェネシスブロック生成', 'Bitcoinネットワークの最初のブロックが生成され、稼働開始。ブロックに埋め込まれた英紙の見出し「Chancellor on brink of second bailout for banks」は、金融危機下での既存金融への批評と読まれている。
+
+当初は暗号学者や愛好家の実験にすぎず、市場価格は存在しなかった。1年半後のピザ取引(市場と資本)で初めて実物との交換価値が示され、価格を持つ資産としての歴史が始まる。', null,
           'verified', null, 'user', 1) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Bitcoin', 'https://en.wikipedia.org/wiki/Bitcoin')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '市場と資本'),
-          '2010-05-22', null, 'day', 'point', '1万BTCでピザ2枚、初の実物取引', 'フロリダのプログラマーが1万BTCと引き換えにピザ2枚を受け取ったと掲示板に報告。Bitcoinの最初の商取引として知られる。', '当時の1万BTCは約41ドル相当だったが、後年の価格では数億ドルに相当し、「ビットコイン・ピザ・デー」として毎年言及される。技術(ジェネシスブロック)から1年半で価格発見が始まった事例であり、翌年以降の取引所の乱立とMt.Goxの台頭(規制と事件)につながる。投機資産としての性格はこの時点ではまだ薄かった。',
+          '2010-05-22', null, 'day', 'point', '1万BTCでピザ2枚、初の実物取引', 'フロリダのプログラマーが1万BTCと引き換えにピザ2枚を受け取ったと掲示板に報告。Bitcoinの最初の商取引として知られ、当時の1万BTCは約41ドル相当だったが、後年の価格では数億ドルに相当し、「ビットコイン・ピザ・デー」として毎年言及される。
+
+技術(ジェネシスブロック)から1年半で価格発見が始まった事例であり、翌年以降の取引所の乱立とMt.Goxの台頭(規制と事件)につながる。投機資産としての性格はこの時点ではまだ薄かった。', null,
           'verified', null, 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Bitcointalk: Pizza for bitcoins? (2010)', 'https://bitcointalk.org/index.php?topic=137.0')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '規制と事件'),
-          '2013-10-02', null, 'day', 'point', '闇市場Silk Roadを米当局が閉鎖', 'FBIがBitcoin決済の違法商品市場Silk Roadを閉鎖し運営者を逮捕。Bitcoinと犯罪の結びつきが広く報じられた。', 'Torと暗号資産の匿名性を利用した市場の摘発は、規制当局が暗号資産を本格的に監視対象とする契機となった。同年12月には中国人民銀行が金融機関のBitcoin取扱いを禁止し、価格が急落している(市場と資本)。技術の中立性と利用の違法性を分けて論じる枠組みは、この事件を通じて形成された。',
+          '2013-10-02', null, 'day', 'point', '闇市場Silk Roadを米当局が閉鎖', 'FBIがBitcoin決済の違法商品市場Silk Roadを閉鎖し運営者を逮捕。Bitcoinと犯罪の結びつきが広く報じられ、Torと暗号資産の匿名性を利用した市場の摘発は、規制当局が暗号資産を本格的に監視対象とする契機となった。
+
+同年12月には中国人民銀行が金融機関のBitcoin取扱いを禁止し、価格が急落している(市場と資本)。技術の中立性と利用の違法性を分けて論じる枠組みは、この事件を通じて形成された。', null,
           'unverified', '当局が押収したBitcoinの数量は報道により約2.6万〜17万BTCと幅があり、押収時期の区別も含めて数値は未確定。', 'user', 3) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Silk Road (marketplace)', 'https://en.wikipedia.org/wiki/Silk_Road_(marketplace)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '規制と事件'),
-          '2014-02-28', null, 'day', 'point', 'Mt.Goxが民事再生を申請、大量のBitcoin消失', '東京の取引所Mt.Goxが取引を停止し民事再生を申請。顧客資産を含む大量のBitcoinが失われたと発表し、業界最大級の破綻となった。', '世界のBitcoin取引の大半を扱っていた取引所の破綻は、価格の長期低迷を招くとともに、取引所への規制の必要性を各国に認識させた。日本では利用者保護の議論が進み、2017年の改正資金決済法(規制と事件)で取引所登録制が導入される。技術そのものではなく取引所という「入口」が最大の弱点であることを示した事件である。',
+          '2014-02-28', null, 'day', 'point', 'Mt.Goxが民事再生を申請、大量のBitcoin消失', '東京の取引所Mt.Goxが取引を停止し民事再生を申請。顧客資産を含む大量のBitcoinが失われたと発表し、業界最大級の破綻となった。世界のBitcoin取引の大半を扱っていた取引所の破綻は、価格の長期低迷を招いた。
+
+各国に取引所規制の必要性を認識させ、日本では利用者保護の議論が進み、2017年の改正資金決済法(規制と事件)で取引所登録制が導入される。技術そのものではなく**取引所という「入口」が最大の弱点**であることを示した事件である。', null,
           'disputed', '消失額は当初約85万BTCと発表されたが、後に約20万BTCが発見されるなど、実際の損失規模と原因(外部からのハッキングか内部要因か)には諸説ある。', 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Mt. Gox', 'https://en.wikipedia.org/wiki/Mt._Gox')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '技術'),
-          '2015-07-30', null, 'day', 'point', 'Ethereumメインネット稼働開始', 'スマートコントラクトを実行できる汎用ブロックチェーンEthereumが稼働。「通貨」から「プログラム可能な台帳」へ用途が広がった。', 'ヴィタリック・ブテリンが2013年に構想し、2014年のクラウドセールで資金を集めて開発された。任意のプログラムをチェーン上で動かせる設計は、翌年のThe DAO(技術・事件)や2017年のICOブーム(市場と資本)、後のDeFiやNFTの基盤となった。Bitcoinが「価値の保存」に特化する一方、Ethereumは応用の実験場となる。',
+          '2015-07-30', null, 'day', 'point', 'Ethereumメインネット稼働開始', 'スマートコントラクトを実行できる汎用ブロックチェーンEthereumが稼働開始。ヴィタリック・ブテリンが2013年に構想し、2014年のクラウドセールで資金を集めて開発された。「通貨」から「プログラム可能な台帳」へ用途が広がった。
+
+任意のプログラムをチェーン上で動かせる設計は、翌年のThe DAO(技術・事件)や2017年のICOブーム(市場と資本)、後のDeFiやNFTの基盤となった。Bitcoinが「価値の保存」に特化する一方、Ethereumは応用の実験場となる。', null,
           'verified', null, 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Ethereum', 'https://en.wikipedia.org/wiki/Ethereum')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '技術'),
-          '2016-06-17', null, 'day', 'point', 'The DAOハッキング、Ethereumがハードフォークへ', 'Ethereum上の投資ファンドThe DAOの脆弱性が突かれ、集めたETHの約3分の1が流出。取り消しのためのハードフォークで議論が割れた。', '「コードが法」という理念と、被害回復のためにチェーンを巻き戻すかという実務判断が衝突し、7月のハードフォークで巻き戻さない側がEthereum Classicとして分離した。スマートコントラクトの脆弱性が巨額損失に直結することを示し、後の監査産業やDeFiハックの系譜(規制と事件)の起点となった。',
+          '2016-06-17', null, 'day', 'point', 'The DAOハッキング、Ethereumがハードフォークへ', 'Ethereum上の投資ファンドThe DAOの脆弱性が突かれ、集めたETHの約3分の1が流出。「コードが法」という理念と、被害回復のためにチェーンを巻き戻すかという実務判断が衝突し、取り消しのためのハードフォークをめぐって議論が割れた。
+
+7月のハードフォークで巻き戻さない側がEthereum Classicとして分離した。スマートコントラクトの脆弱性が巨額損失に直結することを示し、後の監査産業やDeFiハックの系譜(規制と事件)の起点となった。', null,
           'unverified', '流出額は約360万ETHとされるが、当時のドル換算額は5000万〜7000万ドルと資料により幅がある。', 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: The DAO', 'https://en.wikipedia.org/wiki/The_DAO')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '市場と資本'),
-          '2017-01-01', '2018-01-31', 'year', 'period', 'ICOブーム', 'Ethereum上でトークンを発行して資金を集めるICOが急増。2017年に数十億ドル規模の調達が行われ、多くが後に価値を失った。', 'Ethereumのスマートコントラクト(技術)がなければ成立しなかった資金調達手法で、ホワイトペーパー1枚で巨額を集める例が続出した。2017年9月には中国がICOを全面禁止し、米SECも証券法違反の警告を出すなど、規制と事件レイヤーの対応を招いた。同年末のBitcoin高騰と重なり、暗号資産が一般投資家の関心事となる。',
+          '2017-01-01', '2018-01-31', 'year', 'period', 'ICOブーム', 'Ethereum上でトークンを発行して資金を集めるICOが急増し、2017年に数十億ドル規模の調達が行われた。Ethereumのスマートコントラクト(技術)がなければ成立しなかった資金調達手法で、ホワイトペーパー1枚で巨額を集める例が続出し、多くが後に価値を失った。
+
+2017年9月には中国がICOを全面禁止し、米SECも証券法違反の警告を出すなど、規制と事件レイヤーの対応を招いた。同年末のBitcoin高騰と重なり、暗号資産が一般投資家の関心事となる。', null,
           'unverified', 'ブームの開始・終了時期は明確な定義がなく、調達総額も集計機関により大きく異なる。', 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Initial coin offering', 'https://en.wikipedia.org/wiki/Initial_coin_offering')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '規制と事件'),
-          '2017-04-01', null, 'day', 'point', '日本で改正資金決済法が施行、仮想通貨交換業を登録制に', '仮想通貨を法的に定義し、交換業者に金融庁への登録を義務づける改正法が施行。主要国で初の包括的な取引所規制となった。', 'Mt.Gox破綻(2014年)の教訓を受けた立法で、利用者財産の分別管理や本人確認を義務化した。同年、日本は世界のBitcoin取引で大きなシェアを占め、価格高騰(市場と資本)を支えた一因ともされる。しかし翌年のCoincheck事件は、登録制のみでは資産保全が不十分であることを露呈させた。',
+          '2017-04-01', null, 'day', 'point', '日本で改正資金決済法が施行、仮想通貨交換業を登録制に', '仮想通貨を法的に定義し、交換業者に金融庁への登録を義務づける改正資金決済法が施行。主要国で初の包括的な取引所規制であり、Mt.Gox破綻(2014年)の教訓を受けて利用者財産の分別管理や本人確認を義務化した。
+
+同年、日本は世界のBitcoin取引で大きなシェアを占め、価格高騰(市場と資本)を支えた一因ともされる。しかし翌年のCoincheck事件は、登録制のみでは資産保全が不十分であることを露呈させた。', null,
           'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('金融庁: 仮想通貨交換業者登録一覧・資金決済に関する法律', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '技術'),
-          '2017-08-01', null, 'day', 'point', 'Bitcoin Cashが分岐、ブロックサイズ論争の決着', '取引処理能力をめぐる数年来の対立の末、ブロックサイズを拡大したBitcoin Cashが分岐。Bitcoin本体はSegWitを有効化した。', '分散型ネットワークの仕様変更を誰がどう決めるかというガバナンス問題が、実際にチェーンの分裂という形で表れた。技術論争は市場にも波及し、分岐前後の価格変動や取引所の対応(市場と資本)が投資家を翻弄した。この後Bitcoinはレイヤー2で拡張する路線を、Ethereumはやがてコンセンサス転換(2022年のMerge)を選ぶ。',
+          '2017-08-01', null, 'day', 'point', 'Bitcoin Cashが分岐、ブロックサイズ論争の決着', '取引処理能力をめぐる数年来の対立の末、ブロックサイズを拡大したBitcoin Cashが分岐し、Bitcoin本体はSegWitを有効化した。分散型ネットワークの仕様変更を誰がどう決めるかというガバナンス問題が、実際にチェーンの分裂という形で表れた。
+
+技術論争は市場にも波及し、分岐前後の価格変動や取引所の対応(市場と資本)が投資家を翻弄した。この後Bitcoinはレイヤー2で拡張する路線を、Ethereumはやがてコンセンサス転換(2022年のMerge)を選ぶ。', null,
           'verified', null, 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Bitcoin Cash', 'https://en.wikipedia.org/wiki/Bitcoin_Cash')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '市場と資本'),
-          '2017-12-17', null, 'day', 'point', 'Bitcoinが約2万ドルの史上最高値、初のバブル頂点', 'Bitcoin価格が主要取引所で2万ドル前後に達し当時の最高値を記録。ICOブームとCME先物上場を背景に、個人投資家が殺到した。', '年初の約1000ドルから20倍近い上昇で、テレビや新聞が連日報じる社会現象となった。同月にCBOEとCMEがBitcoin先物を上場し、機関投資家の参入が期待されたが、翌年には8割以上下落する「暗号資産の冬」に入る。技術(SegWit、Bitcoin Cash分岐)や規制(日本の登録制、中国のICO禁止)がすべて同じ年に集中していた。',
+          '2017-12-17', null, 'day', 'point', 'Bitcoinが約2万ドルの史上最高値、初のバブル頂点', 'Bitcoin価格が主要取引所で2万ドル前後に達し、当時の史上最高値を記録。年初の約1000ドルから20倍近い上昇で、ICOブームを背景に個人投資家が殺到し、テレビや新聞が連日報じる社会現象となった。
+
+同月にCBOEとCMEがBitcoin先物を上場し、機関投資家の参入が期待されたが、翌年には8割以上下落する「暗号資産の冬」に入る。技術(SegWit、Bitcoin Cash分岐)や規制(日本の登録制、中国のICO禁止)がすべて同じ年に集中していた。', null,
           'disputed', '最高値は取引所により1万9000〜2万ドル台と異なり、日付も12月16〜18日の間で資料により差がある。', 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('CoinMarketCap: Bitcoin 価格履歴', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '規制と事件'),
-          '2018-01-26', null, 'day', 'point', 'コインチェックからNEM約580億円分が流出', '国内取引所コインチェックから約5.2億XEM(当時約580億円相当)が不正送金された。単一事件としては当時最大規模の流出となった。', '改正資金決済法(2017年)の登録審査中だった業者で起きた事件で、ホットウォレット管理の不備が指摘された。金融庁は立入検査と業務改善命令を出し、以後の審査は厳格化。バブル頂点(市場と資本)からわずか1か月後の出来事であり、熱狂の直後に事件が起きるという本年表の反復パターンを象徴する。',
+          '2018-01-26', null, 'day', 'point', 'コインチェックからNEM約580億円分が流出', '国内取引所コインチェックから約5.2億XEM(当時約580億円相当)が不正送金された。単一事件としては当時最大規模の流出で、改正資金決済法(2017年)の登録審査中だった業者で起き、ホットウォレット管理の不備が指摘された。
+
+金融庁は立入検査と業務改善命令を出し、以後の審査は厳格化。バブル頂点(市場と資本)からわずか1か月後の出来事であり、**熱狂の直後に事件が起きるという本年表の反復パターン**を象徴する。', null,
           'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Coincheck', 'https://en.wikipedia.org/wiki/Coincheck')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '規制と事件'),
-          '2021-09-07', null, 'day', 'point', 'エルサルバドルがBitcoinを法定通貨に', 'エルサルバドルで世界初となるBitcoin法定通貨法が施行。国家が暗号資産を通貨として採用する実験が始まった。', 'ドル化経済の国が送金コスト削減と金融包摂を掲げて導入したが、国民の利用は限定的で、IMFは金融リスクを警告し続けた。2025年にはIMF融資の条件として法定通貨としての受け入れ義務が撤回されている。同月、中国は暗号資産取引を全面禁止しており、国家の対応が正反対に分かれた月である。',
+          '2021-09-07', null, 'day', 'point', 'エルサルバドルがBitcoinを法定通貨に', 'エルサルバドルで世界初となるBitcoin法定通貨法が施行。ドル化経済の同国が送金コスト削減と金融包摂を掲げ、国家が暗号資産を通貨として採用する実験が始まった。
+
+国民の利用は限定的で、IMFは金融リスクを警告し続け、2025年にはIMF融資の条件として法定通貨としての受け入れ義務が撤回されている。同月、中国は暗号資産取引を全面禁止しており、国家の対応が正反対に分かれた月である。', null,
           'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Bitcoin Law', 'https://en.wikipedia.org/wiki/Bitcoin_Law')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '規制と事件'),
-          '2021-09-24', null, 'day', 'point', '中国が暗号資産取引とマイニングを全面禁止', '中国人民銀行など10機関が暗号資産関連の取引を違法とする通知を公表。同年5月のマイニング規制と合わせ、事実上の全面禁止となった。', '世界のBitcoinマイニングの過半を担っていた中国からハッシュレートが流出し、米国などへ移転した(技術)。取引禁止は市場に短期的な下落をもたらしたが、同年11月にはBitcoinが史上最高値を更新しており(市場と資本)、単一国家の禁止では市場が止まらないことも示した。エルサルバドルの法定通貨化と同じ月の出来事である。',
+          '2021-09-24', null, 'day', 'point', '中国が暗号資産取引とマイニングを全面禁止', '中国人民銀行など10機関が暗号資産関連の取引を違法とする通知を公表。同年5月のマイニング規制と合わせ事実上の全面禁止となり、世界のBitcoinマイニングの過半を担っていた中国からハッシュレートが米国などへ流出した(技術)。
+
+取引禁止は市場に短期的な下落をもたらしたが、同年11月にはBitcoinが史上最高値を更新しており(市場と資本)、単一国家の禁止では市場が止まらないことも示した。エルサルバドルの法定通貨化と同じ月の出来事である。', null,
           'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('中国人民銀行: 关于进一步防范和处置虚拟货币交易炒作风险的通知(2021年9月24日)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '市場と資本'),
-          '2021-11-10', null, 'day', 'point', 'Bitcoinが約6万9000ドルの史上最高値', 'コロナ禍の金融緩和とTeslaなど企業の購入、米国での先物ETF承認を背景に、Bitcoinが約6万9000ドルの最高値をつけた。', '2017年の頂点(約2万ドル)から3年半で3倍超の水準に達し、NFTやDeFiのブームも重なった。翌2022年の利上げ局面でTerra崩壊とFTX破綻(規制と事件)が続き、価格は1万6000ドル台まで下落する。低金利下の資本(市場と資本)が暗号資産へ流入し、引き締めとともに退潮する構図が明確に表れた。',
+          '2021-11-10', null, 'day', 'point', 'Bitcoinが約6万9000ドルの史上最高値', 'コロナ禍の金融緩和とTeslaなど企業の購入、米国での先物ETF承認を背景に、Bitcoinが約6万9000ドルの史上最高値をつけた。2017年の頂点(約2万ドル)から3年半で3倍超の水準に達し、NFTやDeFiのブームも重なった。
+
+翌2022年の利上げ局面でTerra崩壊とFTX破綻(規制と事件)が続き、価格は1万6000ドル台まで下落する。低金利下の資本(市場と資本)が暗号資産へ流入し、引き締めとともに退潮する構図が明確に表れた。', null,
           'disputed', '最高値は取引所により6万8000〜6万9000ドル台と異なる。', 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('CoinMarketCap: Bitcoin 価格履歴', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '市場と資本'),
-          '2022-05-07', '2022-05-13', 'day', 'period', 'Terra/USTの崩壊', 'アルゴリズム型ステーブルコインUSTがドル連動を失い、姉妹通貨LUNAとともに1週間でほぼ無価値に。約400億ドル規模の時価総額が消失した。', '担保ではなくアルゴリズムで価格を維持する設計(技術)の脆弱性が、市場の売り圧力で一気に露呈した。連鎖的にヘッジファンドや貸付業者が破綻し、11月のFTX破綻(規制と事件)へ続く信用収縮の起点となった。米国や日本でステーブルコイン規制の議論が急加速し、日本では翌年、改正資金決済法でステーブルコインの発行者が限定された。',
+          '2022-05-07', '2022-05-13', 'day', 'period', 'Terra/USTの崩壊', 'アルゴリズム型ステーブルコインUSTがドル連動を失い、姉妹通貨LUNAとともに1週間でほぼ無価値になり、約400億ドル規模の時価総額が消失した。担保ではなくアルゴリズムで価格を維持する設計(技術)の脆弱性が、市場の売り圧力で一気に露呈した。
+
+連鎖的にヘッジファンドや貸付業者が破綻し、**11月のFTX破綻(規制と事件)へ続く信用収縮の起点**となった。米国や日本でステーブルコイン規制の議論が急加速し、日本では翌年、改正資金決済法でステーブルコインの発行者が限定された。', null,
           'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Terra (blockchain)', 'https://en.wikipedia.org/wiki/Terra_(blockchain)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '技術'),
-          '2022-09-15', null, 'day', 'point', 'Ethereumが「The Merge」でProof of Stakeへ移行', 'EthereumがProof of WorkからProof of Stakeへ移行するアップグレードを完了。消費電力を99%以上削減したとされる。', '稼働中のネットワークを止めずに合意形成の仕組みを入れ替えた大規模な移行で、数年来の開発の集大成だった。環境負荷への批判(規制と事件レイヤーの論点)に技術で応えた形だが、同時期の市場はTerra崩壊とFTX破綻に挟まれた「冬」の最中で、価格への影響は限定的だった。技術と市場の時間軸のずれを示す事例である。',
+          '2022-09-15', null, 'day', 'point', 'Ethereumが「The Merge」でProof of Stakeへ移行', 'EthereumがProof of WorkからProof of Stakeへ移行するアップグレード「The Merge」を完了し、消費電力を99%以上削減したとされる。稼働中のネットワークを止めずに合意形成の仕組みを入れ替えた大規模な移行で、数年来の開発の集大成だった。
+
+環境負荷への批判(規制と事件レイヤーの論点)に技術で応えた形だが、同時期の市場はTerra崩壊とFTX破綻に挟まれた「冬」の最中で、価格への影響は限定的だった。**技術と市場の時間軸のずれ**を示す事例である。', null,
           'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('ethereum.org: The Merge', 'https://ethereum.org/en/roadmap/merge/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '規制と事件'),
-          '2022-11-11', null, 'day', 'point', 'FTXが破産申請、顧客資産流用が発覚', '世界2位級の取引所FTXが米国で連邦破産法11条を申請。関連会社への顧客資産流用が明らかになり、創業者は後に有罪となった。', 'Mt.Gox(2014年)以来、再び「取引所」が最大の弱点となった事件で、規制当局と政界に深く食い込んでいた企業の破綻は業界全体の信頼を失墜させた。米国では取引所規制の議論が加速し、日本では分別管理義務により国内利用者の資産返還が比較的速やかに進んだ点が対照的だった。市場(市場と資本)は底値圏に沈む。',
+          '2022-11-11', null, 'day', 'point', 'FTXが破産申請、顧客資産流用が発覚', '世界2位級の取引所FTXが米国で連邦破産法11条を申請。関連会社への顧客資産流用が明らかになり、創業者は後に有罪となった。Mt.Gox(2014年)以来、再び「取引所」が最大の弱点となった事件で、規制当局と政界に深く食い込んでいた企業の破綻は業界全体の信頼を失墜させた。
+
+米国では取引所規制の議論が加速し、日本では分別管理義務により国内利用者の資産返還が比較的速やかに進んだ点が対照的だった。市場(市場と資本)は底値圏に沈む。', null,
           'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Bankruptcy of FTX', 'https://en.wikipedia.org/wiki/Bankruptcy_of_FTX')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '市場と資本'),
-          '2024-01-10', null, 'day', 'point', '米SECが現物Bitcoin ETFを承認', '米証券取引委員会が11本の現物Bitcoin ETFを承認。証券口座で買える商品となり、機関投資家と個人の資金流入が加速した。', '10年以上却下され続けた申請が、裁判所の判断を経て承認に至った。FTX破綻(規制と事件)から1年余りでの転換であり、投機的な「取引所」経由から規制された金融商品へと入口が広がったことを意味する。同年4月の半減期と重なり、Bitcoinは同年末に初めて10万ドルを超えた。技術ではなく制度が価格を動かした局面である。',
+          '2024-01-10', null, 'day', 'point', '米SECが現物Bitcoin ETFを承認', '米証券取引委員会が11本の現物Bitcoin ETFを承認。10年以上却下され続けた申請が裁判所の判断を経て承認に至り、証券口座で買える商品となって機関投資家と個人の資金流入が加速した。
+
+FTX破綻(規制と事件)から1年余りでの転換であり、投機的な「取引所」経由から規制された金融商品へと入口が広がったことを意味する。同年4月の半減期と重なり、Bitcoinは同年末に初めて10万ドルを超えた。**技術ではなく制度が価格を動かした**局面である。', null,
           'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('SEC: Statement on the Approval of Spot Bitcoin Exchange-Traded Products (2024-01-10)', 'https://www.sec.gov/newsroom/speeches-statements/gensler-statement-spot-bitcoin-011023')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '規制と事件'),
-          '2025-07-18', null, 'day', 'point', '米国でステーブルコイン規制法(GENIUS法)が成立', 'ドル連動ステーブルコインの発行者に準備資産の全額裏付けなどを義務づける連邦法が成立。米国初の包括的な暗号資産法制となった。', 'Terra崩壊(2022年)で露呈したステーブルコインの危うさに対する立法上の回答であり、同時にドル建てステーブルコインを制度に取り込む産業政策でもある。ETF承認(市場と資本)と並び、暗号資産が「規制の外」から「規制の内側」へ移る流れを決定づけた。Bitcoin論文から17年、興亡の末に制度化へ至った現在地を示す。',
+          '2025-07-18', null, 'day', 'point', '米国でステーブルコイン規制法(GENIUS法)が成立', 'ドル連動ステーブルコインの発行者に準備資産の全額裏付けなどを義務づけるGENIUS法が成立し、米国初の包括的な暗号資産法制となった。Terra崩壊(2022年)で露呈したステーブルコインの危うさに対する立法上の回答であり、同時にドル建てステーブルコインを制度に取り込む産業政策でもある。
+
+ETF承認(市場と資本)と並び、暗号資産が**「規制の外」から「規制の内側」へ**移る流れを決定づけた。Bitcoin論文から17年、興亡の末に制度化へ至った現在地を示す。', null,
           'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: GENIUS Act', 'https://en.wikipedia.org/wiki/GENIUS_Act')) as v(title, url);
 
@@ -2307,121 +2947,161 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-mobile-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-mobile-revolution') and name = 'アプリとビジネス'),
-          '1999-02-22', null, 'day', 'point', 'NTTドコモがiモードを開始', '携帯電話からメールとウェブサイトを利用できるiモードが開始。公式サイトと月額課金の仕組みでモバイルコンテンツ市場を築いた。', '着メロや占い、モバイルバンキングなど公式コンテンツへの課金を通信料と合算徴収する仕組みは、後のApp Storeが整えた「小額課金の経済圏」を先取りしたものと評される。一方で日本市場が独自進化を遂げたことは、2008年のiPhone上陸(技術と端末レイヤー)後に「ガラパゴス」と呼ばれる転換の背景ともなった。',
+          '1999-02-22', null, 'day', 'point', 'NTTドコモがiモードを開始', 'NTTドコモが携帯電話からメールとウェブサイトを利用できるiモードを開始。着メロや占い、モバイルバンキングなど公式コンテンツへの課金を通信料と合算徴収する月額課金の仕組みで、モバイルコンテンツ市場を築いた。
+
+この仕組みは、後のApp Storeが整えた**「小額課金の経済圏」を先取りした**ものと評される。一方で日本市場が独自進化を遂げたことは、2008年のiPhone上陸(技術と端末レイヤー)後に「ガラパゴス」と呼ばれる転換の背景ともなった。', null,
           'disputed', '「世界初のモバイルインターネットサービス」とする表現は、同時期のWAP等との比較で定義が分かれる。', 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: i-mode', 'https://en.wikipedia.org/wiki/I-mode')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-mobile-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-mobile-revolution') and name = '技術と端末'),
-          '2001-10-01', '2026-03-31', 'day', 'period', '3G(FOMA)サービスの時代', 'NTTドコモが世界初の商用W-CDMAサービスFOMAを開始。2026年3月末の終了まで、四半世紀にわたり通信の土台を担った。', 'テレビ電話や高速パケット通信を掲げて始まった3Gは、当初は端末の電池持ちなどで普及が遅れたが、2000年代半ばに主流となった。2008年のiPhone 3G(技術と端末)、2010年代のLINEやスマホ決済(アプリとビジネス)はいずれも3G以降の通信基盤の上に成立している。停波はスマホ移行の完了を告げる区切りでもある。',
+          '2001-10-01', '2026-03-31', 'day', 'period', '3G(FOMA)サービスの時代', 'NTTドコモが世界初の商用W-CDMAサービスFOMAを開始。テレビ電話や高速パケット通信を掲げて始まった3Gは、当初は端末の電池持ちなどで普及が遅れたが、2000年代半ばに主流となり、2026年3月末の終了まで四半世紀にわたり通信の土台を担った。
+
+2008年のiPhone 3G(技術と端末)、2010年代のLINEやスマホ決済(アプリとビジネス)はいずれも3G以降の通信基盤の上に成立している。停波はスマホ移行の完了を告げる区切りでもある。', null,
           'verified', null, 'user', 1) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('NTTドコモ 報道発表: FOMAおよびiモードのサービス終了について(2019年10月29日)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-mobile-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-mobile-revolution') and name = '技術と端末'),
-          '2007-01-09', null, 'day', 'point', 'AppleがiPhoneを発表', 'スティーブ・ジョブズがMacworldでiPhoneを発表。マルチタッチ画面とフルブラウザを備え、同年6月29日に米国で発売された。', '物理キーを廃した全面タッチスクリーンとデスクトップ級のブラウザは、iモードに代表される「携帯向けに縮小されたウェブ」との決別を意味した。当初はサードパーティのアプリを認めず、翌年のApp Store(アプリとビジネス)開設で経済圏が生まれる。発表当時、世界の携帯端末市場ではNokiaが首位にあった。',
+          '2007-01-09', null, 'day', 'point', 'AppleがiPhoneを発表', 'スティーブ・ジョブズがMacworldでiPhoneを発表。物理キーを廃したマルチタッチの全面タッチスクリーンとデスクトップ級のフルブラウザを備え、同年6月29日に米国で発売された。
+
+これはiモードに代表される**「携帯向けに縮小されたウェブ」との決別**を意味した。当初はサードパーティのアプリを認めず、翌年のApp Store(アプリとビジネス)開設で経済圏が生まれる。発表当時、世界の携帯端末市場ではNokiaが首位にあった。', null,
           'verified', null, 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Apple Newsroom: Apple Reinvents the Phone with iPhone (2007-01-09)', 'https://www.apple.com/newsroom/2007/01/09Apple-Reinvents-the-Phone-with-iPhone/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-mobile-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-mobile-revolution') and name = '技術と端末'),
-          '2007-11-05', null, 'day', 'point', 'GoogleらがAndroidとOpen Handset Allianceを発表', 'Googleと端末・通信34社がオープンソースのモバイルOS「Android」を発表。iPhoneに対抗する開放型の陣営が形成された。', 'iPhone発表から10か月後の対抗軸。OSを無償で端末メーカーに提供する戦略は、Samsungや中国メーカーの台頭を促し、世界のスマホ出荷台数の大半をAndroidが占める構図をつくった。同時に、検索やアプリストアを通じたGoogleの支配力が、後年のEUデジタル市場法(社会と制度レイヤー)の主要な争点となる。',
+          '2007-11-05', null, 'day', 'point', 'GoogleらがAndroidとOpen Handset Allianceを発表', 'Googleと端末・通信34社がオープンソースのモバイルOS「Android」とOpen Handset Allianceを発表。iPhone発表から10か月後に、対抗する開放型の陣営が形成された。
+
+OSを無償で端末メーカーに提供する戦略は、Samsungや中国メーカーの台頭を促し、世界のスマホ出荷台数の大半をAndroidが占める構図をつくった。同時に、検索やアプリストアを通じたGoogleの支配力が、後年のEUデジタル市場法(社会と制度レイヤー)の主要な争点となる。', null,
           'verified', null, 'user', 3) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Open Handset Alliance: Industry Leaders Announce Open Platform for Mobile Devices (2007-11-05)', 'https://www.openhandsetalliance.com/press_110507.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-mobile-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-mobile-revolution') and name = 'アプリとビジネス'),
-          '2008-07-10', null, 'day', 'point', 'App Store開設、アプリ経済圏の始まり', 'AppleがiPhone向けApp Storeを開設。約500本のアプリで始まり、開発者への70%配分モデルがアプリ産業の標準となった。', 'iモードの公式サイト課金と異なり、審査を通れば世界中の開発者が同じ条件で配信できる仕組みが、個人開発者から大手までを引き込んだ。翌日にはiPhone 3Gが日本を含む22か国で発売され(技術と端末)、端末とストアが同時に世界展開された。この30%手数料は十数年後にEpic訴訟やDMA(社会と制度)で問われることになる。',
+          '2008-07-10', null, 'day', 'point', 'App Store開設、アプリ経済圏の始まり', 'AppleがiPhone向けApp Storeを開設。約500本のアプリで始まり、開発者への70%配分モデルがアプリ産業の標準となった。iモードの公式サイト課金と異なり、審査を通れば世界中の開発者が同じ条件で配信できる仕組みが、個人開発者から大手までを引き込んだ。
+
+翌日にはiPhone 3Gが日本を含む22か国で発売され(技術と端末)、端末とストアが同時に世界展開された。この**30%手数料は十数年後にEpic訴訟やDMA(社会と制度)で問われる**ことになる。', null,
           'verified', null, 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Apple Newsroom: iPhone 3G on Sale Tomorrow (2008-07-10)', 'https://www.apple.com/newsroom/2008/07/10iPhone-3G-on-Sale-Tomorrow/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-mobile-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-mobile-revolution') and name = 'アプリとビジネス'),
-          '2008-07-11', '2011-10-14', 'day', 'period', 'iPhone 3G日本発売とソフトバンク単独販売期', 'iPhone 3Gが日本で発売。ソフトバンクモバイルが単独で扱い、2011年10月のau参入まで国内iPhone市場を独占した。', '発売日には表参道の店舗に長い行列ができ、日本の携帯市場が端末メーカー主導からプラットフォーム主導へ転換する起点となった。単独販売期間はソフトバンクの契約者数を押し上げ、通信キャリアの勢力図を変えた。iモード全盛の国内市場でスマホの世帯保有率が1割に満たなかった2010年(社会と制度)を挟む期間である。',
+          '2008-07-11', '2011-10-14', 'day', 'period', 'iPhone 3G日本発売とソフトバンク単独販売期', 'iPhone 3Gが日本で発売され、ソフトバンクモバイルが単独で取り扱った。発売日には表参道の店舗に長い行列ができ、2011年10月のau参入まで続いた単独販売期間はソフトバンクの契約者数を押し上げ、通信キャリアの勢力図を変えた。
+
+日本の携帯市場が端末メーカー主導からプラットフォーム主導へ転換する起点であり、iモード全盛の国内でスマホの世帯保有率が1割に満たなかった2010年(社会と制度)を挟む期間である。', null,
           'unverified', 'Appleとソフトバンク間の契約内容は非公開で、「独占契約」の存在は当時の報道と販売実態からの推定にとどまる。', 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('ソフトバンクモバイル 報道発表: iPhone 3Gの発売について(2008年)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-mobile-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-mobile-revolution') and name = '技術と端末'),
-          '2008-10-22', null, 'day', 'point', '初のAndroid端末「T-Mobile G1」発売', 'HTC製の初のAndroid搭載スマートフォンが米国で発売。物理キーボード付きで、Android Marketも同時に始まった。', 'iPhone 3G発売の3か月後にあたる。初代Androidは完成度で劣るとの評価も多かったが、複数メーカーへの展開が急速に進み、2010年代初頭には出荷台数でiOSを上回った。日本ではドコモが2009年にHT-03Aとして初のAndroid端末を投入し、iPhoneを持たなかった同社の対抗軸となった。',
+          '2008-10-22', null, 'day', 'point', '初のAndroid端末「T-Mobile G1」発売', 'HTC製の初のAndroid搭載スマートフォン「T-Mobile G1」が米国で発売。物理キーボード付きで、Android Marketも同時に始まった。iPhone 3G発売の3か月後にあたる。
+
+初代Androidは完成度で劣るとの評価も多かったが、複数メーカーへの展開が急速に進み、2010年代初頭には出荷台数でiOSを上回った。日本ではドコモが2009年にHT-03Aとして初のAndroid端末を投入し、iPhoneを持たなかった同社の対抗軸となった。', null,
           'verified', null, 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: HTC Dream', 'https://en.wikipedia.org/wiki/HTC_Dream')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-mobile-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-mobile-revolution') and name = '社会と制度'),
-          '2010-01-01', null, 'year', 'point', '日本のスマートフォン世帯保有率は約1割', '総務省の通信利用動向調査で、2010年末時点のスマートフォン世帯保有率は9.7%。携帯電話全体の保有率は9割を超えていた。', 'iPhone上陸から2年、まだ大半の利用者はフィーチャーフォンを使っていた。この年、Instagramが公開され(アプリとビジネス)、ドコモはLTEサービス「Xi」を12月に開始している(技術と端末)。普及の「前夜」にあたり、以後10年で保有率が8割超へ達する急上昇の起点として参照される数値である。',
+          '2010-01-01', null, 'year', 'point', '日本のスマートフォン世帯保有率は約1割', '総務省の通信利用動向調査で、2010年末時点のスマートフォン世帯保有率は9.7%。携帯電話全体の保有率は9割を超えており、iPhone上陸から2年を経てもなお大半の利用者はフィーチャーフォンを使っていた。
+
+この年、Instagramが公開され(アプリとビジネス)、ドコモはLTEサービス「Xi」を12月に開始している(技術と端末)。普及の「前夜」にあたり、以後10年で保有率が8割超へ達する急上昇の起点として参照される数値である。', null,
           'unverified', '9.7%は平成22年通信利用動向調査の値として広く引用されるが、調査年版により集計対象や設問が異なるため原資料での確認を推奨する。', 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('総務省: 通信利用動向調査', 'https://www.soumu.go.jp/johotsusintokei/statistics/statistics05.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-mobile-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-mobile-revolution') and name = 'アプリとビジネス'),
-          '2010-10-06', null, 'day', 'point', 'Instagram公開', '写真共有アプリInstagramがiPhone向けに公開。スマホのカメラとSNSを直結させ、モバイル発のサービスが主流になる先駆けとなった。', 'PC版を持たずモバイル専用で始まった点が象徴的で、スマートフォンが「PCの補助」から「主戦場」へ変わったことを示す。2012年にFacebookが約10億ドルで買収し、アプリ企業の評価額が急騰する時代を印象づけた。同年の日本ではスマホ保有率が1割程度(社会と制度)であり、普及の速度差が読み取れる。',
+          '2010-10-06', null, 'day', 'point', 'Instagram公開', '写真共有アプリInstagramがiPhone向けに公開。スマホのカメラとSNSを直結させ、モバイル発のサービスが主流になる先駆けとなった。
+
+PC版を持たずモバイル専用で始まった点が象徴的で、スマートフォンが「PCの補助」から「主戦場」へ変わったことを示す。2012年にFacebookが約10億ドルで買収し、アプリ企業の評価額が急騰する時代を印象づけた。同年の日本ではスマホ保有率が1割程度(社会と制度)であり、普及の速度差が読み取れる。', null,
           'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Instagram', 'https://en.wikipedia.org/wiki/Instagram')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-mobile-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-mobile-revolution') and name = '社会と制度'),
-          '2011-03-11', null, 'day', 'point', '東日本大震災、安否確認にSNSとモバイルが機能', '音声通話がつながりにくい中、TwitterやSNS、パケット通信による安否確認や情報共有が広く使われ、モバイルの社会的役割が認識された。', '通信規制で電話が制限される一方、パケット通信は比較的つながりやすく、SNS上の情報がテレビと並ぶ情報源となった。この経験は同年6月のLINE誕生(アプリとビジネス)の直接の動機とされ、災害時の連絡手段としてスマホへの移行を後押しした。3Gネットワーク(技術と端末)の混雑と復旧は通信各社の課題として残った。',
+          '2011-03-11', null, 'day', 'point', '東日本大震災、安否確認にSNSとモバイルが機能', '東日本大震災では通信規制により音声通話がつながりにくい中、パケット通信は比較的つながりやすく、TwitterなどのSNSによる安否確認や情報共有が広く使われてテレビと並ぶ情報源となり、モバイルの社会的役割が認識された。
+
+この経験は同年6月のLINE誕生(アプリとビジネス)の直接の動機とされ、災害時の連絡手段としてスマホへの移行を後押しした。3Gネットワーク(技術と端末)の混雑と復旧は通信各社の課題として残った。', null,
           'disputed', 'SNSが果たした役割の評価は研究により幅があり、デマ拡散の弊害を重く見る見解もある。', 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('総務省: 平成23年版 情報通信白書 東日本大震災における情報通信の状況', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-mobile-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-mobile-revolution') and name = 'アプリとビジネス'),
-          '2011-06-23', null, 'day', 'point', 'LINEサービス開始', 'NHN Japanがメッセージアプリ「LINE」を公開。無料通話とスタンプで急成長し、日本のスマホ利用の中心的なアプリとなった。', '震災時の連絡手段の課題(社会と制度)を受けて短期間で開発されたとされる。電話番号ベースの登録により乗り換えの負担が小さく、フィーチャーフォン利用者をスマホへ移行させる強い動機となった。スタンプ販売や公式アカウントによる収益化はiモード時代の課金文化と接続し、日本独自のアプリ経済圏を形づくった。',
+          '2011-06-23', null, 'day', 'point', 'LINEサービス開始', 'NHN Japanがメッセージアプリ「LINE」を公開。震災時の連絡手段の課題(社会と制度)を受けて短期間で開発されたとされ、無料通話とスタンプで急成長し、日本のスマホ利用の中心的なアプリとなった。
+
+電話番号ベースの登録により乗り換えの負担が小さく、**フィーチャーフォン利用者をスマホへ移行させる強い動機**となった。スタンプ販売や公式アカウントによる収益化はiモード時代の課金文化と接続し、日本独自のアプリ経済圏を形づくった。', null,
           'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Line (software)', 'https://en.wikipedia.org/wiki/Line_(software)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-mobile-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-mobile-revolution') and name = '技術と端末'),
-          '2013-09-03', null, 'day', 'point', 'MicrosoftがNokiaの携帯端末事業を買収すると発表', 'かつて世界首位だったNokiaの端末事業をMicrosoftが約72億ドルで取得すると発表。スマホ移行に乗り遅れた旧勢力の退場を象徴した。', 'iPhone発表時に首位だったNokiaは独自OSからWindows Phoneへ転換したが、iOSとAndroidの二強(技術と端末)とアプリの品揃え(アプリとビジネス)の差を埋められなかった。プラットフォームとアプリ経済圏を握った側が勝つという構図が確定した出来事で、同月には日本でドコモがiPhoneの取り扱いを開始している。',
+          '2013-09-03', null, 'day', 'point', 'MicrosoftがNokiaの携帯端末事業を買収すると発表', 'かつて世界首位だったNokiaの携帯端末事業を、Microsoftが約72億ドルで取得すると発表。スマホ移行に乗り遅れた旧勢力の退場を象徴した。
+
+iPhone発表時に首位だったNokiaは独自OSからWindows Phoneへ転換したが、iOSとAndroidの二強(技術と端末)とアプリの品揃え(アプリとビジネス)の差を埋められなかった。プラットフォームとアプリ経済圏を握った側が勝つという構図が確定した出来事で、同月には日本でドコモがiPhoneの取り扱いを開始している。', null,
           'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Microsoft Mobile', 'https://en.wikipedia.org/wiki/Microsoft_Mobile')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-mobile-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-mobile-revolution') and name = '技術と端末'),
-          '2013-09-20', null, 'day', 'point', 'NTTドコモがiPhone販売を開始', '国内最大手のドコモがiPhone 5s/5cを発売。国内3キャリアすべてがiPhoneを扱う体制となり、日本市場でのiPhone優位が固まった。', 'iモードで独自エコシステムを築いたドコモがiPhoneを受け入れたことは、キャリア主導からプラットフォーム主導への転換の完了を意味した。同日発売のiPhone 5sは指紋認証Touch IDを搭載し、翌年のApple Payにつながる。iモード終了(2026年)は既定路線となり、日本のスマホ世帯保有率はこの後も急上昇を続ける(社会と制度)。',
+          '2013-09-20', null, 'day', 'point', 'NTTドコモがiPhone販売を開始', '国内最大手のNTTドコモがiPhone 5s/5cを発売し、国内3キャリアすべてがiPhoneを扱う体制となって日本市場でのiPhone優位が固まった。同日発売のiPhone 5sは指紋認証Touch IDを搭載し、翌年のApple Payにつながる。
+
+iモードで独自エコシステムを築いたドコモがiPhoneを受け入れたことは、**キャリア主導からプラットフォーム主導への転換の完了**を意味した。iモード終了(2026年)は既定路線となり、日本のスマホ世帯保有率はこの後も急上昇を続ける(社会と制度)。', null,
           'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('NTTドコモ 報道発表: iPhone 5s/iPhone 5cの発売について(2013年9月)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-mobile-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-mobile-revolution') and name = '社会と制度'),
-          '2016-07-22', null, 'day', 'point', 'ポケモンGO日本配信、位置情報ゲームが社会現象に', '米国などでの配信から2週間後に日本でも配信開始。公園や観光地に人が集まり、スマホが街の使い方を変える様子が可視化された。', 'GPSとカメラを使ったAR体験は、スマホの標準機能(技術と端末)が数億人規模の行動を同時に動かせることを示した。歩きスマホや私有地への立ち入りが問題となり、自治体や施設が利用ルールを設けるなど、社会の側がスマホ利用に対応を迫られた早い例でもある。任天堂株の急騰(アプリとビジネス)も話題となった。',
+          '2016-07-22', null, 'day', 'point', 'ポケモンGO日本配信、位置情報ゲームが社会現象に', '米国などでの配信から2週間後、日本でもポケモンGOの配信が開始。公園や観光地に人が集まり、スマホが街の使い方を変える様子が可視化された。GPSとカメラを使ったAR体験は、スマホの標準機能(技術と端末)が数億人規模の行動を同時に動かせることを示した。
+
+歩きスマホや私有地への立ち入りが問題となり、自治体や施設が利用ルールを設けるなど、社会の側がスマホ利用に対応を迫られた早い例でもある。任天堂株の急騰(アプリとビジネス)も話題となった。', null,
           'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Pokémon Go', 'https://en.wikipedia.org/wiki/Pok%C3%A9mon_Go')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-mobile-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-mobile-revolution') and name = 'アプリとビジネス'),
-          '2018-12-04', null, 'day', 'point', 'PayPay「100億円あげちゃうキャンペーン」開始', 'スマホ決済PayPayが購入額の20%を還元する大型キャンペーンを開始。10日で予算を使い切り、QRコード決済の認知を一気に広げた。', '中国のAlipayやWeChat Payに倣ったQRコード決済を、巨額の還元で普及させる手法。翌年の消費増税に伴う政府のポイント還元事業(社会と制度)が追い風となり、現金志向の強かった日本でスマホ決済が日常化する転機となった。スマホがサイフになることで、端末(技術と端末)は生活インフラとしての性格を強めた。',
+          '2018-12-04', null, 'day', 'point', 'PayPay「100億円あげちゃうキャンペーン」開始', 'スマホ決済PayPayが購入額の20%を還元する「100億円あげちゃうキャンペーン」を開始。10日で予算を使い切り、QRコード決済の認知を一気に広げた。中国のAlipayやWeChat Payに倣った決済方式を、巨額の還元で普及させる手法だった。
+
+翌年の消費増税に伴う政府のポイント還元事業(社会と制度)が追い風となり、現金志向の強かった日本でスマホ決済が日常化する転機となった。スマホがサイフになることで、端末(技術と端末)は生活インフラとしての性格を強めた。', null,
           'unverified', '還元総額や終了時点の利用者数はPayPay社の発表に基づき、第三者による検証はない。', 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('PayPay株式会社 プレスリリース: 100億円あげちゃうキャンペーン(2018年)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-mobile-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-mobile-revolution') and name = '社会と制度'),
-          '2019-01-01', null, 'year', 'point', 'スマホの世帯保有率が固定電話を上回る', '総務省の通信利用動向調査で、2019年のスマートフォン世帯保有率は83.4%となり、固定電話(69.0%)を初めて上回った。', '2010年の約1割から10年足らずで8割超に達し、スマホが「電話」の主役の座を固定電話から奪った象徴的な数値。同時期にPayPayなど決済アプリ(アプリとビジネス)が普及し、翌年のコロナ禍ではCOCOAや給付金申請など行政サービスもスマホ前提で設計されるようになる。5Gの国内商用開始(2020年、技術と端末)も目前だった。',
+          '2019-01-01', null, 'year', 'point', 'スマホの世帯保有率が固定電話を上回る', '総務省の通信利用動向調査で、2019年のスマートフォン世帯保有率は83.4%となり、固定電話(69.0%)を初めて上回った。2010年の約1割から10年足らずで8割超に達し、スマホが「電話」の主役の座を固定電話から奪ったことを示す象徴的な数値である。
+
+同時期にPayPayなど決済アプリ(アプリとビジネス)が普及し、翌年のコロナ禍ではCOCOAや給付金申請など行政サービスもスマホ前提で設計されるようになる。5Gの国内商用開始(2020年、技術と端末)も目前だった。', null,
           'disputed', '83.4%と69.0%は令和元年調査の公表値だが、調査年により集計方法が見直されており、経年比較の解釈には注意が必要。', 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('総務省: 令和元年通信利用動向調査の結果', 'https://www.soumu.go.jp/johotsusintokei/statistics/statistics05.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-mobile-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-mobile-revolution') and name = '社会と制度'),
-          '2020-06-19', null, 'day', 'point', '接触確認アプリCOCOAの提供開始', '厚生労働省が新型コロナ接触確認アプリCOCOAを公開。AppleとGoogleが共同提供したAPIの上に築かれ、公衆衛生施策がスマホ前提となった。', '国の施策がプラットフォーム企業の提供する仕組み(技術と端末)に依存する構図が明確になった出来事。Android版の不具合が長期間見過ごされるなど運用面の課題も残した。同時期にリモートワークやオンライン診療が広がり、スマホとアプリ(アプリとビジネス)が生活と行政の接点として不可欠になった年である。',
+          '2020-06-19', null, 'day', 'point', '接触確認アプリCOCOAの提供開始', '厚生労働省が新型コロナ接触確認アプリCOCOAを公開。AppleとGoogleが共同提供したAPIの上に築かれ、公衆衛生施策がスマホ前提となった。国の施策がプラットフォーム企業の提供する仕組み(技術と端末)に依存する構図が明確になった出来事である。
+
+Android版の不具合が長期間見過ごされるなど運用面の課題も残した。同時期にリモートワークやオンライン診療が広がり、スマホとアプリ(アプリとビジネス)が生活と行政の接点として不可欠になった年である。', null,
           'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('厚生労働省: 新型コロナウイルス接触確認アプリ(COCOA)', 'https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/cocoa_00138.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-mobile-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-mobile-revolution') and name = 'アプリとビジネス'),
-          '2020-08-13', null, 'day', 'point', 'Epic GamesがAppleを提訴、App Store手数料をめぐる争い', 'フォートナイトに独自決済を導入したEpicがApp Storeから排除され、同日Appleを反トラスト法違反で提訴。手数料30%の妥当性が法廷で争われた。', '2008年のApp Store開設以来の30%手数料と外部決済禁止に対する正面からの挑戦。2021年の一審は大半でApple勝訴としつつ外部リンク禁止を違法と判断し、以後の是正命令へつながった。EUのDMAや日本のスマホ新法(社会と制度)と並び、アプリ経済圏の「門番」に対する規制の潮流をつくった。',
+          '2020-08-13', null, 'day', 'point', 'Epic GamesがAppleを提訴、App Store手数料をめぐる争い', 'フォートナイトに独自決済を導入したEpic GamesがApp Storeから排除され、同日Appleを反トラスト法違反で提訴。2008年のApp Store開設以来の手数料30%と外部決済禁止に対する正面からの挑戦であり、その妥当性が法廷で争われた。
+
+2021年の一審は大半でApple勝訴としつつ外部リンク禁止を違法と判断し、以後の是正命令へつながった。EUのDMAや日本のスマホ新法(社会と制度)と並び、アプリ経済圏の「門番」に対する規制の潮流をつくった。', null,
           'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Epic Games v. Apple', 'https://en.wikipedia.org/wiki/Epic_Games_v._Apple')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-mobile-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-mobile-revolution') and name = '社会と制度'),
-          '2024-03-07', null, 'day', 'point', 'EUデジタル市場法(DMA)の義務が適用開始', '指定ゲートキーパー企業への義務が発効。AppleはEU域内でサードパーティのアプリストアや外部決済を認める対応を迫られた。', 'iPhoneのアプリ配布がApp Store一本に限られてきた16年間の前提が、初めて法律によって変更された。対象にはGoogle、Meta、Amazonなども含まれ、Android(技術と端末)の検索やストアの既定設定も是正対象となった。Epic訴訟(アプリとビジネス)が問うた論点を、EUは事前規制として立法で解決する道を選んだ。',
+          '2024-03-07', null, 'day', 'point', 'EUデジタル市場法(DMA)の義務が適用開始', 'EUデジタル市場法(DMA)に基づく指定ゲートキーパー企業への義務が発効。AppleはEU域内でサードパーティのアプリストアや外部決済を認める対応を迫られ、iPhoneのアプリ配布がApp Store一本に限られてきた16年間の前提が、初めて法律によって変更された。
+
+対象にはGoogle、Meta、Amazonなども含まれ、Android(技術と端末)の検索やストアの既定設定も是正対象となった。Epic訴訟(アプリとビジネス)が問うた論点を、EUは事前規制として立法で解決する道を選んだ。', null,
           'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('European Commission: The Digital Markets Act', 'https://digital-markets-act.ec.europa.eu/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-mobile-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-mobile-revolution') and name = '社会と制度'),
-          '2024-06-12', null, 'day', 'point', '日本でスマホソフトウェア競争促進法が成立', 'スマホOS・アプリストア・ブラウザ・検索エンジンの提供事業者に、他社ストアの受け入れなどを義務づける新法が成立。2025年12月に全面施行。', 'EUのDMAに続き、日本もアプリ経済圏(アプリとビジネス)の門番に対する事前規制へ踏み出した。1999年のiモード以来、キャリアからプラットフォーム企業へ移った市場支配力に対し、制度が追いつく形となる。25年前にiモードで始まった日本のモバイル史が、規制対象としてのスマホという段階に到達したことを示す出来事。',
+          '2024-06-12', null, 'day', 'point', '日本でスマホソフトウェア競争促進法が成立', 'スマホOS・アプリストア・ブラウザ・検索エンジンの提供事業者に、他社ストアの受け入れなどを義務づけるスマホソフトウェア競争促進法が成立。2025年12月に全面施行され、EUのDMAに続き日本もアプリ経済圏(アプリとビジネス)の門番に対する事前規制へ踏み出した。
+
+1999年のiモード以来、**キャリアからプラットフォーム企業へ移った市場支配力に、制度が追いつく**形となる。25年前にiモードで始まった日本のモバイル史が、規制対象としてのスマホという段階に到達したことを示す出来事である。', null,
           'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('公正取引委員会: スマートフォンにおいて利用される特定ソフトウェアに係る競争の促進に関する法律', null)) as v(title, url);
 

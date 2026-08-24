@@ -7,9 +7,18 @@
   "start_year": 1869,
   "end_year": 2025,
   "layers": [
-    {"name": "発見と理論", "color": "blue"},
-    {"name": "技術と応用", "color": "green"},
-    {"name": "倫理と制度", "color": "purple"}
+    {
+      "name": "発見と理論",
+      "color": "blue"
+    },
+    {
+      "name": "技術と応用",
+      "color": "green"
+    },
+    {
+      "name": "倫理と制度",
+      "color": "purple"
+    }
   ],
   "events": [
     {
@@ -19,12 +28,15 @@
       "type": "point",
       "layer": "発見と理論",
       "title": "ミーシャー、細胞核から「ヌクレイン」を単離",
-      "summary": "スイスの医師ミーシャーが白血球の核からリンを多く含む未知の物質を取り出し、ヌクレインと命名。",
-      "detail": "テュービンゲンの実験室で包帯の膿から白血球を集め、タンパク質と異なる酸性物質を得た。これが後に核酸（DNA）と呼ばれる物質の最初の記録である。ただし遺伝の担い手はタンパク質と考えられ、DNAが遺伝物質だと確立されるのは75年後の1944年まで待つことになる。",
+      "summary": "スイスの医師ミーシャーがテュービンゲンの実験室で包帯の膿から白血球を集め、その核からリンを多く含むタンパク質とは異なる酸性物質を単離し、「ヌクレイン」と命名した。後に核酸（DNA）と呼ばれる物質の最初の記録である。\n\nただし当時、遺伝の担い手はタンパク質と考えられており、DNAが遺伝物質だと確立されるのは75年後の1944年まで待つことになる。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Dahm, R. (2005) Friedrich Miescher and the discovery of DNA. Developmental Biology", "url": "https://doi.org/10.1016/j.ydbio.2004.11.028"}
+        {
+          "title": "Dahm, R. (2005) Friedrich Miescher and the discovery of DNA. Developmental Biology",
+          "url": "https://doi.org/10.1016/j.ydbio.2004.11.028"
+        }
       ]
     },
     {
@@ -34,12 +46,15 @@
       "type": "point",
       "layer": "発見と理論",
       "title": "エイブリーら、DNAが形質転換の本体であると報告",
-      "summary": "肺炎球菌の形質転換を起こす物質がタンパク質でなくDNAであることを精製実験で示し、遺伝物質の正体に迫る。",
-      "detail": "1928年のグリフィスの形質転換実験を出発点に、エイブリー、マクラウド、マッカーティは形質転換因子を精製し、DNA分解酵素でのみ活性が失われることを示した。当初は懐疑的な受け止めもあったが、1952年のハーシーとチェイスの実験で補強され、翌年の二重らせん構造の解明へと道が開かれた。",
+      "summary": "エイブリー、マクラウド、マッカーティが、肺炎球菌の形質転換を起こす物質がタンパク質でなくDNAであることを精製実験で示した。1928年のグリフィスの形質転換実験を出発点に形質転換因子を精製し、DNA分解酵素でのみ活性が失われることを突き止めた。\n\n当初は懐疑的な受け止めもあったが、1952年のハーシーとチェイスの実験で補強され、翌年の二重らせん構造の解明へと道が開かれた。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Avery, O. T., MacLeod, C. M. & McCarty, M. (1944) Studies on the chemical nature of the substance inducing transformation of pneumococcal types. Journal of Experimental Medicine", "url": "https://doi.org/10.1084/jem.79.2.137"}
+        {
+          "title": "Avery, O. T., MacLeod, C. M. & McCarty, M. (1944) Studies on the chemical nature of the substance inducing transformation of pneumococcal types. Journal of Experimental Medicine",
+          "url": "https://doi.org/10.1084/jem.79.2.137"
+        }
       ]
     },
     {
@@ -49,12 +64,15 @@
       "type": "point",
       "layer": "発見と理論",
       "title": "ワトソンとクリック、DNAの二重らせん構造を発表",
-      "summary": "Nature誌にDNAの二重らせんモデルを発表。塩基対の相補性が複製の仕組みを示唆すると指摘。",
-      "detail": "同じ号にはウィルキンス、フランクリンらのX線回折データの論文が並んで掲載された。フランクリンの「写真51」を含むデータがモデル構築に用いられた経緯と功績の配分は今も議論が続く。1962年のノーベル賞はワトソン、クリック、ウィルキンスに贈られたが、フランクリンは1958年に没していた。この構造理解が遺伝暗号解読と組換えDNA技術の前提となった。",
+      "summary": "ワトソンとクリックがNature誌にDNAの二重らせんモデルを発表し、塩基対の相補性が複製の仕組みを示唆すると指摘した。同じ号にはウィルキンス、フランクリンらのX線回折データの論文が並んで掲載された。\n\nフランクリンの「写真51」を含むデータがモデル構築に用いられた経緯と功績の配分は今も議論が続く。1962年のノーベル賞はワトソン、クリック、ウィルキンスに贈られたが、フランクリンは1958年に没していた。この構造理解が遺伝暗号解読と組換えDNA技術の前提となった。",
+      "detail": null,
       "credibility": "disputed",
       "credibility_note": "構造自体は確立しているが、フランクリンのデータ利用の経緯と各人の貢献の配分については歴史家・科学者の間で評価が分かれる。",
       "sources": [
-        {"title": "Watson, J. D. & Crick, F. H. C. (1953) Molecular Structure of Nucleic Acids: A Structure for Deoxyribose Nucleic Acid. Nature", "url": "https://doi.org/10.1038/171737a0"}
+        {
+          "title": "Watson, J. D. & Crick, F. H. C. (1953) Molecular Structure of Nucleic Acids: A Structure for Deoxyribose Nucleic Acid. Nature",
+          "url": "https://doi.org/10.1038/171737a0"
+        }
       ]
     },
     {
@@ -64,13 +82,19 @@
       "type": "period",
       "layer": "発見と理論",
       "title": "遺伝暗号の解読",
-      "summary": "ニーレンバーグらのポリU実験を皮切りに、64通りのコドンとアミノ酸の対応表が5年で完成する。",
-      "detail": "1961年、ニーレンバーグとマッタイは合成RNA（ポリU）からフェニルアラニンの鎖ができることを示し、最初のコドンを決定した。コラナ、ホリーらの研究と競争を経て1966年までに暗号表が完成し、DNAの塩基配列とタンパク質を結ぶ「翻訳規則」が確定した。配列を読めば意味が分かるという前提が、1970年代の配列決定法と組換え技術の価値を決定づけた。",
+      "summary": "1961年、ニーレンバーグとマッタイが合成RNA（ポリU）からフェニルアラニンの鎖ができることを示し、最初のコドンを決定。コラナ、ホリーらの研究と競争を経て、1966年までに64通りのコドンとアミノ酸の対応表が完成した。\n\nDNAの塩基配列とタンパク質を結ぶ「翻訳規則」の確定により、配列を読めば意味が分かるという前提が成立し、1970年代の配列決定法と組換え技術の価値を決定づけた。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Nirenberg, M. W. & Matthaei, J. H. (1961) The dependence of cell-free protein synthesis in E. coli upon naturally occurring or synthetic polyribonucleotides. PNAS", "url": "https://doi.org/10.1073/pnas.47.10.1588"},
-        {"title": "The Nobel Prize in Physiology or Medicine 1968", "url": "https://www.nobelprize.org/prizes/medicine/1968/summary/"}
+        {
+          "title": "Nirenberg, M. W. & Matthaei, J. H. (1961) The dependence of cell-free protein synthesis in E. coli upon naturally occurring or synthetic polyribonucleotides. PNAS",
+          "url": "https://doi.org/10.1073/pnas.47.10.1588"
+        },
+        {
+          "title": "The Nobel Prize in Physiology or Medicine 1968",
+          "url": "https://www.nobelprize.org/prizes/medicine/1968/summary/"
+        }
       ]
     },
     {
@@ -80,12 +104,15 @@
       "type": "point",
       "layer": "技術と応用",
       "title": "コーエンとボイヤー、組換えDNA技術を確立",
-      "summary": "制限酵素で切断したDNA断片をプラスミドにつなぎ、大腸菌内で複製させることに成功。遺伝子工学の出発点。",
-      "detail": "異なる生物由来のDNAを人工的につなぎ増やす技術は、翌年には科学者自身が実験の一時停止を呼びかけるほどの衝撃を与え、1975年のアシロマ会議につながった。技術は1976年のジェネンテック設立と1982年のヒトインスリン承認へ直結し、1980年に成立したコーエン・ボイヤー特許は大学発ライセンスの原型となった。",
+      "summary": "コーエンとボイヤーが、制限酵素で切断したDNA断片をプラスミドにつなぎ、大腸菌内で複製させることに成功。異なる生物由来のDNAを人工的につなぎ増やす、遺伝子工学の出発点となった。\n\nこの技術は翌年には科学者自身が実験の一時停止を呼びかけるほどの衝撃を与え、1975年のアシロマ会議につながった。応用面では1976年のジェネンテック設立と1982年のヒトインスリン承認へ直結し、1980年に成立したコーエン・ボイヤー特許は大学発ライセンスの原型となった。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Cohen, S. N., Chang, A. C. Y., Boyer, H. W. & Helling, R. B. (1973) Construction of Biologically Functional Bacterial Plasmids In Vitro. PNAS", "url": "https://doi.org/10.1073/pnas.70.11.3240"}
+        {
+          "title": "Cohen, S. N., Chang, A. C. Y., Boyer, H. W. & Helling, R. B. (1973) Construction of Biologically Functional Bacterial Plasmids In Vitro. PNAS",
+          "url": "https://doi.org/10.1073/pnas.70.11.3240"
+        }
       ]
     },
     {
@@ -95,12 +122,15 @@
       "type": "point",
       "layer": "倫理と制度",
       "title": "アシロマ会議、組換えDNA研究の自主規制指針を策定",
-      "summary": "科学者約140人が集まり、組換えDNA実験のリスク区分と封じ込め基準を自ら定めた。研究者主導の規制の先例。",
-      "detail": "1974年にバーグらが呼びかけた実験モラトリアムを受け、カリフォルニア州アシロマで開かれた。物理的・生物学的封じ込めをリスクに応じて定める枠組みは、翌1976年の米NIHガイドラインの基礎となり、日本でも1979年に組換えDNA実験指針が制定された。技術の確立から2年で制度が追いついた例として、後の遺伝子編集をめぐる議論でも繰り返し参照される。",
+      "summary": "1974年にバーグらが呼びかけた実験モラトリアムを受け、カリフォルニア州アシロマに科学者約140人が集まり、組換えDNA実験のリスク区分と物理的・生物学的封じ込め基準を自ら定めた。\n\nこの枠組みは翌1976年の米NIHガイドラインの基礎となり、日本でも1979年に組換えDNA実験指針が制定された。**技術の確立から2年で制度が追いついた**研究者主導の規制の先例として、後の遺伝子編集をめぐる議論でも繰り返し参照される。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Berg, P., Baltimore, D., Brenner, S., Roblin, R. O. & Singer, M. F. (1975) Summary statement of the Asilomar Conference on Recombinant DNA Molecules. PNAS", "url": "https://doi.org/10.1073/pnas.72.6.1981"}
+        {
+          "title": "Berg, P., Baltimore, D., Brenner, S., Roblin, R. O. & Singer, M. F. (1975) Summary statement of the Asilomar Conference on Recombinant DNA Molecules. PNAS",
+          "url": "https://doi.org/10.1073/pnas.72.6.1981"
+        }
       ]
     },
     {
@@ -110,12 +140,15 @@
       "type": "point",
       "layer": "倫理と制度",
       "title": "米最高裁、遺伝子操作した生物の特許を認める",
-      "summary": "ダイヤモンド対チャクラバーティ事件で、人が作り出した微生物は特許の対象になりうると5対4で判断。",
-      "detail": "石油分解能力を持たせた細菌をめぐる判決は「太陽の下の人工物は何でも」特許になりうるとし、バイオテクノロジー産業の投資を後押しした。同年12月にはコーエン・ボイヤー特許が成立し、同じ年にジェネンテックが株式公開している。技術と資本が制度によって結びついた年であり、後のヒト遺伝子特許やCRISPR特許紛争の遠因ともなった。",
+      "summary": "ダイヤモンド対チャクラバーティ事件で米最高裁が、石油分解能力を持たせた細菌をめぐり、人が作り出した微生物は特許の対象になりうると5対4で判断。「太陽の下の人工物は何でも」特許になりうるとした。\n\n判決はバイオテクノロジー産業の投資を後押しし、同年12月にはコーエン・ボイヤー特許が成立、同じ年にジェネンテックが株式公開している。**技術と資本が制度によって結びついた年**であり、後のヒト遺伝子特許やCRISPR特許紛争の遠因ともなった。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Diamond v. Chakrabarty, 447 U.S. 303 (1980)", "url": "https://supreme.justia.com/cases/federal/us/447/303/"}
+        {
+          "title": "Diamond v. Chakrabarty, 447 U.S. 303 (1980)",
+          "url": "https://supreme.justia.com/cases/federal/us/447/303/"
+        }
       ]
     },
     {
@@ -125,13 +158,19 @@
       "type": "point",
       "layer": "技術と応用",
       "title": "遺伝子組換えヒトインスリンを米FDAが承認",
-      "summary": "大腸菌に作らせたヒトインスリン「ヒューマリン」が承認され、組換えDNA技術による初の医薬品が実用化。",
-      "detail": "ジェネンテックが開発しイーライリリーが製造した。それまでのブタ・ウシ由来インスリンに代わり、供給の安定と免疫反応の低減をもたらした。1973年の技術確立から9年、1975年のアシロマ会議で定められた封じ込め基準のもとで開発が進み、規制と産業化が両立しうることを示した。以後、成長ホルモンやワクチンなど組換え医薬品が続いた。",
+      "summary": "大腸菌に作らせたヒトインスリン「ヒューマリン」を米FDAが承認し、組換えDNA技術による初の医薬品が実用化。ジェネンテックが開発しイーライリリーが製造し、それまでのブタ・ウシ由来インスリンに代わって供給の安定と免疫反応の低減をもたらした。\n\n1973年の技術確立から9年、1975年のアシロマ会議で定められた封じ込め基準のもとで開発が進み、規制と産業化が両立しうることを示した。以後、成長ホルモンやワクチンなど組換え医薬品が続いた。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Genentech: Press release, First recombinant DNA drug approved by FDA (1982)", "url": null},
-        {"title": "FDA: Celebrating a Milestone: FDA's Approval of First Genetically-Engineered Product", "url": null}
+        {
+          "title": "Genentech: Press release, First recombinant DNA drug approved by FDA (1982)",
+          "url": null
+        },
+        {
+          "title": "FDA: Celebrating a Milestone: FDA's Approval of First Genetically-Engineered Product",
+          "url": null
+        }
       ]
     },
     {
@@ -141,13 +180,19 @@
       "type": "point",
       "layer": "技術と応用",
       "title": "PCR法の論文が発表される",
-      "summary": "マリスの着想に基づくシータス社の研究チームが、DNAの特定領域を試験管内で指数的に増幅する手法を発表。",
-      "detail": "1983年にマリスが着想したとされる方法は、1985年のScience誌論文と1988年の耐熱性DNAポリメラーゼの導入で実用技術となった。微量DNAの増幅は診断・法科学・ゲノム計画の全てを支え、マリスは1993年にノーベル化学賞を受賞した。ただし増幅の原理は1971年にクレッペらが記述しており、着想の先取権と貢献の配分には議論がある。",
+      "summary": "マリスの着想に基づくシータス社の研究チームが、DNAの特定領域を試験管内で指数的に増幅するPCR法をScience誌に発表。1988年の耐熱性DNAポリメラーゼの導入で実用技術となった。\n\n微量DNAの増幅は診断・法科学・ゲノム計画の全てを支え、マリスは1993年にノーベル化学賞を受賞した。ただし増幅の原理は1971年にクレッペらが記述しており、着想の先取権と貢献の配分には議論がある。",
+      "detail": null,
       "credibility": "disputed",
       "credibility_note": "基本原理は1971年のクレッペらの論文に先例があり、マリス個人の着想とチームの貢献の配分についても関係者の証言が食い違う。",
       "sources": [
-        {"title": "Saiki, R. K. et al. (1985) Enzymatic amplification of β-globin genomic sequences and restriction site analysis for diagnosis of sickle cell anemia. Science", "url": "https://doi.org/10.1126/science.2999980"},
-        {"title": "The Nobel Prize in Chemistry 1993", "url": "https://www.nobelprize.org/prizes/chemistry/1993/summary/"}
+        {
+          "title": "Saiki, R. K. et al. (1985) Enzymatic amplification of β-globin genomic sequences and restriction site analysis for diagnosis of sickle cell anemia. Science",
+          "url": "https://doi.org/10.1126/science.2999980"
+        },
+        {
+          "title": "The Nobel Prize in Chemistry 1993",
+          "url": "https://www.nobelprize.org/prizes/chemistry/1993/summary/"
+        }
       ]
     },
     {
@@ -157,12 +202,15 @@
       "type": "point",
       "layer": "技術と応用",
       "title": "承認された初のヒト遺伝子治療臨床試験を実施",
-      "summary": "米NIHでADA欠損症の4歳女児に対し、正常遺伝子を導入したT細胞を戻す治療が行われる。",
-      "detail": "アンダーソン、ブレーズらのチームがレトロウイルスベクターで遺伝子を導入した。患者は長期にわたり良好な経過をたどったが、酵素補充療法（PEG-ADA）を併用していたため遺伝子治療単独の効果を切り分けることは難しい。同じ年の10月にヒトゲノム計画が始動し、「読む」計画と「直す」試みが同時に幕を開けた。1999年のゲルシンガー事件で分野は一度大きく後退する。",
+      "summary": "米NIHでアンダーソン、ブレーズらのチームが、ADA欠損症の4歳女児に対し、レトロウイルスベクターで正常遺伝子を導入したT細胞を戻す、承認された初のヒト遺伝子治療を実施した。\n\n患者は長期にわたり良好な経過をたどったが、酵素補充療法（PEG-ADA）を併用していたため遺伝子治療単独の効果を切り分けることは難しい。同年10月にはヒトゲノム計画が始動し、「読む」計画と「直す」試みが同時に幕を開けた。分野は1999年のゲルシンガー事件で一度大きく後退する。",
+      "detail": null,
       "credibility": "unverified",
       "credibility_note": "臨床的改善への遺伝子治療の寄与度は、併用された酵素補充療法の影響を分離できないため確定していない。",
       "sources": [
-        {"title": "Blaese, R. M. et al. (1995) T Lymphocyte-Directed Gene Therapy for ADA-SCID: Initial Trial Results After 4 Years. Science", "url": "https://doi.org/10.1126/science.270.5235.475"}
+        {
+          "title": "Blaese, R. M. et al. (1995) T Lymphocyte-Directed Gene Therapy for ADA-SCID: Initial Trial Results After 4 Years. Science",
+          "url": "https://doi.org/10.1126/science.270.5235.475"
+        }
       ]
     },
     {
@@ -172,13 +220,19 @@
       "type": "period",
       "layer": "発見と理論",
       "title": "ヒトゲノム計画",
-      "summary": "米英日仏独中の国際共同で約30億塩基対のヒトゲノムを解読。当初15年計画を前倒しで2003年に完了宣言。",
-      "detail": "1977年のサンガー法を自動化・大規模化して進められ、1998年にセレラ社が参入して官民の競争となった。2000年6月に草案、2001年2月に論文、2003年4月に二重らせん発表50周年に合わせて完了が宣言された。日本は理化学研究所などが21番・18番染色体などを担当した。全塩基配列という「地図」が、後の疾患遺伝子探索とゲノム編集の標的設計を可能にした。",
+      "summary": "米英日仏独中の国際共同で約30億塩基対のヒトゲノムを解読する計画が始動。1977年のサンガー法を自動化・大規模化して進められ、日本は理化学研究所などが21番・18番染色体などを担当した。\n\n1998年にセレラ社が参入して官民の競争となり、2000年6月に草案、2001年2月に論文発表を経て、二重らせん発表50周年に合わせた2003年4月、当初の15年計画を前倒しして完了が宣言された。全塩基配列という「地図」が、後の疾患遺伝子探索とゲノム編集の標的設計を可能にした。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "National Human Genome Research Institute: The Human Genome Project", "url": "https://www.genome.gov/human-genome-project"},
-        {"title": "International Human Genome Sequencing Consortium (2001) Initial sequencing and analysis of the human genome. Nature", "url": "https://doi.org/10.1038/35057062"}
+        {
+          "title": "National Human Genome Research Institute: The Human Genome Project",
+          "url": "https://www.genome.gov/human-genome-project"
+        },
+        {
+          "title": "International Human Genome Sequencing Consortium (2001) Initial sequencing and analysis of the human genome. Nature",
+          "url": "https://doi.org/10.1038/35057062"
+        }
       ]
     },
     {
@@ -188,13 +242,19 @@
       "type": "point",
       "layer": "倫理と制度",
       "title": "遺伝子治療の臨床試験で被験者ジェシー・ゲルシンガーが死亡",
-      "summary": "ペンシルベニア大学の試験でアデノウイルスベクター投与後に18歳の被験者が死亡し、遺伝子治療研究が停滞。",
-      "detail": "調査で被験者選定基準の逸脱や有害事象報告の不備、研究者の利益相反が指摘され、FDAは同大学の試験を停止した。1990年の初試験以来の期待は一転し、投資と臨床試験数は数年にわたり落ち込んだ。被験者保護と利益相反開示の制度強化につながり、2010年代の遺伝子治療復活と2018年のゲノム編集ベビー問題の際にも安全性議論の原点として参照された。",
+      "summary": "ペンシルベニア大学の遺伝子治療臨床試験で、アデノウイルスベクター投与後に18歳の被験者ジェシー・ゲルシンガーが死亡。調査で被験者選定基準の逸脱や有害事象報告の不備、研究者の利益相反が指摘され、FDAは同大学の試験を停止した。\n\n1990年の初試験以来の期待は一転し、投資と臨床試験数は数年にわたり落ち込んだ。**被験者保護と利益相反開示の制度強化**につながり、2010年代の遺伝子治療復活と2018年のゲノム編集ベビー問題の際にも安全性議論の原点として参照された。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wilson, J. M. (2009) Lessons learned from the gene therapy trial for ornithine transcarbamylase deficiency. Molecular Genetics and Metabolism", "url": null},
-        {"title": "FDA (2000) Warning letter to the Institute for Human Gene Therapy, University of Pennsylvania", "url": null}
+        {
+          "title": "Wilson, J. M. (2009) Lessons learned from the gene therapy trial for ornithine transcarbamylase deficiency. Molecular Genetics and Metabolism",
+          "url": null
+        },
+        {
+          "title": "FDA (2000) Warning letter to the Institute for Human Gene Therapy, University of Pennsylvania",
+          "url": null
+        }
       ]
     },
     {
@@ -204,13 +264,19 @@
       "type": "point",
       "layer": "発見と理論",
       "title": "ヒトゲノム草案を国際計画とセレラ社が共同発表",
-      "summary": "クリントン米大統領とブレア英首相の立ち会いで、公的計画と民間セレラ社がヒトゲノム草案の完成を同時に発表。",
-      "detail": "1998年に参入したセレラ社が全ゲノムショットガン法で公的計画を追い上げ、政治的仲介で「引き分け」の共同発表となった。翌2001年2月、Nature誌とScience誌に別々の論文が掲載された。ヒト遺伝子数が当初の10万前後の予想を大きく下回る2万〜2万5千程度と判明したのはこの成果からで、遺伝子の数より制御の複雑さが問われる時代に入った。",
+      "summary": "クリントン米大統領とブレア英首相の立ち会いで、公的な国際計画と民間セレラ社がヒトゲノム草案の完成を同時に発表。1998年に参入したセレラ社が全ゲノムショットガン法で公的計画を追い上げ、政治的仲介で「引き分け」の共同発表となった。\n\n翌2001年2月、Nature誌とScience誌に別々の論文が掲載された。ヒト遺伝子数が当初の10万前後の予想を大きく下回る2万〜2万5千程度と判明したのはこの成果からで、遺伝子の数より制御の複雑さが問われる時代に入った。",
+      "detail": null,
       "credibility": "disputed",
       "credibility_note": "草案の完成度（カバー率）と両陣営の貢献の大きさについては公的計画とセレラ社の主張が食い違い、セレラ社が公的データを利用した程度も論争となった。",
       "sources": [
-        {"title": "International Human Genome Sequencing Consortium (2001) Initial sequencing and analysis of the human genome. Nature", "url": "https://doi.org/10.1038/35057062"},
-        {"title": "Venter, J. C. et al. (2001) The Sequence of the Human Genome. Science", "url": "https://doi.org/10.1126/science.1058040"}
+        {
+          "title": "International Human Genome Sequencing Consortium (2001) Initial sequencing and analysis of the human genome. Nature",
+          "url": "https://doi.org/10.1038/35057062"
+        },
+        {
+          "title": "Venter, J. C. et al. (2001) The Sequence of the Human Genome. Science",
+          "url": "https://doi.org/10.1126/science.1058040"
+        }
       ]
     },
     {
@@ -220,13 +286,19 @@
       "type": "point",
       "layer": "発見と理論",
       "title": "ダウドナとシャルパンティエ、CRISPR-Cas9を編集ツールとして提示",
-      "summary": "細菌の獲得免疫機構CRISPRを、ガイドRNAで任意のDNA配列を切断できる汎用ツールに転用できると示す。",
-      "detail": "Science誌のオンライン公開論文で、Cas9とガイドRNAの組み合わせだけで標的配列を切断できることを試験管内で実証した。翌2013年1月にはチャン、チャーチらがヒト細胞での編集を報告し、以後、技術は爆発的に普及する。ジンクフィンガーやTALENに比べ設計が容易で安価な点が決定的で、同時に特許紛争と倫理議論の火種にもなった。",
+      "summary": "ダウドナとシャルパンティエらがScience誌のオンライン公開論文で、細菌の獲得免疫機構CRISPRを、Cas9とガイドRNAの組み合わせだけで任意のDNA配列を切断できる汎用ツールに転用できることを試験管内で実証した。\n\n翌2013年1月にはチャン、チャーチらがヒト細胞での編集を報告し、以後、技術は爆発的に普及する。ジンクフィンガーやTALENに比べ設計が容易で安価な点が決定的で、同時に特許紛争と倫理議論の火種にもなった。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Jinek, M. et al. (2012) A Programmable Dual-RNA-Guided DNA Endonuclease in Adaptive Bacterial Immunity. Science", "url": "https://doi.org/10.1126/science.1225829"},
-        {"title": "Cong, L. et al. (2013) Multiplex Genome Engineering Using CRISPR/Cas Systems. Science", "url": "https://doi.org/10.1126/science.1231143"}
+        {
+          "title": "Jinek, M. et al. (2012) A Programmable Dual-RNA-Guided DNA Endonuclease in Adaptive Bacterial Immunity. Science",
+          "url": "https://doi.org/10.1126/science.1225829"
+        },
+        {
+          "title": "Cong, L. et al. (2013) Multiplex Genome Engineering Using CRISPR/Cas Systems. Science",
+          "url": "https://doi.org/10.1126/science.1231143"
+        }
       ]
     },
     {
@@ -236,13 +308,19 @@
       "type": "point",
       "layer": "倫理と制度",
       "title": "第1回ヒトゲノム編集国際サミット開催",
-      "summary": "米英中の科学アカデミーがワシントンで開催。生殖細胞系列の臨床応用は「現時点で無責任」との声明を発表。",
-      "detail": "同年4月に中国のチームが受精しない三倍体ヒト胚での編集実験を報告し、生殖細胞系列編集の是非が急浮上したことを受けて開かれた。基礎研究は容認しつつ、安全性と社会的合意が得られるまで妊娠につながる応用は行うべきでないとした。CRISPR論文からわずか3年半でのルール形成だったが、2018年の香港での第2回サミットの直前に、その線を越える事例が公表される。",
+      "summary": "米英中の科学アカデミーが第1回ヒトゲノム編集国際サミットをワシントンで開催。基礎研究は容認しつつ、生殖細胞系列の臨床応用は安全性と社会的合意が得られるまで行うべきでなく「現時点で無責任」との声明を発表した。\n\n同年4月に中国のチームが受精しない三倍体ヒト胚での編集実験を報告し、是非が急浮上したことを受けた対応で、**CRISPR論文からわずか3年半でのルール形成**だった。しかし2018年の香港での第2回サミット直前に、その線を越える事例が公表される。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "National Academies of Sciences, Engineering, and Medicine (2015) On Human Gene Editing: International Summit Statement", "url": null},
-        {"title": "Liang, P. et al. (2015) CRISPR/Cas9-mediated gene editing in human tripronuclear zygotes. Protein & Cell", "url": null}
+        {
+          "title": "National Academies of Sciences, Engineering, and Medicine (2015) On Human Gene Editing: International Summit Statement",
+          "url": null
+        },
+        {
+          "title": "Liang, P. et al. (2015) CRISPR/Cas9-mediated gene editing in human tripronuclear zygotes. Protein & Cell",
+          "url": null
+        }
       ]
     },
     {
@@ -252,13 +330,19 @@
       "type": "point",
       "layer": "倫理と制度",
       "title": "米特許審判部、CRISPR特許紛争でブロード研究所側を支持",
-      "summary": "真核細胞でのCRISPR-Cas9利用に関する特許について、カリフォルニア大学側の主張を退けブロード研究所側の特許を維持。",
-      "detail": "2012年のダウドナらの発表と2013年のチャンらの実証のどちらが真核細胞での編集の発明にあたるかが争点となった。米国では2022年にも審判部がブロード側に有利な判断を示した一方、欧州特許庁では判断が異なり、地域ごとに権利関係が分かれている。ライセンス構造の複雑さは治療開発企業の契約に影響し、2023年の治療承認まで続く背景となった。",
+      "summary": "真核細胞でのCRISPR-Cas9利用に関する特許について、米特許審判部がカリフォルニア大学側の主張を退けブロード研究所側の特許を維持。2012年のダウドナらの発表と2013年のチャンらの実証のどちらが発明にあたるかが争点となった。\n\n米国では2022年にも審判部がブロード側に有利な判断を示した一方、欧州特許庁では判断が異なり、地域ごとに権利関係が分かれている。ライセンス構造の複雑さは治療開発企業の契約に影響し、2023年の治療承認まで続く背景となった。",
+      "detail": null,
       "credibility": "disputed",
       "credibility_note": "発明の先取権をめぐる争いは控訴や地域ごとの判断の違いが続いており、最終的な権利関係は確定していない。",
       "sources": [
-        {"title": "USPTO Patent Trial and Appeal Board, Interference No. 106,048 (Decision on Motions, Feb. 15, 2017)", "url": null},
-        {"title": "Nature News (2017) Broad Institute wins bitter battle over CRISPR patents", "url": null}
+        {
+          "title": "USPTO Patent Trial and Appeal Board, Interference No. 106,048 (Decision on Motions, Feb. 15, 2017)",
+          "url": null
+        },
+        {
+          "title": "Nature News (2017) Broad Institute wins bitter battle over CRISPR patents",
+          "url": null
+        }
       ]
     },
     {
@@ -268,13 +352,19 @@
       "type": "point",
       "layer": "倫理と制度",
       "title": "賀建奎、ゲノム編集した双子の誕生を公表",
-      "summary": "中国の研究者がCRISPRでCCR5遺伝子を改変した受精卵から双子が生まれたと発表し、国際的な非難を招く。",
-      "detail": "香港での第2回ヒトゲノム編集国際サミット直前の公表で、2015年の第1回サミット声明が「無責任」とした生殖細胞系列の臨床応用が実際に行われたことが明らかになった。中国当局は違法な医療行為として2019年12月に懲役3年の判決を下し、WHOは登録制度と各国規制の整備を勧告した。1975年のアシロマ以来の「研究者の自主規制」モデルの限界が問われた事件でもある。",
+      "summary": "中国の研究者・賀建奎が、CRISPRでCCR5遺伝子を改変した受精卵から双子が生まれたと香港での第2回ヒトゲノム編集国際サミット直前に公表し、国際的な非難を招いた。2015年の第1回サミット声明が「無責任」とした生殖細胞系列の臨床応用が実際に行われたことが明らかになった。\n\n中国当局は違法な医療行為として2019年12月に懲役3年の判決を下し、WHOは登録制度と各国規制の整備を勧告。**1975年のアシロマ以来の「研究者の自主規制」モデルの限界**が問われた事件でもある。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Nature News (2018) Genome-edited baby claim provokes international outcry", "url": "https://doi.org/10.1038/d41586-018-07545-0"},
-        {"title": "新華社 (2019-12-30) 「基因編輯嬰兒」案一審宣判", "url": null}
+        {
+          "title": "Nature News (2018) Genome-edited baby claim provokes international outcry",
+          "url": "https://doi.org/10.1038/d41586-018-07545-0"
+        },
+        {
+          "title": "新華社 (2019-12-30) 「基因編輯嬰兒」案一審宣判",
+          "url": null
+        }
       ]
     },
     {
@@ -284,12 +374,15 @@
       "type": "point",
       "layer": "発見と理論",
       "title": "シャルパンティエとダウドナにノーベル化学賞",
-      "summary": "CRISPR-Cas9による「遺伝子のはさみ」の開発が評価され、女性2人のみの共同受賞として初のノーベル賞となる。",
-      "detail": "2012年の論文発表から8年という異例の早さでの受賞で、技術の影響の大きさを示した。同じ時期、技術レイヤーでは鎌状赤血球症へのCRISPR治療の臨床試験結果が報告され、制度レイヤーでは特許紛争と生殖細胞系列編集の国際ルール作りが続いていた。受賞対象は基礎的発見であり、真核細胞での応用をめぐる特許の争点とは別に評価された。",
+      "summary": "CRISPR-Cas9による「遺伝子のはさみ」の開発が評価され、シャルパンティエとダウドナにノーベル化学賞。女性2人のみの共同受賞として初であり、2012年の論文発表から8年という異例の早さでの受賞は技術の影響の大きさを示した。\n\n同じ時期、技術レイヤーでは鎌状赤血球症へのCRISPR治療の臨床試験結果が報告され、制度レイヤーでは特許紛争と生殖細胞系列編集の国際ルール作りが続いていた。受賞対象は基礎的発見であり、真核細胞での応用をめぐる特許の争点とは別に評価された。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "The Nobel Prize in Chemistry 2020", "url": "https://www.nobelprize.org/prizes/chemistry/2020/summary/"}
+        {
+          "title": "The Nobel Prize in Chemistry 2020",
+          "url": "https://www.nobelprize.org/prizes/chemistry/2020/summary/"
+        }
       ]
     },
     {
@@ -299,13 +392,19 @@
       "type": "point",
       "layer": "技術と応用",
       "title": "世界初のCRISPR治療「カスジェビー」を英国が承認",
-      "summary": "鎌状赤血球症とβサラセミアに対するCRISPR-Cas9を用いた治療を英MHRAが承認。12月には米FDAも承認。",
-      "detail": "患者自身の造血幹細胞を体外で編集し胎児型ヘモグロビンの産生を回復させる治療で、バーテックス社とCRISPRセラピューティクス社が開発した。2012年の論文から11年で臨床承認に至った。一方で価格は1回あたり約220万ドルとされ、患者数の多いアフリカなどでの利用可能性が新たな倫理・制度の課題となった。",
+      "summary": "鎌状赤血球症とβサラセミアに対するCRISPR-Cas9を用いた世界初の治療「カスジェビー」を英MHRAが承認し、12月には米FDAも承認した。患者自身の造血幹細胞を体外で編集し胎児型ヘモグロビンの産生を回復させる治療で、バーテックス社とCRISPRセラピューティクス社が開発した。\n\n2012年の論文から11年で臨床承認に至った一方、価格は1回あたり約220万ドルとされ、**患者数の多いアフリカなどでの利用可能性**が新たな倫理・制度の課題となった。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "FDA (2023-12-08) FDA Approves First Gene Therapies to Treat Patients with Sickle Cell Disease", "url": "https://www.fda.gov/news-events/press-announcements/fda-approves-first-gene-therapies-treat-patients-sickle-cell-disease"},
-        {"title": "MHRA (2023-11-16) MHRA authorises world-first gene therapy that aims to cure sickle-cell disease and transfusion-dependent β-thalassemia", "url": null}
+        {
+          "title": "FDA (2023-12-08) FDA Approves First Gene Therapies to Treat Patients with Sickle Cell Disease",
+          "url": "https://www.fda.gov/news-events/press-announcements/fda-approves-first-gene-therapies-treat-patients-sickle-cell-disease"
+        },
+        {
+          "title": "MHRA (2023-11-16) MHRA authorises world-first gene therapy that aims to cure sickle-cell disease and transfusion-dependent β-thalassemia",
+          "url": null
+        }
       ]
     },
     {
@@ -315,12 +414,15 @@
       "type": "point",
       "layer": "技術と応用",
       "title": "個別化した塩基編集治療を乳児に初めて適用と報告",
-      "summary": "希少な代謝疾患CPS1欠損症の乳児1人のために設計された塩基編集治療の投与結果がNEJMに報告される。",
-      "detail": "米国の研究チームが患者固有の変異に合わせて約6か月で治療を設計・製造し、肝臓を標的に脂質ナノ粒子で投与した。DNA二本鎖を切らずに一塩基を書き換える塩基編集の体内投与例であり、「1人のための薬」の規制上の枠組みも同時に試された。ただし1例の短期報告であり、長期の安全性と有効性は今後の追跡による。",
+      "summary": "希少な代謝疾患CPS1欠損症の乳児1人のために設計された塩基編集治療の投与結果がNEJMに報告された。米国の研究チームが患者固有の変異に合わせて約6か月で治療を設計・製造し、肝臓を標的に脂質ナノ粒子で投与した。\n\nDNA二本鎖を切らずに一塩基を書き換える塩基編集の体内投与例であり、「1人のための薬」の規制上の枠組みも同時に試された。ただし1例の短期報告であり、長期の安全性と有効性は今後の追跡による。",
+      "detail": null,
       "credibility": "unverified",
       "credibility_note": "症例1例の短期経過報告にとどまり、長期的な安全性・有効性は未確認。",
       "sources": [
-        {"title": "Musunuru, K. et al. (2025) Patient-Specific In Vivo Gene Editing to Treat a Rare Genetic Disease. New England Journal of Medicine", "url": null}
+        {
+          "title": "Musunuru, K. et al. (2025) Patient-Specific In Vivo Gene Editing to Treat a Rare Genetic Disease. New England Journal of Medicine",
+          "url": null
+        }
       ]
     }
   ]

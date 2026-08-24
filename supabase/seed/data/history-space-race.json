@@ -7,9 +7,18 @@
   "start_year": 1957,
   "end_year": 2020,
   "layers": [
-    {"name": "技術", "color": "blue"},
-    {"name": "人の決断", "color": "gold"},
-    {"name": "社会の動き", "color": "teal"}
+    {
+      "name": "技術",
+      "color": "blue"
+    },
+    {
+      "name": "人の決断",
+      "color": "gold"
+    },
+    {
+      "name": "社会の動き",
+      "color": "teal"
+    }
   ],
   "events": [
     {
@@ -19,13 +28,19 @@
       "type": "point",
       "layer": "技術",
       "title": "スプートニク1号、世界初の人工衛星に",
-      "summary": "ソ連がR-7ロケットで直径58cmの人工衛星を軌道に投入。地上でも受信できるビープ音が世界を駆けた。",
-      "detail": "国際地球観測年に合わせた打ち上げだったが、R-7は本来ICBMとして開発されたロケットで、核弾頭を米本土に届けうる能力の実証でもあった。技術上の成功は同じ日に「社会の動き」レイヤーで始まるスプートニク・ショックを引き起こし、翌年のNASA設立という「人の決断」へと連鎖する。設計主任コロリョフの名は公表されなかった。",
+      "summary": "ソ連がR-7ロケットで直径58cmの人工衛星を軌道に投入し、地上でも受信できるビープ音が世界を駆けた。国際地球観測年に合わせた打ち上げだったが、R-7は本来ICBMとして開発されたロケットで、核弾頭を米本土に届けうる能力の実証でもあった。\n\n技術上の成功は同じ日に社会の動きレイヤーで始まるスプートニク・ショックを引き起こし、**翌年のNASA設立という「人の決断」へと連鎖する**。設計主任コロリョフの名は公表されなかった。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia（英語版）: Sputnik 1", "url": "https://en.wikipedia.org/wiki/Sputnik_1"},
-        {"title": "NASA History: Sputnik and the Dawn of the Space Age", "url": null}
+        {
+          "title": "Wikipedia（英語版）: Sputnik 1",
+          "url": "https://en.wikipedia.org/wiki/Sputnik_1"
+        },
+        {
+          "title": "NASA History: Sputnik and the Dawn of the Space Age",
+          "url": null
+        }
       ]
     },
     {
@@ -35,13 +50,19 @@
       "type": "period",
       "layer": "社会の動き",
       "title": "スプートニク・ショックと米国の科学教育改革",
-      "summary": "ソ連の先行に米国世論が動揺。議会は科学教育への連邦投資を拡大し、国防教育法(NDEA)成立に至る。",
-      "detail": "衛星そのものより「ソ連が先に到達した」事実が米国社会を揺さぶった。12月のヴァンガード打ち上げ失敗が焦りを増幅し、1958年9月2日の国防教育法で理数・外国語教育に連邦資金が投じられる。同年7月にはNASA設立法が署名され、この期間の世論が「人の決断」レイヤーの政策判断を後押しした構図が読み取れる。",
+      "summary": "衛星そのものより「ソ連が先に到達した」事実が米国世論を揺さぶり、12月のヴァンガード打ち上げ失敗が焦りを増幅した。\n\n議会は科学教育への連邦投資を拡大し、1958年9月2日の国防教育法(NDEA)で理数・外国語教育に連邦資金が投じられる。同年7月にはNASA設立法が署名されており、この期間の世論が「人の決断」レイヤーの政策判断を後押しした構図が読み取れる。",
+      "detail": null,
       "credibility": "disputed",
       "credibility_note": "アイゼンハワー政権自身は衛星を脅威と見ておらず、「ショック」は主にメディアと議会の反応だったとする研究があり、当時の危機感の実態は評価が分かれる。",
       "sources": [
-        {"title": "Wikipedia（英語版）: Sputnik crisis", "url": "https://en.wikipedia.org/wiki/Sputnik_crisis"},
-        {"title": "Wikipedia（英語版）: National Defense Education Act", "url": "https://en.wikipedia.org/wiki/National_Defense_Education_Act"}
+        {
+          "title": "Wikipedia（英語版）: Sputnik crisis",
+          "url": "https://en.wikipedia.org/wiki/Sputnik_crisis"
+        },
+        {
+          "title": "Wikipedia（英語版）: National Defense Education Act",
+          "url": "https://en.wikipedia.org/wiki/National_Defense_Education_Act"
+        }
       ]
     },
     {
@@ -51,12 +72,15 @@
       "type": "point",
       "layer": "人の決断",
       "title": "アイゼンハワー、NASA設立法に署名",
-      "summary": "軍ではなく文民機関に宇宙開発を担わせる決断。国家航空宇宙法が成立し、10月1日にNASAが発足した。",
-      "detail": "陸海空軍がそれぞれ宇宙計画を競っていた状況を整理し、既存のNACA(航空諮問委員会)を母体に文民機関を置いた。「平和目的」を掲げる建て付けは、のちの宇宙条約や国際協力の前提となる。同じ年、技術レイヤーではエクスプローラー1号がヴァン・アレン帯を発見し、社会レイヤーではスプートニク・ショックが議会を動かしていた。",
+      "summary": "アイゼンハワーが国家航空宇宙法に署名し、軍ではなく文民機関に宇宙開発を担わせる決断を下した。10月1日にNASAが発足する。陸海空軍がそれぞれ宇宙計画を競っていた状況を整理し、既存のNACA(航空諮問委員会)を母体とした。\n\n「平和目的」を掲げる建て付けは、のちの宇宙条約や国際協力の前提となる。同じ年、技術レイヤーではエクスプローラー1号がヴァン・アレン帯を発見し、社会レイヤーではスプートニク・ショックが議会を動かしていた。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia（英語版）: National Aeronautics and Space Act", "url": "https://en.wikipedia.org/wiki/National_Aeronautics_and_Space_Act"}
+        {
+          "title": "Wikipedia（英語版）: National Aeronautics and Space Act",
+          "url": "https://en.wikipedia.org/wiki/National_Aeronautics_and_Space_Act"
+        }
       ]
     },
     {
@@ -66,12 +90,15 @@
       "type": "point",
       "layer": "技術",
       "title": "ガガーリン、人類初の有人宇宙飛行",
-      "summary": "ボストーク1号が地球を1周、108分の飛行。人類が初めて地球の外から地球を見た日となった。",
-      "detail": "飛行は完全自動制御で、ガガーリンは高度約7kmで機体から射出されパラシュートで着地した。この点は当時、国際航空連盟の記録要件を満たすため公表されなかった。技術的勝利は6週間後のケネディ演説という「人の決断」を直接引き出し、米ソの競争は月へと舞台を移す。同年8月にはベルリンの壁が築かれ、冷戦の緊張が最高潮にあった。",
+      "summary": "ボストーク1号が地球を1周、108分の飛行で、人類が初めて地球の外から地球を見た日となった。飛行は完全自動制御で、ガガーリンは高度約7kmで機体から射出されパラシュートで着地したが、この点は国際航空連盟の記録要件を満たすため当時公表されなかった。\n\n技術的勝利は6週間後のケネディ演説という「人の決断」を直接引き出し、米ソの競争は月へと舞台を移す。同年8月にはベルリンの壁が築かれ、冷戦の緊張が最高潮にあった。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia（英語版）: Vostok 1", "url": "https://en.wikipedia.org/wiki/Vostok_1"}
+        {
+          "title": "Wikipedia（英語版）: Vostok 1",
+          "url": "https://en.wikipedia.org/wiki/Vostok_1"
+        }
       ]
     },
     {
@@ -81,12 +108,15 @@
       "type": "point",
       "layer": "人の決断",
       "title": "ケネディ、「10年以内に月へ」と議会に表明",
-      "summary": "ガガーリン飛行とピッグス湾失敗の直後、議会特別教書で1960年代中の有人月着陸を国家目標に掲げた。",
-      "detail": "4月12日のガガーリン飛行、4月17日のピッグス湾侵攻失敗という二つの打撃を受け、ケネディは副大統領ジョンソンに「ソ連に勝てる分野」を諮問。5月5日にシェパードが弾道飛行に成功したことも後押しとなり、この演説に至った。技術面の見通しは未確定のまま政治判断が先行した点が、以後の予算膨張(社会の動きレイヤー・1966年)につながる。",
+      "summary": "ガガーリン飛行とピッグス湾侵攻失敗という二つの打撃の直後、ケネディは議会特別教書で1960年代中の有人月着陸を国家目標に掲げた。副大統領ジョンソンへの「ソ連に勝てる分野」の諮問と、5月5日のシェパードの弾道飛行成功がこの演説を後押しした。\n\n**技術面の見通しは未確定のまま政治判断が先行した**点が、以後の予算膨張(社会の動きレイヤー・1966年)につながる。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "JFK Library: Address to Joint Session of Congress, May 25, 1961", "url": "https://www.jfklibrary.org/learn/about-jfk/historic-speeches/address-to-joint-session-of-congress-may-25-1961"}
+        {
+          "title": "JFK Library: Address to Joint Session of Congress, May 25, 1961",
+          "url": "https://www.jfklibrary.org/learn/about-jfk/historic-speeches/address-to-joint-session-of-congress-may-25-1961"
+        }
       ]
     },
     {
@@ -96,12 +126,15 @@
       "type": "point",
       "layer": "社会の動き",
       "title": "NASA予算、連邦予算の約4.4%でピーク",
-      "summary": "アポロ計画の人員は40万人規模に達し、NASA予算は連邦支出比で史上最高水準となった。",
-      "detail": "1961年の決断から5年、予算は毎年拡大し1966会計年度に頂点を迎えた。同時期にベトナム戦争の戦費と「偉大な社会」政策の支出が膨らみ、以後NASA予算は月着陸前から削減局面に入る。技術レイヤーではこの年にコロリョフが死去し、翌年にはアポロ1号火災が起きる。予算の山と現場の緊張が同時に存在していた。",
+      "summary": "アポロ計画の人員は40万人規模に達し、NASA予算は連邦支出比約4.4%と史上最高水準になった。1961年の決断から5年、予算は毎年拡大し1966会計年度に頂点を迎えた。\n\n同時期にベトナム戦争の戦費と「偉大な社会」政策の支出が膨らみ、以後NASA予算は月着陸前から削減局面に入る。技術レイヤーではこの年にコロリョフが死去し、翌年にはアポロ1号火災が起きる。予算の山と現場の緊張が同時に存在していた。",
+      "detail": null,
       "credibility": "unverified",
       "credibility_note": "「約4.4%」は連邦予算に対する比率としてよく引用されるが、算出方法により4.4〜4.5%と幅があり、雇用者数の40万人も概数である。",
       "sources": [
-        {"title": "Wikipedia（英語版）: Budget of NASA", "url": "https://en.wikipedia.org/wiki/Budget_of_NASA"}
+        {
+          "title": "Wikipedia（英語版）: Budget of NASA",
+          "url": "https://en.wikipedia.org/wiki/Budget_of_NASA"
+        }
       ]
     },
     {
@@ -111,12 +144,15 @@
       "type": "point",
       "layer": "人の決断",
       "title": "コロリョフ死去、ソ連月計画の指揮系統に空白",
-      "summary": "ソ連宇宙開発を率いた「主任設計者」が手術中に死去。存命中は匿名だった名がこの時初めて公表された。",
-      "detail": "スプートニクとガガーリン飛行を実現した人物だが、機密のため生前は「主任設計者」としか呼ばれなかった。死後、N1月ロケットの開発はミーシンが引き継ぐが、設計局間の対立と資源分散は解消されない。同じ年、社会の動きレイヤーで米国のNASA予算がピークを迎えていたのと対照的に、ソ連側は指揮の統合を失っていた。",
+      "summary": "ソ連宇宙開発を率いた「主任設計者」コロリョフが手術中に死去した。スプートニクとガガーリン飛行を実現した人物だが、機密のため生前は匿名で、その名はこの時初めて公表された。\n\n死後、N1月ロケットの開発はミーシンが引き継ぐが、設計局間の対立と資源分散は解消されない。同じ年、社会の動きレイヤーで米国のNASA予算がピークを迎えていたのと対照的に、**ソ連側は指揮の統合を失っていた**。",
+      "detail": null,
       "credibility": "disputed",
       "credibility_note": "コロリョフの死がソ連月計画失敗の主因だったかは評価が分かれる。N1のエンジン構成や資金・組織の問題を重視する研究者も多い。",
       "sources": [
-        {"title": "Wikipedia（英語版）: Sergei Korolev", "url": "https://en.wikipedia.org/wiki/Sergei_Korolev"}
+        {
+          "title": "Wikipedia（英語版）: Sergei Korolev",
+          "url": "https://en.wikipedia.org/wiki/Sergei_Korolev"
+        }
       ]
     },
     {
@@ -126,13 +162,19 @@
       "type": "point",
       "layer": "社会の動き",
       "title": "宇宙条約が発効、天体の領有を禁止",
-      "summary": "宇宙空間の平和利用と天体の国家領有禁止を定めた条約が発効。宇宙法の基礎となった。",
-      "detail": "米ソ英が1月に署名し、10月に発効。核兵器の軌道配備禁止や天体の領有禁止は、月着陸を目前にした両国が「先に着いた側が月を領有する」事態を避ける枠組みでもあった。同年1月にはアポロ1号火災、4月にはソユーズ1号事故で両国が犠牲者を出しており、技術レイヤーの試練と並行して法的秩序が整えられた。",
+      "summary": "宇宙空間の平和利用と天体の国家領有禁止を定めた条約が発効し、宇宙法の基礎となった。米ソ英が1月に署名し、核兵器の軌道配備禁止も定めた。\n\n月着陸を目前にした両国が「先に着いた側が月を領有する」事態を避ける枠組みでもあった。同年1月にはアポロ1号火災、4月にはソユーズ1号事故で両国が犠牲者を出しており、技術レイヤーの試練と並行して法的秩序が整えられた。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia（英語版）: Outer Space Treaty", "url": "https://en.wikipedia.org/wiki/Outer_Space_Treaty"},
-        {"title": "国連宇宙部（UNOOSA）: Outer Space Treaty", "url": null}
+        {
+          "title": "Wikipedia（英語版）: Outer Space Treaty",
+          "url": "https://en.wikipedia.org/wiki/Outer_Space_Treaty"
+        },
+        {
+          "title": "国連宇宙部（UNOOSA）: Outer Space Treaty",
+          "url": null
+        }
       ]
     },
     {
@@ -142,12 +184,15 @@
       "type": "point",
       "layer": "社会の動き",
       "title": "アポロ8号「地球の出」写真が世界に届く",
-      "summary": "初めて月周回軌道に入った乗員が撮影した地球の写真が、環境意識と「一つの地球」の感覚を広めた。",
-      "detail": "アポロ8号は月着陸船の遅れを受けて計画を急きょ変更し、司令船のみで月周回に向かった決断の産物だった。撮影された「Earthrise」は翌年以降の環境運動の象徴となり、1970年の最初のアースデイにも影響したとされる。1968年は暗殺やベトナム反戦運動が続いた年で、年末のこの中継は米国内で異例の共有体験として受け止められた。",
+      "summary": "初めて月周回軌道に入ったアポロ8号の乗員が撮影した地球の写真「Earthrise」が世界に届いた。月着陸船の遅れを受けて計画を急きょ変更し、司令船のみで月周回に向かった決断の産物だった。\n\n写真は翌年以降の環境運動の象徴となり、1970年の最初のアースデイにも影響したとされ、環境意識と「一つの地球」の感覚を広めた。暗殺やベトナム反戦運動が続いた1968年の年末、この中継は米国内で異例の共有体験として受け止められた。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia（英語版）: Earthrise", "url": "https://en.wikipedia.org/wiki/Earthrise"}
+        {
+          "title": "Wikipedia（英語版）: Earthrise",
+          "url": "https://en.wikipedia.org/wiki/Earthrise"
+        }
       ]
     },
     {
@@ -157,12 +202,15 @@
       "type": "point",
       "layer": "技術",
       "title": "ソ連N1ロケット、発射台で爆発",
-      "summary": "ソ連の月ロケットN1が2回目の打ち上げで発射直後に落下・爆発。アポロ11号の17日前だった。",
-      "detail": "N1は30基のエンジンを束ねる設計で、4回の打ち上げすべてに失敗した。この爆発は発射施設を大きく損壊し、ソ連の有人月着陸の可能性を事実上絶った。ソ連は月競争への参加自体を長く公式に認めず、計画の存在が公表されたのは1989年である。人の決断レイヤーで見たコロリョフ死去後の混乱が、技術面の結果として現れた形といえる。",
+      "summary": "ソ連の月ロケットN1が2回目の打ち上げで発射直後に落下・爆発した。アポロ11号の17日前だった。30基のエンジンを束ねる設計のN1は4回の打ち上げすべてに失敗し、この爆発は発射施設を大きく損壊して、ソ連の有人月着陸の可能性を事実上絶った。\n\nソ連は月競争への参加自体を長く公式に認めず、計画の存在が公表されたのは1989年である。人の決断レイヤーで見たコロリョフ死去後の混乱が、技術面の結果として現れた形といえる。",
+      "detail": null,
       "credibility": "unverified",
       "credibility_note": "N1計画はソ連が1989年まで存在を公表せず、打ち上げ経過や被害規模は後年公開された資料と関係者証言に基づく。爆発規模の推定値も資料により異なる。",
       "sources": [
-        {"title": "Wikipedia（英語版）: N1 (rocket)", "url": "https://en.wikipedia.org/wiki/N1_(rocket)"}
+        {
+          "title": "Wikipedia（英語版）: N1 (rocket)",
+          "url": "https://en.wikipedia.org/wiki/N1_(rocket)"
+        }
       ]
     },
     {
@@ -172,12 +220,15 @@
       "type": "point",
       "layer": "技術",
       "title": "アポロ11号、人類初の月面着陸",
-      "summary": "アームストロングとオルドリンが月面に立ち、ケネディの目標を期限内に達成。日本時間では7月21日。",
-      "detail": "着陸は協定世界時7月20日20時17分、最初の一歩は21日2時56分で、日本では21日午前の出来事だった。1961年の政治決断から8年、社会の動きレイヤーの予算ピークを経て到達した頂点だが、NASA予算はすでに削減期に入っており、アポロ計画は17号で打ち切られる。同月3日にはソ連N1が爆発しており、競争の帰趨は事実上この月に決した。",
+      "summary": "アームストロングとオルドリンが月面に立ち、ケネディの目標を期限内に達成した。着陸は協定世界時7月20日20時17分、最初の一歩は21日2時56分で、日本では21日午前の出来事だった。\n\n1961年の政治決断から8年、社会の動きレイヤーの予算ピークを経て到達した頂点だが、NASA予算はすでに削減期に入っており、アポロ計画は17号で打ち切られる。同月3日にはソ連N1が爆発しており、競争の帰趨は事実上この月に決した。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia（英語版）: Apollo 11", "url": "https://en.wikipedia.org/wiki/Apollo_11"}
+        {
+          "title": "Wikipedia（英語版）: Apollo 11",
+          "url": "https://en.wikipedia.org/wiki/Apollo_11"
+        }
       ]
     },
     {
@@ -187,12 +238,15 @@
       "type": "point",
       "layer": "人の決断",
       "title": "ニクソン、スペースシャトル計画を承認",
-      "summary": "月の次に「再使用型」を選ぶ決断。火星有人飛行案は退けられ、以後30年の米有人宇宙の形が決まった。",
-      "detail": "アポロ後の計画として宇宙ステーションと火星飛行を含む構想があったが、予算制約の中でシャトル単体が選ばれた。初飛行は1981年4月12日、ガガーリン飛行のちょうど20年後だった。低コスト・高頻度という当初の想定は達成されず、1986年のチャレンジャー事故(技術レイヤー)で計画の前提そのものが問われることになる。",
+      "summary": "ニクソンがスペースシャトル計画を承認し、月の次に「再使用型」を選ぶ決断を下した。アポロ後の構想には宇宙ステーションと火星有人飛行案もあったが、予算制約の中でシャトル単体が選ばれ、**以後30年の米有人宇宙の形がこの一つの選択で決まった**。\n\n初飛行は1981年4月12日、ガガーリン飛行のちょうど20年後だった。低コスト・高頻度という当初の想定は達成されず、1986年のチャレンジャー事故(技術レイヤー)で計画の前提そのものが問われることになる。",
+      "detail": null,
       "credibility": "disputed",
       "credibility_note": "承認の主因を、大統領選の年にカリフォルニア州の航空宇宙雇用を守る政治判断とみる説と、国家威信や軍の要求を重視する説があり、解釈が分かれる。",
       "sources": [
-        {"title": "Wikipedia（英語版）: Space Shuttle program", "url": "https://en.wikipedia.org/wiki/Space_Shuttle_program"}
+        {
+          "title": "Wikipedia（英語版）: Space Shuttle program",
+          "url": "https://en.wikipedia.org/wiki/Space_Shuttle_program"
+        }
       ]
     },
     {
@@ -202,12 +256,15 @@
       "type": "point",
       "layer": "社会の動き",
       "title": "アポロ・ソユーズ、軌道上で米ソがドッキング",
-      "summary": "デタント(緊張緩和)の象徴として、競争相手だった両国の宇宙船が軌道上で握手を交わした。",
-      "detail": "1972年のニクソン訪ソで合意された共同飛行。同じ夏にヘルシンキ最終文書が採択されており、外交の緊張緩和がそのまま宇宙に映し出された。技術面では両国のドッキング機構が異なるため中間モジュールを新設した。この協力は1979年のアフガニスタン侵攻で途絶え、再開は1990年代のシャトル・ミール計画まで待つことになる。",
+      "summary": "デタント(緊張緩和)の象徴として、競争相手だった米ソの宇宙船が軌道上でドッキングし、握手を交わした。1972年のニクソン訪ソで合意された共同飛行である。\n\n同じ夏にヘルシンキ最終文書が採択されており、外交の緊張緩和がそのまま宇宙に映し出された。技術面では両国のドッキング機構が異なるため中間モジュールを新設した。この協力は1979年のアフガニスタン侵攻で途絶え、再開は1990年代のシャトル・ミール計画まで待つことになる。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia（英語版）: Apollo–Soyuz", "url": "https://en.wikipedia.org/wiki/Apollo%E2%80%93Soyuz"}
+        {
+          "title": "Wikipedia（英語版）: Apollo–Soyuz",
+          "url": "https://en.wikipedia.org/wiki/Apollo%E2%80%93Soyuz"
+        }
       ]
     },
     {
@@ -217,12 +274,15 @@
       "type": "point",
       "layer": "技術",
       "title": "チャレンジャー号、打ち上げ73秒後に空中分解",
-      "summary": "固体ロケットブースターのOリング破損が原因。乗員7名が死亡し、シャトルは約2年半飛行を停止した。",
-      "detail": "前夜、製造元の技術者が低温下での打ち上げに反対していたことが調査委員会で明らかになり、技術的欠陥だけでなく組織の意思決定が問われた。教員宇宙飛行士の搭乗で全米の学校が生中継を見ており、社会的衝撃は大きかった。同年2月にはソ連が宇宙ステーション・ミールの中核モジュールを打ち上げており、両国の明暗が分かれた月でもある。",
+      "summary": "チャレンジャー号が打ち上げ73秒後に空中分解し、乗員7名が死亡した。原因は固体ロケットブースターのOリング破損で、シャトルは約2年半飛行を停止する。\n\n前夜、製造元の技術者が低温下での打ち上げに反対していたことが調査委員会で明らかになり、**技術的欠陥だけでなく組織の意思決定が問われた**。教員宇宙飛行士の搭乗で全米の学校が生中継を見ており、社会的衝撃は大きかった。同年2月にはソ連が宇宙ステーション・ミールの中核モジュールを打ち上げており、両国の明暗が分かれた月でもある。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia（英語版）: Space Shuttle Challenger disaster", "url": "https://en.wikipedia.org/wiki/Space_Shuttle_Challenger_disaster"}
+        {
+          "title": "Wikipedia（英語版）: Space Shuttle Challenger disaster",
+          "url": "https://en.wikipedia.org/wiki/Space_Shuttle_Challenger_disaster"
+        }
       ]
     },
     {
@@ -232,13 +292,19 @@
       "type": "point",
       "layer": "社会の動き",
       "title": "ISS最初のモジュール「ザーリャ」打ち上げ",
-      "summary": "冷戦後の米露協力を軸に、日欧加を含む15か国が参加する国際宇宙ステーションの建設が始まった。",
-      "detail": "ザーリャはロシア製だが米国の資金で建造されており、冷戦期のライバルが同じ構造物を組み立てる象徴となった。ソ連解体後、ロシアの宇宙技術者を計画に組み込む狙いもあった。日本は実験棟「きぼう」で参加し、2008年から取り付けが始まる。技術レイヤーではこの後、シャトルによる組み立て飛行が2011年の退役まで続く。",
+      "summary": "冷戦後の米露協力を軸に、日欧加を含む15か国が参加する国際宇宙ステーションの建設が始まった。最初のモジュール「ザーリャ」はロシア製だが米国の資金で建造され、冷戦期のライバルが同じ構造物を組み立てる象徴となった。\n\nソ連解体後、ロシアの宇宙技術者を計画に組み込む狙いもあった。日本は実験棟「きぼう」で参加し、2008年から取り付けが始まる。技術レイヤーではこの後、シャトルによる組み立て飛行が2011年の退役まで続く。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia（英語版）: Zarya", "url": "https://en.wikipedia.org/wiki/Zarya"},
-        {"title": "JAXA: 国際宇宙ステーション（ISS）", "url": null}
+        {
+          "title": "Wikipedia（英語版）: Zarya",
+          "url": "https://en.wikipedia.org/wiki/Zarya"
+        },
+        {
+          "title": "JAXA: 国際宇宙ステーション（ISS）",
+          "url": null
+        }
       ]
     },
     {
@@ -248,12 +314,15 @@
       "type": "point",
       "layer": "技術",
       "title": "神舟5号、中国が3番目の有人宇宙飛行国に",
-      "summary": "楊利偉が地球を14周。ソ連・米国に続き、独自ロケットで人を軌道に送った3か国目となった。",
-      "detail": "ソユーズ設計を参考にした神舟宇宙船と長征2Fロケットによる飛行。同年2月にはコロンビア号事故で米シャトルが飛行停止しており、有人宇宙飛行の担い手が多極化する転機だった。中国はISSに参加しておらず、以後独自ステーション「天宮」へ向かう。社会の動きレイヤーで見る国際協力の枠外に、もう一つの軸が生まれた年である。",
+      "summary": "楊利偉を乗せた神舟5号が地球を14周し、中国はソ連・米国に続き、独自ロケットで人を軌道に送った3か国目となった。ソユーズ設計を参考にした神舟宇宙船と長征2Fロケットによる飛行である。\n\n同年2月にはコロンビア号事故で米シャトルが飛行停止しており、有人宇宙飛行の担い手が多極化する転機だった。中国はISSに参加しておらず、以後独自ステーション「天宮」へ向かう。社会の動きレイヤーで見る国際協力の枠外に、もう一つの軸が生まれた年である。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia（英語版）: Shenzhou 5", "url": "https://en.wikipedia.org/wiki/Shenzhou_5"}
+        {
+          "title": "Wikipedia（英語版）: Shenzhou 5",
+          "url": "https://en.wikipedia.org/wiki/Shenzhou_5"
+        }
       ]
     },
     {
@@ -263,12 +332,15 @@
       "type": "point",
       "layer": "人の決断",
       "title": "NASA、民間に貨物輸送を委ねるCOTS契約",
-      "summary": "ISSへの物資輸送を「自前開発」から「民間からの購入」へ。設立4年のスペースXが選ばれた。",
-      "detail": "商業軌道輸送サービス(COTS)は、NASAが仕様と成果に対して段階的に支払う方式で、従来の受託開発とは異なる。この決断が2010年代の民間宇宙の土台となり、2015年12月のファルコン9第1段着陸(技術)、2020年の民間有人飛行へつながる。同年、政府はコンステレーション計画で月再訪を目指していたが、後に中止される。",
+      "summary": "NASAがISSへの物資輸送を「自前開発」から「民間からの購入」へ切り替える商業軌道輸送サービス(COTS)契約を結び、設立4年のスペースXが選ばれた。仕様と成果に対して段階的に支払う方式で、従来の受託開発とは異なる。\n\n**この決断が2010年代の民間宇宙の土台となり**、2015年12月のファルコン9第1段着陸(技術)、2020年の民間有人飛行へつながる。同年、政府はコンステレーション計画で月再訪を目指していたが、後に中止される。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia（英語版）: Commercial Orbital Transportation Services", "url": "https://en.wikipedia.org/wiki/Commercial_Orbital_Transportation_Services"}
+        {
+          "title": "Wikipedia（英語版）: Commercial Orbital Transportation Services",
+          "url": "https://en.wikipedia.org/wiki/Commercial_Orbital_Transportation_Services"
+        }
       ]
     },
     {
@@ -278,12 +350,15 @@
       "type": "period",
       "layer": "社会の動き",
       "title": "シャトル退役後、米国が有人打ち上げ能力を失った9年間",
-      "summary": "STS-135の帰還を最後にシャトルは退役。米国飛行士はISSへ行くためロシアのソユーズに依存した。",
-      "detail": "退役の背景にはコロンビア号事故後の安全性評価と運用コストがある。この間、米国はソユーズの座席を購入し続け、宇宙開発の主導権をめぐる議論と民間活用への期待が高まった。人の決断レイヤーで2006年に始まった民間委託が、2020年5月30日のクルードラゴン初有人飛行(技術)で空白を埋める形となる。",
+      "summary": "STS-135の帰還を最後にシャトルが退役し、米国飛行士はISSへ行くためロシアのソユーズに依存することになった。退役の背景にはコロンビア号事故後の安全性評価と運用コストがある。\n\nこの間、米国はソユーズの座席を購入し続け、宇宙開発の主導権をめぐる議論と民間活用への期待が高まった。人の決断レイヤーで2006年に始まった民間委託が、2020年5月30日のクルードラゴン初有人飛行(技術)で空白を埋める形となる。",
+      "detail": null,
       "credibility": "unverified",
       "credibility_note": "ソユーズ座席の購入単価は契約年により異なり、報道値に幅があるため本項では金額を示していない。",
       "sources": [
-        {"title": "Wikipedia（英語版）: STS-135", "url": "https://en.wikipedia.org/wiki/STS-135"}
+        {
+          "title": "Wikipedia（英語版）: STS-135",
+          "url": "https://en.wikipedia.org/wiki/STS-135"
+        }
       ]
     },
     {
@@ -293,12 +368,15 @@
       "type": "point",
       "layer": "技術",
       "title": "クルードラゴン、民間宇宙船初の有人軌道飛行",
-      "summary": "スペースXの宇宙船がNASA飛行士2名をISSへ運び、民間企業が有人軌道飛行を担う時代が始まった。",
-      "detail": "ファルコン9第1段は洋上のドローン船に着陸し、2015年以来の再使用技術が有人飛行にも適用された。2006年のCOTS契約(人の決断)から14年、シャトル退役後の空白(社会の動き)を終わらせた飛行でもある。同年、新型コロナウイルスの流行下で観客を制限した打ち上げとなり、10月にはアルテミス合意が署名され月探査の国際枠組みが動き出した。",
+      "summary": "スペースXの宇宙船クルードラゴンがNASA飛行士2名をISSへ運び、民間企業が有人軌道飛行を担う時代が始まった。ファルコン9第1段は洋上のドローン船に着陸し、2015年以来の再使用技術が有人飛行にも適用された。\n\n2006年のCOTS契約(人の決断)から14年、シャトル退役後の空白(社会の動き)を終わらせた飛行でもある。新型コロナウイルスの流行下で観客を制限した打ち上げとなり、同年10月にはアルテミス合意が署名され月探査の国際枠組みが動き出した。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia（英語版）: Crew Dragon Demo-2", "url": "https://en.wikipedia.org/wiki/Crew_Dragon_Demo-2"}
+        {
+          "title": "Wikipedia（英語版）: Crew Dragon Demo-2",
+          "url": "https://en.wikipedia.org/wiki/Crew_Dragon_Demo-2"
+        }
       ]
     },
     {
@@ -308,12 +386,15 @@
       "type": "point",
       "layer": "社会の動き",
       "title": "アルテミス合意に日本など8か国が署名",
-      "summary": "月探査の行動原則を定めた合意。1967年宇宙条約を土台に、資源利用や安全区域の考え方を示した。",
-      "detail": "米国主導のアルテミス計画に参加する国々が、透明性・相互運用性・宇宙資源の利用などの原則に合意した。ロシアと中国は加わっておらず、月探査は再び複数の陣営に分かれつつある。技術レイヤーで民間有人飛行が実現した同じ年に、法と外交の枠組みが更新された点は、1967年に宇宙条約と有人計画が並走した構図の再来ともいえる。",
+      "summary": "月探査の行動原則を定めたアルテミス合意に日本など8か国が署名した。1967年の宇宙条約を土台に、透明性・相互運用性・宇宙資源の利用や安全区域の考え方を示したもので、米国主導のアルテミス計画に参加する国々による合意である。\n\nロシアと中国は加わっておらず、月探査は再び複数の陣営に分かれつつある。技術レイヤーで民間有人飛行が実現した同じ年に法と外交の枠組みが更新された点は、1967年に宇宙条約と有人計画が並走した構図の再来ともいえる。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia（英語版）: Artemis Accords", "url": "https://en.wikipedia.org/wiki/Artemis_Accords"}
+        {
+          "title": "Wikipedia（英語版）: Artemis Accords",
+          "url": "https://en.wikipedia.org/wiki/Artemis_Accords"
+        }
       ]
     }
   ]

@@ -7,9 +7,18 @@
   "start_year": 1976,
   "end_year": 2024,
   "layers": [
-    {"name": "製品とプラットフォーム", "color": "blue"},
-    {"name": "買収と資本", "color": "orange"},
-    {"name": "規制と社会", "color": "teal"}
+    {
+      "name": "製品とプラットフォーム",
+      "color": "blue"
+    },
+    {
+      "name": "買収と資本",
+      "color": "orange"
+    },
+    {
+      "name": "規制と社会",
+      "color": "teal"
+    }
   ],
   "events": [
     {
@@ -19,12 +28,15 @@
       "type": "point",
       "layer": "買収と資本",
       "title": "Apple Computer 創業",
-      "summary": "スティーブ・ジョブズ、スティーブ・ウォズニアック、ロナルド・ウェインがカリフォルニア州でApple Computerを創業した。",
-      "detail": "ガレージ企業として始まり、翌1977年のApple IIで個人向けコンピュータ市場を開いた。GAFA四社の中で最も古く、ほかの三社が生まれるインターネット時代より20年近く前の出来事である。1980年の株式公開で得た資本と、のちの経営危機と復活が、2007年のiPhoneに至る長い前史をつくった。",
+      "summary": "スティーブ・ジョブズ、スティーブ・ウォズニアック、ロナルド・ウェインがカリフォルニア州でApple Computerを創業した。ガレージ企業として始まり、翌1977年のApple IIで個人向けコンピュータ市場を開いた。\n\nGAFA四社の中で最も古く、ほかの三社が生まれるインターネット時代より20年近く前の出来事である。1980年の株式公開で得た資本と、のちの経営危機と復活が、2007年のiPhoneに至る長い前史をつくった。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia: History of Apple Inc.", "url": "https://en.wikipedia.org/wiki/History_of_Apple_Inc."}
+        {
+          "title": "Wikipedia: History of Apple Inc.",
+          "url": "https://en.wikipedia.org/wiki/History_of_Apple_Inc."
+        }
       ]
     },
     {
@@ -34,12 +46,15 @@
       "type": "point",
       "layer": "買収と資本",
       "title": "Amazon 創業（当初社名Cadabra）",
-      "summary": "ジェフ・ベゾスがワシントン州でCadabraを設立。翌1995年7月にオンライン書店Amazon.comを開設した。",
-      "detail": "ウェブの商用利用が始まった直後の創業で、書籍を入り口に「あらゆるものを売る店」を目指した。1997年の株式公開で調達した資本を長期にわたり物流と技術に再投資し、利益より成長を優先する姿勢が投資家に受け入れられた。この方針が2006年のクラウド事業AWSの立ち上げを可能にする。",
+      "summary": "ジェフ・ベゾスがワシントン州でCadabraを設立し、翌1995年7月にオンライン書店Amazon.comを開設した。ウェブの商用利用が始まった直後の創業で、書籍を入り口に「あらゆるものを売る店」を目指した。\n\n1997年の株式公開で調達した資本を長期にわたり物流と技術に再投資し、利益より成長を優先する姿勢が投資家に受け入れられた。この方針が2006年のクラウド事業AWSの立ち上げを可能にする。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia: History of Amazon", "url": "https://en.wikipedia.org/wiki/History_of_Amazon"}
+        {
+          "title": "Wikipedia: History of Amazon",
+          "url": "https://en.wikipedia.org/wiki/History_of_Amazon"
+        }
       ]
     },
     {
@@ -49,12 +64,15 @@
       "type": "period",
       "layer": "買収と資本",
       "title": "ドットコム・ブーム",
-      "summary": "インターネット関連企業への投資が過熱し、NASDAQは2000年3月に史上最高値を付けたのち急落した。",
-      "detail": "AmazonとGoogleはこの熱狂の中で創業・成長し、Amazonはバブル崩壊後の株価急落と資金繰りの不安を乗り越えた。Googleは崩壊直後の2000年に検索連動広告AdWordsを開始し、収益モデルを確立する。バブル期に敷設された通信インフラの過剰投資が、その後の安価な帯域と2000年代のプラットフォーム成長の土台になったとされる。",
+      "summary": "インターネット関連企業への投資が過熱し、NASDAQは2000年3月に史上最高値を付けたのち急落した。AmazonとGoogleはこの熱狂の中で創業・成長し、Amazonはバブル崩壊後の株価急落と資金繰りの不安を乗り越えた。\n\nGoogleは崩壊直後の2000年に検索連動広告AdWordsを開始し、収益モデルを確立する。バブル期に敷設された通信インフラの過剰投資が、その後の安価な帯域と2000年代のプラットフォーム成長の土台になったとされる。",
+      "detail": null,
       "credibility": "unverified",
       "credibility_note": "ブームの開始・終了年は定義により異なり、ここでは概ね1995年から2000年の崩壊までを目安として示す。",
       "sources": [
-        {"title": "Wikipedia: Dot-com bubble", "url": "https://en.wikipedia.org/wiki/Dot-com_bubble"}
+        {
+          "title": "Wikipedia: Dot-com bubble",
+          "url": "https://en.wikipedia.org/wiki/Dot-com_bubble"
+        }
       ]
     },
     {
@@ -64,12 +82,15 @@
       "type": "point",
       "layer": "買収と資本",
       "title": "Google 設立",
-      "summary": "スタンフォード大学の研究プロジェクトを母体に、ラリー・ペイジとセルゲイ・ブリンがGoogleを法人化した。",
-      "detail": "被リンクを評価するPageRankを核にした検索エンジンで、ドットコム・ブームの渦中に創業した。1999年にベンチャーキャピタルから大型調達を行い、2004年に株式公開する。技術面では2000年のAdWordsによって「検索と広告」の結合が完成し、これがのちのYouTubeやAndroidの買収資金の源泉となった。",
+      "summary": "スタンフォード大学の研究プロジェクトを母体に、ラリー・ペイジとセルゲイ・ブリンがGoogleを法人化した。被リンクを評価するPageRankを核にした検索エンジンで、ドットコム・ブームの渦中の創業である。\n\n1999年にベンチャーキャピタルから大型調達を行い、2004年に株式公開する。技術面では2000年のAdWordsによって「検索と広告」の結合が完成し、これがのちのYouTubeやAndroidの買収資金の源泉となった。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia: History of Google", "url": "https://en.wikipedia.org/wiki/History_of_Google"}
+        {
+          "title": "Wikipedia: History of Google",
+          "url": "https://en.wikipedia.org/wiki/History_of_Google"
+        }
       ]
     },
     {
@@ -79,12 +100,15 @@
       "type": "point",
       "layer": "製品とプラットフォーム",
       "title": "Google AdWords 開始",
-      "summary": "Googleがセルフサービス型の検索連動広告AdWordsを開始。検索行動を広告収益に変える仕組みが確立した。",
-      "detail": "ドットコム・バブル崩壊の年に、無料検索の裏側で収益を生むモデルが登場した意味は大きい。以後、Googleの売上の大半を広告が占め、この資本力が2005年のAndroid、2006年のYouTube買収を支える。規制レイヤーでは、この検索と広告の結合が2020年の米司法省提訴と2024年の独占認定の中心論点になる。",
+      "summary": "Googleがセルフサービス型の検索連動広告AdWordsを開始し、**検索行動を広告収益に変える仕組み**が確立した。ドットコム・バブル崩壊の年に、無料検索の裏側で収益を生むモデルが登場した意味は大きい。\n\n以後、Googleの売上の大半を広告が占め、この資本力が2005年のAndroid、2006年のYouTube買収を支える。規制レイヤーでは、この検索と広告の結合が2020年の米司法省提訴と2024年の独占認定の中心論点になる。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia: Google Ads", "url": "https://en.wikipedia.org/wiki/Google_Ads"}
+        {
+          "title": "Wikipedia: Google Ads",
+          "url": "https://en.wikipedia.org/wiki/Google_Ads"
+        }
       ]
     },
     {
@@ -94,12 +118,15 @@
       "type": "point",
       "layer": "製品とプラットフォーム",
       "title": "Thefacebook 開設",
-      "summary": "マーク・ザッカーバーグらがハーバード大学の学生向けにThefacebook.comを公開。大学から一般へと段階的に開放された。",
-      "detail": "実名を前提としたソーシャルネットワークで、2006年に一般公開、2007年に外部開発者向けプラットフォームを開始した。同じ2004年にはGoogleが株式公開しており、検索とソーシャルという二つの広告基盤が並行して立ち上がった年である。実名データの集積は成長の源泉であると同時に、2018年のケンブリッジ・アナリティカ問題の火種にもなる。",
+      "summary": "マーク・ザッカーバーグらがハーバード大学の学生向けにThefacebook.comを公開した。実名を前提としたソーシャルネットワークで、2006年に一般公開、2007年に外部開発者向けプラットフォームを開始し、大学から一般へと段階的に開放された。\n\n同じ2004年にはGoogleが株式公開しており、検索とソーシャルという二つの広告基盤が並行して立ち上がった年である。実名データの集積は成長の源泉であると同時に、2018年のケンブリッジ・アナリティカ問題の火種にもなる。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia: History of Facebook", "url": "https://en.wikipedia.org/wiki/History_of_Facebook"}
+        {
+          "title": "Wikipedia: History of Facebook",
+          "url": "https://en.wikipedia.org/wiki/History_of_Facebook"
+        }
       ]
     },
     {
@@ -109,12 +136,15 @@
       "type": "point",
       "layer": "買収と資本",
       "title": "GoogleがAndroidを買収",
-      "summary": "Googleがモバイル向けOSを開発するスタートアップAndroidを買収。買収額は非公表で、約5,000万ドルと報じられた。",
-      "detail": "当時は小さな買収と受け止められたが、2007年のiPhone登場後にAndroidをオープンソースで端末メーカーに提供し、モバイル検索と広告の入り口を確保した。製品レイヤーではiPhoneとApp Storeが先行し、Androidは2008年秋に最初の端末が発売される。買収時の金額は公式には明らかにされていない。",
+      "summary": "Googleがモバイル向けOSを開発するスタートアップAndroidを買収した。買収額は公式には明らかにされておらず、約5,000万ドルと報じられている。当時は小さな買収と受け止められた。\n\nしかし2007年のiPhone登場後、GoogleはAndroidをオープンソースで端末メーカーに提供し、モバイル検索と広告の入り口を確保する。製品レイヤーではiPhoneとApp Storeが先行し、Androidは2008年秋に最初の端末が発売される。",
+      "detail": null,
       "credibility": "unverified",
       "credibility_note": "買収の事実と時期は確かだが、買収額は非公表で報道による推計値。",
       "sources": [
-        {"title": "Wikipedia: Android (operating system)", "url": "https://en.wikipedia.org/wiki/Android_(operating_system)"}
+        {
+          "title": "Wikipedia: Android (operating system)",
+          "url": "https://en.wikipedia.org/wiki/Android_(operating_system)"
+        }
       ]
     },
     {
@@ -124,12 +154,15 @@
       "type": "point",
       "layer": "製品とプラットフォーム",
       "title": "Amazon EC2 ベータ公開",
-      "summary": "AmazonがEC2の限定ベータを開始。同年3月のS3と合わせ、計算資源を時間貸しするクラウド事業AWSが本格化した。",
-      "detail": "小売の余剰インフラから生まれたと語られることが多いが、実際には社内の開発効率化の取り組みが出発点とされる。スタートアップが初期投資なしにサービスを立ち上げられる環境は、のちのInstagramなど買収対象となる企業を育てる土壌にもなった。AWSは2010年代にAmazonの営業利益の柱となり、規制当局が同社を評価する際の重要な論点となる。",
+      "summary": "AmazonがEC2の限定ベータを開始。同年3月のS3と合わせ、計算資源を時間貸しするクラウド事業AWSが本格化した。小売の余剰インフラから生まれたと語られることが多いが、実際には社内の開発効率化の取り組みが出発点とされる。\n\nスタートアップが初期投資なしにサービスを立ち上げられる環境は、のちのInstagramなど買収対象となる企業を育てる土壌にもなった。AWSは2010年代にAmazonの営業利益の柱となり、規制当局が同社を評価する際の重要な論点となる。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia: Amazon Elastic Compute Cloud", "url": "https://en.wikipedia.org/wiki/Amazon_Elastic_Compute_Cloud"}
+        {
+          "title": "Wikipedia: Amazon Elastic Compute Cloud",
+          "url": "https://en.wikipedia.org/wiki/Amazon_Elastic_Compute_Cloud"
+        }
       ]
     },
     {
@@ -139,12 +172,15 @@
       "type": "point",
       "layer": "買収と資本",
       "title": "GoogleがYouTubeを16.5億ドルで買収",
-      "summary": "Googleが動画共有サービスYouTubeを約16.5億ドルの株式交換で買収すると発表した。",
-      "detail": "創業から2年に満たない企業への大型買収で、AdWordsで築いた資本力を用いて成長領域を取り込む戦略が明確になった。製品面では同年にAmazonがEC2を公開しており、動画のような大容量サービスを支えるインフラ競争も始まっていた。動画広告市場の支配は、のちの各国の競争法調査でも繰り返し検討対象となる。",
+      "summary": "Googleが動画共有サービスYouTubeを約16.5億ドルの株式交換で買収すると発表した。創業から2年に満たない企業への大型買収で、AdWordsで築いた資本力を用いて成長領域を取り込む戦略が明確になった。\n\n製品面では同年にAmazonがEC2を公開しており、動画のような大容量サービスを支えるインフラ競争も始まっていた。動画広告市場の支配は、のちの各国の競争法調査でも繰り返し検討対象となる。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia: YouTube", "url": "https://en.wikipedia.org/wiki/YouTube"}
+        {
+          "title": "Wikipedia: YouTube",
+          "url": "https://en.wikipedia.org/wiki/YouTube"
+        }
       ]
     },
     {
@@ -154,12 +190,15 @@
       "type": "point",
       "layer": "製品とプラットフォーム",
       "title": "iPhone 発表",
-      "summary": "スティーブ・ジョブズがMacworldでiPhoneを発表。同年6月に米国で発売され、スマートフォンの形を定義した。",
-      "detail": "電話・iPod・インターネット端末を一体化した製品で、タッチ操作を前提としたモバイルOSの標準をつくった。Googleは2005年に買収していたAndroidの設計を見直し、2008年に対抗端末を投入する。翌2008年のApp Storeによって、端末とアプリ流通を一社が握る「プラットフォーム」の構図が完成し、これが2020年代の日欧の規制の対象となる。",
+      "summary": "スティーブ・ジョブズがMacworldでiPhoneを発表した。電話・iPod・インターネット端末を一体化した製品は同年6月に米国で発売され、タッチ操作を前提としたモバイルOSの標準をつくり、スマートフォンの形を定義した。\n\nGoogleは2005年に買収していたAndroidの設計を見直し、2008年に対抗端末を投入する。翌2008年のApp Storeによって、端末とアプリ流通を一社が握る「プラットフォーム」の構図が完成し、これが2020年代の日欧の規制の対象となる。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Apple Newsroom: Apple Reinvents the Phone with iPhone", "url": "https://www.apple.com/newsroom/2007/01/09Apple-Reinvents-the-Phone-with-iPhone/"}
+        {
+          "title": "Apple Newsroom: Apple Reinvents the Phone with iPhone",
+          "url": "https://www.apple.com/newsroom/2007/01/09Apple-Reinvents-the-Phone-with-iPhone/"
+        }
       ]
     },
     {
@@ -169,12 +208,15 @@
       "type": "point",
       "layer": "製品とプラットフォーム",
       "title": "App Store 開始",
-      "summary": "AppleがiPhone向けアプリ配信のApp Storeを開始。約500本のアプリでスタートし、開発者に売上の70%を配分するモデルを示した。",
-      "detail": "アプリ流通を単一の窓口に集約し、審査と手数料の仕組みを標準化した。Googleも同年にAndroid Marketを開始し、二大モバイルプラットフォームの並立が固まる。手数料率と審査の裁量はのちに開発者との対立を生み、EUのデジタル市場法（2022年発効）や日本のスマホソフトウェア競争促進法（2024年成立）で直接の規制対象となった。",
+      "summary": "AppleがiPhone向けアプリ配信のApp Storeを開始。約500本のアプリでスタートし、開発者に売上の70%を配分するモデルを示した。**アプリ流通を単一の窓口に集約し、審査と手数料の仕組みを標準化した**点が核心である。\n\nGoogleも同年にAndroid Marketを開始し、二大モバイルプラットフォームの並立が固まる。手数料率と審査の裁量はのちに開発者との対立を生み、EUのデジタル市場法（2022年発効）や日本のスマホソフトウェア競争促進法（2024年成立）で直接の規制対象となった。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia: App Store (Apple)", "url": "https://en.wikipedia.org/wiki/App_Store_(Apple)"}
+        {
+          "title": "Wikipedia: App Store (Apple)",
+          "url": "https://en.wikipedia.org/wiki/App_Store_(Apple)"
+        }
       ]
     },
     {
@@ -184,12 +226,15 @@
       "type": "point",
       "layer": "買収と資本",
       "title": "FacebookがInstagramを買収",
-      "summary": "Facebookが写真共有アプリInstagramを現金と株式で約10億ドルで買収すると発表。従業員13人の企業への大型買収だった。",
-      "detail": "スマートフォンとApp Storeの普及で急成長した若い企業を、株式公開直前のFacebookが取り込んだ。発表額は約10億ドルだが、Facebook株の下落により完了時の価値は7億ドル台と報じられる。この買収は2020年の米連邦取引委員会（FTC）による提訴で「競争相手の芽を摘む買収」として問題視され、事後的な規制の焦点になった。",
+      "summary": "Facebookが写真共有アプリInstagramを現金と株式で約10億ドルで買収すると発表した。従業員13人の企業への大型買収であり、スマートフォンとApp Storeの普及で急成長した若い企業を、株式公開直前のFacebookが取り込んだ形である。発表額は約10億ドルだが、Facebook株の下落により完了時の価値は7億ドル台と報じられる。\n\nこの買収は2020年の米連邦取引委員会（FTC）による提訴で**「競争相手の芽を摘む買収」**として問題視され、事後的な規制の焦点になった。",
+      "detail": null,
       "credibility": "disputed",
       "credibility_note": "発表時の約10億ドルという金額と、株価変動後の完了時価値は異なり、報道により数値が分かれる。",
       "sources": [
-        {"title": "Wikipedia: Instagram", "url": "https://en.wikipedia.org/wiki/Instagram"}
+        {
+          "title": "Wikipedia: Instagram",
+          "url": "https://en.wikipedia.org/wiki/Instagram"
+        }
       ]
     },
     {
@@ -199,12 +244,15 @@
       "type": "point",
       "layer": "買収と資本",
       "title": "FacebookがWhatsAppを買収",
-      "summary": "Facebookがメッセージアプリ WhatsAppを約190億ドルで買収すると発表。完了時には株価上昇で200億ドルを超えた。",
-      "detail": "モバイルのメッセージ領域を押さえる目的で、Instagramに続く大型買収となった。EUの企業結合審査ではデータ統合を行わないとの説明が前提とされ、のちに実態との相違で制裁金が科される。2018年のGDPR施行やケンブリッジ・アナリティカ問題を経て、こうしたデータを軸にした買収の審査は各国で厳格化していく。",
+      "summary": "Facebookがメッセージアプリ WhatsAppを約190億ドルで買収すると発表。完了時には株価上昇で200億ドルを超えた。モバイルのメッセージ領域を押さえる目的で、Instagramに続く大型買収となった。\n\nEUの企業結合審査ではデータ統合を行わないとの説明が前提とされ、のちに実態との相違で制裁金が科される。2018年のGDPR施行やケンブリッジ・アナリティカ問題を経て、こうしたデータを軸にした買収の審査は各国で厳格化していく。",
+      "detail": null,
       "credibility": "disputed",
       "credibility_note": "発表額は約190億ドルだが、株式部分の価値変動により最終的な取引額は約218億ドルとされ、資料により金額が異なる。",
       "sources": [
-        {"title": "Wikipedia: WhatsApp", "url": "https://en.wikipedia.org/wiki/WhatsApp"}
+        {
+          "title": "Wikipedia: WhatsApp",
+          "url": "https://en.wikipedia.org/wiki/WhatsApp"
+        }
       ]
     },
     {
@@ -214,12 +262,15 @@
       "type": "point",
       "layer": "規制と社会",
       "title": "ケンブリッジ・アナリティカ問題が発覚",
-      "summary": "英ガーディアン等の報道で、Facebook利用者のデータが選挙コンサル会社に不正利用されていたことが明らかになった。",
-      "detail": "外部アプリを通じて最大8,700万人分のデータが取得されたとされ、ザッカーバーグは米議会で証言した。2004年の実名SNSという製品設計と、2012年以降の買収によるデータ集積が、社会的な信頼の問題として噴出した形である。約2か月後にEUでGDPRが施行され、2019年のFTC制裁金へとつながる規制強化の起点となった。",
+      "summary": "英ガーディアン等の報道で、Facebook利用者のデータが選挙コンサル会社に不正利用されていたことが明らかになった。外部アプリを通じて最大8,700万人分のデータが取得されたとされ、ザッカーバーグは米議会で証言した。\n\n2004年の実名SNSという製品設計と、2012年以降の買収によるデータ集積が、**社会的な信頼の問題として噴出した**出来事である。約2か月後にEUでGDPRが施行され、2019年のFTC制裁金へとつながる規制強化の起点となった。",
+      "detail": null,
       "credibility": "disputed",
       "credibility_note": "影響を受けた利用者数は当初約5,000万人と報じられ、後にFacebookが最大約8,700万人と発表しており、数値に幅がある。",
       "sources": [
-        {"title": "Wikipedia: Facebook–Cambridge Analytica data scandal", "url": "https://en.wikipedia.org/wiki/Facebook%E2%80%93Cambridge_Analytica_data_scandal"}
+        {
+          "title": "Wikipedia: Facebook–Cambridge Analytica data scandal",
+          "url": "https://en.wikipedia.org/wiki/Facebook%E2%80%93Cambridge_Analytica_data_scandal"
+        }
       ]
     },
     {
@@ -229,12 +280,15 @@
       "type": "point",
       "layer": "規制と社会",
       "title": "EU一般データ保護規則（GDPR）施行",
-      "summary": "EUで個人データ保護を包括的に定めるGDPRが適用開始。違反時は世界売上の最大4%の制裁金が可能となった。",
-      "detail": "2016年に採択され2年の準備期間を経て施行された。ケンブリッジ・アナリティカ問題の直後というタイミングで、広告を収益源とするGoogleとFacebookのデータ利用に直接影響した。同意取得の設計や越境データ移転を巡り、以後GAFA各社への制裁金決定が相次ぐ。2022年のデジタル市場法と並び、EUがプラットフォーム規制の先行地域となる基盤である。",
+      "summary": "EUで個人データ保護を包括的に定めるGDPRの適用が始まり、違反時は世界売上の最大4%の制裁金が可能となった。2016年に採択され、2年の準備期間を経ての施行である。\n\nケンブリッジ・アナリティカ問題の直後というタイミングで、広告を収益源とするGoogleとFacebookのデータ利用に直接影響した。同意取得の設計や越境データ移転を巡り、以後GAFA各社への制裁金決定が相次ぐ。2022年のデジタル市場法と並び、EUがプラットフォーム規制の先行地域となる基盤である。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia: General Data Protection Regulation", "url": "https://en.wikipedia.org/wiki/General_Data_Protection_Regulation"}
+        {
+          "title": "Wikipedia: General Data Protection Regulation",
+          "url": "https://en.wikipedia.org/wiki/General_Data_Protection_Regulation"
+        }
       ]
     },
     {
@@ -244,12 +298,15 @@
       "type": "point",
       "layer": "規制と社会",
       "title": "FTCがFacebookに50億ドルの制裁金",
-      "summary": "米連邦取引委員会がプライバシー侵害を理由にFacebookへ50億ドルの制裁金と監督強化を科すと発表した。",
-      "detail": "ケンブリッジ・アナリティカ問題を受けた処分で、消費者保護分野では過去最大級の金額となった。制裁と同時に取締役会レベルのプライバシー監督体制が義務付けられた。同年はGoogleに対する州司法長官の調査も始まり、翌2020年の司法省提訴とFTCによるFacebook提訴へ続く。買収レイヤーで拡大した企業が、規制レイヤーで初めて大きな代償を払った出来事である。",
+      "summary": "米連邦取引委員会がプライバシー侵害を理由に、Facebookへ50億ドルの制裁金と監督強化を科すと発表した。ケンブリッジ・アナリティカ問題を受けた処分で、消費者保護分野では過去最大級の金額となり、取締役会レベルのプライバシー監督体制も義務付けられた。\n\n同年はGoogleに対する州司法長官の調査も始まり、翌2020年の司法省提訴とFTCによるFacebook提訴へ続く。**買収と資本で拡大した企業が、規制の側で初めて大きな代償を払った**出来事である。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "FTC Press Release (2019-07-24)", "url": "https://www.ftc.gov/news-events/news/press-releases/2019/07/ftc-imposes-5-billion-penalty-sweeping-new-privacy-restrictions-facebook"}
+        {
+          "title": "FTC Press Release (2019-07-24)",
+          "url": "https://www.ftc.gov/news-events/news/press-releases/2019/07/ftc-imposes-5-billion-penalty-sweeping-new-privacy-restrictions-facebook"
+        }
       ]
     },
     {
@@ -259,12 +316,15 @@
       "type": "point",
       "layer": "規制と社会",
       "title": "米司法省がGoogleを反トラスト法違反で提訴",
-      "summary": "米司法省と11州がGoogleを検索と検索広告市場の独占維持で提訴。1998年のMicrosoft訴訟以来の大型事件となった。",
-      "detail": "Appleなど端末メーカーへの巨額の支払いでデフォルト検索を確保した行為が違法な独占維持にあたるかが争点となった。製品レイヤーではiPhoneとAndroidの二大プラットフォームが検索の入り口を握る構図が背景にある。同年12月にはFTCがFacebookのInstagram・WhatsApp買収を問題視して提訴し、GAFAへの競争法執行が本格化した。",
+      "summary": "米司法省と11州がGoogleを検索と検索広告市場の独占維持で提訴し、1998年のMicrosoft訴訟以来の大型事件となった。Appleなど端末メーカーへの巨額の支払いでデフォルト検索を確保した行為が、違法な独占維持にあたるかが争点である。\n\n製品レイヤーではiPhoneとAndroidの二大プラットフォームが検索の入り口を握る構図が背景にある。同年12月にはFTCがFacebookのInstagram・WhatsApp買収を問題視して提訴し、GAFAへの競争法執行が本格化した。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "U.S. Department of Justice: Justice Department Sues Monopolist Google", "url": "https://www.justice.gov/opa/pr/justice-department-sues-monopolist-google-violating-antitrust-laws"}
+        {
+          "title": "U.S. Department of Justice: Justice Department Sues Monopolist Google",
+          "url": "https://www.justice.gov/opa/pr/justice-department-sues-monopolist-google-violating-antitrust-laws"
+        }
       ]
     },
     {
@@ -274,12 +334,15 @@
       "type": "point",
       "layer": "規制と社会",
       "title": "EUデジタル市場法（DMA）発効",
-      "summary": "EUで大規模プラットフォームを「ゲートキーパー」に指定し事前規制するデジタル市場法が発効。2023年から順次適用された。",
-      "detail": "自社サービスの優遇禁止やアプリストアの開放などを事前に義務付ける枠組みで、事後的な競争法執行の限界を補う狙いがある。2023年9月にAlphabet・Amazon・Apple・Metaなど6社がゲートキーパーに指定された。2008年のApp Storeに始まる閉じた流通モデルが直接の規制対象となり、日本も2024年に類似の法律を成立させた。",
+      "summary": "EUで大規模プラットフォームを「ゲートキーパー」に指定し事前規制するデジタル市場法が発効し、2023年から順次適用された。自社サービスの優遇禁止やアプリストアの開放などを事前に義務付ける枠組みで、事後的な競争法執行の限界を補う狙いがある。\n\n2023年9月にはAlphabet・Amazon・Apple・Metaなど6社がゲートキーパーに指定された。2008年のApp Storeに始まる閉じた流通モデルが直接の規制対象となり、日本も2024年に類似の法律を成立させた。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "European Commission: The Digital Markets Act", "url": "https://digital-markets-act.ec.europa.eu/"}
+        {
+          "title": "European Commission: The Digital Markets Act",
+          "url": "https://digital-markets-act.ec.europa.eu/"
+        }
       ]
     },
     {
@@ -289,12 +352,15 @@
       "type": "point",
       "layer": "規制と社会",
       "title": "日本でスマホソフトウェア競争促進法が成立",
-      "summary": "スマートフォンのOS・アプリストア等を対象に、公正取引委員会が事前規制を行う新法が国会で成立した。",
-      "detail": "EUのデジタル市場法を参照し、AppleとGoogleを主な対象として代替アプリストアの許容や自社優遇の禁止を定めた。2008年のApp Store以来続いてきた手数料や審査の裁量が、日本でも法律で制約されることになる。米国では同年8月にGoogleの検索独占が認定されており、日米欧で規制が同時期に収束した年である。",
+      "summary": "スマートフォンのOS・アプリストア等を対象に、公正取引委員会が事前規制を行うスマホソフトウェア競争促進法が国会で成立した。EUのデジタル市場法を参照し、AppleとGoogleを主な対象として代替アプリストアの許容や自社優遇の禁止を定めている。\n\n2008年のApp Store以来続いてきた手数料や審査の裁量が、日本でも法律で制約されることになる。米国では同年8月にGoogleの検索独占が認定されており、日米欧で規制が同時期に収束した年である。",
+      "detail": null,
       "credibility": "unverified",
       "credibility_note": "成立日は国会記録に基づくが、全面施行時期（2025年12月と発表）や指定事業者の範囲は施行後の運用で確定するため未確認とする。",
       "sources": [
-        {"title": "公正取引委員会 スマートフォンにおいて利用される特定ソフトウェアに係る競争の促進に関する法律", "url": null}
+        {
+          "title": "公正取引委員会 スマートフォンにおいて利用される特定ソフトウェアに係る競争の促進に関する法律",
+          "url": null
+        }
       ]
     },
     {
@@ -304,12 +370,15 @@
       "type": "point",
       "layer": "規制と社会",
       "title": "米連邦地裁がGoogleの検索独占を認定",
-      "summary": "ワシントンD.C.連邦地裁が、Googleが検索市場で違法に独占を維持したと判断。2020年提訴の司法省訴訟で原告側が勝訴した。",
-      "detail": "Appleへの巨額支払いによるデフォルト契約が独占維持の手段と認定された。2000年のAdWords以来の「検索と広告」の結合モデルが司法によって問い直された節目であり、是正措置の審理が続いた。同年6月に日本のスマホ新法が成立し、EUではDMAの執行が始まっており、GAFAの事業構造そのものが日米欧で同時に規制対象となった年として位置づけられる。",
+      "summary": "ワシントンD.C.連邦地裁が、Googleが検索市場で違法に独占を維持したと判断し、2020年提訴の司法省訴訟で原告側が勝訴した。Appleへの巨額支払いによるデフォルト契約が独占維持の手段と認定され、是正措置の審理が続いた。\n\n**2000年のAdWords以来の「検索と広告」の結合モデルが司法によって問い直された**節目である。同年6月に日本のスマホ新法が成立し、EUではDMAの執行が始まっており、GAFAの事業構造そのものが日米欧で同時に規制対象となった年として位置づけられる。",
+      "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "Wikipedia: United States v. Google LLC (2020)", "url": "https://en.wikipedia.org/wiki/United_States_v._Google_LLC_(2020)"}
+        {
+          "title": "Wikipedia: United States v. Google LLC (2020)",
+          "url": "https://en.wikipedia.org/wiki/United_States_v._Google_LLC_(2020)"
+        }
       ]
     }
   ]
