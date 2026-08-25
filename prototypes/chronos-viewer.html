@@ -68,11 +68,21 @@
 
   /* ===== HEADER ===== */
   .header {
-    position:sticky; top:0; z-index:100;
-    background:rgba(10,10,12,0.88); backdrop-filter:blur(20px);
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(10,10,12,0.78); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px);
     border-bottom:1px solid var(--border);
-    padding:0 20px; height:100px;
-    display:flex; align-items:center; justify-content:space-between;
+  }
+  .hdr-inner {
+    max-width:1080px; margin:0 auto; padding:0 32px; height:100px;
+    display:flex; align-items:center; gap:24px;
+    transition:height .35s var(--ease);
+  }
+  .hdr-logo { display:flex; align-items:center; flex:none; }
+  .hdr-logo img { height:40px; width:auto; display:block; transition:height .35s var(--ease), opacity .3s; }
+  .hdr-title {
+    flex:1; min-width:0;
+    font-size:var(--fs-sm); line-height:var(--lh-sm); font-weight:500; color:var(--text-h);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
   }
   .header-brand {
     font-family:var(--f-display); font-size:var(--fs-title); line-height:var(--lh-title); font-weight:500;
@@ -87,7 +97,7 @@
   /* ===== HERO ===== */
   .hero {
     text-align:center; padding:36px 20px 8px;
-    max-width:700px; margin:0 auto; background:var(--bg);
+    max-width:1080px; margin:0 auto; background:var(--bg);
     opacity:0; animation:fadeUp 0.8s ease forwards 0.1s;
   }
   .hero h1 {
@@ -132,7 +142,7 @@
   /* ===== LEGEND ===== */
   .legend {
     display:flex; gap:20px; justify-content:center;
-    padding:16px 16px 8px; max-width:700px; margin:0 auto;
+    padding:16px 16px 8px; max-width:1080px; margin:0 auto;
     background:var(--bg);
     opacity:0; animation:fadeUp 0.6s ease forwards 0.3s;
   }
@@ -149,7 +159,7 @@
 
   /* ===== TIMELINE CONTAINER ===== */
   .tl-wrap {
-    max-width:700px; margin:0 auto;
+    max-width:1080px; margin:0 auto;
     padding:12px 16px 100px 16px;
     background:var(--bg);
   }
@@ -460,21 +470,27 @@
   /* ===== RESPONSIVE ===== */
   @media (min-width:768px) {
     .tl-wrap { padding-left:32px; padding-right:32px; }
+    .pub-hero { padding-left:32px; padding-right:32px; }
     .tl-lanes { width:72px; }
+  }
+  @media (max-width:560px) {
+    .hdr-inner { padding:0 20px; gap:16px; }
+    .hdr-btn-label { display:none; }
+    .hdr-btn { padding:0 12px; }
   }
   @media (max-width:400px) {
     .tl-lanes { width:44px; padding-right:4px; }
   }
 
   /* ===== 読了バー / 現在年 / コンパクトヘッダー ===== */
+  .hdr-spacer { height:100px; transition:height .35s var(--ease); }
+  html.scrolled .hdr-spacer { height:60px; }
   .readbar { position:fixed; top:100px; left:0; right:0; height:2px; z-index:99; pointer-events:none; transition:top .35s var(--ease); }
   .readbar i { display:block; height:100%; background:linear-gradient(90deg,rgba(232,228,222,0.35),rgba(232,228,222,0.75)); transform-origin:0 50%; transform:scaleX(0); transition:transform .12s linear; }
   html.scrolled .readbar { top:60px; }
-  html.scrolled .header { height:60px; }
-  html.scrolled .header img { height:24px; }
+  html.scrolled .hdr-inner { height:60px; }
+  html.scrolled .hdr-logo img { height:24px; }
   html.scrolled .layer-controls { top:60px; }
-  .header { transition:height .35s var(--ease); }
-  .header img { transition:height .35s var(--ease); }
   .layer-controls { transition:top .35s var(--ease); }
   .year-now {
     position:fixed; top:116px; left:50%; transform:translate(-50%,-4px); z-index:98;
@@ -489,7 +505,8 @@
   .year-now.show { opacity:1; transform:translate(-50%,0); }
 
   /* ===== カバー写真 ===== */
-  .d-coverwrap { margin:0 auto 32px; max-width:700px; padding:0 16px; }
+  .d-coverwrap { margin:0 auto 32px; max-width:1080px; padding:0 16px; }
+  @media (min-width:768px){ .d-coverwrap { padding:0 32px; } .ev-tools { padding:16px 32px 0; } }
   .d-cover { position:relative; height:clamp(160px,28vw,280px); overflow:hidden; background:var(--bg-card); }
   .d-cover img { width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .5s var(--ease), transform .6s var(--ease); }
   .d-cover img.loaded { opacity:1; }
@@ -506,7 +523,7 @@
     font-family:var(--f-mono); font-size:var(--fs-xs); line-height:var(--lh-xs);
     letter-spacing:0.2em; color:var(--accent); text-transform:uppercase; margin-bottom:12px;
   }
-  .ev-tools { max-width:700px; margin:0 auto; padding:16px 16px 0; display:flex; justify-content:flex-end; }
+  .ev-tools { max-width:1080px; margin:0 auto; padding:16px 16px 0; display:flex; justify-content:flex-end; }
   .ev-expall {
     font-size:var(--fs-sm); line-height:var(--lh-sm); color:var(--text2);
     border:1px solid rgba(232,228,222,0.16); border-radius:999px; padding:8px 16px;
@@ -517,7 +534,7 @@
   /* Public hero */
   .pub-hero {
     text-align:center; padding:32px 20px 24px;
-    max-width:700px; margin:0 auto;
+    max-width:1080px; margin:0 auto;
     border-bottom:1px solid var(--border);
     opacity:0; animation:fadeUp 0.8s ease forwards 0.1s;
   }
@@ -543,8 +560,8 @@
     color:var(--text3); letter-spacing:0.04em; font-variant-numeric:tabular-nums;
   }
   .pub-desc {
-    font-size:var(--fs-body); color:var(--text2); line-height:var(--lh-body);
-    max-width:480px; margin:0 auto;
+    font-size:var(--fs-body); color:var(--text); line-height:var(--lh-body);
+    max-width:680px; margin:0 auto;
   }
 
   /* Like button */
@@ -656,6 +673,7 @@
 
   /* ===== HOVER（ポインタ環境のみ。タッチでは残らない） ===== */
   @media (hover:hover) and (pointer:fine) {
+    .hdr-logo:hover img { opacity:.82; }
     .d-coverwrap:hover img { transform:scale(1.015); }
     .d-cover-credit a:hover { color:var(--text2); text-decoration-color:rgba(232,228,222,0.5); }
     .ev-expall:hover { color:var(--text-h); border-color:rgba(232,228,222,0.32); background:rgba(232,228,222,0.06); }
@@ -688,16 +706,17 @@
 
 <!-- Header (Viewer) -->
 <header class="header">
-  <a href="#" class="header-brand" style="text-decoration:none"><img src="assets/chronos-logo.svg" alt="Chronos" style="height:40px;width:auto;display:block"></a>
-  <div style="flex:1;text-align:center;padding:0 12px;overflow:hidden">
-    <div style="font-family:var(--f-display);font-size:var(--fs-sm);line-height:var(--lh-sm);font-weight:500;color:var(--text-h);white-space:nowrap;overflow:hidden;text-overflow:ellipsis" id="hdrTitle"></div>
+  <div class="hdr-inner">
+    <a href="chronos-explore.html" class="hdr-logo" aria-label="Chronos"><img src="assets/chronos-logo.svg" alt="Chronos"></a>
+    <div class="hdr-title" id="hdrTitle"></div>
+    <button class="hdr-btn" onclick="openShare()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      <span class="hdr-btn-label">共有</span>
+    </button>
   </div>
-  <button class="hdr-btn" onclick="openShare()">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-    共有
-  </button>
 </header>
 
+<div class="hdr-spacer" aria-hidden="true"></div>
 <div class="readbar" aria-hidden="true"><i></i></div>
 <div class="year-now" aria-hidden="true"></div>
 
