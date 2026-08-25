@@ -19,6 +19,7 @@ const uidOf = (u) => "00000000-0000-4000-8000-" + createHash("md5").update(u).di
 const ownerBySlug = {};
 for (const a of AUTHORS) for (const sl of a.timelines) ownerBySlug[sl] = uidOf(a.username);
 const CHRONOS_UID = uidOf("chronos");
+const exclamOK = new Set(AUTHORS.filter((a) => /「!」は感情が乗る箇所/.test(a.tone)).map((a) => uidOf(a.username)));
 
 const files = (await readdir(dataDir)).filter((f) => f.endsWith(".json")).sort();
 const problems = [];
@@ -46,7 +47,10 @@ for (const f of files) {
     if (e.type === "period" && (!e.end_date || e.end_date < e.date)) problems.push(`${t.slug}#${i}: bad period`);
     if ((e.credibility === "disputed" || e.credibility === "unverified") && !e.credibility_note)
       problems.push(`${t.slug}#${i}: note required for ${e.credibility}`);
-    if (/[!！]/.test(`${e.title}${e.summary}${e.detail ?? ""}`)) problems.push(`${t.slug}#${i}: contains "!"`);
+    // 「!」はペルソナ許可制（AUTHORS.json の tone に明記されたオーサーのみ）。titleは常に禁止
+    if (/[!！]/.test(e.title)) problems.push(`${t.slug}#${i}: "!" in title`);
+    if (/[!！]/.test(`${e.summary}${e.detail ?? ""}`) && !exclamOK.has(ownerBySlug[t.slug]))
+      problems.push(`${t.slug}#${i}: "!" by author without permission`);
   }
   const years = t.events.map((e) => +e.date.slice(0, 4));
   const startYear = t.start_year ?? Math.min(...years);
