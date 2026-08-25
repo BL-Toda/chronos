@@ -1,0 +1,83 @@
+{
+  "_comment": "シード用オーサーペルソナ（36体）。tone は文体仕様（書き換えエージェントへの指示を兼ねる）。rewrite=false は現行の だ・である 本文を維持。",
+  "authors": [
+    {"username": "chronos", "display_name": "Chronos 編集部", "bio": "公式のサンプル年表です。出典と信憑性ラベルを確認しながらお読みください。", "tone": "である調・中立・現状の型を維持", "rewrite": false,
+     "timelines": ["tech-mobile-revolution", "history-space-race", "history-bakumatsu-meiji", "culture-impressionism-to-street", "science-climate-100", "science-dna-to-editing", "business-toyota-production"]},
+
+    {"username": "tech_chronicle", "display_name": "テック・クロニクル", "bio": "技術の話題を、むずかしくしすぎずに記録しています。", "tone": "話し言葉のです・ます。各イベント冒頭に絵文字1個。見本= tech-ai-revolution.json（書き換え済み）の文体", "rewrite": true,
+     "timelines": ["tech-ai-revolution", "tech-social-media", "tech-cloud-revolution", "tech-fintech", "tech-edtech"]},
+
+    {"username": "handotai_memo", "display_name": "半導体メモ", "bio": "チップと通信とものづくり。硬い技術の歴史を数字で追います。", "tone": "である調・技術者気質・数値を前に出す（現行文体を維持）", "rewrite": false,
+     "timelines": ["tech-semiconductor-war", "tech-quantum-computing", "tech-5g-6g"]},
+
+    {"username": "robo_mobility", "display_name": "ロボモビリティ日誌", "bio": "動く機械が好きです。ロボット・クルマ・宇宙の現在地を記録中。", "tone": "です・ます。現場やデモの熱を感じる語り。絵文字は0〜1個/イベント", "rewrite": true,
+     "timelines": ["tech-robotics", "tech-autonomous-driving", "tech-space-internet", "tech-cybersecurity"]},
+
+    {"username": "web_native", "display_name": "うぇぶ育ち", "bio": "インターネットで育った世代の視点で、栄枯盛衰をゆるく記録。", "tone": "カジュアルなです・ます。ネット文化の当事者感。絵文字1〜2個/イベント", "rewrite": true,
+     "timelines": ["tech-web3-metaverse", "tech-blockchain"]},
+
+    {"username": "archive_room", "display_name": "資料室の人", "bio": "史料と注釈が好きです。歴史は複数の視点で読むと面白い。", "tone": "である調・史料好き（現行文体を維持）", "rewrite": false,
+     "timelines": ["history-french-revolution", "history-ancient-rome", "history-age-of-discovery", "history-industrial-revolution"]},
+
+    {"username": "kingendai_note", "display_name": "近現代史ノート", "bio": "20世紀の分岐点を、外交・経済・暮らしの三面から整理しています。", "tone": "である調（現行文体を維持）", "rewrite": false,
+     "timelines": ["history-cold-war", "history-postwar-japan", "history-german-reunification"]},
+
+    {"username": "sekaishi_walker", "display_name": "世界史ウォーカー", "bio": "地図を広げながら歴史を歩く人。現地の風景が浮かぶ年表を目指しています。", "tone": "です・ます。旅人の視点で土地や距離の感覚を織り込む。絵文字なし", "rewrite": true,
+     "timelines": ["history-silk-road", "history-eu-integration", "history-middle-east"]},
+
+    {"username": "koumin_kyoshitsu", "display_name": "公民の教室", "bio": "制度とお金の歴史を、授業のようにかみくだいて話します。", "tone": "です・ます。先生が生徒に語りかける調子。「〜ですよね」「ここが試験に出ます」のような口癖は使わず、あくまで落ち着いた授業風。絵文字なし", "rewrite": true,
+     "timelines": ["history-democracy", "history-digital-democracy", "history-asian-financial-crisis"]},
+
+    {"username": "yuru_bunka", "display_name": "ゆる文化ウォッチ", "bio": "音楽の「あの頃」を楽しく振り返ります 🎧", "tone": "カジュアルなです・ます。ファン目線の熱量。絵文字1〜2個/イベント", "rewrite": true,
+     "timelines": ["culture-jpop-streaming", "culture-kpop-global", "culture-hiphop-50"]},
+
+    {"username": "game_street", "display_name": "ゲームとストリート", "bio": "コントローラーとスケボーで育ちました。カルチャーの現場から。", "tone": "カジュアルなです・ます。当事者・プレイヤー目線。絵文字0〜1個/イベント", "rewrite": true,
+     "timelines": ["culture-game-industry", "culture-street-culture", "culture-anime-global"]},
+
+    {"username": "curator_note", "display_name": "学芸員ノート", "bio": "美術・建築・工芸。作品と時代の関係を静かに記録しています。", "tone": "丁寧で上品なです・ます。美術館の解説パネルのような静かなトーン。絵文字なし", "rewrite": true,
+     "timelines": ["culture-fashion", "culture-architecture", "culture-photography", "culture-traditional-crafts", "culture-design-thinking"]},
+
+    {"username": "hondana_kissa", "display_name": "本棚と喫茶", "bio": "本と映画と食の歴史を、喫茶店の隅から眺めています。", "tone": "である調・静かな随筆調（現行文体を維持）", "rewrite": false,
+     "timelines": ["culture-literary-awards", "culture-cinema-100", "culture-food-globalization"]},
+
+    {"username": "science_kataribe", "display_name": "科学のかたりべ", "bio": "科学のニュースを、例え話でやさしく語りなおします。", "tone": "やさしいです・ます。1イベントに1つ短い例え・言い換えを入れる（事実の改変や誇張はしない）。絵文字0〜1個/イベント", "rewrite": true,
+     "timelines": ["science-infectious-diseases", "science-vaccines", "science-neuroscience", "science-artificial-organs", "science-renewable-energy"]},
+
+    {"username": "hoshizora_note", "display_name": "星空ノート", "bio": "ベランダの望遠鏡から宇宙の歴史まで。夜空の記録係です。", "tone": "です・ます。夜空を見上げるワクワク感を静かに込める。絵文字0〜1個/イベント", "rewrite": true,
+     "timelines": ["science-astrophysics", "science-mars-missions", "science-astronomy-turning-points"]},
+
+    {"username": "rikei_note", "display_name": "理系ノート", "bio": "数式の美しさに惹かれて。理論の歴史を淡々と記録します。", "tone": "である調・理論好き（現行文体を維持）", "rewrite": false,
+     "timelines": ["science-particle-physics", "science-mathematics"]},
+
+    {"username": "field_note", "display_name": "フィールドノート", "bio": "海と地層と骨。野外調査が好きな人の記録帳。", "tone": "です・ます。現場・探検の空気感。絵文字0〜1個/イベント", "rewrite": true,
+     "timelines": ["science-ocean-exploration", "science-deep-sea", "science-dinosaur-research"]},
+
+    {"username": "market_lens", "display_name": "マーケット・レンズ", "bio": "ビジネスの転換点を、データと構造で簡潔に。", "tone": "体言止めを織り交ぜた簡潔なである調。数字を前に出す。全体を現行より歯切れよく（120〜220字に圧縮可）。絵文字なし", "rewrite": true,
+     "timelines": ["business-gafa", "business-ma-battles", "business-esg-investing", "business-real-estate-bubbles"]},
+
+    {"username": "startup_watch", "display_name": "スタートアップ定点観測", "bio": "成功も失敗も等しく記録する。それが次の挑戦の役に立つはず。", "tone": "です・ます。起業家に寄り添う温度感、失敗にも敬意を払う。絵文字なし", "rewrite": true,
+     "timelines": ["business-startup-failures", "business-japan-unicorns", "business-b2b-saas"]},
+
+    {"username": "ryutsu_kenbun", "display_name": "流通見聞録", "bio": "お店と広告と暮らしの変化を、消費者の目線で見てきました。", "tone": "です・ます。買い物客・生活者の実感を交える。絵文字なし", "rewrite": true,
+     "timelines": ["business-retail-revolution", "business-subscription", "business-coffee-industry", "business-advertising-100"]},
+
+    {"username": "hatarakikata_lab", "display_name": "はたらき方ラボ", "bio": "働き方の制度と現場のギャップを観察しています。", "tone": "です・ます。働く人の実感に寄り添う。絵文字なし", "rewrite": true,
+     "timelines": ["business-workstyle-reform", "business-freelance-economy", "business-dx-japan"]},
+
+    {"username": "futari_note", "display_name": "ふたりの記録", "bio": "2014年の春に出会ってから、ふたりの暮らしを年表にしています。", "tone": "本人の一人称。です・ます基調の穏やかな日記調。絵文字0〜1個/イベント", "rewrite": true, "timelines": ["personal-two-of-us"]},
+    {"username": "hoiku_no_hibi", "display_name": "保育園と私たち", "bio": "子どもが生まれた日から、家族と制度の記録をつけています。", "tone": "本人の一人称。です・ます。育児の実感がこもった語り。絵文字0〜1個/イベント", "rewrite": true, "timelines": ["personal-parenting"]},
+    {"username": "dokusho_henreki", "display_name": "読書遍歴の人", "bio": "1990年から続けている読書記録。読まなかった時期も記録のうち。", "tone": "本人の一人称。です・ます。本好きの静かな内省。絵文字なし", "rewrite": true, "timelines": ["personal-reading-log"]},
+    {"username": "run_since_2007", "display_name": "35歳から走る人", "bio": "東京マラソン元年に走り始めた会社員。記録より継続。", "tone": "本人の一人称。です・ます。市民ランナーの等身大の語り。絵文字0〜1個/イベント", "rewrite": true, "timelines": ["personal-marathon"]},
+    {"username": "tabi_no_album", "display_name": "旅のアルバム係", "bio": "1980年の香港から。アルバム50冊分の旅の記録です。", "tone": "本人の一人称。です・ます。年配の旅好きの回想。絵文字なし", "rewrite": true, "timelines": ["personal-travel-album"]},
+    {"username": "hyogaki_note", "display_name": "氷河期のキャリアノート", "bio": "1998年入社。印刷からWeb、フリーランス、法人化まで。", "tone": "本人の一人称。です・ます。淡々としつつ節目に実感がにじむ。絵文字なし", "rewrite": true, "timelines": ["personal-career-turns"]},
+    {"username": "neko_to_kurashi", "display_name": "猫と暮らす記録", "bio": "2011年に保護猫を迎えてから。看取りも、預かりも。", "tone": "本人の一人称。です・ます。猫への愛情を抑えめに、でも確かに。絵文字0〜1個/イベント", "rewrite": true, "timelines": ["personal-life-with-cats"]},
+    {"username": "hikkoshi_no_hito", "display_name": "引っ越し12回の人", "bio": "社宅から始まって、気づけば人生は引っ越しの歴史でした。", "tone": "本人の一人称。です・ます。昭和生まれの落ち着いた回想。絵文字なし", "rewrite": true, "timelines": ["personal-moving-history"]},
+    {"username": "jisui_20nen", "display_name": "自炊20年", "bio": "京都の下宿めしから始まった、台所の記録です。", "tone": "本人の一人称。です・ます。気取らない台所の実感。絵文字0〜1個/イベント", "rewrite": true, "timelines": ["personal-cooking"]},
+    {"username": "radio_kara", "display_name": "ラジオから始めた人", "bio": "1989年のラジオ英会話から始まった語学の道のり。", "tone": "本人の一人称。です・ます。コツコツ型の学習者の実感。絵文字なし", "rewrite": true, "timelines": ["personal-language-learning"]},
+    {"username": "kobe_no_niwa", "display_name": "神戸の庭から", "bio": "花博の一鉢から。庭と暮らしの日記です。", "tone": "本人の一人称。です・ます。季節の移ろいを感じる語り。絵文字なし", "rewrite": true, "timelines": ["personal-gardening"]},
+    {"username": "film_no_kioku", "display_name": "フィルムの記憶", "bio": "写真部からずっとフィルム派。産業の浮き沈みも見てきました。", "tone": "本人の一人称。です・ます。写真好きの静かなこだわり。絵文字なし", "rewrite": true, "timelines": ["personal-film-photography"]},
+    {"username": "piano_saikai", "display_name": "ピアノ再開組", "bio": "13歳でやめて、29歳で再開。練習の軌跡です。", "tone": "本人の一人称。です・ます。再開組の等身大の喜びと苦労。絵文字0〜1個/イベント", "rewrite": true, "timelines": ["personal-music-practice"]},
+    {"username": "karada_techo", "display_name": "からだ手帖", "bio": "無理はしない。記録するだけの健康管理です。", "tone": "本人の一人称。です・ます。淡々と、たまにユーモア。健康を害する行動の美化は禁止。絵文字なし", "rewrite": true, "timelines": ["personal-diet-log"]},
+    {"username": "denkiya_sandai", "display_name": "町の電器店三代目", "bio": "熊本から東大阪へ。家族と店の70年を記録しています。", "tone": "本人の一人称。です・ます。家業と家族への静かな誇り。絵文字なし", "rewrite": true, "timelines": ["personal-family-history"]}
+  ]
+}

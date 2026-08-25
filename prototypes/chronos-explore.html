@@ -604,7 +604,7 @@ const SUPA_KEY='sb_publishable_Xhyzh9YugRP8MCevtf_7YA_x1IumMC6';
 const CAT_BY_DB={'technology':'tech','history-politics':'history','culture':'culture','science-nature':'science','business':'business','personal-life':'personal'};
 const eraLabel=y=>y<0?`前${-y}`:String(y);
 async function loadRealTimelines(){
-  const sel='slug,title,description,category,start_year,end_year,layers(color,position),events(count)';
+  const sel='slug,title,description,category,start_year,end_year,users(username),layers(color,position),events(count)';
   const res=await fetch(`${SUPA_URL}/timelines?select=${encodeURIComponent(sel)}&visibility=eq.public&limit=200`,
     {headers:{apikey:SUPA_KEY,Authorization:`Bearer ${SUPA_KEY}`}});
   if(!res.ok)throw new Error('HTTP '+res.status);
@@ -625,7 +625,7 @@ async function loadRealTimelines(){
       date:20260213-Math.floor(rng()*60),
       eraFrom:r.start_year,eraTo:r.end_year,
       lang:'ja',pattern:seed%6,
-      author:'chronos',authorInitial:'C',
+      author:(r.users&&r.users.username)||'chronos',authorInitial:((r.users&&r.users.username)||'c')[0].toUpperCase(),
       search:(r.title+' '+cat.name+' '+r.description).toLowerCase()
     };
   });

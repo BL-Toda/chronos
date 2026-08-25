@@ -170,6 +170,7 @@ h1.page-title{font-family:var(--f-d);font-weight:500;font-size:clamp(24px,4vw,34
 <script>
 const DATA = /*__DATA__*/[];
 const PHOTO_POOL = /*__PHOTO_POOL__*/{};
+const AUTHOR_BY_SLUG = /*__AUTHORS__*/{};
 const UNSPLASH_UTM = "?utm_source=chronos&utm_medium=referral";
 const CATKEY = {"technology":"tech","history-politics":"history","culture":"culture","science-nature":"science","business":"business","personal-life":"personal"};
 function hashStr(s){let h=5381;for(let i=0;i<s.length;i++){h=(((h<<5)+h)+s.charCodeAt(i))>>>0}return h}
@@ -270,6 +271,7 @@ function renderDetail(t){
       <span>検証済み <b>${cred.verified || 0}</b></span>
       <span>諸説あり <b>${cred.disputed || 0}</b></span>
       <span>未検証 <b>${cred.unverified || 0}</b></span>
+      <span>by <b>@${esc((AUTHOR_BY_SLUG[t.slug]||{}).username||"chronos")}</b></span>
       <span>slug <b>${esc(t.slug)}</b></span>
     </div>
     <div class="d-layers">${layers}</div>

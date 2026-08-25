@@ -722,6 +722,7 @@ let activeLayers = new Set();
 async function loadTimeline(){
   const slug = new URLSearchParams(location.search).get('slug') || DEFAULT_SLUG;
   const sel = 'slug,title,description,category,start_year,end_year,like_count,'
+    + 'users(username,display_name),'
     + 'layers(id,name,color,position),'
     + 'events(id,event_date,end_date,date_precision,event_type,title,summary,credibility,credibility_note,layer_id,position,event_sources(title,url))';
   try {
@@ -753,6 +754,9 @@ function render(){
   document.getElementById('hdrTitle').textContent = t.title;
   document.getElementById('pubTitle').textContent = t.title;
   document.getElementById('pubDesc').textContent = t.description;
+  const au = t.users || {username: 'chronos'};
+  document.getElementById('pubAuthor').textContent = '@' + au.username;
+  document.querySelector('.pub-avatar').textContent = au.username[0].toUpperCase();
   const era = `${yearLabel(t.start_year)}–${yearLabel(t.end_year)}`;
   document.getElementById('pubStat').textContent = `${t.events.length} events · ${t.layers.length} layers · ${era}`;
   document.getElementById('shareUrlText').textContent = location.href;
