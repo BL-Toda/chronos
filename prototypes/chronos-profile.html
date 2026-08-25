@@ -3,7 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Chronos — @toda</title>
+<title>Chronos — 公開プロフィール</title>
+<meta name="description" id="metaDesc" content="Chronos の公開プロフィール。">
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Chronos">
+<meta property="og:title" id="ogTitle" content="Chronos — 公開プロフィール">
+<meta property="og:description" id="ogDesc" content="Chronos の公開プロフィール。">
+<meta property="og:url" id="ogUrl" content="">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" id="twTitle" content="Chronos — 公開プロフィール">
+<meta name="twitter:description" id="twDesc" content="Chronos の公開プロフィール。">
+<!-- 本番要件: OGPはサーバー側で出力する（クローラはJSを実行しない）。ここはプロトタイプの暫定実装。 -->
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link href="https://api.fontshare.com/v2/css?f[]=erode@300,400,500,600&display=swap" rel="stylesheet">
@@ -544,6 +554,13 @@ async function loadProfile(){
   document.getElementById('pfBio').textContent=u.bio||'';
   document.getElementById('pfAvatar').textContent=u.username[0].toUpperCase();
   document.title=`Chronos — @${u.username}`;
+  // OGP（プロトタイプ用のJS差し替え。本番はサーバー側で出力する）
+  const ogT=`${u.display_name||u.username}（@${u.username}） — Chronos`;
+  const ogD=(u.bio||'').slice(0,110);
+  const setMeta=(id,v)=>{const el=document.getElementById(id);if(el)el.setAttribute('content',v);};
+  setMeta('ogTitle',ogT);setMeta('twTitle',ogT);
+  setMeta('ogDesc',ogD);setMeta('twDesc',ogD);setMeta('metaDesc',ogD);
+  setMeta('ogUrl',location.href);
 
   return rows.map(r=>{
     const catId=CAT_BY_DB[r.category]||'tech';

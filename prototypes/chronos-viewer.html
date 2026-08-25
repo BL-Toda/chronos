@@ -6,8 +6,19 @@
 <title>年表ビューア — Chronos</title>
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<meta property="og:title" content="年表ビューア — Chronos">
-<meta property="og:description" content="複数レイヤーで文脈を重ねて読む年表。">
+<meta name="description" id="metaDesc" content="複数レイヤーで文脈を重ねて読む年表。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Chronos">
+<meta property="og:title" id="ogTitle" content="年表ビューア — Chronos">
+<meta property="og:description" id="ogDesc" content="複数レイヤーで文脈を重ねて読む年表。">
+<meta property="og:image" id="ogImage" content="">
+<meta property="og:url" id="ogUrl" content="">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" id="twTitle" content="年表ビューア — Chronos">
+<meta name="twitter:description" id="twDesc" content="複数レイヤーで文脈を重ねて読む年表。">
+<meta name="twitter:image" id="twImage" content="">
+<!-- 本番要件: OGPはクローラがJSを実行しないため、サーバー側（Next.jsのgenerateMetadata等）で
+     年表ごとのtitle/description/imageを出力する。ここはプロトタイプとしてJSで差し替えている。 -->
 <link href="https://api.fontshare.com/v2/css?f[]=erode@300,400,500,600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -963,6 +974,17 @@ function render(){
       `<figcaption class="d-cover-credit">Photo: <a href="${esc(ph.user)}${UNSPLASH_UTM}" target="_blank" rel="noopener noreferrer">${esc(ph.name)}</a> / <a href="https://unsplash.com/${UNSPLASH_UTM}" target="_blank" rel="noopener noreferrer">Unsplash</a></figcaption>`;
   } else { cw.hidden = true; }
   document.getElementById('shareUrlText').textContent = location.href;
+
+  // ── OGP（プロトタイプ用のJS差し替え。本番はサーバー側で出力する）
+  const ogPhoto = pickPhoto(t);
+  const ogT = `${t.title} — Chronos`;
+  const ogD = (t.description || '').slice(0, 110);
+  const ogI = ogPhoto ? `${ogPhoto.raw}?w=1200&h=630&fit=crop&auto=format&q=75` : '';
+  const setMeta = (id, v) => { const el = document.getElementById(id); if (el) el.setAttribute('content', v); };
+  setMeta('ogTitle', ogT); setMeta('twTitle', ogT);
+  setMeta('ogDesc', ogD); setMeta('twDesc', ogD); setMeta('metaDesc', ogD);
+  setMeta('ogImage', ogI); setMeta('twImage', ogI);
+  setMeta('ogUrl', location.href);
 
   // レイヤーチップ
   activeLayers = new Set(t.layers.map(l => l.id));

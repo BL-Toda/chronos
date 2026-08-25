@@ -132,3 +132,18 @@ CREATE TABLE reports (
 14. 公開画面のAI下書き・未検証バッジ（未検証のAI由来イベントに常時表示）
 15. 通報フォーム2種（規約違反=匿名可 / 権利侵害=氏名・連絡先・URL・説明必須）+運営用の最小管理画面（一覧・非公開化・削除・メモ）
 16. 法務ページ（利用規約 / プライバシーポリシー / 特商法表記）と各画面フッターからの導線
+
+## OGP（サーバー側生成）— 2026-08-26追加
+
+クローラはJSを実行しないため、**OGPはサーバー側で出力する**（Next.js App Router なら `generateMetadata`）。
+プロトタイプ（chronos-viewer.html / chronos-profile.html）はJSでmetaを差し替えているが、これは暫定実装。
+
+| ページ | og:title | og:description | og:image |
+|---|---|---|---|
+| 年表ビューア `/t/<slug>` | `{title} — Chronos` | `description` の先頭110字 | カバー写真を `?w=1200&h=630&fit=crop` で加工 |
+| 公開プロフィール `/@<username>` | `{display_name}（@{username}） — Chronos` | `bio` の先頭110字 | アバターまたは既定画像 |
+
+- `og:type` は年表=`article`、プロフィール=`profile`
+- `twitter:card` は年表=`summary_large_image`、プロフィール=`summary`
+- 非公開・限定公開の年表は **OGPを出さない**（`share_id` 経由の限定公開はnoindexも付ける）
+- カバー写真はUnsplashのhotlinkを使うため、**本番ではdownload trackingを併せて実行する**
