@@ -64,6 +64,14 @@ spec-v2-addendum の公開系UIを実装済み:
 - レビュー用ページ: `prototypes/chronos-seed-review.html`（`node supabase/seed/build-review.mjs` で再生成。カバー写真はexploreのPHOTO_POOLをビルド時抽出）
 - 各生成エージェントの「自信の低い箇所」リストはセッション記録にあり。公開前の人手チェック推奨（日付精度・報道ベース数値・未実査URL）
 
+## SEO（正: docs/seo-requirements.md）
+
+- **最大の資産は90本の年表コンテンツ**。「幕末 年表」等の検索にそのまま応えられるページを既に持っている
+- **最重要課題はクライアントサイドレンダリング**。現プロトタイプは初期HTMLが「読み込み中…」のみで、90本すべてが空ページ扱いになるリスク → Next.jsでSSG/ISR化が必須（SEO単独でも移行を優先する理由になる）
+- **限定公開(`/s/<share_id>`)のnoindexは法務要件でもある**（規約で「限定公開」と説明しているため実装で担保）
+- 構造化データは `Article` + `citation`（出典の明示がE-E-A-Tシグナル）。各イベントを `Event` にはしない（誤用リスク）
+- 「時代が重なる年表」への内部リンクは、思想とSEOが両立する施策
+
 ## 次の実装候補
 
 - Next.js + Supabase + Cloudflare の雛形構築（再実装方針）

@@ -13,6 +13,8 @@
 <meta property="og:description" id="ogDesc" content="複数レイヤーで文脈を重ねて読む年表。">
 <meta property="og:image" id="ogImage" content="">
 <meta property="og:url" id="ogUrl" content="">
+<link rel="canonical" id="canonical" href="">
+<script type="application/ld+json" id="ldjson">{}</script>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" id="twTitle" content="年表ビューア — Chronos">
 <meta name="twitter:description" id="twDesc" content="複数レイヤーで文脈を重ねて読む年表。">
@@ -551,7 +553,7 @@
     opacity:0; animation:fadeUp 0.8s ease forwards 0.1s;
   }
   .pub-emoji { font-size:var(--fs-display); line-height:var(--lh-display); margin-bottom:12px; }
-  .pub-title {
+  h1.pub-title {
     font-family:var(--f-display); font-size:var(--fs-display); font-weight:500;
     color:var(--text-h); margin-bottom:12px; line-height:var(--lh-display);
   }
@@ -738,7 +740,7 @@
 <!-- Public Hero -->
 <div class="pub-hero">
   <div class="pub-cat" id="pubCat"></div>
-  <div class="pub-title" id="pubTitle">読み込み中…</div>
+  <h1 class="pub-title" id="pubTitle">読み込み中…</h1>
   <div class="pub-meta">
     <div class="pub-author">
       <div class="pub-avatar">C</div>
@@ -985,6 +987,34 @@ function render(){
   setMeta('ogDesc', ogD); setMeta('twDesc', ogD); setMeta('metaDesc', ogD);
   setMeta('ogImage', ogI); setMeta('twImage', ogI);
   setMeta('ogUrl', location.href);
+
+  // ── canonical（?slug= 以外のクエリを落とした正規URL）
+  const canon = `${location.origin}${location.pathname}?slug=${encodeURIComponent(t.slug)}`;
+  document.getElementById('canonical').setAttribute('href', canon);
+
+  // ── 構造化データ。出典を citation として出すことで、
+  //    「情報源を明示している」という品質シグナルを検索エンジンに渡す
+  const cites = [];
+  for (const e of t.events) for (const sc of (e.event_sources || [])) {
+    if (sc.url) cites.push({'@type': 'CreativeWork', name: sc.title, url: sc.url});
+    else if (sc.title) cites.push({'@type': 'CreativeWork', name: sc.title});
+  }
+  const ld = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: t.title,
+    description: t.description,
+    inLanguage: 'ja',
+    url: canon,
+    ...(ogI ? {image: ogI} : {}),
+    author: {'@type': 'Person', name: (t.users && t.users.display_name) || 'Chronos',
+             ...(t.users ? {identifier: '@' + t.users.username} : {})},
+    publisher: {'@type': 'Organization', name: 'Chronos'},
+    about: CAT_NAME[t.category] || t.category,
+    temporalCoverage: `${yearLabel(t.start_year)}/${yearLabel(t.end_year)}`,
+    citation: cites.slice(0, 50)
+  };
+  document.getElementById('ldjson').textContent = JSON.stringify(ld);
 
   // レイヤーチップ
   activeLayers = new Set(t.layers.map(l => l.id));
