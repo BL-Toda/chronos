@@ -235,7 +235,7 @@ function renderDetail(t){
   for(const e of sorted){
     const y = e.date.slice(0,4);
     if(y !== lastYear){ evs += `<div class="year-mark">${y}</div>`; lastYear = y; }
-    const note = e.credibility_note ? `<div class="ev-note"><span class="ev-note-label">${e.credibility === "disputed" ? "諸説ありの理由" : "未検証の理由"}</span>${esc(e.credibility_note)}</div>` : "";
+    const note = e.credibility_note ? `<div class="ev-note"><span class="ev-note-label">${e.credibility === "disputed" ? "（諸説ありの理由）" : "（未検証の理由）"}</span>${esc(e.credibility_note)}</div>` : "";
     const detail = e.detail ? `<div class="ev-detail">${md(e.detail)}</div>` : "";
     const srcs = (e.sources || []).filter(s => s && s.title).map(s =>
       s.url ? `<div class="ev-src">出典: <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.title)}</a></div>`

@@ -796,7 +796,7 @@ function render(){
     }
     const caret = '<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>';
     const credTag = CRED[ev.credibility] || CRED.unverified;
-    const note = ev.credibility_note ? `<div class="ev-note"><b>${ev.credibility === 'disputed' ? '諸説ありの理由' : '未検証の理由'}</b>${esc(ev.credibility_note)}</div>` : '';
+    const note = ev.credibility_note ? `<div class="ev-note"><b>${ev.credibility === 'disputed' ? '（諸説ありの理由）' : '（未検証の理由）'}</b>${esc(ev.credibility_note)}</div>` : '';
     const srcs = (ev.event_sources || []).map(sc => sc.url
       ? `<div class="ev-src">出典: <a href="${esc(sc.url)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">${esc(sc.title)}</a></div>`
       : `<div class="ev-src">出典: ${esc(sc.title)}</div>`).join('');
