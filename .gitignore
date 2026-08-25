@@ -3,3 +3,8 @@ node_modules/
 .DS_Store
 # デプロイ時に scripts/gen-manifest.mjs が自動生成する
 share/src/manifest.json
+
+# Supabase 接続情報（絶対にコミットしない）とローカルツール
+supabase/.env.local
+supabase/tools/node_modules/
+supabase/tools/package-lock.json
