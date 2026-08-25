@@ -40,7 +40,7 @@
       "group": "アプリ画面"
     },
     "chronos-profile.html": {
-      "name": "公開プロフィール @username（新規）",
+      "name": "公開プロフィール @username（?u=ハンドル で切替）",
       "group": "アプリ画面"
     },
     "chronos-lp-v4.html": {

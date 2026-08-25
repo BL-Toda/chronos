@@ -650,23 +650,41 @@ const SUPA_URL='https://dtysaqogcvnklxtvciyn.supabase.co/rest/v1';
 const SUPA_KEY='sb_publishable_Xhyzh9YugRP8MCevtf_7YA_x1IumMC6';
 const CAT_BY_DB={'technology':'tech','history-politics':'history','culture':'culture','science-nature':'science','business':'business','personal-life':'personal'};
 const eraLabel=y=>y<0?`前${-y}`:String(y);
+// "0044-03-15 BC" / "2020-05-28" → 年（BCは負）
+const dateYear=d=>{const bc=/\sBC$/.test(d);const y=parseInt(d.replace(/\sBC$/,'').slice(0,4),10);return bc?-y:y;};
 async function loadRealTimelines(){
-  const sel='slug,title,description,category,start_year,end_year,users(username),layers(color,position),events(count)';
-  const res=await fetch(`${SUPA_URL}/timelines?select=${encodeURIComponent(sel)}&visibility=eq.public&limit=200`,
-    {headers:{apikey:SUPA_KEY,Authorization:`Bearer ${SUPA_KEY}`}});
+  const sel='id,slug,title,description,category,start_year,end_year,users(username),layers(id,color,position),events(count)';
+  const H={apikey:SUPA_KEY,Authorization:`Bearer ${SUPA_KEY}`};
+  const res=await fetch(`${SUPA_URL}/timelines?select=${encodeURIComponent(sel)}&visibility=eq.public&limit=200`,{headers:H});
   if(!res.ok)throw new Error('HTTP '+res.status);
   const rows=await res.json();
   if(!rows.length)throw new Error('empty');
+  // 期間イベントを一括取得してカバーの積層バーに使う（失敗しても致命的でないので握りつぶす）
+  const periodsBy={};
+  try{
+    const pr=await fetch(`${SUPA_URL}/events?event_type=eq.period&select=timeline_id,event_date,end_date,layer_id&limit=2000`,{headers:H});
+    if(pr.ok) for(const e of await pr.json()) (periodsBy[e.timeline_id] ??= []).push(e);
+  }catch(e){}
   return rows.map(r=>{
     const catId=CAT_BY_DB[r.category]||'tech';
     const cat=CATS.find(c=>c.id===catId);
     const seed=hashStr(catId+'|'+r.title);
     const rng=mulberry32(seed);
     const likes=Math.floor(rng()*3000)+50; // ソーシャル数値はseed決定論のダミー（DB接続前と同じ見え方を維持）
-    const lColors=(r.layers||[]).sort((a,b)=>a.position-b.position).map(l=>`var(--c-${l.color})`);
+    const ls=(r.layers||[]).slice().sort((a,b)=>a.position-b.position);
+    const lColors=ls.map(l=>`var(--c-${l.color})`);
+    const colorById=Object.fromEntries(ls.map(l=>[l.id,`var(--c-${l.color})`]));
+    // 実データの期間をカバー上のバーに（年代範囲に対する位置と長さ）
+    const span=Math.max(1,(r.end_year||0)-(r.start_year||0));
+    const bars=(periodsBy[r.id]||[]).map(e=>{
+      const a=dateYear(e.event_date), b=dateYear(e.end_date);
+      const left=Math.max(0,Math.min(96,((a-r.start_year)/span)*100));
+      const width=Math.max(4,Math.min(100-left,((b-a)/span)*100));
+      return {left,width,color:colorById[e.layer_id]||lColors[0]||'var(--c-blue)',len:b-a};
+    }).sort((x,y)=>y.len-x.len).slice(0,6);
     return {
       id:r.slug,slug:r.slug,seed,cat:catId,catName:cat.name,catColor:cat.color,catColorD:cat.colorD,catHex:cat.hex,
-      title:r.title,desc:r.description,layers:lColors.length,lColors,
+      title:r.title,desc:r.description,layers:lColors.length,lColors,bars,
       likes,bm:Math.round(likes*0.15),
       events:(r.events&&r.events[0]&&r.events[0].count)||0,
       date:20260213-Math.floor(rng()*60),
@@ -846,6 +864,12 @@ function photoURL(p,w,h){return `${p.raw}?w=${w}&h=${h}&fit=crop&auto=format&q=7
 // 積層バー: レイヤー数ぶんの短い横バーをベースライン上に積む。左端6〜34%・長さ38〜68%はseedから決定論
 // （explore/profileで同一の形）。下から順に --k で積層・reveal時の伸長順を指定
 function layerBars(item){
+  // 実データの期間があれば、その年代位置と長さをそのまま描く
+  if(item.bars&&item.bars.length){
+    return item.bars.map((b,k)=>
+      `<span class="cover-layers-bar" style="left:${b.left.toFixed(1)}%;width:${b.width.toFixed(1)}%;background:${b.color};--k:${k}"></span>`).join('');
+  }
+  // フォールバック（DB未接続時のモック）: seed決定論の形
   const rng=mulberry32((item.seed^0x5A17)>>>0);
   return item.lColors.map((c,k)=>{
     const left=6+rng()*28,width=Math.min(38+rng()*30,100-left);
@@ -854,8 +878,9 @@ function layerBars(item){
 }
 function eraHTML(item){
   const n=item.lColors.length;
+  const np=(item.bars||[]).length;
   return `<div class="cover-era"><span class="cover-era-line" aria-hidden="true"></span><span class="cover-era-y from" aria-hidden="true">${eraLabel(item.eraFrom)}</span><span class="cover-era-y to" aria-hidden="true">${eraLabel(item.eraTo)}</span>`+
-    `<div class="cover-layers" role="img" aria-label="レイヤー${n}本"><span class="cover-layers-track">${layerBars(item)}</span><span class="cover-layers-n" aria-hidden="true">${n} layers</span></div></div>`;
+    `<div class="cover-layers" role="img" aria-label="レイヤー${n}本"><span class="cover-layers-track">${layerBars(item)}</span><span class="cover-layers-n" aria-hidden="true">${np?`${np} period${np>1?'s':''}`:`${n} layer${n>1?'s':''}`}</span></div></div>`;
 }
 function coverHTML(item,uidPrefix,size){
   const svg=coverSVG(item,uidPrefix);

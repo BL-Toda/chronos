@@ -243,13 +243,13 @@ body.is-empty .section-count{display:none}
 
   <!-- PROFILE HEADER -->
   <section class="profile">
-    <div class="profile-avatar" aria-hidden="true">T</div>
+    <div class="profile-avatar" aria-hidden="true" id="pfAvatar">C</div>
     <div class="profile-body">
       <div class="profile-name-row">
-        <h1 class="profile-name">Toda</h1>
-        <span class="profile-handle">@toda</span>
+        <h1 class="profile-name" id="pfName">読み込み中…</h1>
+        <span class="profile-handle" id="pfHandle"></span>
       </div>
-      <p class="profile-bio">テクノロジーと歴史の交差点を年表でたどっています。</p>
+      <p class="profile-bio" id="pfBio"></p>
       <div class="profile-stats">
         <div class="stat"><span class="stat-num" id="statCount">4</span><span class="stat-label">公開年表</span></div>
         <div class="stat-sep" aria-hidden="true"></div>
@@ -290,10 +290,12 @@ const CAT_META={
   tech:{name:'テクノロジー',color:'var(--c-blue)',hex:'#5B9BD5'},
   history:{name:'歴史・政治',color:'var(--c-pink)',hex:'#D4849A'},
   culture:{name:'カルチャー',color:'var(--c-gold)',hex:'#C8B87E'},
-  science:{name:'科学・自然',color:'var(--c-green)',hex:'#7BC67E'}
+  science:{name:'科学・自然',color:'var(--c-green)',hex:'#7BC67E'},
+  business:{name:'ビジネス',color:'var(--c-orange)',hex:'#D4A05A'},
+  personal:{name:'個人・ライフ',color:'var(--c-purple)',hex:'#9E7EC8'}
 };
 // lColors はexploreの同一年表と同じ並び（exploreは生成インデックス依存のためここでは明示）
-const TIMELINES=[
+let TIMELINES=[
   {cat:'tech',title:'AI革命の全体像 2020–2026',desc:'技術の進化を複数レイヤーで俯瞰する年表。',likes:4820,events:64,lColors:['var(--c-blue)','var(--c-teal)','var(--c-orange)']},
   {cat:'history',title:'宇宙開発の舞台裏',desc:'複数の視点を重ねて読み解く歴史年表。',likes:3260,events:48,lColors:['var(--c-pink)','var(--c-gold)','var(--c-blue)']},
   {cat:'tech',title:'半導体戦争の50年',desc:'地政学と技術のせめぎ合いを重ねた年表。',likes:2840,events:52,lColors:['var(--c-green)','var(--c-purple)']},
@@ -453,6 +455,10 @@ function photoURL(p,w,h){return `${p.raw}?w=${w}&h=${h}&fit=crop&auto=format&q=7
 // SVGを下敷きにし、写真をlazy読み込み。onloadで.loaded付与→0.4sフェードイン。onerrorはimgを外してSVGを残す
 // 積層バー: exploreと同一ロジック（seed^0x5A17 → 左端6〜34%・長さ38〜68%）。同じ年表なら同じ形
 function layerBars(item){
+  if(item.bars&&item.bars.length){
+    return item.bars.map((b,k)=>
+      `<span class="cover-layers-bar" style="left:${b.left.toFixed(1)}%;width:${b.width.toFixed(1)}%;background:${b.color};--k:${k}"></span>`).join('');
+  }
   const rng=mulberry32((item.seed^0x5A17)>>>0);
   return item.lColors.map((c,k)=>{
     const left=6+rng()*28,width=Math.min(38+rng()*30,100-left);
@@ -462,7 +468,7 @@ function layerBars(item){
 function eraHTML(item){
   const n=item.lColors.length;
   return `<div class="cover-era"><span class="cover-era-line" aria-hidden="true"></span><span class="cover-era-y from" aria-hidden="true">${item.eraFrom}</span><span class="cover-era-y to" aria-hidden="true">${item.eraTo}</span>`+
-    `<div class="cover-layers" role="img" aria-label="レイヤー${n}本"><span class="cover-layers-track">${layerBars(item)}</span><span class="cover-layers-n" aria-hidden="true">${n} layers</span></div></div>`;
+    `<div class="cover-layers" role="img" aria-label="レイヤー${n}本"><span class="cover-layers-track">${layerBars(item)}</span><span class="cover-layers-n" aria-hidden="true">${(item.bars||[]).length?`${item.bars.length} period${item.bars.length>1?'s':''}`:`${item.lColors.length} layer${item.lColors.length>1?'s':''}`}</span></div></div>`;
 }
 function coverHTML(item,uidPrefix,size){
   const svg=coverSVG(item);
@@ -484,7 +490,7 @@ let likedIds=new Set(loadJSON(LS_LIKES,[]));
 function persist(){localStorage.setItem(LS_LIKES,JSON.stringify([...likedIds]))}
 
 const SLUG_BY_TITLE={"産業革命の波紋":"history-industrial-revolution","EdTechが変える教育":"tech-edtech","古代ローマの興亡":"history-ancient-rome","感染症との闘い":"science-infectious-diseases","ESG投資の潮流":"business-esg-investing","ロボティクスの夜明け":"tech-robotics","幕末から明治維新まで":"history-bakumatsu-meiji","アニメ文化の世界進出":"culture-anime-global","フリーランス経済":"business-freelance-economy","引っ越しの歴史":"personal-moving-history","GAFA帝国の形成":"business-gafa","クラウド革命の15年":"tech-cloud-revolution","シルクロードの2000年":"history-silk-road","宇宙インターネット計画":"tech-space-internet","日本の戦後復興":"history-postwar-japan","不動産バブルの教訓":"business-real-estate-bubbles","自動運転の現在地":"tech-autonomous-driving","サブスクモデルの進化":"business-subscription","ガーデニング日記":"personal-gardening","モバイル革命の全体像":"tech-mobile-revolution","中東紛争の構造":"history-middle-east","宇宙開発の舞台裏":"history-space-race","建築様式の進化":"culture-architecture","旅行アルバム年表":"personal-travel-album","天文学の転換点":"science-astronomy-turning-points","大航海時代の光と影":"history-age-of-discovery","宇宙物理学の革命":"science-astrophysics","キャリアの転換点":"personal-career-turns","子育ての記録":"personal-parenting","数学の美しい定理":"science-mathematics","ワクチン開発の歴史":"science-vaccines","映画100年史":"culture-cinema-100","AI革命の全体像 2020–2026":"tech-ai-revolution","半導体戦争の50年":"tech-semiconductor-war","5G/6G通信の進化":"tech-5g-6g","フィンテックの破壊力":"tech-fintech","家族の歴史":"personal-family-history","語学学習の道のり":"personal-language-learning","ブロックチェーンの興亡":"tech-blockchain","火星探査ミッション":"science-mars-missions","写真表現の進化":"culture-photography","人工臓器の進化":"science-artificial-organs","脳科学の最前線":"science-neuroscience","気候変動の100年":"science-climate-100","K-POPグローバル化":"culture-kpop-global","EU統合の歴史":"history-eu-integration","ヒップホップの50年":"culture-hiphop-50","B2B SaaSの勃興":"business-b2b-saas","料理スキルの進化":"personal-cooking","スタートアップ失敗学":"business-startup-failures","ファッションの変遷":"culture-fashion","デザイン思考の歴史":"culture-design-thinking","Web3.0とメタバース":"tech-web3-metaverse","海洋探査の歴史":"science-ocean-exploration","深海探査の記録":"science-deep-sea","ゲーム産業の爆発":"culture-game-industry","猫との暮らし":"personal-life-with-cats","コーヒー産業の変遷":"business-coffee-industry","再生可能エネルギー史":"science-renewable-energy","デジタル民主主義":"history-digital-democracy","ダイエット記録":"personal-diet-log","素粒子物理学の旅":"science-particle-physics","フランス革命とナポレオン":"history-french-revolution","DNAから遺伝子編集まで":"science-dna-to-editing","ふたりの10年間":"personal-two-of-us","トヨタ生産方式の進化":"business-toyota-production","冷戦の構図":"history-cold-war","食文化のグローバル化":"culture-food-globalization","東西ドイツ統一":"history-german-reunification","働き方改革の年表":"business-workstyle-reform","文学賞の系譜":"culture-literary-awards","民主主義の系譜":"history-democracy","印象派からストリートアートへ":"culture-impressionism-to-street","J-POPとストリーミングの30年":"culture-jpop-streaming","恐竜研究の進化":"science-dinosaur-research","量子コンピュータへの道":"tech-quantum-computing","楽器練習の軌跡":"personal-music-practice","サイバーセキュリティの進化":"tech-cybersecurity","DX推進の記録":"business-dx-japan","M&A戦略の名勝負":"business-ma-battles","読書遍歴 1990–2026":"personal-reading-log","SNSが変えた世界":"tech-social-media","ストリートカルチャー":"culture-street-culture","アジア通貨危機":"history-asian-financial-crisis","日本発ユニコーンの軌跡":"business-japan-unicorns","流通革命の歴史":"business-retail-revolution","マラソン完走記録":"personal-marathon","広告業界の100年":"business-advertising-100","伝統工芸の現在":"culture-traditional-crafts","フィルム写真の記録":"personal-film-photography"};
-function viewerHref(item){const s=SLUG_BY_TITLE[item.title];return s?`chronos-viewer.html?slug=${s}`:'chronos-viewer.html';}
+function viewerHref(item){const s=item.slug||SLUG_BY_TITLE[item.title];return s?`chronos-viewer.html?slug=${s}`:'chronos-viewer.html';}
 const ICON_HEART='<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>';
 
 // ===== RENDER =====
@@ -506,13 +512,82 @@ function renderCard(item){
 
 const params=new URLSearchParams(location.search);
 const isEmpty=params.get('empty')==='1';
-if(isEmpty){
-  document.body.classList.add('is-empty');
-  document.getElementById('statCount').textContent='0';
-  document.getElementById('statLikes').textContent='0';
-}else{
-  document.getElementById('grid').innerHTML=TIMELINES.map(renderCard).join('');
+
+// ───── Supabase から実データを取得（?u=username で切替。失敗時は上のモックにフォールバック）
+const SUPA_URL='https://dtysaqogcvnklxtvciyn.supabase.co/rest/v1';
+const SUPA_KEY='sb_publishable_Xhyzh9YugRP8MCevtf_7YA_x1IumMC6';
+const CAT_BY_DB={'technology':'tech','history-politics':'history','culture':'culture','science-nature':'science','business':'business','personal-life':'personal'};
+const dateYear=d=>{const bc=/\sBC$/.test(d);const y=parseInt(d.replace(/\sBC$/,'').slice(0,4),10);return bc?-y:y;};
+
+async function loadProfile(){
+  const uname=params.get('u')||'chronos';
+  const H={apikey:SUPA_KEY,Authorization:`Bearer ${SUPA_KEY}`};
+  const sel='id,slug,title,description,category,start_year,end_year,like_count,layers(id,color,position),events(count)';
+  const [ur,tr]=await Promise.all([
+    fetch(`${SUPA_URL}/users?username=eq.${encodeURIComponent(uname)}&select=username,display_name,bio&limit=1`,{headers:H}),
+    fetch(`${SUPA_URL}/timelines?select=${encodeURIComponent(sel)},users!inner(username)&users.username=eq.${encodeURIComponent(uname)}&visibility=eq.public&order=slug&limit=100`,{headers:H})
+  ]);
+  if(!ur.ok||!tr.ok) throw new Error('HTTP');
+  const [u]=await ur.json(); const rows=await tr.json();
+  if(!u||!rows.length) throw new Error('empty');
+
+  // 期間イベント（カバーの積層バー用）
+  const periodsBy={};
+  try{
+    const ids=rows.map(r=>`"${r.id}"`).join(',');
+    const pr=await fetch(`${SUPA_URL}/events?event_type=eq.period&timeline_id=in.(${ids})&select=timeline_id,event_date,end_date,layer_id&limit=1000`,{headers:H});
+    if(pr.ok) for(const e of await pr.json()) (periodsBy[e.timeline_id] ??= []).push(e);
+  }catch(e){}
+
+  document.getElementById('pfName').textContent=u.display_name||u.username;
+  document.getElementById('pfHandle').textContent='@'+u.username;
+  document.getElementById('pfBio').textContent=u.bio||'';
+  document.getElementById('pfAvatar').textContent=u.username[0].toUpperCase();
+  document.title=`Chronos — @${u.username}`;
+
+  return rows.map(r=>{
+    const catId=CAT_BY_DB[r.category]||'tech';
+    const seed=hashStr(catId+'|'+r.title);
+    const ls=(r.layers||[]).slice().sort((a,b)=>a.position-b.position);
+    const colorById=Object.fromEntries(ls.map(l=>[l.id,`var(--c-${l.color})`]));
+    const lColors=ls.map(l=>`var(--c-${l.color})`);
+    const span=Math.max(1,(r.end_year||0)-(r.start_year||0));
+    const bars=(periodsBy[r.id]||[]).map(e=>{
+      const a=dateYear(e.event_date), b=dateYear(e.end_date);
+      const left=Math.max(0,Math.min(96,((a-r.start_year)/span)*100));
+      const width=Math.max(4,Math.min(100-left,((b-a)/span)*100));
+      return {left,width,color:colorById[e.layer_id]||lColors[0]||'var(--c-blue)',len:b-a};
+    }).sort((x,y)=>y.len-x.len).slice(0,6);
+    return {id:r.slug,slug:r.slug,seed,cat:catId,title:r.title,desc:r.description,
+      likes:r.like_count||0,events:(r.events&&r.events[0]&&r.events[0].count)||0,
+      lColors,bars,pattern:seed%6,eraFrom:r.start_year,eraTo:r.end_year,
+      catName:CAT_META[catId].name,catColor:CAT_META[catId].color,catHex:CAT_META[catId].hex};
+  });
 }
+
+(async()=>{
+  if(isEmpty){
+    document.body.classList.add('is-empty');
+    document.getElementById('statCount').textContent='0';
+    document.getElementById('statLikes').textContent='0';
+    document.getElementById('sectionCount').textContent='0';
+    document.getElementById('pfName').textContent='Chronos 編集部';
+    document.getElementById('pfHandle').textContent='@chronos';
+    document.getElementById('pfBio').textContent='';
+    return;
+  }
+  try{ TIMELINES=await loadProfile(); }
+  catch(e){
+    document.getElementById('pfName').textContent='Toda';
+    document.getElementById('pfHandle').textContent='@toda';
+    document.getElementById('pfBio').textContent='テクノロジーと歴史の交差点を年表でたどっています。';
+    document.getElementById('pfAvatar').textContent='T';
+  }
+  document.getElementById('statCount').textContent=TIMELINES.length.toLocaleString();
+  document.getElementById('sectionCount').textContent=TIMELINES.length.toLocaleString();
+  document.getElementById('statLikes').textContent=TIMELINES.reduce((n,t)=>n+(t.likes||0),0).toLocaleString();
+  document.getElementById('grid').innerHTML=TIMELINES.map(renderCard).join('');
+})();
 
 // like toggle(カードは<a>のため委譲+preventDefault)
 document.addEventListener('click',e=>{
