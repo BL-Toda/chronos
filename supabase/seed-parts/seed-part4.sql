@@ -2540,7 +2540,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 前の年に地元の書店を失った私には、遅すぎるとも、ようやくとも思える動きでした。読書会を始める直接のきっかけの、ひとつでもあります。', null,
           'verified', null, 'user', 18) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('経済産業省: 書店振興プロジェクトチームの設置について（2024年3月5日）', 'https://www.meti.go.jp/press/2023/03/20240305001/20240305001.html')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('経済産業省: 齋藤経済産業大臣 閣議後記者会見の概要（2024年3月5日・書店振興プロジェクトチームの設置）', 'https://www.meti.go.jp/speeches/kaiken/2023/20240305001.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-reading-log'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-reading-log') and name = '出版と社会'),
@@ -2770,7 +2770,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 この年の5月、わたしたちは友人の写真展で初めて言葉を交わします。最初の会話は、缶コーヒーが少し高くなったねという、他愛のない話でした。', null,
           'verified', null, 'user', 0) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('財務省: 消費税率の引上げについて（平成26年4月）', 'https://www.mof.go.jp/tax_policy/summary/consumption/consumption_tax/index.html')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('財務省: 消費税率及び地方消費税率の引上げとそれに伴う対応について（平成26年4月1日 5%→8%）', 'https://www.mof.go.jp/tax_policy/summary/consumption/consumption_tax/law/shouhizei.htm')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = 'ふたりの出来事'),
@@ -2874,7 +2874,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 わたしたちの部屋も翌日から在宅勤務の場になり、6畳の居間にふたつの机が並びます。前の年に計画した旅行は取りやめになったけれど、この宣言下の2か月が、**ふたりにとっていちばん長く一緒に過ごした時間**になりました。', null,
           'verified', null, 'user', 13) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('内閣官房: 新型コロナウイルス感染症緊急事態宣言（令和2年4月7日）', 'https://corona.go.jp/news/pdf/kinkyujitai_sengen_0407.pdf')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('厚生労働省: 新型コロナウイルス感染症緊急事態宣言（令和2年4月7日）', 'https://www.mhlw.go.jp/content/10900000/000620796.pdf')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = '仕事と暮らし'),

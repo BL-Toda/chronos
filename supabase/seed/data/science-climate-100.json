@@ -333,7 +333,7 @@
       "sources": [
         {
           "title": "NOAA Climate Prediction Center: Oceanic Niño Index (ONI)",
-          "url": "https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php"
+          "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php"
         },
         {
           "title": "気象庁: エルニーニョ現象およびラニーニャ現象の発生期間",

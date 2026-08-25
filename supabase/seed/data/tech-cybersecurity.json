@@ -130,8 +130,8 @@
       ]
     },
     {
-      "date": "2013-06-01",
-      "precision": "month",
+      "date": "2013-06-05",
+      "precision": "day",
       "end_date": null,
       "type": "point",
       "layer": "法と国家",

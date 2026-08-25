@@ -617,7 +617,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2024-07-19', null, 'day', 'point', 'CrowdStrike障害、クラウド依存のリスク露呈', 'セキュリティ企業CrowdStrikeの更新プログラムの不具合により、世界で約850万台のWindows端末が起動不能となり、航空・医療・金融などの業務が広範囲で止まりました。
 
 特定のクラウドサービスへの依存が、社会全体の単一障害点になりうることを史上最大級の規模で示した事例です。SaaS前提の業務設計に対して、依存先の集中リスクという重い論点を突きつけました。', null,
-          'verified', null, 'user', 15) returning id)
+          'unverified', '影響台数約850万台はMicrosoftの推計で、実際の影響範囲の全体像は確定していません。', 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Microsoft公式ブログによる影響台数の推計(2024-07-20)および各社報道', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-b2b-saas'),
@@ -761,7 +761,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-coffee-industry'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-coffee-industry') and name = '消費と文化'),
-          '2020-04-01', '2023-05-01', 'month', 'period', 'コロナ禍、コーヒーを飲む場所が店から家へ', '新型コロナで都市部のカフェは休業や時短を迫られ、一方で家にいる時間が増えたことで、家庭用レギュラーコーヒーや抽出器具の販売が伸びました。飲む場所が店から家へ大きく移った期間です。
+          '2020-04-01', '2023-05-07', 'month', 'period', 'コロナ禍、コーヒーを飲む場所が店から家へ', '新型コロナで都市部のカフェは休業や時短を迫られ、一方で家にいる時間が増えたことで、家庭用レギュラーコーヒーや抽出器具の販売が伸びました。飲む場所が店から家へ大きく移った期間です。
 
 テイクアウトやモバイルオーダーへの投資が定着し、チェーン各社(企業とチェーンレイヤー)では店舗網の見直しも進みました。家で豆や淹れ方にこだわる人が増えたことは、サードウェーブ的な消費の裾野を広げています。', null,
           'verified', null, 'user', 13) returning id)
@@ -1472,7 +1472,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2024-06-12', null, 'day', 'point', '日本でスマホソフトウェア競争促進法が成立', '2024年6月、スマホソフトウェア競争促進法が国会で成立。OS・アプリストア等を対象に公正取引委員会が事前規制を行う枠組みで、EUのデジタル市場法を参照。主対象はAppleとGoogle、代替アプリストアの許容と自社優遇の禁止を定める。
 
 2008年のApp Store以来の手数料と審査の裁量に、日本でも法律の制約がかかる。同年8月には米国でGoogleの検索独占が認定され、日米欧の規制が同時期に収束した年である。', null,
-          'unverified', '成立日は国会記録に基づく。全面施行時期（2025年12月と発表）と指定事業者の範囲は施行後の運用で確定するため、未確認とする。', 'user', 20) returning id)
+          'verified', null, 'user', 20) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('公正取引委員会 スマートフォンにおいて利用される特定ソフトウェアに係る競争の促進に関する法律', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-gafa'),
@@ -1643,7 +1643,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2022-11-28', '2026-06-30', 'day', 'period', 'スタートアップ育成5か年計画の実行期間', '政府が新しい資本主義実現会議で、2027年度にスタートアップ投資額10兆円、ユニコーン100社創出などを掲げる5か年計画を決定しました。人材・資金・オープンイノベーションの3本柱で構成され、計画期間は現在も進行中です。
 
 決定のわずか2日後にChatGPTが公開され、この計画の線は生成AIの線とほぼ同時に始まることになりました。2013年の日本再興戦略から続く政策系譜の中で、初めて具体的なユニコーン数を目標に置いた計画です。', null,
-          'verified', '計画期間は2027年度までの5年間ですが、線の終点は生成時点に合わせて2026年半ばで区切っています。', 'user', 18) returning id)
+          'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('内閣官房 新しい資本主義実現本部', 'https://www.cas.go.jp/jp/seisaku/atarashii_sihonsyugi/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
@@ -2044,7 +2044,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1954-12-01', '1973-11-30', 'month', 'period', '高度経済成長、消費がふくらんだ19年', '神武景気に始まりオイルショックの直前まで、日本経済が拡大を続けた19年間です。所得が増え、冷蔵庫が家庭に入り、週末にまとめ買いをするという新しい買い物の形が生まれました。
 
 業態の革新レイヤーと重ねると、紀ノ国屋のセルフサービス(1953年)もダイエー1号店(1957年)も、この線の入口近くに立っています。スーパーという業態は、財布がふくらみ続ける時代の線の上で育った子どもだったことが見えてきます。', null,
-          'verified', null, 'user', 2) returning id)
+          'disputed', '高度経済成長の期間には諸説あります。ここでは神武景気の始まり(1954年12月)から第一次オイルショック(1973年11月)までを採りました。', 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('内閣府「景気基準日付」', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-retail-revolution'),
@@ -2698,7 +2698,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-toyota-production'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-toyota-production') and name = '世界への波及'),
-          '2011-09-01', null, 'month', 'point', '『リーン・スタートアップ』刊行', 'エリック・リースが『The Lean Startup』を刊行し、TPS由来のリーンの考え方をソフトウェアと起業の方法論に転用した。小さくつくり検証を繰り返す手法は、TPSのムダ排除や「現地現物」の発想を参照したと著者が述べている。
+          '2011-09-13', null, 'day', 'point', '『リーン・スタートアップ』刊行', 'エリック・リースが『The Lean Startup』を刊行し、TPS由来のリーンの考え方をソフトウェアと起業の方法論に転用した。小さくつくり検証を繰り返す手法は、TPSのムダ排除や「現地現物」の発想を参照したと著者が述べている。
 
 1990年の『The Machine That Changed the World』が製造業に広げた概念が、2010年代にはIT産業や公共部門にまで及んだ形である。同年の日本では東日本大震災でTPSの弱点が議論されており、原産地と応用先で評価が分かれた年でもある。', null,
           'unverified', '刊行時期は確かだが、TPSからの影響の程度は著者の言及に基づく評価であり、方法論の系譜として定説化しているとは言い切れない。', 'user', 19) returning id)
@@ -3417,7 +3417,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-design-thinking'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-design-thinking') and name = '教育と制度'),
-          '1919-04-01', '1933-07-01', 'month', 'period', 'バウハウスの14年', '芸術と技術の統合を掲げる造形学校バウハウスが、独ヴァイマルに開校しました。工業生産を前提に、素材と機能から発想する基礎教育を体系化し、ナチス政権の圧力で1933年に閉校するまで、モダンデザインの規範を作っています。
+          '1919-04-01', '1933-07-31', 'month', 'period', 'バウハウスの14年', '芸術と技術の統合を掲げる造形学校バウハウスが、独ヴァイマルに開校しました。工業生産を前提に、素材と機能から発想する基礎教育を体系化し、ナチス政権の圧力で1933年に閉校するまで、モダンデザインの規範を作っています。
 
 閉校後は、教員たちの亡命によって方法論が米国の大学へ移植されました。デザインを**個人の才能ではなく教えられる方法**とみなす伝統はここに始まり、後年のd.schoolに連なる「デザイン教育の制度化」の源流となります。', null,
           'verified', null, 'user', 0) returning id)
@@ -4332,7 +4332,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 ウォール街大暴落の直後の開館だった。印象派以後の美術を「近代美術」として正典化し、収蔵と展示を通じて価値を定める制度が確立する。同時期ドイツではバウハウスが機能主義を掲げ、モダニズムは制度と教育の両面から広がっていた。開館当初は貸しビルの数室から始まり、1939年に現在地へ移った。', null,
           'verified', null, 'user', 6) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('MoMA: History (公式)', 'https://www.moma.org/about/who-we-are/moma-history'), ('Wikipedia: Museum of Modern Art', 'https://en.wikipedia.org/wiki/Museum_of_Modern_Art')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('MoMA: The Museum of Modern Art history (公式)', 'https://www.moma.org/about/mission-statement/history'), ('Wikipedia: Museum of Modern Art', 'https://en.wikipedia.org/wiki/Museum_of_Modern_Art')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '技術と社会'),
@@ -4371,7 +4371,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1970-01-01', '1989-05-12', 'year', 'period', 'ニューヨーク地下鉄グラフィティの時代', '1970年代の財政危機と治安悪化を背景に、ニューヨークの地下鉄が最大のキャンバスとなった時代。車両全面のピースからワイルドスタイルまで様式が発達し、1989年にMTAが「グラフィティのない地下鉄」を宣言して終息した。
 
 写真家マーサ・クーパーらの記録と、1983年の映画『ワイルド・スタイル』や写真集『Subway Art』が世界に様式を伝え、ヨーロッパや日本へ波及した。行政は洗浄と車両更新で対抗し、80年代後半に舞台は路上へ移る。', null,
-          'verified', null, 'user', 11) returning id)
+          'disputed', '地下鉄グラフィティの「時代」の始まりに定まった定義はなく、1960年代末からとする資料もある。終わりは1989年5月12日のMTAによる「グラフィティのない地下鉄」宣言を採った。', 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Graffiti in New York City', 'https://en.wikipedia.org/wiki/Graffiti_in_New_York_City'), ('Martha Cooper & Henry Chalfant『Subway Art』(1984)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
@@ -5159,10 +5159,10 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-street-culture') and name = 'グラフィティとアート'),
-          '1970-01-01', '1989-05-31', 'year', 'period', 'ニューヨーク地下鉄グラフィティの時代', 'ニューヨークの地下鉄車両が、名前を残すタギングから色鮮やかな大作「ピース」まで、グラフィティの巨大なキャンバスだった時代です。車両基地に忍び込むライターたちが、技法とスタイルを競い合いました。
+          '1970-01-01', '1989-05-12', 'year', 'period', 'ニューヨーク地下鉄グラフィティの時代', 'ニューヨークの地下鉄車両が、名前を残すタギングから色鮮やかな大作「ピース」まで、グラフィティの巨大なキャンバスだった時代です。車両基地に忍び込むライターたちが、技法とスタイルを競い合いました。
 
 市当局は犯罪として撲滅作戦を続けて、1989年5月に「グラフィティのない地下鉄」を宣言してこの時代は幕を閉じます。**街全体がギャラリーだった**約20年の車両と写真の記録が、後の世界的なストリートアート評価の原点になりました。', null,
-          'disputed', '地下鉄グラフィティの「時代」の始まりにはっきりした定義はなく、1960年代末からとする資料もあります。終わりは1989年5月のMTAによる宣言を採りました。', 'user', 0) returning id)
+          'disputed', '地下鉄グラフィティの「時代」の始まりにはっきりした定義はなく、1960年代末からとする資料もあります。終わりは1989年5月12日のMTAによる宣言を採りました。', 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Graffiti in New York City', 'https://en.wikipedia.org/wiki/Graffiti_in_New_York_City')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
@@ -5170,7 +5170,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1971-07-21', null, 'day', 'point', 'NYタイムズが「TAKI 183」を報道', 'ニューヨーク・タイムズが、市内のあちこちに「TAKI 183」と書き残すギリシャ系の配達員の若者を記事にしました。名前を街に刻むタギング文化が、初めて大手メディアに載った瞬間です。
 
 記事を読んだ若者たちは競って自分の名前を書き始めて、タグは市内で爆発的に増えました。**メディアに載ると文化が加速する**というストリートカルチャーの逆説は、この最初期からもう動いていたわけです。', null,
-          'verified', null, 'user', 1) returning id)
+          'disputed', 'TAKI 183を「最初のグラフィティ・ライター」とする通説には、フィラデルフィアのCornbreadら先行例を挙げる異論があります。記事が最初の大手メディア報道であること自体は確かです。', 'user', 1) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('The New York Times: ''Taki 183'' Spawns Pen Pals (1971-07-21)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
@@ -5219,7 +5219,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 パーティーの現場の即興だったMCの語りが、レコードという商品になって世界へ流通した瞬間で、ブロックパーティーの時代(同じレイヤー)の線はここで終わります。一方でシーンの当事者からは「よそ者が先に商品化した」という批判も受けました。路上と商業の緊張関係は、最初から刻み込まれていたんですね。', null,
           'disputed', 'ラップのレコードとして「初めて」チャートに入ったかどうかには異論があり、1週先にビルボードR&Bチャートに登場したファットバック・バンド「King Tim III」を挙げる見方があります。', 'user', 7) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Rapper''s Delight', 'https://en.wikipedia.org/wiki/Rapper''s_Delight')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Rapper''s Delight', 'https://en.wikipedia.org/wiki/Rapper%27s_Delight')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-street-culture') and name = 'グラフィティとアート'),
@@ -5271,7 +5271,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-street-culture') and name = 'グラフィティとアート'),
-          '2008-05-01', null, 'month', 'point', 'テート・モダンが「Street Art」展', 'ロンドンのテート・モダンが、美術館の外壁そのものを会場にした「Street Art」展を開催して、世界の6組のアーティストが巨大壁画を制作しました。
+          '2008-05-23', null, 'day', 'point', 'テート・モダンが「Street Art」展', 'ロンドンのテート・モダンが、美術館の外壁そのものを会場にした「Street Art」展を開催して、世界の6組のアーティストが巨大壁画を制作しました。
 
 犯罪として排除されてきた表現を、国立級の美術館が正面から展示した画期です。同じ時期、路上ではバンクシーの神出鬼没の作品が話題を集めていて、制度の内と外の境界線は誰が引くのかという問いが、美術の世界で表面化しました。', null,
           'verified', null, 'user', 14) returning id)
@@ -6658,7 +6658,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2018-03-17', null, 'day', 'point', 'ケンブリッジ・アナリティカ事件', '選挙コンサルティング企業のケンブリッジ・アナリティカが、最大8700万人分のFacebookデータを不正に取得し、有権者の心理プロファイリングに使ったと報じられました。
 
 **個人データが世論操作の弾薬になる**という構図を、目に見える形にした事件です。FacebookのCEOは米議会で証言し、同社には後に巨額の制裁金が科されました。施行を目前に控えていたGDPR(制度とプラットフォームレイヤー)の正当性を裏づける事件にもなっています。', null,
-          'verified', null, 'user', 8) returning id)
+          'disputed', '不正取得された人数は当初報道の約5000万人から、のちのFacebook発表で最大約8700万人へと変わっていて、数値には幅があります。', 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Facebook-Cambridge Analytica data scandal', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-digital-democracy'),
@@ -10466,7 +10466,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 前の年に地元の書店を失った私には、遅すぎるとも、ようやくとも思える動きでした。読書会を始める直接のきっかけの、ひとつでもあります。', null,
           'verified', null, 'user', 18) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('経済産業省: 書店振興プロジェクトチームの設置について（2024年3月5日）', 'https://www.meti.go.jp/press/2023/03/20240305001/20240305001.html')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('経済産業省: 齋藤経済産業大臣 閣議後記者会見の概要（2024年3月5日・書店振興プロジェクトチームの設置）', 'https://www.meti.go.jp/speeches/kaiken/2023/20240305001.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-reading-log'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-reading-log') and name = '出版と社会'),
@@ -10696,7 +10696,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 この年の5月、わたしたちは友人の写真展で初めて言葉を交わします。最初の会話は、缶コーヒーが少し高くなったねという、他愛のない話でした。', null,
           'verified', null, 'user', 0) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('財務省: 消費税率の引上げについて（平成26年4月）', 'https://www.mof.go.jp/tax_policy/summary/consumption/consumption_tax/index.html')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('財務省: 消費税率及び地方消費税率の引上げとそれに伴う対応について（平成26年4月1日 5%→8%）', 'https://www.mof.go.jp/tax_policy/summary/consumption/consumption_tax/law/shouhizei.htm')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = 'ふたりの出来事'),
@@ -10800,7 +10800,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 わたしたちの部屋も翌日から在宅勤務の場になり、6畳の居間にふたつの机が並びます。前の年に計画した旅行は取りやめになったけれど、この宣言下の2か月が、**ふたりにとっていちばん長く一緒に過ごした時間**になりました。', null,
           'verified', null, 'user', 13) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('内閣官房: 新型コロナウイルス感染症緊急事態宣言（令和2年4月7日）', 'https://corona.go.jp/news/pdf/kinkyujitai_sengen_0407.pdf')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('厚生労働省: 新型コロナウイルス感染症緊急事態宣言（令和2年4月7日）', 'https://www.mhlw.go.jp/content/10900000/000620796.pdf')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = '仕事と暮らし'),
@@ -11117,7 +11117,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1915-11-25', null, 'day', 'point', 'アインシュタインが一般相対性理論を発表', 'アインシュタインがプロイセン科学アカデミーで、一般相対性理論の重力場方程式を発表しました。重力を力ではなく時空の曲がりとして描き、ニュートン以来の重力観を根本から置き換えたのです。
 
 水星の近日点移動という積年の謎を説明したうえ、光の湾曲と重力波という検証できる予言を生みました。前者は1919年の日食観測(社会と宇宙観レイヤー)で、後者はちょうど100年後、2015年の直接検出(観測と技術レイヤー)で確かめられることになります。', null,
-          'verified', null, 'user', 7) returning id)
+          'disputed', '重力場方程式の最終形にヒルベルトが先に到達していたかどうかは、校正刷りの証拠をめぐって科学史家の間でも見解が分かれています。', 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: General relativity', 'https://en.wikipedia.org/wiki/General_relativity')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astronomy-turning-points'),
@@ -11226,11 +11226,11 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astronomy-turning-points'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astronomy-turning-points') and name = '宇宙像の転換'),
-          '2023-02-01', null, 'month', 'point', 'JWSTが初期宇宙に「重すぎる銀河」候補を発見', 'JWSTの初期観測データから、ビッグバン後5〜7億年の宇宙に、標準的な銀河形成モデルの予想を大きく上回る質量を持つとみられる銀河の候補が、複数報告されました。
+          '2023-02-22', null, 'day', 'point', 'JWSTが初期宇宙に「重すぎる銀河」候補を発見', 'JWSTの初期観測データから、ビッグバン後5〜7億年の宇宙に、標準的な銀河形成モデルの予想を大きく上回る質量を持つとみられる銀河の候補が、複数報告されました。
 
 候補の多くは測光観測による赤方偏移の推定に基づいていて、分光での確認や質量見積もりの下方修正も進行中です。宇宙論の修正が要るのかどうかは、まだ分かりません。新しい観測装置(観測と技術レイヤー)が宇宙像を揺さぶるという、この年表で繰り返されてきた構図の、いちばん新しい一幕です。', null,
           'unverified', '銀河候補の距離と質量は測光的な推定に基づく初期報告で、分光確認と再解析によって、見積もりが変わる可能性が高い段階です。', 'user', 21) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Nature: A population of red candidate massive galaxies ~600 Myr after the Big Bang (Labbé et al., 2023)', null)) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Nature: A population of red candidate massive galaxies ~600 Myr after the Big Bang (Labbé et al., 2023)', 'https://doi.org/10.1038/s41586-023-05786-2')) as v(title, url);
 
 -- ═══ science-astrophysics — 🌌 宇宙物理学の革命
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
@@ -11556,7 +11556,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 エルニーニョは自然変動であり、温暖化の傾向に周期的に重なる。パリ協定の交渉が進んだ2015年12月はまさにこの現象の最盛期で、記録的な暖冬や熱波が交渉の背景にあった。', null,
           'disputed', '発生期間の定義は機関により異なり、気象庁は2014年夏〜2016年春、NOAAは2015年春〜2016年春を発生期間としている。', 'user', 15) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('NOAA Climate Prediction Center: Oceanic Niño Index (ONI)', 'https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php'), ('気象庁: エルニーニョ現象およびラニーニャ現象の発生期間', null)) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('NOAA Climate Prediction Center: Oceanic Niño Index (ONI)', 'https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php'), ('気象庁: エルニーニョ現象およびラニーニャ現象の発生期間', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '政策と社会'),
@@ -12172,7 +12172,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-infectious-diseases'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-infectious-diseases') and name = '病原体と流行'),
-          '1918-03-01', '1920-04-01', 'month', 'period', 'インフルエンザ・パンデミック(スペインかぜ)', 'H1N1型のインフルエンザが、第一次大戦下の兵員の移動に乗って世界へ広がり、3つの波にわたって流行しました。世界人口の3分の1ほどが感染したと推定されています。
+          '1918-03-01', '1920-04-30', 'month', 'period', 'インフルエンザ・パンデミック(スペインかぜ)', 'H1N1型のインフルエンザが、第一次大戦下の兵員の移動に乗って世界へ広がり、3つの波にわたって流行しました。世界人口の3分の1ほどが感染したと推定されています。
 
 死者は1700万〜5000万人とされ、推計の幅は大きいままです。参戦国の戦時検閲で報道が抑えられ、報道が自由だった中立国スペインの名が付きました。いわば濡れ衣のような命名で、**情報統制が流行対策を歪める**例でもあります。ウイルスの同定は1933年でした。', null,
           'disputed', '死者数は1700万〜5000万人(1億人とする説も)と推計に大きな幅があり、確定していません。', 'user', 5) returning id)
@@ -12867,7 +12867,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1930-06-06', '1934-08-15', 'day', 'period', '潜水球バチスフィアの4年、深海を目で見る', '生物学者ビービと技師バートンが、バミューダ沖で鋼鉄球「バチスフィア」の潜航を重ねた4年間です。1930年6月の初潜航から回を重ね、1934年8月15日には水深923m(3,028フィート)に達しました。人類が深海の生物をその場で直接観察した、最初の記録です。
 
 母船からケーブルで吊るす方式のため動ける範囲は限られましたが、発光生物の目撃記録は深海生物学への関心を一気に高めました。自力で潜航するバチスカーフ(1960年のトリエステ)へ続く、観測の助走の4年でした。', null,
-          'verified', null, 'user', 2) returning id)
+          'disputed', 'ビービが報告した発光魚など一部の観察記録は、後年の調査で裏付けが得られておらず、真偽をめぐって議論があります。', 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Bathysphere', 'https://en.wikipedia.org/wiki/Bathysphere')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-ocean-exploration'),
@@ -14181,7 +14181,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '規制と事件'),
-          '2021-09-07', '2025-01-31', 'day', 'period', '🌎 エルサルバドルの法定通貨実験、3年4か月', 'エルサルバドルで世界初のBitcoin法定通貨法が施行。ドル化経済の同国が送金コスト削減と金融包摂を掲げた国家実験は、IMF融資の条件を受けて受け入れ義務を外す法改正(2025年1月)まで3年4か月続きました。
+          '2021-09-07', '2025-01-29', 'day', 'period', '🌎 エルサルバドルの法定通貨実験、3年4か月', 'エルサルバドルで世界初のBitcoin法定通貨法が施行。ドル化経済の同国が送金コスト削減と金融包摂を掲げた国家実験は、IMF融資の条件を受けて受け入れ義務を外す法改正(2025年1月)まで3年4か月続きました。
 
 国民の利用は最後まで限定的で、IMFは一貫して金融リスクを警告し続けました。この実験の線は強気相場の線(市場と資本レイヤー)の頂点近くで始まり、二度目の冬をまるごとくぐって終わります。相場の熱の中で始まった国策が、冷めたあとも続いた記録です。', null,
           'disputed', '2025年1月の法改正後もBitcoin法自体は存続しており、「法定通貨でなくなった」と言い切れるかは解釈が分かれます。', 'user', 14) returning id)
@@ -14205,15 +14205,15 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '市場と資本'),
-          '2022-05-07', '2022-05-13', 'day', 'period', '💥 Terra/USTの崩壊', 'アルゴリズム型ステーブルコインUSTがドル連動を失い、姉妹通貨LUNAとともに1週間でほぼ無価値に。約400億ドル規模の時価総額が消えました。担保ではなくアルゴリズムで価格を保つ設計(技術)の弱さが、市場の売り圧力で一気に露呈した形です。
+          '2022-05-09', '2022-05-13', 'day', 'period', '💥 Terra/USTの崩壊', 'アルゴリズム型ステーブルコインUSTがドル連動を失い、姉妹通貨LUNAとともに数日でほぼ無価値に。約400億ドル規模の時価総額が消えました。担保ではなくアルゴリズムで価格を保つ設計(技術)の弱さが、市場の売り圧力で一気に露呈した形です。
 
 ヘッジファンドや貸付業者の破綻が連鎖し、**11月のFTX破綻(規制と事件)へ続く信用収縮の起点**になりました。米国や日本でステーブルコイン規制の議論が急加速し、日本では翌年、改正資金決済法で発行者が限定されます。', null,
-          'verified', null, 'user', 17) returning id)
+          'disputed', '消えた時価総額400億ドル規模は集計時点と対象範囲によって幅があり、崩壊の起点にも5月7日の初回デペグを採る見方があります。ここではドル連動が崩れた5月9日から、チェーンが停止した5月13日までを採りました。', 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Terra (blockchain)', 'https://en.wikipedia.org/wiki/Terra_(blockchain)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '技術'),
-          '2022-09-15', null, 'day', 'point', '🔀 Ethereumが「The Merge」でProof of Stakeへ移行', 'EthereumがProof of WorkからProof of Stakeへ移行するアップグレード「The Merge」を完了し、消費電力を99%以上削減したとされます。動いているネットワークを止めずに合意形成の仕組みを入れ替える、数年がかりの開発の集大成でした!
+          '2022-09-15', null, 'day', 'point', '🔀 Ethereumが「The Merge」でProof of Stakeへ移行', 'EthereumがProof of WorkからProof of Stakeへ移行するアップグレード「The Merge」を完了し、消費電力を約99.95%削減したとされます。動いているネットワークを止めずに合意形成の仕組みを入れ替える、数年がかりの開発の集大成でした!
 
 環境負荷への批判(規制と事件レイヤーの論点)に技術で答えた形ですが、同時期の市場はTerra崩壊とFTX破綻に挟まれた「冬」の真っ最中で、価格への影響は限定的。**技術と市場の時間軸のずれ**がよく分かる事例です。', null,
           'verified', null, 'user', 18) returning id)
@@ -14483,7 +14483,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cybersecurity'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cybersecurity') and name = '法と国家'),
-          '2013-06-01', null, 'month', 'point', 'スノーデンがNSAの大規模監視を告発', '元NSA契約職員エドワード・スノーデンが、米政府による通信の大規模収集プログラムの内部文書を暴露しました。同盟国の首脳や一般市民の通信までが収集対象だったことが明らかになります。
+          '2013-06-05', null, 'day', 'point', 'スノーデンがNSAの大規模監視を告発', '元NSA契約職員エドワード・スノーデンが、米政府による通信の大規模収集プログラムの内部文書を暴露しました。同盟国の首脳や一般市民の通信までが収集対象だったことが明らかになります。
 
 敵は犯罪者だけでなく**自国の政府でもあり得る**。この認識が広がり、通信の常時暗号化(防御と技術レイヤー)が業界標準へ一気に進みました。プライバシーと安全保障のバランスをめぐる議論の前提を変えた告発です。', null,
           'verified', null, 'user', 6) returning id)
@@ -14788,7 +14788,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2011-09-01', null, 'month', 'point', '💳 Stripe公開、オンライン決済がAPI数行になる', '米Stripeが開発者向けの決済APIを一般公開しました。加盟店契約や審査で数週間かかっていたカード決済の導入が、ウェブサイトに数行のコードを書くだけで済むようになります!
 
 **決済のインフラ化**はECやSaaSの起業コストをぐっと下げ、その後のプラットフォーム経済の裏方になりました。既存金融レイヤーから見ると、カード網の上に乗りながら顧客接点だけを奪っていく、新種の存在の登場です。', null,
-          'verified', null, 'user', 2) returning id)
+          'unverified', '一般公開は2011年9月と報じられていますが、限定公開からの移行時期は資料により幅があります。', 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Stripe公式発表 (2011-09)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
@@ -14873,10 +14873,10 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-fintech') and name = '技術とサービス'),
-          '2022-05-01', null, 'month', 'point', '📉 ステーブルコインTerraUSD崩壊', 'アルゴリズム型ステーブルコインTerraUSD(UST)が米ドルとの連動を失い、姉妹通貨LUNAとともに数日でほぼ無価値になりました。消えた時価総額は400億ドル規模と推計されています。
+          '2022-05-09', '2022-05-13', 'day', 'period', '📉 ステーブルコインTerraUSD崩壊', 'アルゴリズム型ステーブルコインTerraUSD(UST)が米ドルとの連動を失い、姉妹通貨LUNAとともに数日でほぼ無価値になりました。消えた時価総額は400億ドル規模と推計されています。
 
 「アルゴリズムで価値を保つ」という設計の破綻は、貸付業者やファンドの連鎖倒産を招き、半年後のFTX破綻への導火線になりました。各国のステーブルコイン規制(規制と社会レイヤー)が一気に具体化する、直接のきっかけです。', null,
-          'disputed', '消失額の推計は、集計時点と対象範囲によって数百億ドル規模の幅があります。', 'user', 13) returning id)
+          'disputed', '消失額の推計は、集計時点と対象範囲によって数百億ドル規模の幅があります。崩壊の起点にも5月7日の初回デペグを採る見方があり、ここではドル連動が崩れた5月9日からチェーン停止の5月13日までを採りました。', 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Reuters・Bloomberg報道 (2022-05)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
@@ -15692,12 +15692,12 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2012-04-09', null, 'day', 'point', '💵 FacebookがInstagramを10億ドルで買収', 'Facebookが、社員たった13人のInstagramを約10億ドルで買収すると発表しました。売上のないアプリへの巨額買収は当時「高すぎる」と言われましたが、結果はIT史上屈指の安い買い物と評されるようになります!
 
 有力な新興サービスを早めに取り込む成長戦略の象徴です。のちのWhatsApp買収と合わせて「競争の芽を摘む買収では」という議論(規制と説明責任レイヤー)を呼び、米当局は2020年に同社を反トラストで提訴しました。', null,
-          'verified', null, 'user', 7) returning id)
+          'disputed', '発表時の約10億ドルと、Facebook株の下落を経た完了時の価値は別物で、報道によって金額が分かれます。', 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Instagram (Acquisition by Facebook)', 'https://en.wikipedia.org/wiki/Instagram')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = '規制と説明責任'),
-          '2013-06-01', null, 'month', 'point', '🕵️ スノーデンが大規模監視を告発', '元NSA契約職員のエドワード・スノーデンが、米政府が大手IT企業のデータに広くアクセスする監視プログラムの存在を告発しました。SNSやメールの利用記録が国家監視の対象だと、具体的に示されたのです。
+          '2013-06-05', null, 'day', 'point', '🕵️ スノーデンが大規模監視を告発', '元NSA契約職員のエドワード・スノーデンが、米政府が大手IT企業のデータに広くアクセスする監視プログラムの存在を告発しました。SNSやメールの利用記録が国家監視の対象だと、具体的に示されたのです。
 
 プラットフォームにたまった個人データ(プラットフォームレイヤー)が国家に流れ得る。この事実は世界に衝撃を与え、通信を常時暗号化する流れを一気に進めました。EUのデータ保護強化の議論も、この事件で加速します。', null,
           'verified', null, 'user', 8) returning id)
@@ -15724,7 +15724,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2018-03-17', null, 'day', 'point', '🔓 ケンブリッジ・アナリティカ事件が発覚', '英コンサル企業ケンブリッジ・アナリティカが、最大8700万人分のFacebookユーザーデータを不正に取得し、選挙広告の標的設定に使っていたと報じられました。ザッカーバーグCEOは米議会での証言に立ちます。
 
 2016年米大統領選(社会と政治レイヤー)への疑念と結びついて、SNSのデータ利用への信頼が決定的に揺らいだ事件です。FTCは2019年、Facebookに50億ドルの制裁金を科し、規制強化の流れがここで固まりました。', null,
-          'verified', null, 'user', 11) returning id)
+          'disputed', '不正取得された人数は当初報道で約5000万人、のちのFacebook発表で最大約8700万人とされていて、数値には幅があります。', 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Facebook–Cambridge Analytica data scandal', 'https://en.wikipedia.org/wiki/Facebook%E2%80%93Cambridge_Analytica_data_scandal')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
@@ -15740,7 +15740,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2020-01-30', '2023-05-05', 'day', 'period', '🦠 コロナ禍とインフォデミック、3年余り', 'WHOの緊急事態宣言から終了までの3年余り、SNSはパンデミック情報の主戦場でした。WHOは誤情報の氾濫を「インフォデミック」と呼び、感染症対策と情報対策が並行して進む異例の期間になります。
 
 この線の上には、トランプ大統領のアカウント凍結の線(規制と説明責任レイヤー)もハウゲンの告発も乗っています。健康という切実なテーマが、プラットフォームのモデレーション体制を一気に鍛えた3年でもありました。', null,
-          'verified', null, 'user', 13) returning id)
+          'disputed', 'インフォデミックの期間に定まった区切りはありません。ここではWHOの緊急事態宣言(2020年1月30日)から終了(2023年5月5日)までを採りました。', 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('WHO: COVID-19に関するPHEICの宣言(2020-01-30)と終了(2023-05-05)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
@@ -15793,7 +15793,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = '規制と説明責任'),
-          '2024-11-01', null, 'month', 'point', '🇦🇺 豪州が16歳未満のSNS利用を禁止する法律を可決', 'オーストラリア議会が、16歳未満のSNS利用を禁止し、年齢確認をプラットフォーム側の義務とする世界初の法律を可決しました。2025年12月から適用され、違反企業には最大4950万豪ドルの罰金が科されます。
+          '2024-11-28', null, 'day', 'point', '🇦🇺 豪州が16歳未満のSNS利用を禁止する法律を可決', 'オーストラリア議会が、16歳未満のSNS利用を禁止し、年齢確認をプラットフォーム側の義務とする世界初の法律を可決しました。2025年12月から適用され、違反企業には最大4950万豪ドルの罰金が科されます。
 
 米公衆衛生局長官の勧告(社会と政治レイヤー)に象徴される「若者への害」の議論が、ついに利用そのものの禁止という強い立法にまで至りました。年齢確認の実効性とプライバシーへの影響をめぐって、各国が実施を注視しています。', null,
           'verified', null, 'user', 20) returning id)
@@ -16026,7 +16026,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2020-10-01', '2021-11-30', 'month', 'period', '📈 コロナ緩和マネーの強気相場、13か月', 'コロナ対応の金融緩和を追い風に、2020年秋から暗号資産市場が一本調子で上昇。ビットコインは約6万9000ドルの史上最高値をつけ、全体の時価総額は集計サイトベースで約3兆ドルに達しました。NFTもメタバース関連トークンも軒並み高騰です。
 
 Beepleの落札も、Axieの「遊んで稼ぐ」(社会と制度レイヤー)も、Metaの社名変更さえも、ぜんぶこの強気の線の上に乗っています。上げ相場が理想を看板に変えていく、この年表でいちばん密度の高い13か月でした。', null,
-          'unverified', '強気相場の起点の置き方には諸説があり、時価総額約3兆ドルもCoinGeckoなど集計サイトの推定値で、どこまでを数えるかで変わります。', 'user', 5) returning id)
+          'disputed', '強気相場の起点の置き方には諸説があり、時価総額約3兆ドルもCoinGeckoなど集計サイトの推定値で、どこまでを数えるかで変わります。', 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('CoinGecko: Global Cryptocurrency Market Cap(2021年11月)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
@@ -16063,10 +16063,10 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '資本と市場'),
-          '2022-05-09', null, 'day', 'point', '💥 ステーブルコインTerraUSD崩壊', 'アルゴリズム型ステーブルコインTerraUSD(UST)がドル連動を失い、対をなすトークンLUNAごと数日でほぼ無価値に。消えた時価総額は400億ドル規模とされます。
+          '2022-05-09', '2022-05-13', 'day', 'period', '💥 ステーブルコインTerraUSD崩壊', 'アルゴリズム型ステーブルコインTerraUSD(UST)がドル連動を失い、対をなすトークンLUNAごと数日でほぼ無価値に。消えた時価総額は400億ドル規模とされます。
 
 「アルゴリズムでドルを再現する」設計の脆さが露呈した事件で、ヘッジファンドや貸付業者の破綻が連鎖し、FTX破綻への導火線になりました。各国のステーブルコイン規制論(社会と制度レイヤー)も、これで一気に加速します。', null,
-          'verified', null, 'user', 10) returning id)
+          'disputed', '消えた時価総額400億ドル規模は集計時点と対象範囲によって幅があり、崩壊の起点にも5月7日の初回デペグを採る見方があります。ここではドル連動が崩れた5月9日から、チェーンが停止した5月13日までを採りました。', 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Terra (blockchain)', 'https://en.wikipedia.org/wiki/Terra_(blockchain)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
@@ -16079,7 +16079,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '技術とプロトコル'),
-          '2022-09-15', null, 'day', 'point', '🔀 イーサリアム「The Merge」でPoS移行完了', 'イーサリアムが合意形成の仕組みをプルーフ・オブ・ワークからプルーフ・オブ・ステークへ切り替える大型アップグレード「The Merge」を完了。ネットワークの消費電力を99.9%以上削減したとされます。
+          '2022-09-15', null, 'day', 'point', '🔀 イーサリアム「The Merge」でPoS移行完了', 'イーサリアムが合意形成の仕組みをプルーフ・オブ・ワークからプルーフ・オブ・ステークへ切り替える大型アップグレード「The Merge」を完了。ネットワークの消費電力を約99.95%削減したとされます。
 
 暗号資産批判の筆頭だった環境負荷に技術側から答えた形で、弱気相場(資本と市場レイヤー)の真っ最中でも**プロトコル開発は着実に前進する**と示しました。稼働を止めずに基盤を入れ替えるのは、技術的にも異例の規模です!', null,
           'verified', null, 'user', 12) returning id)

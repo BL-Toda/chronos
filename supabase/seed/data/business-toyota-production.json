@@ -392,8 +392,8 @@
       ]
     },
     {
-      "date": "2011-09-01",
-      "precision": "month",
+      "date": "2011-09-13",
+      "precision": "day",
       "end_date": null,
       "type": "point",
       "layer": "世界への波及",

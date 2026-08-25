@@ -62,6 +62,9 @@ for (const f of files) {
     if (e.type === "period" && (!e.end_date || dkey(e.end_date) < dkey(e.date))) problems.push(`${t.slug}#${i}: bad period`);
     if ((e.credibility === "disputed" || e.credibility === "unverified") && !e.credibility_note)
       problems.push(`${t.slug}#${i}: note required for ${e.credibility}`);
+    // verified は「留保なし」の意味なので note を持ってはいけない
+    if (e.credibility === "verified" && e.credibility_note)
+      problems.push(`${t.slug}#${i}: verified must not carry a note`);
     // 「!」はペルソナ許可制（AUTHORS.json の tone に明記されたオーサーのみ）。titleは常に禁止
     if (/[!！]/.test(e.title)) problems.push(`${t.slug}#${i}: "!" in title`);
     if (/[!！]/.test(`${e.summary}${e.detail ?? ""}`) && !exclamOK.has(ownerBySlug[t.slug]))

@@ -546,7 +546,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1915-11-25', null, 'day', 'point', 'アインシュタインが一般相対性理論を発表', 'アインシュタインがプロイセン科学アカデミーで、一般相対性理論の重力場方程式を発表しました。重力を力ではなく時空の曲がりとして描き、ニュートン以来の重力観を根本から置き換えたのです。
 
 水星の近日点移動という積年の謎を説明したうえ、光の湾曲と重力波という検証できる予言を生みました。前者は1919年の日食観測(社会と宇宙観レイヤー)で、後者はちょうど100年後、2015年の直接検出(観測と技術レイヤー)で確かめられることになります。', null,
-          'verified', null, 'user', 7) returning id)
+          'disputed', '重力場方程式の最終形にヒルベルトが先に到達していたかどうかは、校正刷りの証拠をめぐって科学史家の間でも見解が分かれています。', 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: General relativity', 'https://en.wikipedia.org/wiki/General_relativity')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astronomy-turning-points'),
@@ -655,11 +655,11 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astronomy-turning-points'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astronomy-turning-points') and name = '宇宙像の転換'),
-          '2023-02-01', null, 'month', 'point', 'JWSTが初期宇宙に「重すぎる銀河」候補を発見', 'JWSTの初期観測データから、ビッグバン後5〜7億年の宇宙に、標準的な銀河形成モデルの予想を大きく上回る質量を持つとみられる銀河の候補が、複数報告されました。
+          '2023-02-22', null, 'day', 'point', 'JWSTが初期宇宙に「重すぎる銀河」候補を発見', 'JWSTの初期観測データから、ビッグバン後5〜7億年の宇宙に、標準的な銀河形成モデルの予想を大きく上回る質量を持つとみられる銀河の候補が、複数報告されました。
 
 候補の多くは測光観測による赤方偏移の推定に基づいていて、分光での確認や質量見積もりの下方修正も進行中です。宇宙論の修正が要るのかどうかは、まだ分かりません。新しい観測装置(観測と技術レイヤー)が宇宙像を揺さぶるという、この年表で繰り返されてきた構図の、いちばん新しい一幕です。', null,
           'unverified', '銀河候補の距離と質量は測光的な推定に基づく初期報告で、分光確認と再解析によって、見積もりが変わる可能性が高い段階です。', 'user', 21) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Nature: A population of red candidate massive galaxies ~600 Myr after the Big Bang (Labbé et al., 2023)', null)) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Nature: A population of red candidate massive galaxies ~600 Myr after the Big Bang (Labbé et al., 2023)', 'https://doi.org/10.1038/s41586-023-05786-2')) as v(title, url);
 
 -- ═══ science-astrophysics — 🌌 宇宙物理学の革命
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
@@ -985,7 +985,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 エルニーニョは自然変動であり、温暖化の傾向に周期的に重なる。パリ協定の交渉が進んだ2015年12月はまさにこの現象の最盛期で、記録的な暖冬や熱波が交渉の背景にあった。', null,
           'disputed', '発生期間の定義は機関により異なり、気象庁は2014年夏〜2016年春、NOAAは2015年春〜2016年春を発生期間としている。', 'user', 15) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('NOAA Climate Prediction Center: Oceanic Niño Index (ONI)', 'https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php'), ('気象庁: エルニーニョ現象およびラニーニャ現象の発生期間', null)) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('NOAA Climate Prediction Center: Oceanic Niño Index (ONI)', 'https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php'), ('気象庁: エルニーニョ現象およびラニーニャ現象の発生期間', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '政策と社会'),
@@ -1601,7 +1601,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-infectious-diseases'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-infectious-diseases') and name = '病原体と流行'),
-          '1918-03-01', '1920-04-01', 'month', 'period', 'インフルエンザ・パンデミック(スペインかぜ)', 'H1N1型のインフルエンザが、第一次大戦下の兵員の移動に乗って世界へ広がり、3つの波にわたって流行しました。世界人口の3分の1ほどが感染したと推定されています。
+          '1918-03-01', '1920-04-30', 'month', 'period', 'インフルエンザ・パンデミック(スペインかぜ)', 'H1N1型のインフルエンザが、第一次大戦下の兵員の移動に乗って世界へ広がり、3つの波にわたって流行しました。世界人口の3分の1ほどが感染したと推定されています。
 
 死者は1700万〜5000万人とされ、推計の幅は大きいままです。参戦国の戦時検閲で報道が抑えられ、報道が自由だった中立国スペインの名が付きました。いわば濡れ衣のような命名で、**情報統制が流行対策を歪める**例でもあります。ウイルスの同定は1933年でした。', null,
           'disputed', '死者数は1700万〜5000万人(1億人とする説も)と推計に大きな幅があり、確定していません。', 'user', 5) returning id)
@@ -2296,7 +2296,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1930-06-06', '1934-08-15', 'day', 'period', '潜水球バチスフィアの4年、深海を目で見る', '生物学者ビービと技師バートンが、バミューダ沖で鋼鉄球「バチスフィア」の潜航を重ねた4年間です。1930年6月の初潜航から回を重ね、1934年8月15日には水深923m(3,028フィート)に達しました。人類が深海の生物をその場で直接観察した、最初の記録です。
 
 母船からケーブルで吊るす方式のため動ける範囲は限られましたが、発光生物の目撃記録は深海生物学への関心を一気に高めました。自力で潜航するバチスカーフ(1960年のトリエステ)へ続く、観測の助走の4年でした。', null,
-          'verified', null, 'user', 2) returning id)
+          'disputed', 'ビービが報告した発光魚など一部の観察記録は、後年の調査で裏付けが得られておらず、真偽をめぐって議論があります。', 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Bathysphere', 'https://en.wikipedia.org/wiki/Bathysphere')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-ocean-exploration'),

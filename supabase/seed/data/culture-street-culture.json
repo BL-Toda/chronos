@@ -24,14 +24,14 @@
     {
       "date": "1970-01-01",
       "precision": "year",
-      "end_date": "1989-05-31",
+      "end_date": "1989-05-12",
       "type": "period",
       "layer": "グラフィティとアート",
       "title": "ニューヨーク地下鉄グラフィティの時代",
       "summary": "ニューヨークの地下鉄車両が、名前を残すタギングから色鮮やかな大作「ピース」まで、グラフィティの巨大なキャンバスだった時代です。車両基地に忍び込むライターたちが、技法とスタイルを競い合いました。\n\n市当局は犯罪として撲滅作戦を続けて、1989年5月に「グラフィティのない地下鉄」を宣言してこの時代は幕を閉じます。**街全体がギャラリーだった**約20年の車両と写真の記録が、後の世界的なストリートアート評価の原点になりました。",
       "detail": null,
       "credibility": "disputed",
-      "credibility_note": "地下鉄グラフィティの「時代」の始まりにはっきりした定義はなく、1960年代末からとする資料もあります。終わりは1989年5月のMTAによる宣言を採りました。",
+      "credibility_note": "地下鉄グラフィティの「時代」の始まりにはっきりした定義はなく、1960年代末からとする資料もあります。終わりは1989年5月12日のMTAによる宣言を採りました。",
       "sources": [
         {
           "title": "Wikipedia: Graffiti in New York City",
@@ -48,8 +48,8 @@
       "title": "NYタイムズが「TAKI 183」を報道",
       "summary": "ニューヨーク・タイムズが、市内のあちこちに「TAKI 183」と書き残すギリシャ系の配達員の若者を記事にしました。名前を街に刻むタギング文化が、初めて大手メディアに載った瞬間です。\n\n記事を読んだ若者たちは競って自分の名前を書き始めて、タグは市内で爆発的に増えました。**メディアに載ると文化が加速する**というストリートカルチャーの逆説は、この最初期からもう動いていたわけです。",
       "detail": null,
-      "credibility": "verified",
-      "credibility_note": null,
+      "credibility": "disputed",
+      "credibility_note": "TAKI 183を「最初のグラフィティ・ライター」とする通説には、フィラデルフィアのCornbreadら先行例を挙げる異論があります。記事が最初の大手メディア報道であること自体は確かです。",
       "sources": [
         {
           "title": "The New York Times: 'Taki 183' Spawns Pen Pals (1971-07-21)",
@@ -161,7 +161,7 @@
       "sources": [
         {
           "title": "Wikipedia: Rapper's Delight",
-          "url": "https://en.wikipedia.org/wiki/Rapper's_Delight"
+          "url": "https://en.wikipedia.org/wiki/Rapper%27s_Delight"
         }
       ]
     },
@@ -274,8 +274,8 @@
       ]
     },
     {
-      "date": "2008-05-01",
-      "precision": "month",
+      "date": "2008-05-23",
+      "precision": "day",
       "end_date": null,
       "type": "point",
       "layer": "グラフィティとアート",

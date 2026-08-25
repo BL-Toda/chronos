@@ -154,8 +154,8 @@
       "credibility_note": null,
       "sources": [
         {
-          "title": "MoMA: History (公式)",
-          "url": "https://www.moma.org/about/who-we-are/moma-history"
+          "title": "MoMA: The Museum of Modern Art history (公式)",
+          "url": "https://www.moma.org/about/mission-statement/history"
         },
         {
           "title": "Wikipedia: Museum of Modern Art",
@@ -252,8 +252,8 @@
       "title": "ニューヨーク地下鉄グラフィティの時代",
       "summary": "1970年代の財政危機と治安悪化を背景に、ニューヨークの地下鉄が最大のキャンバスとなった時代。車両全面のピースからワイルドスタイルまで様式が発達し、1989年にMTAが「グラフィティのない地下鉄」を宣言して終息した。\n\n写真家マーサ・クーパーらの記録と、1983年の映画『ワイルド・スタイル』や写真集『Subway Art』が世界に様式を伝え、ヨーロッパや日本へ波及した。行政は洗浄と車両更新で対抗し、80年代後半に舞台は路上へ移る。",
       "detail": null,
-      "credibility": "verified",
-      "credibility_note": null,
+      "credibility": "disputed",
+      "credibility_note": "地下鉄グラフィティの「時代」の始まりに定まった定義はなく、1960年代末からとする資料もある。終わりは1989年5月12日のMTAによる「グラフィティのない地下鉄」宣言を採った。",
       "sources": [
         {
           "title": "Wikipedia: Graffiti in New York City",

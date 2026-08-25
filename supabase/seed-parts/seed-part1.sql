@@ -618,7 +618,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2024-07-19', null, 'day', 'point', 'CrowdStrike障害、クラウド依存のリスク露呈', 'セキュリティ企業CrowdStrikeの更新プログラムの不具合により、世界で約850万台のWindows端末が起動不能となり、航空・医療・金融などの業務が広範囲で止まりました。
 
 特定のクラウドサービスへの依存が、社会全体の単一障害点になりうることを史上最大級の規模で示した事例です。SaaS前提の業務設計に対して、依存先の集中リスクという重い論点を突きつけました。', null,
-          'verified', null, 'user', 15) returning id)
+          'unverified', '影響台数約850万台はMicrosoftの推計で、実際の影響範囲の全体像は確定していません。', 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Microsoft公式ブログによる影響台数の推計(2024-07-20)および各社報道', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-b2b-saas'),
@@ -762,7 +762,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-coffee-industry'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-coffee-industry') and name = '消費と文化'),
-          '2020-04-01', '2023-05-01', 'month', 'period', 'コロナ禍、コーヒーを飲む場所が店から家へ', '新型コロナで都市部のカフェは休業や時短を迫られ、一方で家にいる時間が増えたことで、家庭用レギュラーコーヒーや抽出器具の販売が伸びました。飲む場所が店から家へ大きく移った期間です。
+          '2020-04-01', '2023-05-07', 'month', 'period', 'コロナ禍、コーヒーを飲む場所が店から家へ', '新型コロナで都市部のカフェは休業や時短を迫られ、一方で家にいる時間が増えたことで、家庭用レギュラーコーヒーや抽出器具の販売が伸びました。飲む場所が店から家へ大きく移った期間です。
 
 テイクアウトやモバイルオーダーへの投資が定着し、チェーン各社(企業とチェーンレイヤー)では店舗網の見直しも進みました。家で豆や淹れ方にこだわる人が増えたことは、サードウェーブ的な消費の裾野を広げています。', null,
           'verified', null, 'user', 13) returning id)
@@ -1473,7 +1473,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2024-06-12', null, 'day', 'point', '日本でスマホソフトウェア競争促進法が成立', '2024年6月、スマホソフトウェア競争促進法が国会で成立。OS・アプリストア等を対象に公正取引委員会が事前規制を行う枠組みで、EUのデジタル市場法を参照。主対象はAppleとGoogle、代替アプリストアの許容と自社優遇の禁止を定める。
 
 2008年のApp Store以来の手数料と審査の裁量に、日本でも法律の制約がかかる。同年8月には米国でGoogleの検索独占が認定され、日米欧の規制が同時期に収束した年である。', null,
-          'unverified', '成立日は国会記録に基づく。全面施行時期（2025年12月と発表）と指定事業者の範囲は施行後の運用で確定するため、未確認とする。', 'user', 20) returning id)
+          'verified', null, 'user', 20) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('公正取引委員会 スマートフォンにおいて利用される特定ソフトウェアに係る競争の促進に関する法律', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-gafa'),
@@ -1644,7 +1644,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2022-11-28', '2026-06-30', 'day', 'period', 'スタートアップ育成5か年計画の実行期間', '政府が新しい資本主義実現会議で、2027年度にスタートアップ投資額10兆円、ユニコーン100社創出などを掲げる5か年計画を決定しました。人材・資金・オープンイノベーションの3本柱で構成され、計画期間は現在も進行中です。
 
 決定のわずか2日後にChatGPTが公開され、この計画の線は生成AIの線とほぼ同時に始まることになりました。2013年の日本再興戦略から続く政策系譜の中で、初めて具体的なユニコーン数を目標に置いた計画です。', null,
-          'verified', '計画期間は2027年度までの5年間ですが、線の終点は生成時点に合わせて2026年半ばで区切っています。', 'user', 18) returning id)
+          'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('内閣官房 新しい資本主義実現本部', 'https://www.cas.go.jp/jp/seisaku/atarashii_sihonsyugi/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
@@ -2045,7 +2045,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1954-12-01', '1973-11-30', 'month', 'period', '高度経済成長、消費がふくらんだ19年', '神武景気に始まりオイルショックの直前まで、日本経済が拡大を続けた19年間です。所得が増え、冷蔵庫が家庭に入り、週末にまとめ買いをするという新しい買い物の形が生まれました。
 
 業態の革新レイヤーと重ねると、紀ノ国屋のセルフサービス(1953年)もダイエー1号店(1957年)も、この線の入口近くに立っています。スーパーという業態は、財布がふくらみ続ける時代の線の上で育った子どもだったことが見えてきます。', null,
-          'verified', null, 'user', 2) returning id)
+          'disputed', '高度経済成長の期間には諸説あります。ここでは神武景気の始まり(1954年12月)から第一次オイルショック(1973年11月)までを採りました。', 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('内閣府「景気基準日付」', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-retail-revolution'),
@@ -2699,7 +2699,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-toyota-production'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-toyota-production') and name = '世界への波及'),
-          '2011-09-01', null, 'month', 'point', '『リーン・スタートアップ』刊行', 'エリック・リースが『The Lean Startup』を刊行し、TPS由来のリーンの考え方をソフトウェアと起業の方法論に転用した。小さくつくり検証を繰り返す手法は、TPSのムダ排除や「現地現物」の発想を参照したと著者が述べている。
+          '2011-09-13', null, 'day', 'point', '『リーン・スタートアップ』刊行', 'エリック・リースが『The Lean Startup』を刊行し、TPS由来のリーンの考え方をソフトウェアと起業の方法論に転用した。小さくつくり検証を繰り返す手法は、TPSのムダ排除や「現地現物」の発想を参照したと著者が述べている。
 
 1990年の『The Machine That Changed the World』が製造業に広げた概念が、2010年代にはIT産業や公共部門にまで及んだ形である。同年の日本では東日本大震災でTPSの弱点が議論されており、原産地と応用先で評価が分かれた年でもある。', null,
           'unverified', '刊行時期は確かだが、TPSからの影響の程度は著者の言及に基づく評価であり、方法論の系譜として定説化しているとは言い切れない。', 'user', 19) returning id)

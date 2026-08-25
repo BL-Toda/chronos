@@ -156,8 +156,8 @@
       "title": "💵 FacebookがInstagramを10億ドルで買収",
       "summary": "Facebookが、社員たった13人のInstagramを約10億ドルで買収すると発表しました。売上のないアプリへの巨額買収は当時「高すぎる」と言われましたが、結果はIT史上屈指の安い買い物と評されるようになります!\n\n有力な新興サービスを早めに取り込む成長戦略の象徴です。のちのWhatsApp買収と合わせて「競争の芽を摘む買収では」という議論(規制と説明責任レイヤー)を呼び、米当局は2020年に同社を反トラストで提訴しました。",
       "detail": null,
-      "credibility": "verified",
-      "credibility_note": null,
+      "credibility": "disputed",
+      "credibility_note": "発表時の約10億ドルと、Facebook株の下落を経た完了時の価値は別物で、報道によって金額が分かれます。",
       "sources": [
         {
           "title": "Wikipedia: Instagram (Acquisition by Facebook)",
@@ -166,8 +166,8 @@
       ]
     },
     {
-      "date": "2013-06-01",
-      "precision": "month",
+      "date": "2013-06-05",
+      "precision": "day",
       "end_date": null,
       "type": "point",
       "layer": "規制と説明責任",
@@ -228,8 +228,8 @@
       "title": "🔓 ケンブリッジ・アナリティカ事件が発覚",
       "summary": "英コンサル企業ケンブリッジ・アナリティカが、最大8700万人分のFacebookユーザーデータを不正に取得し、選挙広告の標的設定に使っていたと報じられました。ザッカーバーグCEOは米議会での証言に立ちます。\n\n2016年米大統領選(社会と政治レイヤー)への疑念と結びついて、SNSのデータ利用への信頼が決定的に揺らいだ事件です。FTCは2019年、Facebookに50億ドルの制裁金を科し、規制強化の流れがここで固まりました。",
       "detail": null,
-      "credibility": "verified",
-      "credibility_note": null,
+      "credibility": "disputed",
+      "credibility_note": "不正取得された人数は当初報道で約5000万人、のちのFacebook発表で最大約8700万人とされていて、数値には幅があります。",
       "sources": [
         {
           "title": "Wikipedia: Facebook–Cambridge Analytica data scandal",
@@ -264,8 +264,8 @@
       "title": "🦠 コロナ禍とインフォデミック、3年余り",
       "summary": "WHOの緊急事態宣言から終了までの3年余り、SNSはパンデミック情報の主戦場でした。WHOは誤情報の氾濫を「インフォデミック」と呼び、感染症対策と情報対策が並行して進む異例の期間になります。\n\nこの線の上には、トランプ大統領のアカウント凍結の線(規制と説明責任レイヤー)もハウゲンの告発も乗っています。健康という切実なテーマが、プラットフォームのモデレーション体制を一気に鍛えた3年でもありました。",
       "detail": null,
-      "credibility": "verified",
-      "credibility_note": null,
+      "credibility": "disputed",
+      "credibility_note": "インフォデミックの期間に定まった区切りはありません。ここではWHOの緊急事態宣言(2020年1月30日)から終了(2023年5月5日)までを採りました。",
       "sources": [
         {
           "title": "WHO: COVID-19に関するPHEICの宣言(2020-01-30)と終了(2023-05-05)",
@@ -382,8 +382,8 @@
       ]
     },
     {
-      "date": "2024-11-01",
-      "precision": "month",
+      "date": "2024-11-28",
+      "precision": "day",
       "end_date": null,
       "type": "point",
       "layer": "規制と説明責任",

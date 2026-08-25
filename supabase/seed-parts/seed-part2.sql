@@ -837,7 +837,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-design-thinking'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-design-thinking') and name = '教育と制度'),
-          '1919-04-01', '1933-07-01', 'month', 'period', 'バウハウスの14年', '芸術と技術の統合を掲げる造形学校バウハウスが、独ヴァイマルに開校しました。工業生産を前提に、素材と機能から発想する基礎教育を体系化し、ナチス政権の圧力で1933年に閉校するまで、モダンデザインの規範を作っています。
+          '1919-04-01', '1933-07-31', 'month', 'period', 'バウハウスの14年', '芸術と技術の統合を掲げる造形学校バウハウスが、独ヴァイマルに開校しました。工業生産を前提に、素材と機能から発想する基礎教育を体系化し、ナチス政権の圧力で1933年に閉校するまで、モダンデザインの規範を作っています。
 
 閉校後は、教員たちの亡命によって方法論が米国の大学へ移植されました。デザインを**個人の才能ではなく教えられる方法**とみなす伝統はここに始まり、後年のd.schoolに連なる「デザイン教育の制度化」の源流となります。', null,
           'verified', null, 'user', 0) returning id)
@@ -1752,7 +1752,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 ウォール街大暴落の直後の開館だった。印象派以後の美術を「近代美術」として正典化し、収蔵と展示を通じて価値を定める制度が確立する。同時期ドイツではバウハウスが機能主義を掲げ、モダニズムは制度と教育の両面から広がっていた。開館当初は貸しビルの数室から始まり、1939年に現在地へ移った。', null,
           'verified', null, 'user', 6) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('MoMA: History (公式)', 'https://www.moma.org/about/who-we-are/moma-history'), ('Wikipedia: Museum of Modern Art', 'https://en.wikipedia.org/wiki/Museum_of_Modern_Art')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('MoMA: The Museum of Modern Art history (公式)', 'https://www.moma.org/about/mission-statement/history'), ('Wikipedia: Museum of Modern Art', 'https://en.wikipedia.org/wiki/Museum_of_Modern_Art')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '技術と社会'),
@@ -1791,7 +1791,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1970-01-01', '1989-05-12', 'year', 'period', 'ニューヨーク地下鉄グラフィティの時代', '1970年代の財政危機と治安悪化を背景に、ニューヨークの地下鉄が最大のキャンバスとなった時代。車両全面のピースからワイルドスタイルまで様式が発達し、1989年にMTAが「グラフィティのない地下鉄」を宣言して終息した。
 
 写真家マーサ・クーパーらの記録と、1983年の映画『ワイルド・スタイル』や写真集『Subway Art』が世界に様式を伝え、ヨーロッパや日本へ波及した。行政は洗浄と車両更新で対抗し、80年代後半に舞台は路上へ移る。', null,
-          'verified', null, 'user', 11) returning id)
+          'disputed', '地下鉄グラフィティの「時代」の始まりに定まった定義はなく、1960年代末からとする資料もある。終わりは1989年5月12日のMTAによる「グラフィティのない地下鉄」宣言を採った。', 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Graffiti in New York City', 'https://en.wikipedia.org/wiki/Graffiti_in_New_York_City'), ('Martha Cooper & Henry Chalfant『Subway Art』(1984)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
@@ -2579,10 +2579,10 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-street-culture') and name = 'グラフィティとアート'),
-          '1970-01-01', '1989-05-31', 'year', 'period', 'ニューヨーク地下鉄グラフィティの時代', 'ニューヨークの地下鉄車両が、名前を残すタギングから色鮮やかな大作「ピース」まで、グラフィティの巨大なキャンバスだった時代です。車両基地に忍び込むライターたちが、技法とスタイルを競い合いました。
+          '1970-01-01', '1989-05-12', 'year', 'period', 'ニューヨーク地下鉄グラフィティの時代', 'ニューヨークの地下鉄車両が、名前を残すタギングから色鮮やかな大作「ピース」まで、グラフィティの巨大なキャンバスだった時代です。車両基地に忍び込むライターたちが、技法とスタイルを競い合いました。
 
 市当局は犯罪として撲滅作戦を続けて、1989年5月に「グラフィティのない地下鉄」を宣言してこの時代は幕を閉じます。**街全体がギャラリーだった**約20年の車両と写真の記録が、後の世界的なストリートアート評価の原点になりました。', null,
-          'disputed', '地下鉄グラフィティの「時代」の始まりにはっきりした定義はなく、1960年代末からとする資料もあります。終わりは1989年5月のMTAによる宣言を採りました。', 'user', 0) returning id)
+          'disputed', '地下鉄グラフィティの「時代」の始まりにはっきりした定義はなく、1960年代末からとする資料もあります。終わりは1989年5月12日のMTAによる宣言を採りました。', 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Graffiti in New York City', 'https://en.wikipedia.org/wiki/Graffiti_in_New_York_City')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
@@ -2590,7 +2590,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1971-07-21', null, 'day', 'point', 'NYタイムズが「TAKI 183」を報道', 'ニューヨーク・タイムズが、市内のあちこちに「TAKI 183」と書き残すギリシャ系の配達員の若者を記事にしました。名前を街に刻むタギング文化が、初めて大手メディアに載った瞬間です。
 
 記事を読んだ若者たちは競って自分の名前を書き始めて、タグは市内で爆発的に増えました。**メディアに載ると文化が加速する**というストリートカルチャーの逆説は、この最初期からもう動いていたわけです。', null,
-          'verified', null, 'user', 1) returning id)
+          'disputed', 'TAKI 183を「最初のグラフィティ・ライター」とする通説には、フィラデルフィアのCornbreadら先行例を挙げる異論があります。記事が最初の大手メディア報道であること自体は確かです。', 'user', 1) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('The New York Times: ''Taki 183'' Spawns Pen Pals (1971-07-21)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
@@ -2639,7 +2639,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 パーティーの現場の即興だったMCの語りが、レコードという商品になって世界へ流通した瞬間で、ブロックパーティーの時代(同じレイヤー)の線はここで終わります。一方でシーンの当事者からは「よそ者が先に商品化した」という批判も受けました。路上と商業の緊張関係は、最初から刻み込まれていたんですね。', null,
           'disputed', 'ラップのレコードとして「初めて」チャートに入ったかどうかには異論があり、1週先にビルボードR&Bチャートに登場したファットバック・バンド「King Tim III」を挙げる見方があります。', 'user', 7) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Rapper''s Delight', 'https://en.wikipedia.org/wiki/Rapper''s_Delight')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Rapper''s Delight', 'https://en.wikipedia.org/wiki/Rapper%27s_Delight')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-street-culture') and name = 'グラフィティとアート'),
@@ -2691,7 +2691,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-street-culture') and name = 'グラフィティとアート'),
-          '2008-05-01', null, 'month', 'point', 'テート・モダンが「Street Art」展', 'ロンドンのテート・モダンが、美術館の外壁そのものを会場にした「Street Art」展を開催して、世界の6組のアーティストが巨大壁画を制作しました。
+          '2008-05-23', null, 'day', 'point', 'テート・モダンが「Street Art」展', 'ロンドンのテート・モダンが、美術館の外壁そのものを会場にした「Street Art」展を開催して、世界の6組のアーティストが巨大壁画を制作しました。
 
 犯罪として排除されてきた表現を、国立級の美術館が正面から展示した画期です。同じ時期、路上ではバンクシーの神出鬼没の作品が話題を集めていて、制度の内と外の境界線は誰が引くのかという問いが、美術の世界で表面化しました。', null,
           'verified', null, 'user', 14) returning id)

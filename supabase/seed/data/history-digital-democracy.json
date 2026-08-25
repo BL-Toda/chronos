@@ -174,8 +174,8 @@
       "title": "ケンブリッジ・アナリティカ事件",
       "summary": "選挙コンサルティング企業のケンブリッジ・アナリティカが、最大8700万人分のFacebookデータを不正に取得し、有権者の心理プロファイリングに使ったと報じられました。\n\n**個人データが世論操作の弾薬になる**という構図を、目に見える形にした事件です。FacebookのCEOは米議会で証言し、同社には後に巨額の制裁金が科されました。施行を目前に控えていたGDPR(制度とプラットフォームレイヤー)の正当性を裏づける事件にもなっています。",
       "detail": null,
-      "credibility": "verified",
-      "credibility_note": null,
+      "credibility": "disputed",
+      "credibility_note": "不正取得された人数は当初報道の約5000万人から、のちのFacebook発表で最大約8700万人へと変わっていて、数値には幅があります。",
       "sources": [
         {
           "title": "Wikipedia: Facebook-Cambridge Analytica data scandal",

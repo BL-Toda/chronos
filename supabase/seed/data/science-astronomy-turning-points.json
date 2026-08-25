@@ -156,8 +156,8 @@
       "title": "アインシュタインが一般相対性理論を発表",
       "summary": "アインシュタインがプロイセン科学アカデミーで、一般相対性理論の重力場方程式を発表しました。重力を力ではなく時空の曲がりとして描き、ニュートン以来の重力観を根本から置き換えたのです。\n\n水星の近日点移動という積年の謎を説明したうえ、光の湾曲と重力波という検証できる予言を生みました。前者は1919年の日食観測(社会と宇宙観レイヤー)で、後者はちょうど100年後、2015年の直接検出(観測と技術レイヤー)で確かめられることになります。",
       "detail": null,
-      "credibility": "verified",
-      "credibility_note": null,
+      "credibility": "disputed",
+      "credibility_note": "重力場方程式の最終形にヒルベルトが先に到達していたかどうかは、校正刷りの証拠をめぐって科学史家の間でも見解が分かれています。",
       "sources": [
         {
           "title": "Wikipedia: General relativity",
@@ -400,8 +400,8 @@
       ]
     },
     {
-      "date": "2023-02-01",
-      "precision": "month",
+      "date": "2023-02-22",
+      "precision": "day",
       "end_date": null,
       "type": "point",
       "layer": "宇宙像の転換",
@@ -413,7 +413,7 @@
       "sources": [
         {
           "title": "Nature: A population of red candidate massive galaxies ~600 Myr after the Big Bang (Labbé et al., 2023)",
-          "url": null
+          "url": "https://doi.org/10.1038/s41586-023-05786-2"
         }
       ]
     }

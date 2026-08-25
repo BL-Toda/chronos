@@ -300,8 +300,8 @@
       "title": "CrowdStrike障害、クラウド依存のリスク露呈",
       "summary": "セキュリティ企業CrowdStrikeの更新プログラムの不具合により、世界で約850万台のWindows端末が起動不能となり、航空・医療・金融などの業務が広範囲で止まりました。\n\n特定のクラウドサービスへの依存が、社会全体の単一障害点になりうることを史上最大級の規模で示した事例です。SaaS前提の業務設計に対して、依存先の集中リスクという重い論点を突きつけました。",
       "detail": null,
-      "credibility": "verified",
-      "credibility_note": null,
+      "credibility": "unverified",
+      "credibility_note": "影響台数約850万台はMicrosoftの推計で、実際の影響範囲の全体像は確定していません。",
       "sources": [
         {
           "title": "Microsoft公式ブログによる影響台数の推計(2024-07-20)および各社報道",

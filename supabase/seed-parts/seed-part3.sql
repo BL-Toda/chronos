@@ -1481,7 +1481,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2018-03-17', null, 'day', 'point', 'ケンブリッジ・アナリティカ事件', '選挙コンサルティング企業のケンブリッジ・アナリティカが、最大8700万人分のFacebookデータを不正に取得し、有権者の心理プロファイリングに使ったと報じられました。
 
 **個人データが世論操作の弾薬になる**という構図を、目に見える形にした事件です。FacebookのCEOは米議会で証言し、同社には後に巨額の制裁金が科されました。施行を目前に控えていたGDPR(制度とプラットフォームレイヤー)の正当性を裏づける事件にもなっています。', null,
-          'verified', null, 'user', 8) returning id)
+          'disputed', '不正取得された人数は当初報道の約5000万人から、のちのFacebook発表で最大約8700万人へと変わっていて、数値には幅があります。', 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Facebook-Cambridge Analytica data scandal', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-digital-democracy'),

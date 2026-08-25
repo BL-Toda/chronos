@@ -925,7 +925,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '規制と事件'),
-          '2021-09-07', '2025-01-31', 'day', 'period', '🌎 エルサルバドルの法定通貨実験、3年4か月', 'エルサルバドルで世界初のBitcoin法定通貨法が施行。ドル化経済の同国が送金コスト削減と金融包摂を掲げた国家実験は、IMF融資の条件を受けて受け入れ義務を外す法改正(2025年1月)まで3年4か月続きました。
+          '2021-09-07', '2025-01-29', 'day', 'period', '🌎 エルサルバドルの法定通貨実験、3年4か月', 'エルサルバドルで世界初のBitcoin法定通貨法が施行。ドル化経済の同国が送金コスト削減と金融包摂を掲げた国家実験は、IMF融資の条件を受けて受け入れ義務を外す法改正(2025年1月)まで3年4か月続きました。
 
 国民の利用は最後まで限定的で、IMFは一貫して金融リスクを警告し続けました。この実験の線は強気相場の線(市場と資本レイヤー)の頂点近くで始まり、二度目の冬をまるごとくぐって終わります。相場の熱の中で始まった国策が、冷めたあとも続いた記録です。', null,
           'disputed', '2025年1月の法改正後もBitcoin法自体は存続しており、「法定通貨でなくなった」と言い切れるかは解釈が分かれます。', 'user', 14) returning id)
@@ -949,15 +949,15 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '市場と資本'),
-          '2022-05-07', '2022-05-13', 'day', 'period', '💥 Terra/USTの崩壊', 'アルゴリズム型ステーブルコインUSTがドル連動を失い、姉妹通貨LUNAとともに1週間でほぼ無価値に。約400億ドル規模の時価総額が消えました。担保ではなくアルゴリズムで価格を保つ設計(技術)の弱さが、市場の売り圧力で一気に露呈した形です。
+          '2022-05-09', '2022-05-13', 'day', 'period', '💥 Terra/USTの崩壊', 'アルゴリズム型ステーブルコインUSTがドル連動を失い、姉妹通貨LUNAとともに数日でほぼ無価値に。約400億ドル規模の時価総額が消えました。担保ではなくアルゴリズムで価格を保つ設計(技術)の弱さが、市場の売り圧力で一気に露呈した形です。
 
 ヘッジファンドや貸付業者の破綻が連鎖し、**11月のFTX破綻(規制と事件)へ続く信用収縮の起点**になりました。米国や日本でステーブルコイン規制の議論が急加速し、日本では翌年、改正資金決済法で発行者が限定されます。', null,
-          'verified', null, 'user', 17) returning id)
+          'disputed', '消えた時価総額400億ドル規模は集計時点と対象範囲によって幅があり、崩壊の起点にも5月7日の初回デペグを採る見方があります。ここではドル連動が崩れた5月9日から、チェーンが停止した5月13日までを採りました。', 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Terra (blockchain)', 'https://en.wikipedia.org/wiki/Terra_(blockchain)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '技術'),
-          '2022-09-15', null, 'day', 'point', '🔀 Ethereumが「The Merge」でProof of Stakeへ移行', 'EthereumがProof of WorkからProof of Stakeへ移行するアップグレード「The Merge」を完了し、消費電力を99%以上削減したとされます。動いているネットワークを止めずに合意形成の仕組みを入れ替える、数年がかりの開発の集大成でした!
+          '2022-09-15', null, 'day', 'point', '🔀 Ethereumが「The Merge」でProof of Stakeへ移行', 'EthereumがProof of WorkからProof of Stakeへ移行するアップグレード「The Merge」を完了し、消費電力を約99.95%削減したとされます。動いているネットワークを止めずに合意形成の仕組みを入れ替える、数年がかりの開発の集大成でした!
 
 環境負荷への批判(規制と事件レイヤーの論点)に技術で答えた形ですが、同時期の市場はTerra崩壊とFTX破綻に挟まれた「冬」の真っ最中で、価格への影響は限定的。**技術と市場の時間軸のずれ**がよく分かる事例です。', null,
           'verified', null, 'user', 18) returning id)
@@ -1227,7 +1227,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cybersecurity'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cybersecurity') and name = '法と国家'),
-          '2013-06-01', null, 'month', 'point', 'スノーデンがNSAの大規模監視を告発', '元NSA契約職員エドワード・スノーデンが、米政府による通信の大規模収集プログラムの内部文書を暴露しました。同盟国の首脳や一般市民の通信までが収集対象だったことが明らかになります。
+          '2013-06-05', null, 'day', 'point', 'スノーデンがNSAの大規模監視を告発', '元NSA契約職員エドワード・スノーデンが、米政府による通信の大規模収集プログラムの内部文書を暴露しました。同盟国の首脳や一般市民の通信までが収集対象だったことが明らかになります。
 
 敵は犯罪者だけでなく**自国の政府でもあり得る**。この認識が広がり、通信の常時暗号化(防御と技術レイヤー)が業界標準へ一気に進みました。プライバシーと安全保障のバランスをめぐる議論の前提を変えた告発です。', null,
           'verified', null, 'user', 6) returning id)
@@ -1532,7 +1532,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2011-09-01', null, 'month', 'point', '💳 Stripe公開、オンライン決済がAPI数行になる', '米Stripeが開発者向けの決済APIを一般公開しました。加盟店契約や審査で数週間かかっていたカード決済の導入が、ウェブサイトに数行のコードを書くだけで済むようになります!
 
 **決済のインフラ化**はECやSaaSの起業コストをぐっと下げ、その後のプラットフォーム経済の裏方になりました。既存金融レイヤーから見ると、カード網の上に乗りながら顧客接点だけを奪っていく、新種の存在の登場です。', null,
-          'verified', null, 'user', 2) returning id)
+          'unverified', '一般公開は2011年9月と報じられていますが、限定公開からの移行時期は資料により幅があります。', 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Stripe公式発表 (2011-09)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
@@ -1617,10 +1617,10 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-fintech') and name = '技術とサービス'),
-          '2022-05-01', null, 'month', 'point', '📉 ステーブルコインTerraUSD崩壊', 'アルゴリズム型ステーブルコインTerraUSD(UST)が米ドルとの連動を失い、姉妹通貨LUNAとともに数日でほぼ無価値になりました。消えた時価総額は400億ドル規模と推計されています。
+          '2022-05-09', '2022-05-13', 'day', 'period', '📉 ステーブルコインTerraUSD崩壊', 'アルゴリズム型ステーブルコインTerraUSD(UST)が米ドルとの連動を失い、姉妹通貨LUNAとともに数日でほぼ無価値になりました。消えた時価総額は400億ドル規模と推計されています。
 
 「アルゴリズムで価値を保つ」という設計の破綻は、貸付業者やファンドの連鎖倒産を招き、半年後のFTX破綻への導火線になりました。各国のステーブルコイン規制(規制と社会レイヤー)が一気に具体化する、直接のきっかけです。', null,
-          'disputed', '消失額の推計は、集計時点と対象範囲によって数百億ドル規模の幅があります。', 'user', 13) returning id)
+          'disputed', '消失額の推計は、集計時点と対象範囲によって数百億ドル規模の幅があります。崩壊の起点にも5月7日の初回デペグを採る見方があり、ここではドル連動が崩れた5月9日からチェーン停止の5月13日までを採りました。', 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Reuters・Bloomberg報道 (2022-05)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
@@ -2436,12 +2436,12 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2012-04-09', null, 'day', 'point', '💵 FacebookがInstagramを10億ドルで買収', 'Facebookが、社員たった13人のInstagramを約10億ドルで買収すると発表しました。売上のないアプリへの巨額買収は当時「高すぎる」と言われましたが、結果はIT史上屈指の安い買い物と評されるようになります!
 
 有力な新興サービスを早めに取り込む成長戦略の象徴です。のちのWhatsApp買収と合わせて「競争の芽を摘む買収では」という議論(規制と説明責任レイヤー)を呼び、米当局は2020年に同社を反トラストで提訴しました。', null,
-          'verified', null, 'user', 7) returning id)
+          'disputed', '発表時の約10億ドルと、Facebook株の下落を経た完了時の価値は別物で、報道によって金額が分かれます。', 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Instagram (Acquisition by Facebook)', 'https://en.wikipedia.org/wiki/Instagram')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = '規制と説明責任'),
-          '2013-06-01', null, 'month', 'point', '🕵️ スノーデンが大規模監視を告発', '元NSA契約職員のエドワード・スノーデンが、米政府が大手IT企業のデータに広くアクセスする監視プログラムの存在を告発しました。SNSやメールの利用記録が国家監視の対象だと、具体的に示されたのです。
+          '2013-06-05', null, 'day', 'point', '🕵️ スノーデンが大規模監視を告発', '元NSA契約職員のエドワード・スノーデンが、米政府が大手IT企業のデータに広くアクセスする監視プログラムの存在を告発しました。SNSやメールの利用記録が国家監視の対象だと、具体的に示されたのです。
 
 プラットフォームにたまった個人データ(プラットフォームレイヤー)が国家に流れ得る。この事実は世界に衝撃を与え、通信を常時暗号化する流れを一気に進めました。EUのデータ保護強化の議論も、この事件で加速します。', null,
           'verified', null, 'user', 8) returning id)
@@ -2468,7 +2468,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2018-03-17', null, 'day', 'point', '🔓 ケンブリッジ・アナリティカ事件が発覚', '英コンサル企業ケンブリッジ・アナリティカが、最大8700万人分のFacebookユーザーデータを不正に取得し、選挙広告の標的設定に使っていたと報じられました。ザッカーバーグCEOは米議会での証言に立ちます。
 
 2016年米大統領選(社会と政治レイヤー)への疑念と結びついて、SNSのデータ利用への信頼が決定的に揺らいだ事件です。FTCは2019年、Facebookに50億ドルの制裁金を科し、規制強化の流れがここで固まりました。', null,
-          'verified', null, 'user', 11) returning id)
+          'disputed', '不正取得された人数は当初報道で約5000万人、のちのFacebook発表で最大約8700万人とされていて、数値には幅があります。', 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Facebook–Cambridge Analytica data scandal', 'https://en.wikipedia.org/wiki/Facebook%E2%80%93Cambridge_Analytica_data_scandal')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
@@ -2484,7 +2484,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2020-01-30', '2023-05-05', 'day', 'period', '🦠 コロナ禍とインフォデミック、3年余り', 'WHOの緊急事態宣言から終了までの3年余り、SNSはパンデミック情報の主戦場でした。WHOは誤情報の氾濫を「インフォデミック」と呼び、感染症対策と情報対策が並行して進む異例の期間になります。
 
 この線の上には、トランプ大統領のアカウント凍結の線(規制と説明責任レイヤー)もハウゲンの告発も乗っています。健康という切実なテーマが、プラットフォームのモデレーション体制を一気に鍛えた3年でもありました。', null,
-          'verified', null, 'user', 13) returning id)
+          'disputed', 'インフォデミックの期間に定まった区切りはありません。ここではWHOの緊急事態宣言(2020年1月30日)から終了(2023年5月5日)までを採りました。', 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('WHO: COVID-19に関するPHEICの宣言(2020-01-30)と終了(2023-05-05)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
@@ -2537,7 +2537,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = '規制と説明責任'),
-          '2024-11-01', null, 'month', 'point', '🇦🇺 豪州が16歳未満のSNS利用を禁止する法律を可決', 'オーストラリア議会が、16歳未満のSNS利用を禁止し、年齢確認をプラットフォーム側の義務とする世界初の法律を可決しました。2025年12月から適用され、違反企業には最大4950万豪ドルの罰金が科されます。
+          '2024-11-28', null, 'day', 'point', '🇦🇺 豪州が16歳未満のSNS利用を禁止する法律を可決', 'オーストラリア議会が、16歳未満のSNS利用を禁止し、年齢確認をプラットフォーム側の義務とする世界初の法律を可決しました。2025年12月から適用され、違反企業には最大4950万豪ドルの罰金が科されます。
 
 米公衆衛生局長官の勧告(社会と政治レイヤー)に象徴される「若者への害」の議論が、ついに利用そのものの禁止という強い立法にまで至りました。年齢確認の実効性とプライバシーへの影響をめぐって、各国が実施を注視しています。', null,
           'verified', null, 'user', 20) returning id)
@@ -2770,7 +2770,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2020-10-01', '2021-11-30', 'month', 'period', '📈 コロナ緩和マネーの強気相場、13か月', 'コロナ対応の金融緩和を追い風に、2020年秋から暗号資産市場が一本調子で上昇。ビットコインは約6万9000ドルの史上最高値をつけ、全体の時価総額は集計サイトベースで約3兆ドルに達しました。NFTもメタバース関連トークンも軒並み高騰です。
 
 Beepleの落札も、Axieの「遊んで稼ぐ」(社会と制度レイヤー)も、Metaの社名変更さえも、ぜんぶこの強気の線の上に乗っています。上げ相場が理想を看板に変えていく、この年表でいちばん密度の高い13か月でした。', null,
-          'unverified', '強気相場の起点の置き方には諸説があり、時価総額約3兆ドルもCoinGeckoなど集計サイトの推定値で、どこまでを数えるかで変わります。', 'user', 5) returning id)
+          'disputed', '強気相場の起点の置き方には諸説があり、時価総額約3兆ドルもCoinGeckoなど集計サイトの推定値で、どこまでを数えるかで変わります。', 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('CoinGecko: Global Cryptocurrency Market Cap(2021年11月)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
@@ -2807,10 +2807,10 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '資本と市場'),
-          '2022-05-09', null, 'day', 'point', '💥 ステーブルコインTerraUSD崩壊', 'アルゴリズム型ステーブルコインTerraUSD(UST)がドル連動を失い、対をなすトークンLUNAごと数日でほぼ無価値に。消えた時価総額は400億ドル規模とされます。
+          '2022-05-09', '2022-05-13', 'day', 'period', '💥 ステーブルコインTerraUSD崩壊', 'アルゴリズム型ステーブルコインTerraUSD(UST)がドル連動を失い、対をなすトークンLUNAごと数日でほぼ無価値に。消えた時価総額は400億ドル規模とされます。
 
 「アルゴリズムでドルを再現する」設計の脆さが露呈した事件で、ヘッジファンドや貸付業者の破綻が連鎖し、FTX破綻への導火線になりました。各国のステーブルコイン規制論(社会と制度レイヤー)も、これで一気に加速します。', null,
-          'verified', null, 'user', 10) returning id)
+          'disputed', '消えた時価総額400億ドル規模は集計時点と対象範囲によって幅があり、崩壊の起点にも5月7日の初回デペグを採る見方があります。ここではドル連動が崩れた5月9日から、チェーンが停止した5月13日までを採りました。', 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Terra (blockchain)', 'https://en.wikipedia.org/wiki/Terra_(blockchain)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
@@ -2823,7 +2823,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '技術とプロトコル'),
-          '2022-09-15', null, 'day', 'point', '🔀 イーサリアム「The Merge」でPoS移行完了', 'イーサリアムが合意形成の仕組みをプルーフ・オブ・ワークからプルーフ・オブ・ステークへ切り替える大型アップグレード「The Merge」を完了。ネットワークの消費電力を99.9%以上削減したとされます。
+          '2022-09-15', null, 'day', 'point', '🔀 イーサリアム「The Merge」でPoS移行完了', 'イーサリアムが合意形成の仕組みをプルーフ・オブ・ワークからプルーフ・オブ・ステークへ切り替える大型アップグレード「The Merge」を完了。ネットワークの消費電力を約99.95%削減したとされます。
 
 暗号資産批判の筆頭だった環境負荷に技術側から答えた形で、弱気相場(資本と市場レイヤー)の真っ最中でも**プロトコル開発は着実に前進する**と示しました。稼働を止めずに基盤を入れ替えるのは、技術的にも異例の規模です!', null,
           'verified', null, 'user', 12) returning id)
