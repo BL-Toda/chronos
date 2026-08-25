@@ -978,15 +978,35 @@ function render(){
   periods.forEach(p => items.push({kind: 'pend', ev: p.ev, pid: p.pid, key: p.ev._e.key + 0.5}));
   items.sort((a,b) => a.key - b.key);
 
+  // ── レーンのスロット割当: 重ならない期間は同じ列を再利用（同レイヤーの線が同じ列に続くよう優先）
+  const slotEnd = [], slotLayer = [];
+  periods.forEach(p => {
+    const free = [];
+    for (let i = 0; i < slotEnd.length; i++) if (slotEnd[i] <= p.ev._d.key) free.push(i);
+    const sameLayer = free.filter(i => slotLayer[i] === p.ev.layer_id);
+    let idx = sameLayer.length ? sameLayer.reduce((a, b) => slotEnd[a] >= slotEnd[b] ? a : b) : undefined;
+    if (idx === undefined) idx = free.length ? free[0] : slotEnd.length;
+    slotEnd[idx] = p.ev._e.key; slotLayer[idx] = p.ev.layer_id;
+    p.slot = idx;
+  });
+  const slotCount = Math.max(1, slotEnd.length);
+  const laneWidth = slotCount > 4 ? ` style="width:${slotCount * 10 + 12}px"` : '';
   const laneState = {}; periods.forEach(p => laneState[p.pid] = 'before'); // before | active | after
-  const lanesHTML = (opts = {}) => periods.map(p => {
-    const st = laneState[p.pid];
-    if (st !== 'active' && opts.startPid !== p.pid && opts.endPid !== p.pid)
-      return `<div class="lane spacer" data-period="${p.pid}"></div>`;
-    const color = (layerById[p.ev.layer_id] || {}).color || 'gold';
-    const cap = opts.startPid === p.pid ? ' start' : opts.endPid === p.pid ? ' end' : '';
-    return `<div class="lane c-${color}${cap} active" data-period="${p.pid}"></div>`;
-  }).join('');
+  const lanesHTML = (opts = {}) => {
+    const bySlot = Array(slotCount).fill(null);
+    periods.forEach(p => {
+      if (laneState[p.pid] === 'active') bySlot[p.slot] = {p, cap: ''};
+    });
+    periods.forEach(p => {
+      if (opts.startPid === p.pid) bySlot[p.slot] = {p, cap: ' start'};
+      if (opts.endPid === p.pid) bySlot[p.slot] = {p, cap: ' end'};
+    });
+    return bySlot.map(cell => {
+      if (!cell) return `<div class="lane spacer"></div>`;
+      const color = (layerById[cell.p.ev.layer_id] || {}).color || 'gold';
+      return `<div class="lane c-${color}${cell.cap} active" data-period="${cell.p.pid}"></div>`;
+    }).join('');
+  };
 
   let html = '', lastYear = null;
   const pidOf = ev => (periods.find(p => p.ev === ev) || {}).pid;
@@ -996,7 +1016,7 @@ function render(){
     const y = it.kind === 'pend' ? ev._e.y : ev._d.y;
     if (it.kind !== 'pend' && y !== lastYear) {
       lastYear = y;
-      html += `<div class="tl-row" data-layers="all"><div class="tl-lanes">${lanesHTML()}</div><div class="connector-spacer"></div>` +
+      html += `<div class="tl-row" data-layers="all"><div class="tl-lanes"${laneWidth}>${lanesHTML()}</div><div class="connector-spacer"></div>` +
         `<div class="tl-axis"><div style="margin-top:28px"></div></div>` +
         `<div class="tl-content"><div class="tl-year"><div class="tl-year-text">${yearLabel(y)}</div><div class="tl-year-line"></div></div></div></div>`;
     }
@@ -1010,7 +1030,7 @@ function render(){
       `<div class="ev-tags"><span class="ev-tag c-${layer.color}">${esc(layer.name)}</span>%%PERIODTAG%%<span class="ev-tag ${credTag[1]}">${credTag[0]}</span></div>`;
 
     if (it.kind === 'point') {
-      html += `<div class="tl-row" data-layers="${layer.id}"><div class="tl-lanes">${lanesHTML()}</div><div class="connector-spacer"></div>` +
+      html += `<div class="tl-row" data-layers="${layer.id}"><div class="tl-lanes"${laneWidth}>${lanesHTML()}</div><div class="connector-spacer"></div>` +
         `<div class="tl-axis"><div class="axis-dot c-${layer.color}"></div></div>` +
         `<div class="tl-content"><div class="ev-card c-${layer.color}" onclick="toggleEvAccordion(this)">` +
         `<div class="ev-caret">${caret}</div><div class="ev-date">${fmtDate(ev.event_date, ev.date_precision)}</div>` +
@@ -1019,7 +1039,7 @@ function render(){
       const pid = pidOf(ev); laneState[pid] = 'active';
       const years = Math.max(1, ev._e.y - ev._d.y);
       html += `<div class="tl-row" data-layers="${layer.id}" data-period-id="${pid}" data-period-action="start">` +
-        `<div class="tl-lanes">${lanesHTML({startPid: pid})}</div><div class="period-connector c-${layer.color}"></div>` +
+        `<div class="tl-lanes"${laneWidth}>${lanesHTML({startPid: pid})}</div><div class="period-connector c-${layer.color}"></div>` +
         `<div class="tl-axis"><div class="axis-period-mark start c-${layer.color}"></div></div>` +
         `<div class="tl-content"><div class="period-card-start c-${layer.color}" onclick="toggleAccordion(this)">` +
         `<div class="period-caret">${caret}</div><div class="ev-date">${fmtDate(ev.event_date, ev.date_precision)} — ${fmtDate(ev.end_date, ev.date_precision)}</div>` +
@@ -1029,7 +1049,7 @@ function render(){
     } else { // pend
       const pid = it.pid;
       html += `<div class="tl-row" data-layers="${layer.id}" data-period-id="${pid}" data-period-action="end">` +
-        `<div class="tl-lanes">${lanesHTML({endPid: pid})}</div><div class="period-connector c-${layer.color} end"></div>` +
+        `<div class="tl-lanes"${laneWidth}>${lanesHTML({endPid: pid})}</div><div class="period-connector c-${layer.color} end"></div>` +
         `<div class="tl-axis"><div class="axis-period-mark end c-${layer.color}"></div></div>` +
         `<div class="tl-content"><div class="period-label-end"><div class="pl-bar c-${layer.color}"></div>` +
         `<div class="pl-text">${esc(ev.title)}<span class="pl-end-note">ここまで（${yearLabel(ev._e.y)}）</span></div></div></div></div>`;
