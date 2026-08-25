@@ -466,6 +466,53 @@
     .tl-lanes { width:44px; padding-right:4px; }
   }
 
+  /* ===== 読了バー / 現在年 / コンパクトヘッダー ===== */
+  .readbar { position:fixed; top:100px; left:0; right:0; height:2px; z-index:99; pointer-events:none; transition:top .35s var(--ease); }
+  .readbar i { display:block; height:100%; background:linear-gradient(90deg,rgba(232,228,222,0.35),rgba(232,228,222,0.75)); transform-origin:0 50%; transform:scaleX(0); transition:transform .12s linear; }
+  html.scrolled .readbar { top:60px; }
+  html.scrolled .header { height:60px; }
+  html.scrolled .header img { height:24px; }
+  html.scrolled .layer-controls { top:60px; }
+  .header { transition:height .35s var(--ease); }
+  .header img { transition:height .35s var(--ease); }
+  .layer-controls { transition:top .35s var(--ease); }
+  .year-now {
+    position:fixed; top:116px; left:50%; transform:translate(-50%,-4px); z-index:98;
+    font-size:var(--fs-sm); line-height:var(--lh-sm); font-weight:500; letter-spacing:0.08em;
+    font-variant-numeric:tabular-nums; color:var(--accent);
+    background:rgba(10,10,12,0.72); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+    border:1px solid var(--border2); border-radius:999px; padding:4px 16px;
+    opacity:0; pointer-events:none;
+    transition:opacity .3s var(--ease), transform .3s var(--ease), top .35s var(--ease);
+  }
+  html.scrolled .year-now { top:76px; }
+  .year-now.show { opacity:1; transform:translate(-50%,0); }
+
+  /* ===== カバー写真 ===== */
+  .d-coverwrap { margin:0 auto 32px; max-width:700px; padding:0 16px; }
+  .d-cover { position:relative; height:clamp(160px,28vw,280px); overflow:hidden; background:var(--bg-card); }
+  .d-cover img { width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .5s var(--ease), transform .6s var(--ease); }
+  .d-cover img.loaded { opacity:1; }
+  .d-cover-shade { position:absolute; inset:0; background:linear-gradient(180deg,rgba(10,10,12,0.05) 40%,rgba(10,10,12,0.55)); }
+  .d-cover-credit {
+    display:block; text-align:right; margin-top:8px;
+    font-family:var(--f-mono); font-size:var(--fs-xs); line-height:var(--lh-xs);
+    letter-spacing:0.04em; color:var(--text3);
+  }
+  .d-cover-credit a { color:inherit; text-decoration:underline; text-decoration-color:rgba(232,228,222,0.25); text-underline-offset:2px; transition:color .3s,text-decoration-color .3s; }
+
+  /* ===== カテゴリラベル / すべて開く ===== */
+  .pub-cat {
+    font-family:var(--f-mono); font-size:var(--fs-xs); line-height:var(--lh-xs);
+    letter-spacing:0.2em; color:var(--accent); text-transform:uppercase; margin-bottom:12px;
+  }
+  .ev-tools { max-width:700px; margin:0 auto; padding:16px 16px 0; display:flex; justify-content:flex-end; }
+  .ev-expall {
+    font-size:var(--fs-sm); line-height:var(--lh-sm); color:var(--text2);
+    border:1px solid rgba(232,228,222,0.16); border-radius:999px; padding:8px 16px;
+    background:none; cursor:pointer; transition:color .3s,border-color .3s,background .3s;
+  }
+
   /* ===== VIEWER-SPECIFIC ===== */
   /* Public hero */
   .pub-hero {
@@ -609,6 +656,9 @@
 
   /* ===== HOVER（ポインタ環境のみ。タッチでは残らない） ===== */
   @media (hover:hover) and (pointer:fine) {
+    .d-coverwrap:hover img { transform:scale(1.015); }
+    .d-cover-credit a:hover { color:var(--text2); text-decoration-color:rgba(232,228,222,0.5); }
+    .ev-expall:hover { color:var(--text-h); border-color:rgba(232,228,222,0.32); background:rgba(232,228,222,0.06); }
     .layer-chip:hover { border-color:var(--border2); background:rgba(232,228,222,0.05); color:var(--text2); }
     .layer-chip:hover .chip-dot { transform:scale(1.15); }
     .lane:not(.spacer):hover { filter:brightness(1.6); }
@@ -648,8 +698,15 @@
   </button>
 </header>
 
+<div class="readbar" aria-hidden="true"><i></i></div>
+<div class="year-now" aria-hidden="true"></div>
+
+<!-- Cover -->
+<figure class="d-coverwrap" id="coverWrap" hidden></figure>
+
 <!-- Public Hero -->
 <div class="pub-hero">
+  <div class="pub-cat" id="pubCat"></div>
   <div class="pub-title" id="pubTitle">読み込み中…</div>
   <div class="pub-meta">
     <div class="pub-author">
@@ -667,6 +724,7 @@
 
 <!-- Layer Controls -->
 <div class="layer-controls" id="layerControls"></div>
+<div class="ev-tools"><button class="ev-expall" id="expAll" type="button">すべて開く</button></div>
 
 <div class="legend">
   <div class="legend-item"><div class="legend-dot-icon"></div>点のイベント</div>
@@ -714,15 +772,87 @@ const SUPA_KEY = 'sb_publishable_Xhyzh9YugRP8MCevtf_7YA_x1IumMC6';
 const DEFAULT_SLUG = 'tech-ai-revolution';
 const COLOR_HEX = {blue:'#5B9BD5',green:'#7BC67E',pink:'#D4849A',gold:'#C8B87E',purple:'#9E7EC8',teal:'#5BBCB4',orange:'#D4A05A'};
 const CRED = {verified:['✓ 検証済み','cred'],disputed:['諸説あり','cred-d'],unverified:['未検証','cred-u']};
+const CAT_NAME = {'technology':'テクノロジー','history-politics':'歴史・政治','culture':'カルチャー','science-nature':'科学・自然','business':'ビジネス','personal-life':'個人・ライフ'};
+const CAT_KEY = {'technology':'tech','history-politics':'history','culture':'culture','science-nature':'science','business':'business','personal-life':'personal'};
+const UNSPLASH_UTM = '?utm_source=chronos&utm_medium=referral';
+// カバー写真は explore の PHOTO_POOL と同一（seed決定論で同じ写真になる）
+const PHOTO_POOL = {
+  tech:[
+    {id:"qwMfZVm3yRI",raw:"https://images.unsplash.com/photo-1637166185518-058f5896a2e9",name:"MJH SHIKDER",user:"https://unsplash.com/@mjh_shikder",link:"https://unsplash.com/photos/a-dark-hallway-with-blue-and-white-lights-qwMfZVm3yRI"},
+    {id:"56xiC0jUiQ0",raw:"https://images.unsplash.com/photo-1634834300387-8015d9fb7550",name:"MJH SHIKDER",user:"https://unsplash.com/@mjh_shikder",link:"https://unsplash.com/photos/a-tunnel-with-neon-lights-in-it-56xiC0jUiQ0"},
+    {id:"Wa-3T6d0rBo",raw:"https://images.unsplash.com/photo-1689443111130-6e9c7dfd8f9e",name:"Martin Martz",user:"https://unsplash.com/@martz90",link:"https://unsplash.com/photos/a-dark-background-with-a-purple-geometric-design-Wa-3T6d0rBo"},
+    {id:"4J1tjkox6ho",raw:"https://images.unsplash.com/photo-1672581437674-3186b17b405a",name:"Vinh Nguyen",user:"https://unsplash.com/@huyvinh95",link:"https://unsplash.com/photos/a-futuristic-sci-fi-scene-with-a-blue-background-4J1tjkox6ho"},
+    {id:"nmA5n9nHvFM",raw:"https://images.unsplash.com/photo-1785981254860-98d9ad1e7b22",name:"Logan Voss",user:"https://unsplash.com/@loganvoss",link:"https://unsplash.com/photos/abstract-metallic-circuit-board-with-blue-pins-nmA5n9nHvFM"},
+    {id:"2yClsTFXIcE",raw:"https://images.unsplash.com/photo-1660165458059-57cfb6cc87e5",name:"and machines",user:"https://unsplash.com/@and_machines",link:"https://unsplash.com/photos/iridescent-rectangular-prisms-in-grid-2yClsTFXIcE"},
+    {id:"UwLc1ZTnzos",raw:"https://images.unsplash.com/photo-1746755455586-e946c9b7a4a4",name:"Declan Sun",user:"https://unsplash.com/@declansun",link:"https://unsplash.com/photos/steel-beams-create-a-geometric-architectural-structure-UwLc1ZTnzos"},
+    {id:"Dn1Jjv3Kl1k",raw:"https://images.unsplash.com/photo-1777792231793-aa9341180be3",name:"Lai Man Nung",user:"https://unsplash.com/@kirklai",link:"https://unsplash.com/photos/tall-building-with-purple-and-blue-lights-at-night-Dn1Jjv3Kl1k"},
+  ],
+  history:[
+    {id:"-zoe4nviem4",raw:"https://images.unsplash.com/photo-1507475380673-1246fa72eeea",name:"Arthur Yeti",user:"https://unsplash.com/@arthuryeti",link:"https://unsplash.com/photos/brown-painted-structures--zoe4nviem4"},
+    {id:"Z9aR-ewdQTc",raw:"https://images.unsplash.com/photo-1604579806311-e65d83db73d7",name:"Federico Di Dio photography",user:"https://unsplash.com/@didiofederico_photographer",link:"https://unsplash.com/photos/brown-concrete-building-during-daytime-Z9aR-ewdQTc"},
+    {id:"Q9hRAcsW88o",raw:"https://images.unsplash.com/photo-1697789234239-adf2e075c654",name:"Onur KAYACI",user:"https://unsplash.com/@kayacionur",link:"https://unsplash.com/photos/the-ruins-of-the-ancient-city-of-delphinia-Q9hRAcsW88o"},
+    {id:"YOFvbEu9w9Y",raw:"https://images.unsplash.com/photo-1649590234463-4fabe475dd91",name:"amir ibrahim",user:"https://unsplash.com/@amir_ibrahim",link:"https://unsplash.com/photos/a-close-up-of-a-pillar-with-carvings-on-it-YOFvbEu9w9Y"},
+    {id:"tuak5aFYydE",raw:"https://images.unsplash.com/photo-1613552568445-7d357eb359c6",name:"Nika Benedictova",user:"https://unsplash.com/@nika_benedictova",link:"https://unsplash.com/photos/brown-rock-formation-under-blue-sky-during-daytime-tuak5aFYydE"},
+    {id:"umfgtmwR__Y",raw:"https://images.unsplash.com/photo-1738580971059-6c645b78c1b8",name:"Martijn Vonk",user:"https://unsplash.com/@vonkm737",link:"https://unsplash.com/photos/an-aerial-view-of-an-ancient-city-in-the-desert-umfgtmwR__Y"},
+    {id:"OtG1kmZCFIQ",raw:"https://images.unsplash.com/photo-1597078769927-ffb0c1fc9d98",name:"Moritz Kindler",user:"https://unsplash.com/@moritz_photography",link:"https://unsplash.com/photos/brown-concrete-building-during-daytime-OtG1kmZCFIQ"},
+    {id:"hTIftud72Jo",raw:"https://images.unsplash.com/photo-1771692822834-1ae0564af77f",name:"Aysegul Aytören",user:"https://unsplash.com/@oldsoulframes",link:"https://unsplash.com/photos/ancient-stone-ruins-of-gobeklitepe-archaeological-site-hTIftud72Jo"},
+  ],
+  culture:[
+    {id:"R7ZDmTCbUgs",raw:"https://images.unsplash.com/photo-1773474200110-c69c3accf229",name:"Egor Myznik",user:"https://unsplash.com/@vonshnauzer",link:"https://unsplash.com/photos/two-people-observe-framed-artwork-on-a-wall-R7ZDmTCbUgs"},
+    {id:"Nlf8WgIB9iw",raw:"https://images.unsplash.com/photo-1665902685700-323525ba96cd",name:"abdullah ali",user:"https://unsplash.com/@adbullahx",link:"https://unsplash.com/photos/a-building-with-a-large-arched-doorway-Nlf8WgIB9iw"},
+    {id:"utCun0FM4tw",raw:"https://images.unsplash.com/photo-1768133896436-ecd0fa6f228f",name:"Igor Rusakov",user:"https://unsplash.com/@toffeeposibilities",link:"https://unsplash.com/photos/two-people-sitting-on-a-bench-looking-at-an-exhibit-utCun0FM4tw"},
+    {id:"mDfLdPFcwJc",raw:"https://images.unsplash.com/photo-1687475790472-37ef7b6a5c6d",name:"Clark Gu",user:"https://unsplash.com/@atluminon",link:"https://unsplash.com/photos/a-dimly-lit-room-with-benches-and-pictures-on-the-wall-mDfLdPFcwJc"},
+    {id:"mWHCa1ZDaDw",raw:"https://images.unsplash.com/photo-1678308510962-7933731202e7",name:"2H Media",user:"https://unsplash.com/@2hmedia",link:"https://unsplash.com/photos/a-room-filled-with-lots-of-statues-of-animals-mWHCa1ZDaDw"},
+    {id:"TMg4REjyAjk",raw:"https://images.unsplash.com/photo-1687475792136-5035f792730f",name:"Clark Gu",user:"https://unsplash.com/@atluminon",link:"https://unsplash.com/photos/a-long-hallway-with-a-clock-on-the-wall-TMg4REjyAjk"},
+    {id:"PjmYzAOwAWA",raw:"https://images.unsplash.com/photo-1765127959662-a7229fa51580",name:"LISK OBE",user:"https://unsplash.com/@summerobelisk",link:"https://unsplash.com/photos/people-walking-through-a-dimly-lit-museum-exhibit-hall-PjmYzAOwAWA"},
+    {id:"3rEble63E6k",raw:"https://images.unsplash.com/photo-1765127959629-c7d150e75890",name:"LISK OBE",user:"https://unsplash.com/@summerobelisk",link:"https://unsplash.com/photos/artifact-displayed-in-a-museum-exhibit-with-red-lighting-3rEble63E6k"},
+  ],
+  science:[
+    {id:"sqwEXTQLTPQ",raw:"https://images.unsplash.com/photo-1761759161257-a1f9c41df8a9",name:"arnaud girault",user:"https://unsplash.com/@arnaudastro",link:"https://unsplash.com/photos/cosmic-nebula-with-swirling-clouds-of-gas-and-dust-sqwEXTQLTPQ"},
+    {id:"fU-oPNhdsO8",raw:"https://images.unsplash.com/photo-1785655140480-5153bdcac1f0",name:"Joel Henry",user:"https://unsplash.com/@joelhenry",link:"https://unsplash.com/photos/swirling-red-and-blue-cosmic-nebula-with-scattered-stars-fU-oPNhdsO8"},
+    {id:"JD7T8Y1B79U",raw:"https://images.unsplash.com/photo-1765754431926-964ed45a41e9",name:"Steve Busch",user:"https://unsplash.com/@sdbusch77",link:"https://unsplash.com/photos/a-spiral-galaxy-in-a-starry-night-sky-JD7T8Y1B79U"},
+    {id:"1WfegtbvNK8",raw:"https://images.unsplash.com/photo-1772289935663-80aa987be656",name:"NIR HIMI",user:"https://unsplash.com/@nirhimi",link:"https://unsplash.com/photos/rock-arch-under-a-starry-night-sky-1WfegtbvNK8"},
+    {id:"aB5tmNaOsYA",raw:"https://images.unsplash.com/photo-1777195680785-23dbb7768b60",name:"NASA",user:"https://unsplash.com/@nasa",link:"https://unsplash.com/photos/earth-rises-over-the-dark-lunar-surface-aB5tmNaOsYA"},
+    {id:"64_DnIpzsyI",raw:"https://images.unsplash.com/photo-1617457485942-458b94408f01",name:"Mier Chen",user:"https://unsplash.com/@miercat",link:"https://unsplash.com/photos/silhouette-of-mountain-under-blue-sky-during-night-time-64_DnIpzsyI"},
+    {id:"EsnsJHJxVOA",raw:"https://images.unsplash.com/photo-1786643684910-29dd0bd06b33",name:"Michael Kostiv",user:"https://unsplash.com/@michaelkostiv",link:"https://unsplash.com/photos/starry-night-sky-with-clouds-EsnsJHJxVOA"},
+    {id:"VKdU_oP54uo",raw:"https://images.unsplash.com/photo-1776105648206-fc6dd5fb0776",name:"Mike Newbry",user:"https://unsplash.com/@mikenewbry",link:"https://unsplash.com/photos/a-solitary-spire-under-a-starry-night-sky-VKdU_oP54uo"},
+  ],
+  business:[
+    {id:"_WO_STod-74",raw:"https://images.unsplash.com/photo-1619763515915-8e6d599f2935",name:"kate.sade",user:"https://unsplash.com/@kate_sade",link:"https://unsplash.com/photos/black-leather-chair-beside-glass-window-_WO_STod-74"},
+    {id:"io5clS15h9Q",raw:"https://images.unsplash.com/photo-1660496247667-3fb697c396af",name:"Egor Komarov",user:"https://unsplash.com/@egorkomarov",link:"https://unsplash.com/photos/a-tall-glass-building-io5clS15h9Q"},
+    {id:"D4s5XrwA0no",raw:"https://images.unsplash.com/photo-1754832728042-36484f848648",name:"Irina Chishkova",user:"https://unsplash.com/@irina_chishkova",link:"https://unsplash.com/photos/modern-skyscrapers-illuminated-at-dusk-with-cloudy-sky-D4s5XrwA0no"},
+    {id:"2qTXxHClwbE",raw:"https://images.unsplash.com/photo-1628089762887-544f4b53cea9",name:"Vista Wei",user:"https://unsplash.com/@weista",link:"https://unsplash.com/photos/aerial-view-of-city-buildings-during-daytime-2qTXxHClwbE"},
+    {id:"zUD329ahwpc",raw:"https://images.unsplash.com/photo-1474899544414-a357f12283fb",name:"Robert Bye",user:"https://unsplash.com/@robertbye",link:"https://unsplash.com/photos/silhouette-photo-of-woman-and-man-walking-zUD329ahwpc"},
+    {id:"bXiSDW3m930",raw:"https://images.unsplash.com/photo-1606818649966-8e1a45180a64",name:"Corporate Locations",user:"https://unsplash.com/@clsg",link:"https://unsplash.com/photos/grey-concrete-building-under-blue-sky-during-daytime-bXiSDW3m930"},
+    {id:"UAUS-dcbSZo",raw:"https://images.unsplash.com/photo-1657316169342-16ac18465619",name:"Manuel Keller",user:"https://unsplash.com/@emkaay",link:"https://unsplash.com/photos/a-city-street-with-tall-buildings-UAUS-dcbSZo"},
+    {id:"0JUAmZOWVsg",raw:"https://images.unsplash.com/photo-1734995972004-00fffbe0c3d9",name:"Dima Ermolenko",user:"https://unsplash.com/@dchoobaka",link:"https://unsplash.com/photos/a-very-tall-building-with-lots-of-windows-at-night-0JUAmZOWVsg"},
+  ],
+  personal:[
+    {id:"2H5yW_EaqgA",raw:"https://images.unsplash.com/photo-1654613698316-b9bce9f4b6bb",name:"volant",user:"https://unsplash.com/@volantaroma",link:"https://unsplash.com/photos/a-group-of-people-sitting-around-a-table-eating-food-2H5yW_EaqgA"},
+    {id:"AqKinW-2OJM",raw:"https://images.unsplash.com/photo-1646520537547-c56f4287aa45",name:"Tania Malréchauffé",user:"https://unsplash.com/@okta",link:"https://unsplash.com/photos/a-cat-sitting-on-top-of-a-pile-of-wood-AqKinW-2OJM"},
+    {id:"nHe8OAVrc34",raw:"https://images.unsplash.com/photo-1758523417185-5d46089b870a",name:"Vitaly Gariev",user:"https://unsplash.com/@silverkblack",link:"https://unsplash.com/photos/couple-looking-at-tablet-in-modern-kitchen-nHe8OAVrc34"},
+    {id:"AXbBeC1xwls",raw:"https://images.unsplash.com/photo-1758522484939-e1965be04b24",name:"Vitaly Gariev",user:"https://unsplash.com/@silverkblack",link:"https://unsplash.com/photos/couple-sharing-a-tender-moment-in-the-kitchen-AXbBeC1xwls"},
+    {id:"85oNhbUSulg",raw:"https://images.unsplash.com/photo-1763027471534-0038286c7c7b",name:"balint henter",user:"https://unsplash.com/@theoriginalbubi",link:"https://unsplash.com/photos/close-up-of-a-decorated-christmas-tree-with-ornaments-85oNhbUSulg"},
+    {id:"rzzJan1emGM",raw:"https://images.unsplash.com/photo-1760615303386-d025db9d6ae2",name:"Florian Schindler",user:"https://unsplash.com/@flo_raw",link:"https://unsplash.com/photos/a-golden-retriever-puppy-sleeping-peacefully-in-its-bed-rzzJan1emGM"},
+    {id:"oal546SgP_Q",raw:"https://images.unsplash.com/photo-1759239355404-63313f92cfc2",name:"Clay Banks",user:"https://unsplash.com/@claybanks",link:"https://unsplash.com/photos/dining-area-with-wooden-table-and-chairs-stairs-nearby-oal546SgP_Q"},
+    {id:"-ugsMunCUlw",raw:"https://images.unsplash.com/photo-1767016451745-b1748dcba5f4",name:"Antoine Pouligny",user:"https://unsplash.com/@gimmick",link:"https://unsplash.com/photos/person-petting-a-cat-on-a-bed--ugsMunCUlw"},
+  ],
+};
+function hashStr(str){let h=5381;for(let i=0;i<str.length;i++){h=(((h<<5)+h)+str.charCodeAt(i))>>>0}return h}
+function pickPhoto(t){
+  const pool = PHOTO_POOL[CAT_KEY[t.category]];
+  if(!pool || !pool.length) return null;
+  return pool[(hashStr(CAT_KEY[t.category] + '|' + t.title) >>> 8) % pool.length];
+}
 
 // 7色ぶんのレーン/カード/バー系スタイルを動的生成(art/history/science固定クラスの一般化)
 (function(){
-  let css = '.ev-tag.cred-d{background:rgba(212,160,90,0.1);color:var(--c-orange)}\n.ev-tag.cred-u{background:rgba(138,134,128,0.12);color:var(--text2)}\n';
-  css += '.ev-summary p+p{margin-top:8px}\n.ev-summary strong{color:var(--text-h);font-weight:500}\n';
-  css += '.ev-note{margin-top:8px;font-size:11px;color:var(--c-orange);background:rgba(212,160,90,0.07);border-left:2px solid rgba(212,160,90,0.4);padding:6px 10px;border-radius:0 8px 8px 0;line-height:1.6}\n';
-  css += '.ev-note b{font-family:var(--f-mono);font-size:10px;font-weight:400;letter-spacing:0.1em;display:block;margin-bottom:2px}\n';
+  let css = '.ev-tag.cred-d{background:rgba(232,228,222,0.05);color:var(--text2)}\n.ev-tag.cred-u{background:rgba(232,228,222,0.04);color:var(--text3)}\n';
+  css += '.ev-summary p+p{margin-top:12px}\n.ev-summary strong{color:var(--text-h);font-weight:700}\n';
+  css += '.ev-note{margin-top:8px;font-size:var(--fs-xs);line-height:var(--lh-xs);color:var(--text2);background:rgba(232,228,222,0.04);border-left:2px solid rgba(232,228,222,0.22);padding:8px 12px;border-radius:0 8px 8px 0}\n';
+  css += '.ev-note b{font-family:var(--f-mono);font-size:var(--fs-xs);line-height:var(--lh-xs);font-weight:400;letter-spacing:0.12em;color:var(--text3);display:block;margin-bottom:4px}\n';
   css += '.ev-srcs{margin-top:8px;border-top:1px solid var(--border);padding-top:7px;display:flex;flex-direction:column;gap:2px}\n';
-  css += '.ev-src{font-size:11px;color:var(--text3);line-height:1.6}\n.ev-src a{color:var(--text2);text-decoration:underline;text-decoration-color:var(--border2);text-underline-offset:2px;word-break:break-all}\n';
+  css += '.ev-src{font-size:var(--fs-xs);line-height:var(--lh-xs);color:var(--text3)}\n.ev-src a{color:var(--text2);text-decoration:underline;text-decoration-color:rgba(232,228,222,0.22);text-underline-offset:2px;word-break:break-all;transition:color .3s,text-decoration-color .3s}\n';
   css += '.ev-card .ev-accordion-body,.period-card-start .period-accordion-body{transition:max-height 0.5s cubic-bezier(0.16,1,0.3,1),opacity 0.3s ease}\n';
   css += '.ev-card.expanded .ev-accordion-body,.period-card-start.expanded .period-accordion-body{max-height:1200px}\n';
   for (const [name, hex] of Object.entries(COLOR_HEX)) {
@@ -803,7 +933,17 @@ function render(){
   document.getElementById('pubAuthor').textContent = '@' + au.username;
   document.querySelector('.pub-avatar').textContent = au.username[0].toUpperCase();
   const era = `${yearLabel(t.start_year)}–${yearLabel(t.end_year)}`;
-  document.getElementById('pubStat').textContent = `${t.events.length} events · ${t.layers.length} layers · ${era}`;
+  const cred = t.events.reduce((a,e) => (a[e.credibility] = (a[e.credibility]||0)+1, a), {});
+  document.getElementById('pubStat').textContent =
+    `${t.events.length} events · ${t.layers.length} layers · ${era} · 検証済み ${cred.verified||0} / 諸説あり ${cred.disputed||0} / 未検証 ${cred.unverified||0}`;
+  document.getElementById('pubCat').textContent = CAT_NAME[t.category] || t.category;
+  // カバー写真
+  const ph = pickPhoto(t), cw = document.getElementById('coverWrap');
+  if (ph) {
+    cw.hidden = false;
+    cw.innerHTML = `<div class="d-cover"><img src="${ph.raw}?w=1080&h=480&fit=crop&auto=format&q=70" alt="" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.closest('.d-coverwrap').hidden=true"><div class="d-cover-shade"></div></div>` +
+      `<figcaption class="d-cover-credit">Photo: <a href="${esc(ph.user)}${UNSPLASH_UTM}" target="_blank" rel="noopener noreferrer">${esc(ph.name)}</a> / <a href="https://unsplash.com/${UNSPLASH_UTM}" target="_blank" rel="noopener noreferrer">Unsplash</a></figcaption>`;
+  } else { cw.hidden = true; }
   document.getElementById('shareUrlText').textContent = location.href;
 
   // レイヤーチップ
@@ -884,6 +1024,8 @@ function render(){
   setupReveal();
   setupLaneClicks();
   setupCenterFocus();
+  setupExpandAll();
+  recalcChrome();
   renderLike();
   document.getElementById('likeBtn').style.display = '';
 }
@@ -991,6 +1133,43 @@ function toggleTimelineLike(){
   else ids.push(likeId());
   localStorage.setItem(LIKE_KEY, JSON.stringify(ids));
   renderLike();
+}
+
+// ── 読了バー・コンパクトヘッダー・現在年
+const rbFill = document.querySelector('.readbar i');
+const yearNow = document.querySelector('.year-now');
+let rbMax = 1, yearPts = [];
+function recalcChrome(){
+  rbMax = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+  yearPts = [...document.querySelectorAll('.tl-year-text')].map(el => ({y: el.textContent, top: el.getBoundingClientRect().top + scrollY}));
+  updateChrome();
+}
+function updateChrome(){
+  rbFill.style.transform = `scaleX(${Math.min(1, Math.max(0, scrollY / rbMax))})`;
+  const line = scrollY + 200;
+  let cur = null;
+  for (const pt of yearPts) { if (pt.top <= line) cur = pt.y; else break; }
+  if (cur) { yearNow.textContent = cur; yearNow.classList.add('show'); }
+  else { yearNow.classList.remove('show'); }
+}
+addEventListener('scroll', () => {
+  const c = document.documentElement.classList;
+  if (scrollY > 80) c.add('scrolled'); else if (scrollY < 30) c.remove('scrolled');
+  updateChrome();
+}, {passive: true});
+addEventListener('resize', recalcChrome, {passive: true});
+new ResizeObserver(recalcChrome).observe(document.body);
+
+// ── すべて開く / すべて閉じる
+function setupExpandAll(){
+  const btn = document.getElementById('expAll');
+  btn.onclick = () => {
+    const cards = [...document.querySelectorAll('.ev-card, .period-card-start')];
+    const anyClosed = cards.some(c => !c.classList.contains('expanded'));
+    cards.forEach((c, i) => setTimeout(() => c.classList.toggle('expanded', anyClosed), anyClosed ? i * 24 : 0));
+    btn.textContent = anyClosed ? 'すべて閉じる' : 'すべて開く';
+    setTimeout(recalcChrome, cards.length * 24 + 500);
+  };
 }
 
 loadTimeline();
