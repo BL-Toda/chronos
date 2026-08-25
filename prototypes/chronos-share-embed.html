@@ -13,10 +13,15 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&family=Shippori+Mincho:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg:#0A0A0C; --bg2:#0E0E11; --bg-card:#16161A; --bg-card-h:#1B1B20;
+  --bg:#0A0A0C; --bg2:#0E0E11; --bg-card:#16161A; --bg-card-h:#1A1A1F;
   --accent:#B8B4AE; --accent-soft:rgba(232,228,222,0.07); --accent-med:rgba(232,228,222,0.14);
   --text:#E8E4DE; --text-h:#F5F2ED; --text2:#9A9590; --text3:#7A7570;
   --border:rgba(232,228,222,0.09); --border2:rgba(232,228,222,0.18);
+  /* 例外: 埋め込みのライトテーマ見本 */
+  --light-bg:#F8F6F3;--light-surface:#EEEAE5;--light-text:#3C3A37;
+  --light-c-blue:#4A88C2;--light-c-pink:#C07088;--light-c-teal:#4AA8A0;
+  /* 例外: 外部ブランド色・UIモックの信号色 */
+  --brand-x:#1DA1F2;--mock-red:#FF5F57;--mock-yellow:#FFBD2E;--mock-green:#28C840;
   --line:rgba(232,228,222,0.15);
   --c-blue:#5B9BD5; --c-pink:#D4849A; --c-teal:#5BBCB4; --c-green:#7BC67E;
   --f-display:'Erode','Shippori Mincho',serif; --f-body:'DM Sans',sans-serif; --f-mono:'JetBrains Mono',monospace;
@@ -72,7 +77,7 @@ body{font-family:var(--f-body);background:var(--bg);color:var(--text);
 }
 .ogp-context-label{font-size:var(--fs-xs);line-height:var(--lh-xs);color:var(--text3);margin-bottom:8px;
   display:flex;align-items:center;gap:8px}
-.ogp-context-icon{width:16px;height:16px;border-radius:50%;background:#1DA1F2;
+.ogp-context-icon{width:16px;height:16px;border-radius:50%;background:var(--brand-x);
   display:flex;align-items:center;justify-content:center}
 .ogp-context-icon svg{width:10px;height:10px;fill:white}
 
@@ -312,8 +317,8 @@ body{font-family:var(--f-body);background:var(--bg);color:var(--text);
 .theme-dark .theme-label{color:var(--text2);background:var(--bg-card)}
 
 /* Light theme preview */
-.theme-light .theme-preview{background:#F8F6F3}
-.theme-light .theme-label{color:#5A5754;background:#EEEAE5}
+.theme-light .theme-preview{background:var(--light-bg)}
+.theme-light .theme-label{color:var(--light-text);background:var(--light-surface)}
 
 .theme-mini-axis{
   width:2px;height:60px;margin:0 auto;border-radius:1px;
@@ -328,9 +333,9 @@ body{font-family:var(--f-body);background:var(--bg);color:var(--text);
 .theme-dark .theme-mini-dot:nth-child(1){background:var(--c-blue)}
 .theme-dark .theme-mini-dot:nth-child(2){background:var(--c-pink)}
 .theme-dark .theme-mini-dot:nth-child(3){background:var(--c-teal)}
-.theme-light .theme-mini-dot:nth-child(1){background:#4A88C2}
-.theme-light .theme-mini-dot:nth-child(2){background:#C07088}
-.theme-light .theme-mini-dot:nth-child(3){background:#4AA8A0}
+.theme-light .theme-mini-dot:nth-child(1){background:var(--light-c-blue)}
+.theme-light .theme-mini-dot:nth-child(2){background:var(--light-c-pink)}
+.theme-light .theme-mini-dot:nth-child(3){background:var(--light-c-teal)}
 
 /* ─ hover（ポインタ環境のみ。タッチでは残らない）*/
 @media (hover:hover) and (pointer:fine){
@@ -404,9 +409,9 @@ body{font-family:var(--f-body);background:var(--bg);color:var(--text);
 
   <div class="embed-demo">
     <div class="embed-blog-bar">
-      <div class="embed-blog-dot" style="background:#FF5F57"></div>
-      <div class="embed-blog-dot" style="background:#FFBD2E"></div>
-      <div class="embed-blog-dot" style="background:#28C840"></div>
+      <div class="embed-blog-dot" style="background:var(--mock-red)"></div>
+      <div class="embed-blog-dot" style="background:var(--mock-yellow)"></div>
+      <div class="embed-blog-dot" style="background:var(--mock-green)"></div>
       <div class="embed-blog-url">my-tech-blog.com/smartphone-history</div>
     </div>
     <div class="embed-blog-content">
@@ -482,9 +487,9 @@ body{font-family:var(--f-body);background:var(--bg);color:var(--text);
 
   <div class="public-mock">
     <div class="public-url-bar">
-      <div class="public-url-dot" style="background:#FF5F57"></div>
-      <div class="public-url-dot" style="background:#FFBD2E"></div>
-      <div class="public-url-dot" style="background:#28C840"></div>
+      <div class="public-url-dot" style="background:var(--mock-red)"></div>
+      <div class="public-url-dot" style="background:var(--mock-yellow)"></div>
+      <div class="public-url-dot" style="background:var(--mock-green)"></div>
       <div class="public-url-text">chronos.app/t/smartphone-history</div>
     </div>
     <div class="public-page">

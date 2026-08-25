@@ -123,7 +123,7 @@ img,svg{display:block;max-width:100%}
 
 /* ─ hover（ポインタ環境のみ。タッチでは残らない）*/
 @media (hover:hover) and (pointer:fine){
-  .flow-node:hover{border-color:var(--border2);background:#1B1B20;transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.35)}
+  .flow-node:hover{border-color:var(--border2);background:#1A1A1F;transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.35)}
   .flow-node:hover .flow-node-title{color:#FFFFFF}
 }
 @media (prefers-reduced-motion:reduce){
@@ -219,30 +219,27 @@ img,svg{display:block;max-width:100%}
   <div class="type-sample">
     <div class="type-label">Display — Erode (serif)</div>
     <div class="type-erode" style="font-size:32px;color:#F5F2ED;font-weight:400;margin-bottom:4px">あらゆる出来事の文脈を、可視化する。</div>
-    <div class="type-erode" style="font-size:14px;color:#8A8680;">見出し・ブランド・タイトル・年表イベント名</div>
+    <div class="type-erode" style="font-size:14px;color:var(--text2);">見出し・ブランド・タイトル・年表イベント名</div>
   </div>
   <div class="type-sample">
     <div class="type-label">Body — DM Sans (sans-serif)</div>
     <div class="type-dm" style="font-size:14px;color:#E8E4DE;line-height:1.6;margin-bottom:4px">Chronosは、AIが年表を自動生成するタイムラインプラットフォーム。複数のレイヤーを重ねることで、出来事のつながりと背景が浮かび上がります。</div>
-    <div class="type-dm" style="font-size:12px;color:#8A8680">本文・UI要素・ボタンラベル・説明文</div>
+    <div class="type-dm" style="font-size:12px;color:var(--text2)">本文・UI要素・ボタンラベル・説明文</div>
   </div>
   <div class="type-sample">
     <div class="type-label">Mono — JetBrains Mono</div>
     <div class="type-jb" style="font-size:14px;color:#E8E4DE;letter-spacing:0.06em;margin-bottom:4px">12 events · 3 layers · 1976–2019</div>
-    <div class="type-jb" style="font-size:12px;color:#8A8680">年月ラベル・メタ情報・バッジ・コード</div>
+    <div class="type-jb" style="font-size:12px;color:var(--text2)">年月ラベル・メタ情報・バッジ・コード</div>
   </div>
 
   <div style="margin-top:24px;padding:20px;border-radius:12px;background:#16161A;border:1px solid rgba(232,228,222,0.09)">
     <div class="type-label" style="margin-bottom:12px">Type Scale</div>
     <div style="display:flex;flex-direction:column;gap:10px">
-      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#5A5754;width:50px;text-align:right">10px</span><span style="font-size:10px;color:#8A8680">タグ・バッジ・最小ラベル</span></div>
-      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#5A5754;width:50px;text-align:right">11px</span><span style="font-size:11px;color:#8A8680">キャプション・年月ラベル</span></div>
-      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#5A5754;width:50px;text-align:right">12px</span><span style="font-size:12px;color:#8A8680">サブテキスト・説明文</span></div>
-      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2);width:50px;text-align:right">14px</span><span style="font-size:14px;color:#F5F2ED;font-weight:500">本文・ボタン・ナビ（基準値）</span></div>
-      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#5A5754;width:50px;text-align:right">16px</span><span style="font-size:16px;color:#F5F2ED;font-family:'Erode','Shippori Mincho',serif">カードタイトル・小見出し</span></div>
-      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#5A5754;width:50px;text-align:right">18px</span><span style="font-size:18px;color:#F5F2ED;font-family:'Erode','Shippori Mincho',serif">セクション見出し</span></div>
-      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#5A5754;width:50px;text-align:right">22px</span><span style="font-size:22px;color:#F5F2ED;font-family:'Erode','Shippori Mincho',serif">モーダル見出し</span></div>
-      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#5A5754;width:50px;text-align:right">26px</span><span style="font-size:26px;color:#F5F2ED;font-family:'Erode','Shippori Mincho',serif">ページタイトル</span></div>
+      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3);width:64px;text-align:right">display</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2);width:88px">24–32 / 44</span><span style="font-size:clamp(24px,4vw,32px);color:var(--text2)">ページ・年表タイトル</span></div>
+      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3);width:64px;text-align:right">title</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2);width:88px">18 / 28</span><span style="font-size:18px;color:var(--text2)">カード見出し・イベント見出し・セクション名</span></div>
+      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3);width:64px;text-align:right">body</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2);width:88px">15 / 28</span><span style="font-size:15px;color:var(--text2)">本文・リード・説明文</span></div>
+      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3);width:64px;text-align:right">sm</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2);width:88px">13 / 22</span><span style="font-size:13px;color:var(--text2)">日付・カード説明・補足・チップ・ボタン</span></div>
+      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3);width:64px;text-align:right">xs</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2);width:88px">11 / 18</span><span style="font-size:11px;color:var(--text2)">バッジ・出典・統計・ラベル・件数</span></div>
     </div>
   </div>
 </div>
@@ -254,7 +251,7 @@ img,svg{display:block;max-width:100%}
 
   <div class="legend">
     <div class="legend-item"><div class="legend-dot" style="background:#F5F2ED"></div>現行 — 実装の正とする版</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#5A5754"></div>アーカイブ — 旧版・参照のみ</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--text3)"></div>アーカイブ — 旧版・参照のみ</div>
   </div>
 
   <div class="sitemap">

@@ -15,6 +15,7 @@
   --accent:#B8B4AE;--accent-soft:rgba(232,228,222,0.07);--accent-med:rgba(232,228,222,0.14);
   --text:#E8E4DE;--text-h:#F5F2ED;--text2:#9A9590;--text3:#7A7570;
   --border:rgba(232,228,222,0.09);--border2:rgba(232,228,222,0.18);
+  --empty-art:#0F1A2E;  /* 空状態イラストの地（青系の暗色）*/
   /* タイプスケール5段（行間は偶数px固定） */
   --fs-display:clamp(24px,4vw,32px);--lh-display:44px;
   --fs-title:18px;--lh-title:28px;
@@ -360,7 +361,7 @@ body.sheet-open{overflow:hidden}
   .filter-btn:hover{color:var(--text);border-color:var(--border2)}
   .view-btn:hover{background:var(--accent-soft)}
   .view-btn:hover svg{stroke:var(--text)}
-  .tl-card:hover{border-color:var(--border2);background:#1B1B20;transform:translateY(-3px);
+  .tl-card:hover{border-color:var(--border2);background:#1A1A1F;transform:translateY(-3px);
     box-shadow:0 12px 32px rgba(0,0,0,0.35)}
   .tl-card:hover .tl-card-title{color:#FFFFFF}
   .tl-card:hover .cover-img.loaded{transform:scale(1.04)}
@@ -394,7 +395,7 @@ body.sheet-open{overflow:hidden}
       <svg viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
     </button>
     <div class="hdr-avatar">
-      <svg viewBox="0 0 200 200"><rect width="200" height="200" fill="#0F1A2E"/><ellipse cx="100" cy="100" rx="72" ry="32" fill="none" stroke="#5B9BD5" stroke-width="2" opacity="0.5" transform="rotate(-25 100 100)"/><ellipse cx="100" cy="100" rx="72" ry="32" fill="none" stroke="#D4849A" stroke-width="2" opacity="0.5" transform="rotate(30 100 100)"/><circle cx="100" cy="100" r="9" fill="#B8B4AE" opacity="0.85"/></svg>
+      <svg viewBox="0 0 200 200"><rect width="200" height="200" fill="var(--empty-art)"/><ellipse cx="100" cy="100" rx="72" ry="32" fill="none" stroke="#5B9BD5" stroke-width="2" opacity="0.5" transform="rotate(-25 100 100)"/><ellipse cx="100" cy="100" rx="72" ry="32" fill="none" stroke="#D4849A" stroke-width="2" opacity="0.5" transform="rotate(30 100 100)"/><circle cx="100" cy="100" r="9" fill="#B8B4AE" opacity="0.85"/></svg>
     </div>
   </nav>
 </header>

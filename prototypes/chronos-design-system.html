@@ -139,9 +139,9 @@ body{font-family:var(--f-b);color:var(--text);background:var(--bg);font-size:var
 export const colors = {
   // Backgrounds
   bg:        '#0A0A0C',
-  bg2:       '#111114',
+  bg2:       '#0E0E11',
   bgCard:    '#16161A',
-  bgCardH:   '#1C1C22',
+  bgCardH:   '#1A1A1F',   // ホバー。押下は #1E1E24
 
   // Accent（2026-08-25: ゴールド #C8A87E を廃止しモノトーンへ。
   // 彩度を持つのはレイヤーカラー7色だけ、というのが現在のルール）
@@ -170,6 +170,10 @@ export const colors = {
     purple: { base:'#9E7EC8', dim:'rgba(158,126,200,0.12)', bar:'rgba(158,126,200,0.22)' },
     orange: { base:'#D4A05A', dim:'rgba(212,160,90,0.12)',  bar:'rgba(212,160,90,0.22)' },
   },
+
+  // 例外（docs/color-palette-2026-08.md §6）
+  // 外部ブランド色・ライトテーマのモック・UIモックの信号色・明色ボタンの状態は
+  // 必ずトークン化して使う。直値で散らさない。
 
   // Semantic
   success: '#7BC67E',
