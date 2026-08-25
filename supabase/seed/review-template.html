@@ -238,7 +238,7 @@ function renderHome(){
     html += `<section class="cat-sec"><div class="cat-head"><h2 class="cat-name">${CAT[key]}</h2><span class="cat-count">${list.length} TIMELINES</span></div><div class="tl-grid">`;
     for(const t of list){
       const chips = t.layers.map(l => `<span class="layer-chip"><i style="background:${COLOR[l.color]}"></i>${esc(l.name)}</span>`).join("");
-      html += `<a class="tl-card" href="chronos-viewer.html?slug=${esc(t.slug)}">
+      html += `<a class="tl-card" href="viewer.html?slug=${esc(t.slug)}">
         <div class="tl-years">${t.start_year}–${t.end_year}</div>
         <div class="tl-title">${esc(t.title)}</div>
         <div class="tl-desc">${esc(t.description)}</div>

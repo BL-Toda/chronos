@@ -6,10 +6,10 @@ seed-review と viewer に分かれていた「年表詳細」を **viewer 1枚�
 
 | ファイル | 統合後の役割 |
 |---|---|
-| `chronos-viewer.html` | **年表詳細の唯一の正**。Supabase から `?slug=` で読む。閲覧・作成者ビューともここに集約 |
-| `chronos-seed-review.html` | **90本のインデックス専用**（JSON生成）。カードから `chronos-viewer.html?slug=` へ送る。詳細ビューは持たない。DB投入前のコンテンツ確認用に維持 |
-| `chronos-explore.html` | 公開フィード（DB）。カードから viewer へ |
-| `chronos-profile.html` | 公開プロフィール（@username）。カードから viewer へ |
+| `viewer.html` | **年表詳細の唯一の正**。Supabase から `?slug=` で読む。閲覧・作成者ビューともここに集約 |
+| `seed-review.html` | **90本のインデックス専用**（JSON生成）。カードから `viewer.html?slug=` へ送る。詳細ビューは持たない。DB投入前のコンテンツ確認用に維持 |
+| `explore.html` | 公開フィード（DB）。カードから viewer へ |
+| `profile.html` | 公開プロフィール（@username）。カードから viewer へ |
 
 ## viewer に移植するもの（seed-review 由来）
 
@@ -32,4 +32,4 @@ seed-review と viewer に分かれていた「年表詳細」を **viewer 1枚�
 - カバー写真は explore の `PHOTO_POOL` を正とし、viewer にも同じ選択ロジック（`hashStr(catKey + '|' + title)`）を持たせる。**タイトルに絵文字が入ったため、explore と同じハッシュ入力になるよう DB の title をそのまま使う**
 - 統計の内訳は取得済み events から集計（追加リクエスト不要）
 - 紀元前（`0044-03-15 BC`）表示は現行の `parseDate` / `yearLabel` を維持
-- seed-review は詳細ビュー（`#slug` ルーティング）を削除し、カードを `<a href="chronos-viewer.html?slug=...">` に変更
+- seed-review は詳細ビュー（`#slug` ルーティング）を削除し、カードを `<a href="viewer.html?slug=...">` に変更

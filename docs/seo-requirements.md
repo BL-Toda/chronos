@@ -23,9 +23,9 @@
 
 | 現在 | 本番 |
 |---|---|
-| `chronos-viewer.html?slug=x` | `/t/<slug>` |
-| `chronos-profile.html?u=x` | `/@<username>` |
-| `chronos-explore.html` | `/explore`（フィルタは `?cat=` `?era=` 等） |
+| `viewer.html?slug=x` | `/t/<slug>` |
+| `profile.html?u=x` | `/@<username>` |
+| `explore.html` | `/explore`（フィルタは `?cat=` `?era=` 等） |
 
 - `share_id` 経由の限定公開URLは **`/s/<share_id>` を別系統にし、`noindex`**
 - フィルタ違いのURLは**代表URLにcanonicalを向ける**（パラメータの組み合わせで無限に増えるため）
@@ -45,7 +45,7 @@
 ## 4. 構造化データ（★★・E-E-A-Tに効く）
 
 年表ページに `Article` のJSON-LDを出す。**出典を `citation` として列挙するのが要点**——
-「情報源を明示している」という品質シグナルになる。プロトタイプに参照実装あり（`chronos-viewer.html`）。
+「情報源を明示している」という品質シグナルになる。プロトタイプに参照実装あり（`viewer.html`）。
 
 ```
 @type: Article / headline / description / inLanguage: ja / url / image
@@ -111,6 +111,6 @@ citation: [{ @type: CreativeWork, name, url }, …]
 
 ## プロトタイプで先行実装済み
 
-`chronos-viewer.html`: h1 / canonical / JSON-LD(Article + citation) / OGP
-`chronos-profile.html`: OGP
+`viewer.html`: h1 / canonical / JSON-LD(Article + citation) / OGP
+`profile.html`: OGP
 → **いずれもJSによる差し替えなので本番では機能しない。Next.js実装の参照仕様として使う。**

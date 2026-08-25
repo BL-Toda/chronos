@@ -1,4 +1,4 @@
-# Chronos UIデザインルール（2026-08-25確定・prototypes/chronos-seed-review.html が実装の見本）
+# Chronos UIデザインルール（2026-08-25確定・prototypes/seed-review.html が実装の見本）
 
 レビューページで確定したルール。explore / viewer / profile など全画面に展開する。
 

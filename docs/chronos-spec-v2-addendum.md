@@ -136,7 +136,7 @@ CREATE TABLE reports (
 ## OGP（サーバー側生成）— 2026-08-26追加
 
 クローラはJSを実行しないため、**OGPはサーバー側で出力する**（Next.js App Router なら `generateMetadata`）。
-プロトタイプ（chronos-viewer.html / chronos-profile.html）はJSでmetaを差し替えているが、これは暫定実装。
+プロトタイプ（viewer.html / profile.html）はJSでmetaを差し替えているが、これは暫定実装。
 
 | ページ | og:title | og:description | og:image |
 |---|---|---|---|

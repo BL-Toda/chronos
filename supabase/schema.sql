@@ -4,6 +4,17 @@
 
 create extension if not exists pgcrypto;
 
+-- ───────── 公開ID生成
+-- URLに出す短いID。ユーザーには入力させず自動採番する。
+-- 紛らわしい文字（0/O、1/l/I）を除いた56字のアルファベット。
+create or replace function public.gen_public_id(len int default 10)
+returns text language sql volatile as $$
+  select string_agg(
+    substr('23456789abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ',
+           1 + floor(random() * 56)::int, 1), '')
+  from generate_series(1, len);
+$$;
+
 -- ───────── users（公開プロフィール用の最小列。auth.users と 1:1）
 create table if not exists public.users (
   id uuid primary key references auth.users(id) on delete cascade,
@@ -18,7 +29,9 @@ create table if not exists public.users (
 -- ───────── timelines
 create table if not exists public.timelines (
   id uuid primary key default gen_random_uuid(),
-  slug text unique not null,          -- URL用（例: tech-ai-revolution）
+  public_id text unique not null default public.gen_public_id(10),
+                                      -- URL用の自動採番ID（例: k3f9a2xq7m）。ユーザーは入力しない
+  slug text unique,                   -- 編集部コンテンツ用の任意キー（シード90本のみ。UGCはnull）
   owner_id uuid references public.users(id) on delete set null,
   title text not null,
   description text not null default '',
@@ -26,7 +39,7 @@ create table if not exists public.timelines (
     ('technology','history-politics','culture','science-nature','business','personal-life')),
   language text not null default 'ja',
   visibility text not null default 'private' check (visibility in ('public','unlisted','private')),
-  share_id text unique,
+  share_id text unique,               -- 限定公開URL用。推測困難な長さ（22字≒128bit）をアプリ側で採番
   start_year int,
   end_year int,
   like_count int not null default 0,
@@ -76,6 +89,7 @@ create table if not exists public.event_sources (
 
 create index if not exists events_timeline_idx on public.events(timeline_id, event_date);
 create index if not exists timelines_public_idx on public.timelines(visibility, category);
+create index if not exists timelines_public_id_idx on public.timelines(public_id);
 
 -- ───────── RLS: 公開年表と公開ユーザー情報は誰でも読める（プロトタイプはこれで十分）
 alter table public.users enable row level security;

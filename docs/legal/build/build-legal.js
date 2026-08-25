@@ -1,10 +1,10 @@
-// Build script: converts docs/legal/ja/*.md into embedded HTML for prototypes/chronos-legal.html
-// Usage: node build-legal.js  (writes prototypes/chronos-legal.html from template)
+// Build script: converts docs/legal/ja/*.md into embedded HTML for prototypes/legal.html
+// Usage: node build-legal.js  (writes prototypes/legal.html from template)
 const fs = require('fs');
 const path = require('path');
 const ROOT = '/Users/shun/chronos';
 const SRC = path.join(ROOT, 'docs/legal/ja');
-const OUT = path.join(ROOT, 'prototypes/chronos-legal.html');
+const OUT = path.join(ROOT, 'prototypes/legal.html');
 const TEMPLATE = path.join(__dirname, 'legal-template.html');
 
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
