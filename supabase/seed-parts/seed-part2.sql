@@ -218,9 +218,9 @@ insert into public.users (id, username, display_name, bio, country, age_band)
 values ('00000000-0000-4000-8000-50d6340835f6', 'denkiya_sandai', '町の電器店三代目', '熊本から東大阪へ。家族と店の70年を記録しています。', 'JP', 'adult')
 on conflict (id) do update set username = excluded.username, display_name = excluded.display_name, bio = excluded.bio;
 
--- ═══ culture-anime-global — アニメ文化の世界進出
+-- ═══ culture-anime-global — 📺 アニメ文化の世界進出
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('culture-anime-global', '00000000-0000-4000-8000-88ca25792997', 'アニメ文化の世界進出', '1963年のテレビアニメ誕生から劇場作品の世界的ヒット、配信による産業化まで。作品・産業と配信・海外の受容の3層を重ねて、日本のアニメが世界の主流娯楽になっていく流れをカルチャーの現場目線で追う年表です。', 'culture', 'ja', 'public', 's_culture-anime-global', 1963, 2025, 'culture-anime-global')
+values ('culture-anime-global', '00000000-0000-4000-8000-88ca25792997', '📺 アニメ文化の世界進出', '1963年のテレビアニメ誕生から劇場作品の世界的ヒット、配信による産業化まで。作品・産業と配信・海外の受容の3層を重ねて、日本のアニメが世界の主流娯楽になっていく流れをカルチャーの現場目線で追う年表です。', 'culture', 'ja', 'public', 's_culture-anime-global', 1963, 2025, 'culture-anime-global')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-anime-global');
@@ -231,7 +231,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-anime-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-anime-global') and name = '作品と表現'),
-          '1963-01-01', null, 'day', 'point', '「鉄腕アトム」放送開始、テレビアニメの原点', '🤖 手塚治虫の虫プロダクションが制作した「鉄腕アトム」がフジテレビ系で放送開始。日本初の本格的な30分連続テレビアニメです。
+          '1963-01-01', null, 'day', 'point', '🤖 「鉄腕アトム」放送開始、テレビアニメの原点', '手塚治虫の虫プロダクションが制作した「鉄腕アトム」がフジテレビ系で放送開始。日本初の本格的な30分連続テレビアニメです。
 
 週1本の放送を回すために止め絵や作画の使い回しを体系化した**リミテッドアニメ**の手法は、低予算で物語の密度を追いかける日本アニメの生産様式と表現の型を作りました。この方式が、以後の産業と表現の両方を長く決めていくことになります。', null,
           'verified', null, 'user', 0) returning id)
@@ -255,7 +255,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-anime-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-anime-global') and name = '海外の受容とファン'),
-          '1980-01-01', '1994-12-31', 'year', 'period', 'ファンサブVHSの時代', '📼 北米や欧州のファンが、日本のアニメに自主的に字幕を付けたVHSテープを同好会経由でダビングして回覧する文化が広がりました。公式流通がほとんどない時代の、非公式な受容の回路です。
+          '1980-01-01', '1994-12-31', 'year', 'period', '📼 ファンサブVHSの時代', '北米や欧州のファンが、日本のアニメに自主的に字幕を付けたVHSテープを同好会経由でダビングして回覧する文化が広がりました。公式流通がほとんどない時代の、非公式な受容の回路です。
 
 権利の上では違法な複製ですが、**非公式な熱意が後の市場を耕した**という評価が定着しています。ここで育ったファンがCrunchyroll(産業と配信レイヤー)など、後の正規配信の担い手や顧客になりました。規模を示す信頼できる記録はありません。', null,
           'unverified', '非公式な流通なので時期や規模を示す一次資料がなく、関係者の回想と研究書の記述が頼りです。', 'user', 3) returning id)
@@ -311,7 +311,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-anime-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-anime-global') and name = '作品と表現'),
-          '2003-03-23', null, 'day', 'point', '「千と千尋の神隠し」がアカデミー賞受賞', '🏆 宮崎駿監督の「千と千尋の神隠し」が、第75回アカデミー賞長編アニメーション部門を受賞しました!前年にはベルリン国際映画祭で金熊賞も受けています。
+          '2003-03-23', null, 'day', 'point', '🏆 「千と千尋の神隠し」がアカデミー賞受賞', '宮崎駿監督の「千と千尋の神隠し」が、第75回アカデミー賞長編アニメーション部門を受賞しました!前年にはベルリン国際映画祭で金熊賞も受けています。
 
 日本で歴代興行収入1位になった作品が米映画界の最高賞まで届いたことで、**作家性への世界的承認**が決定的になりました。CG全盛へ向かう時期に手描きの表現が評価された意味も大きくて、以後の劇場アニメの海外展開への強い追い風になります。', null,
           'verified', null, 'user', 10) returning id)
@@ -1188,9 +1188,9 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           'unverified', '「最多」は複数年の同調査で続くとされる傾向だが、調査年・設問形式により数値は変動する。', 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('観光庁: 訪日外国人消費動向調査', null)) as v(title, url);
 
--- ═══ culture-game-industry — ゲーム産業の爆発
+-- ═══ culture-game-industry — 🎮 ゲーム産業の爆発
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('culture-game-industry', '00000000-0000-4000-8000-88ca25792997', 'ゲーム産業の爆発', 'アーケードの始まりからファミコン、スマホ、巨大買収まで。コントローラーを握って育った目線で、ハード・ソフト・ビジネスと社会の3層を重ねながら、遊びが世界最大級のエンタテインメント産業に育っていく流れを追う年表です 🎮', 'culture', 'ja', 'public', 's_culture-game-industry', 1972, 2023, 'culture-game-industry')
+values ('culture-game-industry', '00000000-0000-4000-8000-88ca25792997', '🎮 ゲーム産業の爆発', 'アーケードの始まりからファミコン、スマホ、巨大買収まで。コントローラーを握って育った目線で、ハード・ソフト・ビジネスと社会の3層を重ねながら、遊びが世界最大級のエンタテインメント産業に育っていく流れを追う年表です 🎮', 'culture', 'ja', 'public', 's_culture-game-industry', 1972, 2023, 'culture-game-industry')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-game-industry');
@@ -1209,7 +1209,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-game-industry'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-game-industry') and name = 'ソフトと表現'),
-          '1978-06-01', null, 'month', 'point', 'スペースインベーダー稼働、日本中がブームに', '👾 タイトーのスペースインベーダーが稼働開始。専用の「インベーダーハウス」が各地に生まれて、喫茶店にまでテーブル筐体が並ぶ社会現象になりました。
+          '1978-06-01', null, 'month', 'point', '👾 スペースインベーダー稼働、日本中がブームに', 'タイトーのスペースインベーダーが稼働開始。専用の「インベーダーハウス」が各地に生まれて、喫茶店にまでテーブル筐体が並ぶ社会現象になりました。
 
 「100円玉が足りなくなった」という逸話は有名ですが、裏付けは乏しいそうです。ブームは翌年にかけて過熱と反動を経験して、ゲーセンと青少年をめぐる摩擦(ビジネスと社会レイヤー)の原型に。日本のゲーム産業の人材とお金の多くは、この熱狂から出発しています。', null,
           'disputed', '「100円玉が不足して造幣局が増産した」という逸話は広く知られていますが、公的記録による裏付けはなく、俗説とする指摘が有力です。', 'user', 1) returning id)
@@ -1233,7 +1233,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-game-industry'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-game-industry') and name = 'ソフトと表現'),
-          '1985-09-13', null, 'day', 'point', 'スーパーマリオブラザーズ発売', '🍄 任天堂がスーパーマリオブラザーズを発売。横スクロールで広がる世界とあの精密な操作感が家庭用アクションゲームの文法を確立して、世界で数千万本規模を売り上げました!
+          '1985-09-13', null, 'day', 'point', '🍄 スーパーマリオブラザーズ発売', '任天堂がスーパーマリオブラザーズを発売。横スクロールで広がる世界とあの精密な操作感が家庭用アクションゲームの文法を確立して、世界で数千万本規模を売り上げました!
 
 北米ではNESの看板ソフトとして市場再建(ビジネスと社会レイヤー)を引っ張ります。キャラクターが映画や玩具へ広がる「ゲームIP」の原型で、ソフトがハードを売るという業界の力学を決定づけた1本です。', null,
           'verified', null, 'user', 4) returning id)
@@ -1249,7 +1249,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-game-industry'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-game-industry') and name = 'ソフトと表現'),
-          '1991-03-01', null, 'month', 'point', 'ストリートファイターIIが対戦文化を生む', '🕹️ カプコンの対戦格闘ゲーム、ストリートファイターIIがアーケードで稼働開始。筐体をはさんで知らない人と戦う対戦文化が生まれて、ゲームセンターに再び人が戻ってきました!
+          '1991-03-01', null, 'month', 'point', '🕹️ ストリートファイターIIが対戦文化を生む', 'カプコンの対戦格闘ゲーム、ストリートファイターIIがアーケードで稼働開始。筐体をはさんで知らない人と戦う対戦文化が生まれて、ゲームセンターに再び人が戻ってきました!
 
 キャラの個性とコマンド入力の奥深さは家庭用移植でも爆発的に売れて、スーパーファミコンの普及(ハードとプラットフォームレイヤー)を押し上げます。対戦の腕を競い合うコミュニティは、後のeスポーツの源流のひとつとされています。', null,
           'verified', null, 'user', 6) returning id)
@@ -1281,7 +1281,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-game-industry'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-game-industry') and name = 'ハードとプラットフォーム'),
-          '2008-07-10', null, 'day', 'point', 'App Store開設、ゲーム流通の転換点', '📱 AppleがiPhone向けにApp Storeを開設。個人開発者でも世界にゲームを直接売れる流通網ができて、ソフトの値段は数百円から無料へ一気に下がりました。
+          '2008-07-10', null, 'day', 'point', '📱 App Store開設、ゲーム流通の転換点', 'AppleがiPhone向けにApp Storeを開設。個人開発者でも世界にゲームを直接売れる流通網ができて、ソフトの値段は数百円から無料へ一気に下がりました。
 
 パッケージ流通と専用ハードが前提だった産業構造は根本から揺らいで、**誰もがポケットにゲーム機を入れて歩く**時代が始まります。基本無料とアイテム課金という収益モデル(ビジネスと社会レイヤー)の主戦場も、ここから携帯電話の画面の中へ移っていきました。', null,
           'verified', null, 'user', 10) returning id)
@@ -1345,7 +1345,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-game-industry'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-game-industry') and name = 'ソフトと表現'),
-          '2020-03-20', null, 'day', 'point', 'あつまれ どうぶつの森が世界的ヒット', '🏝️ 任天堂があつまれ どうぶつの森を発売。新型コロナウイルスによる外出制限と時期が重なって、島でのおだやかな生活が世界中で「もう一つの日常」として受け入れられました。
+          '2020-03-20', null, 'day', 'point', '🏝️ あつまれ どうぶつの森が世界的ヒット', '任天堂があつまれ どうぶつの森を発売。新型コロナウイルスによる外出制限と時期が重なって、島でのおだやかな生活が世界中で「もう一つの日常」として受け入れられました。
 
 美術館の所蔵品公開やブランドの衣装配布、友達との集まりまでゲーム内で行われて、ゲームが社会インフラのように使われる光景が広がります。巣ごもり需要(ビジネスと社会レイヤー)の象徴として、Switchの品薄とともに産業全体の追い風になりました。', null,
           'verified', null, 'user', 18) returning id)
@@ -1359,9 +1359,9 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Acquisition of Activision Blizzard by Microsoft', 'https://en.wikipedia.org/wiki/Acquisition_of_Activision_Blizzard_by_Microsoft')) as v(title, url);
 
--- ═══ culture-hiphop-50 — ヒップホップの50年
+-- ═══ culture-hiphop-50 — 🎙️ ヒップホップの50年
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('culture-hiphop-50', '00000000-0000-4000-8000-be575a20b1ee', 'ヒップホップの50年', '1973年ブロンクスの一夜のパーティーから50周年まで。音楽と表現・産業とメディア・社会とストリートの3層を重ねて、地域の路上文化が世界最大級の音楽ジャンルに育っていく50年をたどります 🎤', 'culture', 'ja', 'public', 's_culture-hiphop-50', 1973, 2023, 'culture-hiphop-50')
+values ('culture-hiphop-50', '00000000-0000-4000-8000-be575a20b1ee', '🎙️ ヒップホップの50年', '1973年ブロンクスの一夜のパーティーから50周年まで。音楽と表現・産業とメディア・社会とストリートの3層を重ねて、地域の路上文化が世界最大級の音楽ジャンルに育っていく50年をたどります 🎤', 'culture', 'ja', 'public', 's_culture-hiphop-50', 1973, 2023, 'culture-hiphop-50')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50');
@@ -1372,7 +1372,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '社会とストリート'),
-          '1973-08-11', null, 'day', 'point', 'クール・ハークのパーティー、ヒップホップ誕生の日', '🎛️ ニューヨーク・ブロンクスのセジウィック通り1520番地。DJクール・ハークが妹の企画するパーティーでプレイし、曲の間奏部分だけを2枚のレコードでつなぐ手法が、ここで披露されたとされています。
+          '1973-08-11', null, 'day', 'point', '🎛️ クール・ハークのパーティー、ヒップホップ誕生の日', 'ニューヨーク・ブロンクスのセジウィック通り1520番地。DJクール・ハークが妹の企画するパーティーでプレイし、曲の間奏部分だけを2枚のレコードでつなぐ手法が、ここで披露されたとされています。
 
 この夜を「ヒップホップ誕生」とする語りは後から定着した記念日で、実際の文化はたくさんの担い手の中で少しずつ形になりました。それでも**ブレイクビーツ**の発明に象徴的な起点を与える日付として、50周年もこの日に祝われています。', null,
           'disputed', 'この日を「誕生日」とする位置づけは記念日的な後付けで、手法や文化の成立はもっとゆるやかだったとする研究が多いです。', 'user', 0) returning id)
@@ -1380,7 +1380,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '産業とメディア'),
-          '1979-09-01', null, 'month', 'point', '「ラッパーズ・ディライト」がラップを商品に変える', '📀 シュガーヒル・ギャングの「ラッパーズ・ディライト」が発売され、ラップのレコードとして初めて全米チャート上位に入るヒットになりました。
+          '1979-09-01', null, 'month', 'point', '📀 「ラッパーズ・ディライト」がラップを商品に変える', 'シュガーヒル・ギャングの「ラッパーズ・ディライト」が発売され、ラップのレコードとして初めて全米チャート上位に入るヒットになりました。
 
 パーティーの場の即興だったラップが、録音商品として成立することを証明した曲です。**現場の文化が産業になった**分岐点とされますが、「最初のラップレコード」かどうかは先行作の存在をめぐって議論があり、ブロンクスの当事者たちの間でも評価は割れました。', null,
           'disputed', '「最初のラップレコード」という位置づけには、同年の先行作（ファットバック・バンドのKing Tim III等）を挙げる異論があります。', 'user', 1) returning id)
@@ -1388,7 +1388,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '音楽と表現'),
-          '1982-07-01', null, 'month', 'point', '「ザ・メッセージ」が路上の現実をラップに刻む', '🏙️ グランドマスター・フラッシュ&ザ・フューリアス・ファイヴの「ザ・メッセージ」が発売。荒廃した都市生活を淡々と描く歌詞で、パーティー音楽だったラップの主題を一変させました。
+          '1982-07-01', null, 'month', 'point', '🏙️ 「ザ・メッセージ」が路上の現実をラップに刻む', 'グランドマスター・フラッシュ&ザ・フューリアス・ファイヴの「ザ・メッセージ」が発売。荒廃した都市生活を淡々と描く歌詞で、パーティー音楽だったラップの主題を一変させました。
 
 ブロンクスの荒廃と貧困が、初めて正面から曲の中心に据えられた作品とされます。以後「現実を語る」ことはヒップホップの中核的な価値になり、ギャングスタラップにも政治的なラップにも受け継がれていきました。', null,
           'verified', null, 'user', 2) returning id)
@@ -1396,7 +1396,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '社会とストリート'),
-          '1983-01-01', null, 'year', 'point', '映画「ワイルド・スタイル」が文化を世界へ運ぶ', '🎬 ヒップホップ黎明期の実像を描いた映画「ワイルド・スタイル」が公開。ラップ、DJ、ブレイクダンス、グラフィティという文化の要素をまとめて世界に見せた、最初期の作品です。
+          '1983-01-01', null, 'year', 'point', '🎬 映画「ワイルド・スタイル」が文化を世界へ運ぶ', 'ヒップホップ黎明期の実像を描いた映画「ワイルド・スタイル」が公開。ラップ、DJ、ブレイクダンス、グラフィティという文化の要素をまとめて世界に見せた、最初期の作品です。
 
 出演者たちは来日プロモーションも行い、テレビ出演や街頭でのパフォーマンスが反響を呼びました。日本語ラップの先駆者たちが影響を公言する、文化の伝わり道になった一本です。ただ、来日時の詳細は当事者の回想に頼る部分が大きめです。', null,
           'unverified', '来日プロモーションの時期や内容は関係者の回想・インタビューに基づくところが大きく、一次資料での確認が難しいです。', 'user', 3) returning id)
@@ -1404,7 +1404,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '産業とメディア'),
-          '1984-01-01', null, 'year', 'point', 'デフ・ジャム・レコーディングス設立', '🏷️ リック・ルービンとラッセル・シモンズがニューヨークでデフ・ジャムを設立。大学寮の一室から始まって、LL・クール・Jやビースティ・ボーイズを送り出す看板レーベルに育ちます。
+          '1984-01-01', null, 'year', 'point', '🏷️ デフ・ジャム・レコーディングス設立', 'リック・ルービンとラッセル・シモンズがニューヨークでデフ・ジャムを設立。大学寮の一室から始まって、LL・クール・Jやビースティ・ボーイズを送り出す看板レーベルに育ちます。
 
 メジャーの流通網と組みながら路上の感覚を守る経営で、ヒップホップを一過性の流行ではなく続く産業にしました。文化の担い手自身がビジネスの主導権を握る型がここで確立し、後の起業家型アーティストの系譜につながります。', null,
           'verified', null, 'user', 4) returning id)
@@ -1412,7 +1412,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '音楽と表現'),
-          '1986-07-01', null, 'month', 'point', 'Run-D.M.C.とエアロスミスの「Walk This Way」', '🎸 Run-D.M.C.がエアロスミスと共演した「Walk This Way」を発表し、全米チャートの上位に。ロックの名曲をラップで作り直すという、当時としては異例の顔合わせでした。
+          '1986-07-01', null, 'month', 'point', '🎸 Run-D.M.C.とエアロスミスの「Walk This Way」', 'Run-D.M.C.がエアロスミスと共演した「Walk This Way」を発表し、全米チャートの上位に。ロックの名曲をラップで作り直すという、当時としては異例の顔合わせでした。
 
 MTVがラップのビデオを本格的に流すきっかけになり、白人ロック聴衆とラップの間の壁を壊した曲と評されます。ジャンルの越境がヒットの方程式になり得ることを示して、産業とメディアの扉を内側から開けた一曲です。', null,
           'verified', null, 'user', 5) returning id)
@@ -1420,7 +1420,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '産業とメディア'),
-          '1988-08-01', null, 'month', 'point', 'MTVでラップ専門番組「Yo MTV Raps」開始', '📺 MTVでラップ専門番組「Yo MTV Raps」がスタートし、高い視聴率を記録。ヒップホップのビデオが全米、さらに国際放送網で日常的に流れる、最初の大きな窓口です。
+          '1988-08-01', null, 'month', 'point', '📺 MTVでラップ専門番組「Yo MTV Raps」開始', 'MTVでラップ専門番組「Yo MTV Raps」がスタートし、高い視聴率を記録。ヒップホップのビデオが全米、さらに国際放送網で日常的に流れる、最初の大きな窓口です。
 
 都市ごとに分かれていたシーンの音とファッションが全国で同時に共有され、地方や海外の若者がヒップホップに出会う入口になりました。メディアの回路が、文化の広がる速度を一変させた例です。', null,
           'verified', null, 'user', 6) returning id)
@@ -1428,7 +1428,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '音楽と表現'),
-          '1988-08-08', null, 'day', 'point', 'N.W.A『ストレイト・アウタ・コンプトン』発売', '🚨 N.W.Aがアルバム『ストレイト・アウタ・コンプトン』を発売。ロサンゼルス・コンプトンの警察との緊張や街の暴力を生々しく描いて、ギャングスタラップを全国区に押し上げました。
+          '1988-08-08', null, 'day', 'point', '🚨 N.W.A『ストレイト・アウタ・コンプトン』発売', 'N.W.Aがアルバム『ストレイト・アウタ・コンプトン』を発売。ロサンゼルス・コンプトンの警察との緊張や街の暴力を生々しく描いて、ギャングスタラップを全国区に押し上げました。
 
 収録曲への抗議としてFBI職員がレーベルに書簡を送る事態にまで発展し、**表現の自由をめぐる係争地**としてのヒップホップの立ち位置が定まります。ラジオにほとんど頼らず売れた点も、産業とメディアの常識を崩しました。', null,
           'verified', null, 'user', 7) returning id)
@@ -1436,7 +1436,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '社会とストリート'),
-          '1990-06-01', null, 'month', 'point', '2ライヴ・クルーのアルバムに猥褻判定', '⚖️ フロリダ州の連邦地裁が2ライヴ・クルーのアルバム『As Nasty As They Wanna Be』を猥褻と判定し、販売した店主やメンバーの逮捕が相次ぎました。音楽アルバムへの猥褻判定は極めて異例です。
+          '1990-06-01', null, 'month', 'point', '⚖️ 2ライヴ・クルーのアルバムに猥褻判定', 'フロリダ州の連邦地裁が2ライヴ・クルーのアルバム『As Nasty As They Wanna Be』を猥褻と判定し、販売した店主やメンバーの逮捕が相次ぎました。音楽アルバムへの猥褻判定は極めて異例です。
 
 判定は1992年の控訴審で覆り、表現の自由の側の勝利で決着します。ラップが法廷や議会で繰り返し標的になる90年代の摩擦の始まりで、論争自体が知名度と売上を押し上げるという皮肉な構図も生まれました。', null,
           'verified', null, 'user', 8) returning id)
@@ -1444,7 +1444,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '産業とメディア'),
-          '1991-05-01', null, 'month', 'point', 'サウンドスキャン導入、ラップの実売が可視化', '📊 ビルボードがPOSデータに基づく集計方式サウンドスキャンを導入し、店員への聞き取りに頼っていたチャートが実売ベースに変わりました。すると導入直後から、ラップとカントリーの順位が急上昇します。
+          '1991-05-01', null, 'month', 'point', '📊 サウンドスキャン導入、ラップの実売が可視化', 'ビルボードがPOSデータに基づく集計方式サウンドスキャンを導入し、店員への聞き取りに頼っていたチャートが実売ベースに変わりました。すると導入直後から、ラップとカントリーの順位が急上昇します。
 
 業界の思い込みで過小評価されていた**ラップの本当の勢い**が数字で証明され、メジャー各社の投資が本格化しました。測り方が変わるだけで、文化の勢力図の見え方まで変わることを示した転換点です。', null,
           'verified', null, 'user', 9) returning id)
@@ -1452,7 +1452,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '社会とストリート'),
-          '1994-01-01', '1997-03-09', 'year', 'period', '東西抗争の時代', '🕊️ ニューヨークのバッド・ボーイ勢とロサンゼルスのデス・ロウ勢の対立が、雑誌報道や楽曲での応酬を通じて過熱しました。1996年に2パック、1997年にノトーリアス・B.I.G.が相次いで射殺され、抗争の時代は最悪の形で幕を閉じます。
+          '1994-01-01', '1997-03-09', 'year', 'period', '🕊️ 東西抗争の時代', 'ニューヨークのバッド・ボーイ勢とロサンゼルスのデス・ロウ勢の対立が、雑誌報道や楽曲での応酬を通じて過熱しました。1996年に2パック、1997年にノトーリアス・B.I.G.が相次いで射殺され、抗争の時代は最悪の形で幕を閉じます。
 
 両事件とも全容解明には至っていません。メディアが対立の構図を煽って売上に変えた側面が指摘され、以後のシーンには対立の商業的な演出への自省が残りました。地域性という文化の核が、暴力と結び付いてしまった時代です。', null,
           'disputed', '「東西抗争」の起点や範囲の区分は論者によって異なり、二つの射殺事件と抗争との因果関係も確定していません。', 'user', 10) returning id)
@@ -1460,7 +1460,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '社会とストリート'),
-          '1996-07-07', null, 'day', 'point', '「さんピンCAMP」開催、日本語ラップの金字塔', '🗼 東京・日比谷野外音楽堂で日本語ラップのイベント「さんピンCAMP」が開催され、ランプアイ、キングギドラら当時のシーンの中心的なアーティストが一堂に会しました。
+          '1996-07-07', null, 'day', 'point', '🗼 「さんピンCAMP」開催、日本語ラップの金字塔', '東京・日比谷野外音楽堂で日本語ラップのイベント「さんピンCAMP」が開催され、ランプアイ、キングギドラら当時のシーンの中心的なアーティストが一堂に会しました。
 
 記録映像が繰り返し参照されることで、日本語でラップするという表現が独自の到達点を示した日として語り継がれています。ワイルド・スタイル来日から10年余り、**輸入文化のローカル化**が一つの頂点に達した瞬間です!', null,
           'unverified', '動員数や当日の詳細は主催関係者の証言と映像作品に頼っていて、公的な記録での確認は難しいです。', 'user', 11) returning id)
@@ -1468,7 +1468,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '音楽と表現'),
-          '1999-02-01', null, 'month', 'point', 'ローリン・ヒルがグラミー5部門受賞', '🏆 ローリン・ヒルが『ミスエデュケーション』でグラミー賞の最優秀アルバムを含む5部門を受賞。ヒップホップ系のアルバムが主要部門の頂点に立つのは、これが初めてでした。
+          '1999-02-01', null, 'month', 'point', '🏆 ローリン・ヒルがグラミー5部門受賞', 'ローリン・ヒルが『ミスエデュケーション』でグラミー賞の最優秀アルバムを含む5部門を受賞。ヒップホップ系のアルバムが主要部門の頂点に立つのは、これが初めてでした。
 
 ソウルやレゲエを溶かし込んだ音楽性と内省的な詞が、ラップを賞の外側に置いてきた音楽業界の評価軸を動かします。女性アーティストの達成としても画期的で、主流化の決定的な一歩になりました!', null,
           'verified', null, 'user', 12) returning id)
@@ -1476,7 +1476,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '社会とストリート'),
-          '2005-09-02', null, 'day', 'point', 'カニエ・ウェストが生放送で災害対応を批判', '📢 ハリケーン・カトリーナの被災者支援の生放送番組で、カニエ・ウェストが台本を離れ、報道の偏りと政府の対応を批判して「ジョージ・ブッシュは黒人を気にかけていない」と発言しました。
+          '2005-09-02', null, 'day', 'point', '📢 カニエ・ウェストが生放送で災害対応を批判', 'ハリケーン・カトリーナの被災者支援の生放送番組で、カニエ・ウェストが台本を離れ、報道の偏りと政府の対応を批判して「ジョージ・ブッシュは黒人を気にかけていない」と発言しました。
 
 発言は激しい論争を呼びましたが、ヒップホップのアーティストが黒人コミュニティの代弁者として国政に直言する構図を、全国に見えるようにした出来事です。路上で生まれた音楽が、世論の回路として機能することを示しました。', null,
           'verified', null, 'user', 13) returning id)
@@ -1484,7 +1484,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '産業とメディア'),
-          '2017-01-01', null, 'year', 'point', 'ヒップホップが米国で最も聴かれるジャンルに', '👑 ニールセンの2017年の統計で、R&B/ヒップホップがロックを抜いて米国で最も消費される音楽ジャンルになったと報告されました。ストリーミング再生を含む集計方法が大きく効いています。
+          '2017-01-01', null, 'year', 'point', '👑 ヒップホップが米国で最も聴かれるジャンルに', 'ニールセンの2017年の統計で、R&B/ヒップホップがロックを抜いて米国で最も消費される音楽ジャンルになったと報告されました。ストリーミング再生を含む集計方法が大きく効いています。
 
 CD時代に築かれたロックの優位が、聴取行動を直接測る**ストリーミングの時代**にひっくり返った形です。サウンドスキャン導入（1991年）と同じく、測定方法の変化が文化の実勢をあらわにした節目でした。', null,
           'verified', null, 'user', 14) returning id)
@@ -1492,7 +1492,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '音楽と表現'),
-          '2018-04-16', null, 'day', 'point', 'ケンドリック・ラマーにピュリッツァー賞', '🖋️ ケンドリック・ラマーのアルバム『DAMN.』がピュリッツァー賞音楽部門を受賞。同部門でクラシックとジャズ以外の作品が選ばれるのは初めてです!
+          '2018-04-16', null, 'day', 'point', '🖋️ ケンドリック・ラマーにピュリッツァー賞', 'ケンドリック・ラマーのアルバム『DAMN.』がピュリッツァー賞音楽部門を受賞。同部門でクラシックとジャズ以外の作品が選ばれるのは初めてです!
 
 「現代の黒人の生活の複雑さを捉えた作品集」という授賞理由は、ラップの詞を文学として正面から認めるものでした。半世紀前に路上で生まれた表現形式への、制度の側からの**芸術としての承認**を象徴する出来事です。', null,
           'verified', null, 'user', 15) returning id)
@@ -1500,7 +1500,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '音楽と表現'),
-          '2018-05-01', null, 'month', 'point', '「This Is America」が銃社会を撃つ', '🎥 チャイルディッシュ・ガンビーノが「This Is America」を発表。陽気なダンスと突然の銃撃を交錯させるミュージックビデオが米国の銃暴力と黒人の生を主題化し、世界で爆発的に再生されました。
+          '2018-05-01', null, 'month', 'point', '🎥 「This Is America」が銃社会を撃つ', 'チャイルディッシュ・ガンビーノが「This Is America」を発表。陽気なダンスと突然の銃撃を交錯させるミュージックビデオが米国の銃暴力と黒人の生を主題化し、世界で爆発的に再生されました。
 
 MVという形式そのものを批評の道具に変えた達成で、翌年のグラミー賞では主要2部門を制します。「ザ・メッセージ」以来の「現実を語る」系譜が、映像とSNSの時代の文法で更新されたと言えます。', null,
           'verified', null, 'user', 16) returning id)
@@ -1508,7 +1508,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '産業とメディア'),
-          '2019-08-01', null, 'month', 'point', '「オールド・タウン・ロード」が19週連続首位', '🤠 リル・ナズ・Xの「オールド・タウン・ロード」が、ビルボードHot 100で史上最長となる19週連続1位を達成。カントリーとトラップを混ぜた曲で、TikTok上のミーム拡散がヒットの起点でした。
+          '2019-08-01', null, 'month', 'point', '🤠 「オールド・タウン・ロード」が19週連続首位', 'リル・ナズ・Xの「オールド・タウン・ロード」が、ビルボードHot 100で史上最長となる19週連続1位を達成。カントリーとトラップを混ぜた曲で、TikTok上のミーム拡散がヒットの起点でした。
 
 カントリーチャートから除外された経緯は、ジャンル分類と人種の関係をめぐる論争を呼びます。SNSがラジオに代わるヒットの入口になったことを決定づけ、ヒップホップの語法があらゆるポップの土台になった現在を象徴する曲です。', null,
           'verified', null, 'user', 17) returning id)
@@ -1516,7 +1516,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '社会とストリート'),
-          '2023-08-11', null, 'day', 'point', 'ヒップホップ生誕50周年、発祥の地で記念公演', '🎉 クール・ハークのパーティーからちょうど50年の当日、ブロンクスのヤンキー・スタジアムでRun-D.M.C.らが出演する大規模な記念公演が開かれました!この年はグラミー賞の特別企画など、一年を通して50周年が祝われています。
+          '2023-08-11', null, 'day', 'point', '🎉 ヒップホップ生誕50周年、発祥の地で記念公演', 'クール・ハークのパーティーからちょうど50年の当日、ブロンクスのヤンキー・スタジアムでRun-D.M.C.らが出演する大規模な記念公演が開かれました!この年はグラミー賞の特別企画など、一年を通して50周年が祝われています。
 
 誕生日という語りに神話が含まれることは指摘されつつも、地域の路上文化が半世紀で世界最大級のポップカルチャーに到達したことを、発祥の地で確かめる一年になりました。この年表の締めくくりです。', null,
           'verified', null, 'user', 18) returning id)
@@ -1693,9 +1693,9 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Love is in the Bin', 'https://en.wikipedia.org/wiki/Love_is_in_the_Bin'), ('Sotheby''s: Banksy, Love is in the Bin (2021年セール解説)', null)) as v(title, url);
 
--- ═══ culture-jpop-streaming — J-POPとストリーミングの30年
+-- ═══ culture-jpop-streaming — 🎧 J-POPとストリーミングの30年
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('culture-jpop-streaming', '00000000-0000-4000-8000-be575a20b1ee', 'J-POPとストリーミングの30年', '1990年代のCDバブルから2020年代のグローバルヒットまで。ヒット作とアーティスト、流通と技術、産業と制度の3層を重ねて、「売れる形」が円盤から再生回数へ変わっていく30年を、あの頃の記憶と一緒にたどります 🎧', 'culture', 'ja', 'public', 's_culture-jpop-streaming', 1988, 2024, 'culture-jpop-streaming')
+values ('culture-jpop-streaming', '00000000-0000-4000-8000-be575a20b1ee', '🎧 J-POPとストリーミングの30年', '1990年代のCDバブルから2020年代のグローバルヒットまで。ヒット作とアーティスト、流通と技術、産業と制度の3層を重ねて、「売れる形」が円盤から再生回数へ変わっていく30年を、あの頃の記憶と一緒にたどります 🎧', 'culture', 'ja', 'public', 's_culture-jpop-streaming', 1988, 2024, 'culture-jpop-streaming')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming');
@@ -1706,7 +1706,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '産業と制度'),
-          '1988-10-01', null, 'day', 'point', 'J-WAVE開局、「J-POP」の呼称が広まる', '📻 東京のFM局J-WAVEが開局。洋楽中心の編成の中で流す邦楽を指す言葉として「J-POP」が使われ始めたとされています。「歌謡曲」でも「ニューミュージック」でもない、洋楽と並べても浮かない邦楽。この呼び名の誕生です。
+          '1988-10-01', null, 'day', 'point', '📻 J-WAVE開局、「J-POP」の呼称が広まる', '東京のFM局J-WAVEが開局。洋楽中心の編成の中で流す邦楽を指す言葉として「J-POP」が使われ始めたとされています。「歌謡曲」でも「ニューミュージック」でもない、洋楽と並べても浮かない邦楽。この呼び名の誕生です。
 
 放送局側のネーミングがジャンルの意識を作ったというのが面白いところ。90年代のCDバブルと一緒にレコード店の棚やチャートの言葉として定着して、いつの間にか業界の当たり前になっていました。', null,
           'disputed', '呼称の起源はJ-WAVE開局前後の局内用語という説が有力ですが、誰がいつ言い始めたかは諸説あって、一次資料では確定していません。', 'user', 0) returning id)
@@ -1714,7 +1714,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '産業と制度'),
-          '1991-01-01', '1998-12-31', 'year', 'period', 'CDバブル：音楽ソフト生産額が右肩上がりの時代', '💿 ドラマ・CMタイアップとミリオンセラーが量産され、1998年に音楽ソフト生産金額が過去最高を記録するまで拡大が続いた時代です。8cmシングルとタイアップ、そしてカラオケの普及が**「知ってる曲を買う」循環**を回していました。
+          '1991-01-01', '1998-12-31', 'year', 'period', '💿 CDバブル：音楽ソフト生産額が右肩上がりの時代', 'ドラマ・CMタイアップとミリオンセラーが量産され、1998年に音楽ソフト生産金額が過去最高を記録するまで拡大が続いた時代です。8cmシングルとタイアップ、そしてカラオケの普及が**「知ってる曲を買う」循環**を回していました。
 
 同じ頃、流通と技術レイヤーではCDがレコードを完全に置き換え、レンタル店が全国に。ピークの1998年に宇多田ヒカルがデビューして、翌年から市場は縮小に転じます。', null,
           'verified', null, 'user', 1) returning id)
@@ -1722,7 +1722,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '作品とアーティスト'),
-          '1992-05-27', null, 'day', 'point', '米米CLUB「君がいるだけで」発売、ドラマ主題歌が大ヒット', '🎤 米米CLUB「君がいるだけで」がドラマ『素顔のままで』の主題歌としてシングル約289万枚を売り上げ、タイアップ型ヒットの代表例になりました。
+          '1992-05-27', null, 'day', 'point', '🎤 米米CLUB「君がいるだけで」発売、ドラマ主題歌が大ヒット', '米米CLUB「君がいるだけで」がドラマ『素顔のままで』の主題歌としてシングル約289万枚を売り上げ、タイアップ型ヒットの代表例になりました。
 
 毎週ドラマで流れた曲を、CDショップとレンタル店で手に入れる。この90年代型ヒットの流れ、覚えている人も多いはず。同じ年にはミリオンセラーが相次いでシングル市場が拡大期に入り、曲はメディア露出とセットで設計される時代へ。翌年以降もタイアップ曲がミリオンを量産しました。', null,
           'verified', null, 'user', 2) returning id)
@@ -1730,7 +1730,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '作品とアーティスト'),
-          '1994-01-01', '1998-12-31', 'year', 'period', '小室哲哉プロデュース作品の全盛期', '🎹 TRF、globe、安室奈美恵。プロデュース作がチャート上位を占めて、「小室サウンド」がJ-POPの音そのものだった時代です。シンセとダンスビートを軸にした制作の裏には、デジタル機材が安くなったという技術レイヤーの変化がありました。
+          '1994-01-01', '1998-12-31', 'year', 'period', '🎹 小室哲哉プロデュース作品の全盛期', 'TRF、globe、安室奈美恵。プロデュース作がチャート上位を占めて、「小室サウンド」がJ-POPの音そのものだった時代です。シンセとダンスビートを軸にした制作の裏には、デジタル機材が安くなったという技術レイヤーの変化がありました。
 
 プロデューサーの名前で売れるという構造は、のちのアイドル運営型や動画発ヒットと対照的な「作り手中心」のモデル。市場拡大期と重なって、CD売上のピークを支えました。', null,
           'disputed', '全盛期をいつからいつまでと見るかは論者によって違うので、ここでは主要ヒットが集中した1994〜1998年を便宜的に採用しています。', 'user', 3) returning id)
@@ -1738,7 +1738,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '産業と制度'),
-          '1998-01-01', null, 'year', 'point', '音楽ソフト生産金額が約6,075億円で過去最高に', '📀 日本レコード協会の統計で、音楽ソフト生産金額が約6,075億円のピークに到達。ここが頂点で、以後CD市場は長い縮小局面に入ります。
+          '1998-01-01', null, 'year', 'point', '📀 音楽ソフト生産金額が約6,075億円で過去最高に', '日本レコード協会の統計で、音楽ソフト生産金額が約6,075億円のピークに到達。ここが頂点で、以後CD市場は長い縮小局面に入ります。
 
 同じ年に宇多田ヒカルがデビューして、翌年の『First Love』が史上最多のアルバム売上を記録。作品の頂点と市場の頂点が重なった転換点です。技術レイヤーではMP3プレーヤーとCD-Rが普及し始めていて、「複製できる音楽」への移行が静かに始まっていました。', null,
           'verified', null, 'user', 4) returning id)
@@ -1746,7 +1746,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '作品とアーティスト'),
-          '1999-03-10', null, 'day', 'point', '宇多田ヒカル『First Love』発売、日本史上最多売上アルバムに', '🎧 宇多田ヒカルのデビューアルバム『First Love』が累計約765万枚（オリコン）を記録して、日本史上最多売上アルバムに。R&Bを土台にした音作りと15歳でのデビューは、J-POPの言葉づかいを更新しました!
+          '1999-03-10', null, 'day', 'point', '🎧 宇多田ヒカル『First Love』発売、日本史上最多売上アルバムに', '宇多田ヒカルのデビューアルバム『First Love』が累計約765万枚（オリコン）を記録して、日本史上最多売上アルバムに。R&Bを土台にした音作りと15歳でのデビューは、J-POPの言葉づかいを更新しました!
 
 産業レイヤーでは前年に生産金額がピークを打っていて、この記録は「上り坂の最後」ではなく「下り坂の始まり」に立った作品。以後、この枚数を超えるアルバムは現れていません。', null,
           'verified', null, 'user', 5) returning id)
@@ -1754,7 +1754,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '流通と技術'),
-          '2002-03-01', null, 'month', 'point', 'エイベックス、国内初のコピーコントロールCDを発売', '💽 エイベックスが、PCでの複製を防ぐ国内初のコピーコントロールCD（CCCD）を発売しました。CD-Rとファイル交換ソフトによる複製への防衛策でしたが、規格外ディスクの再生トラブルと音質への不満でリスナーの反発を招き、数年で各社が撤退します。
+          '2002-03-01', null, 'month', 'point', '💽 エイベックス、国内初のコピーコントロールCDを発売', 'エイベックスが、PCでの複製を防ぐ国内初のコピーコントロールCD（CCCD）を発売しました。CD-Rとファイル交換ソフトによる複製への防衛策でしたが、規格外ディスクの再生トラブルと音質への不満でリスナーの反発を招き、数年で各社が撤退します。
 
 同時期には違法コピー対策の議論も本格化していました。技術で流通を縛る路線から配信で稼ぐ路線へ、転換を促す反面教師になった出来事です。', null,
           'verified', null, 'user', 6) returning id)
@@ -1762,7 +1762,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '流通と技術'),
-          '2002-12-01', null, 'month', 'point', 'auが「着うた」サービスを開始', '📱 auが、携帯電話で楽曲の一部を着信音として買える「着うた」サービスを開始。日本独自の音楽配信市場が、携帯電話の上で立ち上がりました。
+          '2002-12-01', null, 'month', 'point', '📱 auが「着うた」サービスを開始', 'auが、携帯電話で楽曲の一部を着信音として買える「着うた」サービスを開始。日本独自の音楽配信市場が、携帯電話の上で立ち上がりました。
 
 PC向け配信が広がる前に、**携帯キャリアの課金基盤に乗った配信が先に成立した**のが日本らしいところです。2004年の「着うたフル」で1曲丸ごと買えるようになり、2000年代後半には有料配信売上の大半を占めました。産業レイヤーでは、CDの縮小を配信が一部補う構図が生まれます。', null,
           'verified', null, 'user', 7) returning id)
@@ -1770,7 +1770,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '流通と技術'),
-          '2002-12-01', '2016-12-31', 'month', 'period', '着うた時代：携帯電話が音楽配信の主戦場', '🎵 着うた・着うたフルが有料配信の中心だった期間です。ガラケーの課金基盤とキャリア主導の流通が、iTunesのようなPC中心のモデルとは別の道を作りました。
+          '2002-12-01', '2016-12-31', 'month', 'period', '🎵 着うた時代：携帯電話が音楽配信の主戦場', '着うた・着うたフルが有料配信の中心だった期間です。ガラケーの課金基盤とキャリア主導の流通が、iTunesのようなPC中心のモデルとは別の道を作りました。
 
 「サビが着うたで売れる曲」が意識されたのもこの頃。配信売上は2008〜2009年頃に一度ピークを迎えます。iPhone以降は主導権がアプリ事業者に移り、スマートフォンの普及とともに縮小して、2010年代半ばに役割を終えました。', null,
           'unverified', '終わりの時期は主要キャリアのサービス終了時期からざっくり置いたもので、正確な終了日は事業者・サービス名によって異なります。', 'user', 8) returning id)
@@ -1778,7 +1778,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '産業と制度'),
-          '2005-01-01', null, 'day', 'point', '改正著作権法施行、「還流防止措置（レコード輸入権）」導入', '📦 海外向けに安く作られた邦楽CDの逆輸入を止める「還流防止措置（レコード輸入権）」を導入した改正著作権法が施行されました。アジア市場向けの廉価盤が日本に還流するのを防ぐ狙いで、洋楽輸入盤への影響を心配する反対運動も起きています。
+          '2005-01-01', null, 'day', 'point', '📦 改正著作権法施行、「還流防止措置（レコード輸入権）」導入', '海外向けに安く作られた邦楽CDの逆輸入を止める「還流防止措置（レコード輸入権）」を導入した改正著作権法が施行されました。アジア市場向けの廉価盤が日本に還流するのを防ぐ狙いで、洋楽輸入盤への影響を心配する反対運動も起きています。
 
 再販売価格維持制度と並んで、CDの価格を守る制度が整った時期です。でも同じ年の8月にはiTunes Music Storeが日本で始まっていて、流通と技術は価格統制の外側で動き始めていました。', null,
           'verified', null, 'user', 9) returning id)
@@ -1786,7 +1786,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '流通と技術'),
-          '2007-08-31', null, 'day', 'point', '歌声合成ソフト「初音ミク」発売', '🎶 クリプトン・フューチャー・メディアがVOCALOID製品「初音ミク」を発売。想定を超える売れ行きで、前年に始まったニコニコ動画を舞台に個人制作の楽曲文化が広がり、関連曲の投稿が急増しました。
+          '2007-08-31', null, 'day', 'point', '🎶 歌声合成ソフト「初音ミク」発売', 'クリプトン・フューチャー・メディアがVOCALOID製品「初音ミク」を発売。想定を超える売れ行きで、前年に始まったニコニコ動画を舞台に個人制作の楽曲文化が広がり、関連曲の投稿が急増しました。
 
 **レーベルを通さずに曲が公開されて評価される回路**がここで生まれ、この場から出てきた作り手が2010年代後半以降のヒットを担っていきます。CD売上減が続く中で、「発表の場」が先に変わった例です。', null,
           'verified', null, 'user', 10) returning id)
@@ -1794,7 +1794,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '作品とアーティスト'),
-          '2010-10-27', null, 'day', 'point', 'AKB48「Beginner」発売、初週ミリオンを記録', '🤝 AKB48「Beginner」がオリコン週間で初週100万枚超を記録。握手券や投票券を同梱した特典付きCDの大量購入を前提にした売り方が、シングル市場を支えていました。
+          '2010-10-27', null, 'day', 'point', '🤝 AKB48「Beginner」発売、初週ミリオンを記録', 'AKB48「Beginner」がオリコン週間で初週100万枚超を記録。握手券や投票券を同梱した特典付きCDの大量購入を前提にした売り方が、シングル市場を支えていました。
 
 この手法は**CDを「音楽を聴くための媒体」から「体験と権利のチケット」へ**変えたと言えます。シングルの枚数は回復して見える一方、実際の聴取は配信と動画へ。指標としてのCD売上と実態のズレが広がった時期で、音楽性の評価とは別の議論も呼びました。', null,
           'verified', null, 'user', 11) returning id)
@@ -1802,7 +1802,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '産業と制度'),
-          '2012-10-01', null, 'day', 'point', '改正著作権法施行、違法ダウンロードに刑事罰', '⚖️ 違法にアップロードされた音楽・映像と知りつつダウンロードする行為に、刑事罰を導入する改正著作権法が施行されました。業界団体の要望を受けた立法で、CD・配信の縮小を違法流通の問題として捉える発想です。
+          '2012-10-01', null, 'day', 'point', '⚖️ 改正著作権法施行、違法ダウンロードに刑事罰', '違法にアップロードされた音楽・映像と知りつつダウンロードする行為に、刑事罰を導入する改正著作権法が施行されました。業界団体の要望を受けた立法で、CD・配信の縮小を違法流通の問題として捉える発想です。
 
 でも同じ頃、YouTubeとスマートフォンが標準になっていて、翌年以降のストリーミング解禁で「無料で聴ける合法の場」を作る方向へ、産業の戦略は転換していきます。', null,
           'verified', null, 'user', 12) returning id)
@@ -1810,7 +1810,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '流通と技術'),
-          '2015-05-27', null, 'day', 'point', 'AWA・LINE MUSICが開始、国内で定額制配信が本格化', '🎧 AWA（5月27日）、LINE MUSIC（6月11日）が相次いでスタートし、7月にはApple Musicも日本上陸。定額聴き放題が国内でも選択肢になった年で、月額1,000円前後という相場もここで決まりました。
+          '2015-05-27', null, 'day', 'point', '🎧 AWA・LINE MUSICが開始、国内で定額制配信が本格化', 'AWA（5月27日）、LINE MUSIC（6月11日）が相次いでスタートし、7月にはApple Musicも日本上陸。定額聴き放題が国内でも選択肢になった年で、月額1,000円前後という相場もここで決まりました。
 
 ただ最初は主要邦楽アーティストの曲がなかなか揃わず、「あの曲がない」を体験した人も多いはず。CD売上と配信収益のバランスをめぐってレーベル各社の判断は分かれ、以後は再生回数がヒットの指標として意識され始めます。', null,
           'verified', null, 'user', 13) returning id)
@@ -1818,7 +1818,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '流通と技術'),
-          '2016-09-29', null, 'day', 'point', 'Spotifyが日本でサービス開始', '🌏 世界最大手の定額制配信Spotifyが、欧米から約8年遅れでついに日本上陸!無料プランを含むフリーミアムモデルが国内でも提供されました。
+          '2016-09-29', null, 'day', 'point', '🌏 Spotifyが日本でサービス開始', '世界最大手の定額制配信Spotifyが、欧米から約8年遅れでついに日本上陸!無料プランを含むフリーミアムモデルが国内でも提供されました。
 
 無料プランの是非をめぐって業界では議論もありましたが、以後数年で主要レーベルの楽曲提供が進みます。2018年の「Lemon」以降は配信起点のロングヒットが標準になり、CD初動偏重のチャートから複合指標へ移る流れを後押ししました。', null,
           'verified', null, 'user', 14) returning id)
@@ -1826,7 +1826,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '作品とアーティスト'),
-          '2018-03-14', null, 'day', 'point', '米津玄師「Lemon」発売、配信時代のロングヒットの原型に', '🍋 米津玄師「Lemon」がドラマ主題歌として発売され、Billboard JAPAN Hot 100で2018年・2019年と2年連続の年間1位に。
+          '2018-03-14', null, 'day', 'point', '🍋 米津玄師「Lemon」発売、配信時代のロングヒットの原型に', '米津玄師「Lemon」がドラマ主題歌として発売され、Billboard JAPAN Hot 100で2018年・2019年と2年連続の年間1位に。
 
 ボーカロイド出身の作り手が、テレビ主題歌という90年代型タイアップと、動画・配信という2010年代型の流通を両立させた曲です。**CD初週ではなく数年単位の積み重ねで評価される「ロングヒット」**の代表例で、産業レイヤーではストリーミング認定制度の導入につながる状況を作りました。', null,
           'verified', null, 'user', 15) returning id)
@@ -1834,7 +1834,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '作品とアーティスト'),
-          '2019-12-15', null, 'day', 'point', 'YOASOBI「夜に駆ける」配信開始、翌年の年間チャート1位に', '🌃 YOASOBIが小説原作の「夜に駆ける」を配信開始。CDを出さない配信専門のデビューで、Billboard JAPAN Hot 100の2020年年間1位を獲得しました!ボーカロイド出身の作曲者による、動画とストリーミングだけで到達したヒットです。
+          '2019-12-15', null, 'day', 'point', '🌃 YOASOBI「夜に駆ける」配信開始、翌年の年間チャート1位に', 'YOASOBIが小説原作の「夜に駆ける」を配信開始。CDを出さない配信専門のデビューで、Billboard JAPAN Hot 100の2020年年間1位を獲得しました!ボーカロイド出身の作曲者による、動画とストリーミングだけで到達したヒットです。
 
 CDが売上指標から外れても頂点に立てることを見せた曲で、2020年のストリーミング認定制度の導入とも歩調が合います。作られ方（原作小説）と届き方（配信）の両方が新しい、異例のデビュー曲でした。', null,
           'verified', null, 'user', 16) returning id)
@@ -1842,7 +1842,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '産業と制度'),
-          '2020-04-01', null, 'month', 'point', '日本レコード協会がストリーミング認定制度を開始', '📊 日本レコード協会が、累計再生回数に基づくゴールド（5,000万回）などのストリーミング認定をスタート。業界団体がCD枚数と並ぶ評価軸として再生回数を公認した転換点で、**「売上枚数」に代わる公式のものさし**が生まれました。
+          '2020-04-01', null, 'month', 'point', '📊 日本レコード協会がストリーミング認定制度を開始', '日本レコード協会が、累計再生回数に基づくゴールド（5,000万回）などのストリーミング認定をスタート。業界団体がCD枚数と並ぶ評価軸として再生回数を公認した転換点で、**「売上枚数」に代わる公式のものさし**が生まれました。
 
 同じ年、有料音楽配信売上に占めるストリーミングの割合は大半に。コロナ禍でライブ収入が途絶える中、配信が産業の中心であることが数字でもはっきりした年です。', null,
           'unverified', '認定基準の閾値と開始月は協会発表に基づきますが、初回認定の対象作品や制度の細かいところは要確認です。', 'user', 17) returning id)
@@ -1850,7 +1850,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '作品とアーティスト'),
-          '2023-04-12', null, 'day', 'point', 'YOASOBI「アイドル」、日本語曲初のBillboard世界チャート1位', '✨ YOASOBI「アイドル」がアニメ主題歌として配信され、同年6月にBillboard Global Excl. U.S.で日本語楽曲として初めて1位を獲得しました!
+          '2023-04-12', null, 'day', 'point', '✨ YOASOBI「アイドル」、日本語曲初のBillboard世界チャート1位', 'YOASOBI「アイドル」がアニメ主題歌として配信され、同年6月にBillboard Global Excl. U.S.で日本語楽曲として初めて1位を獲得しました!
 
 アニメという映像コンテンツの世界流通と、国境のない配信プラットフォームが結びついた結果です。CD時代には物理流通の壁で難しかった海外チャート上位が、流通と技術の変化で現実になりました。翌年にはCreepy Nuts「Bling-Bang-Bang-Born」も同チャート1位となり、単発では終わらない流れになります。', null,
           'verified', null, 'user', 18) returning id)
@@ -1858,15 +1858,15 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '作品とアーティスト'),
-          '2024-01-07', null, 'day', 'point', 'Creepy Nuts「Bling-Bang-Bang-Born」世界1位', '💃 Creepy Nuts「Bling-Bang-Bang-Born」がアニメ主題歌として配信され、ダンス動画の拡散を経てBillboard Global Excl. U.S.で1位に。TikTokなどショート動画での二次創作が再生回数を押し上げる回路が、すっかり定着した例です。
+          '2024-01-07', null, 'day', 'point', '💃 Creepy Nuts「Bling-Bang-Bang-Born」世界1位', 'Creepy Nuts「Bling-Bang-Bang-Born」がアニメ主題歌として配信され、ダンス動画の拡散を経てBillboard Global Excl. U.S.で1位に。TikTokなどショート動画での二次創作が再生回数を押し上げる回路が、すっかり定着した例です。
 
 曲はアニメと一体で届き、プラットフォームのアルゴリズムがヒットの通り道になりました。30年前のドラマ主題歌タイアップと構造は似ているのに、**媒体はテレビから動画アプリへ、指標は枚数から再生回数へ**置き換わっています。', null,
           'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Bling-Bang-Bang-Born', 'https://ja.wikipedia.org/wiki/Bling-Bang-Bang-Born')) as v(title, url);
 
--- ═══ culture-kpop-global — K-POPグローバル化
+-- ═══ culture-kpop-global — 🎤 K-POPグローバル化
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('culture-kpop-global', '00000000-0000-4000-8000-be575a20b1ee', 'K-POPグローバル化', 'ソウルの練習生システムからビルボード制覇、育成システムの輸出まで。音楽と作品・産業とシステム・ファンダムとメディアの3層で、K-POPが世界標準の生産方式になっていく30年を、ファン目線で追いかけます 🌟', 'culture', 'ja', 'public', 's_culture-kpop-global', 1992, 2024, 'culture-kpop-global')
+values ('culture-kpop-global', '00000000-0000-4000-8000-be575a20b1ee', '🎤 K-POPグローバル化', 'ソウルの練習生システムからビルボード制覇、育成システムの輸出まで。音楽と作品・産業とシステム・ファンダムとメディアの3層で、K-POPが世界標準の生産方式になっていく30年を、ファン目線で追いかけます 🌟', 'culture', 'ja', 'public', 's_culture-kpop-global', 1992, 2024, 'culture-kpop-global')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global');
@@ -1877,7 +1877,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = '音楽と作品'),
-          '1992-04-11', null, 'day', 'point', 'ソ・テジワ・アイドルズがデビュー', '🎬 3人組ソ・テジワ・アイドルズが、MBCの新人番組で「ナン・アラヨ」を披露してデビュー。審査員の評価は低かったと伝えられますが、楽曲は韓国のチャートを長期間支配し、ラップとダンスを韓国歌謡のど真ん中に持ち込みました。
+          '1992-04-11', null, 'day', 'point', '🎬 ソ・テジワ・アイドルズがデビュー', '3人組ソ・テジワ・アイドルズが、MBCの新人番組で「ナン・アラヨ」を披露してデビュー。審査員の評価は低かったと伝えられますが、楽曲は韓国のチャートを長期間支配し、ラップとダンスを韓国歌謡のど真ん中に持ち込みました。
 
 10代市場の大きさを見せつけた世代交代の事件で、K-POP史の起点として一番よく引かれる場面です。この成功が、才能の出現を待たずにスターを設計して生産する事務所システムの構想を生みました。', null,
           'disputed', 'デビュー番組で審査員から最低点を付けられたという逸話は有名ですが、番組の演出や採点の詳細には諸説あります。', 'user', 0) returning id)
@@ -1885,7 +1885,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = '産業とシステム'),
-          '1995-01-01', null, 'year', 'point', 'SMエンターテインメント設立', '🏢 歌手出身のプロデューサー、イ・スマンがSMエンターテインメントを設立。オーディションで原石を見つけて、歌唱・ダンスから語学まで数年がかりで鍛えて送り出す**練習生システム**を体系化しました。
+          '1995-01-01', null, 'year', 'point', '🏢 SMエンターテインメント設立', '歌手出身のプロデューサー、イ・スマンがSMエンターテインメントを設立。オーディションで原石を見つけて、歌唱・ダンスから語学まで数年がかりで鍛えて送り出す**練習生システム**を体系化しました。
 
 音楽制作・育成・マネジメントを丸ごと抱える韓国型事務所の原型です。YG、JYPが続いて「三大事務所」体制が生まれ、K-POPを再現可能な生産方式に変えた出発点になりました。', null,
           'verified', null, 'user', 1) returning id)
@@ -1901,7 +1901,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = '産業とシステム'),
-          '1999-02-08', null, 'day', 'point', '韓国で文化産業振興基本法が制定', '📜 通貨危機後の韓国で、金大中政権が文化産業振興基本法を制定。コンテンツを輸出産業として育てる国家方針が法制化され、専門の振興機関と支援予算の整備が進みました。
+          '1999-02-08', null, 'day', 'point', '📜 韓国で文化産業振興基本法が制定', '通貨危機後の韓国で、金大中政権が文化産業振興基本法を制定。コンテンツを輸出産業として育てる国家方針が法制化され、専門の振興機関と支援予算の整備が進みました。
 
 「支援はしても介入はしない」と要約される文化政策の下で、K-POPの海外展開は制度の後ろ盾を得ます。国家戦略としての大衆文化輸出という構図は、この年表全体の底に流れているテーマです。', null,
           'verified', null, 'user', 3) returning id)
@@ -1909,7 +1909,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = 'ファンダムとメディア'),
-          '2000-02-01', null, 'month', 'point', 'H.O.T.北京公演、「韓流」が流行語に', '🇨🇳 H.O.T.が北京の工人体育館で単独公演を行いました。中国メディアが韓国大衆文化のブームを「韓流」と呼ぶ用法はこの前後に定着したとされ、公演はその象徴的な出来事になります。
+          '2000-02-01', null, 'month', 'point', '🇨🇳 H.O.T.北京公演、「韓流」が流行語に', 'H.O.T.が北京の工人体育館で単独公演を行いました。中国メディアが韓国大衆文化のブームを「韓流」と呼ぶ用法はこの前後に定着したとされ、公演はその象徴的な出来事になります。
 
 K-POP最初の海外ファンダムは、欧米ではなくアジアで生まれました。ビルボード制覇の物語で語られがちなK-POP史ですが、**アジア市場が先にあった**ことを教えてくれる出来事です。', null,
           'disputed', '「韓流」の語の初出は1990年代末の中国・台湾メディアとされますが、正確な初出の時期・媒体には諸説あります。', 'user', 4) returning id)
@@ -1917,7 +1917,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = '音楽と作品'),
-          '2002-03-13', null, 'day', 'point', 'BoAが韓国人初のオリコンアルバム1位', '🎤 SM所属のBoAが日本語アルバム「LISTEN TO MY HEART」で、韓国人歌手として初めてオリコン週間アルバムチャート1位を獲得!日本語の習得まで含めた、徹底した現地対応の成果でした。
+          '2002-03-13', null, 'day', 'point', '🎤 BoAが韓国人初のオリコンアルバム1位', 'SM所属のBoAが日本語アルバム「LISTEN TO MY HEART」で、韓国人歌手として初めてオリコン週間アルバムチャート1位を獲得!日本語の習得まで含めた、徹底した現地対応の成果でした。
 
 現地語で歌って現地のテレビに出る「完全ローカライズ戦略」の成功例で、東方神起らも同じ道をたどります。のちのBTSが韓国語のままビルボードを制する戦略と見比べると、K-POP輸出の第1段階を象徴する存在です。', null,
           'verified', null, 'user', 5) returning id)
@@ -1925,7 +1925,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = '音楽と作品'),
-          '2012-07-15', null, 'day', 'point', 'PSY「江南スタイル」公開', '🐎 PSYの「江南スタイル」がYouTubeで公開。コミカルな騎馬ダンスとともに世界中に広がり、米ビルボードHot 100で7週連続2位を記録、各国のチャートを席巻しました。
+          '2012-07-15', null, 'day', 'point', '🐎 PSY「江南スタイル」公開', 'PSYの「江南スタイル」がYouTubeで公開。コミカルな騎馬ダンスとともに世界中に広がり、米ビルボードHot 100で7週連続2位を記録、各国のチャートを席巻しました。
 
 事務所の緻密な輸出戦略ではなく、**プラットフォーム上の偶然の拡散**が生んだ世界的ヒットです。YouTubeこそK-POPの主戦場だという認識を全事務所に植え付け、以後のMV重視戦略を決定づけました。', null,
           'verified', null, 'user', 6) returning id)
@@ -1933,7 +1933,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = 'ファンダムとメディア'),
-          '2012-10-13', null, 'day', 'point', '第1回KCONを米カリフォルニアで開催', '🎪 CJグループが、K-POPと韓国文化の総合イベントKCONを米カリフォルニア州アーバインで初開催。コンサートに美容・食・ドラマの体験ブースを併設して、約1万人を集めたと発表されました。
+          '2012-10-13', null, 'day', 'point', '🎪 第1回KCONを米カリフォルニアで開催', 'CJグループが、K-POPと韓国文化の総合イベントKCONを米カリフォルニア州アーバインで初開催。コンサートに美容・食・ドラマの体験ブースを併設して、約1万人を集めたと発表されました。
 
 音楽を入口に韓国製品全体へ関心を広げる「ファンダムの見本市」です。文化輸出を消費財輸出につなげる国家戦略を、民間の興行として形にした装置とも言えます。以後、世界各都市で定例化しました。', null,
           'unverified', '観客数（約1万人）は主催者発表に基づく数字で、第三者による検証はありません。', 'user', 7) returning id)
@@ -1941,7 +1941,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = 'ファンダムとメディア'),
-          '2012-12-21', null, 'day', 'point', '「江南スタイル」がYouTube初の10億回再生', '📈 「江南スタイル」のミュージックビデオが、YouTube史上初の再生回数10億回に到達。7月の公開から半年足らずでの記録でした。
+          '2012-12-21', null, 'day', 'point', '📈 「江南スタイル」がYouTube初の10億回再生', '「江南スタイル」のミュージックビデオが、YouTube史上初の再生回数10億回に到達。7月の公開から半年足らずでの記録でした。
 
 再生回数という、誰にでも見える「世界ヒットのものさし」を定着させた出来事です。以後、K-POP各社はMV公開初動の再生数を競うようになり、ファンダムによる組織的な再生・投票の文化（いわゆる総攻）が育っていきます。', null,
           'verified', null, 'user', 8) returning id)
@@ -1949,7 +1949,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = '音楽と作品'),
-          '2013-06-13', null, 'day', 'point', '防弾少年団(BTS)デビュー', '🌱 Big Hitエンターテインメントから7人組の防弾少年団(BTS)がデビュー。大手3社の外にある中小事務所の出身で、当初は国内での注目度も限られていました。
+          '2013-06-13', null, 'day', 'point', '🌱 防弾少年団(BTS)デビュー', 'Big Hitエンターテインメントから7人組の防弾少年団(BTS)がデビュー。大手3社の外にある中小事務所の出身で、当初は国内での注目度も限られていました。
 
 メンバー自身が制作に関わる楽曲と、SNSでの日常的な発信を武器に、テレビ中心の勝ち筋とは別ルートで支持を積み上げていきます。ファンダムとメディアの構造変化を一番体現するグループの、これが出発点です。', null,
           'verified', null, 'user', 9) returning id)
@@ -1957,7 +1957,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = '産業とシステム'),
-          '2016-08-01', '2021-12-31', 'month', 'period', '中国の「限韓令」で最大市場が閉ざされる', '🚧 在韓米軍のTHAAD配備決定への報復として、中国で韓国コンテンツの放送や公演が事実上制限されたとされます。K-POP公演の許可が下りなくなり、最大級の成長市場が突然閉ざされました。
+          '2016-08-01', '2021-12-31', 'month', 'period', '🚧 中国の「限韓令」で最大市場が閉ざされる', '在韓米軍のTHAAD配備決定への報復として、中国で韓国コンテンツの放送や公演が事実上制限されたとされます。K-POP公演の許可が下りなくなり、最大級の成長市場が突然閉ざされました。
 
 各社は日本・東南アジア・欧米へ軸足を移して、市場リスクの分散を迫られます。結果として特定市場に依存しない世界展開が加速したと評価される、地政学がエンタメ産業の形を変えた代表例です。', null,
           'disputed', '中国政府は「限韓令」の存在を公式に認めておらず、開始時期・対象範囲・解除の経緯はいずれも報道に基づく推定です。', 'user', 10) returning id)
@@ -1965,7 +1965,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = 'ファンダムとメディア'),
-          '2017-05-21', null, 'day', 'point', 'BTSがビルボード・ミュージック・アワード受賞', '🏆 BTSが米ビルボード・ミュージック・アワードのトップ・ソーシャル・アーティスト部門で受賞。同部門で6年連続受賞中だったジャスティン・ビーバーを、世界のファン投票で破っての受賞でした!
+          '2017-05-21', null, 'day', 'point', '🏆 BTSがビルボード・ミュージック・アワード受賞', 'BTSが米ビルボード・ミュージック・アワードのトップ・ソーシャル・アーティスト部門で受賞。同部門で6年連続受賞中だったジャスティン・ビーバーを、世界のファン投票で破っての受賞でした!
 
 ARMYと呼ばれる**組織化されたグローバルファンダムの動員力**が、米国音楽産業の表舞台で数字として見えた瞬間です。以後、米メディアのK-POP報道が本格化し、翌年のアルバム1位への流れを作りました。', null,
           'verified', null, 'user', 11) returning id)
@@ -1973,7 +1973,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = '音楽と作品'),
-          '2018-05-27', null, 'day', 'point', 'BTSのアルバムが米ビルボード200で1位', '👑 BTSのアルバム「LOVE YOURSELF 転 ''Tear''」が、韓国のアーティストとして初めて米ビルボード200で1位に!収録曲はほぼ全編が韓国語です。
+          '2018-05-27', null, 'day', 'point', '👑 BTSのアルバムが米ビルボード200で1位', 'BTSのアルバム「LOVE YOURSELF 転 ''Tear''」が、韓国のアーティストとして初めて米ビルボード200で1位に!収録曲はほぼ全編が韓国語です。
 
 英語で歌うことが世界進出の条件だった時代の終わりを告げました。BoAに代表される完全ローカライズ戦略とは対照的な、**韓国語のまま世界へ**というモデルの確立です。歌詞の翻訳は、ファンダムが自発的に担いました。', null,
           'verified', null, 'user', 12) returning id)
@@ -1981,7 +1981,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = 'ファンダムとメディア'),
-          '2019-06-01', null, 'month', 'point', 'Weverse開始、ファンダムを自前で組織化', '📲 Big Hit系列のbeNXが、ファンコミュニティアプリWeverseの運用を開始。アーティストの投稿、有料コンテンツ配信、グッズ販売、ファン投稿の多言語翻訳までを一つのアプリにまとめました。
+          '2019-06-01', null, 'month', 'point', '📲 Weverse開始、ファンダムを自前で組織化', 'Big Hit系列のbeNXが、ファンコミュニティアプリWeverseの運用を開始。アーティストの投稿、有料コンテンツ配信、グッズ販売、ファン投稿の多言語翻訳までを一つのアプリにまとめました。
 
 SNSと放送局に頼っていたファンとの接点を、事務所が自前のプラットフォームとして持つ転換です。ファンダムのデータと収益を内部化するこの動きは、他社にも一気に広がりました。', null,
           'verified', null, 'user', 13) returning id)
@@ -1989,7 +1989,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = 'ファンダムとメディア'),
-          '2020-06-14', null, 'day', 'point', 'オンライン公演「BANG BANG CON The Live」', '💜 コロナ禍でワールドツアーが中止になる中、BTSが有料オンライン公演「BANG BANG CON The Live」を開催。107の国と地域から約75万人が同時視聴したと発表されました。
+          '2020-06-14', null, 'day', 'point', '💜 オンライン公演「BANG BANG CON The Live」', 'コロナ禍でワールドツアーが中止になる中、BTSが有料オンライン公演「BANG BANG CON The Live」を開催。107の国と地域から約75万人が同時視聴したと発表されました。
 
 会場の収容人数という物理的な限界を超える興行モデルの実証になり、各社が有料オンライン公演やハイブリッド興行を常設化します。パンデミックがファンダムとメディアの関係を作り替えた、代表的な出来事です。', null,
           'unverified', '同時視聴者数（約75万人）は主催者発表で、第三者による検証はありません。', 'user', 14) returning id)
@@ -1997,7 +1997,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = '音楽と作品'),
-          '2020-08-21', null, 'day', 'point', '「Dynamite」が米Hot 100で1位', '🧨 BTSが初の全編英語曲「Dynamite」を発表し、米ビルボードHot 100で韓国アーティストとして初めての1位を獲得!ディスコ調の明るい一曲でした。
+          '2020-08-21', null, 'day', 'point', '🧨 「Dynamite」が米Hot 100で1位', 'BTSが初の全編英語曲「Dynamite」を発表し、米ビルボードHot 100で韓国アーティストとして初めての1位を獲得!ディスコ調の明るい一曲でした。
 
 韓国語のままビルボード200を制した後の、あえての英語曲による頂点獲得です。コロナ禍で停滞する音楽市場での戦略も奏功して、オンライン公演とともにパンデミック期のK-POPを象徴しています。', null,
           'verified', null, 'user', 15) returning id)
@@ -2005,7 +2005,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = '産業とシステム'),
-          '2020-10-15', null, 'day', 'point', 'Big Hit(現HYBE)がKOSPI上場', '💹 BTSの所属事務所Big Hitエンターテインメントが韓国取引所に上場。時価総額は初日に一時8兆ウォン台に達し、既存エンタメ大手3社の合計を上回る規模と報じられました。
+          '2020-10-15', null, 'day', 'point', '💹 Big Hit(現HYBE)がKOSPI上場', 'BTSの所属事務所Big Hitエンターテインメントが韓国取引所に上場。時価総額は初日に一時8兆ウォン台に達し、既存エンタメ大手3社の合計を上回る規模と報じられました。
 
 翌年HYBEに社名を変え、米イサカ・ホールディングス買収などで総合エンタメ企業化を進めます。アイドル事務所が資本市場の主要プレイヤーになり、K-POPの生産方式そのものが投資対象になった段階です。', null,
           'verified', null, 'user', 16) returning id)
@@ -2013,7 +2013,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = '音楽と作品'),
-          '2023-04-15', null, 'day', 'point', 'BLACKPINKがコーチェラのヘッドライナーに', '🌴 BLACKPINKが米コーチェラ・フェスティバルで、K-POPアーティストとして初めてヘッドライナーを務めました。2019年の同フェス出演から、4年での主役化です。
+          '2023-04-15', null, 'day', 'point', '🌴 BLACKPINKがコーチェラのヘッドライナーに', 'BLACKPINKが米コーチェラ・フェスティバルで、K-POPアーティストとして初めてヘッドライナーを務めました。2019年の同フェス出演から、4年での主役化です。
 
 欧米の大型フェス市場で興行の主役を張れることを示し、ガールグループが世界ツアー市場の主力になったことを印象づけます。ストリーミングとSNSで育った人気が、伝統的な興行の序列を塗り替えた形です。', null,
           'verified', null, 'user', 17) returning id)
@@ -2021,7 +2021,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = '産業とシステム'),
-          '2023-09-01', null, 'month', 'point', 'HYBEとゲフィンが米国発グループを育成', '🌐 HYBEと米ゲフィン・レコードの合弁が、世界中から候補者を集めたオーディション企画「The Debut: Dream Academy」を実施。ここから翌年、多国籍6人組KATSEYEが米国を拠点にデビューします。
+          '2023-09-01', null, 'month', 'point', '🌐 HYBEとゲフィンが米国発グループを育成', 'HYBEと米ゲフィン・レコードの合弁が、世界中から候補者を集めたオーディション企画「The Debut: Dream Academy」を実施。ここから翌年、多国籍6人組KATSEYEが米国を拠点にデビューします。
 
 韓国人グループの輸出ではなく、練習生制度という**育成システムそのものの輸出**への転換です。K-POPが国籍や言語を離れた「方法論」として扱われる段階に入ったことを象徴しています。', null,
           'verified', null, 'user', 18) returning id)
@@ -2029,7 +2029,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = '音楽と作品'),
-          '2024-10-18', null, 'day', 'point', 'ロゼ「APT.」が世界的ヒット', '🍷 BLACKPINKのロゼが、ブルーノ・マーズとのデュエット曲「APT.」を発表。韓国の飲み会の遊び「アパート」を織り込んだ曲は各国のチャートで1位となり、米ビルボードGlobal 200でも首位を獲得しました。
+          '2024-10-18', null, 'day', 'point', '🍷 ロゼ「APT.」が世界的ヒット', 'BLACKPINKのロゼが、ブルーノ・マーズとのデュエット曲「APT.」を発表。韓国の飲み会の遊び「アパート」を織り込んだ曲は各国のチャートで1位となり、米ビルボードGlobal 200でも首位を獲得しました。
 
 グループ活動と並行したソロでのグローバルヒットで、K-POPアイドルが個人として世界のポップ市場に立つ段階を示しました。米国のスーパースターとの対等な共作という形も、産業の成熟を物語っています。', null,
           'verified', null, 'user', 19) returning id)
@@ -2361,9 +2361,9 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Boris Eldagsen: Sony World Photography Awards 2023に関する声明', null)) as v(title, url);
 
--- ═══ culture-street-culture — ストリートカルチャー
+-- ═══ culture-street-culture — 🛹 ストリートカルチャー
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('culture-street-culture', '00000000-0000-4000-8000-88ca25792997', 'ストリートカルチャー', 'ブロックパーティーのDJ、地下鉄のグラフィティ、路上のスケーター。3つの路上文化が交差しながら美術館・オークション・五輪へ迎えられていく半世紀を、スケボーで育った目線で層を重ねて見る年表です 🛹', 'culture', 'ja', 'public', 's_culture-street-culture', 1970, 2024, 'culture-street-culture')
+values ('culture-street-culture', '00000000-0000-4000-8000-88ca25792997', '🛹 ストリートカルチャー', 'ブロックパーティーのDJ、地下鉄のグラフィティ、路上のスケーター。3つの路上文化が交差しながら美術館・オークション・五輪へ迎えられていく半世紀を、スケボーで育った目線で層を重ねて見る年表です 🛹', 'culture', 'ja', 'public', 's_culture-street-culture', 1970, 2024, 'culture-street-culture')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-street-culture');
@@ -2390,7 +2390,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-street-culture') and name = 'スケートとファッション'),
-          '1973-01-01', null, 'year', 'point', 'ウレタンウィールがスケートを変える', '🛹 フランク・ナスワージーが開発したウレタン製ウィール「キャデラック・ホイール」が発売。それまでの金属や粘土系の車輪とは別物のグリップと滑らかさをもたらしました!
+          '1973-01-01', null, 'year', 'point', '🛹 ウレタンウィールがスケートを変える', 'フランク・ナスワージーが開発したウレタン製ウィール「キャデラック・ホイール」が発売。それまでの金属や粘土系の車輪とは別物のグリップと滑らかさをもたらしました!
 
 路面を選ばず走れるようになったことで、スケートボードは坂道や空のプールの壁へ進出して、サーフィンの陸上での模倣から独自の身体文化へ離陸します。道具の小さな革新が表現の全体を変えた、乗る側には実感でわかる例です。', null,
           'unverified', 'ウレタンウィールの開発・発売の時期は1972年から1973年にかけてとされていて、資料によって記述に幅があります。', 'user', 2) returning id)
@@ -2438,7 +2438,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-street-culture') and name = '音楽とダンス'),
-          '1986-01-01', null, 'year', 'point', 'Run-D.M.C.、ヒップホップを主流へ', '👟 Run-D.M.C.がアルバム「Raising Hell」を発表。エアロスミスと共演した「Walk This Way」でロックの聴衆にまで届いて、「My Adidas」をきっかけにアディダスとの大型契約を結びました。
+          '1986-01-01', null, 'year', 'point', '👟 Run-D.M.C.、ヒップホップを主流へ', 'Run-D.M.C.がアルバム「Raising Hell」を発表。エアロスミスと共演した「Walk This Way」でロックの聴衆にまで届いて、「My Adidas」をきっかけにアディダスとの大型契約を結びました。
 
 ヒップホップのグループとスポーツ用品ブランドの先駆的な契約とされていて、ストリートファッション(スケートとファッションレイヤー)と音楽が市場で合流する原型です。何を履くかが何者であるかを語る。あの路上の記号の文化が、ここで産業とつながりました。', null,
           'verified', null, 'user', 8) returning id)
@@ -2494,7 +2494,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-street-culture') and name = 'スケートとファッション'),
-          '2021-07-25', null, 'day', 'point', 'スケートボードが五輪競技デビュー', '🏅 東京五輪でスケートボードが五輪競技として初めて実施されて、ストリート種目で堀米雄斗が初代金メダリストに。女子では13歳の西矢椛が優勝しました!
+          '2021-07-25', null, 'day', 'point', '🏅 スケートボードが五輪競技デビュー', '東京五輪でスケートボードが五輪競技として初めて実施されて、ストリート種目で堀米雄斗が初代金メダリストに。女子では13歳の西矢椛が優勝しました!
 
 警察に追われる遊びだったスケートボードが、**路上の遊びから五輪種目へ**と公認された到達点です。ただ、競技化が路上の文化の自由さを損なうという当事者の異論も根強くて、公認と自律のあいだの緊張は、滑る側の実感としてもいまも続いています。', null,
           'verified', null, 'user', 15) returning id)

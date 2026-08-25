@@ -218,9 +218,9 @@ insert into public.users (id, username, display_name, bio, country, age_band)
 values ('00000000-0000-4000-8000-50d6340835f6', 'denkiya_sandai', '町の電器店三代目', '熊本から東大阪へ。家族と店の70年を記録しています。', 'JP', 'adult')
 on conflict (id) do update set username = excluded.username, display_name = excluded.display_name, bio = excluded.bio;
 
--- ═══ science-artificial-organs — 人工臓器の進化
+-- ═══ science-artificial-organs — 🫀 人工臓器の進化
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-artificial-organs', '00000000-0000-4000-8000-53afa1095b21', '人工臓器の進化', '人工腎臓と人工心臓から、人工内耳、iPS細胞、異種移植まで。機器と技術、患者と社会、制度と倫理の3つの層を重ねながら、「臓器を作る」という挑戦が医療と社会をどう変えてきたかを、やさしく語りなおす年表です。', 'science-nature', 'ja', 'public', 's_science-artificial-organs', 1943, 2024, 'science-artificial-organs')
+values ('science-artificial-organs', '00000000-0000-4000-8000-53afa1095b21', '🫀 人工臓器の進化', '人工腎臓と人工心臓から、人工内耳、iPS細胞、異種移植まで。機器と技術、患者と社会、制度と倫理の3つの層を重ねながら、「臓器を作る」という挑戦が医療と社会をどう変えてきたかを、やさしく語りなおす年表です。', 'science-nature', 'ja', 'public', 's_science-artificial-organs', 1943, 2024, 'science-artificial-organs')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-artificial-organs');
@@ -239,7 +239,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-artificial-organs'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-artificial-organs') and name = '機器と技術'),
-          '1953-05-06', null, 'day', 'point', 'ギボンの人工心肺で世界初の開心術成功', '🫀 米国の外科医ギボンが、自ら開発した人工心肺装置を使い、心房中隔欠損をもつ18歳の患者の開心術に世界で初めて成功しました。心臓を止めているあいだ、血液の循環と酸素化は機械が代役を務めたのです。
+          '1953-05-06', null, 'day', 'point', '🫀 ギボンの人工心肺で世界初の開心術成功', '米国の外科医ギボンが、自ら開発した人工心肺装置を使い、心房中隔欠損をもつ18歳の患者の開心術に世界で初めて成功しました。心臓を止めているあいだ、血液の循環と酸素化は機械が代役を務めたのです。
 
 心臓と肺という生命の中枢を、一時的にせよ機械に置き換えられると証明したことで、心臓外科という分野そのものが成立しました。のちの人工心臓開発も、この体外循環技術の延長線上にあります。装置の開発をIBMが支援したことでも知られる出来事です。', null,
           'verified', null, 'user', 1) returning id)
@@ -303,7 +303,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-artificial-organs'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-artificial-organs') and name = '制度と倫理'),
-          '1985-10-01', null, 'month', 'point', 'FDAが多チャンネル人工内耳を承認', '👂 米FDAが、多チャンネル方式の人工内耳「ニュークリアス22」を成人向けに承認しました。音を電気の信号に翻訳して聴神経へ直接届ける、感覚そのものを代替する人工臓器の本格的な実用化です。
+          '1985-10-01', null, 'month', 'point', '👂 FDAが多チャンネル人工内耳を承認', '米FDAが、多チャンネル方式の人工内耳「ニュークリアス22」を成人向けに承認しました。音を電気の信号に翻訳して聴神経へ直接届ける、感覚そのものを代替する人工臓器の本格的な実用化です。
 
 1990年には小児へ適用が広がり、装用者は世界で数十万人規模になっていきます。一方、ろう者コミュニティ(患者と社会レイヤー)からは「ろうは治すべき欠損なのか」という根源的な異議が示され、人工臓器が文化やアイデンティティと衝突しうることを教えた出来事でもあります。', null,
           'verified', null, 'user', 9) returning id)
@@ -327,7 +327,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-artificial-organs'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-artificial-organs') and name = '機器と技術'),
-          '2006-08-01', null, 'month', 'point', '山中らがiPS細胞の樹立を発表', '🧫 山中伸弥と高橋和利が、4つの遺伝子の導入により、マウスの体細胞を多能性幹細胞(iPS細胞)へ初期化することに成功したと発表しました。いわば細胞の時計を巻き戻す技術で、翌2007年にはヒトの細胞でも樹立に成功します。
+          '2006-08-01', null, 'month', 'point', '🧫 山中らがiPS細胞の樹立を発表', '山中伸弥と高橋和利が、4つの遺伝子の導入により、マウスの体細胞を多能性幹細胞(iPS細胞)へ初期化することに成功したと発表しました。いわば細胞の時計を巻き戻す技術で、翌2007年にはヒトの細胞でも樹立に成功します。
 
 胚を使う倫理問題と拒絶反応を避けながら、**体細胞から臓器の材料を作る**道を開き、人工臓器の発想を「機械による代替」から「細胞による再建」へと広げました。2012年にノーベル賞を受賞し、日本では再生医療の法制度整備(制度と倫理レイヤー)が一気に進む契機になります。', null,
           'verified', null, 'user', 12) returning id)
@@ -381,9 +381,9 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Massachusetts General Hospital: 遺伝子改変ブタ腎臓の生体移植に関する発表(2024年3月)', null)) as v(title, url);
 
--- ═══ science-astronomy-turning-points — 天文学の転換点
+-- ═══ science-astronomy-turning-points — 🔭 天文学の転換点
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-astronomy-turning-points', '00000000-0000-4000-8000-e4529396d344', '天文学の転換点', 'コペルニクスの地動説から望遠鏡、相対性理論、系外惑星、重力波、JWSTまで。観測技術・宇宙像・社会の3層を重ねて、「宇宙の見え方」がひっくり返った瞬間を選んで並べました。見上げる夜空の意味が変わってきた記録です 🌌', 'science-nature', 'ja', 'public', 's_science-astronomy-turning-points', 1543, 2023, 'science-astronomy-turning-points')
+values ('science-astronomy-turning-points', '00000000-0000-4000-8000-e4529396d344', '🔭 天文学の転換点', 'コペルニクスの地動説から望遠鏡、相対性理論、系外惑星、重力波、JWSTまで。観測技術・宇宙像・社会の3層を重ねて、「宇宙の見え方」がひっくり返った瞬間を選んで並べました。見上げる夜空の意味が変わってきた記録です 🌌', 'science-nature', 'ja', 'public', 's_science-astronomy-turning-points', 1543, 2023, 'science-astronomy-turning-points')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astronomy-turning-points');
@@ -552,9 +552,9 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           'unverified', '銀河候補の距離と質量は測光的な推定に基づく初期報告で、分光確認と再解析によって、見積もりが変わる可能性が高い段階です。', 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Nature: A population of red candidate massive galaxies ~600 Myr after the Big Bang (Labbé et al., 2023)', null)) as v(title, url);
 
--- ═══ science-astrophysics — 宇宙物理学の革命
+-- ═══ science-astrophysics — 🌌 宇宙物理学の革命
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-astrophysics', '00000000-0000-4000-8000-e4529396d344', '宇宙物理学の革命', '1915年の一般相対性理論から、重力波、そしてJWSTまで。理論の飛躍と、それを確かめた観測と装置、発見に沸いた人と社会。3つの層を重ねて、宇宙の姿が塗り替えられてきた100年あまりをたどります。夜空の向こうで起きてきたことの記録です 🔭', 'science-nature', 'ja', 'public', 's_science-astrophysics', 1915, 2023, 'science-astrophysics')
+values ('science-astrophysics', '00000000-0000-4000-8000-e4529396d344', '🌌 宇宙物理学の革命', '1915年の一般相対性理論から、重力波、そしてJWSTまで。理論の飛躍と、それを確かめた観測と装置、発見に沸いた人と社会。3つの層を重ねて、宇宙の姿が塗り替えられてきた100年あまりをたどります。夜空の向こうで起きてきたことの記録です 🔭', 'science-nature', 'ja', 'public', 's_science-astrophysics', 1915, 2023, 'science-astrophysics')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics');
@@ -894,9 +894,9 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           'disputed', 'コペルニクスは1.60℃、WMOは1.55±0.13℃と報告し、データセットや基準期間の取り方によっては1.5℃をわずかに下回る評価もある。', 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Copernicus Climate Change Service: Global Climate Highlights 2024', null), ('WMO: State of the Global Climate 2024', null)) as v(title, url);
 
--- ═══ science-deep-sea — 深海探査の記録
+-- ═══ science-deep-sea — 🌊 深海探査の記録
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-deep-sea', '00000000-0000-4000-8000-331f1727ba8b', '深海探査の記録', 'チャレンジャー号の測深から有人・無人での最深部到達、熱水噴出孔の生態系、深海採掘をめぐる攻防まで。探査技術・生命の発見・資源と環境の3層で、人類と深海の150年を追いかけます。海のいちばん深いところの記録帳です。', 'science-nature', 'ja', 'public', 's_science-deep-sea', 1872, 2023, 'science-deep-sea')
+values ('science-deep-sea', '00000000-0000-4000-8000-331f1727ba8b', '🌊 深海探査の記録', 'チャレンジャー号の測深から有人・無人での最深部到達、熱水噴出孔の生態系、深海採掘をめぐる攻防まで。探査技術・生命の発見・資源と環境の3層で、人類と深海の150年を追いかけます。海のいちばん深いところの記録帳です。', 'science-nature', 'ja', 'public', 's_science-deep-sea', 1872, 2023, 'science-deep-sea')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-deep-sea');
@@ -923,7 +923,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-deep-sea'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-deep-sea') and name = '深海の生命と発見'),
-          '1938-12-22', null, 'day', 'point', '「生きた化石」シーラカンスの発見', '🐟 南アフリカの博物館学芸員ラティマーが、漁獲物の中から絶滅したはずのシーラカンスを見つけました。約6600万年前に姿を消したと考えられていた魚類の生存が確認され、「生きた化石」として世界を驚かせます。
+          '1938-12-22', null, 'day', 'point', '🐟 「生きた化石」シーラカンスの発見', '南アフリカの博物館学芸員ラティマーが、漁獲物の中から絶滅したはずのシーラカンスを見つけました。約6600万年前に姿を消したと考えられていた魚類の生存が確認され、「生きた化石」として世界を驚かせます。
 
 同定したのは魚類学者スミスでした。深海がまだ知られざる生き物の宝庫であることを示す発見で、深海生物学への関心を大きく高めています。1952年に2例目、1997年にはインドネシアで別種も見つかりました。', null,
           'verified', null, 'user', 2) returning id)
@@ -995,7 +995,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-deep-sea'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-deep-sea') and name = '深海の生命と発見'),
-          '2012-07-01', null, 'month', 'point', '生きたダイオウイカの深海撮影に世界初成功', '🦑 国立科学博物館の窪寺恒己らが、小笠原沖の水深600m超で生きたダイオウイカの動画撮影に成功しました。深海を泳ぐ生きた姿の撮影は世界初で、映像は翌年NHKなどで放送され、世界的な反響を呼んでいます。
+          '2012-07-01', null, 'month', 'point', '🦑 生きたダイオウイカの深海撮影に世界初成功', '国立科学博物館の窪寺恒己らが、小笠原沖の水深600m超で生きたダイオウイカの動画撮影に成功しました。深海を泳ぐ生きた姿の撮影は世界初で、映像は翌年NHKなどで放送され、世界的な反響を呼んでいます。
 
 何世紀も船乗りの伝説として語られてきた巨大イカが、ようやく生きた姿で記録されました。深海生物の眼に配慮した赤色光や発光ルアーなど、生き物の感覚に合わせた撮影手法の成果で、観察が「捕る」から「そっと見る」へ移る流れを象徴します。', null,
           'verified', null, 'user', 11) returning id)
@@ -1057,9 +1057,9 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           'unverified', 'モラトリアム等を支持する国の数は環境団体や報道による集計で20か国超とされますが、立場の分け方によって数え方は異なります。', 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('国際海底機構(ISA)第28回会期に関する報道・IISD Earth Negotiations Bulletin', null)) as v(title, url);
 
--- ═══ science-dinosaur-research — 恐竜研究の進化
+-- ═══ science-dinosaur-research — 🦴 恐竜研究の進化
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-dinosaur-research', '00000000-0000-4000-8000-331f1727ba8b', '恐竜研究の進化', '最初の化石記載から羽毛恐竜、絶滅論争、化石の競売まで。発見・学説・大衆文化の3層を重ねて、恐竜の姿が「愚鈍な爬虫類」から「鳥の祖先」へ塗り替えられていく200年を追いかけます。地層と骨から歴史を読む記録帳です。', 'science-nature', 'ja', 'public', 's_science-dinosaur-research', 1824, 2020, 'science-dinosaur-research')
+values ('science-dinosaur-research', '00000000-0000-4000-8000-331f1727ba8b', '🦴 恐竜研究の進化', '最初の化石記載から羽毛恐竜、絶滅論争、化石の競売まで。発見・学説・大衆文化の3層を重ねて、恐竜の姿が「愚鈍な爬虫類」から「鳥の祖先」へ塗り替えられていく200年を追いかけます。地層と骨から歴史を読む記録帳です。', 'science-nature', 'ja', 'public', 's_science-dinosaur-research', 1824, 2020, 'science-dinosaur-research')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dinosaur-research');
@@ -1110,7 +1110,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dinosaur-research'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dinosaur-research') and name = '発見と化石'),
-          '1902-01-01', null, 'year', 'point', 'ブラウンがティラノサウルスを発見', '🦴 アメリカ自然史博物館のバーナム・ブラウンが、モンタナ州ヘルクリークの地層で大型肉食恐竜の部分骨格を掘り出しました。1905年、オズボーンがティラノサウルス・レックスと命名します。
+          '1902-01-01', null, 'year', 'point', '🦴 ブラウンがティラノサウルスを発見', 'アメリカ自然史博物館のバーナム・ブラウンが、モンタナ州ヘルクリークの地層で大型肉食恐竜の部分骨格を掘り出しました。1905年、オズボーンがティラノサウルス・レックスと命名します。
 
 「暴君トカゲの王」という命名と巨大骨格の展示は博物館の集客力を証明し、恐竜が博物館の看板になる時代を開きました。T. rexは以後1世紀にわたり、映画から競売まで、大衆文化と市場レイヤーの主役であり続けます。', null,
           'verified', null, 'user', 5) returning id)
@@ -1383,9 +1383,9 @@ DNA二本鎖を切らずに一塩基を書き換える塩基編集の体内投�
           'unverified', '症例1例の短期経過報告にとどまり、長期的な安全性・有効性は未確認。', 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Musunuru, K. et al. (2025) Patient-Specific In Vivo Gene Editing to Treat a Rare Genetic Disease. New England Journal of Medicine', null)) as v(title, url);
 
--- ═══ science-infectious-diseases — 感染症との闘い
+-- ═══ science-infectious-diseases — 🦠 感染症との闘い
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-infectious-diseases', '00000000-0000-4000-8000-53afa1095b21', '感染症との闘い', '1798年の種痘から新型コロナまで。病原体の流行、医学と公衆衛生の応答、国際的な制度づくりの3つの層を重ねながら、対策がいつも流行の少し後ろを追いかけ、それでも一歩ずつ前に進んできた200年あまりをたどる年表です。', 'science-nature', 'ja', 'public', 's_science-infectious-diseases', 1798, 2023, 'science-infectious-diseases')
+values ('science-infectious-diseases', '00000000-0000-4000-8000-53afa1095b21', '🦠 感染症との闘い', '1798年の種痘から新型コロナまで。病原体の流行、医学と公衆衛生の応答、国際的な制度づくりの3つの層を重ねながら、対策がいつも流行の少し後ろを追いかけ、それでも一歩ずつ前に進んできた200年あまりをたどる年表です。', 'science-nature', 'ja', 'public', 's_science-infectious-diseases', 1798, 2023, 'science-infectious-diseases')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-infectious-diseases');
@@ -1396,7 +1396,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-infectious-diseases'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-infectious-diseases') and name = '医学と公衆衛生'),
-          '1798-01-01', null, 'year', 'point', 'ジェンナー、種痘の成果を公刊', '🐄 ジェンナーが、牛痘の接種で天然痘を防げるという観察を『牛痘の原因と作用に関する研究』にまとめ、自費で出版しました。1796年の少年への接種実験を含む23例の報告で、ワクチンという考え方はここから始まります。
+          '1798-01-01', null, 'year', 'point', '🐄 ジェンナー、種痘の成果を公刊', 'ジェンナーが、牛痘の接種で天然痘を防げるという観察を『牛痘の原因と作用に関する研究』にまとめ、自費で出版しました。1796年の少年への接種実験を含む23例の報告で、ワクチンという考え方はここから始まります。
 
 病原体もウイルスもまだ知られていない時代に、経験の積み重ねだけから生まれた方法でした。いわば、仕組みの分からないまま先に効いてしまった薬です。約180年後の天然痘根絶(社会と制度レイヤー)まで続く、長い物語の始まりでした。', null,
           'verified', null, 'user', 0) returning id)
@@ -1412,7 +1412,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-infectious-diseases'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-infectious-diseases') and name = '医学と公衆衛生'),
-          '1882-03-24', null, 'day', 'point', 'コッホ、結核菌を発見', '🔬 ロベルト・コッホが、ベルリンの生理学会で結核菌の発見を報告しました。独自の染色法と純粋培養、動物への感染実験を重ね、当時の死因の筆頭級だった結核が、特定の細菌による感染症であることを示したのです。
+          '1882-03-24', null, 'day', 'point', '🔬 コッホ、結核菌を発見', 'ロベルト・コッホが、ベルリンの生理学会で結核菌の発見を報告しました。独自の染色法と純粋培養、動物への感染実験を重ね、当時の死因の筆頭級だった結核が、特定の細菌による感染症であることを示したのです。
 
 炭疽菌、コレラ菌と続く一連の発見で、「犯人を突き止めれば手を打てる」という細菌学の時代が確立しました。この日は後に世界結核デーになります。ただし治療薬ストレプトマイシンの登場は、まだ60年以上先のことでした。', null,
           'verified', null, 'user', 2) returning id)
@@ -1468,7 +1468,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-infectious-diseases'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-infectious-diseases') and name = '社会と制度'),
-          '1980-05-08', null, 'day', 'point', 'WHO、天然痘の根絶を宣言', '🌍 第33回世界保健総会が、天然痘の世界根絶を宣言しました。人類が意図して根絶した最初の感染症です。ワクチンの原型の誕生から約180年、いわば世代を超えたリレーがようやくゴールした到達点でした。
+          '1980-05-08', null, 'day', 'point', '🌍 WHO、天然痘の根絶を宣言', '第33回世界保健総会が、天然痘の世界根絶を宣言しました。人類が意図して根絶した最初の感染症です。ワクチンの原型の誕生から約180年、いわば世代を超えたリレーがようやくゴールした到達点でした。
 
 冷戦下で米ソが協力できた数少ない事業でもあり、**制度と現場が噛み合えば根絶はできる**という成功体験は、ポリオや麻疹の根絶・排除計画に受け継がれました。一方で、研究用に残されたウイルス株を廃棄すべきかどうかの議論は、今も決着していません。', null,
           'verified', null, 'user', 9) returning id)
@@ -1492,7 +1492,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-infectious-diseases'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-infectious-diseases') and name = '医学と公衆衛生'),
-          '1996-01-01', null, 'year', 'point', 'HIV多剤併用療法(HAART)が確立', '💊 プロテアーゼ阻害薬の登場で、働き方の違う薬を組み合わせてウイルスの増殖を抑え込む多剤併用療法が確立しました。1種類では突破されてしまう守りも、組み合わせれば破られにくくなる、という発想です。この年の国際エイズ会議で治療の転換が示され、先進国の死亡率は数年で急減しました。
+          '1996-01-01', null, 'year', 'point', '💊 HIV多剤併用療法(HAART)が確立', 'プロテアーゼ阻害薬の登場で、働き方の違う薬を組み合わせてウイルスの増殖を抑え込む多剤併用療法が確立しました。1種類では突破されてしまう守りも、組み合わせれば破られにくくなる、という発想です。この年の国際エイズ会議で治療の転換が示され、先進国の死亡率は数年で急減しました。
 
 エイズは「死の病」から、付き合いながら管理できる慢性疾患へと変わります。ただし高価な薬が途上国に届くまでには、特許と価格をめぐる制度の攻防(社会と制度レイヤー)が続き、治療アクセスの格差そのものが国際保健の主題になっていきました。', null,
           'verified', null, 'user', 12) returning id)
@@ -1532,7 +1532,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-infectious-diseases'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-infectious-diseases') and name = '医学と公衆衛生'),
-          '2020-12-08', null, 'day', 'point', 'mRNAワクチン、一般接種が開始', '💉 英国で90歳の女性を第1号として、ファイザー・ビオンテック製の新型コロナmRNAワクチンの一般接種が始まりました。ウイルスの遺伝情報の公開から約11か月という、異例の速さでの実用化です。
+          '2020-12-08', null, 'day', 'point', '💉 mRNAワクチン、一般接種が開始', '英国で90歳の女性を第1号として、ファイザー・ビオンテック製の新型コロナmRNAワクチンの一般接種が始まりました。ウイルスの遺伝情報の公開から約11か月という、異例の速さでの実用化です。
 
 何十年にもわたる基礎研究の蓄積が緊急時に結実したもので、長い助走があってこその跳躍でした。カリコとワイスマンの基盤技術は、2023年のノーベル賞になります。一方で、供給が富裕国に偏る「ワクチン格差」は、制度の側(社会と制度レイヤー)に大きな宿題を残しました。', null,
           'verified', null, 'user', 17) returning id)
@@ -1554,9 +1554,9 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: COVID-19 pandemic', 'https://en.wikipedia.org/wiki/COVID-19_pandemic')) as v(title, url);
 
--- ═══ science-mars-missions — 火星探査ミッション
+-- ═══ science-mars-missions — 🚀 火星探査ミッション
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-mars-missions', '00000000-0000-4000-8000-e4529396d344', '火星探査ミッション', '運河の幻から探査車の隊列、そしてサンプルリターン計画まで。ミッションの成否・水と生命の証拠・競争と構想の3層を重ねて、人類が「隣の惑星」をどう読み解いてきたかをたどります。望遠鏡の中の赤い点が、歩き回れる大地になるまでの記録です。', 'science-nature', 'ja', 'public', 's_science-mars-missions', 1877, 2024, 'science-mars-missions')
+values ('science-mars-missions', '00000000-0000-4000-8000-e4529396d344', '🚀 火星探査ミッション', '運河の幻から探査車の隊列、そしてサンプルリターン計画まで。ミッションの成否・水と生命の証拠・競争と構想の3層を重ねて、人類が「隣の惑星」をどう読み解いてきたかをたどります。望遠鏡の中の赤い点が、歩き回れる大地になるまでの記録です。', 'science-nature', 'ja', 'public', 's_science-mars-missions', 1877, 2024, 'science-mars-missions')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-mars-missions');
@@ -1888,9 +1888,9 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           'unverified', '形式化完了の時期と作業規模は著者らのブログ等の当事者発信に基づき、第三者によるまとまった検証記録はない。', 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Terence Tao''s blog: Formalizing the proof of PFR in Lean4 (2023)', null)) as v(title, url);
 
--- ═══ science-neuroscience — 脳科学の最前線
+-- ═══ science-neuroscience — 🧠 脳科学の最前線
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-neuroscience', '00000000-0000-4000-8000-53afa1095b21', '脳科学の最前線', '1848年の事故症例から、脳と機械をつなぐインターフェースまで。脳の理解をめぐる発見、計測と操作の技術、医療と社会への波及の3つの層を重ねながら、いちばん身近なのにいちばん未知の臓器へ、人がどう近づいてきたかを語りなおす年表です。', 'science-nature', 'ja', 'public', 's_science-neuroscience', 1848, 2024, 'science-neuroscience')
+values ('science-neuroscience', '00000000-0000-4000-8000-53afa1095b21', '🧠 脳科学の最前線', '1848年の事故症例から、脳と機械をつなぐインターフェースまで。脳の理解をめぐる発見、計測と操作の技術、医療と社会への波及の3つの層を重ねながら、いちばん身近なのにいちばん未知の臓器へ、人がどう近づいてきたかを語りなおす年表です。', 'science-nature', 'ja', 'public', 's_science-neuroscience', 1848, 2024, 'science-neuroscience')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-neuroscience');
@@ -1917,7 +1917,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-neuroscience'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-neuroscience') and name = '計測と操作の技術'),
-          '1873-01-01', null, 'year', 'point', 'ゴルジ染色法の開発', '🔬 イタリアのゴルジが、ごく一部の神経細胞だけを全体の形まで黒く染め出す鍍銀染色法を開発しました。細胞がぎっしり密集した脳組織のなかで、満員の群衆の数人にだけスポットライトが当たるような技術です。
+          '1873-01-01', null, 'year', 'point', '🔬 ゴルジ染色法の開発', 'イタリアのゴルジが、ごく一部の神経細胞だけを全体の形まで黒く染め出す鍍銀染色法を開発しました。細胞がぎっしり密集した脳組織のなかで、満員の群衆の数人にだけスポットライトが当たるような技術です。
 
 この染色をスペインのカハールが徹底的に使い込み、神経細胞は独立した単位だとするニューロン説(脳の理解レイヤー)へたどり着きます。**見る技術が理解の限界を決める**という、この年表を貫く主旋律の最初の例になりました。', null,
           'verified', null, 'user', 2) returning id)
@@ -1965,7 +1965,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-neuroscience'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-neuroscience') and name = '脳の理解'),
-          '1971-01-01', null, 'year', 'point', 'オキーフ、場所細胞を発見', '🧠 オキーフらが、ラットの海馬に「自分が特定の場所にいるときだけ発火する」神経細胞を見つけ、場所細胞と名付けました。脳のなかに空間の地図が実在することを示す発見で、いわば頭の中のカーナビの部品が見つかった形です。
+          '1971-01-01', null, 'year', 'point', '🧠 オキーフ、場所細胞を発見', 'オキーフらが、ラットの海馬に「自分が特定の場所にいるときだけ発火する」神経細胞を見つけ、場所細胞と名付けました。脳のなかに空間の地図が実在することを示す発見で、いわば頭の中のカーナビの部品が見つかった形です。
 
 2005年にはモーザー夫妻が、格子状の座標系を作るグリッド細胞を発見し、3人は2014年のノーベル賞を受賞しました。H.M.の症例(医療と社会レイヤー)が示した海馬と記憶の深い関係に、細胞レベルの説明を与えていく系譜の起点です。', null,
           'verified', null, 'user', 8) returning id)
@@ -1997,7 +1997,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-neuroscience'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-neuroscience') and name = '計測と操作の技術'),
-          '2005-08-01', null, 'month', 'point', '光遺伝学、神経活動を光で操作', '💡 ボイデンとダイセロスらが、藻類由来の光感受性タンパク質を神経細胞に発現させ、光を当てるだけで特定の細胞の活動をミリ秒単位で制御する手法を報告しました。いわば神経細胞にリモコンのスイッチを取り付ける技術、光遺伝学の実質的な誕生です。
+          '2005-08-01', null, 'month', 'point', '💡 光遺伝学、神経活動を光で操作', 'ボイデンとダイセロスらが、藻類由来の光感受性タンパク質を神経細胞に発現させ、光を当てるだけで特定の細胞の活動をミリ秒単位で制御する手法を報告しました。いわば神経細胞にリモコンのスイッチを取り付ける技術、光遺伝学の実質的な誕生です。
 
 「観察する」から、**狙った回路を操作して因果を確かめる**への転換をもたらし、神経科学の標準手法として一気に広まりました。特定の記憶を人工的に呼び起こす実験など、かつては思考実験だった研究を現実のものにしています。', null,
           'verified', null, 'user', 12) returning id)
@@ -2045,7 +2045,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-neuroscience'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-neuroscience') and name = '計測と操作の技術'),
-          '2023-08-23', null, 'day', 'point', '脳信号から会話を復元するBCI', '💬 脳に埋め込んだ電極の信号から、発話を毎分約60〜80語の速さで文章化する脳直結インターフェース(BCI)の成果を、米国の2チームがNature誌に同時発表しました。ALSや脳幹梗塞で話せなくなった参加者が、考えるだけで会話できることを示したのです。
+          '2023-08-23', null, 'day', 'point', '💬 脳信号から会話を復元するBCI', '脳に埋め込んだ電極の信号から、発話を毎分約60〜80語の速さで文章化する脳直結インターフェース(BCI)の成果を、米国の2チームがNature誌に同時発表しました。ALSや脳幹梗塞で話せなくなった参加者が、考えるだけで会話できることを示したのです。
 
 いわば脳と機械のあいだに通訳が入った形で、ベルガーの脳波(1929年)から続く「脳を読む」技術が、実用的な意思疎通の速さに達した画期です。読み取り精度の向上は、思考のプライバシーという倫理問題(医療と社会レイヤー)も現実のものにしました。', null,
           'verified', null, 'user', 18) returning id)
@@ -2059,9 +2059,9 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           'unverified', '移植の実施と経過は同社および参加者本人の発表・配信に基づいており、査読を経た詳細データは公表されていません。', 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Neuralink', 'https://en.wikipedia.org/wiki/Neuralink')) as v(title, url);
 
--- ═══ science-ocean-exploration — 海洋探査の歴史
+-- ═══ science-ocean-exploration — ⚓ 海洋探査の歴史
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-ocean-exploration', '00000000-0000-4000-8000-331f1727ba8b', '海洋探査の歴史', '帆船での世界周航から有人潜水艇、無人機、そして深海資源をめぐる国際ルールまで。探査技術・発見・制度の3層を重ねて、人類が最後のフロンティアである深海へどう潜っていったのかをたどります。船の上と海の底の記録帳です。', 'science-nature', 'ja', 'public', 's_science-ocean-exploration', 1872, 2023, 'science-ocean-exploration')
+values ('science-ocean-exploration', '00000000-0000-4000-8000-331f1727ba8b', '⚓ 海洋探査の歴史', '帆船での世界周航から有人潜水艇、無人機、そして深海資源をめぐる国際ルールまで。探査技術・発見・制度の3層を重ねて、人類が最後のフロンティアである深海へどう潜っていったのかをたどります。船の上と海の底の記録帳です。', 'science-nature', 'ja', 'public', 's_science-ocean-exploration', 1872, 2023, 'science-ocean-exploration')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-ocean-exploration');
@@ -2072,7 +2072,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-ocean-exploration'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-ocean-exploration') and name = '発見と科学'),
-          '1872-12-21', '1876-05-24', 'day', 'period', 'チャレンジャー号探検航海、海洋学の誕生', '⚓ 英国のチャレンジャー号がポーツマスを出航し、3年半かけて約13万kmを周航しました。約360地点で測深と生物採集を重ね、4,700種余りの新種を報告。マリアナ海溝の深部も測っています。
+          '1872-12-21', '1876-05-24', 'day', 'period', '⚓ チャレンジャー号探検航海、海洋学の誕生', '英国のチャレンジャー号がポーツマスを出航し、3年半かけて約13万kmを周航しました。約360地点で測深と生物採集を重ね、4,700種余りの新種を報告。マリアナ海溝の深部も測っています。
 
 国家が科学のために船を出した最初期の例で、全50巻の報告書は海洋学という学問の出発点とされます。ここから先の探査は「深さ」への挑戦(探査技術レイヤー)と、海のルールづくり(社会と制度レイヤー)に分かれていきます。', null,
           'verified', null, 'user', 0) returning id)
@@ -2176,7 +2176,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-ocean-exploration'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-ocean-exploration') and name = '発見と科学'),
-          '2017-06-01', null, 'month', 'point', '海底地形図計画「Seabed 2030」開始', '🗺️ 日本財団とGEBCOが、2030年までに世界の海底地形図を完成させる国際プロジェクト「Seabed 2030」を国連海洋会議で発表しました。開始時点で、現代的な水準で測深済みの海底は全体の約6%しかありません。
+          '2017-06-01', null, 'month', 'point', '🗺️ 海底地形図計画「Seabed 2030」開始', '日本財団とGEBCOが、2030年までに世界の海底地形図を完成させる国際プロジェクト「Seabed 2030」を国連海洋会議で発表しました。開始時点で、現代的な水準で測深済みの海底は全体の約6%しかありません。
 
 火星の地形より粗くしか分かっていない足元の海底を埋めていく試みで、各国の調査船や民間船が持つ測深データを持ち寄る方式です。地形データは資源探査や大陸棚の境界画定(社会と制度レイヤー)にも直結します。', null,
           'verified', null, 'user', 13) returning id)
@@ -2385,9 +2385,9 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           'unverified', '報告書は構想段階の計画であり、費用見積りと建設の可否・時期は未承認・未確定。公表日は報道に基づく。', 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Future Circular Collider', 'https://en.wikipedia.org/wiki/Future_Circular_Collider')) as v(title, url);
 
--- ═══ science-renewable-energy — 再生可能エネルギー史
+-- ═══ science-renewable-energy — 🌱 再生可能エネルギー史
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-renewable-energy', '00000000-0000-4000-8000-53afa1095b21', '再生可能エネルギー史', '1839年の光起電力効果の発見から、世界の電力の3割へ。技術の芽、産業と価格の変動、政策の後押しの3つの層を重ねながら、再生可能エネルギーが補助輪を外して走り出すまでの長い道のりを、やさしく語りなおす年表です。', 'science-nature', 'ja', 'public', 's_science-renewable-energy', 1839, 2024, 'science-renewable-energy')
+values ('science-renewable-energy', '00000000-0000-4000-8000-53afa1095b21', '🌱 再生可能エネルギー史', '1839年の光起電力効果の発見から、世界の電力の3割へ。技術の芽、産業と価格の変動、政策の後押しの3つの層を重ねながら、再生可能エネルギーが補助輪を外して走り出すまでの長い道のりを、やさしく語りなおす年表です。', 'science-nature', 'ja', 'public', 's_science-renewable-energy', 1839, 2024, 'science-renewable-energy')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-renewable-energy');
@@ -2414,7 +2414,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-renewable-energy'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-renewable-energy') and name = '技術の芽'),
-          '1954-04-25', null, 'day', 'point', 'ベル研究所、シリコン太陽電池を発表', '☀️ 米ベル研究所が、変換効率約6%のシリコン太陽電池を発表しました。おもちゃの観覧車やラジオを動かす実演が行われ、報道は無尽蔵の太陽エネルギー利用の始まりと持ち上げました。
+          '1954-04-25', null, 'day', 'point', '☀️ ベル研究所、シリコン太陽電池を発表', '米ベル研究所が、変換効率約6%のシリコン太陽電池を発表しました。おもちゃの観覧車やラジオを動かす実演が行われ、報道は無尽蔵の太陽エネルギー利用の始まりと持ち上げました。
 
 しかし高価すぎて地上の用途は開けず、最初の顧客は電池交換のできない人工衛星でした(1958年のヴァンガード1号)。宇宙という特殊な市場が、いわば技術の避難所になったのです。地上での価格低下(産業と価格レイヤー)を待つ構図が、数十年続きます。', null,
           'verified', null, 'user', 2) returning id)
@@ -2446,7 +2446,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-renewable-energy'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-renewable-energy') and name = '技術の芽'),
-          '1991-01-01', null, 'year', 'point', '世界初の洋上風力発電所ヴィンデビー', '🌊 デンマーク沖に、世界初の洋上風力発電所ヴィンデビーが完成しました。450kW機が11基、合計約5MWという小さな規模ながら、風がよく吹き土地の取り合いもない海の上へ、風車を引っ越しさせた最初の一歩です。
+          '1991-01-01', null, 'year', 'point', '🌊 世界初の洋上風力発電所ヴィンデビー', 'デンマーク沖に、世界初の洋上風力発電所ヴィンデビーが完成しました。450kW機が11基、合計約5MWという小さな規模ながら、風がよく吹き土地の取り合いもない海の上へ、風車を引っ越しさせた最初の一歩です。
 
 実証を積み重ねるデンマークの漸進主義は、ブームと崩壊をくり返したカリフォルニア(産業と価格レイヤー)と対照をなします。洋上風力はその後、北海を中心に主力電源級へ成長しました。ヴィンデビーは2017年に役目を終えて、静かに解体されています。', null,
           'verified', null, 'user', 6) returning id)
@@ -2518,7 +2518,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-renewable-energy'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-renewable-energy') and name = '技術の芽'),
-          '2019-10-09', null, 'day', 'point', 'リチウムイオン電池にノーベル化学賞', '🔋 リチウムイオン電池を開発したグッドイナフ、ウィッティンガム、吉野彰の3氏に、ノーベル化学賞が贈られました。授賞理由には、化石燃料に依存しない社会を可能にする基盤、という位置づけが明記されています。
+          '2019-10-09', null, 'day', 'point', '🔋 リチウムイオン電池にノーベル化学賞', 'リチウムイオン電池を開発したグッドイナフ、ウィッティンガム、吉野彰の3氏に、ノーベル化学賞が贈られました。授賞理由には、化石燃料に依存しない社会を可能にする基盤、という位置づけが明記されています。
 
 天候で出力が変わる太陽光・風力を使いこなす鍵は、電気の貯金箱ともいえる蓄電にあります。電気自動車の量産が電池価格を押し下げる好循環(産業と価格レイヤー)が2010年代に確立し、1970年代の石油危機に始まった研究が、再エネの弱点を埋める形で実を結びました。', null,
           'verified', null, 'user', 15) returning id)
@@ -2550,15 +2550,15 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-renewable-energy'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-renewable-energy') and name = '産業と価格'),
-          '2024-05-01', null, 'month', 'point', '世界の発電量の30%が再エネに', '🌍 エネルギー分野のシンクタンクのエンバーが、2023年に世界の発電量に占める再エネの比率が初めて30%を超えたとする分析を公表しました。伸びを引っ張ったのは水力ではなく、太陽光と風力です。
+          '2024-05-01', null, 'month', 'point', '🌍 世界の発電量の30%が再エネに', 'エネルギー分野のシンクタンクのエンバーが、2023年に世界の発電量に占める再エネの比率が初めて30%を超えたとする分析を公表しました。伸びを引っ張ったのは水力ではなく、太陽光と風力です。
 
 分析は各国統計の集計と推計を含む速報値ですが、方向ははっきりしています。1839年に実験室で見つかった小さな現象は、185年かけて世界の電力の3分の1近くを灯すまでになりました。焦点は「増やせるか」から、「どこまで速く置き換えられるか」へ移っています。', null,
           'unverified', '30%超という比率はエンバーの集計・推計に基づく速報値で、確定統計では数値が改定されることがあります。', 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Ember: Global Electricity Review 2024', null)) as v(title, url);
 
--- ═══ science-vaccines — ワクチン開発の歴史
+-- ═══ science-vaccines — 💉 ワクチン開発の歴史
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-vaccines', '00000000-0000-4000-8000-53afa1095b21', 'ワクチン開発の歴史', 'ジェンナーの種痘からmRNAワクチンまで、およそ230年。科学の突破、感染症と社会の反応、制度と公衆衛生の整備の3つの層を重ねながら、ワクチンが一人の発明から社会みんなの基盤へ変わっていく道のりを、やさしく語りなおす年表です。', 'science-nature', 'ja', 'public', 's_science-vaccines', 1796, 2023, 'science-vaccines')
+values ('science-vaccines', '00000000-0000-4000-8000-53afa1095b21', '💉 ワクチン開発の歴史', 'ジェンナーの種痘からmRNAワクチンまで、およそ230年。科学の突破、感染症と社会の反応、制度と公衆衛生の整備の3つの層を重ねながら、ワクチンが一人の発明から社会みんなの基盤へ変わっていく道のりを、やさしく語りなおす年表です。', 'science-nature', 'ja', 'public', 's_science-vaccines', 1796, 2023, 'science-vaccines')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-vaccines');
@@ -2569,7 +2569,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-vaccines'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-vaccines') and name = '科学と技術'),
-          '1796-05-14', null, 'day', 'point', 'ジェンナーが少年に牛痘を接種、種痘の起点', '🐄 英国の医師エドワード・ジェンナーが、8歳の少年ジェームズ・フィップスに牛痘を接種し、のちに天然痘への抵抗力が生じたことを確かめました。いわば弱い相手と先に手合わせをして、本番に備えさせる方法。人為的に免疫を付ける最初の体系的な実証とされます。
+          '1796-05-14', null, 'day', 'point', '🐄 ジェンナーが少年に牛痘を接種、種痘の起点', '英国の医師エドワード・ジェンナーが、8歳の少年ジェームズ・フィップスに牛痘を接種し、のちに天然痘への抵抗力が生じたことを確かめました。いわば弱い相手と先に手合わせをして、本番に備えさせる方法。人為的に免疫を付ける最初の体系的な実証とされます。
 
 牛痘接種そのものには農夫ベンジャミン・ジェスティらの先行例が知られますが、観察を実験と論文にまとめて医学界に届けた点がジェンナーの功績です。種痘は各国へ急速に広がり、1853年の英国での義務化(制度と公衆衛生レイヤー)につながっていきます。', null,
           'disputed', '「世界初のワクチン接種」という位置づけには、1774年のベンジャミン・ジェスティら先行例をめぐって諸説があります。', 'user', 0) returning id)
@@ -2657,7 +2657,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-vaccines'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-vaccines') and name = '感染症と社会'),
-          '1980-05-08', null, 'day', 'point', 'WHOが天然痘の世界根絶を宣言', '🌍 WHO総会が、天然痘の世界根絶を宣言しました。ジェンナーの種痘から184年、天然痘は**人類が計画的に根絶した最初の感染症**になりました。最後の自然感染例は、1977年のソマリアで確認されています。
+          '1980-05-08', null, 'day', 'point', '🌍 WHOが天然痘の世界根絶を宣言', 'WHO総会が、天然痘の世界根絶を宣言しました。ジェンナーの種痘から184年、天然痘は**人類が計画的に根絶した最初の感染症**になりました。最後の自然感染例は、1977年のソマリアで確認されています。
 
 サーベイランスと包囲接種という戦略、凍結乾燥ワクチンと分岐針という技術、WHOという制度(制度と公衆衛生レイヤー)。三つの歯車が噛み合って初めて届いた到達点です。ワクチンの力を示す金字塔ですが、以後「根絶」は麻疹でもポリオでも達成できていません。', null,
           'verified', null, 'user', 11) returning id)
@@ -2697,7 +2697,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-vaccines'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-vaccines') and name = '科学と技術'),
-          '2020-12-02', null, 'day', 'point', '英国がmRNAワクチンを世界に先駆け承認', '💉 英国の規制当局MHRAがファイザー・ビオンテックのmRNAワクチンを承認し、西側諸国で初の新型コロナワクチン実用化となりました。8日後には、90歳の女性が臨床試験の外で世界初の接種を受けています。
+          '2020-12-02', null, 'day', 'point', '💉 英国がmRNAワクチンを世界に先駆け承認', '英国の規制当局MHRAがファイザー・ビオンテックのmRNAワクチンを承認し、西側諸国で初の新型コロナワクチン実用化となりました。8日後には、90歳の女性が臨床試験の外で世界初の接種を受けています。
 
 ウイルスの遺伝子配列の公開から約11か月。**着手から1年未満での実用化**は、「ワクチン開発は10年仕事」という常識を覆しました。カリコらの基礎研究、各国政府の先行購入という資本、緊急承認という制度(制度と公衆衛生レイヤー)。三つの力の足し算でした。', null,
           'verified', null, 'user', 16) returning id)

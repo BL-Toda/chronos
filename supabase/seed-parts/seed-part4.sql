@@ -381,9 +381,9 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           'verified', null, 'user', 18) returning id)
 select 1 from ev;
 
--- ═══ personal-cooking — 料理スキルの進化
+-- ═══ personal-cooking — 🍳 料理スキルの進化
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('personal-cooking', '00000000-0000-4000-8000-f32a7cf6a1b2', '料理スキルの進化', '2005年、進学を機に自炊ゼロから始めた僕の20年の記録です。台所の記録に暮らしの転機と食の時代を重ねて、レシピサイトから動画、値上げの時代まで、家の台所が社会とどうつながってきたかを残しています。', 'personal-life', 'ja', 'public', 's_personal-cooking', 2005, 2026, 'personal-cooking')
+values ('personal-cooking', '00000000-0000-4000-8000-f32a7cf6a1b2', '🍳 料理スキルの進化', '2005年、進学を機に自炊ゼロから始めた僕の20年の記録です。台所の記録に暮らしの転機と食の時代を重ねて、レシピサイトから動画、値上げの時代まで、家の台所が社会とどうつながってきたかを残しています。', 'personal-life', 'ja', 'public', 's_personal-cooking', 2005, 2026, 'personal-cooking')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-cooking');
@@ -402,7 +402,7 @@ select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-cooking'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-cooking') and name = '台所の記録'),
-          '2005-05-01', null, 'month', 'point', '最初のカレー、鍋を焦がす', '🍛 初めての自炊はカレーでした。ルウの箱の手順すら読み飛ばして、水を減らしすぎて鍋底を焦がしました。それでも食べられたことに驚いた、と当時の日記にあります。
+          '2005-05-01', null, 'month', 'point', '🍛 最初のカレー、鍋を焦がす', '初めての自炊はカレーでした。ルウの箱の手順すら読み飛ばして、水を減らしすぎて鍋底を焦がしました。それでも食べられたことに驚いた、と当時の日記にあります。
 
 失敗の原因を調べもせず、次も勘で作っていました。**焦げた鍋から始まった**この年表は、道具と情報が台所をどう変えるかの記録でもあります。20年後、僕はもう一度このカレーを作り直すことになります。', null,
           'verified', null, 'user', 1) returning id)
@@ -450,7 +450,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-cooking'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-cooking') and name = '台所の記録'),
-          '2012-06-01', null, 'month', 'point', '週3日の弁当作りを始める', '🍱 節約と昼の栄養を考えて、週3日の弁当を始めました。前の晩の残りと卵焼き、冷凍ブロッコリー。職場では「弁当男子」とからかわれましたが、続きました。卵焼きは百回焼いて、ようやく形になりました!
+          '2012-06-01', null, 'month', 'point', '🍱 週3日の弁当作りを始める', '節約と昼の栄養を考えて、週3日の弁当を始めました。前の晩の残りと卵焼き、冷凍ブロッコリー。職場では「弁当男子」とからかわれましたが、続きました。卵焼きは百回焼いて、ようやく形になりました!
 
 震災をきっかけに再開した自炊が、習慣として定着した時期です。レシピ検索が毎晩の日課になりました。数年前に流行語だった言葉(食の時代レイヤー)が、そのまま自分の生活になったわけです。', null,
           'verified', null, 'user', 7) returning id)
@@ -538,7 +538,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-cooking'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-cooking') and name = '台所の記録'),
-          '2026-01-01', null, 'month', 'point', '20年目のカレーを作り直す', '🍛 自炊歴20年の節目に、あの最初のカレーを箱の手順どおりに作り直しました。焦がさず、でも驚くほど普通の味でした。隠し味は何も入れていません。隣で相方が笑っていました。
+          '2026-01-01', null, 'month', 'point', '🍛 20年目のカレーを作り直す', '自炊歴20年の節目に、あの最初のカレーを箱の手順どおりに作り直しました。焦がさず、でも驚くほど普通の味でした。隠し味は何も入れていません。隣で相方が笑っていました。
 
 検索、動画、低温調理、値上げ。台所は時代の道具と事情に振り回され続けましたが、**うまくなったのは料理じゃなくて、暮らしの段取り**なんだと思います。次の20年も、たぶん台所にいます。', null,
           'verified', null, 'user', 18) returning id)
@@ -1367,9 +1367,9 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           'verified', null, 'user', 18) returning id)
 select 1 from ev;
 
--- ═══ personal-life-with-cats — 猫との暮らし
+-- ═══ personal-life-with-cats — 🐈 猫との暮らし
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('personal-life-with-cats', '00000000-0000-4000-8000-313467496863', '猫との暮らし', '2011年、28歳のときに保護猫のソラを迎えてからの15年です。2匹の猫との日々と暮らしの変化に、動物愛護法の改正や猫ブームといった社会の動きを重ねて、速さの違う時間を一緒に生きた記録を残しておきます。', 'personal-life', 'ja', 'public', 's_personal-life-with-cats', 2011, 2026, 'personal-life-with-cats')
+values ('personal-life-with-cats', '00000000-0000-4000-8000-313467496863', '🐈 猫との暮らし', '2011年、28歳のときに保護猫のソラを迎えてからの15年です。2匹の猫との日々と暮らしの変化に、動物愛護法の改正や猫ブームといった社会の動きを重ねて、速さの違う時間を一緒に生きた記録を残しておきます。', 'personal-life', 'ja', 'public', 's_personal-life-with-cats', 2011, 2026, 'personal-life-with-cats')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-life-with-cats');
@@ -1522,9 +1522,9 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           'verified', null, 'user', 17) returning id)
 select 1 from ev;
 
--- ═══ personal-marathon — マラソン完走記録
+-- ═══ personal-marathon — 🏃 マラソン完走記録
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('personal-marathon', '00000000-0000-4000-8000-7f130d0601ac', 'マラソン完走記録', '2007年、35歳で走り始めた会社員ランナーの19年の記録です。レースと記録、練習と体の変化に、市民マラソンブームやシューズ革命といった時代の動きを重ねました。速くなった時期より、走り続けた時期のほうがずっと長い。そんな年表です。', 'personal-life', 'ja', 'public', 's_personal-marathon', 2007, 2026, 'personal-marathon')
+values ('personal-marathon', '00000000-0000-4000-8000-7f130d0601ac', '🏃 マラソン完走記録', '2007年、35歳で走り始めた会社員ランナーの19年の記録です。レースと記録、練習と体の変化に、市民マラソンブームやシューズ革命といった時代の動きを重ねました。速くなった時期より、走り続けた時期のほうがずっと長い。そんな年表です。', 'personal-life', 'ja', 'public', 's_personal-marathon', 2007, 2026, 'personal-marathon')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-marathon');
@@ -1848,9 +1848,9 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           'verified', null, 'user', 18) returning id)
 select 1 from ev;
 
--- ═══ personal-music-practice — 楽器練習の軌跡
+-- ═══ personal-music-practice — 🎹 楽器練習の軌跡
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('personal-music-practice', '00000000-0000-4000-8000-33b2dc907b05', '楽器練習の軌跡', '7歳で始めて13歳でやめ、29歳で買った電子ピアノで再開したピアノの記録です。練習と演奏の歩みに、暮らしの変化と音楽をめぐる社会の動きを重ねました。上達の記録というより、「何度でも戻ってきたこと」の記録です。1987年生まれ、いまも夜はヘッドホンで弾いています。', 'personal-life', 'ja', 'public', 's_personal-music-practice', 1994, 2026, 'personal-music-practice')
+values ('personal-music-practice', '00000000-0000-4000-8000-33b2dc907b05', '🎹 楽器練習の軌跡', '7歳で始めて13歳でやめ、29歳で買った電子ピアノで再開したピアノの記録です。練習と演奏の歩みに、暮らしの変化と音楽をめぐる社会の動きを重ねました。上達の記録というより、「何度でも戻ってきたこと」の記録です。1987年生まれ、いまも夜はヘッドホンで弾いています。', 'personal-life', 'ja', 'public', 's_personal-music-practice', 1994, 2026, 'personal-music-practice')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-music-practice');
@@ -1861,7 +1861,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-music-practice'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-music-practice') and name = '練習と演奏'),
-          '1994-04-01', null, 'month', 'point', '7歳、近所のピアノ教室に通い始める', '🎹 母に連れられて、団地の一室の個人教室に通い始めました。7歳でした。最初の教本はバイエルで、家の電子オルガンで練習して、練習した日はカレンダーにシールを貼っていました。
+          '1994-04-01', null, 'month', 'point', '🎹 7歳、近所のピアノ教室に通い始める', '母に連れられて、団地の一室の個人教室に通い始めました。7歳でした。最初の教本はバイエルで、家の電子オルガンで練習して、練習した日はカレンダーにシールを貼っていました。
 
 教室でピアノを習う男子は、学年でわたしひとり。この「少数派」の感覚は、大人になって再開したときにも少しだけついて回りました。振り返れば、ごく普通の習い事としての始まりです。', null,
           'verified', null, 'user', 0) returning id)
@@ -1909,7 +1909,7 @@ select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-music-practice'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-music-practice') and name = '練習と演奏'),
-          '2016-06-01', null, 'month', 'point', '29歳、電子ピアノを買って再開する', '🎹 同僚の結婚式で、新婦のお父さんが挨拶の代わりにピアノを一曲弾いたんです。その帰り道に楽器店へ寄って、ヘッドホンで練習できる電子ピアノを注文しました。ボーナスの大半が消えました。
+          '2016-06-01', null, 'month', 'point', '🎹 29歳、電子ピアノを買って再開する', '同僚の結婚式で、新婦のお父さんが挨拶の代わりにピアノを一曲弾いたんです。その帰り道に楽器店へ寄って、ヘッドホンで練習できる電子ピアノを注文しました。ボーナスの大半が消えました。
 
 指は驚くほど動きませんでしたが、楽譜が読めることだけは体に残っていました。実家からは16年ぶりに段ボールの楽譜が届きました!**再開に必要だったのは才能ではなく、きっかけと防音**でした。', null,
           'verified', null, 'user', 6) returning id)
@@ -2013,15 +2013,15 @@ select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-music-practice'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-music-practice') and name = '練習と演奏'),
-          '2026-04-01', null, 'month', 'point', '練習ノートが10冊目に入る', '🎹 再開の日から書き続けている練習ノートが、10冊目に入りました!日付と練習した曲、気づきを3行だけ書く方式で、通算の練習日は2000日を超えています。
+          '2026-04-01', null, 'month', 'point', '🎹 練習ノートが10冊目に入る', '再開の日から書き続けている練習ノートが、10冊目に入りました!日付と練習した曲、気づきを3行だけ書く方式で、通算の練習日は2000日を超えています。
 
 読み返すと、上達の記録というより暮らしの記録に近いです。仕事が荒れた月は空白が続き、戻ってくるたびに同じ基礎練からやり直しています。**やめないことではなく、何度でも戻ること**。この記録の結論は、それに尽きます。', null,
           'verified', null, 'user', 19) returning id)
 select 1 from ev;
 
--- ═══ personal-parenting — 子育ての記録
+-- ═══ personal-parenting — 👶 子育ての記録
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('personal-parenting', '00000000-0000-4000-8000-f7e57e307e1b', '子育ての記録', '2016年に生まれた長女と、2022年に生まれた次女。子どもが生まれた日からつけている、我が家の10年の記録です。子どもの成長、親の仕事と暮らし、保育や教育の制度、コロナ禍。重ねてみると、家庭の選択がどれだけ制度に左右されてきたかが見えてきます。', 'personal-life', 'ja', 'public', 's_personal-parenting', 2016, 2026, 'personal-parenting')
+values ('personal-parenting', '00000000-0000-4000-8000-f7e57e307e1b', '👶 子育ての記録', '2016年に生まれた長女と、2022年に生まれた次女。子どもが生まれた日からつけている、我が家の10年の記録です。子どもの成長、親の仕事と暮らし、保育や教育の制度、コロナ禍。重ねてみると、家庭の選択がどれだけ制度に左右されてきたかが見えてきます。', 'personal-life', 'ja', 'public', 's_personal-parenting', 2016, 2026, 'personal-parenting')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting');
@@ -2532,9 +2532,9 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           'verified', null, 'user', 19) returning id)
 select 1 from ev;
 
--- ═══ personal-two-of-us — ふたりの10年間
+-- ═══ personal-two-of-us — 🌸 ふたりの10年間
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('personal-two-of-us', '00000000-0000-4000-8000-5c5f9d6252a3', 'ふたりの10年間', '2014年に東京で出会ってから、わたしとKの暮らしを年表にしています。ふたりの出来事と仕事や暮らしの変化に、同じ年の社会の出来事を重ねて、小さな選択が時代の空気とどう響き合っていたのかを、ときどき振り返るための記録です。', 'personal-life', 'ja', 'public', 's_personal-two-of-us', 2014, 2024, 'personal-two-of-us')
+values ('personal-two-of-us', '00000000-0000-4000-8000-5c5f9d6252a3', '🌸 ふたりの10年間', '2014年に東京で出会ってから、わたしとKの暮らしを年表にしています。ふたりの出来事と仕事や暮らしの変化に、同じ年の社会の出来事を重ねて、小さな選択が時代の空気とどう響き合っていたのかを、ときどき振り返るための記録です。', 'personal-life', 'ja', 'public', 's_personal-two-of-us', 2014, 2024, 'personal-two-of-us')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us');

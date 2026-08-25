@@ -357,9 +357,9 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           'unverified', '仕様策定と商用化の時期はいずれも標準化団体・各社の計画・見込みであり、今後変動しうる。', 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('3GPP発表・主要各社6Gホワイトペーパー', null)) as v(title, url);
 
--- ═══ tech-ai-revolution — AI革命の全体像 2020–2026
+-- ═══ tech-ai-revolution — 🤖 AI革命の全体像 2020–2026
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('tech-ai-revolution', '00000000-0000-4000-8000-da0dc7f11ec9', 'AI革命の全体像 2020–2026', 'AIはどうしてこの数年で「あたりまえ」になったのか。深層学習の下地から生成AIの爆発、各国の規制まで、技術・資本・規制の3つのレイヤーで読み解く年表です 🤖', 'technology', 'ja', 'public', 's_tech-ai-revolution', 2012, 2026, 'tech-ai-revolution')
+values ('tech-ai-revolution', '00000000-0000-4000-8000-da0dc7f11ec9', '🤖 AI革命の全体像 2020–2026', 'AIはどうしてこの数年で「あたりまえ」になったのか。深層学習の下地から生成AIの爆発、各国の規制まで、技術・資本・規制の3つのレイヤーで読み解く年表です 🤖', 'technology', 'ja', 'public', 's_tech-ai-revolution', 2012, 2026, 'tech-ai-revolution')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution');
@@ -370,7 +370,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '技術'),
-          '2012-10-01', null, 'month', 'point', 'AlexNetがILSVRCで圧勝、深層学習ブームの起点', '🧠 トロント大学のチーム(Krizhevsky、Sutskever、Hinton)が作ったGPU学習の深層CNNが、画像認識コンペILSVRCで従来手法に圧勝。「深層学習って本当に使えるんだ」と世界が気づいた瞬間です!
+          '2012-10-01', null, 'month', 'point', '🧠 AlexNetがILSVRCで圧勝、深層学習ブームの起点', 'トロント大学のチーム(Krizhevsky、Sutskever、Hinton)が作ったGPU学習の深層CNNが、画像認識コンペILSVRCで従来手法に圧勝。「深層学習って本当に使えるんだ」と世界が気づいた瞬間です!
 
 ここから研究のリソースが一気に深層学習へ。GPUで学習するスタイルもこのとき定着しました。のちのNVIDIAの大躍進(企業と資本レイヤー)につながる、生成AI以前の「下地」となる出来事です。', null,
           'verified', null, 'user', 0) returning id)
@@ -378,7 +378,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '技術'),
-          '2017-06-12', null, 'day', 'point', 'Transformer論文公開、大規模言語モデルの基盤に', '🔧 Googleの研究者たちが「再帰構造はもういらない、Attentionだけでいい」と提案したのがTransformer。並列学習に強く、モデルとデータを大きくするほど性能が伸びる「スケーリング」の道を開きました。GPTもBERTも、ぜんぶこの構造の上に立っています!
+          '2017-06-12', null, 'day', 'point', '🔧 Transformer論文公開、大規模言語モデルの基盤に', 'Googleの研究者たちが「再帰構造はもういらない、Attentionだけでいい」と提案したのがTransformer。並列学習に強く、モデルとデータを大きくするほど性能が伸びる「スケーリング」の道を開きました。GPTもBERTも、ぜんぶこの構造の上に立っています!
 
 ちなみにこの時点では、AIはまだ研究投資の対象。資本市場や規制当局はほぼノーマークでした。5年後の大騒ぎと見比べると、この静けさが際立ちます。', null,
           'verified', null, 'user', 1) returning id)
@@ -386,7 +386,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '企業と資本'),
-          '2019-07-22', null, 'day', 'point', 'MicrosoftがOpenAIに10億ドル出資', '🤝 MicrosoftがOpenAIに10億ドルを出資し、Azureを独占的なクラウド基盤にすると発表。巨大な計算資源の供給ラインがここでつながりました。
+          '2019-07-22', null, 'day', 'point', '🤝 MicrosoftがOpenAIに10億ドル出資', 'MicrosoftがOpenAIに10億ドルを出資し、Azureを独占的なクラウド基盤にすると発表。巨大な計算資源の供給ラインがここでつながりました。
 
 非営利で始まったOpenAIが営利子会社(capped-profit)を作った直後のできごとです。**この資本と計算資源の結合が、翌年のGPT-3(技術レイヤー)を可能にしました**。以後の生成AI競争は「モデル開発企業×クラウド大手」の連合戦になっていきます。', null,
           'verified', null, 'user', 2) returning id)
@@ -394,7 +394,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '技術'),
-          '2020-05-28', null, 'day', 'point', 'GPT-3論文公開、1750億パラメータの言語モデル', '📈 OpenAIが1750億パラメータのGPT-3を発表。少しの例を見せるだけで多様なタスクをこなす「few-shot」能力に研究者たちがざわつきました!規模を大きくすれば能力が伸びる、を実証した形です。
+          '2020-05-28', null, 'day', 'point', '📈 GPT-3論文公開、1750億パラメータの言語モデル', 'OpenAIが1750億パラメータのGPT-3を発表。少しの例を見せるだけで多様なタスクをこなす「few-shot」能力に研究者たちがざわつきました!規模を大きくすれば能力が伸びる、を実証した形です。
 
 前年のMicrosoft出資が結実した成果でもあります。6月にはAPIとして限定公開され、AIは「研究成果」から「サービスの土台」へ。一方この頃の社会はコロナ対応で手一杯で、AI規制の議論はまだEUの準備段階でした。', null,
           'verified', null, 'user', 3) returning id)
@@ -402,7 +402,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '社会と規制'),
-          '2021-04-21', null, 'day', 'point', '欧州委員会がAI規則(AI Act)案を提案', '⚖️ 欧州委員会が、AIの用途をリスクで4段階に分けて高リスクには義務を課す、世界初の包括的なAI規制案を発表しました。
+          '2021-04-21', null, 'day', 'point', '⚖️ 欧州委員会がAI規則(AI Act)案を提案', '欧州委員会が、AIの用途をリスクで4段階に分けて高リスクには義務を課す、世界初の包括的なAI規制案を発表しました。
 
 ただ、この時点で生成AIはほぼ想定外。2022年末にChatGPT(技術レイヤー)が登場すると、あわてて汎用AIモデルの条項が追加されることになります。**規制が技術に追いつこうとする構図は、ここから始まりました**。', null,
           'verified', null, 'user', 4) returning id)
@@ -410,7 +410,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '技術'),
-          '2022-08-22', null, 'day', 'point', 'Stable Diffusion公開、画像生成AIがオープンに', '🎨 Stability AIらが画像生成モデルStable Diffusionを重みごと公開。自分のPCで動く生成AIが一気に広まりました。
+          '2022-08-22', null, 'day', 'point', '🎨 Stable Diffusion公開、画像生成AIがオープンに', 'Stability AIらが画像生成モデルStable Diffusionを重みごと公開。自分のPCで動く生成AIが一気に広まりました。
 
 同じ年のDALL·E 2やMidjourneyに続く動きですが、モデルをオープンに配ったインパクトは別格。派生モデルやツールが爆発的に増える一方で、学習データの著作権をめぐる訴訟が翌年から相次ぎ、社会と規制レイヤーの論点を先取りしました。生成AIが「見て分かる」形でみんなに届いた最初の波です。', null,
           'verified', null, 'user', 5) returning id)
@@ -418,7 +418,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '社会と規制'),
-          '2022-10-07', null, 'day', 'point', '米国が先端半導体の対中輸出規制を発表', '🚧 アメリカ商務省が、先端AIチップと製造装置の中国向け輸出をストップ。**計算資源が安全保障と地政学の対象になった**瞬間です。
+          '2022-10-07', null, 'day', 'point', '🚧 米国が先端半導体の対中輸出規制を発表', 'アメリカ商務省が、先端AIチップと製造装置の中国向け輸出をストップ。**計算資源が安全保障と地政学の対象になった**瞬間です。
 
 対象はNVIDIAのA100/H100クラスのGPUで、規制はその後も段階的に強化されます。この縛りが中国側の「少ない計算資源で戦う」工夫を促し、2025年のDeepSeek-R1(技術レイヤー)の衝撃につながったという見方もあります。AIの覇権争いが国家戦略になった、最初のはっきりした出来事でした。', null,
           'verified', null, 'user', 6) returning id)
@@ -426,7 +426,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '技術'),
-          '2022-11-30', null, 'day', 'point', 'ChatGPT公開', '💬 OpenAIが対話型AI「ChatGPT」を無料公開。中身はGPT-3.5に人間のフィードバックで磨きをかけたもので、技術の大ジャンプというより「届け方」の発明でした。
+          '2022-11-30', null, 'day', 'point', '💬 ChatGPT公開', 'OpenAIが対話型AI「ChatGPT」を無料公開。中身はGPT-3.5に人間のフィードバックで磨きをかけたもので、技術の大ジャンプというより「届け方」の発明でした。
 
 でも、誰でもおしゃべり感覚で使える体験が世界を変えます!公開2か月で推定1億ユーザーに到達し(社会と規制レイヤー)、翌年1月にはMicrosoftの追加出資が発表され、大手各社が一斉に生成AIへ舵を切りました。**この年表のすべてのレイヤーが、ここを分岐点にしています**。', null,
           'verified', null, 'user', 7) returning id)
@@ -434,7 +434,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '企業と資本'),
-          '2023-01-23', null, 'day', 'point', 'MicrosoftがOpenAIへ数十億ドル規模の追加出資', '💰 MicrosoftがOpenAIとの提携延長と、複数年・数十億ドル規模の投資を発表(報道では総額100億ドルとも)。ChatGPT公開からわずか2か月後のことです。
+          '2023-01-23', null, 'day', 'point', '💰 MicrosoftがOpenAIへ数十億ドル規模の追加出資', 'MicrosoftがOpenAIとの提携延長と、複数年・数十億ドル規模の投資を発表(報道では総額100億ドルとも)。ChatGPT公開からわずか2か月後のことです。
 
 生成AIが資本市場のど真ん中に来たことを象徴する出来事でした。翌月にはBing、続いてOfficeへの組み込みが進み、Googleも対抗発表を急ぎます。3月にはGPT-4の公開も控えていて、資本と技術の回転がものすごく速くなった時期です。', null,
           'disputed', '実はMicrosoftの公式発表に金額は書かれていません。「100億ドル」は報道ベースの推定です。', 'user', 8) returning id)
@@ -442,7 +442,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '社会と規制'),
-          '2023-02-01', null, 'month', 'point', 'ChatGPTが公開2か月で推定1億ユーザーに到達', '🌍 「ChatGPTの月間利用者が公開2か月で1億人に到達」とUBSの分析が報じられ、史上最速の普及と話題になりました。
+          '2023-02-01', null, 'month', 'point', '🌍 ChatGPTが公開2か月で推定1億ユーザーに到達', '「ChatGPTの月間利用者が公開2か月で1億人に到達」とUBSの分析が報じられ、史上最速の普及と話題になりました。
 
 学校での利用制限、会社での情報漏えいの心配など、社会の反応も一斉に噴出。イタリアの当局が3月末に一時利用停止を命じるなど、規制側の初動もこのスピードが引き金でした。技術の「届け方の転換」が社会に波及するまでの速さを示す数字です。', null,
           'disputed', '1億人はUBSがSimilarwebなどのデータから推定した数字で、OpenAIの公式発表ではありません。集計方法によって数値は前後します。', 'user', 9) returning id)
@@ -450,7 +450,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '技術'),
-          '2023-03-14', null, 'day', 'point', 'GPT-4公開、マルチモーダル対応へ', '🚀 OpenAIがGPT-4を発表。画像も読めるようになり、司法試験など多くの試験で人間の上位層に匹敵するスコアを出しました。
+          '2023-03-14', null, 'day', 'point', '🚀 GPT-4公開、マルチモーダル対応へ', 'OpenAIがGPT-4を発表。画像も読めるようになり、司法試験など多くの試験で人間の上位層に匹敵するスコアを出しました。
 
 一方で技術報告書はモデル規模も学習データも非公開。競争と安全性を理由に、オープンな研究文化から距離を置いた点も話題になりました。同じ月にGoogle BardやAnthropicのClaudeも登場し(企業と資本レイヤー)、1週間後には開発一時停止を求める公開書簡(社会と規制レイヤー)。アクセルとブレーキが同時に踏まれた月です。', null,
           'verified', null, 'user', 10) returning id)
@@ -458,7 +458,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '社会と規制'),
-          '2023-03-22', null, 'day', 'point', '「巨大AI実験の一時停止」を求める公開書簡', '✋ 「GPT-4を超えるAIの開発を6か月止めよう」。Future of Life Instituteの公開書簡に、著名な研究者や経営者が署名しました。GPT-4公開のわずか8日後のことです。
+          '2023-03-22', null, 'day', 'point', '✋ 「巨大AI実験の一時停止」を求める公開書簡', '「GPT-4を超えるAIの開発を6か月止めよう」。Future of Life Instituteの公開書簡に、著名な研究者や経営者が署名しました。GPT-4公開のわずか8日後のことです。
 
 実際に止めた企業はゼロで、投資も開発もむしろ加速。それでも、AIのリスクを一般の議論の場に引き上げ、同年10月の米大統領令や11月の英国AI安全サミットなど、各国政府の動きを後押ししたと言われています。', null,
           'unverified', '署名者数(3万人超とされる)は主催団体の集計で、第三者によるチェックはされていません。', 'user', 11) returning id)
@@ -466,7 +466,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '社会と規制'),
-          '2023-10-30', null, 'day', 'point', '米国でAIに関する大統領令14110号に署名', '🏛️ バイデン大統領が「安全で信頼できるAI」の大統領令に署名。計算量のしきい値を基準に、大規模モデルの開発者へ安全性テスト結果の報告を求めました。米国初の包括的なAI政策です。
+          '2023-10-30', null, 'day', 'point', '🏛️ 米国でAIに関する大統領令14110号に署名', 'バイデン大統領が「安全で信頼できるAI」の大統領令に署名。計算量のしきい値を基準に、大規模モデルの開発者へ安全性テスト結果の報告を求めました。米国初の包括的なAI政策です。
 
 EUのAI Actが大詰めだった時期と重なり、大西洋の両側で規制づくりが並走しました。ただしこの大統領令、2025年1月の政権交代直後に撤回されます。規制の方向性が政治で変わることを示す例にもなりました。', null,
           'verified', null, 'user', 12) returning id)
@@ -474,7 +474,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '企業と資本'),
-          '2023-11-17', '2023-11-22', 'day', 'period', 'OpenAI取締役会がアルトマンCEOを解任、5日後に復帰', '🪑 OpenAIの取締役会がサム・アルトマンCEOを電撃解任。従業員の大量離反表明とMicrosoftの介入を経て、たった5日で復帰しました。
+          '2023-11-17', '2023-11-22', 'day', 'period', '🪑 OpenAI取締役会がアルトマンCEOを解任、5日後に復帰', 'OpenAIの取締役会がサム・アルトマンCEOを電撃解任。従業員の大量離反表明とMicrosoftの介入を経て、たった5日で復帰しました。
 
 非営利の理念にもとづく統治と、巨額資本を受け入れた事業の間の緊張が一気に表面化した出来事です。取締役会は再編され、実質的に企業としての路線が優先される結果に。前月に米大統領令、同月に英国AI安全サミットという時期で、AI企業の「中の統治」が世界のニュースになった5日間でした。', null,
           'verified', null, 'user', 13) returning id)
@@ -482,7 +482,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '社会と規制'),
-          '2024-03-13', null, 'day', 'point', '欧州議会がAI Actを可決', '🇪🇺 欧州議会が世界初の包括的AI規制「AI Act」を可決。2021年の提案時にはなかった汎用AI(GPAI)への透明性義務は、ChatGPT以後の変化(技術レイヤー)を受けて追加されたものです。
+          '2024-03-13', null, 'day', 'point', '🇪🇺 欧州議会がAI Actを可決', '欧州議会が世界初の包括的AI規制「AI Act」を可決。2021年の提案時にはなかった汎用AI(GPAI)への透明性義務は、ChatGPT以後の変化(技術レイヤー)を受けて追加されたものです。
 
 理事会の承認を経て2024年8月1日に発効し、禁止事項→汎用AI義務→高リスク義務の順で段階的に適用されます。企業と資本レイヤーでは、規制コストを理由に欧州でのサービス提供を遅らせる会社も出てきました。', null,
           'verified', null, 'user', 14) returning id)
@@ -498,7 +498,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '技術'),
-          '2025-01-20', null, 'day', 'point', 'DeepSeek-R1公開、低コスト推論モデルの衝撃', '🐋 中国のDeepSeekが推論特化モデルR1をオープンウェイトで公開。「少ない計算資源で最先端に迫る性能」と主張し、世界を驚かせました。
+          '2025-01-20', null, 'day', 'point', '🐋 DeepSeek-R1公開、低コスト推論モデルの衝撃', '中国のDeepSeekが推論特化モデルR1をオープンウェイトで公開。「少ない計算資源で最先端に迫る性能」と主張し、世界を驚かせました。
 
 米国の輸出規制(社会と規制レイヤー)でGPUの入手が制限される中での成果とされ、**「計算資源の量が競争力を決める」という前提を揺さぶりました**。1週間後にはNVIDIA株が急落(企業と資本レイヤー)。オープンウェイト戦略が地政学的な意味を持つことも見せつけました。', null,
           'disputed', '「学習コストは数百万ドル規模」という話は自社発表がもとで、どこまで含めた金額か(最終学習だけか、研究開発ぜんぶか)をめぐって見方が分かれています。', 'user', 16) returning id)
@@ -506,7 +506,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '企業と資本'),
-          '2025-01-21', null, 'day', 'point', '「Stargate」構想発表、最大5000億ドルのAIインフラ投資', '🏗️ OpenAI・SoftBank・Oracleらが、米国内にAIデータセンターを建設する合弁「Stargate」を発表。投資規模は4年間で最大5000億ドルです。
+          '2025-01-21', null, 'day', 'point', '🏗️ 「Stargate」構想発表、最大5000億ドルのAIインフラ投資', 'OpenAI・SoftBank・Oracleらが、米国内にAIデータセンターを建設する合弁「Stargate」を発表。投資規模は4年間で最大5000億ドルです。
 
 政権交代の翌日にホワイトハウスで発表され、AIインフラが国家プロジェクトとして扱われることを印象づけました。同じ週にDeepSeek-R1(技術レイヤー)が「少ない計算資源」で注目されていたのが、なんとも対照的。電力とデータセンターの立地が新しい争点になっていきます。', null,
           'unverified', '5000億ドルはあくまで「表明額」です。実際にいくら集まっていつ投資されるかは、発表時点では決まっていません。', 'user', 17) returning id)
@@ -514,7 +514,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '企業と資本'),
-          '2025-01-27', null, 'day', 'point', 'NVIDIA株が急落、時価総額が1日で約6000億ドル減', '📉 DeepSeekの低コスト主張を受けて、NVIDIA株が約17%下落。1日の時価総額の減少額(約6000億ドル)としては、米国市場史上最大級とされました。
+          '2025-01-27', null, 'day', 'point', '📉 NVIDIA株が急落、時価総額が1日で約6000億ドル減', 'DeepSeekの低コスト主張を受けて、NVIDIA株が約17%下落。1日の時価総額の減少額(約6000億ドル)としては、米国市場史上最大級とされました。
 
 2012年のAlexNet以来ずっとGPUとともに歩み、生成AIブームで時価総額世界トップ級になっていた同社。この急落は「AI投資は本当に回収できるのか」「計算資源はどれだけ必要なのか」という疑念を映しています。その後株価は回復しましたが、輸出規制(社会と規制レイヤー)をめぐる政策は揺れ続けました。', null,
           'unverified', '減少額は終値ベースの報道による概算で、媒体によって5900億ドル前後と幅があります。', 'user', 18) returning id)
@@ -522,15 +522,15 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '社会と規制'),
-          '2025-05-28', null, 'day', 'point', '日本でAI推進法が成立', '🗾 「人工知能関連技術の研究開発・活用の推進に関する法律」が参議院で可決・成立。罰則なし・振興メインの、日本初のAI基本法です。
+          '2025-05-28', null, 'day', 'point', '🗾 日本でAI推進法が成立', '「人工知能関連技術の研究開発・活用の推進に関する法律」が参議院で可決・成立。罰則なし・振興メインの、日本初のAI基本法です。
 
 EUが義務と罰則で臨むのに対し、日本は事業者の協力義務と政府の基本計画が柱の「ソフトロー寄り」。同時期の米国では前政権の大統領令が撤回されていて、主要国の規制スタンスがはっきり分かれた年になりました。企業と資本レイヤーでは、国内データセンター投資の呼び込みが政策目標になっています。', null,
           'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('内閣府: 人工知能関連技術の研究開発及び活用の推進に関する法律(令和7年)', null)) as v(title, url);
 
--- ═══ tech-autonomous-driving — 自動運転の現在地
+-- ═══ tech-autonomous-driving — 🚗 自動運転の現在地
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('tech-autonomous-driving', '00000000-0000-4000-8000-a4e76ec825ee', '自動運転の現在地', '砂漠のレースから死亡事故、法整備、ロボタクシーの商用化まで。技術・産業・制度の3層を重ねて、「もうすぐ実現」と言われ続けた自動運転がいまどこを走っているのかを確かめる年表です。期待も現実も、両方記録します。', 'technology', 'ja', 'public', 's_tech-autonomous-driving', 2004, 2025, 'tech-autonomous-driving')
+values ('tech-autonomous-driving', '00000000-0000-4000-8000-a4e76ec825ee', '🚗 自動運転の現在地', '砂漠のレースから死亡事故、法整備、ロボタクシーの商用化まで。技術・産業・制度の3層を重ねて、「もうすぐ実現」と言われ続けた自動運転がいまどこを走っているのかを確かめる年表です。期待も現実も、両方記録します。', 'technology', 'ja', 'public', 's_tech-autonomous-driving', 2004, 2025, 'tech-autonomous-driving')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-autonomous-driving');
@@ -541,7 +541,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-autonomous-driving'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-autonomous-driving') and name = '技術開発'),
-          '2004-03-13', null, 'day', 'point', 'DARPAグランドチャレンジ第1回、完走ゼロ', '🏜️ DARPAが賞金100万ドルをかけた無人車両の砂漠横断レースを開催しました。約240kmのコースで、最も進んだカーネギーメロン大学の車両でも約12km地点で走行不能。完走はゼロでした。
+          '2004-03-13', null, 'day', 'point', '🏜️ DARPAグランドチャレンジ第1回、完走ゼロ', 'DARPAが賞金100万ドルをかけた無人車両の砂漠横断レースを開催しました。約240kmのコースで、最も進んだカーネギーメロン大学の車両でも約12km地点で走行不能。完走はゼロでした。
 
 結果だけ見れば惨敗です。でも、軍用技術の公開コンペに大学や愛好家が集う形式が、人材の裾野を一気に広げました。**自動運転の歴史は公開の失敗から始まった**わけで、この失敗の共有が翌年の躍進を生みます。', null,
           'verified', null, 'user', 0) returning id)
@@ -549,7 +549,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-autonomous-driving'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-autonomous-driving') and name = '技術開発'),
-          '2005-10-08', null, 'day', 'point', 'スタンフォードのStanleyが砂漠212kmを完走', '🏁 第2回グランドチャレンジで、セバスチャン・スラン率いるスタンフォード大学の「Stanley」が約212kmのコースを6時間53分で走破し優勝しました。5台が完走。前年の完走ゼロからの一変に、現場は沸きました。
+          '2005-10-08', null, 'day', 'point', '🏁 スタンフォードのStanleyが砂漠212kmを完走', '第2回グランドチャレンジで、セバスチャン・スラン率いるスタンフォード大学の「Stanley」が約212kmのコースを6時間53分で走破し優勝しました。5台が完走。前年の完走ゼロからの一変に、現場は沸きました。
 
 勝因は機械学習を制御へ本格導入したこととされ、以後の自動運転開発の技術路線を方向づけます。スランはこの後Googleに移り、自動運転プロジェクト(2009年)を率いることに。競技会が産業の母体になった瞬間です。', null,
           'verified', null, 'user', 1) returning id)
@@ -629,7 +629,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-autonomous-driving'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-autonomous-driving') and name = '技術開発'),
-          '2020-10-08', null, 'day', 'point', 'Waymo、完全無人のロボタクシーを一般開放', '🚕 Waymoが米フェニックスで、安全要員が同乗しない完全無人のロボタクシーを一般利用者に開放しました。誰でもアプリで無人車を呼べる状態が、世界で初めて日常になった瞬間です。
+          '2020-10-08', null, 'day', 'point', '🚕 Waymo、完全無人のロボタクシーを一般開放', 'Waymoが米フェニックスで、安全要員が同乗しない完全無人のロボタクシーを一般利用者に開放しました。誰でもアプリで無人車を呼べる状態が、世界で初めて日常になった瞬間です。
 
 DARPAの砂漠(2004年)から16年での到達点ですが、対象は詳細な地図を整備済みの限られた地域だけ。「どこでも走れる」への道はまだ遠く、地域限定で確実に動かす路線と、量産車で一気に広げる路線(Tesla)の分岐がはっきりしました。', null,
           'verified', null, 'user', 11) returning id)
@@ -691,9 +691,9 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           'disputed', '運行の無人性・地理的範囲・監視員の役割は報道により記述が分かれ、公式な運行実績の開示も限定的です。', 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Reuters: Tesla launches robotaxi service in Austin (2025-06-22)', null)) as v(title, url);
 
--- ═══ tech-blockchain — ブロックチェーンの興亡
+-- ═══ tech-blockchain — ⛓️ ブロックチェーンの興亡
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('tech-blockchain', '00000000-0000-4000-8000-5585b956702e', 'ブロックチェーンの興亡', 'Bitcoin論文からEthereum、ICOブーム、相次ぐ取引所事件とFTX破綻、そしてETF承認と法制化まで。ネットの祭りと冬を何度も見てきた視点で、技術・市場と資本・規制と事件の3層から熱狂と崩壊のくり返しをゆるく追う年表です ⛓️', 'technology', 'ja', 'public', 's_tech-blockchain', 2008, 2025, 'tech-blockchain')
+values ('tech-blockchain', '00000000-0000-4000-8000-5585b956702e', '⛓️ ブロックチェーンの興亡', 'Bitcoin論文からEthereum、ICOブーム、相次ぐ取引所事件とFTX破綻、そしてETF承認と法制化まで。ネットの祭りと冬を何度も見てきた視点で、技術・市場と資本・規制と事件の3層から熱狂と崩壊のくり返しをゆるく追う年表です ⛓️', 'technology', 'ja', 'public', 's_tech-blockchain', 2008, 2025, 'tech-blockchain')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain');
@@ -704,7 +704,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '技術'),
-          '2008-10-31', null, 'day', 'point', 'Bitcoin論文「P2P電子通貨システム」公開', '⛓️ サトシ・ナカモトを名乗る誰かが暗号学メーリングリストに9ページの論文を投稿し、中央管理者なしで二重支払いを防ぐ仕組みを示しました。リーマン・ブラザーズ破綻から約1か月半後という時期で、金融機関への不信が背景にあったとよく語られます。
+          '2008-10-31', null, 'day', 'point', '⛓️ Bitcoin論文「P2P電子通貨システム」公開', 'サトシ・ナカモトを名乗る誰かが暗号学メーリングリストに9ページの論文を投稿し、中央管理者なしで二重支払いを防ぐ仕組みを示しました。リーマン・ブラザーズ破綻から約1か月半後という時期で、金融機関への不信が背景にあったとよく語られます。
 
 Proof of Workによる合意形成と公開台帳という設計は、後のEthereum(技術)や無数の暗号資産の原型に。投稿主の正体は今も不明で、規制と事件レイヤーの騒動の多くも、この匿名性に根っこがあります。', null,
           'verified', null, 'user', 0) returning id)
@@ -712,7 +712,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '技術'),
-          '2009-01-03', null, 'day', 'point', 'Bitcoinのジェネシスブロック生成', '🌱 Bitcoinネットワークの最初のブロックが生成され、稼働開始。ブロックに埋め込まれた英紙の見出し「Chancellor on brink of second bailout for banks」は、金融危機下の既存金融への批評と読まれています。
+          '2009-01-03', null, 'day', 'point', '🌱 Bitcoinのジェネシスブロック生成', 'Bitcoinネットワークの最初のブロックが生成され、稼働開始。ブロックに埋め込まれた英紙の見出し「Chancellor on brink of second bailout for banks」は、金融危機下の既存金融への批評と読まれています。
 
 当初は暗号学者や愛好家の実験にすぎず、市場価格すら存在しませんでした。1年半後のピザ取引(市場と資本)で初めて実物との交換価値がつき、価格を持つ資産としての歴史が始まります。', null,
           'verified', null, 'user', 1) returning id)
@@ -720,7 +720,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '市場と資本'),
-          '2010-05-22', null, 'day', 'point', '1万BTCでピザ2枚、初の実物取引', '🍕 フロリダのプログラマーが1万BTCと引き換えにピザ2枚を受け取ったと掲示板に報告。Bitcoin最初の商取引として知られ、当時の1万BTCは約41ドル相当でした。後年の価格だと数億ドルに相当し、「ビットコイン・ピザ・デー」として毎年ネタにされています!
+          '2010-05-22', null, 'day', 'point', '🍕 1万BTCでピザ2枚、初の実物取引', 'フロリダのプログラマーが1万BTCと引き換えにピザ2枚を受け取ったと掲示板に報告。Bitcoin最初の商取引として知られ、当時の1万BTCは約41ドル相当でした。後年の価格だと数億ドルに相当し、「ビットコイン・ピザ・デー」として毎年ネタにされています!
 
 技術(ジェネシスブロック)から1年半で価格発見が始まった事例で、翌年以降の取引所の乱立とMt.Goxの台頭(規制と事件)につながります。投機資産っぽさは、この時点ではまだ薄めでした。', null,
           'verified', null, 'user', 2) returning id)
@@ -728,7 +728,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '規制と事件'),
-          '2013-10-02', null, 'day', 'point', '闇市場Silk Roadを米当局が閉鎖', '🕸️ FBIがBitcoin決済の違法商品市場Silk Roadを閉鎖し、運営者を逮捕。Bitcoinと犯罪の結びつきが広く報じられ、Torと暗号資産の匿名性を使った市場の摘発は、規制当局が本格的に監視へ動く契機になりました。
+          '2013-10-02', null, 'day', 'point', '🕸️ 闇市場Silk Roadを米当局が閉鎖', 'FBIがBitcoin決済の違法商品市場Silk Roadを閉鎖し、運営者を逮捕。Bitcoinと犯罪の結びつきが広く報じられ、Torと暗号資産の匿名性を使った市場の摘発は、規制当局が本格的に監視へ動く契機になりました。
 
 同年12月には中国人民銀行が金融機関のBitcoin取扱いを禁止し、価格が急落しています(市場と資本)。「技術は中立、使い方が違法」という切り分けの枠組みも、この事件を通じて形になっていきました。', null,
           'unverified', '当局が押収したBitcoinの数量は報道によって約2.6万〜17万BTCと幅があって、押収時期の区別も含めて数字は固まっていません。', 'user', 3) returning id)
@@ -736,7 +736,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '規制と事件'),
-          '2014-02-28', null, 'day', 'point', 'Mt.Goxが民事再生を申請、大量のBitcoin消失', '🫠 東京の取引所Mt.Goxが取引を停止して民事再生を申請。顧客資産を含む大量のBitcoinが失われたと発表され、業界最大級の破綻になりました。世界のBitcoin取引の大半を扱っていた場所だけに、価格の長期低迷を招きます。
+          '2014-02-28', null, 'day', 'point', '🫠 Mt.Goxが民事再生を申請、大量のBitcoin消失', '東京の取引所Mt.Goxが取引を停止して民事再生を申請。顧客資産を含む大量のBitcoinが失われたと発表され、業界最大級の破綻になりました。世界のBitcoin取引の大半を扱っていた場所だけに、価格の長期低迷を招きます。
 
 各国に取引所規制の必要性を突きつけ、日本では利用者保護の議論が進み、2017年の改正資金決済法(規制と事件)で登録制が導入されます。技術そのものより**取引所という「入口」が最大の弱点**だと示した事件でした。', null,
           'disputed', '消失額は当初約85万BTCと発表されましたが、後に約20万BTCが見つかるなど、実際の損失規模も原因(外部からのハッキングか内部要因か)も諸説あります。', 'user', 4) returning id)
@@ -744,7 +744,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '技術'),
-          '2015-07-30', null, 'day', 'point', 'Ethereumメインネット稼働開始', '🧱 スマートコントラクトを実行できる汎用ブロックチェーンEthereumが稼働開始。ヴィタリック・ブテリンが2013年に構想し、2014年のクラウドセールで資金を集めて開発されました。「通貨」から「プログラム可能な台帳」へ、用途が一段広がります!
+          '2015-07-30', null, 'day', 'point', '🧱 Ethereumメインネット稼働開始', 'スマートコントラクトを実行できる汎用ブロックチェーンEthereumが稼働開始。ヴィタリック・ブテリンが2013年に構想し、2014年のクラウドセールで資金を集めて開発されました。「通貨」から「プログラム可能な台帳」へ、用途が一段広がります!
 
 任意のプログラムをチェーン上で動かせる設計は、翌年のThe DAO(技術・事件)や2017年のICOブーム(市場と資本)、後のDeFiやNFTの土台に。Bitcoinが「価値の保存」に寄る一方、Ethereumは応用の実験場になっていきます。', null,
           'verified', null, 'user', 5) returning id)
@@ -752,7 +752,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '技術'),
-          '2016-06-17', null, 'day', 'point', 'The DAOハッキング、Ethereumがハードフォークへ', '🕳️ Ethereum上の投資ファンドThe DAOの脆弱性が突かれ、集めたETHの約3分の1が流出。「コードが法」という理念と、被害回復のためにチェーンを巻き戻すかという実務判断がぶつかり、ハードフォークをめぐって議論は真っ二つになりました。
+          '2016-06-17', null, 'day', 'point', '🕳️ The DAOハッキング、Ethereumがハードフォークへ', 'Ethereum上の投資ファンドThe DAOの脆弱性が突かれ、集めたETHの約3分の1が流出。「コードが法」という理念と、被害回復のためにチェーンを巻き戻すかという実務判断がぶつかり、ハードフォークをめぐって議論は真っ二つになりました。
 
 7月のハードフォークで、巻き戻さない側がEthereum Classicとして分離。スマートコントラクトの穴が巨額損失に直結すると示し、後の監査産業やDeFiハックの系譜(規制と事件)の起点になった事件です。', null,
           'unverified', '流出額は約360万ETHとされますが、当時のドル換算は5000万〜7000万ドルと資料によって幅があります。', 'user', 6) returning id)
@@ -760,7 +760,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '市場と資本'),
-          '2017-01-01', '2018-01-31', 'year', 'period', 'ICOブーム', '🚀 Ethereum上でトークンを発行して資金を集めるICOが急増し、2017年に数十億ドル規模の調達が行われました。Ethereumのスマートコントラクト(技術)あってこその手法で、ホワイトペーパー1枚で巨額が集まる例が続出し、多くは後に価値を失います。
+          '2017-01-01', '2018-01-31', 'year', 'period', '🚀 ICOブーム', 'Ethereum上でトークンを発行して資金を集めるICOが急増し、2017年に数十億ドル規模の調達が行われました。Ethereumのスマートコントラクト(技術)あってこその手法で、ホワイトペーパー1枚で巨額が集まる例が続出し、多くは後に価値を失います。
 
 2017年9月には中国がICOを全面禁止、米SECも証券法違反の警告を出すなど、規制と事件レイヤーが動き出しました。同年末のBitcoin高騰と重なり、暗号資産は一般投資家の関心事になっていきます。', null,
           'unverified', 'ブームの始まりと終わりに明確な定義はなく、調達総額も集計機関によって大きく違います。', 'user', 7) returning id)
@@ -768,7 +768,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '規制と事件'),
-          '2017-04-01', null, 'day', 'point', '日本で改正資金決済法が施行、仮想通貨交換業を登録制に', '🗾 仮想通貨を法的に定義し、交換業者に金融庁への登録を義務づける改正資金決済法が施行。主要国では初の包括的な取引所規制で、Mt.Gox破綻(2014年)の教訓から、利用者財産の分別管理や本人確認が義務化されました。
+          '2017-04-01', null, 'day', 'point', '🗾 日本で改正資金決済法が施行、仮想通貨交換業を登録制に', '仮想通貨を法的に定義し、交換業者に金融庁への登録を義務づける改正資金決済法が施行。主要国では初の包括的な取引所規制で、Mt.Gox破綻(2014年)の教訓から、利用者財産の分別管理や本人確認が義務化されました。
 
 同年、日本は世界のBitcoin取引で大きなシェアを占め、価格高騰(市場と資本)を支えた一因ともされます。ただ翌年のCoincheck事件で、登録制だけでは資産を守りきれないことが露呈することになります。', null,
           'verified', null, 'user', 8) returning id)
@@ -776,7 +776,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '技術'),
-          '2017-08-01', null, 'day', 'point', 'Bitcoin Cashが分岐、ブロックサイズ論争の決着', '🍴 取引処理能力をめぐる数年来の対立の末、ブロックサイズを拡大したBitcoin Cashが分岐し、Bitcoin本体はSegWitを有効化。分散型ネットワークの仕様を誰がどう決めるのかというガバナンス問題が、チェーンの分裂という形で表に出ました。
+          '2017-08-01', null, 'day', 'point', '🍴 Bitcoin Cashが分岐、ブロックサイズ論争の決着', '取引処理能力をめぐる数年来の対立の末、ブロックサイズを拡大したBitcoin Cashが分岐し、Bitcoin本体はSegWitを有効化。分散型ネットワークの仕様を誰がどう決めるのかというガバナンス問題が、チェーンの分裂という形で表に出ました。
 
 技術論争は市場にも波及し、分岐前後の価格変動や取引所の対応(市場と資本)に投資家は振り回されます。この後Bitcoinはレイヤー2で拡張する路線を、Ethereumはやがてコンセンサス転換(2022年のMerge)を選びました。', null,
           'verified', null, 'user', 9) returning id)
@@ -784,7 +784,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '市場と資本'),
-          '2017-12-17', null, 'day', 'point', 'Bitcoinが約2万ドルの史上最高値、初のバブル頂点', '🎆 Bitcoin価格が主要取引所で2万ドル前後に到達し、当時の史上最高値に。年初の約1000ドルから20倍近い上昇で、ICOブームを背景に個人投資家が殺到し、テレビや新聞まで連日報じる社会現象になりました。
+          '2017-12-17', null, 'day', 'point', '🎆 Bitcoinが約2万ドルの史上最高値、初のバブル頂点', 'Bitcoin価格が主要取引所で2万ドル前後に到達し、当時の史上最高値に。年初の約1000ドルから20倍近い上昇で、ICOブームを背景に個人投資家が殺到し、テレビや新聞まで連日報じる社会現象になりました。
 
 同月にCBOEとCMEがBitcoin先物を上場し、機関投資家の参入も期待されましたが、翌年には8割以上下落する「暗号資産の冬」へ。技術(SegWit、Bitcoin Cash分岐)も規制(日本の登録制、中国のICO禁止)も、ぜんぶ同じ年に集中していました。', null,
           'disputed', '最高値は取引所によって1万9000〜2万ドル台と差があり、日付も12月16〜18日の間で資料によりばらつきます。', 'user', 10) returning id)
@@ -792,7 +792,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '規制と事件'),
-          '2018-01-26', null, 'day', 'point', 'コインチェックからNEM約580億円分が流出', '🚨 国内取引所コインチェックから約5.2億XEM(当時約580億円相当)が不正送金されました。単一事件では当時最大規模の流出で、改正資金決済法(2017年)の登録審査中だった業者で起き、ホットウォレット管理の不備が指摘されます。
+          '2018-01-26', null, 'day', 'point', '🚨 コインチェックからNEM約580億円分が流出', '国内取引所コインチェックから約5.2億XEM(当時約580億円相当)が不正送金されました。単一事件では当時最大規模の流出で、改正資金決済法(2017年)の登録審査中だった業者で起き、ホットウォレット管理の不備が指摘されます。
 
 金融庁は立入検査と業務改善命令を出し、以後の審査は厳格化。バブル頂点(市場と資本)からわずか1か月後の出来事で、**熱狂の直後に事件が起きるというこの年表の反復パターン**をそのまま体現しています。', null,
           'verified', null, 'user', 11) returning id)
@@ -800,7 +800,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '規制と事件'),
-          '2021-09-07', null, 'day', 'point', 'エルサルバドルがBitcoinを法定通貨に', '🌎 エルサルバドルで世界初となるBitcoin法定通貨法が施行。ドル化経済の同国が送金コスト削減と金融包摂を掲げ、国家が暗号資産を通貨として採用する実験が始まりました。
+          '2021-09-07', null, 'day', 'point', '🌎 エルサルバドルがBitcoinを法定通貨に', 'エルサルバドルで世界初となるBitcoin法定通貨法が施行。ドル化経済の同国が送金コスト削減と金融包摂を掲げ、国家が暗号資産を通貨として採用する実験が始まりました。
 
 国民の利用は限定的で、IMFは金融リスクを警告し続け、2025年にはIMF融資の条件として法定通貨としての受け入れ義務が撤回されています。同じ月に中国は暗号資産取引を全面禁止していて、国家の対応が正反対に割れた月でした。', null,
           'verified', null, 'user', 12) returning id)
@@ -808,7 +808,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '規制と事件'),
-          '2021-09-24', null, 'day', 'point', '中国が暗号資産取引とマイニングを全面禁止', '🚫 中国人民銀行など10機関が、暗号資産関連の取引を違法とする通知を公表。同年5月のマイニング規制と合わせて事実上の全面禁止となり、世界のBitcoinマイニングの過半を担っていた中国から、ハッシュレートが米国などへ流出しました(技術)。
+          '2021-09-24', null, 'day', 'point', '🚫 中国が暗号資産取引とマイニングを全面禁止', '中国人民銀行など10機関が、暗号資産関連の取引を違法とする通知を公表。同年5月のマイニング規制と合わせて事実上の全面禁止となり、世界のBitcoinマイニングの過半を担っていた中国から、ハッシュレートが米国などへ流出しました(技術)。
 
 取引禁止で市場は短期的に下落したものの、同年11月にはBitcoinが史上最高値を更新(市場と資本)。一国が禁止しても市場は止まらないことも示されました。エルサルバドルの法定通貨化と同じ月の出来事です。', null,
           'verified', null, 'user', 13) returning id)
@@ -816,7 +816,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '市場と資本'),
-          '2021-11-10', null, 'day', 'point', 'Bitcoinが約6万9000ドルの史上最高値', '🌕 コロナ禍の金融緩和とTeslaなど企業の購入、米国での先物ETF承認を背景に、Bitcoinが約6万9000ドルの史上最高値をつけました。2017年の頂点(約2万ドル)から3年半で3倍超、NFTやDeFiのブームも重なったお祭り状態です。
+          '2021-11-10', null, 'day', 'point', '🌕 Bitcoinが約6万9000ドルの史上最高値', 'コロナ禍の金融緩和とTeslaなど企業の購入、米国での先物ETF承認を背景に、Bitcoinが約6万9000ドルの史上最高値をつけました。2017年の頂点(約2万ドル)から3年半で3倍超、NFTやDeFiのブームも重なったお祭り状態です。
 
 翌2022年の利上げ局面でTerra崩壊とFTX破綻(規制と事件)が続き、価格は1万6000ドル台まで下落。低金利下の資本(市場と資本)が流れ込み、引き締めとともに引いていく構図がはっきり出ました。', null,
           'disputed', '最高値は取引所によって6万8000〜6万9000ドル台と差があります。', 'user', 14) returning id)
@@ -824,7 +824,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '市場と資本'),
-          '2022-05-07', '2022-05-13', 'day', 'period', 'Terra/USTの崩壊', '💥 アルゴリズム型ステーブルコインUSTがドル連動を失い、姉妹通貨LUNAとともに1週間でほぼ無価値に。約400億ドル規模の時価総額が消えました。担保ではなくアルゴリズムで価格を保つ設計(技術)の弱さが、市場の売り圧力で一気に露呈した形です。
+          '2022-05-07', '2022-05-13', 'day', 'period', '💥 Terra/USTの崩壊', 'アルゴリズム型ステーブルコインUSTがドル連動を失い、姉妹通貨LUNAとともに1週間でほぼ無価値に。約400億ドル規模の時価総額が消えました。担保ではなくアルゴリズムで価格を保つ設計(技術)の弱さが、市場の売り圧力で一気に露呈した形です。
 
 ヘッジファンドや貸付業者の破綻が連鎖し、**11月のFTX破綻(規制と事件)へ続く信用収縮の起点**になりました。米国や日本でステーブルコイン規制の議論が急加速し、日本では翌年、改正資金決済法で発行者が限定されます。', null,
           'verified', null, 'user', 15) returning id)
@@ -832,7 +832,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '技術'),
-          '2022-09-15', null, 'day', 'point', 'Ethereumが「The Merge」でProof of Stakeへ移行', '🔀 EthereumがProof of WorkからProof of Stakeへ移行するアップグレード「The Merge」を完了し、消費電力を99%以上削減したとされます。動いているネットワークを止めずに合意形成の仕組みを入れ替える、数年がかりの開発の集大成でした!
+          '2022-09-15', null, 'day', 'point', '🔀 Ethereumが「The Merge」でProof of Stakeへ移行', 'EthereumがProof of WorkからProof of Stakeへ移行するアップグレード「The Merge」を完了し、消費電力を99%以上削減したとされます。動いているネットワークを止めずに合意形成の仕組みを入れ替える、数年がかりの開発の集大成でした!
 
 環境負荷への批判(規制と事件レイヤーの論点)に技術で答えた形ですが、同時期の市場はTerra崩壊とFTX破綻に挟まれた「冬」の真っ最中で、価格への影響は限定的。**技術と市場の時間軸のずれ**がよく分かる事例です。', null,
           'verified', null, 'user', 16) returning id)
@@ -840,7 +840,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '規制と事件'),
-          '2022-11-11', null, 'day', 'point', 'FTXが破産申請、顧客資産流用が発覚', '🧊 世界2位級の取引所FTXが米国で連邦破産法11条を申請。関連会社への顧客資産流用が明らかになり、創業者は後に有罪となりました。Mt.Gox(2014年)以来、また「取引所」が最大の弱点になった事件で、規制当局や政界に食い込んでいた企業の破綻は業界の信頼を失墜させます。
+          '2022-11-11', null, 'day', 'point', '🧊 FTXが破産申請、顧客資産流用が発覚', '世界2位級の取引所FTXが米国で連邦破産法11条を申請。関連会社への顧客資産流用が明らかになり、創業者は後に有罪となりました。Mt.Gox(2014年)以来、また「取引所」が最大の弱点になった事件で、規制当局や政界に食い込んでいた企業の破綻は業界の信頼を失墜させます。
 
 米国では取引所規制の議論が加速。日本では分別管理義務のおかげで、国内利用者への資産返還が比較的すんなり進んだのが対照的でした。市場(市場と資本)は底値圏に沈みます。', null,
           'verified', null, 'user', 17) returning id)
@@ -848,7 +848,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '市場と資本'),
-          '2024-01-10', null, 'day', 'point', '米SECが現物Bitcoin ETFを承認', '🏦 米証券取引委員会が11本の現物Bitcoin ETFを承認。10年以上却下され続けた申請が裁判所の判断を経て承認に至り、証券口座で買える商品になって、機関投資家と個人の資金流入が加速しました。
+          '2024-01-10', null, 'day', 'point', '🏦 米SECが現物Bitcoin ETFを承認', '米証券取引委員会が11本の現物Bitcoin ETFを承認。10年以上却下され続けた申請が裁判所の判断を経て承認に至り、証券口座で買える商品になって、機関投資家と個人の資金流入が加速しました。
 
 FTX破綻(規制と事件)から1年ちょっとでの転換で、投機的な「取引所」経由から規制された金融商品へと入口が広がります。同年4月の半減期とも重なり、Bitcoinは同年末に初めて10万ドル超え!**技術ではなく制度が価格を動かした**局面です。', null,
           'verified', null, 'user', 18) returning id)
@@ -856,15 +856,15 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '規制と事件'),
-          '2025-07-18', null, 'day', 'point', '米国でステーブルコイン規制法(GENIUS法)が成立', '🏛️ ドル連動ステーブルコインの発行者に準備資産の全額裏付けなどを義務づけるGENIUS法が成立し、米国初の包括的な暗号資産法制になりました。Terra崩壊(2022年)で露呈した危うさへの立法上の回答で、同時にドル建てステーブルコインを制度に取り込む産業政策でもあります。
+          '2025-07-18', null, 'day', 'point', '🏛️ 米国でステーブルコイン規制法(GENIUS法)が成立', 'ドル連動ステーブルコインの発行者に準備資産の全額裏付けなどを義務づけるGENIUS法が成立し、米国初の包括的な暗号資産法制になりました。Terra崩壊(2022年)で露呈した危うさへの立法上の回答で、同時にドル建てステーブルコインを制度に取り込む産業政策でもあります。
 
 ETF承認(市場と資本)と並んで、暗号資産が**「規制の外」から「規制の内側」へ**移る流れを決定づけました。Bitcoin論文から17年、興亡の末にたどり着いた現在地です。', null,
           'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: GENIUS Act', 'https://en.wikipedia.org/wiki/GENIUS_Act')) as v(title, url);
 
--- ═══ tech-cloud-revolution — クラウド革命の15年
+-- ═══ tech-cloud-revolution — ☁️ クラウド革命の15年
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('tech-cloud-revolution', '00000000-0000-4000-8000-da0dc7f11ec9', 'クラウド革命の15年', '2006年のAmazon S3公開から、社会の土台になった末の大規模障害まで。技術・企業競争・利用者の3つのレイヤーで、計算資源が「所有するもの」から「借りるもの」へ変わった15年をたどる年表です ☁️', 'technology', 'ja', 'public', 's_tech-cloud-revolution', 2006, 2021, 'tech-cloud-revolution')
+values ('tech-cloud-revolution', '00000000-0000-4000-8000-da0dc7f11ec9', '☁️ クラウド革命の15年', '2006年のAmazon S3公開から、社会の土台になった末の大規模障害まで。技術・企業競争・利用者の3つのレイヤーで、計算資源が「所有するもの」から「借りるもの」へ変わった15年をたどる年表です ☁️', 'technology', 'ja', 'public', 's_tech-cloud-revolution', 2006, 2021, 'tech-cloud-revolution')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cloud-revolution');
@@ -875,7 +875,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cloud-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cloud-revolution') and name = '技術とサービス'),
-          '2006-03-14', null, 'day', 'point', 'Amazon S3公開、クラウドストレージの誕生', '📦 Amazonがオンラインストレージ「Amazon S3」を公開しました。使った分だけ課金される従量制で、開発者はサーバーを買わずに、事実上無限の保存領域を使えるようになったのです!
+          '2006-03-14', null, 'day', 'point', '📦 Amazon S3公開、クラウドストレージの誕生', 'Amazonがオンラインストレージ「Amazon S3」を公開しました。使った分だけ課金される従量制で、開発者はサーバーを買わずに、事実上無限の保存領域を使えるようになったのです!
 
 書店から始まった小売企業が、自社インフラの技術を外販する。この意外な参入が、**「所有から利用へ」**というクラウド革命の出発点になりました。後発のGoogleやMicrosoftが追いかける構図(企業競争レイヤー)も、ここから始まります。', null,
           'verified', null, 'user', 0) returning id)
@@ -883,7 +883,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cloud-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cloud-revolution') and name = '技術とサービス'),
-          '2006-08-25', null, 'day', 'point', 'Amazon EC2ベータ公開、仮想サーバーを時間貸し', '🖥️ Amazonが、仮想サーバーを1時間単位で貸し出す「Amazon EC2」のベータ版を公開しました。クレジットカード1枚で数分後にサーバーが手に入る。調達に数週間かかる物理サーバーの常識が、ここでひっくり返りました!
+          '2006-08-25', null, 'day', 'point', '🖥️ Amazon EC2ベータ公開、仮想サーバーを時間貸し', 'Amazonが、仮想サーバーを1時間単位で貸し出す「Amazon EC2」のベータ版を公開しました。クレジットカード1枚で数分後にサーバーが手に入る。調達に数週間かかる物理サーバーの常識が、ここでひっくり返りました!
 
 S3と組み合わせるとスタートアップの初期投資が劇的に下がります。のちのモバイルアプリやSNSの爆発的増加を支える、見えない土台になりました。利用者と社会レイヤーの変化は、まずスタートアップ経済に現れます。', null,
           'verified', null, 'user', 1) returning id)
@@ -891,7 +891,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cloud-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cloud-revolution') and name = '技術とサービス'),
-          '2008-04-07', null, 'day', 'point', 'Google App Engine公開、PaaSの先駆け', '⚙️ Googleがアプリケーション実行基盤「Google App Engine」のプレビュー版を公開しました。サーバー管理を意識せず、コードを置くだけで動く。のちにPaaSと呼ばれる形態の先駆けです。
+          '2008-04-07', null, 'day', 'point', '⚙️ Google App Engine公開、PaaSの先駆け', 'Googleがアプリケーション実行基盤「Google App Engine」のプレビュー版を公開しました。サーバー管理を意識せず、コードを置くだけで動く。のちにPaaSと呼ばれる形態の先駆けです。
 
 検索大手のクラウド参入でAWS一強に対抗軸が生まれ、企業競争レイヤーが動き出しました。ただ、独自の制約が強くて当初の普及は限定的。汎用性で勝るIaaS型のAWSが、先行を保ち続けます。', null,
           'verified', null, 'user', 2) returning id)
@@ -899,7 +899,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cloud-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cloud-revolution') and name = '企業競争'),
-          '2010-02-01', null, 'day', 'point', 'Windows Azure正式提供開始', '🪟 Microsoftがクラウド基盤「Windows Azure」の商用提供を始めました。パッケージソフトの巨人が、自社の収益源を侵食しかねないクラウドへ本格参入した形です。
+          '2010-02-01', null, 'day', 'point', '🪟 Windows Azure正式提供開始', 'Microsoftがクラウド基盤「Windows Azure」の商用提供を始めました。パッケージソフトの巨人が、自社の収益源を侵食しかねないクラウドへ本格参入した形です。
 
 当初は既存のサーバー製品事業との間で戦略が揺れて、AWSの後塵を拝し続けました。でも、この基盤が2014年以降のナデラ体制(企業競争レイヤー)で会社の中核になります。**追われる側の自己変革**が始まった地点です。', null,
           'verified', null, 'user', 3) returning id)
@@ -907,7 +907,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cloud-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cloud-revolution') and name = '技術とサービス'),
-          '2010-07-19', null, 'day', 'point', 'OpenStack始動、オープンソースのクラウド基盤', '🔧 RackspaceとNASAが、クラウド基盤ソフトウェアをオープンソースで開発する「OpenStack」プロジェクトを発表しました。誰でも自前のクラウドを構築できる選択肢が生まれたことになります。
+          '2010-07-19', null, 'day', 'point', '🔧 OpenStack始動、オープンソースのクラウド基盤', 'RackspaceとNASAが、クラウド基盤ソフトウェアをオープンソースで開発する「OpenStack」プロジェクトを発表しました。誰でも自前のクラウドを構築できる選択肢が生まれたことになります。
 
 特定企業への依存(ロックイン)を嫌う通信会社や政府機関に採用され、パブリッククラウド一辺倒ではない「プライベートクラウド」の潮流を作りました。標準化をめぐる主導権争いは、企業競争レイヤーの隠れた戦線でもあります。', null,
           'verified', null, 'user', 4) returning id)
@@ -915,7 +915,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cloud-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cloud-revolution') and name = '利用者と社会'),
-          '2011-06-06', null, 'day', 'point', 'AppleがiCloud発表、消費者の日常にクラウド', '☁️ AppleがWWDCで「iCloud」を発表しました。写真や連絡先が複数の端末で自動的に同期される体験を無料で提供し、一般の人が意識せずクラウドを使う時代を開きます。
+          '2011-06-06', null, 'day', 'point', '☁️ AppleがiCloud発表、消費者の日常にクラウド', 'AppleがWWDCで「iCloud」を発表しました。写真や連絡先が複数の端末で自動的に同期される体験を無料で提供し、一般の人が意識せずクラウドを使う時代を開きます。
 
 それまで開発者と企業のものだったクラウドが、利用者と社会レイヤーへ直接届いた転換点です。「ファイルはどの端末にもある」という感覚が当たり前になり、データの置き場所は手元の機器からデータセンターへ、静かに移っていきました。', null,
           'verified', null, 'user', 5) returning id)
@@ -923,7 +923,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cloud-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cloud-revolution') and name = '利用者と社会'),
-          '2011-09-01', null, 'month', 'point', 'NISTがクラウドコンピューティングを定義', '📖 米国立標準技術研究所(NIST)が、特別刊行物SP 800-145でクラウドコンピューティングを定義しました。オンデマンドや従量制など5つの特徴と、IaaS/PaaS/SaaSの3つのサービスモデルの整理です。
+          '2011-09-01', null, 'month', 'point', '📖 NISTがクラウドコンピューティングを定義', '米国立標準技術研究所(NIST)が、特別刊行物SP 800-145でクラウドコンピューティングを定義しました。オンデマンドや従量制など5つの特徴と、IaaS/PaaS/SaaSの3つのサービスモデルの整理です。
 
 バズワードだった「クラウド」に共通言語を与え、政府調達や企業の導入判断の基準になりました。定義の確立は米政府の「クラウド・ファースト」政策とも連動していて、制度が市場拡大を後押しする構図が生まれます。', null,
           'verified', null, 'user', 6) returning id)
@@ -931,7 +931,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cloud-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cloud-revolution') and name = '企業競争'),
-          '2013-01-01', null, 'year', 'point', 'CIAがAWSと6億ドル規模のクラウド契約', '🕶️ 米中央情報局(CIA)がAWSと推定6億ドルの専用クラウド構築契約を結んだと報じられました。IBMが調達手続きを不服として提訴しましたが、連邦請求裁判所はAWSの技術的優位を認めます。
+          '2013-01-01', null, 'year', 'point', '🕶️ CIAがAWSと6億ドル規模のクラウド契約', '米中央情報局(CIA)がAWSと推定6億ドルの専用クラウド構築契約を結んだと報じられました。IBMが調達手続きを不服として提訴しましたが、連邦請求裁判所はAWSの技術的優位を認めます。
 
 **最も機密を扱う組織がクラウドを選んだ**という事実は、「クラウドは安全ではない」という通念をひっくり返し、政府・大企業の採用を一気に正当化しました。企業競争レイヤーで見れば、AWSの技術先行が司法の場で裏書きされた事件でもあります。', null,
           'disputed', '契約額の6億ドルは報道ベースの推定です。契約の詳細は機密のため、公式には開示されていません。', 'user', 7) returning id)
@@ -939,7 +939,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cloud-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cloud-revolution') and name = '技術とサービス'),
-          '2013-03-01', null, 'month', 'point', 'Docker公開、コンテナ技術が主流へ', '🐳 Solomon HykesがPyConでDockerを披露し、オープンソースとして公開しました。アプリを軽量な「コンテナ」に包んでどこでも動かす技術は、あっという間に開発者の標準になります!
+          '2013-03-01', null, 'month', 'point', '🐳 Docker公開、コンテナ技術が主流へ', 'Solomon HykesがPyConでDockerを披露し、オープンソースとして公開しました。アプリを軽量な「コンテナ」に包んでどこでも動かす技術は、あっという間に開発者の標準になります!
 
 クラウド間の移植性を高めて、コンテナ前提の設計(クラウドネイティブ)を生んだ点で、特定ベンダーへの依存を相対化する技術でもありました。翌年のKubernetes登場と合わせて、クラウドの主戦場は仮想マシンからコンテナ基盤へ移っていきます。', null,
           'verified', null, 'user', 8) returning id)
@@ -947,7 +947,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cloud-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cloud-revolution') and name = '企業競争'),
-          '2014-02-04', null, 'day', 'point', 'ナデラがMicrosoft CEOに、クラウド最優先へ', '👔 サティア・ナデラがMicrosoftの3代目CEOに就任し、「モバイルファースト、クラウドファースト」を掲げました。Windows中心の戦略を転換して、Azureとサブスクリプション型のOffice 365を成長の柱に据えます。
+          '2014-02-04', null, 'day', 'point', '👔 ナデラがMicrosoft CEOに、クラウド最優先へ', 'サティア・ナデラがMicrosoftの3代目CEOに就任し、「モバイルファースト、クラウドファースト」を掲げました。Windows中心の戦略を転換して、Azureとサブスクリプション型のOffice 365を成長の柱に据えます。
 
 Linux対応など過去路線との決別が進み、AzureはAWSを追う明確な2番手に浮上しました。クラウドが一部門の事業から**企業の存続を賭けた本業**へ格上げされた、企業競争レイヤーの分水嶺です。', null,
           'verified', null, 'user', 9) returning id)
@@ -955,7 +955,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cloud-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cloud-revolution') and name = '技術とサービス'),
-          '2014-06-01', null, 'month', 'point', 'GoogleがKubernetesを公開', '🚢 Googleが社内基盤Borgの知見をもとに、コンテナ管理システムKubernetesをオープンソースで公開しました。多数のコンテナを自動で配置・復旧する仕組みを、誰でも使えるようにしたのです。
+          '2014-06-01', null, 'month', 'point', '🚢 GoogleがKubernetesを公開', 'Googleが社内基盤Borgの知見をもとに、コンテナ管理システムKubernetesをオープンソースで公開しました。多数のコンテナを自動で配置・復旧する仕組みを、誰でも使えるようにしたのです。
 
 のちに中立団体CNCFへ移管され、AWS・Microsoft・Googleのすべてが対応する事実上の標準になりました。**激しく競争する市場の土台が共有のオープンソースになる**という、クラウド時代らしい構図を象徴する出来事です。', null,
           'verified', null, 'user', 10) returning id)
@@ -963,7 +963,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cloud-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cloud-revolution') and name = '技術とサービス'),
-          '2014-11-13', null, 'day', 'point', 'AWS Lambda発表、サーバーレスの登場', '⚡ AWSが、イベントが起きたときだけコードを実行する「AWS Lambda」を発表しました。サーバーの存在自体を意識しない「サーバーレス」という、新しい抽象化の提示です。
+          '2014-11-13', null, 'day', 'point', '⚡ AWS Lambda発表、サーバーレスの登場', 'AWSが、イベントが起きたときだけコードを実行する「AWS Lambda」を発表しました。サーバーの存在自体を意識しない「サーバーレス」という、新しい抽象化の提示です。
 
 物理サーバーから仮想マシン、コンテナ、そして関数へ。借りる単位は細かくなり続けてきましたが、その到達点で、ミリ秒単位の従量課金は「所有から利用へ」の極致といえます。運用人員を持てない小さなチームの選択肢を広げ、利用者レイヤーの裾野をさらに広げました。', null,
           'verified', null, 'user', 11) returning id)
@@ -971,7 +971,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cloud-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cloud-revolution') and name = '企業競争'),
-          '2015-04-23', null, 'day', 'point', 'AmazonがAWSの業績を初開示、高収益に衝撃', '💹 Amazonが四半期決算でAWS部門の業績を初めて開示しました。売上高は四半期で15億ドル超、営業利益率は小売事業を大きく上回る。「副業」と見られていたクラウドが、実は同社の利益の柱だったと判明します!
+          '2015-04-23', null, 'day', 'point', '💹 AmazonがAWSの業績を初開示、高収益に衝撃', 'Amazonが四半期決算でAWS部門の業績を初めて開示しました。売上高は四半期で15億ドル超、営業利益率は小売事業を大きく上回る。「副業」と見られていたクラウドが、実は同社の利益の柱だったと判明します!
 
 市場の評価は一変し、Amazon株は急伸しました。競合他社の投資判断にも影響を与え、クラウドが**利益率の高い本命事業**であることが公式の数字で裏付けられた瞬間です。', null,
           'verified', null, 'user', 12) returning id)
@@ -979,7 +979,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cloud-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cloud-revolution') and name = '利用者と社会'),
-          '2016-02-01', null, 'month', 'point', 'Netflixがクラウド完全移行を完了', '🎞️ Netflixが7年がかりの取り組みを経て、自社データセンターを閉じ、配信事業の基盤をAWSへ完全移行したと発表しました。世界190か国への同時展開を、クラウドの伸縮性が支えます。
+          '2016-02-01', null, 'month', 'point', '🎞️ Netflixがクラウド完全移行を完了', 'Netflixが7年がかりの取り組みを経て、自社データセンターを閉じ、配信事業の基盤をAWSへ完全移行したと発表しました。世界190か国への同時展開を、クラウドの伸縮性が支えます。
 
 大規模サービスでも自前設備なしで運営できると示した代表例で、「クラウドは本番システムには不向き」という残っていた慎重論をほぼ終わらせました。障害を前提に設計する同社の手法(カオスエンジニアリング)も、業界標準に影響を与えています。', null,
           'verified', null, 'user', 13) returning id)
@@ -987,7 +987,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cloud-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cloud-revolution') and name = '企業競争'),
-          '2018-10-28', null, 'day', 'point', 'IBMがRed Hatを340億ドルで買収発表', '🎩 IBMがオープンソース大手Red Hatを約340億ドルで買収すると発表しました。同社史上最大の買収で、複数のクラウドをまたいで運用する「ハイブリッドクラウド」に活路を求めた形です。
+          '2018-10-28', null, 'day', 'point', '🎩 IBMがRed Hatを340億ドルで買収発表', 'IBMがオープンソース大手Red Hatを約340億ドルで買収すると発表しました。同社史上最大の買収で、複数のクラウドをまたいで運用する「ハイブリッドクラウド」に活路を求めた形です。
 
 上位3社に離された老舗が、単独の基盤競争ではなく**「どのクラウドも使う企業」の側に立つ**戦略へ転じました。買収額の大きさそのものが、クラウド市場の勝敗がIT業界の勢力図を塗り替えつつあったことを物語っています。', null,
           'verified', null, 'user', 14) returning id)
@@ -995,7 +995,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cloud-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cloud-revolution') and name = '企業競争'),
-          '2019-10-25', '2021-07-06', 'day', 'period', '国防総省JEDI契約、係争の末に白紙へ', '⚔️ 米国防総省の最大100億ドルのクラウド契約「JEDI」がMicrosoftに授与されました。本命視されていたAmazonは「政治的介入があった」と提訴。履行が止まったまま、2021年7月に国防総省は契約自体を取り消します。
+          '2019-10-25', '2021-07-06', 'day', 'period', '⚔️ 国防総省JEDI契約、係争の末に白紙へ', '米国防総省の最大100億ドルのクラウド契約「JEDI」がMicrosoftに授与されました。本命視されていたAmazonは「政治的介入があった」と提訴。履行が止まったまま、2021年7月に国防総省は契約自体を取り消します。
 
 後継のJWCC契約は複数社への分割発注になり、巨大調達を単独ベンダーに委ねる方式は事実上終わりました。クラウドが国家の中枢インフラになり、その調達が政治問題になる時代を示した係争です。', null,
           'disputed', 'Amazonが主張した、当時の大統領による選定への介入があったかどうかは、司法手続きで確定認定には至っていません。', 'user', 15) returning id)
@@ -1003,7 +1003,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cloud-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cloud-revolution') and name = '利用者と社会'),
-          '2020-03-01', '2021-03-31', 'month', 'period', 'コロナ禍で在宅勤務、クラウド需要が急増', '🏠 新型コロナウイルスの感染拡大で在宅勤務やオンライン授業が一斉に始まり、ビデオ会議や仮想デスクトップなど、クラウド経由のサービス利用が急増しました。この期間のクラウド支出の伸びは前年比3割超、と調査会社は推定しています。
+          '2020-03-01', '2021-03-31', 'month', 'period', '🏠 コロナ禍で在宅勤務、クラウド需要が急増', '新型コロナウイルスの感染拡大で在宅勤務やオンライン授業が一斉に始まり、ビデオ会議や仮想デスクトップなど、クラウド経由のサービス利用が急増しました。この期間のクラウド支出の伸びは前年比3割超、と調査会社は推定しています。
 
 「必要になったら数日で拡張できる」性質が社会機能の維持を支え、クラウドは**平時の効率化の道具から有事の社会インフラ**へと立ち位置を変えました。各国の行政デジタル化(利用者と社会レイヤー)も、この経験が押し出しています。', null,
           'unverified', 'クラウド支出の伸び率はCanalysなど調査会社の推定で、算定方法によって数字に幅があります。', 'user', 16) returning id)
@@ -1011,7 +1011,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cloud-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cloud-revolution') and name = '利用者と社会'),
-          '2021-09-01', null, 'day', 'point', 'デジタル庁発足、ガバメントクラウド整備へ', '🗾 日本でデジタル庁が発足し、国と自治体の情報システムを共通のクラウド基盤に載せる「ガバメントクラウド」の整備が始まりました。初年度の対象にはAWSとGoogle Cloudが選ばれています。
+          '2021-09-01', null, 'day', 'point', '🗾 デジタル庁発足、ガバメントクラウド整備へ', '日本でデジタル庁が発足し、国と自治体の情報システムを共通のクラウド基盤に載せる「ガバメントクラウド」の整備が始まりました。初年度の対象にはAWSとGoogle Cloudが選ばれています。
 
 コロナ禍で露呈した行政デジタル化の遅れへの、制度としての回答です。一方で選定が海外勢に偏ったことは国内産業界に議論を呼び、クラウドをめぐる経済安全保障という論点を日本でも顕在化させました。', null,
           'verified', null, 'user', 17) returning id)
@@ -1019,15 +1019,15 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cloud-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cloud-revolution') and name = '利用者と社会'),
-          '2021-12-07', null, 'day', 'point', 'AWS大規模障害、依存の深さが可視化', '🚨 AWSの米東部リージョン(us-east-1)で大規模障害が発生し、物流システムから動画配信、スマート家電まで、広い範囲のサービスが数時間停止しました。
+          '2021-12-07', null, 'day', 'point', '🚨 AWS大規模障害、依存の深さが可視化', 'AWSの米東部リージョン(us-east-1)で大規模障害が発生し、物流システムから動画配信、スマート家電まで、広い範囲のサービスが数時間停止しました。
 
 15年かけて社会の土台になったクラウドの集中リスクを、多くの人が生活の不便として初めて体感した出来事です。分散設計の必要が改めて叫ばれましたが、少数の事業者に計算資源が集中する構造は変わっておらず、この年表の締めくくりにふさわしい問いを残しました。', null,
           'unverified', '影響を受けたサービス・企業の全容には公的な集計がなく、報道と各社の個別発表がもとになっています。', 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('AWS: Summary of the AWS Service Event in the Northern Virginia (US-EAST-1) Region (2021-12)', null)) as v(title, url);
 
--- ═══ tech-cybersecurity — サイバーセキュリティの進化
+-- ═══ tech-cybersecurity — 🔐 サイバーセキュリティの進化
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('tech-cybersecurity', '00000000-0000-4000-8000-a4e76ec825ee', 'サイバーセキュリティの進化', 'Morrisワームからランサムウェアの産業化まで。攻撃と脅威・防御と技術・法と国家の3層を重ねて、個人の悪戯だった攻撃が国家戦と社会インフラの問題へ広がる過程を追いかけます。つながって動く機械が増えるほど、守る話は他人事ではなくなります。', 'technology', 'ja', 'public', 's_tech-cybersecurity', 1986, 2024, 'tech-cybersecurity')
+values ('tech-cybersecurity', '00000000-0000-4000-8000-a4e76ec825ee', '🔐 サイバーセキュリティの進化', 'Morrisワームからランサムウェアの産業化まで。攻撃と脅威・防御と技術・法と国家の3層を重ねて、個人の悪戯だった攻撃が国家戦と社会インフラの問題へ広がる過程を追いかけます。つながって動く機械が増えるほど、守る話は他人事ではなくなります。', 'technology', 'ja', 'public', 's_tech-cybersecurity', 1986, 2024, 'tech-cybersecurity')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cybersecurity');
@@ -1190,15 +1190,15 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cybersecurity'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cybersecurity') and name = '防御と技術'),
-          '2024-08-13', null, 'day', 'point', 'NISTがポスト量子暗号の最初の標準を発表', '🔐 米国立標準技術研究所(NIST)が、量子コンピュータでも解読困難な暗号方式の最初の連邦標準3件(FIPS 203/204/205)を発表しました。約8年の国際公募と評価を経た成果です。
+          '2024-08-13', null, 'day', 'point', '🔐 NISTがポスト量子暗号の最初の標準を発表', '米国立標準技術研究所(NIST)が、量子コンピュータでも解読困難な暗号方式の最初の連邦標準3件(FIPS 203/204/205)を発表しました。約8年の国際公募と評価を経た成果です。
 
 将来の量子計算機に現在の暗号が破られる前に、いま流れている通信を守る移行が始まりました。「今のうちに暗号文を集めて後で解読する」攻撃(攻撃と脅威レイヤー)への備えでもあり、防御が攻撃の実現に先回りした初の事例といえます。', null,
           'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('NIST: Post-Quantum Cryptography Project', 'https://csrc.nist.gov/projects/post-quantum-cryptography')) as v(title, url);
 
--- ═══ tech-edtech — EdTechが変える教育
+-- ═══ tech-edtech — 🎓 EdTechが変える教育
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('tech-edtech', '00000000-0000-4000-8000-da0dc7f11ec9', 'EdTechが変える教育', '無料公開講義の理想からコロナ禍の一斉オンライン化、AI家庭教師まで。サービス・制度・資本の3つのレイヤーを重ねて、テクノロジーは教育の何を変えて、何を変えられなかったのかを検証する年表です 🎓', 'technology', 'ja', 'public', 's_tech-edtech', 2001, 2025, 'tech-edtech')
+values ('tech-edtech', '00000000-0000-4000-8000-da0dc7f11ec9', '🎓 EdTechが変える教育', '無料公開講義の理想からコロナ禍の一斉オンライン化、AI家庭教師まで。サービス・制度・資本の3つのレイヤーを重ねて、テクノロジーは教育の何を変えて、何を変えられなかったのかを検証する年表です 🎓', 'technology', 'ja', 'public', 's_tech-edtech', 2001, 2025, 'tech-edtech')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-edtech');
@@ -1209,7 +1209,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-edtech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-edtech') and name = '技術とサービス'),
-          '2001-04-01', null, 'month', 'point', 'MITが講義教材の無料公開OCWを発表', '🏛️ マサチューセッツ工科大学が、ほぼすべての講義教材をウェブで無償公開するOpenCourseWare(OCW)構想を発表しました。「教育をオープンにする」という宣言は、世界の大学に衝撃を与えます!
+          '2001-04-01', null, 'month', 'point', '🏛️ MITが講義教材の無料公開OCWを発表', 'マサチューセッツ工科大学が、ほぼすべての講義教材をウェブで無償公開するOpenCourseWare(OCW)構想を発表しました。「教育をオープンにする」という宣言は、世界の大学に衝撃を与えます!
 
 商用eラーニングの模索が続くなかで、最高峰の大学が知識の無償公開を選んだ意味は大きいです。のちのオープン教材(OER)運動とMOOCの思想的な源流で、日本でも2005年に主要大学によるJOCWが発足しました。', null,
           'verified', null, 'user', 0) returning id)
@@ -1217,7 +1217,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-edtech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-edtech') and name = '技術とサービス'),
-          '2008-01-01', null, 'year', 'point', 'カーンアカデミー設立、動画で学ぶ形を確立', '✏️ サルマン・カーンが、親戚の子に算数を教えるために作ったYouTube動画を母体に、非営利のカーンアカデミーを設立しました。短い解説動画と練習問題を無料で提供するモデルを確立します。
+          '2008-01-01', null, 'year', 'point', '✏️ カーンアカデミー設立、動画で学ぶ形を確立', 'サルマン・カーンが、親戚の子に算数を教えるために作ったYouTube動画を母体に、非営利のカーンアカデミーを設立しました。短い解説動画と練習問題を無料で提供するモデルを確立します。
 
 「授業を動画で予習して、教室では演習する」という反転授業の議論を世界に広め、財団の支援を受けて成長しました。営利スタートアップが主導する後年のEdTech産業に対して、非営利・無料という対極のモデルを示し続ける存在です。', null,
           'verified', null, 'user', 1) returning id)
@@ -1225,7 +1225,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-edtech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-edtech') and name = '技術とサービス'),
-          '2012-01-01', null, 'year', 'point', '「MOOC元年」、大学講義が数十万人に開かれる', '🎓 スタンフォード発のCourseraとUdacity、MITとハーバードが設立したedXが相次いで開講し、大学講義を誰でも無料受講できるMOOCが爆発的な注目を集めました。米紙はこの年を「MOOCの年」と呼びます。
+          '2012-01-01', null, 'year', 'point', '🎓 「MOOC元年」、大学講義が数十万人に開かれる', 'スタンフォード発のCourseraとUdacity、MITとハーバードが設立したedXが相次いで開講し、大学講義を誰でも無料受講できるMOOCが爆発的な注目を集めました。米紙はこの年を「MOOCの年」と呼びます。
 
 数十万人規模の登録者は「大学の終わり」論まで呼びました!でも、のちの研究で修了率が数%にとどまると示され、期待は急速にしぼみます。**理想の規模と学びの完遂の落差**という、この年表を貫くテーマの最初の実例です。', null,
           'disputed', '登録者数は各社の自社発表です。修了率も研究によって数%から十数%と、推計に幅があります。', 'user', 2) returning id)
@@ -1233,7 +1233,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-edtech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-edtech') and name = '制度と教育現場'),
-          '2019-12-01', null, 'month', 'point', '日本がGIGAスクール構想を開始', '🏫 文部科学省が、児童生徒1人1台の学習端末と高速ネットワークを全国の小中学校に整備するGIGAスクール構想を打ち出し、補正予算が計上されました。当初は2023年度までの整備計画です。
+          '2019-12-01', null, 'month', 'point', '🏫 日本がGIGAスクール構想を開始', '文部科学省が、児童生徒1人1台の学習端末と高速ネットワークを全国の小中学校に整備するGIGAスクール構想を打ち出し、補正予算が計上されました。当初は2023年度までの整備計画です。
 
 直後のコロナ禍で計画は大幅に前倒しされ、OECD調査で最下位級とされた日本の学校ICT環境は数年で一変しました。危機が制度を動かした典型例ですが、端末が行き渡ったあとに「何にどう使うか」という課題が現場に残ります。', null,
           'verified', null, 'user', 3) returning id)
@@ -1241,7 +1241,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-edtech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-edtech') and name = '制度と教育現場'),
-          '2020-03-01', '2021-08-31', 'month', 'period', '世界規模の学校閉鎖、オンライン学習へ一斉移行', '🌍 新型コロナウイルスの感染拡大で世界の大半の国が休校措置をとり、ピーク時には世界の学習者の9割超・約16億人が影響を受けたとUNESCOは推計しています。授業は突如、オンラインに移りました。
+          '2020-03-01', '2021-08-31', 'month', 'period', '🌍 世界規模の学校閉鎖、オンライン学習へ一斉移行', '新型コロナウイルスの感染拡大で世界の大半の国が休校措置をとり、ピーク時には世界の学習者の9割超・約16億人が影響を受けたとUNESCOは推計しています。授業は突如、オンラインに移りました。
 
 ZoomやGoogle Classroomが事実上の公共インフラになり、EdTechの利用は数年分跳ね上がります。一方で、端末や通信環境の有無による**学習機会の格差**が世界中で可視化され、テクノロジーは格差を埋めるのか広げるのか、という問いを残しました。', null,
           'unverified', '影響を受けた学習者数はUNESCOの推計で、各国の報告基準によって数字は変わります。', 'user', 4) returning id)
@@ -1249,7 +1249,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-edtech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-edtech') and name = '産業と資本'),
-          '2021-01-01', null, 'year', 'point', '世界のEdTech投資が過去最高の200億ドル規模に', '💰 コロナ禍の需要急増を受けて、2021年の世界のEdTechベンチャー投資は、調査会社の推計で200億ドル規模と過去最高に達しました。インドと中国の大型資金調達が全体を引っ張っています。
+          '2021-01-01', null, 'year', 'point', '💰 世界のEdTech投資が過去最高の200億ドル規模に', 'コロナ禍の需要急増を受けて、2021年の世界のEdTechベンチャー投資は、調査会社の推計で200億ドル規模と過去最高に達しました。インドと中国の大型資金調達が全体を引っ張っています。
 
 オンライン学習が恒久的に定着すると見込んだ資金流入でしたが、翌年以降は対面回帰と金利上昇で投資額は急減。**需要の先食い**だったことが後から判明し、高い評価額で調達した企業ほど深い調整を迫られました。', null,
           'unverified', '投資額はHolonIQなど調査会社の推計で、集計範囲によって数字が異なります。', 'user', 5) returning id)
@@ -1257,7 +1257,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-edtech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-edtech') and name = '制度と教育現場'),
-          '2021-07-01', null, 'month', 'point', '中国が「双減」政策で学習塾産業を事実上解体', '🇨🇳 中国政府が、義務教育段階の学科系学習塾に非営利化や新規認可停止などを課す「双減」政策を発表しました。急成長していたオンライン教育企業の株価は暴落し、世界最大の教育産業は事実上解体されます。
+          '2021-07-01', null, 'month', 'point', '🇨🇳 中国が「双減」政策で学習塾産業を事実上解体', '中国政府が、義務教育段階の学科系学習塾に非営利化や新規認可停止などを課す「双減」政策を発表しました。急成長していたオンライン教育企業の株価は暴落し、世界最大の教育産業は事実上解体されます。
 
 史上最大級のEdTech市場が、政策ひとつで消えた出来事です。教育サービスが**国家の教育方針の従属変数**であることを、これ以上ないほど鮮烈に示しました。行き場を失った投資マネー(産業と資本レイヤー)は、以後インドや東南アジアへ向かいます。', null,
           'verified', null, 'user', 6) returning id)
@@ -1265,7 +1265,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-edtech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-edtech') and name = '産業と資本'),
-          '2022-03-01', null, 'month', 'point', 'Byju''sが評価額220億ドル、世界最大のEdTechに', '🦄 インドのByju''sが資金調達で評価額220億ドルと報じられ、世界で最も企業価値の高いEdTech企業になりました。広告攻勢と相次ぐ買収で、インドの国民的サービスと目されていた会社です。
+          '2022-03-01', null, 'month', 'point', '🦄 Byju''sが評価額220億ドル、世界最大のEdTechに', 'インドのByju''sが資金調達で評価額220億ドルと報じられ、世界で最も企業価値の高いEdTech企業になりました。広告攻勢と相次ぐ買収で、インドの国民的サービスと目されていた会社です。
 
 でも、コロナ特需の反動と決算監査の遅延で信用は急速に崩れ、2年後には債権者から破産手続を申し立てられるところまで行きます。EdTechバブルの頂点と崩壊をわずか数年で体現した、時代の象徴といえる企業です。', null,
           'disputed', '評価額220億ドルは資金調達時の報道ベースの数字で、その後の評価下落の幅にも諸説あります。', 'user', 7) returning id)
@@ -1273,7 +1273,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-edtech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-edtech') and name = '技術とサービス'),
-          '2022-11-30', null, 'day', 'point', 'ChatGPT公開、宿題とレポートの前提を揺るがす', '💬 OpenAIの対話型AIが公開され、レポート作成や問題演習を数秒で代行できることが教育界を直撃しました。公開から数週間で学生の利用が広がり、剽窃検出ツールの各社は対応に追われます。
+          '2022-11-30', null, 'day', 'point', '💬 ChatGPT公開、宿題とレポートの前提を揺るがす', 'OpenAIの対話型AIが公開され、レポート作成や問題演習を数秒で代行できることが教育界を直撃しました。公開から数週間で学生の利用が広がり、剽窃検出ツールの各社は対応に追われます。
 
 「答えを出す機械」の登場は、宿題・試験・評価という学校の基本装置(制度と教育現場レイヤー)の前提を揺るがしました。禁止か活用かの論争が世界の教室で始まり、以後の「教育とAI」をめぐるすべての議論の起点になります。', null,
           'verified', null, 'user', 8) returning id)
@@ -1281,7 +1281,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-edtech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-edtech') and name = '制度と教育現場'),
-          '2023-01-01', null, 'month', 'point', 'NY市教育局がChatGPTを遮断、4か月で方針転換', '🗽 全米最大の学区であるニューヨーク市教育局が、学校のネットワークと端末からChatGPTへのアクセスを遮断しました。理由は、学習への悪影響と不正利用への懸念です。
+          '2023-01-01', null, 'month', 'point', '🗽 NY市教育局がChatGPTを遮断、4か月で方針転換', '全米最大の学区であるニューヨーク市教育局が、学校のネットワークと端末からChatGPTへのアクセスを遮断しました。理由は、学習への悪影響と不正利用への懸念です。
 
 ところが同じ年の5月には方針を撤回し、AIリテラシー教育の推進へ転じます。**禁止から共存への転回**をわずか4か月で経験したこの学区の迷走は、そのあと世界中の教育行政がたどることになる道筋の縮図でした。', null,
           'verified', null, 'user', 9) returning id)
@@ -1289,7 +1289,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-edtech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-edtech') and name = '技術とサービス'),
-          '2023-03-01', null, 'month', 'point', 'カーンアカデミーがAI家庭教師Khanmigoを発表', '🤖 カーンアカデミーが、GPT-4を組み込んだAI家庭教師「Khanmigo」を発表しました。答えを直接教えず、対話を通じて生徒自身の思考を促す、ソクラテス式の設計を掲げています。
+          '2023-03-01', null, 'month', 'point', '🤖 カーンアカデミーがAI家庭教師Khanmigoを発表', 'カーンアカデミーが、GPT-4を組み込んだAI家庭教師「Khanmigo」を発表しました。答えを直接教えず、対話を通じて生徒自身の思考を促す、ソクラテス式の設計を掲げています。
 
 ChatGPT遮断(制度と教育現場レイヤー)と同じ時期に、非営利の老舗が「正しく使う」形を示した対比が鮮やかです!1対1の個別指導は集団授業より大幅に効果が高いという「ブルームの2シグマ問題」への、AIによる挑戦と位置づけられました。', null,
           'verified', null, 'user', 10) returning id)
@@ -1297,7 +1297,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-edtech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-edtech') and name = '産業と資本'),
-          '2023-05-02', null, 'day', 'point', 'Chegg株が1日で約半値に、AIが収益を直撃', '🪫 宿題支援サービス大手Cheggの株価が、1日で約48%下落しました。引き金は、ChatGPTの影響で新規契約の伸びが鈍っていると経営陣が決算発表で認めたことです。
+          '2023-05-02', null, 'day', 'point', '🪫 Chegg株が1日で約半値に、AIが収益を直撃', '宿題支援サービス大手Cheggの株価が、1日で約48%下落しました。引き金は、ChatGPTの影響で新規契約の伸びが鈍っていると経営陣が決算発表で認めたことです。
 
 生成AIが既存EdTech企業の収益を直接壊しうることを、資本市場が織り込んだ最初の事例になりました。「AIに置き換えられる側」と「AIを組み込む側」の選別が始まり、教育関連株はAI戦略の説得力で評価される時代に入ります。', null,
           'verified', null, 'user', 11) returning id)
@@ -1305,7 +1305,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-edtech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-edtech') and name = '制度と教育現場'),
-          '2023-07-01', null, 'month', 'point', 'UNESCOが学校でのスマートフォン規制を提言', '📵 UNESCOが世界教育モニタリングレポートで、学習の妨げになる場合は学校でのスマートフォン使用を禁止すべきだと提言しました。テクノロジーの導入は人間中心の視点で判断すべき、という警鐘です。
+          '2023-07-01', null, 'month', 'point', '📵 UNESCOが学校でのスマートフォン規制を提言', 'UNESCOが世界教育モニタリングレポートで、学習の妨げになる場合は学校でのスマートフォン使用を禁止すべきだと提言しました。テクノロジーの導入は人間中心の視点で判断すべき、という警鐘です。
 
 デジタル化を推進してきた国際機関自身による軌道修正で、各国で相次いだ学校スマホ禁止立法とも呼応しています。EdTechの学習効果に関する**独立した証拠の乏しさ**への指摘は、業界全体への根本的な問いになっています。', null,
           'verified', null, 'user', 12) returning id)
@@ -1313,7 +1313,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-edtech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-edtech') and name = '制度と教育現場'),
-          '2024-04-01', null, 'month', 'point', '日本の小中学校で英語のデジタル教科書を本格導入', '📚 2024年度から、全国の小学5年から中学3年の英語で、紙の教科書と併用する形のデジタル教科書の提供が始まりました。GIGAスクール構想で整備された1人1台端末が、その前提です。
+          '2024-04-01', null, 'month', 'point', '📚 日本の小中学校で英語のデジタル教科書を本格導入', '2024年度から、全国の小学5年から中学3年の英語で、紙の教科書と併用する形のデジタル教科書の提供が始まりました。GIGAスクール構想で整備された1人1台端末が、その前提です。
 
 端末整備(2019年〜)から日常活用への移行を示す節目ですが、視力や学習定着への影響を心配する声も根強く、当面は紙との併用が続きます。制度が慎重に歩んでいる間にも、生徒の学びはAIアプリ(技術とサービスレイヤー)へ先に流れています。', null,
           'verified', null, 'user', 13) returning id)
@@ -1321,7 +1321,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-edtech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-edtech') and name = '産業と資本'),
-          '2024-07-01', null, 'month', 'point', 'Byju''sに破産手続き開始、バブルの象徴が転落', '🍂 インドの会社法審判所が、スポンサー料未払いを申し立てたインドクリケット協会の訴えを認め、Byju''sの破産手続き開始を決定しました。評価額220億ドルとされた企業が、2年で法的整理の入口に立ったのです。
+          '2024-07-01', null, 'month', 'point', '🍂 Byju''sに破産手続き開始、バブルの象徴が転落', 'インドの会社法審判所が、スポンサー料未払いを申し立てたインドクリケット協会の訴えを認め、Byju''sの破産手続き開始を決定しました。評価額220億ドルとされた企業が、2年で法的整理の入口に立ったのです。
 
 過大な広告費、強引な販売手法、ガバナンスの不全が崩壊の内因とされ、コロナ特需を実力と誤認した業界全体への教訓になりました。資本の熱狂と教育の成果は別物であることを、最も高い代償で示した事例です。', null,
           'verified', null, 'user', 14) returning id)
@@ -1329,15 +1329,15 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-edtech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-edtech') and name = '技術とサービス'),
-          '2025-07-01', null, 'month', 'point', 'ChatGPTに「学習モード」、答えを教えないAIへ', '🧭 OpenAIがChatGPTに、答えを直接示さず対話を通じて理解へ導く「study mode」を追加しました。学生による丸写し利用への批判が続くなかでの、汎用AI側からの応答です。
+          '2025-07-01', null, 'month', 'point', '🧭 ChatGPTに「学習モード」、答えを教えないAIへ', 'OpenAIがChatGPTに、答えを直接示さず対話を通じて理解へ導く「study mode」を追加しました。学生による丸写し利用への批判が続くなかでの、汎用AI側からの応答です。
 
 Khanmigoが先行した「ソクラテス式AI」の設計思想が汎用チャットAIにも標準搭載された形で、教育専用サービスと汎用AIの境界は一段とあいまいになりました。宿題の代行者から**学びの伴走者**へ。教育におけるAIの立ち位置の再定義が進んでいます。', null,
           'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('OpenAI発表 (2025-07)', null)) as v(title, url);
 
--- ═══ tech-fintech — フィンテックの破壊力
+-- ═══ tech-fintech — 💳 フィンテックの破壊力
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('tech-fintech', '00000000-0000-4000-8000-da0dc7f11ec9', 'フィンテックの破壊力', 'モバイル送金から暗号資産、スマホ時代の銀行取り付けまで。技術は金融の何を壊して、何を壊せなかったのか。サービス・既存金融・規制の3つのレイヤーで、破壊と吸収の20年を追いかける年表です 💸', 'technology', 'ja', 'public', 's_tech-fintech', 2007, 2025, 'tech-fintech')
+values ('tech-fintech', '00000000-0000-4000-8000-da0dc7f11ec9', '💳 フィンテックの破壊力', 'モバイル送金から暗号資産、スマホ時代の銀行取り付けまで。技術は金融の何を壊して、何を壊せなかったのか。サービス・既存金融・規制の3つのレイヤーで、破壊と吸収の20年を追いかける年表です 💸', 'technology', 'ja', 'public', 's_tech-fintech', 2007, 2025, 'tech-fintech')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-fintech');
@@ -1348,7 +1348,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-fintech') and name = '技術とサービス'),
-          '2007-03-01', null, 'month', 'point', 'ケニアでM-Pesa開始、銀行なしの送金インフラに', '📲 ケニアの通信会社サファリコムが、携帯電話のショートメッセージを使った送金サービスM-Pesaを始めました。銀行口座を持たない人たちが、現金を電子的に送って受け取れるようになったのです!
+          '2007-03-01', null, 'month', 'point', '📲 ケニアでM-Pesa開始、銀行なしの送金インフラに', 'ケニアの通信会社サファリコムが、携帯電話のショートメッセージを使った送金サービスM-Pesaを始めました。銀行口座を持たない人たちが、現金を電子的に送って受け取れるようになったのです!
 
 銀行網の外側から金融アクセスを一気に広げた代表例で、「金融包摂」というフィンテックの原点を示しています。のちの途上国モバイルマネーやQR決済の先行モデルになり、規制当局も「銀行免許なしで営まれる金融」への対応を迫られました。', null,
           'verified', null, 'user', 0) returning id)
@@ -1356,7 +1356,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-fintech') and name = '技術とサービス'),
-          '2008-10-31', null, 'day', 'point', 'ビットコイン論文公開', '🪙 サトシ・ナカモト名義の論文「Bitcoin: A Peer-to-Peer Electronic Cash System」が暗号技術のメーリングリストで公開されました。中央管理者なしに二重支払いを防ぐ、電子通貨の仕組みの提案です。
+          '2008-10-31', null, 'day', 'point', '🪙 ビットコイン論文公開', 'サトシ・ナカモト名義の論文「Bitcoin: A Peer-to-Peer Electronic Cash System」が暗号技術のメーリングリストで公開されました。中央管理者なしに二重支払いを防ぐ、電子通貨の仕組みの提案です。
 
 リーマン・ブラザーズ破綻の翌月というタイミングがなんとも象徴的で、既存金融(既存金融と資本レイヤー)への不信がこの構想の受け皿になりました。翌年1月に最初のブロックが生成され、以後の暗号資産はすべてここから派生します。', null,
           'verified', null, 'user', 1) returning id)
@@ -1364,7 +1364,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-fintech') and name = '技術とサービス'),
-          '2011-09-01', null, 'month', 'point', 'Stripe公開、オンライン決済がAPI数行になる', '💳 米Stripeが開発者向けの決済APIを一般公開しました。加盟店契約や審査で数週間かかっていたカード決済の導入が、ウェブサイトに数行のコードを書くだけで済むようになります!
+          '2011-09-01', null, 'month', 'point', '💳 Stripe公開、オンライン決済がAPI数行になる', '米Stripeが開発者向けの決済APIを一般公開しました。加盟店契約や審査で数週間かかっていたカード決済の導入が、ウェブサイトに数行のコードを書くだけで済むようになります!
 
 **決済のインフラ化**はECやSaaSの起業コストをぐっと下げ、その後のプラットフォーム経済の裏方になりました。既存金融レイヤーから見ると、カード網の上に乗りながら顧客接点だけを奪っていく、新種の存在の登場です。', null,
           'verified', null, 'user', 2) returning id)
@@ -1372,7 +1372,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-fintech') and name = '技術とサービス'),
-          '2014-01-01', '2018-12-31', 'year', 'period', '中国でQR決済が日常インフラ化', '🧧 アリペイとWeChat Payの二強が、屋台の支払いから公共料金まで、QRコード決済を暮らしに浸透させました。この間に中国のモバイル決済取引額は、数十兆元規模へ拡大したと推計されています。
+          '2014-01-01', '2018-12-31', 'year', 'period', '🧧 中国でQR決済が日常インフラ化', 'アリペイとWeChat Payの二強が、屋台の支払いから公共料金まで、QRコード決済を暮らしに浸透させました。この間に中国のモバイル決済取引額は、数十兆元規模へ拡大したと推計されています。
 
 カード社会を経ずに、現金からスマホへ一気に跳んだ「リープフロッグ」の代表例です。決済データが信用スコアや少額投資の入口になることを世界に示し、各国のスーパーアプリ構想と規制議論(規制と社会レイヤー)の参照点になりました。', null,
           'unverified', '取引額は中国人民銀行の統計や調査会社の推計がもとで、集計範囲によって数字が大きく変わります。', 'user', 3) returning id)
@@ -1380,7 +1380,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-fintech') and name = '規制と社会'),
-          '2014-02-28', null, 'day', 'point', 'マウントゴックス破綻、暗号資産規制の原点に', '💥 世界最大級のビットコイン交換所だった東京のマウントゴックスが、民事再生法の適用を申請しました。約85万BTCの消失が公表され、利用者資産の保全が世界的な問題として噴き出します。
+          '2014-02-28', null, 'day', 'point', '💥 マウントゴックス破綻、暗号資産規制の原点に', '世界最大級のビットコイン交換所だった東京のマウントゴックスが、民事再生法の適用を申請しました。約85万BTCの消失が公表され、利用者資産の保全が世界的な問題として噴き出します。
 
 この事件をきっかけに日本は交換業者の登録制を導入し、世界に先んじて暗号資産を法制度に取り込む道を選びました。**破綻が規制を生む**というフィンテック史の反復パターンの、最初の大きな実例です。', null,
           'verified', null, 'user', 4) returning id)
@@ -1388,7 +1388,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-fintech') and name = '規制と社会'),
-          '2015-10-01', null, 'month', 'point', 'EUが決済サービス指令PSD2を可決', '🔑 欧州議会が改定決済サービス指令(PSD2)を可決しました。銀行に対して、顧客の同意を前提に、口座情報や決済機能を外部事業者へAPIで開放するよう義務づける内容です。
+          '2015-10-01', null, 'month', 'point', '🔑 EUが決済サービス指令PSD2を可決', '欧州議会が改定決済サービス指令(PSD2)を可決しました。銀行に対して、顧客の同意を前提に、口座情報や決済機能を外部事業者へAPIで開放するよう義務づける内容です。
 
 銀行が独占してきた口座データを、競争の基盤として開放させる「オープンバンキング」の法的な出発点で、規制が破壊を後押しした珍しい例といえます。英国の同名制度や日本の銀行法改正など、各国制度の雛形になりました。', null,
           'verified', null, 'user', 5) returning id)
@@ -1396,7 +1396,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-fintech') and name = '技術とサービス'),
-          '2018-12-04', null, 'day', 'point', 'PayPayの「100億円あげちゃうキャンペーン」', '🎁 ソフトバンクとヤフーが立ち上げたPayPayが、決済額の20%を還元する大型キャンペーンを開始。わずか10日で還元原資の100億円を使い切りました!日本のQR決済の認知を一気に押し上げたとされています。
+          '2018-12-04', null, 'day', 'point', '🎁 PayPayの「100億円あげちゃうキャンペーン」', 'ソフトバンクとヤフーが立ち上げたPayPayが、決済額の20%を還元する大型キャンペーンを開始。わずか10日で還元原資の100億円を使い切りました!日本のQR決済の認知を一気に押し上げたとされています。
 
 現金志向の強い日本市場に、巨額の販促でユーザーの行動変容を買うプラットフォーム型の戦略が持ち込まれた出来事です。翌年の消費増税に伴うポイント還元事業(規制と社会レイヤー)とも重なり、キャッシュレス比率は以後上がり続けました。', null,
           'unverified', 'キャンペーンの実施は事実ですが、利用者獲得数や認知への効果は同社発表と調査会社の推計がもとで、独立した検証はありません。', 'user', 6) returning id)
@@ -1404,7 +1404,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-fintech') and name = '技術とサービス'),
-          '2019-06-18', null, 'day', 'point', 'FacebookがLibra構想を発表', '🌐 Facebook(現Meta)が、複数の通貨建て資産で裏付けるグローバルデジタル通貨Libraの構想を発表しました。世界20億人超の利用者基盤に金融を載せる計画に、各国の規制当局と中央銀行が一斉に身構えます。
+          '2019-06-18', null, 'day', 'point', '🌐 FacebookがLibra構想を発表', 'Facebook(現Meta)が、複数の通貨建て資産で裏付けるグローバルデジタル通貨Libraの構想を発表しました。世界20億人超の利用者基盤に金融を載せる計画に、各国の規制当局と中央銀行が一斉に身構えます。
 
 構想は縮小と改名(Diem)を経て2022年に消滅しました。それでも**民間企業が通貨そのものに手を伸ばした**衝撃は大きく、各国のCBDC研究とステーブルコイン規制を加速させます。挫折が制度を動かした例です。', null,
           'verified', null, 'user', 7) returning id)
@@ -1412,7 +1412,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-fintech') and name = '規制と社会'),
-          '2021-01-28', null, 'day', 'point', 'ゲームストップ株騒動、Robinhoodが購入制限', '🎮 掲示板Redditに集まった個人投資家が、空売りの多いゲームストップ株を買い上げて株価が急騰。手数料無料の株取引アプリRobinhoodが同株の新規購入を一時制限し、のちに米議会の公聴会にまで発展しました。
+          '2021-01-28', null, 'day', 'point', '🎮 ゲームストップ株騒動、Robinhoodが購入制限', '掲示板Redditに集まった個人投資家が、空売りの多いゲームストップ株を買い上げて株価が急騰。手数料無料の株取引アプリRobinhoodが同株の新規購入を一時制限し、のちに米議会の公聴会にまで発展しました。
 
 スマホ証券が掲げた「投資の民主化」と、その足元の脆さが同時に露呈した事件です。購入制限の背景には清算機関への預託金という既存金融レイヤーの仕組みがあって、新興サービスも旧来インフラの上に立っている事実を示しました。', null,
           'verified', null, 'user', 8) returning id)
@@ -1420,7 +1420,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-fintech') and name = '既存金融と資本'),
-          '2021-04-14', null, 'day', 'point', 'Coinbaseがナスダック上場', '🔔 米最大の暗号資産交換所Coinbaseがナスダックに直接上場し、時価総額は一時1,000億ドル近くに達しました。暗号資産企業として初めての大型上場です。
+          '2021-04-14', null, 'day', 'point', '🔔 Coinbaseがナスダック上場', '米最大の暗号資産交換所Coinbaseがナスダックに直接上場し、時価総額は一時1,000億ドル近くに達しました。暗号資産企業として初めての大型上場です。
 
 既存金融の破壊を掲げた企業が、伝統的な資本市場の作法で資金調達をする。この構図は、**破壊と制度への吸収が同時に進む**というフィンテックの性格をよく表しています。この上場を頂点とする強気相場は、翌年の連鎖破綻で暗転することになります。', null,
           'verified', null, 'user', 9) returning id)
@@ -1428,7 +1428,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-fintech') and name = '規制と社会'),
-          '2021-09-07', null, 'day', 'point', 'エルサルバドルがビットコインを法定通貨に', '🌋 エルサルバドルが、世界で初めてビットコインを法定通貨とする法律を施行しました。国民向けウォレット「Chivo」を配布し、事業者には受け入れを義務づけます。
+          '2021-09-07', null, 'day', 'point', '🌋 エルサルバドルがビットコインを法定通貨に', 'エルサルバドルが、世界で初めてビットコインを法定通貨とする法律を施行しました。国民向けウォレット「Chivo」を配布し、事業者には受け入れを義務づけます。
 
 国家が暗号資産を通貨制度へ組み込む最初の実験でした。ただ、その後の調査では国民の利用低迷が繰り返し報告され、IMFも見直しを勧告し続けます。2025年には受け入れ義務が撤廃され、実験は大きく後退しました。', null,
           'disputed', '法律の施行は事実ですが、国民の利用実態は学術調査・世論調査ベースの報告で、数字には幅があります。', 'user', 10) returning id)
@@ -1436,7 +1436,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-fintech') and name = '技術とサービス'),
-          '2022-05-01', null, 'month', 'point', 'ステーブルコインTerraUSD崩壊', '📉 アルゴリズム型ステーブルコインTerraUSD(UST)が米ドルとの連動を失い、姉妹通貨LUNAとともに数日でほぼ無価値になりました。消えた時価総額は400億ドル規模と推計されています。
+          '2022-05-01', null, 'month', 'point', '📉 ステーブルコインTerraUSD崩壊', 'アルゴリズム型ステーブルコインTerraUSD(UST)が米ドルとの連動を失い、姉妹通貨LUNAとともに数日でほぼ無価値になりました。消えた時価総額は400億ドル規模と推計されています。
 
 「アルゴリズムで価値を保つ」という設計の破綻は、貸付業者やファンドの連鎖倒産を招き、半年後のFTX破綻への導火線になりました。各国のステーブルコイン規制(規制と社会レイヤー)が一気に具体化する、直接のきっかけです。', null,
           'disputed', '消失額の推計は、集計時点と対象範囲によって数百億ドル規模の幅があります。', 'user', 11) returning id)
@@ -1444,7 +1444,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-fintech') and name = '既存金融と資本'),
-          '2022-11-11', null, 'day', 'point', 'FTX破綻', '🏚️ 世界2位級の暗号資産交換所FTXが、顧客資産の流用疑惑の表面化から10日足らずで連邦破産法11条を申請しました。創業者サム・バンクマン=フリードは、のちに詐欺罪で有罪となります。
+          '2022-11-11', null, 'day', 'point', '🏚️ FTX破綻', '世界2位級の暗号資産交換所FTXが、顧客資産の流用疑惑の表面化から10日足らずで連邦破産法11条を申請しました。創業者サム・バンクマン=フリードは、のちに詐欺罪で有罪となります。
 
 著名投資家や機関投資家まで巻き込んだ崩壊は、**規制の空白地帯に築かれた信用の脆さ**をさらけ出しました。皮肉なことに破綻処理は伝統的な裁判所と会計専門家の手に委ねられ、暗号資産業界への規制導入論を決定づけます。', null,
           'verified', null, 'user', 12) returning id)
@@ -1452,7 +1452,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-fintech') and name = '既存金融と資本'),
-          '2023-03-10', null, 'day', 'point', 'シリコンバレー銀行破綻、スマホ時代の取り付け', '🏦 スタートアップ業界の主要銀行だったシリコンバレー銀行(SVB)が破綻しました。SNSでの不安拡散とモバイルバンキングで、預金流出は1日で420億ドル規模に達したとされ、史上最速級の取り付けと呼ばれます。
+          '2023-03-10', null, 'day', 'point', '🏦 シリコンバレー銀行破綻、スマホ時代の取り付け', 'スタートアップ業界の主要銀行だったシリコンバレー銀行(SVB)が破綻しました。SNSでの不安拡散とモバイルバンキングで、預金流出は1日で420億ドル規模に達したとされ、史上最速級の取り付けと呼ばれます。
 
 フィンテックが磨いた「即時に動くカネ」が、預金は簡単には逃げないという既存銀行の前提を崩した事件です。破壊の技術は新興企業だけでなく**銀行制度そのものの弱点**にもなり得ると示し、預金保険と規制の再設計論を呼びました。', null,
           'disputed', '流出額・速度は当局発表と報道がもとですが、「史上最速の取り付け」という比較には定義上の異論もあります。', 'user', 13) returning id)
@@ -1460,7 +1460,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-fintech') and name = '規制と社会'),
-          '2023-06-01', null, 'day', 'point', '日本で改正資金決済法施行、ステーブルコインを制度化', '🗾 改正資金決済法が施行され、法定通貨建てステーブルコインが「電子決済手段」として定義されました。発行者を銀行・資金移動業者・信託会社に限定する、世界でも先行する包括的な制度です。
+          '2023-06-01', null, 'day', 'point', '🗾 日本で改正資金決済法施行、ステーブルコインを制度化', '改正資金決済法が施行され、法定通貨建てステーブルコインが「電子決済手段」として定義されました。発行者を銀行・資金移動業者・信託会社に限定する、世界でも先行する包括的な制度です。
 
 マウントゴックス以来の「事件が先、制度が後」という順序から、**制度を先に整えて市場を待つ**姿勢への転換点といえます。2025年には国内初の円建てステーブルコインが登場し、送金・決済インフラとしての実験段階に入りました。', null,
           'verified', null, 'user', 14) returning id)
@@ -1468,7 +1468,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-fintech') and name = '既存金融と資本'),
-          '2023-07-20', null, 'day', 'point', '米FRBが即時決済網FedNowを稼働', '🏛️ 米連邦準備制度が、24時間365日動く銀行間の即時送金インフラFedNowの運用を始めました。数日かかることもあった米国内送金が、ようやくリアルタイム化への一歩を踏み出します。
+          '2023-07-20', null, 'day', 'point', '🏛️ 米FRBが即時決済網FedNowを稼働', '米連邦準備制度が、24時間365日動く銀行間の即時送金インフラFedNowの運用を始めました。数日かかることもあった米国内送金が、ようやくリアルタイム化への一歩を踏み出します。
 
 英国の即時決済や日本の全銀システム24時間化など、各国の流れに続く動きで、フィンテックが生んだ「即時性」への需要に中央銀行側が応えた形です。**土台のインフラを更新して破壊者を吸収する**、既存側の対応の典型といえます。', null,
           'verified', null, 'user', 15) returning id)
@@ -1476,7 +1476,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-fintech') and name = '既存金融と資本'),
-          '2024-01-10', null, 'day', 'point', '米SECがビットコイン現物ETFを一括承認', '📊 米証券取引委員会(SEC)が11本のビットコイン現物ETFを一括承認し、翌日から取引が始まりました。10年にわたって申請却下が続いてきた歴史が、裁判所の判断を経てひっくり返った形です!
+          '2024-01-10', null, 'day', 'point', '📊 米SECがビットコイン現物ETFを一括承認', '米証券取引委員会(SEC)が11本のビットコイン現物ETFを一括承認し、翌日から取引が始まりました。10年にわたって申請却下が続いてきた歴史が、裁判所の判断を経てひっくり返った形です!
 
 ブラックロックなど伝統的な資産運用の最大手が暗号資産への窓口となり、破壊者として出発した資産が既存金融の商品棚に収まりました。反体制の思想から生まれたビットコインの制度化として、この年表の一つの到達点です。', null,
           'verified', null, 'user', 16) returning id)
@@ -1484,7 +1484,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-fintech') and name = '規制と社会'),
-          '2025-07-18', null, 'day', 'point', '米国でステーブルコイン規制法(GENIUS法)成立', '📜 決済用ステーブルコインの発行者に、準備資産の全額保有と開示を義務づけるGENIUS法が米国で成立しました。連邦レベルでは初めての、包括的な暗号資産関連法です。
+          '2025-07-18', null, 'day', 'point', '📜 米国でステーブルコイン規制法(GENIUS法)成立', '決済用ステーブルコインの発行者に、準備資産の全額保有と開示を義務づけるGENIUS法が米国で成立しました。連邦レベルでは初めての、包括的な暗号資産関連法です。
 
 Libra(2019年)への警戒から始まった議論が、6年かけて「排除ではなく制度化」に着地しました。ドル建てステーブルコインの普及を通じてドルの地位を守るという狙いも指摘されていて、規制そのものが競争戦略の色を帯びる段階に入っています。', null,
           'verified', null, 'user', 17) returning id)
@@ -1825,9 +1825,9 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('富士通・理化学研究所 共同プレスリリース (2025年4月)', null)) as v(title, url);
 
--- ═══ tech-robotics — ロボティクスの夜明け
+-- ═══ tech-robotics — 🦾 ロボティクスの夜明け
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('tech-robotics', '00000000-0000-4000-8000-a4e76ec825ee', 'ロボティクスの夜明け', '1961年の産業用ロボットから二足歩行、災害対応、そしてヒューマノイド投資ブームまで。研究・産業・くらしの3層で、ロボットが工場を出て現場に立つまでの長い夜明けを追いかけます。動く機械の現在地を確かめる年表です。', 'technology', 'ja', 'public', 's_tech-robotics', 1961, 2024, 'tech-robotics')
+values ('tech-robotics', '00000000-0000-4000-8000-a4e76ec825ee', '🦾 ロボティクスの夜明け', '1961年の産業用ロボットから二足歩行、災害対応、そしてヒューマノイド投資ブームまで。研究・産業・くらしの3層で、ロボットが工場を出て現場に立つまでの長い夜明けを追いかけます。動く機械の現在地を確かめる年表です。', 'technology', 'ja', 'public', 's_tech-robotics', 1961, 2024, 'tech-robotics')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-robotics');
@@ -1838,7 +1838,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-robotics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-robotics') and name = '産業と市場'),
-          '1961-01-01', null, 'year', 'point', '世界初の産業用ロボットUnimate稼働', '🤖 ジョージ・デボルとジョセフ・エンゲルバーガーが開発した「Unimate」が、ゼネラルモーターズの工場で稼働を始めました。担当はダイカスト部品の搬出。高温で危険な、人がやりたくない仕事です。世界初の産業用ロボットとされています。
+          '1961-01-01', null, 'year', 'point', '🤖 世界初の産業用ロボットUnimate稼働', 'ジョージ・デボルとジョセフ・エンゲルバーガーが開発した「Unimate」が、ゼネラルモーターズの工場で稼働を始めました。担当はダイカスト部品の搬出。高温で危険な、人がやりたくない仕事です。世界初の産業用ロボットとされています。
 
 **人が嫌がる作業から現場に入る**という普及の型は、ここで決まりました。以後20年あまり、ロボットの主戦場は工場の中。家庭や街に出てくるのは、ずっと先の話になります。', null,
           'disputed', '導入年は試験導入の1959年とする資料と本格稼働の1961年とする資料があり、記述が分かれています。', 'user', 0) returning id)
@@ -1870,7 +1870,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-robotics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-robotics') and name = '社会とくらし'),
-          '1999-06-01', null, 'day', 'point', 'ソニーAIBO発売、ロボットが家庭のペットに', '🐕 ソニーが犬型エンタテインメントロボット「AIBO」を発売しました。25万円という価格ながら、日本向け3000台はネット販売開始から約20分で完売と発表されています。
+          '1999-06-01', null, 'day', 'point', '🐕 ソニーAIBO発売、ロボットが家庭のペットに', 'ソニーが犬型エンタテインメントロボット「AIBO」を発売しました。25万円という価格ながら、日本向け3000台はネット販売開始から約20分で完売と発表されています。
 
 役に立つかではなく、**愛着の対象としてのロボット**という市場を初めて成立させた製品です。「ロボットと暮らす」ことへの日本社会のハードルの低さも見えました。後年、修理サポート終了の際にAIBOの「葬儀」が営まれたことも、この受容の深さを物語っています。', null,
           'unverified', '「約20分で3000台完売」はソニーの発表に基づく数字で、第三者による検証はありません。', 'user', 4) returning id)
@@ -1966,7 +1966,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-robotics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-robotics') and name = '産業と市場'),
-          '2020-06-16', null, 'day', 'point', 'Boston DynamicsがSpotを一般販売開始', '🦾 Boston Dynamicsが四足歩行ロボット「Spot」を7万4500ドルで一般販売開始しました。動画で世界を驚かせ続けてきた同社にとって初の量産商用製品で、工場や建設現場の巡回・点検に採用が進んでいます。
+          '2020-06-16', null, 'day', 'point', '🦾 Boston DynamicsがSpotを一般販売開始', 'Boston Dynamicsが四足歩行ロボット「Spot」を7万4500ドルで一般販売開始しました。動画で世界を驚かせ続けてきた同社にとって初の量産商用製品で、工場や建設現場の巡回・点検に採用が進んでいます。
 
 BigDogから15年。研究資金による開発(研究と技術レイヤー)が、ようやく市場で買える製品に届きました。親会社はGoogle、ソフトバンクを経て2021年に現代自動車グループへ。脚式ロボットの商用化は自動車資本の下で進むことになります。', null,
           'verified', null, 'user', 16) returning id)
@@ -2151,9 +2151,9 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Intel Newsroom: 米政府による出資合意の発表 (2025-08-22)', null)) as v(title, url);
 
--- ═══ tech-social-media — SNSが変えた世界
+-- ═══ tech-social-media — 📱 SNSが変えた世界
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('tech-social-media', '00000000-0000-4000-8000-da0dc7f11ec9', 'SNSが変えた世界', 'Facebook誕生からTikTok規制まで。プラットフォームの進化、社会と政治への波及、規制の応答という3つのレイヤーを重ねて、SNSが世論と統治の形をどう変えてきたのかを追いかける年表です 📱', 'technology', 'ja', 'public', 's_tech-social-media', 2004, 2025, 'tech-social-media')
+values ('tech-social-media', '00000000-0000-4000-8000-da0dc7f11ec9', '📱 SNSが変えた世界', 'Facebook誕生からTikTok規制まで。プラットフォームの進化、社会と政治への波及、規制の応答という3つのレイヤーを重ねて、SNSが世論と統治の形をどう変えてきたのかを追いかける年表です 📱', 'technology', 'ja', 'public', 's_tech-social-media', 2004, 2025, 'tech-social-media')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media');
@@ -2164,7 +2164,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = 'プラットフォーム'),
-          '2004-02-04', null, 'day', 'point', 'ハーバードの学生寮でFacebookが誕生', '🎓 マーク・ザッカーバーグたちが、ハーバード大学の学生向けサイト「TheFacebook」を公開しました。実名と現実の人間関係をそのままオンラインに持ち込む設計は、匿名が当たり前だった当時のネットではかなり異例です。
+          '2004-02-04', null, 'day', 'point', '🎓 ハーバードの学生寮でFacebookが誕生', 'マーク・ザッカーバーグたちが、ハーバード大学の学生向けサイト「TheFacebook」を公開しました。実名と現実の人間関係をそのままオンラインに持ち込む設計は、匿名が当たり前だった当時のネットではかなり異例です。
 
 この実名制が、のちの広告ビジネスと個人データ集積の土台になりました。2010年代のプライバシー問題(規制と説明責任レイヤー)の遠因も、たどればこの設計思想です。20年後に30億人が使うインフラになるとは、当時は誰も想像していませんでした!', null,
           'verified', null, 'user', 0) returning id)
@@ -2172,7 +2172,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = 'プラットフォーム'),
-          '2006-07-15', null, 'day', 'point', 'Twitterが一般公開', '🐦 140字の短文を投稿する「Twitter」が一般公開されました。フォローという非対称な関係と、公開が基本の投稿。友だち同士の交流が前提だったそれまでのSNSとは違う、速報と拡散に向いた構造です。
+          '2006-07-15', null, 'day', 'point', '🐦 Twitterが一般公開', '140字の短文を投稿する「Twitter」が一般公開されました。フォローという非対称な関係と、公開が基本の投稿。友だち同士の交流が前提だったそれまでのSNSとは違う、速報と拡散に向いた構造です。
 
 この構造のおかげで、Twitterはのちに報道・災害・政治の基盤(社会と政治レイヤー)になり、各国の首脳が直接発信する場にもなります。個人のつぶやきと公共の言論が同じタイムラインに並ぶ空間は、ここから始まりました。', null,
           'verified', null, 'user', 1) returning id)
@@ -2180,7 +2180,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = 'プラットフォーム'),
-          '2006-09-05', null, 'day', 'point', 'FacebookがNews Feedを導入', '📰 Facebookが、友人の行動を時系列で自動表示する「News Feed」を導入しました。出た当初は「監視みたいだ」と強い反発を受けたのに、利用時間は急増!まもなくSNSの標準機能になります。
+          '2006-09-05', null, 'day', 'point', '📰 FacebookがNews Feedを導入', 'Facebookが、友人の行動を時系列で自動表示する「News Feed」を導入しました。出た当初は「監視みたいだ」と強い反発を受けたのに、利用時間は急増!まもなくSNSの標準機能になります。
 
 自分で見に行く場から、**アルゴリズムが情報の流れを決める**場への転換点です。この配信の仕組みがのちに、偽情報の拡散や分断の増幅(社会と政治レイヤー)をめぐる論争の中心になっていきます。', null,
           'verified', null, 'user', 2) returning id)
@@ -2188,7 +2188,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = 'プラットフォーム'),
-          '2010-10-06', null, 'day', 'point', 'Instagram公開、写真SNSの時代へ', '📷 写真共有アプリInstagramがiPhone向けに公開され、初日だけで約2万5000人が登録しました!正方形の写真とフィルターという制約の強い設計が、スマホのカメラ性能の向上とうまく噛み合ったんですね。
+          '2010-10-06', null, 'day', 'point', '📷 Instagram公開、写真SNSの時代へ', '写真共有アプリInstagramがiPhone向けに公開され、初日だけで約2万5000人が登録しました!正方形の写真とフィルターという制約の強い設計が、スマホのカメラ性能の向上とうまく噛み合ったんですね。
 
 言葉より画像で自己表現する文化はここで主流になり、「映え」が消費や観光を動かす経済現象に。後年、外見の比較が若い世代の心理に与える影響(社会と政治レイヤー)が公衆衛生の議題に上る、その素地でもあります。', null,
           'verified', null, 'user', 3) returning id)
@@ -2196,7 +2196,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = '社会と政治'),
-          '2010-12-17', '2011-12-31', 'day', 'period', 'アラブの春、SNSが動員の基盤に', '✊ チュニジアでの青年の焼身自殺をきっかけに、反政府デモが中東・北アフリカへ連鎖。チュニジアやエジプトで長期政権が倒れました。FacebookやTwitterがデモの告知と映像拡散に使われ、「SNS革命」と呼ばれます。
+          '2010-12-17', '2011-12-31', 'day', 'period', '✊ アラブの春、SNSが動員の基盤に', 'チュニジアでの青年の焼身自殺をきっかけに、反政府デモが中東・北アフリカへ連鎖。チュニジアやエジプトで長期政権が倒れました。FacebookやTwitterがデモの告知と映像拡散に使われ、「SNS革命」と呼ばれます。
 
 SNSが**国家権力に対する動員のインフラ**になり得ると、世界が気づいた出来事です。ただ、各国政府の側も監視と遮断の技術をここで学びました。規制と説明責任レイヤーでは、統制強化の転機でもあります。', null,
           'disputed', '政変にSNSがどれだけ効いたのかは研究者の間でも評価が分かれていて、「SNS革命」という呼び名そのものに異論があります。', 'user', 4) returning id)
@@ -2204,7 +2204,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = '社会と政治'),
-          '2011-03-11', null, 'day', 'point', '東日本大震災、SNSが災害情報インフラに', '📡 東日本大震災の直後、電話がつながりにくくなる中で、TwitterなどのSNSが安否確認と情報共有の手段として機能しました。震災当日の日本発ツイートは、平常時を大きく上回ったとされています。
+          '2011-03-11', null, 'day', 'point', '📡 東日本大震災、SNSが災害情報インフラに', '東日本大震災の直後、電話がつながりにくくなる中で、TwitterなどのSNSが安否確認と情報共有の手段として機能しました。震災当日の日本発ツイートは、平常時を大きく上回ったとされています。
 
 日本でSNSが「娯楽」から「社会インフラ」へと見方を変えた転機で、以後、自治体や公共機関の公式アカウント開設が一気に進みます。同時にデマの拡散という課題もはっきり現れ、災害時の情報検証という論点が生まれました。', null,
           'unverified', '震災当日のツイート数の増加率は集計する主体によって数字が違っていて、確定的な統計はありません。', 'user', 5) returning id)
@@ -2212,7 +2212,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = 'プラットフォーム'),
-          '2012-04-09', null, 'day', 'point', 'FacebookがInstagramを10億ドルで買収', '💵 Facebookが、社員たった13人のInstagramを約10億ドルで買収すると発表しました。売上のないアプリへの巨額買収は当時「高すぎる」と言われましたが、結果はIT史上屈指の安い買い物と評されるようになります!
+          '2012-04-09', null, 'day', 'point', '💵 FacebookがInstagramを10億ドルで買収', 'Facebookが、社員たった13人のInstagramを約10億ドルで買収すると発表しました。売上のないアプリへの巨額買収は当時「高すぎる」と言われましたが、結果はIT史上屈指の安い買い物と評されるようになります!
 
 有力な新興サービスを早めに取り込む成長戦略の象徴です。のちのWhatsApp買収と合わせて「競争の芽を摘む買収では」という議論(規制と説明責任レイヤー)を呼び、米当局は2020年に同社を反トラストで提訴しました。', null,
           'verified', null, 'user', 6) returning id)
@@ -2220,7 +2220,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = '規制と説明責任'),
-          '2013-06-01', null, 'month', 'point', 'スノーデンが大規模監視を告発', '🕵️ 元NSA契約職員のエドワード・スノーデンが、米政府が大手IT企業のデータに広くアクセスする監視プログラムの存在を告発しました。SNSやメールの利用記録が国家監視の対象だと、具体的に示されたのです。
+          '2013-06-01', null, 'month', 'point', '🕵️ スノーデンが大規模監視を告発', '元NSA契約職員のエドワード・スノーデンが、米政府が大手IT企業のデータに広くアクセスする監視プログラムの存在を告発しました。SNSやメールの利用記録が国家監視の対象だと、具体的に示されたのです。
 
 プラットフォームにたまった個人データ(プラットフォームレイヤー)が国家に流れ得る。この事実は世界に衝撃を与え、通信を常時暗号化する流れを一気に進めました。EUのデータ保護強化の議論も、この事件で加速します。', null,
           'verified', null, 'user', 7) returning id)
@@ -2228,7 +2228,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = 'プラットフォーム'),
-          '2016-09-01', null, 'month', 'point', '抖音(Douyin)公開、ショート動画時代の幕開け', '🎬 中国のByteDanceが短尺動画アプリ「抖音」を公開しました。翌年に国際版TikTokを展開し、買収したMusical.lyと統合して世界市場へ急拡大していきます。
+          '2016-09-01', null, 'month', 'point', '🎬 抖音(Douyin)公開、ショート動画時代の幕開け', '中国のByteDanceが短尺動画アプリ「抖音」を公開しました。翌年に国際版TikTokを展開し、買収したMusical.lyと統合して世界市場へ急拡大していきます。
 
 フォロー関係よりも推薦アルゴリズムを核にする設計は、友だちのつながりを前提としてきたSNSの定義を書き換えました。中国企業のアプリが欧米の若い世代の主要メディアになったことは、のちに安全保障上の争点(規制と説明責任レイヤー)へ発展します。', null,
           'verified', null, 'user', 8) returning id)
@@ -2236,7 +2236,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = '社会と政治'),
-          '2016-11-08', null, 'day', 'point', '米大統領選、SNS上の偽情報と影響工作が争点に', '🗳️ トランプ氏が勝利した米大統領選で、SNS上の偽ニュースの拡散と、ロシアによる組織的な影響工作が明らかになりました。プラットフォームの責任を問う議論が、世界規模で始まります。
+          '2016-11-08', null, 'day', 'point', '🗳️ 米大統領選、SNS上の偽情報と影響工作が争点に', 'トランプ氏が勝利した米大統領選で、SNS上の偽ニュースの拡散と、ロシアによる組織的な影響工作が明らかになりました。プラットフォームの責任を問う議論が、世界規模で始まります。
 
 SNSが**世論操作の主戦場**になり得ると広く認識された転機です。翌年以降、各社はファクトチェックや広告透明化(プラットフォームレイヤー)を導入し、各国は規制の検討(規制と説明責任レイヤー)を本格化させました。', null,
           'disputed', '影響工作があったこと自体は米司法省の捜査で確認されていますが、それが選挙結果をどこまで左右したかは実証されておらず、評価が分かれています。', 'user', 9) returning id)
@@ -2244,7 +2244,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = '規制と説明責任'),
-          '2018-03-17', null, 'day', 'point', 'ケンブリッジ・アナリティカ事件が発覚', '🔓 英コンサル企業ケンブリッジ・アナリティカが、最大8700万人分のFacebookユーザーデータを不正に取得し、選挙広告の標的設定に使っていたと報じられました。ザッカーバーグCEOは米議会での証言に立ちます。
+          '2018-03-17', null, 'day', 'point', '🔓 ケンブリッジ・アナリティカ事件が発覚', '英コンサル企業ケンブリッジ・アナリティカが、最大8700万人分のFacebookユーザーデータを不正に取得し、選挙広告の標的設定に使っていたと報じられました。ザッカーバーグCEOは米議会での証言に立ちます。
 
 2016年米大統領選(社会と政治レイヤー)への疑念と結びついて、SNSのデータ利用への信頼が決定的に揺らいだ事件です。FTCは2019年、Facebookに50億ドルの制裁金を科し、規制強化の流れがここで固まりました。', null,
           'verified', null, 'user', 10) returning id)
@@ -2252,7 +2252,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = '規制と説明責任'),
-          '2018-05-25', null, 'day', 'point', 'EUで一般データ保護規則(GDPR)施行', '🛡️ 個人データの処理に同意取得や削除権などを義務づけ、違反には全世界売上の最大4%の制裁金。そんな強い設計のGDPRがEUで施行されました。域外の企業にも適用されます。
+          '2018-05-25', null, 'day', 'point', '🛡️ EUで一般データ保護規則(GDPR)施行', '個人データの処理に同意取得や削除権などを義務づけ、違反には全世界売上の最大4%の制裁金。そんな強い設計のGDPRがEUで施行されました。域外の企業にも適用されます。
 
 スノーデンの告発やデータ不正利用事件を経て、**個人データを基本権として守る**という欧州の姿勢が法律になった形です。各社の同意画面や設定(プラットフォームレイヤー)は世界共通で改修され、各国のデータ保護法の手本になりました。', null,
           'verified', null, 'user', 11) returning id)
@@ -2260,7 +2260,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = '規制と説明責任'),
-          '2021-01-08', null, 'day', 'point', 'Twitterがトランプ大統領のアカウントを永久凍結', '🚫 米連邦議会議事堂の襲撃事件(1月6日)を受けて、Twitterが「さらなる暴力扇動の恐れ」を理由に、現職大統領のアカウントを永久凍結しました。FacebookやYouTubeも同様の停止措置を取ります。
+          '2021-01-08', null, 'day', 'point', '🚫 Twitterがトランプ大統領のアカウントを永久凍結', '米連邦議会議事堂の襲撃事件(1月6日)を受けて、Twitterが「さらなる暴力扇動の恐れ」を理由に、現職大統領のアカウントを永久凍結しました。FacebookやYouTubeも同様の停止措置を取ります。
 
 **私企業が国家元首の発信を止められる**。この事実は、言論空間の統治権は誰にあるのかという根源的な問いを世界に突きつけました。判断への評価は割れ、のちのマスク氏による凍結解除(プラットフォームレイヤー)まで論争が続きます。', null,
           'verified', null, 'user', 12) returning id)
@@ -2268,7 +2268,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = 'プラットフォーム'),
-          '2021-09-27', null, 'day', 'point', 'TikTokが月間利用者10億人と発表', '📈 TikTokが、月間アクティブユーザーが10億人に達したと発表しました。国際版の提供開始から約4年での到達で、FacebookやYouTubeより速いペースとされます。
+          '2021-09-27', null, 'day', 'point', '📈 TikTokが月間利用者10億人と発表', 'TikTokが、月間アクティブユーザーが10億人に達したと発表しました。国際版の提供開始から約4年での到達で、FacebookやYouTubeより速いペースとされます。
 
 推薦アルゴリズム主導の設計が世界標準になったことを示す数字で、Metaは対抗機能Reelsへ全面的に舵を切りました。一方で、若い世代への影響や中国政府との関係への懸念(規制と説明責任レイヤー)も、利用者数と一緒に膨らんでいきます。', null,
           'unverified', '10億人はあくまで自社発表の数字で、第三者機関による検証はされていません。', 'user', 13) returning id)
@@ -2276,7 +2276,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = '規制と説明責任'),
-          '2021-10-05', null, 'day', 'point', '元Facebook社員ハウゲンが内部文書を告発', '📄 元Facebook社員のフランシス・ハウゲンが大量の内部文書を持ち出し、米上院で証言しました。Instagramが10代の少女の心身に有害だと社内調査が示していたのに、対策が不十分だった。それが告発の核心です。
+          '2021-10-05', null, 'day', 'point', '📄 元Facebook社員ハウゲンが内部文書を告発', '元Facebook社員のフランシス・ハウゲンが大量の内部文書を持ち出し、米上院で証言しました。Instagramが10代の少女の心身に有害だと社内調査が示していたのに、対策が不十分だった。それが告発の核心です。
 
 企業が自社サービスの害を認識していた証拠が示されたことで、議論は外部の推測から**内部文書に基づく責任追及**へと段階を変えました。各国の未成年保護規制や、のちの州政府による提訴の重要な根拠になっています。', null,
           'verified', null, 'user', 14) returning id)
@@ -2284,7 +2284,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = 'プラットフォーム'),
-          '2022-10-27', null, 'day', 'point', 'マスク氏がTwitterを440億ドルで買収', '🐤 イーロン・マスク氏がTwitterを約440億ドルで買収し、非公開化しました。大規模な人員削減、認証制度の有料化、凍結アカウントの復活、そして「X」への改名と、方針を次々に転換していきます。
+          '2022-10-27', null, 'day', 'point', '🐤 マスク氏がTwitterを440億ドルで買収', 'イーロン・マスク氏がTwitterを約440億ドルで買収し、非公開化しました。大規模な人員削減、認証制度の有料化、凍結アカウントの復活、そして「X」への改名と、方針を次々に転換していきます。
 
 公共の言論基盤と呼ばれたサービスが一個人の所有物になったことで、モデレーションの基準が経営者の考えひとつで変わり得ると見えるようになりました。広告主の離脱やEUのDSAによる監視(規制と説明責任レイヤー)など、緊張は続いています。', null,
           'verified', null, 'user', 15) returning id)
@@ -2292,7 +2292,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = '社会と政治'),
-          '2023-05-23', null, 'day', 'point', '米公衆衛生局長官がSNSと若者の危機で勧告', '🩺 米公衆衛生局長官が、SNSは若者のメンタルヘルスに深刻なリスクをもたらし得るとする勧告を発表しました。たばこや飲酒と同じ公衆衛生問題として扱う枠組みを示した点が画期的です。
+          '2023-05-23', null, 'day', 'point', '🩺 米公衆衛生局長官がSNSと若者の危機で勧告', '米公衆衛生局長官が、SNSは若者のメンタルヘルスに深刻なリスクをもたらし得るとする勧告を発表しました。たばこや飲酒と同じ公衆衛生問題として扱う枠組みを示した点が画期的です。
 
 ハウゲンの内部告発(規制と説明責任レイヤー)以降に積み上がった研究と訴訟を背景に、「SNSと子ども」が政策課題としてはっきり確立しました。翌年の豪州の年齢制限法など、各国の未成年規制はこの流れの延長にあります。', null,
           'verified', null, 'user', 16) returning id)
@@ -2300,7 +2300,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = '規制と説明責任'),
-          '2024-02-17', null, 'day', 'point', 'EUデジタルサービス法(DSA)が全面適用', '⚖️ 違法コンテンツ対応、推薦アルゴリズムの透明化、研究者へのデータ提供。これらを大手プラットフォームに義務づけるDSAが、EU域内の全事業者に適用されました。違反には全世界売上の最大6%の制裁金です。
+          '2024-02-17', null, 'day', 'point', '⚖️ EUデジタルサービス法(DSA)が全面適用', '違法コンテンツ対応、推薦アルゴリズムの透明化、研究者へのデータ提供。これらを大手プラットフォームに義務づけるDSAが、EU域内の全事業者に適用されました。違反には全世界売上の最大6%の制裁金です。
 
 GDPRがデータを守る法律だとすれば、DSAは**アルゴリズムと運営に説明責任を課す**法律。X社への正式手続きなど執行も始まり、プラットフォームの設計(プラットフォームレイヤー)をEU基準が縛る時代に入りました。', null,
           'verified', null, 'user', 17) returning id)
@@ -2308,7 +2308,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = '規制と説明責任'),
-          '2024-11-01', null, 'month', 'point', '豪州が16歳未満のSNS利用を禁止する法律を可決', '🇦🇺 オーストラリア議会が、16歳未満のSNS利用を禁止し、年齢確認をプラットフォーム側の義務とする世界初の法律を可決しました。2025年12月から適用され、違反企業には最大4950万豪ドルの罰金が科されます。
+          '2024-11-01', null, 'month', 'point', '🇦🇺 豪州が16歳未満のSNS利用を禁止する法律を可決', 'オーストラリア議会が、16歳未満のSNS利用を禁止し、年齢確認をプラットフォーム側の義務とする世界初の法律を可決しました。2025年12月から適用され、違反企業には最大4950万豪ドルの罰金が科されます。
 
 米公衆衛生局長官の勧告(社会と政治レイヤー)に象徴される「若者への害」の議論が、ついに利用そのものの禁止という強い立法にまで至りました。年齢確認の実効性とプライバシーへの影響をめぐって、各国が実施を注視しています。', null,
           'verified', null, 'user', 18) returning id)
@@ -2316,15 +2316,15 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = '規制と説明責任'),
-          '2025-01-19', null, 'day', 'point', '米TikTok禁止法が発効、一時サービス停止', '🇺🇸 ByteDanceに米国事業の売却を求め、応じなければ配信禁止という法律が発効し、TikTokは米国で一時サービスを停止しました。新政権の執行猶予でまもなく復旧しましたが、売却をめぐる交渉は長引きます。
+          '2025-01-19', null, 'day', 'point', '🇺🇸 米TikTok禁止法が発効、一時サービス停止', 'ByteDanceに米国事業の売却を求め、応じなければ配信禁止という法律が発効し、TikTokは米国で一時サービスを停止しました。新政権の執行猶予でまもなく復旧しましたが、売却をめぐる交渉は長引きます。
 
 1億7000万人が使うアプリが、安全保障を理由に止められた事例です。アラブの春の頃には自由の道具とされたSNS(社会と政治レイヤー)が、国家間対立の駒になったことを象徴しています。データの帰属が主権の問題になりました。', null,
           'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Restrictions on TikTok in the United States', 'https://en.wikipedia.org/wiki/Restrictions_on_TikTok_in_the_United_States')) as v(title, url);
 
--- ═══ tech-space-internet — 宇宙インターネット計画
+-- ═══ tech-space-internet — 🛰️ 宇宙インターネット計画
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('tech-space-internet', '00000000-0000-4000-8000-a4e76ec825ee', '宇宙インターネット計画', 'イリジウムの挫折から数千基の衛星コンステレーション、スマホと衛星の直接通信まで。打ち上げ技術・事業競争・規制の3層で、宇宙からインターネットを届ける挑戦の四半世紀を追いかけます。空の上を飛ぶ機械たちの現在地です。', 'technology', 'ja', 'public', 's_tech-space-internet', 1998, 2025, 'tech-space-internet')
+values ('tech-space-internet', '00000000-0000-4000-8000-a4e76ec825ee', '🛰️ 宇宙インターネット計画', 'イリジウムの挫折から数千基の衛星コンステレーション、スマホと衛星の直接通信まで。打ち上げ技術・事業競争・規制の3層で、宇宙からインターネットを届ける挑戦の四半世紀を追いかけます。空の上を飛ぶ機械たちの現在地です。', 'technology', 'ja', 'public', 's_tech-space-internet', 1998, 2025, 'tech-space-internet')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-space-internet');
@@ -2343,7 +2343,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-space-internet'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-space-internet') and name = '事業と競争'),
-          '2015-01-01', null, 'month', 'point', 'スペースXが衛星インターネット構想を発表', '🛰️ イーロン・マスクがシアトルでの講演で、数千基の低軌道衛星により全世界へブロードバンドを届ける構想(後のStarlink)を発表しました。収益は火星移住計画の資金源にすると語っています。
+          '2015-01-01', null, 'month', 'point', '🛰️ スペースXが衛星インターネット構想を発表', 'イーロン・マスクがシアトルでの講演で、数千基の低軌道衛星により全世界へブロードバンドを届ける構想(後のStarlink)を発表しました。収益は火星移住計画の資金源にすると語っています。
 
 イリジウムの失敗から15年余り。構想を蘇らせたのは、再使用ロケットによる**打ち上げコストの劇的低下**です。同時期にOneWebも同様の計画で資金調達を進めていて、第2次衛星コンステレーション競争の号砲になりました。', null,
           'verified', null, 'user', 1) returning id)
@@ -2367,7 +2367,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-space-internet'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-space-internet') and name = '技術と打ち上げ'),
-          '2019-05-24', null, 'day', 'point', 'Starlink量産衛星60基を一括打ち上げ', '🚀 スペースXがFalcon 9の1機で、量産型Starlink衛星60基を一括投入しました。平積みの専用搭載方式で、1回の打ち上げが従来の衛星網数個分。この規模感には度肝を抜かれました。
+          '2019-05-24', null, 'day', 'point', '🚀 Starlink量産衛星60基を一括打ち上げ', 'スペースXがFalcon 9の1機で、量産型Starlink衛星60基を一括投入しました。平積みの専用搭載方式で、1回の打ち上げが従来の衛星網数個分。この規模感には度肝を抜かれました。
 
 衛星を一点物ではなく「量産品」として扱う発想の転換です。以後ほぼ隔週の打ち上げで、軌道上の衛星は数年で数千基に達します。直後から天文学者が夜空に並ぶ光跡へ懸念を表明し(規制と社会レイヤー)、軌道の混雑が現実の問題になりました。', null,
           'verified', null, 'user', 4) returning id)
@@ -2423,7 +2423,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-space-internet'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-space-internet') and name = '技術と打ち上げ'),
-          '2023-04-01', null, 'month', 'point', 'AST、市販スマホと衛星の直接通話に成功と発表', '📱 米AST SpaceMobileが、試験衛星BlueWalker 3を使い、改造していない市販のスマートフォンとの衛星経由の音声通話に成功したと発表しました。
+          '2023-04-01', null, 'month', 'point', '📱 AST、市販スマホと衛星の直接通話に成功と発表', '米AST SpaceMobileが、試験衛星BlueWalker 3を使い、改造していない市販のスマートフォンとの衛星経由の音声通話に成功したと発表しました。
 
 専用端末が前提だった衛星通信の常識を覆し、「基地局を空に置く」方式の実現性を示した発表です。既存の携帯事業者と組んで圏外そのものを消しにいく路線は、Starlinkのスマホ直接接続と並ぶ第二の競争軸(事業と競争レイヤー)へ育っていきます。', null,
           'unverified', '通話成功は同社の発表に基づくもので、通信品質や再現性についての第三者による検証は公表されていません。', 'user', 11) returning id)
@@ -2477,9 +2477,9 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Amazon発表 (2025-04)', null)) as v(title, url);
 
--- ═══ tech-web3-metaverse — Web3.0とメタバース
+-- ═══ tech-web3-metaverse — 🪐 Web3.0とメタバース
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('tech-web3-metaverse', '00000000-0000-4000-8000-5585b956702e', 'Web3.0とメタバース', 'ビットコインの思想からNFTの熱狂、メタバースへの巨額投資と撤退、制度化まで。ネットの片隅で生まれた理想が投機とお祭りを行ったり来たりする様子を、技術・資本・社会の3層でゆるく追いかける年表です 🪙', 'technology', 'ja', 'public', 's_tech-web3-metaverse', 2008, 2025, 'tech-web3-metaverse')
+values ('tech-web3-metaverse', '00000000-0000-4000-8000-5585b956702e', '🪐 Web3.0とメタバース', 'ビットコインの思想からNFTの熱狂、メタバースへの巨額投資と撤退、制度化まで。ネットの片隅で生まれた理想が投機とお祭りを行ったり来たりする様子を、技術・資本・社会の3層でゆるく追いかける年表です 🪙', 'technology', 'ja', 'public', 's_tech-web3-metaverse', 2008, 2025, 'tech-web3-metaverse')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse');
@@ -2490,7 +2490,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '技術とプロトコル'),
-          '2008-10-31', null, 'day', 'point', 'ビットコイン論文公開、非中央集権の原点', '🪙 サトシ・ナカモトを名乗る誰かが、暗号学メーリングリストに論文「Bitcoin: A Peer-to-Peer Electronic Cash System」を投稿。銀行みたいな中央管理者なしで価値を送れる仕組みを、たった9ページで示しました!
+          '2008-10-31', null, 'day', 'point', '🪙 ビットコイン論文公開、非中央集権の原点', 'サトシ・ナカモトを名乗る誰かが、暗号学メーリングリストに論文「Bitcoin: A Peer-to-Peer Electronic Cash System」を投稿。銀行みたいな中央管理者なしで価値を送れる仕組みを、たった9ページで示しました!
 
 ブロックチェーンの**「分散と所有」の理想**はここが始まりで、後のWeb3.0もNFTもメタバース経済圏の議論も、たどるとぜんぶこの論文に行き着きます。投稿主の正体は、今も不明のままです。', null,
           'verified', null, 'user', 0) returning id)
@@ -2498,7 +2498,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '技術とプロトコル'),
-          '2014-04-01', null, 'month', 'point', 'ギャビン・ウッドが「Web 3.0」を提唱', '📝 イーサリアム共同創設者のギャビン・ウッドがブログ記事で「Web 3.0」を提唱。中央のサーバーに頼らず、暗号技術で信頼を担保する分散型ウェブの構想でした。
+          '2014-04-01', null, 'month', 'point', '📝 ギャビン・ウッドが「Web 3.0」を提唱', 'イーサリアム共同創設者のギャビン・ウッドがブログ記事で「Web 3.0」を提唱。中央のサーバーに頼らず、暗号技術で信頼を担保する分散型ウェブの構想でした。
 
 この時点では技術者コミュニティ内の、いわば界隈の内輪の概念。資本と市場レイヤーがこの語を看板に掲げて押し寄せるのは7年後の2021年です。思想だった言葉が投機の旗印へ変わっていく、その出発点の文書でした。', null,
           'verified', null, 'user', 1) returning id)
@@ -2506,7 +2506,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '技術とプロトコル'),
-          '2015-07-30', null, 'day', 'point', 'イーサリアム稼働、スマートコントラクトの基盤', '⛏️ ヴィタリック・ブテリンらが開発したイーサリアムのメインネット「Frontier」が稼働。契約をコードとして自動執行するスマートコントラクトで、ブロックチェーンの使い道を通貨以外へ広げました。
+          '2015-07-30', null, 'day', 'point', '⛏️ イーサリアム稼働、スマートコントラクトの基盤', 'ヴィタリック・ブテリンらが開発したイーサリアムのメインネット「Frontier」が稼働。契約をコードとして自動執行するスマートコントラクトで、ブロックチェーンの使い道を通貨以外へ広げました。
 
 後のICO、NFT、DeFiといったWeb3の主な応用は、ほぼぜんぶこの基盤の上で生まれます!技術レイヤーの土台がここで整い、2年後の熱狂(ICOブーム、資本と市場レイヤー)を呼び込む舞台ができました。', null,
           'verified', null, 'user', 2) returning id)
@@ -2514,7 +2514,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '資本と市場'),
-          '2017-01-01', '2018-03-31', 'month', 'period', 'ICOブーム、トークン販売に資金が殺到', '💸 イーサリアム上でトークンを発行して資金を集めるICO(イニシャル・コイン・オファリング)が世界的に過熱。2017年だけで数十億ドル規模が調達されたとされ、構想書1枚で巨額が集まる案件が次々出てきました。
+          '2017-01-01', '2018-03-31', 'month', 'period', '💸 ICOブーム、トークン販売に資金が殺到', 'イーサリアム上でトークンを発行して資金を集めるICO(イニシャル・コイン・オファリング)が世界的に過熱。2017年だけで数十億ドル規模が調達されたとされ、構想書1枚で巨額が集まる案件が次々出てきました。
 
 **理想を掲げた技術が投機の器に変わる**最初の大波です。詐欺的な案件も続出して各国当局が警告や規制に動き、中国は2017年9月にICOを全面禁止。社会と制度レイヤーの初動も、ここから始まります。', null,
           'disputed', 'ICOの調達総額は集計機関によって数十億〜百億ドル超と幅があって、確定した統計はありません。', 'user', 3) returning id)
@@ -2522,7 +2522,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '社会と制度'),
-          '2017-12-01', null, 'month', 'point', 'CryptoKitties流行でイーサリアムが混雑', '🐱 ブロックチェーン上で猫のキャラクターを集めて交配するゲームCryptoKittiesが流行し、取引がイーサリアムのネットワークを圧迫。手数料が高騰して、未処理の取引が大量に積み上がりました。
+          '2017-12-01', null, 'month', 'point', '🐱 CryptoKitties流行でイーサリアムが混雑', 'ブロックチェーン上で猫のキャラクターを集めて交配するゲームCryptoKittiesが流行し、取引がイーサリアムのネットワークを圧迫。手数料が高騰して、未処理の取引が大量に積み上がりました。
 
 NFT(非代替性トークン)が一般の関心を集めた最初の事例なんですが、同時に分散型基盤の処理能力の限界も早々に露呈。スケーラビリティ問題は、この後もずっとWeb3の宿題であり続けます。', null,
           'verified', null, 'user', 4) returning id)
@@ -2530,7 +2530,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '資本と市場'),
-          '2021-03-11', null, 'day', 'point', 'BeepleのNFT作品が約6900万ドルで落札', '🖼️ デジタルアーティストBeepleの作品「Everydays: The First 5000 Days」が、老舗オークションハウスのクリスティーズで約6934万ドルで落札。NFTに紐づくデジタル作品として史上最高額になりました!
+          '2021-03-11', null, 'day', 'point', '🖼️ BeepleのNFT作品が約6900万ドルで落札', 'デジタルアーティストBeepleの作品「Everydays: The First 5000 Days」が、老舗オークションハウスのクリスティーズで約6934万ドルで落札。NFTに紐づくデジタル作品として史上最高額になりました!
 
 2017年のCryptoKitties(社会と制度レイヤー)から4年、NFTが美術市場のど真ん中に出てきた瞬間で、これを合図にNFT投機が本格化します。デジタルデータの「所有」を売買するという概念が、一般のニュースになった一件でした。', null,
           'verified', null, 'user', 5) returning id)
@@ -2538,7 +2538,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '社会と制度'),
-          '2021-06-01', '2021-12-31', 'month', 'period', 'Axie Infinityの「遊んで稼ぐ」が新興国で拡大', '🎮 NFTゲームAxie Infinityが東南アジア、特にフィリピンで急拡大。ゲーム内トークンを換金する「Play-to-Earn」が、コロナ禍で職を失った人たちの収入源になったと報じられました。
+          '2021-06-01', '2021-12-31', 'month', 'period', '🎮 Axie Infinityの「遊んで稼ぐ」が新興国で拡大', 'NFTゲームAxie Infinityが東南アジア、特にフィリピンで急拡大。ゲーム内トークンを換金する「Play-to-Earn」が、コロナ禍で職を失った人たちの収入源になったと報じられました。
 
 **ゲームが生活インフラになる**というWeb3の可能性と、トークン価格に生計が振り回される危うさをセットで見せた事例です。翌2022年の暗号資産市場の暴落(資本と市場レイヤー)で収益は急減し、ブームは短命に終わりました。', null,
           'disputed', '「月収が現地の平均賃金を上回った」みたいな収入水準の話は聞き取りベースの報道で、統計的な裏付けはありません。', 'user', 6) returning id)
@@ -2546,7 +2546,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '資本と市場'),
-          '2021-10-28', null, 'day', 'point', 'FacebookがMetaに社名変更、メタバースへ転換', '🕶️ Facebookが社名をMetaに変更し、SNS企業からメタバース企業への転換を宣言。年間100億ドル規模を関連部門Reality Labsに投じる方針も示しました。
+          '2021-10-28', null, 'day', 'point', '🕶️ FacebookがMetaに社名変更、メタバースへ転換', 'Facebookが社名をMetaに変更し、SNS企業からメタバース企業への転換を宣言。年間100億ドル規模を関連部門Reality Labsに投じる方針も示しました。
 
 内部告発文書への批判が高まっていた時期だけに話題そらしでは、という見方も出ましたが、巨大テックの参入で「メタバース」は一気に流行語に。**理想の看板をいちばん大きく掲げた企業**が、わずか2年後に縮小へ転じます(2023年のReality Labs赤字)。', null,
           'verified', null, 'user', 7) returning id)
@@ -2554,7 +2554,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '資本と市場'),
-          '2021-11-01', null, 'month', 'point', '暗号資産の時価総額が約3兆ドルの頂点に', '📈 ビットコインが約6万9000ドルの史上最高値をつけ、暗号資産全体の時価総額は集計サイトベースで約3兆ドルに。NFTもメタバース関連トークンも軒並み高騰して、投機熱はここが頂点でした。
+          '2021-11-01', null, 'month', 'point', '📈 暗号資産の時価総額が約3兆ドルの頂点に', 'ビットコインが約6万9000ドルの史上最高値をつけ、暗号資産全体の時価総額は集計サイトベースで約3兆ドルに。NFTもメタバース関連トークンも軒並み高騰して、投機熱はここが頂点でした。
 
 同じ頃には、メタバース内の土地NFTが数億円で取引される事例も報じられています。この頂点から1年で市場は3分の1以下に縮み、Terra崩壊とFTX破綻(いずれも資本と市場レイヤー)が続くことになります。', null,
           'unverified', '時価総額約3兆ドルはCoinGeckoなど集計サイトの推定値で、どこまでを数えるかで数字が変わります。', 'user', 8) returning id)
@@ -2562,7 +2562,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '資本と市場'),
-          '2022-05-09', null, 'day', 'point', 'ステーブルコインTerraUSD崩壊', '💥 アルゴリズム型ステーブルコインTerraUSD(UST)がドル連動を失い、対をなすトークンLUNAごと数日でほぼ無価値に。消えた時価総額は400億ドル規模とされます。
+          '2022-05-09', null, 'day', 'point', '💥 ステーブルコインTerraUSD崩壊', 'アルゴリズム型ステーブルコインTerraUSD(UST)がドル連動を失い、対をなすトークンLUNAごと数日でほぼ無価値に。消えた時価総額は400億ドル規模とされます。
 
 「アルゴリズムでドルを再現する」設計の脆さが露呈した事件で、ヘッジファンドや貸付業者の破綻が連鎖し、FTX破綻への導火線になりました。各国のステーブルコイン規制論(社会と制度レイヤー)も、これで一気に加速します。', null,
           'verified', null, 'user', 9) returning id)
@@ -2570,7 +2570,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '社会と制度'),
-          '2022-06-07', null, 'day', 'point', '日本政府がWeb3.0推進を成長戦略に明記', '🗾 政府の「経済財政運営と改革の基本方針(骨太の方針)2022」が閣議決定され、ブロックチェーンを基盤とするWeb3.0の推進に向けた環境整備が明記されました。NFTやDAOの利用拡大も検討課題に挙がっています。
+          '2022-06-07', null, 'day', 'point', '🗾 日本政府がWeb3.0推進を成長戦略に明記', '政府の「経済財政運営と改革の基本方針(骨太の方針)2022」が閣議決定され、ブロックチェーンを基盤とするWeb3.0の推進に向けた環境整備が明記されました。NFTやDAOの利用拡大も検討課題に挙がっています。
 
 市場はすでに下落局面(資本と市場レイヤー)に入っていた頃で、国家戦略への採用とはっきり時間差が出ました。制度が熱狂に遅れて動く構図、この分野では何度も見かけるやつです。', null,
           'verified', null, 'user', 10) returning id)
@@ -2578,7 +2578,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '技術とプロトコル'),
-          '2022-09-15', null, 'day', 'point', 'イーサリアム「The Merge」でPoS移行完了', '🔀 イーサリアムが合意形成の仕組みをプルーフ・オブ・ワークからプルーフ・オブ・ステークへ切り替える大型アップグレード「The Merge」を完了。ネットワークの消費電力を99.9%以上削減したとされます。
+          '2022-09-15', null, 'day', 'point', '🔀 イーサリアム「The Merge」でPoS移行完了', 'イーサリアムが合意形成の仕組みをプルーフ・オブ・ワークからプルーフ・オブ・ステークへ切り替える大型アップグレード「The Merge」を完了。ネットワークの消費電力を99.9%以上削減したとされます。
 
 暗号資産批判の筆頭だった環境負荷に技術側から答えた形で、弱気相場(資本と市場レイヤー)の真っ最中でも**プロトコル開発は着実に前進する**と示しました。稼働を止めずに基盤を入れ替えるのは、技術的にも異例の規模です!', null,
           'verified', null, 'user', 11) returning id)
@@ -2586,7 +2586,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '資本と市場'),
-          '2022-11-11', null, 'day', 'point', '大手交換業者FTXが経営破綻', '🧊 世界有数の暗号資産交換業者FTXが米連邦破産法11条の適用を申請。顧客資産の流用が発覚し、創業者サム・バンクマン=フリードは後に詐欺罪で有罪判決を受けました。
+          '2022-11-11', null, 'day', 'point', '🧊 大手交換業者FTXが経営破綻', '世界有数の暗号資産交換業者FTXが米連邦破産法11条の適用を申請。顧客資産の流用が発覚し、創業者サム・バンクマン=フリードは後に詐欺罪で有罪判決を受けました。
 
 Terra崩壊から半年での大手破綻で、業界への信頼は底まで落ちて「冬の時代」が決定的に。一方でこの事件が各国の規制整備(社会と制度レイヤー)を前に進め、2年後の現物ETF承認という制度化された市場への転機にもなりました。', null,
           'verified', null, 'user', 12) returning id)
@@ -2594,7 +2594,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '資本と市場'),
-          '2023-02-01', null, 'day', 'point', 'MetaのReality Labs、年間137億ドルの赤字', '📉 Metaの2022年通期決算で、メタバース部門Reality Labsの営業損失が137億ドルに達したと開示されました。同社は「効率の年」を掲げ、人員削減とAIへの投資シフトを進めます。
+          '2023-02-01', null, 'day', 'point', '📉 MetaのReality Labs、年間137億ドルの赤字', 'Metaの2022年通期決算で、メタバース部門Reality Labsの営業損失が137億ドルに達したと開示されました。同社は「効率の年」を掲げ、人員削減とAIへの投資シフトを進めます。
 
 社名変更からわずか1年ちょっとでの方針転換です。**巨額投資をもってしても「住人」は集まらない**というメタバースの現実が、数字で突きつけられました。世間の関心も、同時期に公開されたChatGPTなど生成AIへ一気に流れていきます。', null,
           'verified', null, 'user', 13) returning id)
@@ -2602,7 +2602,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '技術とプロトコル'),
-          '2023-06-05', null, 'day', 'point', 'AppleがVision Pro発表、空間コンピューティング', '🥽 AppleがWWDCでヘッドセット型デバイスApple Vision Proを発表。「メタバース」という言葉をあえて避け、「空間コンピューティング」という独自の枠組みを打ち出しました。価格は3499ドルです。
+          '2023-06-05', null, 'day', 'point', '🥽 AppleがVision Pro発表、空間コンピューティング', 'AppleがWWDCでヘッドセット型デバイスApple Vision Proを発表。「メタバース」という言葉をあえて避け、「空間コンピューティング」という独自の枠組みを打ち出しました。価格は3499ドルです。
 
 Metaが引っ張ったメタバース概念の退潮(資本と市場レイヤー)と入れ替わるような参入で、仮想空間への没入ではなく現実への重ね合わせが主軸なのが対照的でした。没入型デバイス市場の再定義を試みる動きです。', null,
           'verified', null, 'user', 14) returning id)
@@ -2610,7 +2610,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '資本と市場'),
-          '2024-01-10', null, 'day', 'point', '米SECがビットコイン現物ETFを承認', '🏦 米証券取引委員会(SEC)がビットコイン現物ETF11本を一斉承認し、翌日から取引開始。BlackRockなど大手資産運用会社の参入で、機関投資家が規制された形で暗号資産に投資できるようになりました。
+          '2024-01-10', null, 'day', 'point', '🏦 米SECがビットコイン現物ETFを承認', '米証券取引委員会(SEC)がビットコイン現物ETF11本を一斉承認し、翌日から取引開始。BlackRockなど大手資産運用会社の参入で、機関投資家が規制された形で暗号資産に投資できるようになりました。
 
 10年越しで申請が却下され続けた末の、制度的な転換です。FTX破綻で地に落ちた信頼が、**分散の理想ではなく既存金融への編入**という形で回復していくの、なかなか象徴的でした。', null,
           'verified', null, 'user', 15) returning id)
@@ -2618,7 +2618,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '社会と制度'),
-          '2024-02-02', null, 'day', 'point', 'Vision Pro発売、初動の熱と失速', '🛒 Apple Vision Proが米国で発売。初週末は行列が報じられた一方、重さや価格、使い道の乏しさから利用が定着せず、出荷台数は当初想定を下回ったという推計が相次ぎました。
+          '2024-02-02', null, 'day', 'point', '🛒 Vision Pro発売、初動の熱と失速', 'Apple Vision Proが米国で発売。初週末は行列が報じられた一方、重さや価格、使い道の乏しさから利用が定着せず、出荷台数は当初想定を下回ったという推計が相次ぎました。
 
 技術レイヤーとしての完成度は高く評価されたのに、毎日装着する動機を示せなかったのはMetaのヘッドセットと同じ課題です。没入型デバイスが「次のiPhone」になる時期は見えないまま、各社は軽量なAIグラスへ軸足を移し始めました。', null,
           'unverified', '出荷・販売台数はAppleが公表していないので、調査会社の推計や報道ベースの数字にとどまります。', 'user', 16) returning id)
@@ -2626,7 +2626,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '社会と制度'),
-          '2025-07-18', null, 'day', 'point', '米国初のステーブルコイン連邦法が成立', '🏛️ 米国でステーブルコインの発行を規制するGENIUS法が成立。準備資産の裏付けや情報開示を義務付ける連邦レベルの枠組みが、初めて整いました。
+          '2025-07-18', null, 'day', 'point', '🏛️ 米国初のステーブルコイン連邦法が成立', '米国でステーブルコインの発行を規制するGENIUS法が成立。準備資産の裏付けや情報開示を義務付ける連邦レベルの枠組みが、初めて整いました。
 
 Terra崩壊(2022年)が見せた無担保設計の危険への制度的な回答で、暗号資産が規制の外の実験から**制度の内側の金融インフラ**へ移った節目です。ドル連動トークンが決済や送金の基盤になる道が開け、Web3は熱狂の言葉ではなく実務の層として定着し始めています。', null,
           'verified', null, 'user', 17) returning id)
