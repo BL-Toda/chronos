@@ -410,7 +410,7 @@ select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-cooking'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-cooking') and name = '台所の記録'),
-          '2006-04-01', '2008-03-31', 'month', 'period', '定食屋のまかないで基礎を覚える', '学生街の定食屋でアルバイトを始めて、まかない付きの2年間で包丁の持ち方、だしの取り方、火加減を仕込まれました。店主の口癖は「レシピより段取り」。皿洗いから始めて、半年で仕込みを任せてもらえるようになりました。
+          '2006-04-01', '2008-03-31', 'month', 'period', '定食屋のまかないで基礎を覚える', '学生街の定食屋でアルバイトを始めて、まかない付きの2年間で包丁の持ち方、だしの取り方、火加減を仕込まれました。店主の口癖は「レシピより段取り」。皿洗いから始めて、半年で仕込みを任せてもらえるようになりました!
 
 体系立てて習ったわけではないんですが、目の前で見て真似るという覚え方は、のちの動画レシピの時代を先取りしていたのかもしれません。この2年が、僕の料理の土台になりました。', null,
           'verified', null, 'user', 2) returning id)
@@ -450,7 +450,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-cooking'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-cooking') and name = '台所の記録'),
-          '2012-06-01', null, 'month', 'point', '週3日の弁当作りを始める', '🍱 節約と昼の栄養を考えて、週3日の弁当を始めました。前の晩の残りと卵焼き、冷凍ブロッコリー。職場では「弁当男子」とからかわれましたが、続きました。卵焼きは百回焼いて、ようやく形になりました。
+          '2012-06-01', null, 'month', 'point', '週3日の弁当作りを始める', '🍱 節約と昼の栄養を考えて、週3日の弁当を始めました。前の晩の残りと卵焼き、冷凍ブロッコリー。職場では「弁当男子」とからかわれましたが、続きました。卵焼きは百回焼いて、ようやく形になりました!
 
 震災をきっかけに再開した自炊が、習慣として定着した時期です。レシピ検索が毎晩の日課になりました。数年前に流行語だった言葉(食の時代レイヤー)が、そのまま自分の生活になったわけです。', null,
           'verified', null, 'user', 7) returning id)
@@ -466,7 +466,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-cooking'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-cooking') and name = '台所の記録'),
-          '2014-11-01', null, 'month', 'point', 'だしを引く生活', '昆布と鰹節でだしを取って、味噌汁を毎朝作るようになりました。休日に昆布水を仕込んで、平日はそれで済ませる自己流の段取りも固まりました。鰹節は削り節で妥協しましたが、香りの違いには驚きました。
+          '2014-11-01', null, 'month', 'point', 'だしを引く生活', '昆布と鰹節でだしを取って、味噌汁を毎朝作るようになりました。休日に昆布水を仕込んで、平日はそれで済ませる自己流の段取りも固まりました。鰹節は削り節で妥協しましたが、香りの違いには驚きました!
 
 和食の遺産登録以降の「だしブーム」に乗った形です。でも手を動かすと、定食屋の店主の言葉が戻ってきました。レシピより段取り。**基本はいつも、人から習ったものでした**。', null,
           'verified', null, 'user', 9) returning id)
@@ -490,7 +490,7 @@ select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-cooking'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-cooking') and name = '台所の記録'),
-          '2018-03-01', null, 'month', 'point', '週末の作り置きを習慣化', '日曜の夜に常備菜を4品作る習慣が定着しました。きんぴら、塩ゆで鶏、ミニトマトのマリネ。保存容器を統一したら、冷蔵庫が図書館みたいになりました。
+          '2018-03-01', null, 'month', 'point', '週末の作り置きを習慣化', '日曜の夜に常備菜を4品作る習慣が定着しました。きんぴら、塩ゆで鶏、ミニトマトのマリネ。保存容器を統一したら、冷蔵庫が図書館みたいになりました!
 
 平日の自炊率は一気に上がって、外食は「行きたい店」だけになりました。検索と動画で覚えた技術が、狭い台所の制約と組み合わさって自分の型になった時期です。日曜の台所仕事は、気づけば週の楽しみになっていました。', null,
           'verified', null, 'user', 12) returning id)
@@ -1428,7 +1428,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-life-with-cats'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-life-with-cats') and name = '猫たちの記録'),
-          '2016-05-01', null, 'month', 'point', '2匹目、子猫のハギを迎える', '職場の後輩が保護した、生後2か月ほどの三毛猫を引き取りました。萩の花の柄からハギと名付けました。先住のソラは3日間威嚇し続けて、4日目の朝、同じ毛布で寝ていました 🐾
+          '2016-05-01', null, 'month', 'point', '2匹目、子猫のハギを迎える', '職場の後輩が保護した、生後2か月ほどの三毛猫を引き取りました!萩の花の柄からハギと名付けました。先住のソラは3日間威嚇し続けて、4日目の朝、同じ毛布で寝ていました 🐾
 
 2匹になって食費と医療費は倍になりましたが、猫同士の関係という新しい見物ができました。多頭飼いの適正な数を調べたのも、このときが初めてです。先輩になったソラの顔つきが、少し変わりました。', null,
           'verified', null, 'user', 6) returning id)
@@ -1444,7 +1444,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-life-with-cats'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-life-with-cats') and name = 'わたしの暮らし'),
-          '2019-04-01', null, 'month', 'point', '転職して週2日は家で働く(36歳)', '転職して、週2日在宅で働ける職場になりました。決め手のひとつは猫の通院のしやすさで、面接で正直にそう言ったら、面接官も自分の猫の写真を見せてくれました。
+          '2019-04-01', null, 'month', 'point', '転職して週2日は家で働く(36歳)', '転職して、週2日在宅で働ける職場になりました。決め手のひとつは猫の通院のしやすさで、面接で正直にそう言ったら、面接官も自分の猫の写真を見せてくれました!
 
 家で働いてみると、猫は長い昼寝と決まった時間の要求で1日を区切っているのだと分かります。人間の側が、猫の時間割に入れてもらう格好です。出社の日は、帰宅した瞬間の鳴き声の長さで留守の長さが分かりました。', null,
           'verified', null, 'user', 8) returning id)
@@ -1516,7 +1516,7 @@ select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-life-with-cats'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-life-with-cats') and name = '猫たちの記録'),
-          '2026-05-01', null, 'month', 'point', 'ハギ10歳、預かり猫は5匹目に', 'ハギが10歳になりました。預かり猫は5匹目を送り出し、家には「うちの子」と「旅の途中の子」がいる暮らしが定着しています。ハギは新入りが来るたび、かつてソラがしたように3日間威嚇して、4日目に毛布を分けています 🐾
+          '2026-05-01', null, 'month', 'point', 'ハギ10歳、預かり猫は5匹目に', 'ハギが10歳になりました!預かり猫は5匹目を送り出し、家には「うちの子」と「旅の途中の子」がいる暮らしが定着しています。ハギは新入りが来るたび、かつてソラがしたように3日間威嚇して、4日目に毛布を分けています 🐾
 
 この年表は、ソラの一周忌に作り始めたものです。猫の時間は人より速い。だからこそ、重ねた時間は年表にして残したいのです。最後の行は、まだ書き足されていきます。', null,
           'verified', null, 'user', 17) returning id)
@@ -1551,7 +1551,7 @@ select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-marathon'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-marathon') and name = 'レースと記録'),
-          '2008-11-01', null, 'month', 'point', '初レース、ハーフマラソンを2時間15分で完走', '走り始めて1年あまり、地元のハーフマラソン大会に初めて出て、2時間15分で完走しました。後半は歩きと変わらない速さになりましたが、沿道の拍手に背中を押されてゴールできました。
+          '2008-11-01', null, 'month', 'point', '初レース、ハーフマラソンを2時間15分で完走', '走り始めて1年あまり、地元のハーフマラソン大会に初めて出て、2時間15分で完走しました。後半は歩きと変わらない速さになりましたが、沿道の拍手に背中を押されてゴールできました!
 
 完走証を会社の机に飾ったら、同僚に笑われました。それでも翌週から、昼休みに走る仲間がひとり増えたのです。フルマラソンに挑むと決めたのは、完走証を鞄にしまった、この日の帰り道でした。', null,
           'verified', null, 'user', 2) returning id)
@@ -1559,7 +1559,7 @@ select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-marathon'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-marathon') and name = 'レースと記録'),
-          '2009-03-01', null, 'month', 'point', '初フルマラソン完走、4時間58分', '河川敷のフルマラソンで、初めての42.195キロを完走しました。35キロで両脚が止まって、最後の7キロは歩きと小走りの繰り返し。それでも4時間58分、目標にしていた「5時間以内」に、ぎりぎり収まりました。
+          '2009-03-01', null, 'month', 'point', '初フルマラソン完走、4時間58分', '河川敷のフルマラソンで、初めての42.195キロを完走しました。35キロで両脚が止まって、最後の7キロは歩きと小走りの繰り返し。それでも4時間58分、目標にしていた「5時間以内」に、ぎりぎり収まりました!
 
 ゴールのあとに泣くとは、思ってもいませんでした。**完走はゴールではなく入口だった**と、この年表を作りながら思います。翌週にはもう、次のレースを探していましたから。', null,
           'verified', null, 'user', 3) returning id)
@@ -1583,7 +1583,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-marathon'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-marathon') and name = 'レースと記録'),
-          '2013-11-01', null, 'month', 'point', 'サブ4達成、3時間52分', '4度目のフルマラソンで4時間の壁を破って、3時間52分で完走しました。30キロ以降に失速しない配分を、初めて最後まで守れたレースです。
+          '2013-11-01', null, 'month', 'point', 'サブ4達成、3時間52分', '4度目のフルマラソンで4時間の壁を破って、3時間52分で完走しました!30キロ以降に失速しない配分を、初めて最後まで守れたレースです。
 
 練習の量より質を考え始めた時期の、成果でもありました。祝杯の写真は、今もこの年のアルバムの最初にあります。その夜、翌年以降の目標を「サブ3.5」と手帳に書きました。この一行に9年かかるとは、当時は思ってもいません。', null,
           'verified', null, 'user', 6) returning id)
@@ -1663,7 +1663,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-marathon'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-marathon') and name = 'レースと記録'),
-          '2022-11-01', null, 'month', 'point', '50歳、サブ3.5達成の3時間28分', '再開された秋のフルマラソンで3時間28分。手帳に書いてから9年越しの目標だったサブ3.5を、50歳で達成しました。35キロからの5キロを、人生でいちばん集中して走ったと思います。
+          '2022-11-01', null, 'month', 'point', '50歳、サブ3.5達成の3時間28分', '再開された秋のフルマラソンで3時間28分。手帳に書いてから9年越しの目標だったサブ3.5を、50歳で達成しました!35キロからの5キロを、人生でいちばん集中して走ったと思います。
 
 41歳で立てた目標に9年かかりましたが、**50歳の自己ベスト**は、加齢が言い訳にならないことの証明になりました。厚底への適応と、コロナ期の地道な走り込み。その両方の成果だと思っています。', null,
           'verified', null, 'user', 16) returning id)
@@ -1911,7 +1911,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-music-practice') and name = '練習と演奏'),
           '2016-06-01', null, 'month', 'point', '29歳、電子ピアノを買って再開する', '🎹 同僚の結婚式で、新婦のお父さんが挨拶の代わりにピアノを一曲弾いたんです。その帰り道に楽器店へ寄って、ヘッドホンで練習できる電子ピアノを注文しました。ボーナスの大半が消えました。
 
-指は驚くほど動きませんでしたが、楽譜が読めることだけは体に残っていました。実家からは16年ぶりに段ボールの楽譜が届きました。**再開に必要だったのは才能ではなく、きっかけと防音**でした。', null,
+指は驚くほど動きませんでしたが、楽譜が読めることだけは体に残っていました。実家からは16年ぶりに段ボールの楽譜が届きました!**再開に必要だったのは才能ではなく、きっかけと防音**でした。', null,
           'verified', null, 'user', 6) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -1935,7 +1935,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-music-practice') and name = '練習と演奏'),
           '2018-11-01', null, 'month', 'point', '16年ぶりの発表会でショパンのワルツ', '大人の生徒だけの小さな発表会で、ショパンのワルツ第19番イ短調を弾きました。直前の1週間は毎晩指が冷たくなるほど緊張して、本番では中間部で一度和音を外しました。
 
-それでも弾き終えたとき、13歳の発表会では感じなかった種類の満足があったんです。翌週のレッスンで講師に言われた「大人の本番は減点法ではない」を、以後ずっと支えにしています。', null,
+それでも弾き終えたとき、13歳の発表会では感じなかった種類の満足があったんです!翌週のレッスンで講師に言われた「大人の本番は減点法ではない」を、以後ずっと支えにしています。', null,
           'verified', null, 'user', 9) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -1991,7 +1991,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-music-practice') and name = '日々の暮らし'),
           '2023-08-01', null, 'month', 'point', '実家のアップライトピアノを引き取る', '実家の建て替えを機に、祖母が母のために買ったという古いアップライトピアノを名古屋の自宅へ運びました。運送と修理、調律を合わせたら、電子ピアノがもう一台買える金額になりました。
 
-調律師さんの「50年物ですが芯は生きています」がうれしくて。防音マットを敷いて、弾くのは昼間だけと決めました。電子ピアノで再開した練習が、7年かけて生のピアノに戻ってきたことになります。', null,
+調律師さんの「50年物ですが芯は生きています」がうれしくて!防音マットを敷いて、弾くのは昼間だけと決めました。電子ピアノで再開した練習が、7年かけて生のピアノに戻ってきたことになります。', null,
           'verified', null, 'user', 16) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -2013,7 +2013,7 @@ select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-music-practice'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-music-practice') and name = '練習と演奏'),
-          '2026-04-01', null, 'month', 'point', '練習ノートが10冊目に入る', '🎹 再開の日から書き続けている練習ノートが、10冊目に入りました。日付と練習した曲、気づきを3行だけ書く方式で、通算の練習日は2000日を超えています。
+          '2026-04-01', null, 'month', 'point', '練習ノートが10冊目に入る', '🎹 再開の日から書き続けている練習ノートが、10冊目に入りました!日付と練習した曲、気づきを3行だけ書く方式で、通算の練習日は2000日を超えています。
 
 読み返すと、上達の記録というより暮らしの記録に近いです。仕事が荒れた月は空白が続き、戻ってくるたびに同じ基礎練からやり直しています。**やめないことではなく、何度でも戻ること**。この記録の結論は、それに尽きます。', null,
           'verified', null, 'user', 19) returning id)
@@ -2040,7 +2040,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '子どもの成長'),
-          '2016-11-08', null, 'day', 'point', '第一子、誕生', '予定日より4日遅れて、都内の病院で長女が生まれました。体重3,120グラム。陣痛から18時間、夫は職場から駆けつけて立ち会ってくれました。名前を決めるのには一晩かかりました。
+          '2016-11-08', null, 'day', 'point', '第一子、誕生', '予定日より4日遅れて、都内の病院で長女が生まれました!体重3,120グラム。陣痛から18時間、夫は職場から駆けつけて立ち会ってくれました。名前を決めるのには一晩かかりました。
 
 待機児童問題が国会で取り上げられた年です。退院の日に受け取った区の案内には、もう翌々年度の保育所申込みの説明が入っていました。腕の中の赤ん坊の1年半後を考えるのは不思議な感覚でしたが、**それがこの街で子どもを育てるということ**なのでした。', null,
           'verified', null, 'user', 1) returning id)
@@ -2072,7 +2072,7 @@ select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '親の仕事と暮らし'),
-          '2018-02-01', null, 'month', 'point', '認可保育所の二度目の申込みで内定', '前の年は落選、今年は第3希望の園に内定。区から届いた封筒を開けるまで、夫婦そろって仕事が手につきませんでした。認可外に預けて働いた復職実績が選考指数を押し上げたようで、前の年の「落ちたから認可外に入れて働く」という選択が、結果的に効いた形です。
+          '2018-02-01', null, 'month', 'point', '認可保育所の二度目の申込みで内定', '前の年は落選、今年は第3希望の園に内定!区から届いた封筒を開けるまで、夫婦そろって仕事が手につきませんでした。認可外に預けて働いた復職実績が選考指数を押し上げたようで、前の年の「落ちたから認可外に入れて働く」という選択が、結果的に効いた形です。
 
 ブログが国会で話題になった年に生まれた子が、2年越しで認可の門をくぐります。**制度の順番待ちが、我が家の暦を決めていた**のだと思います。', null,
           'verified', null, 'user', 5) returning id)
@@ -2152,7 +2152,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '子どもの成長'),
-          '2023-04-06', null, 'day', 'point', '長女、小学校に入学', '区立小学校に入学しました。ランドセルは祖父母からの贈り物です。入学式は保護者2人まで参加できて、コロナ禍の制限がようやく緩んだことを実感しました。GIGAスクール構想で整備されたタブレットが1年生から配られて、保育園にはなかった宿題として持ち帰るようになりました。
+          '2023-04-06', null, 'day', 'point', '長女、小学校に入学', '区立小学校に入学しました!ランドセルは祖父母からの贈り物です。入学式は保護者2人まで参加できて、コロナ禍の制限がようやく緩んだことを実感しました。GIGAスクール構想で整備されたタブレットが1年生から配られて、保育園にはなかった宿題として持ち帰るようになりました。
 
 休園中に平仮名を覚えた子が、今度は画面で足し算の練習をしています。学童保育の申込みも同時に済ませましたが、この年、私の働き方を変える必要が出てきます。🎒', null,
           'verified', null, 'user', 15) returning id)
@@ -2176,7 +2176,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '子どもの成長'),
-          '2025-04-01', null, 'day', 'point', '次女、保育所に入園', '次女が、姉と同じ園の2歳児クラスに入園しました。長女のときは2年かかった認可入園が、次女は一度で決まって、慣らし保育は3日で終わりました。地域の子どもの数が減って、園によっては定員に空きが出始めていると、園長先生から聞きました。姉のときとは、何もかもが早いのです。
+          '2025-04-01', null, 'day', 'point', '次女、保育所に入園', '次女が、姉と同じ園の2歳児クラスに入園しました。長女のときは2年かかった認可入園が、次女は一度で決まって、慣らし保育は3日で終わりました!地域の子どもの数が減って、園によっては定員に空きが出始めていると、園長先生から聞きました。姉のときとは、何もかもが早いのです。
 
 同じ4月から改正育児・介護休業法が施行されて、3歳未満の子を持つ親のテレワークが、事業主の努力義務になりました。転職した私の在宅勤務は、制度に先回りしていた形です。', null,
           'verified', null, 'user', 18) returning id)

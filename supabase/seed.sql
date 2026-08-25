@@ -2707,7 +2707,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-anime-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-anime-global') and name = '作品と表現'),
-          '2003-03-23', null, 'day', 'point', '「千と千尋の神隠し」がアカデミー賞受賞', '🏆 宮崎駿監督の「千と千尋の神隠し」が、第75回アカデミー賞長編アニメーション部門を受賞しました。前年にはベルリン国際映画祭で金熊賞も受けています。
+          '2003-03-23', null, 'day', 'point', '「千と千尋の神隠し」がアカデミー賞受賞', '🏆 宮崎駿監督の「千と千尋の神隠し」が、第75回アカデミー賞長編アニメーション部門を受賞しました!前年にはベルリン国際映画祭で金熊賞も受けています。
 
 日本で歴代興行収入1位になった作品が米映画界の最高賞まで届いたことで、**作家性への世界的承認**が決定的になりました。CG全盛へ向かう時期に手描きの表現が評価された意味も大きくて、以後の劇場アニメの海外展開への強い追い風になります。', null,
           'verified', null, 'user', 10) returning id)
@@ -2731,7 +2731,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-anime-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-anime-global') and name = '作品と表現'),
-          '2016-08-26', null, 'day', 'point', '「君の名は。」公開、アジアで記録的ヒット', '新海誠監督の「君の名は。」が公開されて、日本で興行収入約250億円。中国や韓国でも当時の日本映画の記録を塗り替える大ヒットになりました。
+          '2016-08-26', null, 'day', 'point', '「君の名は。」公開、アジアで記録的ヒット', '新海誠監督の「君の名は。」が公開されて、日本で興行収入約250億円。中国や韓国でも当時の日本映画の記録を塗り替える大ヒットになりました!
 
 スタジオジブリ以外の作家では初めての世界的メガヒットで、とりわけ中国市場の急成長を強く印象づけます。個人の作家性とSNS時代の拡散力が結び付いた事例で、劇場アニメの海外収益が事業計画の柱になる転機でした。', null,
           'verified', null, 'user', 13) returning id)
@@ -2747,7 +2747,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-anime-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-anime-global') and name = '作品と表現'),
-          '2020-10-16', null, 'day', 'point', '「鬼滅の刃 無限列車編」が2020年世界興収首位', '「劇場版 鬼滅の刃 無限列車編」が公開されて、日本歴代1位の興行収入を記録。パンデミック下の2020年の世界年間興行収入でも首位になりました。
+          '2020-10-16', null, 'day', 'point', '「鬼滅の刃 無限列車編」が2020年世界興収首位', '「劇場版 鬼滅の刃 無限列車編」が公開されて、日本歴代1位の興行収入を記録。パンデミック下の2020年の世界年間興行収入でも首位になりました!
 
 テレビ放送と配信で広がったファン層が劇場に殺到する、**配信が観客を育てる**時代の象徴です。日本映画が世界の年間首位に立つのは初めてで、ハリウッドの公開延期が続いた特殊な年という条件を差し引いても、産業の地力を見せました。', null,
           'verified', null, 'user', 15) returning id)
@@ -2771,7 +2771,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-anime-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-anime-global') and name = '作品と表現'),
-          '2025-07-01', null, 'month', 'point', '「鬼滅の刃 無限城編」が世界で記録的ヒット', '「劇場版 鬼滅の刃 無限城編 第一章」が公開されて、日本で歴代最速級の興行記録を更新。北米でもアニメ映画の公開週末記録を塗り替えたと報じられています。
+          '2025-07-01', null, 'month', 'point', '「鬼滅の刃 無限城編」が世界で記録的ヒット', '「劇場版 鬼滅の刃 無限城編 第一章」が公開されて、日本で歴代最速級の興行記録を更新!北米でもアニメ映画の公開週末記録を塗り替えたと報じられています。
 
 興行の数字は集計途上で確定していませんが、字幕・吹替を問わず世界の一般客層が公開初週から動く状況は、半世紀にわたる受容の積み重ねの現在地です。海外レイヤーで「特別な趣味」だったアニメは、もう主流の娯楽になっています。', null,
           'unverified', '公開後の興行数値は報道ベースの速報値で、確定値や最終的な順位は集計途上です。', 'user', 18) returning id)
@@ -3629,7 +3629,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-game-industry'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-game-industry') and name = 'ソフトと表現'),
-          '1985-09-13', null, 'day', 'point', 'スーパーマリオブラザーズ発売', '🍄 任天堂がスーパーマリオブラザーズを発売。横スクロールで広がる世界とあの精密な操作感が家庭用アクションゲームの文法を確立して、世界で数千万本規模を売り上げました。
+          '1985-09-13', null, 'day', 'point', 'スーパーマリオブラザーズ発売', '🍄 任天堂がスーパーマリオブラザーズを発売。横スクロールで広がる世界とあの精密な操作感が家庭用アクションゲームの文法を確立して、世界で数千万本規模を売り上げました!
 
 北米ではNESの看板ソフトとして市場再建(ビジネスと社会レイヤー)を引っ張ります。キャラクターが映画や玩具へ広がる「ゲームIP」の原型で、ソフトがハードを売るという業界の力学を決定づけた1本です。', null,
           'verified', null, 'user', 4) returning id)
@@ -3645,7 +3645,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-game-industry'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-game-industry') and name = 'ソフトと表現'),
-          '1991-03-01', null, 'month', 'point', 'ストリートファイターIIが対戦文化を生む', '🕹️ カプコンの対戦格闘ゲーム、ストリートファイターIIがアーケードで稼働開始。筐体をはさんで知らない人と戦う対戦文化が生まれて、ゲームセンターに再び人が戻ってきました。
+          '1991-03-01', null, 'month', 'point', 'ストリートファイターIIが対戦文化を生む', '🕹️ カプコンの対戦格闘ゲーム、ストリートファイターIIがアーケードで稼働開始。筐体をはさんで知らない人と戦う対戦文化が生まれて、ゲームセンターに再び人が戻ってきました!
 
 キャラの個性とコマンド入力の奥深さは家庭用移植でも爆発的に売れて、スーパーファミコンの普及(ハードとプラットフォームレイヤー)を押し上げます。対戦の腕を競い合うコミュニティは、後のeスポーツの源流のひとつとされています。', null,
           'verified', null, 'user', 6) returning id)
@@ -3703,13 +3703,13 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-game-industry') and name = 'ビジネスと社会'),
           '2016-07-06', null, 'day', 'point', 'Pokémon GO配信、街に遊び手があふれる', 'Nianticと株式会社ポケモンによるPokémon GOの配信がスタート。位置情報とARで、現実の街を歩いてポケモンを捕まえる遊びが世界中で社会現象になりました。
 
-公園や観光地に人が集まる光景がニュースになって、配信数か月で数億ダウンロードに達したとされます。20年前にゲームボーイで生まれたIP(ソフトと表現レイヤー)が、**スマホで現実の街を遊び場に変えた**出来事です。', null,
+公園や観光地に人が集まる光景がニュースになって、配信数か月で数億ダウンロードに達したとされます。20年前にゲームボーイで生まれたIP(ソフトと表現レイヤー)が、**スマホで現実の街を遊び場に変えた**出来事です!', null,
           'disputed', 'ダウンロード数や利用者数は調査会社の推計や自社発表がベースで、集計方法によって数字には幅があります。', 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Pokémon Go', 'https://en.wikipedia.org/wiki/Pokémon_Go')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-game-industry'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-game-industry') and name = 'ハードとプラットフォーム'),
-          '2017-03-03', null, 'day', 'point', 'Nintendo Switch発売', '任天堂がNintendo Switchを発売。据置機と携帯機の垣根をなくすハイブリッド設計で、前世代Wii Uの不振から一転、世界1億台を超える成功になりました。
+          '2017-03-03', null, 'day', 'point', 'Nintendo Switch発売', '任天堂がNintendo Switchを発売。据置機と携帯機の垣根をなくすハイブリッド設計で、前世代Wii Uの不振から一転、世界1億台を超える成功になりました!
 
 ゼルダの伝説 ブレス オブ ザ ワイルド(ソフトと表現レイヤー)を筆頭に自社ソフトの求心力を見せつけて、スマートフォン全盛の時代でも専用ゲーム機の市場は成立すると証明します。持ち歩ける据置機という設計は、ゲームボーイから続く系譜の到達点でもあります。', null,
           'verified', null, 'user', 14) returning id)
@@ -3858,7 +3858,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '社会とストリート'),
           '1996-07-07', null, 'day', 'point', '「さんピンCAMP」開催、日本語ラップの金字塔', '🗼 東京・日比谷野外音楽堂で日本語ラップのイベント「さんピンCAMP」が開催され、ランプアイ、キングギドラら当時のシーンの中心的なアーティストが一堂に会しました。
 
-記録映像が繰り返し参照されることで、日本語でラップするという表現が独自の到達点を示した日として語り継がれています。ワイルド・スタイル来日から10年余り、**輸入文化のローカル化**が一つの頂点に達した瞬間です。', null,
+記録映像が繰り返し参照されることで、日本語でラップするという表現が独自の到達点を示した日として語り継がれています。ワイルド・スタイル来日から10年余り、**輸入文化のローカル化**が一つの頂点に達した瞬間です!', null,
           'unverified', '動員数や当日の詳細は主催関係者の証言と映像作品に頼っていて、公的な記録での確認は難しいです。', 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: さんピンCAMP', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -3866,7 +3866,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '音楽と表現'),
           '1999-02-01', null, 'month', 'point', 'ローリン・ヒルがグラミー5部門受賞', '🏆 ローリン・ヒルが『ミスエデュケーション』でグラミー賞の最優秀アルバムを含む5部門を受賞。ヒップホップ系のアルバムが主要部門の頂点に立つのは、これが初めてでした。
 
-ソウルやレゲエを溶かし込んだ音楽性と内省的な詞が、ラップを賞の外側に置いてきた音楽業界の評価軸を動かします。女性アーティストの達成としても画期的で、主流化の決定的な一歩になりました。', null,
+ソウルやレゲエを溶かし込んだ音楽性と内省的な詞が、ラップを賞の外側に置いてきた音楽業界の評価軸を動かします。女性アーティストの達成としても画期的で、主流化の決定的な一歩になりました!', null,
           'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: The Miseducation of Lauryn Hill', 'https://en.wikipedia.org/wiki/The_Miseducation_of_Lauryn_Hill')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -3888,7 +3888,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '音楽と表現'),
-          '2018-04-16', null, 'day', 'point', 'ケンドリック・ラマーにピュリッツァー賞', '🖋️ ケンドリック・ラマーのアルバム『DAMN.』がピュリッツァー賞音楽部門を受賞。同部門でクラシックとジャズ以外の作品が選ばれるのは初めてです。
+          '2018-04-16', null, 'day', 'point', 'ケンドリック・ラマーにピュリッツァー賞', '🖋️ ケンドリック・ラマーのアルバム『DAMN.』がピュリッツァー賞音楽部門を受賞。同部門でクラシックとジャズ以外の作品が選ばれるのは初めてです!
 
 「現代の黒人の生活の複雑さを捉えた作品集」という授賞理由は、ラップの詞を文学として正面から認めるものでした。半世紀前に路上で生まれた表現形式への、制度の側からの**芸術としての承認**を象徴する出来事です。', null,
           'verified', null, 'user', 15) returning id)
@@ -3912,7 +3912,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '社会とストリート'),
-          '2023-08-11', null, 'day', 'point', 'ヒップホップ生誕50周年、発祥の地で記念公演', '🎉 クール・ハークのパーティーからちょうど50年の当日、ブロンクスのヤンキー・スタジアムでRun-D.M.C.らが出演する大規模な記念公演が開かれました。この年はグラミー賞の特別企画など、一年を通して50周年が祝われています。
+          '2023-08-11', null, 'day', 'point', 'ヒップホップ生誕50周年、発祥の地で記念公演', '🎉 クール・ハークのパーティーからちょうど50年の当日、ブロンクスのヤンキー・スタジアムでRun-D.M.C.らが出演する大規模な記念公演が開かれました!この年はグラミー賞の特別企画など、一年を通して50周年が祝われています。
 
 誕生日という語りに神話が含まれることは指摘されつつも、地域の路上文化が半世紀で世界最大級のポップカルチャーに到達したことを、発祥の地で確かめる一年になりました。この年表の締めくくりです。', null,
           'verified', null, 'user', 18) returning id)
@@ -4142,7 +4142,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '作品とアーティスト'),
-          '1999-03-10', null, 'day', 'point', '宇多田ヒカル『First Love』発売、日本史上最多売上アルバムに', '🎧 宇多田ヒカルのデビューアルバム『First Love』が累計約765万枚（オリコン）を記録して、日本史上最多売上アルバムに。R&Bを土台にした音作りと15歳でのデビューは、J-POPの言葉づかいを更新しました。
+          '1999-03-10', null, 'day', 'point', '宇多田ヒカル『First Love』発売、日本史上最多売上アルバムに', '🎧 宇多田ヒカルのデビューアルバム『First Love』が累計約765万枚（オリコン）を記録して、日本史上最多売上アルバムに。R&Bを土台にした音作りと15歳でのデビューは、J-POPの言葉づかいを更新しました!
 
 産業レイヤーでは前年に生産金額がピークを打っていて、この記録は「上り坂の最後」ではなく「下り坂の始まり」に立った作品。以後、この枚数を超えるアルバムは現れていません。', null,
           'verified', null, 'user', 5) returning id)
@@ -4214,7 +4214,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '流通と技術'),
-          '2016-09-29', null, 'day', 'point', 'Spotifyが日本でサービス開始', '🌏 世界最大手の定額制配信Spotifyが、欧米から約8年遅れでついに日本上陸。無料プランを含むフリーミアムモデルが国内でも提供されました。
+          '2016-09-29', null, 'day', 'point', 'Spotifyが日本でサービス開始', '🌏 世界最大手の定額制配信Spotifyが、欧米から約8年遅れでついに日本上陸!無料プランを含むフリーミアムモデルが国内でも提供されました。
 
 無料プランの是非をめぐって業界では議論もありましたが、以後数年で主要レーベルの楽曲提供が進みます。2018年の「Lemon」以降は配信起点のロングヒットが標準になり、CD初動偏重のチャートから複合指標へ移る流れを後押ししました。', null,
           'verified', null, 'user', 14) returning id)
@@ -4230,7 +4230,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '作品とアーティスト'),
-          '2019-12-15', null, 'day', 'point', 'YOASOBI「夜に駆ける」配信開始、翌年の年間チャート1位に', '🌃 YOASOBIが小説原作の「夜に駆ける」を配信開始。CDを出さない配信専門のデビューで、Billboard JAPAN Hot 100の2020年年間1位を獲得しました。ボーカロイド出身の作曲者による、動画とストリーミングだけで到達したヒットです。
+          '2019-12-15', null, 'day', 'point', 'YOASOBI「夜に駆ける」配信開始、翌年の年間チャート1位に', '🌃 YOASOBIが小説原作の「夜に駆ける」を配信開始。CDを出さない配信専門のデビューで、Billboard JAPAN Hot 100の2020年年間1位を獲得しました!ボーカロイド出身の作曲者による、動画とストリーミングだけで到達したヒットです。
 
 CDが売上指標から外れても頂点に立てることを見せた曲で、2020年のストリーミング認定制度の導入とも歩調が合います。作られ方（原作小説）と届き方（配信）の両方が新しい、異例のデビュー曲でした。', null,
           'verified', null, 'user', 16) returning id)
@@ -4246,7 +4246,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '作品とアーティスト'),
-          '2023-04-12', null, 'day', 'point', 'YOASOBI「アイドル」、日本語曲初のBillboard世界チャート1位', '✨ YOASOBI「アイドル」がアニメ主題歌として配信され、同年6月にBillboard Global Excl. U.S.で日本語楽曲として初めて1位を獲得しました。
+          '2023-04-12', null, 'day', 'point', 'YOASOBI「アイドル」、日本語曲初のBillboard世界チャート1位', '✨ YOASOBI「アイドル」がアニメ主題歌として配信され、同年6月にBillboard Global Excl. U.S.で日本語楽曲として初めて1位を獲得しました!
 
 アニメという映像コンテンツの世界流通と、国境のない配信プラットフォームが結びついた結果です。CD時代には物理流通の壁で難しかった海外チャート上位が、流通と技術の変化で現実になりました。翌年にはCreepy Nuts「Bling-Bang-Bang-Born」も同チャート1位となり、単発では終わらない流れになります。', null,
           'verified', null, 'user', 18) returning id)
@@ -4313,7 +4313,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = '音楽と作品'),
-          '2002-03-13', null, 'day', 'point', 'BoAが韓国人初のオリコンアルバム1位', '🎤 SM所属のBoAが日本語アルバム「LISTEN TO MY HEART」で、韓国人歌手として初めてオリコン週間アルバムチャート1位を獲得。日本語の習得まで含めた、徹底した現地対応の成果でした。
+          '2002-03-13', null, 'day', 'point', 'BoAが韓国人初のオリコンアルバム1位', '🎤 SM所属のBoAが日本語アルバム「LISTEN TO MY HEART」で、韓国人歌手として初めてオリコン週間アルバムチャート1位を獲得!日本語の習得まで含めた、徹底した現地対応の成果でした。
 
 現地語で歌って現地のテレビに出る「完全ローカライズ戦略」の成功例で、東方神起らも同じ道をたどります。のちのBTSが韓国語のままビルボードを制する戦略と見比べると、K-POP輸出の第1段階を象徴する存在です。', null,
           'verified', null, 'user', 5) returning id)
@@ -4361,7 +4361,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = 'ファンダムとメディア'),
-          '2017-05-21', null, 'day', 'point', 'BTSがビルボード・ミュージック・アワード受賞', '🏆 BTSが米ビルボード・ミュージック・アワードのトップ・ソーシャル・アーティスト部門で受賞。同部門で6年連続受賞中だったジャスティン・ビーバーを、世界のファン投票で破っての受賞でした。
+          '2017-05-21', null, 'day', 'point', 'BTSがビルボード・ミュージック・アワード受賞', '🏆 BTSが米ビルボード・ミュージック・アワードのトップ・ソーシャル・アーティスト部門で受賞。同部門で6年連続受賞中だったジャスティン・ビーバーを、世界のファン投票で破っての受賞でした!
 
 ARMYと呼ばれる**組織化されたグローバルファンダムの動員力**が、米国音楽産業の表舞台で数字として見えた瞬間です。以後、米メディアのK-POP報道が本格化し、翌年のアルバム1位への流れを作りました。', null,
           'verified', null, 'user', 11) returning id)
@@ -4369,7 +4369,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = '音楽と作品'),
-          '2018-05-27', null, 'day', 'point', 'BTSのアルバムが米ビルボード200で1位', '👑 BTSのアルバム「LOVE YOURSELF 転 ''Tear''」が、韓国のアーティストとして初めて米ビルボード200で1位に。収録曲はほぼ全編が韓国語です。
+          '2018-05-27', null, 'day', 'point', 'BTSのアルバムが米ビルボード200で1位', '👑 BTSのアルバム「LOVE YOURSELF 転 ''Tear''」が、韓国のアーティストとして初めて米ビルボード200で1位に!収録曲はほぼ全編が韓国語です。
 
 英語で歌うことが世界進出の条件だった時代の終わりを告げました。BoAに代表される完全ローカライズ戦略とは対照的な、**韓国語のまま世界へ**というモデルの確立です。歌詞の翻訳は、ファンダムが自発的に担いました。', null,
           'verified', null, 'user', 12) returning id)
@@ -4393,7 +4393,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = '音楽と作品'),
-          '2020-08-21', null, 'day', 'point', '「Dynamite」が米Hot 100で1位', '🧨 BTSが初の全編英語曲「Dynamite」を発表し、米ビルボードHot 100で韓国アーティストとして初めての1位を獲得。ディスコ調の明るい一曲でした。
+          '2020-08-21', null, 'day', 'point', '「Dynamite」が米Hot 100で1位', '🧨 BTSが初の全編英語曲「Dynamite」を発表し、米ビルボードHot 100で韓国アーティストとして初めての1位を獲得!ディスコ調の明るい一曲でした。
 
 韓国語のままビルボード200を制した後の、あえての英語曲による頂点獲得です。コロナ禍で停滞する音楽市場での戦略も奏功して、オンライン公演とともにパンデミック期のK-POPを象徴しています。', null,
           'verified', null, 'user', 15) returning id)
@@ -4786,7 +4786,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-street-culture') and name = 'スケートとファッション'),
-          '1973-01-01', null, 'year', 'point', 'ウレタンウィールがスケートを変える', '🛹 フランク・ナスワージーが開発したウレタン製ウィール「キャデラック・ホイール」が発売。それまでの金属や粘土系の車輪とは別物のグリップと滑らかさをもたらしました。
+          '1973-01-01', null, 'year', 'point', 'ウレタンウィールがスケートを変える', '🛹 フランク・ナスワージーが開発したウレタン製ウィール「キャデラック・ホイール」が発売。それまでの金属や粘土系の車輪とは別物のグリップと滑らかさをもたらしました!
 
 路面を選ばず走れるようになったことで、スケートボードは坂道や空のプールの壁へ進出して、サーフィンの陸上での模倣から独自の身体文化へ離陸します。道具の小さな革新が表現の全体を変えた、乗る側には実感でわかる例です。', null,
           'unverified', 'ウレタンウィールの開発・発売の時期は1972年から1973年にかけてとされていて、資料によって記述に幅があります。', 'user', 2) returning id)
@@ -4826,7 +4826,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-street-culture') and name = '音楽とダンス'),
-          '1982-01-01', '1984-12-31', 'year', 'period', 'ヒップホップ映画ブーム、世界への伝播', '「ワイルド・スタイル」「フラッシュダンス」「ビート・ストリート」など、ヒップホップ文化を描く映画が立て続けに公開されて、ブレイクダンスとグラフィティの映像が世界中の若者に届きました。
+          '1982-01-01', '1984-12-31', 'year', 'period', 'ヒップホップ映画ブーム、世界への伝播', '「ワイルド・スタイル」「フラッシュダンス」「ビート・ストリート」など、ヒップホップ文化を描く映画が立て続けに公開されて、ブレイクダンスとグラフィティの映像が世界中の若者に届きました!
 
 ブロンクスの路上の文化は映画を通じて日本を含む各国へ一気に伝わり、各地でブレイクダンスのチームが生まれます。**映像が文化の輸出路になった**時期で、40年後のパリ五輪でのブレイキン採用につながる国際的な裾野はここで作られました。', null,
           'verified', null, 'user', 7) returning id)
@@ -4850,7 +4850,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-street-culture') and name = 'スケートとファッション'),
-          '1999-06-27', null, 'day', 'point', 'トニー・ホークが900を成功', 'サンフランシスコのXゲームズで、トニー・ホークが大会史上初の900(空中2回転半)をメイク。同じ年に発売されたゲーム「トニー・ホーク プロ・スケーター」も世界的なヒットになります。
+          '1999-06-27', null, 'day', 'point', 'トニー・ホークが900を成功', 'サンフランシスコのXゲームズで、トニー・ホークが大会史上初の900(空中2回転半)をメイク!同じ年に発売されたゲーム「トニー・ホーク プロ・スケーター」も世界的なヒットになります。
 
 ヒップホップがレコードと映画(音楽とダンスレイヤー)を通って主流化した過程を、スケートはテレビ中継とゲームでなぞりました。不良の遊びから子ども部屋の憧れへ。ただ、競技化と商業化が進むほど、路上の文化との距離も開き始めます。', null,
           'verified', null, 'user', 10) returning id)
@@ -4890,7 +4890,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-street-culture') and name = 'スケートとファッション'),
-          '2021-07-25', null, 'day', 'point', 'スケートボードが五輪競技デビュー', '🏅 東京五輪でスケートボードが五輪競技として初めて実施されて、ストリート種目で堀米雄斗が初代金メダリストに。女子では13歳の西矢椛が優勝しました。
+          '2021-07-25', null, 'day', 'point', 'スケートボードが五輪競技デビュー', '🏅 東京五輪でスケートボードが五輪競技として初めて実施されて、ストリート種目で堀米雄斗が初代金メダリストに。女子では13歳の西矢椛が優勝しました!
 
 警察に追われる遊びだったスケートボードが、**路上の遊びから五輪種目へ**と公認された到達点です。ただ、競技化が路上の文化の自由さを損なうという当事者の異論も根強くて、公認と自律のあいだの緊張は、滑る側の実感としてもいまも続いています。', null,
           'verified', null, 'user', 15) returning id)
@@ -7744,7 +7744,7 @@ select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-cooking'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-cooking') and name = '台所の記録'),
-          '2006-04-01', '2008-03-31', 'month', 'period', '定食屋のまかないで基礎を覚える', '学生街の定食屋でアルバイトを始めて、まかない付きの2年間で包丁の持ち方、だしの取り方、火加減を仕込まれました。店主の口癖は「レシピより段取り」。皿洗いから始めて、半年で仕込みを任せてもらえるようになりました。
+          '2006-04-01', '2008-03-31', 'month', 'period', '定食屋のまかないで基礎を覚える', '学生街の定食屋でアルバイトを始めて、まかない付きの2年間で包丁の持ち方、だしの取り方、火加減を仕込まれました。店主の口癖は「レシピより段取り」。皿洗いから始めて、半年で仕込みを任せてもらえるようになりました!
 
 体系立てて習ったわけではないんですが、目の前で見て真似るという覚え方は、のちの動画レシピの時代を先取りしていたのかもしれません。この2年が、僕の料理の土台になりました。', null,
           'verified', null, 'user', 2) returning id)
@@ -7784,7 +7784,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-cooking'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-cooking') and name = '台所の記録'),
-          '2012-06-01', null, 'month', 'point', '週3日の弁当作りを始める', '🍱 節約と昼の栄養を考えて、週3日の弁当を始めました。前の晩の残りと卵焼き、冷凍ブロッコリー。職場では「弁当男子」とからかわれましたが、続きました。卵焼きは百回焼いて、ようやく形になりました。
+          '2012-06-01', null, 'month', 'point', '週3日の弁当作りを始める', '🍱 節約と昼の栄養を考えて、週3日の弁当を始めました。前の晩の残りと卵焼き、冷凍ブロッコリー。職場では「弁当男子」とからかわれましたが、続きました。卵焼きは百回焼いて、ようやく形になりました!
 
 震災をきっかけに再開した自炊が、習慣として定着した時期です。レシピ検索が毎晩の日課になりました。数年前に流行語だった言葉(食の時代レイヤー)が、そのまま自分の生活になったわけです。', null,
           'verified', null, 'user', 7) returning id)
@@ -7800,7 +7800,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-cooking'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-cooking') and name = '台所の記録'),
-          '2014-11-01', null, 'month', 'point', 'だしを引く生活', '昆布と鰹節でだしを取って、味噌汁を毎朝作るようになりました。休日に昆布水を仕込んで、平日はそれで済ませる自己流の段取りも固まりました。鰹節は削り節で妥協しましたが、香りの違いには驚きました。
+          '2014-11-01', null, 'month', 'point', 'だしを引く生活', '昆布と鰹節でだしを取って、味噌汁を毎朝作るようになりました。休日に昆布水を仕込んで、平日はそれで済ませる自己流の段取りも固まりました。鰹節は削り節で妥協しましたが、香りの違いには驚きました!
 
 和食の遺産登録以降の「だしブーム」に乗った形です。でも手を動かすと、定食屋の店主の言葉が戻ってきました。レシピより段取り。**基本はいつも、人から習ったものでした**。', null,
           'verified', null, 'user', 9) returning id)
@@ -7824,7 +7824,7 @@ select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-cooking'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-cooking') and name = '台所の記録'),
-          '2018-03-01', null, 'month', 'point', '週末の作り置きを習慣化', '日曜の夜に常備菜を4品作る習慣が定着しました。きんぴら、塩ゆで鶏、ミニトマトのマリネ。保存容器を統一したら、冷蔵庫が図書館みたいになりました。
+          '2018-03-01', null, 'month', 'point', '週末の作り置きを習慣化', '日曜の夜に常備菜を4品作る習慣が定着しました。きんぴら、塩ゆで鶏、ミニトマトのマリネ。保存容器を統一したら、冷蔵庫が図書館みたいになりました!
 
 平日の自炊率は一気に上がって、外食は「行きたい店」だけになりました。検索と動画で覚えた技術が、狭い台所の制約と組み合わさって自分の型になった時期です。日曜の台所仕事は、気づけば週の楽しみになっていました。', null,
           'verified', null, 'user', 12) returning id)
@@ -8762,7 +8762,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-life-with-cats'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-life-with-cats') and name = '猫たちの記録'),
-          '2016-05-01', null, 'month', 'point', '2匹目、子猫のハギを迎える', '職場の後輩が保護した、生後2か月ほどの三毛猫を引き取りました。萩の花の柄からハギと名付けました。先住のソラは3日間威嚇し続けて、4日目の朝、同じ毛布で寝ていました 🐾
+          '2016-05-01', null, 'month', 'point', '2匹目、子猫のハギを迎える', '職場の後輩が保護した、生後2か月ほどの三毛猫を引き取りました!萩の花の柄からハギと名付けました。先住のソラは3日間威嚇し続けて、4日目の朝、同じ毛布で寝ていました 🐾
 
 2匹になって食費と医療費は倍になりましたが、猫同士の関係という新しい見物ができました。多頭飼いの適正な数を調べたのも、このときが初めてです。先輩になったソラの顔つきが、少し変わりました。', null,
           'verified', null, 'user', 6) returning id)
@@ -8778,7 +8778,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-life-with-cats'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-life-with-cats') and name = 'わたしの暮らし'),
-          '2019-04-01', null, 'month', 'point', '転職して週2日は家で働く(36歳)', '転職して、週2日在宅で働ける職場になりました。決め手のひとつは猫の通院のしやすさで、面接で正直にそう言ったら、面接官も自分の猫の写真を見せてくれました。
+          '2019-04-01', null, 'month', 'point', '転職して週2日は家で働く(36歳)', '転職して、週2日在宅で働ける職場になりました。決め手のひとつは猫の通院のしやすさで、面接で正直にそう言ったら、面接官も自分の猫の写真を見せてくれました!
 
 家で働いてみると、猫は長い昼寝と決まった時間の要求で1日を区切っているのだと分かります。人間の側が、猫の時間割に入れてもらう格好です。出社の日は、帰宅した瞬間の鳴き声の長さで留守の長さが分かりました。', null,
           'verified', null, 'user', 8) returning id)
@@ -8850,7 +8850,7 @@ select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-life-with-cats'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-life-with-cats') and name = '猫たちの記録'),
-          '2026-05-01', null, 'month', 'point', 'ハギ10歳、預かり猫は5匹目に', 'ハギが10歳になりました。預かり猫は5匹目を送り出し、家には「うちの子」と「旅の途中の子」がいる暮らしが定着しています。ハギは新入りが来るたび、かつてソラがしたように3日間威嚇して、4日目に毛布を分けています 🐾
+          '2026-05-01', null, 'month', 'point', 'ハギ10歳、預かり猫は5匹目に', 'ハギが10歳になりました!預かり猫は5匹目を送り出し、家には「うちの子」と「旅の途中の子」がいる暮らしが定着しています。ハギは新入りが来るたび、かつてソラがしたように3日間威嚇して、4日目に毛布を分けています 🐾
 
 この年表は、ソラの一周忌に作り始めたものです。猫の時間は人より速い。だからこそ、重ねた時間は年表にして残したいのです。最後の行は、まだ書き足されていきます。', null,
           'verified', null, 'user', 17) returning id)
@@ -8885,7 +8885,7 @@ select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-marathon'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-marathon') and name = 'レースと記録'),
-          '2008-11-01', null, 'month', 'point', '初レース、ハーフマラソンを2時間15分で完走', '走り始めて1年あまり、地元のハーフマラソン大会に初めて出て、2時間15分で完走しました。後半は歩きと変わらない速さになりましたが、沿道の拍手に背中を押されてゴールできました。
+          '2008-11-01', null, 'month', 'point', '初レース、ハーフマラソンを2時間15分で完走', '走り始めて1年あまり、地元のハーフマラソン大会に初めて出て、2時間15分で完走しました。後半は歩きと変わらない速さになりましたが、沿道の拍手に背中を押されてゴールできました!
 
 完走証を会社の机に飾ったら、同僚に笑われました。それでも翌週から、昼休みに走る仲間がひとり増えたのです。フルマラソンに挑むと決めたのは、完走証を鞄にしまった、この日の帰り道でした。', null,
           'verified', null, 'user', 2) returning id)
@@ -8893,7 +8893,7 @@ select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-marathon'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-marathon') and name = 'レースと記録'),
-          '2009-03-01', null, 'month', 'point', '初フルマラソン完走、4時間58分', '河川敷のフルマラソンで、初めての42.195キロを完走しました。35キロで両脚が止まって、最後の7キロは歩きと小走りの繰り返し。それでも4時間58分、目標にしていた「5時間以内」に、ぎりぎり収まりました。
+          '2009-03-01', null, 'month', 'point', '初フルマラソン完走、4時間58分', '河川敷のフルマラソンで、初めての42.195キロを完走しました。35キロで両脚が止まって、最後の7キロは歩きと小走りの繰り返し。それでも4時間58分、目標にしていた「5時間以内」に、ぎりぎり収まりました!
 
 ゴールのあとに泣くとは、思ってもいませんでした。**完走はゴールではなく入口だった**と、この年表を作りながら思います。翌週にはもう、次のレースを探していましたから。', null,
           'verified', null, 'user', 3) returning id)
@@ -8917,7 +8917,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-marathon'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-marathon') and name = 'レースと記録'),
-          '2013-11-01', null, 'month', 'point', 'サブ4達成、3時間52分', '4度目のフルマラソンで4時間の壁を破って、3時間52分で完走しました。30キロ以降に失速しない配分を、初めて最後まで守れたレースです。
+          '2013-11-01', null, 'month', 'point', 'サブ4達成、3時間52分', '4度目のフルマラソンで4時間の壁を破って、3時間52分で完走しました!30キロ以降に失速しない配分を、初めて最後まで守れたレースです。
 
 練習の量より質を考え始めた時期の、成果でもありました。祝杯の写真は、今もこの年のアルバムの最初にあります。その夜、翌年以降の目標を「サブ3.5」と手帳に書きました。この一行に9年かかるとは、当時は思ってもいません。', null,
           'verified', null, 'user', 6) returning id)
@@ -8997,7 +8997,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-marathon'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-marathon') and name = 'レースと記録'),
-          '2022-11-01', null, 'month', 'point', '50歳、サブ3.5達成の3時間28分', '再開された秋のフルマラソンで3時間28分。手帳に書いてから9年越しの目標だったサブ3.5を、50歳で達成しました。35キロからの5キロを、人生でいちばん集中して走ったと思います。
+          '2022-11-01', null, 'month', 'point', '50歳、サブ3.5達成の3時間28分', '再開された秋のフルマラソンで3時間28分。手帳に書いてから9年越しの目標だったサブ3.5を、50歳で達成しました!35キロからの5キロを、人生でいちばん集中して走ったと思います。
 
 41歳で立てた目標に9年かかりましたが、**50歳の自己ベスト**は、加齢が言い訳にならないことの証明になりました。厚底への適応と、コロナ期の地道な走り込み。その両方の成果だと思っています。', null,
           'verified', null, 'user', 16) returning id)
@@ -9245,7 +9245,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-music-practice') and name = '練習と演奏'),
           '2016-06-01', null, 'month', 'point', '29歳、電子ピアノを買って再開する', '🎹 同僚の結婚式で、新婦のお父さんが挨拶の代わりにピアノを一曲弾いたんです。その帰り道に楽器店へ寄って、ヘッドホンで練習できる電子ピアノを注文しました。ボーナスの大半が消えました。
 
-指は驚くほど動きませんでしたが、楽譜が読めることだけは体に残っていました。実家からは16年ぶりに段ボールの楽譜が届きました。**再開に必要だったのは才能ではなく、きっかけと防音**でした。', null,
+指は驚くほど動きませんでしたが、楽譜が読めることだけは体に残っていました。実家からは16年ぶりに段ボールの楽譜が届きました!**再開に必要だったのは才能ではなく、きっかけと防音**でした。', null,
           'verified', null, 'user', 6) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -9269,7 +9269,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-music-practice') and name = '練習と演奏'),
           '2018-11-01', null, 'month', 'point', '16年ぶりの発表会でショパンのワルツ', '大人の生徒だけの小さな発表会で、ショパンのワルツ第19番イ短調を弾きました。直前の1週間は毎晩指が冷たくなるほど緊張して、本番では中間部で一度和音を外しました。
 
-それでも弾き終えたとき、13歳の発表会では感じなかった種類の満足があったんです。翌週のレッスンで講師に言われた「大人の本番は減点法ではない」を、以後ずっと支えにしています。', null,
+それでも弾き終えたとき、13歳の発表会では感じなかった種類の満足があったんです!翌週のレッスンで講師に言われた「大人の本番は減点法ではない」を、以後ずっと支えにしています。', null,
           'verified', null, 'user', 9) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -9325,7 +9325,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-music-practice') and name = '日々の暮らし'),
           '2023-08-01', null, 'month', 'point', '実家のアップライトピアノを引き取る', '実家の建て替えを機に、祖母が母のために買ったという古いアップライトピアノを名古屋の自宅へ運びました。運送と修理、調律を合わせたら、電子ピアノがもう一台買える金額になりました。
 
-調律師さんの「50年物ですが芯は生きています」がうれしくて。防音マットを敷いて、弾くのは昼間だけと決めました。電子ピアノで再開した練習が、7年かけて生のピアノに戻ってきたことになります。', null,
+調律師さんの「50年物ですが芯は生きています」がうれしくて!防音マットを敷いて、弾くのは昼間だけと決めました。電子ピアノで再開した練習が、7年かけて生のピアノに戻ってきたことになります。', null,
           'verified', null, 'user', 16) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -9347,7 +9347,7 @@ select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-music-practice'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-music-practice') and name = '練習と演奏'),
-          '2026-04-01', null, 'month', 'point', '練習ノートが10冊目に入る', '🎹 再開の日から書き続けている練習ノートが、10冊目に入りました。日付と練習した曲、気づきを3行だけ書く方式で、通算の練習日は2000日を超えています。
+          '2026-04-01', null, 'month', 'point', '練習ノートが10冊目に入る', '🎹 再開の日から書き続けている練習ノートが、10冊目に入りました!日付と練習した曲、気づきを3行だけ書く方式で、通算の練習日は2000日を超えています。
 
 読み返すと、上達の記録というより暮らしの記録に近いです。仕事が荒れた月は空白が続き、戻ってくるたびに同じ基礎練からやり直しています。**やめないことではなく、何度でも戻ること**。この記録の結論は、それに尽きます。', null,
           'verified', null, 'user', 19) returning id)
@@ -9374,7 +9374,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '子どもの成長'),
-          '2016-11-08', null, 'day', 'point', '第一子、誕生', '予定日より4日遅れて、都内の病院で長女が生まれました。体重3,120グラム。陣痛から18時間、夫は職場から駆けつけて立ち会ってくれました。名前を決めるのには一晩かかりました。
+          '2016-11-08', null, 'day', 'point', '第一子、誕生', '予定日より4日遅れて、都内の病院で長女が生まれました!体重3,120グラム。陣痛から18時間、夫は職場から駆けつけて立ち会ってくれました。名前を決めるのには一晩かかりました。
 
 待機児童問題が国会で取り上げられた年です。退院の日に受け取った区の案内には、もう翌々年度の保育所申込みの説明が入っていました。腕の中の赤ん坊の1年半後を考えるのは不思議な感覚でしたが、**それがこの街で子どもを育てるということ**なのでした。', null,
           'verified', null, 'user', 1) returning id)
@@ -9406,7 +9406,7 @@ select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '親の仕事と暮らし'),
-          '2018-02-01', null, 'month', 'point', '認可保育所の二度目の申込みで内定', '前の年は落選、今年は第3希望の園に内定。区から届いた封筒を開けるまで、夫婦そろって仕事が手につきませんでした。認可外に預けて働いた復職実績が選考指数を押し上げたようで、前の年の「落ちたから認可外に入れて働く」という選択が、結果的に効いた形です。
+          '2018-02-01', null, 'month', 'point', '認可保育所の二度目の申込みで内定', '前の年は落選、今年は第3希望の園に内定!区から届いた封筒を開けるまで、夫婦そろって仕事が手につきませんでした。認可外に預けて働いた復職実績が選考指数を押し上げたようで、前の年の「落ちたから認可外に入れて働く」という選択が、結果的に効いた形です。
 
 ブログが国会で話題になった年に生まれた子が、2年越しで認可の門をくぐります。**制度の順番待ちが、我が家の暦を決めていた**のだと思います。', null,
           'verified', null, 'user', 5) returning id)
@@ -9486,7 +9486,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '子どもの成長'),
-          '2023-04-06', null, 'day', 'point', '長女、小学校に入学', '区立小学校に入学しました。ランドセルは祖父母からの贈り物です。入学式は保護者2人まで参加できて、コロナ禍の制限がようやく緩んだことを実感しました。GIGAスクール構想で整備されたタブレットが1年生から配られて、保育園にはなかった宿題として持ち帰るようになりました。
+          '2023-04-06', null, 'day', 'point', '長女、小学校に入学', '区立小学校に入学しました!ランドセルは祖父母からの贈り物です。入学式は保護者2人まで参加できて、コロナ禍の制限がようやく緩んだことを実感しました。GIGAスクール構想で整備されたタブレットが1年生から配られて、保育園にはなかった宿題として持ち帰るようになりました。
 
 休園中に平仮名を覚えた子が、今度は画面で足し算の練習をしています。学童保育の申込みも同時に済ませましたが、この年、私の働き方を変える必要が出てきます。🎒', null,
           'verified', null, 'user', 15) returning id)
@@ -9510,7 +9510,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '子どもの成長'),
-          '2025-04-01', null, 'day', 'point', '次女、保育所に入園', '次女が、姉と同じ園の2歳児クラスに入園しました。長女のときは2年かかった認可入園が、次女は一度で決まって、慣らし保育は3日で終わりました。地域の子どもの数が減って、園によっては定員に空きが出始めていると、園長先生から聞きました。姉のときとは、何もかもが早いのです。
+          '2025-04-01', null, 'day', 'point', '次女、保育所に入園', '次女が、姉と同じ園の2歳児クラスに入園しました。長女のときは2年かかった認可入園が、次女は一度で決まって、慣らし保育は3日で終わりました!地域の子どもの数が減って、園によっては定員に空きが出始めていると、園長先生から聞きました。姉のときとは、何もかもが早いのです。
 
 同じ4月から改正育児・介護休業法が施行されて、3歳未満の子を持つ親のテレワークが、事業主の努力義務になりました。転職した私の在宅勤務は、制度に先回りしていた形です。', null,
           'verified', null, 'user', 18) returning id)
@@ -12698,7 +12698,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '技術'),
-          '2012-10-01', null, 'month', 'point', 'AlexNetがILSVRCで圧勝、深層学習ブームの起点', '🧠 トロント大学のチーム(Krizhevsky、Sutskever、Hinton)が作ったGPU学習の深層CNNが、画像認識コンペILSVRCで従来手法に圧勝。「深層学習って本当に使えるんだ」と世界が気づいた瞬間です。
+          '2012-10-01', null, 'month', 'point', 'AlexNetがILSVRCで圧勝、深層学習ブームの起点', '🧠 トロント大学のチーム(Krizhevsky、Sutskever、Hinton)が作ったGPU学習の深層CNNが、画像認識コンペILSVRCで従来手法に圧勝。「深層学習って本当に使えるんだ」と世界が気づいた瞬間です!
 
 ここから研究のリソースが一気に深層学習へ。GPUで学習するスタイルもこのとき定着しました。のちのNVIDIAの大躍進(企業と資本レイヤー)につながる、生成AI以前の「下地」となる出来事です。', null,
           'verified', null, 'user', 0) returning id)
@@ -12706,7 +12706,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '技術'),
-          '2017-06-12', null, 'day', 'point', 'Transformer論文公開、大規模言語モデルの基盤に', '🔧 Googleの研究者たちが「再帰構造はもういらない、Attentionだけでいい」と提案したのがTransformer。並列学習に強く、モデルとデータを大きくするほど性能が伸びる「スケーリング」の道を開きました。GPTもBERTも、ぜんぶこの構造の上に立っています。
+          '2017-06-12', null, 'day', 'point', 'Transformer論文公開、大規模言語モデルの基盤に', '🔧 Googleの研究者たちが「再帰構造はもういらない、Attentionだけでいい」と提案したのがTransformer。並列学習に強く、モデルとデータを大きくするほど性能が伸びる「スケーリング」の道を開きました。GPTもBERTも、ぜんぶこの構造の上に立っています!
 
 ちなみにこの時点では、AIはまだ研究投資の対象。資本市場や規制当局はほぼノーマークでした。5年後の大騒ぎと見比べると、この静けさが際立ちます。', null,
           'verified', null, 'user', 1) returning id)
@@ -12722,7 +12722,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-ai-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '技術'),
-          '2020-05-28', null, 'day', 'point', 'GPT-3論文公開、1750億パラメータの言語モデル', '📈 OpenAIが1750億パラメータのGPT-3を発表。少しの例を見せるだけで多様なタスクをこなす「few-shot」能力に研究者たちがざわつきました。規模を大きくすれば能力が伸びる、を実証した形です。
+          '2020-05-28', null, 'day', 'point', 'GPT-3論文公開、1750億パラメータの言語モデル', '📈 OpenAIが1750億パラメータのGPT-3を発表。少しの例を見せるだけで多様なタスクをこなす「few-shot」能力に研究者たちがざわつきました!規模を大きくすれば能力が伸びる、を実証した形です。
 
 前年のMicrosoft出資が結実した成果でもあります。6月にはAPIとして限定公開され、AIは「研究成果」から「サービスの土台」へ。一方この頃の社会はコロナ対応で手一杯で、AI規制の議論はまだEUの準備段階でした。', null,
           'verified', null, 'user', 3) returning id)
@@ -12756,7 +12756,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-ai-revolution') and name = '技術'),
           '2022-11-30', null, 'day', 'point', 'ChatGPT公開', '💬 OpenAIが対話型AI「ChatGPT」を無料公開。中身はGPT-3.5に人間のフィードバックで磨きをかけたもので、技術の大ジャンプというより「届け方」の発明でした。
 
-でも、誰でもおしゃべり感覚で使える体験が世界を変えます。公開2か月で推定1億ユーザーに到達し(社会と規制レイヤー)、翌年1月にはMicrosoftの追加出資が発表され、大手各社が一斉に生成AIへ舵を切りました。**この年表のすべてのレイヤーが、ここを分岐点にしています**。', null,
+でも、誰でもおしゃべり感覚で使える体験が世界を変えます!公開2か月で推定1億ユーザーに到達し(社会と規制レイヤー)、翌年1月にはMicrosoftの追加出資が発表され、大手各社が一斉に生成AIへ舵を切りました。**この年表のすべてのレイヤーが、ここを分岐点にしています**。', null,
           'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('OpenAI: Introducing ChatGPT', 'https://openai.com/index/chatgpt/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -13048,7 +13048,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '市場と資本'),
-          '2010-05-22', null, 'day', 'point', '1万BTCでピザ2枚、初の実物取引', '🍕 フロリダのプログラマーが1万BTCと引き換えにピザ2枚を受け取ったと掲示板に報告。Bitcoin最初の商取引として知られ、当時の1万BTCは約41ドル相当でした。後年の価格だと数億ドルに相当し、「ビットコイン・ピザ・デー」として毎年ネタにされています。
+          '2010-05-22', null, 'day', 'point', '1万BTCでピザ2枚、初の実物取引', '🍕 フロリダのプログラマーが1万BTCと引き換えにピザ2枚を受け取ったと掲示板に報告。Bitcoin最初の商取引として知られ、当時の1万BTCは約41ドル相当でした。後年の価格だと数億ドルに相当し、「ビットコイン・ピザ・デー」として毎年ネタにされています!
 
 技術(ジェネシスブロック)から1年半で価格発見が始まった事例で、翌年以降の取引所の乱立とMt.Goxの台頭(規制と事件)につながります。投機資産っぽさは、この時点ではまだ薄めでした。', null,
           'verified', null, 'user', 2) returning id)
@@ -13072,7 +13072,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '技術'),
-          '2015-07-30', null, 'day', 'point', 'Ethereumメインネット稼働開始', '🧱 スマートコントラクトを実行できる汎用ブロックチェーンEthereumが稼働開始。ヴィタリック・ブテリンが2013年に構想し、2014年のクラウドセールで資金を集めて開発されました。「通貨」から「プログラム可能な台帳」へ、用途が一段広がります。
+          '2015-07-30', null, 'day', 'point', 'Ethereumメインネット稼働開始', '🧱 スマートコントラクトを実行できる汎用ブロックチェーンEthereumが稼働開始。ヴィタリック・ブテリンが2013年に構想し、2014年のクラウドセールで資金を集めて開発されました。「通貨」から「プログラム可能な台帳」へ、用途が一段広がります!
 
 任意のプログラムをチェーン上で動かせる設計は、翌年のThe DAO(技術・事件)や2017年のICOブーム(市場と資本)、後のDeFiやNFTの土台に。Bitcoinが「価値の保存」に寄る一方、Ethereumは応用の実験場になっていきます。', null,
           'verified', null, 'user', 5) returning id)
@@ -13160,7 +13160,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '技術'),
-          '2022-09-15', null, 'day', 'point', 'Ethereumが「The Merge」でProof of Stakeへ移行', '🔀 EthereumがProof of WorkからProof of Stakeへ移行するアップグレード「The Merge」を完了し、消費電力を99%以上削減したとされます。動いているネットワークを止めずに合意形成の仕組みを入れ替える、数年がかりの開発の集大成でした。
+          '2022-09-15', null, 'day', 'point', 'Ethereumが「The Merge」でProof of Stakeへ移行', '🔀 EthereumがProof of WorkからProof of Stakeへ移行するアップグレード「The Merge」を完了し、消費電力を99%以上削減したとされます。動いているネットワークを止めずに合意形成の仕組みを入れ替える、数年がかりの開発の集大成でした!
 
 環境負荷への批判(規制と事件レイヤーの論点)に技術で答えた形ですが、同時期の市場はTerra崩壊とFTX破綻に挟まれた「冬」の真っ最中で、価格への影響は限定的。**技術と市場の時間軸のずれ**がよく分かる事例です。', null,
           'verified', null, 'user', 16) returning id)
@@ -13178,7 +13178,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '市場と資本'),
           '2024-01-10', null, 'day', 'point', '米SECが現物Bitcoin ETFを承認', '🏦 米証券取引委員会が11本の現物Bitcoin ETFを承認。10年以上却下され続けた申請が裁判所の判断を経て承認に至り、証券口座で買える商品になって、機関投資家と個人の資金流入が加速しました。
 
-FTX破綻(規制と事件)から1年ちょっとでの転換で、投機的な「取引所」経由から規制された金融商品へと入口が広がります。同年4月の半減期とも重なり、Bitcoinは同年末に初めて10万ドル超え。**技術ではなく制度が価格を動かした**局面です。', null,
+FTX破綻(規制と事件)から1年ちょっとでの転換で、投機的な「取引所」経由から規制された金融商品へと入口が広がります。同年4月の半減期とも重なり、Bitcoinは同年末に初めて10万ドル超え!**技術ではなく制度が価格を動かした**局面です。', null,
           'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('SEC: Statement on the Approval of Spot Bitcoin Exchange-Traded Products (2024-01-10)', 'https://www.sec.gov/newsroom/speeches-statements/gensler-statement-spot-bitcoin-011023')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -13203,7 +13203,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cloud-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cloud-revolution') and name = '技術とサービス'),
-          '2006-03-14', null, 'day', 'point', 'Amazon S3公開、クラウドストレージの誕生', '📦 Amazonがオンラインストレージ「Amazon S3」を公開しました。使った分だけ課金される従量制で、開発者はサーバーを買わずに、事実上無限の保存領域を使えるようになったのです。
+          '2006-03-14', null, 'day', 'point', 'Amazon S3公開、クラウドストレージの誕生', '📦 Amazonがオンラインストレージ「Amazon S3」を公開しました。使った分だけ課金される従量制で、開発者はサーバーを買わずに、事実上無限の保存領域を使えるようになったのです!
 
 書店から始まった小売企業が、自社インフラの技術を外販する。この意外な参入が、**「所有から利用へ」**というクラウド革命の出発点になりました。後発のGoogleやMicrosoftが追いかける構図(企業競争レイヤー)も、ここから始まります。', null,
           'verified', null, 'user', 0) returning id)
@@ -13211,7 +13211,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cloud-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cloud-revolution') and name = '技術とサービス'),
-          '2006-08-25', null, 'day', 'point', 'Amazon EC2ベータ公開、仮想サーバーを時間貸し', '🖥️ Amazonが、仮想サーバーを1時間単位で貸し出す「Amazon EC2」のベータ版を公開しました。クレジットカード1枚で数分後にサーバーが手に入る。調達に数週間かかる物理サーバーの常識が、ここでひっくり返りました。
+          '2006-08-25', null, 'day', 'point', 'Amazon EC2ベータ公開、仮想サーバーを時間貸し', '🖥️ Amazonが、仮想サーバーを1時間単位で貸し出す「Amazon EC2」のベータ版を公開しました。クレジットカード1枚で数分後にサーバーが手に入る。調達に数週間かかる物理サーバーの常識が、ここでひっくり返りました!
 
 S3と組み合わせるとスタートアップの初期投資が劇的に下がります。のちのモバイルアプリやSNSの爆発的増加を支える、見えない土台になりました。利用者と社会レイヤーの変化は、まずスタートアップ経済に現れます。', null,
           'verified', null, 'user', 1) returning id)
@@ -13267,7 +13267,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cloud-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cloud-revolution') and name = '技術とサービス'),
-          '2013-03-01', null, 'month', 'point', 'Docker公開、コンテナ技術が主流へ', '🐳 Solomon HykesがPyConでDockerを披露し、オープンソースとして公開しました。アプリを軽量な「コンテナ」に包んでどこでも動かす技術は、あっという間に開発者の標準になります。
+          '2013-03-01', null, 'month', 'point', 'Docker公開、コンテナ技術が主流へ', '🐳 Solomon HykesがPyConでDockerを披露し、オープンソースとして公開しました。アプリを軽量な「コンテナ」に包んでどこでも動かす技術は、あっという間に開発者の標準になります!
 
 クラウド間の移植性を高めて、コンテナ前提の設計(クラウドネイティブ)を生んだ点で、特定ベンダーへの依存を相対化する技術でもありました。翌年のKubernetes登場と合わせて、クラウドの主戦場は仮想マシンからコンテナ基盤へ移っていきます。', null,
           'verified', null, 'user', 8) returning id)
@@ -13299,7 +13299,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-cloud-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-cloud-revolution') and name = '企業競争'),
-          '2015-04-23', null, 'day', 'point', 'AmazonがAWSの業績を初開示、高収益に衝撃', '💹 Amazonが四半期決算でAWS部門の業績を初めて開示しました。売上高は四半期で15億ドル超、営業利益率は小売事業を大きく上回る。「副業」と見られていたクラウドが、実は同社の利益の柱だったと判明します。
+          '2015-04-23', null, 'day', 'point', 'AmazonがAWSの業績を初開示、高収益に衝撃', '💹 Amazonが四半期決算でAWS部門の業績を初めて開示しました。売上高は四半期で15億ドル超、営業利益率は小売事業を大きく上回る。「副業」と見られていたクラウドが、実は同社の利益の柱だったと判明します!
 
 市場の評価は一変し、Amazon株は急伸しました。競合他社の投資判断にも影響を与え、クラウドが**利益率の高い本命事業**であることが公式の数字で裏付けられた瞬間です。', null,
           'verified', null, 'user', 12) returning id)
@@ -13537,7 +13537,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-edtech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-edtech') and name = '技術とサービス'),
-          '2001-04-01', null, 'month', 'point', 'MITが講義教材の無料公開OCWを発表', '🏛️ マサチューセッツ工科大学が、ほぼすべての講義教材をウェブで無償公開するOpenCourseWare(OCW)構想を発表しました。「教育をオープンにする」という宣言は、世界の大学に衝撃を与えます。
+          '2001-04-01', null, 'month', 'point', 'MITが講義教材の無料公開OCWを発表', '🏛️ マサチューセッツ工科大学が、ほぼすべての講義教材をウェブで無償公開するOpenCourseWare(OCW)構想を発表しました。「教育をオープンにする」という宣言は、世界の大学に衝撃を与えます!
 
 商用eラーニングの模索が続くなかで、最高峰の大学が知識の無償公開を選んだ意味は大きいです。のちのオープン教材(OER)運動とMOOCの思想的な源流で、日本でも2005年に主要大学によるJOCWが発足しました。', null,
           'verified', null, 'user', 0) returning id)
@@ -13555,7 +13555,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-edtech') and name = '技術とサービス'),
           '2012-01-01', null, 'year', 'point', '「MOOC元年」、大学講義が数十万人に開かれる', '🎓 スタンフォード発のCourseraとUdacity、MITとハーバードが設立したedXが相次いで開講し、大学講義を誰でも無料受講できるMOOCが爆発的な注目を集めました。米紙はこの年を「MOOCの年」と呼びます。
 
-数十万人規模の登録者は「大学の終わり」論まで呼びました。でも、のちの研究で修了率が数%にとどまると示され、期待は急速にしぼみます。**理想の規模と学びの完遂の落差**という、この年表を貫くテーマの最初の実例です。', null,
+数十万人規模の登録者は「大学の終わり」論まで呼びました!でも、のちの研究で修了率が数%にとどまると示され、期待は急速にしぼみます。**理想の規模と学びの完遂の落差**という、この年表を貫くテーマの最初の実例です。', null,
           'disputed', '登録者数は各社の自社発表です。修了率も研究によって数%から十数%と、推計に幅があります。', 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('The New York Times: The Year of the MOOC (2012-11)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -13619,7 +13619,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-edtech') and name = '技術とサービス'),
           '2023-03-01', null, 'month', 'point', 'カーンアカデミーがAI家庭教師Khanmigoを発表', '🤖 カーンアカデミーが、GPT-4を組み込んだAI家庭教師「Khanmigo」を発表しました。答えを直接教えず、対話を通じて生徒自身の思考を促す、ソクラテス式の設計を掲げています。
 
-ChatGPT遮断(制度と教育現場レイヤー)と同じ時期に、非営利の老舗が「正しく使う」形を示した対比が鮮やかです。1対1の個別指導は集団授業より大幅に効果が高いという「ブルームの2シグマ問題」への、AIによる挑戦と位置づけられました。', null,
+ChatGPT遮断(制度と教育現場レイヤー)と同じ時期に、非営利の老舗が「正しく使う」形を示した対比が鮮やかです!1対1の個別指導は集団授業より大幅に効果が高いという「ブルームの2シグマ問題」への、AIによる挑戦と位置づけられました。', null,
           'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Khan Academy発表 (2023-03)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -13676,7 +13676,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-fintech') and name = '技術とサービス'),
-          '2007-03-01', null, 'month', 'point', 'ケニアでM-Pesa開始、銀行なしの送金インフラに', '📲 ケニアの通信会社サファリコムが、携帯電話のショートメッセージを使った送金サービスM-Pesaを始めました。銀行口座を持たない人たちが、現金を電子的に送って受け取れるようになったのです。
+          '2007-03-01', null, 'month', 'point', 'ケニアでM-Pesa開始、銀行なしの送金インフラに', '📲 ケニアの通信会社サファリコムが、携帯電話のショートメッセージを使った送金サービスM-Pesaを始めました。銀行口座を持たない人たちが、現金を電子的に送って受け取れるようになったのです!
 
 銀行網の外側から金融アクセスを一気に広げた代表例で、「金融包摂」というフィンテックの原点を示しています。のちの途上国モバイルマネーやQR決済の先行モデルになり、規制当局も「銀行免許なしで営まれる金融」への対応を迫られました。', null,
           'verified', null, 'user', 0) returning id)
@@ -13692,7 +13692,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-fintech') and name = '技術とサービス'),
-          '2011-09-01', null, 'month', 'point', 'Stripe公開、オンライン決済がAPI数行になる', '💳 米Stripeが開発者向けの決済APIを一般公開しました。加盟店契約や審査で数週間かかっていたカード決済の導入が、ウェブサイトに数行のコードを書くだけで済むようになります。
+          '2011-09-01', null, 'month', 'point', 'Stripe公開、オンライン決済がAPI数行になる', '💳 米Stripeが開発者向けの決済APIを一般公開しました。加盟店契約や審査で数週間かかっていたカード決済の導入が、ウェブサイトに数行のコードを書くだけで済むようになります!
 
 **決済のインフラ化**はECやSaaSの起業コストをぐっと下げ、その後のプラットフォーム経済の裏方になりました。既存金融レイヤーから見ると、カード網の上に乗りながら顧客接点だけを奪っていく、新種の存在の登場です。', null,
           'verified', null, 'user', 2) returning id)
@@ -13724,7 +13724,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-fintech') and name = '技術とサービス'),
-          '2018-12-04', null, 'day', 'point', 'PayPayの「100億円あげちゃうキャンペーン」', '🎁 ソフトバンクとヤフーが立ち上げたPayPayが、決済額の20%を還元する大型キャンペーンを開始。わずか10日で還元原資の100億円を使い切りました。日本のQR決済の認知を一気に押し上げたとされています。
+          '2018-12-04', null, 'day', 'point', 'PayPayの「100億円あげちゃうキャンペーン」', '🎁 ソフトバンクとヤフーが立ち上げたPayPayが、決済額の20%を還元する大型キャンペーンを開始。わずか10日で還元原資の100億円を使い切りました!日本のQR決済の認知を一気に押し上げたとされています。
 
 現金志向の強い日本市場に、巨額の販促でユーザーの行動変容を買うプラットフォーム型の戦略が持ち込まれた出来事です。翌年の消費増税に伴うポイント還元事業(規制と社会レイヤー)とも重なり、キャッシュレス比率は以後上がり続けました。', null,
           'unverified', 'キャンペーンの実施は事実ですが、利用者獲得数や認知への効果は同社発表と調査会社の推計がもとで、独立した検証はありません。', 'user', 6) returning id)
@@ -13804,7 +13804,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-fintech'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-fintech') and name = '既存金融と資本'),
-          '2024-01-10', null, 'day', 'point', '米SECがビットコイン現物ETFを一括承認', '📊 米証券取引委員会(SEC)が11本のビットコイン現物ETFを一括承認し、翌日から取引が始まりました。10年にわたって申請却下が続いてきた歴史が、裁判所の判断を経てひっくり返った形です。
+          '2024-01-10', null, 'day', 'point', '米SECがビットコイン現物ETFを一括承認', '📊 米証券取引委員会(SEC)が11本のビットコイン現物ETFを一括承認し、翌日から取引が始まりました。10年にわたって申請却下が続いてきた歴史が、裁判所の判断を経てひっくり返った形です!
 
 ブラックロックなど伝統的な資産運用の最大手が暗号資産への窓口となり、破壊者として出発した資産が既存金融の商品棚に収まりました。反体制の思想から生まれたビットコインの制度化として、この年表の一つの到達点です。', null,
           'verified', null, 'user', 16) returning id)
@@ -14494,7 +14494,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = 'プラットフォーム'),
           '2004-02-04', null, 'day', 'point', 'ハーバードの学生寮でFacebookが誕生', '🎓 マーク・ザッカーバーグたちが、ハーバード大学の学生向けサイト「TheFacebook」を公開しました。実名と現実の人間関係をそのままオンラインに持ち込む設計は、匿名が当たり前だった当時のネットではかなり異例です。
 
-この実名制が、のちの広告ビジネスと個人データ集積の土台になりました。2010年代のプライバシー問題(規制と説明責任レイヤー)の遠因も、たどればこの設計思想です。20年後に30億人が使うインフラになるとは、当時は誰も想像していませんでした。', null,
+この実名制が、のちの広告ビジネスと個人データ集積の土台になりました。2010年代のプライバシー問題(規制と説明責任レイヤー)の遠因も、たどればこの設計思想です。20年後に30億人が使うインフラになるとは、当時は誰も想像していませんでした!', null,
           'verified', null, 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Facebook', 'https://en.wikipedia.org/wiki/Facebook')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -14508,7 +14508,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = 'プラットフォーム'),
-          '2006-09-05', null, 'day', 'point', 'FacebookがNews Feedを導入', '📰 Facebookが、友人の行動を時系列で自動表示する「News Feed」を導入しました。出た当初は「監視みたいだ」と強い反発を受けたのに、利用時間は急増。まもなくSNSの標準機能になります。
+          '2006-09-05', null, 'day', 'point', 'FacebookがNews Feedを導入', '📰 Facebookが、友人の行動を時系列で自動表示する「News Feed」を導入しました。出た当初は「監視みたいだ」と強い反発を受けたのに、利用時間は急増!まもなくSNSの標準機能になります。
 
 自分で見に行く場から、**アルゴリズムが情報の流れを決める**場への転換点です。この配信の仕組みがのちに、偽情報の拡散や分断の増幅(社会と政治レイヤー)をめぐる論争の中心になっていきます。', null,
           'verified', null, 'user', 2) returning id)
@@ -14516,7 +14516,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = 'プラットフォーム'),
-          '2010-10-06', null, 'day', 'point', 'Instagram公開、写真SNSの時代へ', '📷 写真共有アプリInstagramがiPhone向けに公開され、初日だけで約2万5000人が登録しました。正方形の写真とフィルターという制約の強い設計が、スマホのカメラ性能の向上とうまく噛み合ったんですね。
+          '2010-10-06', null, 'day', 'point', 'Instagram公開、写真SNSの時代へ', '📷 写真共有アプリInstagramがiPhone向けに公開され、初日だけで約2万5000人が登録しました!正方形の写真とフィルターという制約の強い設計が、スマホのカメラ性能の向上とうまく噛み合ったんですね。
 
 言葉より画像で自己表現する文化はここで主流になり、「映え」が消費や観光を動かす経済現象に。後年、外見の比較が若い世代の心理に与える影響(社会と政治レイヤー)が公衆衛生の議題に上る、その素地でもあります。', null,
           'verified', null, 'user', 3) returning id)
@@ -14540,7 +14540,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-social-media'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-social-media') and name = 'プラットフォーム'),
-          '2012-04-09', null, 'day', 'point', 'FacebookがInstagramを10億ドルで買収', '💵 Facebookが、社員たった13人のInstagramを約10億ドルで買収すると発表しました。売上のないアプリへの巨額買収は当時「高すぎる」と言われましたが、結果はIT史上屈指の安い買い物と評されるようになります。
+          '2012-04-09', null, 'day', 'point', 'FacebookがInstagramを10億ドルで買収', '💵 Facebookが、社員たった13人のInstagramを約10億ドルで買収すると発表しました。売上のないアプリへの巨額買収は当時「高すぎる」と言われましたが、結果はIT史上屈指の安い買い物と評されるようになります!
 
 有力な新興サービスを早めに取り込む成長戦略の象徴です。のちのWhatsApp買収と合わせて「競争の芽を摘む買収では」という議論(規制と説明責任レイヤー)を呼び、米当局は2020年に同社を反トラストで提訴しました。', null,
           'verified', null, 'user', 6) returning id)
@@ -14818,7 +14818,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '技術とプロトコル'),
-          '2008-10-31', null, 'day', 'point', 'ビットコイン論文公開、非中央集権の原点', '🪙 サトシ・ナカモトを名乗る誰かが、暗号学メーリングリストに論文「Bitcoin: A Peer-to-Peer Electronic Cash System」を投稿。銀行みたいな中央管理者なしで価値を送れる仕組みを、たった9ページで示しました。
+          '2008-10-31', null, 'day', 'point', 'ビットコイン論文公開、非中央集権の原点', '🪙 サトシ・ナカモトを名乗る誰かが、暗号学メーリングリストに論文「Bitcoin: A Peer-to-Peer Electronic Cash System」を投稿。銀行みたいな中央管理者なしで価値を送れる仕組みを、たった9ページで示しました!
 
 ブロックチェーンの**「分散と所有」の理想**はここが始まりで、後のWeb3.0もNFTもメタバース経済圏の議論も、たどるとぜんぶこの論文に行き着きます。投稿主の正体は、今も不明のままです。', null,
           'verified', null, 'user', 0) returning id)
@@ -14836,7 +14836,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '技術とプロトコル'),
           '2015-07-30', null, 'day', 'point', 'イーサリアム稼働、スマートコントラクトの基盤', '⛏️ ヴィタリック・ブテリンらが開発したイーサリアムのメインネット「Frontier」が稼働。契約をコードとして自動執行するスマートコントラクトで、ブロックチェーンの使い道を通貨以外へ広げました。
 
-後のICO、NFT、DeFiといったWeb3の主な応用は、ほぼぜんぶこの基盤の上で生まれます。技術レイヤーの土台がここで整い、2年後の熱狂(ICOブーム、資本と市場レイヤー)を呼び込む舞台ができました。', null,
+後のICO、NFT、DeFiといったWeb3の主な応用は、ほぼぜんぶこの基盤の上で生まれます!技術レイヤーの土台がここで整い、2年後の熱狂(ICOブーム、資本と市場レイヤー)を呼び込む舞台ができました。', null,
           'verified', null, 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('ethereum.org: The history of Ethereum', 'https://ethereum.org/en/history/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -14858,7 +14858,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-web3-metaverse'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '資本と市場'),
-          '2021-03-11', null, 'day', 'point', 'BeepleのNFT作品が約6900万ドルで落札', '🖼️ デジタルアーティストBeepleの作品「Everydays: The First 5000 Days」が、老舗オークションハウスのクリスティーズで約6934万ドルで落札。NFTに紐づくデジタル作品として史上最高額になりました。
+          '2021-03-11', null, 'day', 'point', 'BeepleのNFT作品が約6900万ドルで落札', '🖼️ デジタルアーティストBeepleの作品「Everydays: The First 5000 Days」が、老舗オークションハウスのクリスティーズで約6934万ドルで落札。NFTに紐づくデジタル作品として史上最高額になりました!
 
 2017年のCryptoKitties(社会と制度レイヤー)から4年、NFTが美術市場のど真ん中に出てきた瞬間で、これを合図にNFT投機が本格化します。デジタルデータの「所有」を売買するという概念が、一般のニュースになった一件でした。', null,
           'verified', null, 'user', 5) returning id)
@@ -14908,7 +14908,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-web3-metaverse') and name = '技術とプロトコル'),
           '2022-09-15', null, 'day', 'point', 'イーサリアム「The Merge」でPoS移行完了', '🔀 イーサリアムが合意形成の仕組みをプルーフ・オブ・ワークからプルーフ・オブ・ステークへ切り替える大型アップグレード「The Merge」を完了。ネットワークの消費電力を99.9%以上削減したとされます。
 
-暗号資産批判の筆頭だった環境負荷に技術側から答えた形で、弱気相場(資本と市場レイヤー)の真っ最中でも**プロトコル開発は着実に前進する**と示しました。稼働を止めずに基盤を入れ替えるのは、技術的にも異例の規模です。', null,
+暗号資産批判の筆頭だった環境負荷に技術側から答えた形で、弱気相場(資本と市場レイヤー)の真っ最中でも**プロトコル開発は着実に前進する**と示しました。稼働を止めずに基盤を入れ替えるのは、技術的にも異例の規模です!', null,
           'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Ethereum Foundation: The Merge', 'https://ethereum.org/en/roadmap/merge/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
