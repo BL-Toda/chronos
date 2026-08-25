@@ -6,47 +6,73 @@
 <title>Chronos — Default Avatars</title>
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
-<link href="https://api.fontshare.com/v2/css?f[]=erode@300,400,500,600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=erode@400,500,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&family=Shippori+Mincho:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0A0A0C;--bg2:#0E0E11;--card:#111114;--text:#E8E4DE;--text2:#9A9690;--text3:#605C57;
-  --border:#1E1E22;--border2:#2A2A2E;--accent:#C8A87E;
-  --f-d:'Erode','Shippori Mincho',serif;--f-b:'DM Sans',sans-serif;--f-m:'JetBrains Mono',monospace}
+:root{
+  --bg:#0A0A0C;--bg2:#0E0E11;--card:#16161A;
+  --accent:#B8B4AE;--accent-soft:rgba(232,228,222,0.07);--accent-med:rgba(232,228,222,0.14);
+  --text:#E8E4DE;--text-h:#F5F2ED;--text2:#9A9590;--text3:#7A7570;
+  --border:rgba(232,228,222,0.09);--border2:rgba(232,228,222,0.18);
+  /* レイヤーカラー7色（アバターSVGの生成色はHTML内に直書き。ここは参照用で変更しない）*/
+  --c-blue:#5B9BD5;--c-green:#7BC67E;--c-pink:#D4849A;--c-gold:#C8B87E;--c-purple:#9E7EC8;--c-teal:#5BBCB4;--c-orange:#D4A05A;
+  --f-d:'Erode','Shippori Mincho',serif;--f-b:'DM Sans',sans-serif;--f-m:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  /* タイプスケール5段（行間は偶数px固定）*/
+  --fs-display:clamp(24px,4vw,32px);--lh-display:44px;
+  --fs-title:18px;--lh-title:28px;
+  --fs-body:15px;--lh-body:28px;
+  --fs-sm:13px;--lh-sm:22px;
+  --fs-xs:11px;--lh-xs:18px;
+}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:var(--f-b);background:var(--bg);color:var(--text);overflow-x:hidden}
+body{font-family:var(--f-b);background:var(--bg);color:var(--text);font-size:var(--fs-body);line-height:var(--lh-body);font-weight:400;-webkit-font-smoothing:antialiased;color-scheme:dark;overflow-x:hidden;touch-action:manipulation;-webkit-tap-highlight-color:rgba(232,228,222,0.06)}
+:focus-visible{outline:2px solid var(--text-h);outline-offset:3px;border-radius:2px}
 .page{max-width:960px;margin:0 auto;padding:60px 24px 80px}
-.page-label{font-family:var(--f-m);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
-.page-title{font-family:var(--f-d);font-size:clamp(28px,4vw,44px);font-weight:300;line-height:1.3;margin-bottom:12px}
-.page-desc{font-size:15px;color:var(--text2);line-height:1.7;margin-bottom:48px;max-width:560px}
+.page-label{font-family:var(--f-m);font-size:var(--fs-xs);line-height:var(--lh-xs);font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.page-title{font-family:var(--f-d);font-size:var(--fs-display);line-height:var(--lh-display);font-weight:500;color:var(--text-h);margin-bottom:12px}
+.page-desc{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--text2);margin-bottom:48px;max-width:560px}
 .avatar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
 @media(max-width:640px){.avatar-grid{grid-template-columns:repeat(3,1fr);gap:16px}}
-@media(max-width:420px){.avatar-grid{grid-template-columns:repeat(2,1fr);gap:14px}}
-.avatar-item{text-align:center;cursor:pointer;transition:transform 0.3s}
-.avatar-item:hover{transform:translateY(-4px)}
-.avatar-item.selected .avatar-ring{border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,168,126,0.2)}
-.avatar-ring{width:100%;aspect-ratio:1;border-radius:50%;border:2px solid var(--border);overflow:hidden;transition:all 0.3s}
-.avatar-ring:hover{border-color:var(--border2)}
+@media(max-width:420px){.avatar-grid{grid-template-columns:repeat(2,1fr);gap:16px}}
+.avatar-item{text-align:center;cursor:pointer;transition:transform 0.3s var(--ease);touch-action:manipulation;-webkit-tap-highlight-color:rgba(232,228,222,0.06)}
+.avatar-item:active .avatar-ring{border-color:var(--border2)}
+.avatar-item.selected .avatar-ring{border-color:var(--accent);box-shadow:0 0 0 3px rgba(232,228,222,0.22)}
+.avatar-ring{width:100%;aspect-ratio:1;border-radius:50%;border:2px solid var(--border);overflow:hidden;transition:border-color 0.3s var(--ease),box-shadow 0.3s var(--ease)}
 .avatar-ring svg{width:100%;height:100%;display:block}
-.avatar-name{font-family:var(--f-m);font-size:10px;letter-spacing:0.08em;color:var(--text3);margin-top:10px;transition:color 0.3s}
-.avatar-item:hover .avatar-name{color:var(--text2)}
-.avatar-item.selected .avatar-name{color:var(--accent)}
+.avatar-name{font-family:var(--f-m);font-size:var(--fs-xs);line-height:var(--lh-xs);letter-spacing:0.08em;color:var(--text3);margin-top:12px;transition:color 0.3s}
+.avatar-item.selected .avatar-name{color:var(--text-h);font-weight:500}
 .selection-bar{margin-top:48px;padding:24px;border-radius:14px;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;gap:20px}
 .selection-preview{width:64px;height:64px;border-radius:50%;border:2px solid var(--accent);overflow:hidden;flex-shrink:0}
 .selection-preview svg{width:100%;height:100%}
 .selection-info{flex:1}
-.selection-label{font-size:12px;color:var(--text3);margin-bottom:4px}
-.selection-name{font-family:var(--f-d);font-size:20px;font-weight:400}
-.selection-btn{font-family:var(--f-b);font-size:13px;font-weight:500;letter-spacing:0.04em;color:var(--bg);background:var(--accent);padding:12px 28px;border-radius:8px;border:none;cursor:pointer;transition:all 0.3s;flex-shrink:0}
-.selection-btn:hover{background:#D4B88E;transform:translateY(-1px)}
-.cat-header{font-family:var(--f-m);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--text3);margin:40px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.selection-label{font-size:var(--fs-xs);line-height:var(--lh-xs);color:var(--text3);margin-bottom:4px}
+.selection-name{font-family:var(--f-d);font-size:var(--fs-title);line-height:var(--lh-title);font-weight:500;color:var(--text-h)}
+.selection-btn{font-family:var(--f-b);font-size:var(--fs-sm);line-height:var(--lh-sm);font-weight:500;letter-spacing:0.04em;color:var(--bg);background:var(--accent);padding:12px 28px;border-radius:8px;border:none;cursor:pointer;transition:background 0.3s var(--ease),transform 0.3s var(--ease),box-shadow 0.3s var(--ease);flex-shrink:0;touch-action:manipulation;-webkit-tap-highlight-color:rgba(232,228,222,0.06)}
+.selection-btn:active{background:#A6A29C}
+.cat-header{font-family:var(--f-m);font-size:var(--fs-xs);line-height:var(--lh-xs);font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--text3);margin:40px 0 20px;padding-bottom:8px;border-bottom:1px solid var(--border)}
 .cat-header:first-of-type{margin-top:0}
 .spec-section{margin-top:64px;padding-top:48px;border-top:1px solid var(--border)}
 .spec-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:24px}
 @media(max-width:640px){.spec-grid{grid-template-columns:1fr}}
 .spec-item{padding:20px;border-radius:12px;background:var(--card);border:1px solid var(--border)}
-.spec-label{font-family:var(--f-m);font-size:10px;letter-spacing:0.1em;color:var(--accent);text-transform:uppercase;margin-bottom:6px}
-.spec-val{font-size:14px;color:var(--text);line-height:1.6}
+.spec-label{font-family:var(--f-m);font-size:var(--fs-xs);line-height:var(--lh-xs);font-weight:500;letter-spacing:0.1em;color:var(--accent);text-transform:uppercase;margin-bottom:8px}
+.spec-val{font-size:var(--fs-sm);line-height:var(--lh-sm);color:var(--text)}
+
+/* ─ hover（ポインタ環境のみ。タッチでは残らない）*/
+@media (hover:hover) and (pointer:fine){
+  .avatar-item:hover{transform:translateY(-3px)}
+  .avatar-item:hover .avatar-ring{border-color:var(--border2)}
+  .avatar-item:hover .avatar-name{color:var(--text2)}
+  .avatar-item.selected:hover .avatar-name{color:#FFFFFF}
+  .selection-btn:hover{background:#D0CCC6;transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.35)}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important;animation:none !important}
+}
 </style>
 </head>
 <body>
