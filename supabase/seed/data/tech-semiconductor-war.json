@@ -208,10 +208,10 @@
       "type": "point",
       "layer": "技術と製造",
       "title": "EUV露光が量産適用、微細化の限界を突破",
-      "summary": "TSMCとサムスンが7nm世代のロジック半導体でEUV露光の量産適用を開始した。1997年のEUV LLC結成から20年余り、装置1台150億円超のASML製EUV露光機がようやく製造ラインに入った。\n\n最先端の微細化を続けられる企業はこの時点でTSMC・サムスン・(遅れて)Intelの3社に絞られた。EUV機を持つことが国力の指標のように扱われはじめ、対中輸出の管理対象(国家と地政学レイヤー)にもEUVが真っ先に挙がった。",
+      "summary": "サムスンが2018年10月に7nm世代でEUV露光によるウェハー生産を始め、TSMCもN7+で2019年に量産へ入った。1997年のEUV LLC結成から20年余り、装置1台150億円超のASML製EUV露光機がようやく製造ラインに入った。\n\n最先端の微細化を続けられる企業はこの時点でTSMC・サムスン・(遅れて)Intelの3社に絞られた。EUV機を持つことが国力の指標のように扱われはじめ、対中輸出の管理対象(国家と地政学レイヤー)にもEUVが真っ先に挙がった。",
       "detail": null,
-      "credibility": "verified",
-      "credibility_note": null,
+      "credibility": "disputed",
+      "credibility_note": "EUV量産適用の「開始」時期は各社の発表基準によって異なり、サムスンの7LPP生産開始(2018年10月)とTSMC N7+の量産(2019年)のどちらを起点とするかで年が前後する。",
       "sources": [
         {
           "title": "Wikipedia: Extreme ultraviolet lithography",

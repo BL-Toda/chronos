@@ -310,7 +310,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-anime-global') and name = '作品と表現'),
           '1963-01-01', '1966-12-31', 'day', 'period', '🤖 「鉄腕アトム」放送の4年', '手塚治虫の虫プロダクションが制作した「鉄腕アトム」がフジテレビ系で放送開始。日本初の本格的な30分連続テレビアニメは、1966年の大晦日まで4年間走り続けました。
 
-週1本を回すために止め絵や作画の使い回しを体系化した**リミテッドアニメ**の手法は、この4年の線の上で日本アニメの生産様式になりました。放送開始からわずか9か月で「Astro Boy」として海を渡っている(海外の受容とファンレイヤー)のも、この線の見どころです。', null,
+週1本を回すために止め絵や作画の使い回しを体系化した**リミテッドアニメ**の手法は、この4年の線の上で日本アニメの生産様式になりました。放送開始からわずか8か月で「Astro Boy」として海を渡っている(海外の受容とファンレイヤー)のも、この線の見どころです。', null,
           'verified', null, 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('手塚プロダクション公式サイト: 鉄腕アトム', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -627,7 +627,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 記念碑ではなく、緊急時の生活を支える建築に最高の栄誉が与えられたことは、象徴建築の造形競争が続いた2000年代からの転換と受け止められました。建築の社会的役割を問い直す流れは、以後の同賞の受賞者選定にも続いていきます。', null,
           'verified', null, 'user', 17) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('The Pritzker Architecture Prize: Shigeru Ban', 'https://www.pritzkerprize.com/laureates/shigeru-ban')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('The Pritzker Architecture Prize: Shigeru Ban', 'https://www.pritzkerprize.com/laureates/2014')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-architecture'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-architecture') and name = '技術と材料'),
@@ -888,7 +888,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1999-02-09', null, 'day', 'point', '米ABCがIDEOの買い物カート再設計を放映', '米ABCの報道番組ナイトラインが、IDEOに5日間でショッピングカートを再設計させる企画「ザ・ディープ・ダイブ」を放映しました。付箋を使うブレインストーミングと、素早い試作の現場が全米に流れています。
 
 デザインのプロセスが大衆的な見世物として初めて可視化された放送であり、ビジネス界の関心に火を付けました。のちのd.school設立(教育と制度レイヤー)や企業研修ブームに至る、デザイン思考流行の世俗的な起点とされています。', null,
-          'verified', null, 'user', 6) returning id)
+          'disputed', '放映日は1999年2月9日とする資料と同年7月13日とする番組データベースがあり、初回放送日を特定できていません。', 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('ABC Nightline: The Deep Dive (1999)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-design-thinking'),
@@ -1673,7 +1673,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '産業とメディア'),
-          '2019-04-13', '2019-08-17', 'day', 'period', '🤠 「オールド・タウン・ロード」首位19週の夏', 'リル・ナズ・Xの「オールド・タウン・ロード」が、ビルボードHot 100の1位に居座り続けた史上最長の19週間です。カントリーとトラップを混ぜた曲で、TikTok上のミーム拡散がヒットの起点でした。
+          '2019-04-13', '2019-08-17', 'day', 'period', '🤠 「オールド・タウン・ロード」首位19週の夏', 'リル・ナズ・Xの「オールド・タウン・ロード」が、ビルボードHot 100の1位に居座り続けた、当時の最長記録となる19週間です。カントリーとトラップを混ぜた曲で、TikTok上のミーム拡散がヒットの起点でした。
 
 カントリーチャートから除外された経緯は、ジャンル分類と人種の関係をめぐる論争を呼びます。この19週の線が「最大ジャンルの時代」の線の上に乗っているのがポイントで、SNSがラジオに代わるヒットの入口になったことを決定づけた、短くて濃い1本の線です。', null,
           'verified', null, 'user', 19) returning id)
@@ -1832,7 +1832,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 **1874年に嘲笑された印象派が、一世紀後には最も高価な資産となった**。プラザ合意後の円高と日本のバブル経済が価格を押し上げ、1990年には斎藤了英がゴッホ《医師ガシェの肖像》を8,250万ドルで落札する。制度と市場のレイヤーが作品評価を規定する時代の頂点である。', null,
           'verified', null, 'user', 16) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('SOMPO美術館: ゴッホ《ひまわり》(所蔵作品解説)', 'https://www.sompo-museum.org/collections/sunflowers/'), ('Wikipedia: Sunflowers (Van Gogh series)', 'https://en.wikipedia.org/wiki/Sunflowers_(Van_Gogh_series)')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('SOMPO美術館: ゴッホ《ひまわり》(所蔵作品解説)', 'https://www.sompo-museum.org/collection/gogh/'), ('Wikipedia: Sunflowers (Van Gogh series)', 'https://en.wikipedia.org/wiki/Sunflowers_(Van_Gogh_series)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '作品と運動'),
@@ -1911,7 +1911,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '作品とアーティスト'),
-          '1992-05-27', null, 'day', 'point', '🎤 米米CLUB「君がいるだけで」発売、ドラマ主題歌が大ヒット', '米米CLUB「君がいるだけで」がドラマ『素顔のままで』の主題歌としてシングル約289万枚を売り上げ、タイアップ型ヒットの代表例になりました。
+          '1992-05-04', null, 'day', 'point', '🎤 米米CLUB「君がいるだけで」発売、ドラマ主題歌が大ヒット', '米米CLUB「君がいるだけで」がドラマ『素顔のままで』の主題歌としてシングル約289万枚を売り上げ、タイアップ型ヒットの代表例になりました。
 
 毎週ドラマで流れた曲を、CDショップとレンタル店で手に入れる。この90年代型ヒットの流れ、覚えている人も多いはず。同じ年にはミリオンセラーが相次いでシングル市場が拡大期に入り、曲はメディア露出とセットで設計される時代へ。翌年以降もタイアップ曲がミリオンを量産しました。', null,
           'verified', null, 'user', 3) returning id)
@@ -1955,7 +1955,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 「サビが着うたで売れる曲」が意識されたのもこの頃。配信売上は2008〜2009年頃に一度ピークを迎えます。iPhone以降は主導権がアプリ事業者へ移り、スマホの普及とともに縮んで、2010年代半ばに役割を終えました。', null,
           'unverified', '終わりの時期は主要キャリアのサービス終了時期からざっくり置いたもので、正確な終了日は事業者・サービス名によって異なります。', 'user', 8) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 着うた', 'https://ja.wikipedia.org/wiki/%E7%9D%80%E3%81%86%E3%81%9F'), ('日本レコード協会: 有料音楽配信売上実績', 'https://www.riaj.or.jp/g/data/annual/dg_m.html')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 着うた', 'https://ja.wikipedia.org/wiki/%E7%9D%80%E3%81%86%E3%81%9F'), ('日本レコード協会: 音楽配信売上実績 項目別推移', 'https://www.riaj.or.jp/data/archive/dg_t/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '産業と制度'),
@@ -1975,10 +1975,10 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '作品とアーティスト'),
-          '2010-10-27', '2020-02-29', 'day', 'period', '🤝 握手券がCDを動かした10年', 'AKB48「Beginner」が初週100万枚を超えた2010年から、握手券や投票券つきCDの大量購入がシングル市場を支え続けた約10年です。**CDが「聴く媒体」から「体験と権利のチケット」へ**変わった時代でした。
+          '2010-10-27', '2020-02-29', 'day', 'period', '🤝 握手券がCDを動かした10年', 'AKB48「Beginner」が初週82.7万枚で女性グループの当時の最高記録を更新した2010年から、握手券や投票券つきCDの大量購入がシングル市場を支え続けた約10年です。**CDが「聴く媒体」から「体験と権利のチケット」へ**変わった時代でした。
 
 2015年からは、流通レイヤーでサブスクの線がこの線の下を並走し始めます。枚数のチャートと再生回数のチャートが別の顔ぶれを映す「二重指標」の数年間は、この重なりが生んだもの。線の終わりは2020年、コロナ禍で握手会が止まった春です。', null,
-          'disputed', '「握手券の時代」に公式な区切りはありません。ここでは初週ミリオンが定着した2010年秋から、感染症対策で握手会が中止された2020年2月までを採りました。', 'user', 11) returning id)
+          'disputed', '「握手券の時代」に公式な区切りはありません。ここでは初週売上が跳ね上がった2010年秋から、感染症対策で握手会が中止された2020年2月までを採りました。', 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Beginner (AKB48の曲)', 'https://ja.wikipedia.org/wiki/Beginner_(AKB48%E3%81%AE%E6%9B%B2)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
@@ -2027,7 +2027,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 同じ年、有料音楽配信売上に占めるストリーミングの割合は大半に。コロナ禍でライブ収入が途絶える中、配信が産業の中心であることが数字でもはっきりした年です。', null,
           'unverified', '認定基準の閾値と開始月は協会発表に基づきますが、初回認定の対象作品や制度の細かいところは要確認です。', 'user', 17) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('日本レコード協会: ストリーミング認定', 'https://www.riaj.or.jp/f/data/cert/streaming.html')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('日本レコード協会: ストリーミング認定', 'https://www.riaj.or.jp/data/st/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '作品とアーティスト'),
@@ -2435,7 +2435,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1935-01-01', '1943-12-31', 'year', 'period', 'FSAの写真事業、世論を動かした9年', '米農業安全保障局(FSA)が、大恐慌下の農村の窮状を記録する写真事業を組織し、ドロシア・ラングやウォーカー・エヴァンズらが全国を撮影しました。ラングの「移民の母」(1936)はその象徴です。
 
 政府が写真家を雇い、写真で世論を動かすという、ドキュメンタリー写真の制度化の出発点となりました。写真はグラフ雑誌(メディアと社会レイヤー)と結びつき、社会を映す公共の記録という地位を確立していきます。', null,
-          'verified', null, 'user', 4) returning id)
+          'disputed', 'ストライカーの写真班は1942年にFSAから戦時情報局(OWI)へ移って1944年まで続いており、事業の終点を1942年・1943年・1944年のどこに置くかは資料により異なります。', 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Library of Congress: FSA/OWI Photograph Collection', 'https://www.loc.gov/pictures/collection/fsa/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-photography'),
@@ -2638,7 +2638,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1979-09-01', null, 'month', 'point', '「ラッパーズ・ディライト」がヒット', 'シュガーヒル・ギャングの「ラッパーズ・ディライト」が発売されて、ヒップホップのレコードとして初めて全米チャートのヒットになりました。
 
 パーティーの現場の即興だったMCの語りが、レコードという商品になって世界へ流通した瞬間で、ブロックパーティーの時代(同じレイヤー)の線はここで終わります。一方でシーンの当事者からは「よそ者が先に商品化した」という批判も受けました。路上と商業の緊張関係は、最初から刻み込まれていたんですね。', null,
-          'verified', null, 'user', 7) returning id)
+          'disputed', 'ラップのレコードとして「初めて」チャートに入ったかどうかには異論があり、1週先にビルボードR&Bチャートに登場したファットバック・バンド「King Tim III」を挙げる見方があります。', 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Rapper''s Delight', 'https://en.wikipedia.org/wiki/Rapper''s_Delight')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
@@ -2651,10 +2651,10 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-street-culture') and name = '音楽とダンス'),
-          '1982-01-01', '1984-12-31', 'year', 'period', 'ヒップホップ映画ブーム、世界への伝播', '「ワイルド・スタイル」「フラッシュダンス」「ビート・ストリート」など、ヒップホップ文化を描く映画が立て続けに公開されて、ブレイクダンスとグラフィティの映像が世界中の若者に届きました!
+          '1983-01-01', '1984-12-31', 'year', 'period', 'ヒップホップ映画ブーム、世界への伝播', '「ワイルド・スタイル」「フラッシュダンス」「ビート・ストリート」など、ヒップホップ文化を描く映画が立て続けに公開されて、ブレイクダンスとグラフィティの映像が世界中の若者に届きました!
 
 ブロンクスの路上の文化は映画を通じて日本を含む各国へ一気に伝わり、各地でブレイクダンスのチームが生まれます。**映像が文化の輸出路になった**時期で、40年後のパリ五輪でのブレイキン採用につながる国際的な裾野はここで作られました。', null,
-          'verified', null, 'user', 9) returning id)
+          'disputed', '本文で挙げた作品は「ワイルド・スタイル」「フラッシュダンス」(ともに1983年)、「ビート・ストリート」(1984年)で、ここでは1983年から1984年までを便宜的な区切りとしました。ブームの範囲に定説はありません。', 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Wild Style', 'https://en.wikipedia.org/wiki/Wild_Style')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),

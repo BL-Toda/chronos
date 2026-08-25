@@ -404,10 +404,10 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-age-of-discovery'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-age-of-discovery') and name = '征服と先住民'),
-          '1521-05-22', '1521-08-13', 'day', 'period', 'テノチティトラン包囲の93日', 'コルテス率いるスペイン軍と、アステカ支配に反発する先住民諸都市の大軍が、湖上の都テノチティトランを93日間にわたり包囲した。分解して山越えで運んだ小型帆船まで湖に投入され、水と食糧を断たれた都市は8月13日に陥落、アステカ王国は滅亡した。
+          '1521-05-22', '1521-08-13', 'day', 'period', 'テノチティトラン包囲の93日', 'コルテス率いるスペイン軍と、アステカ支配に反発する先住民諸都市の大軍が、湖上の都テノチティトランを、93日間とも伝えられる期間にわたり包囲した。分解して山越えで運んだ小型帆船まで湖に投入され、水と食糧を断たれた都市は8月13日に陥落、アステカ王国は滅亡した。
 
 包囲中の市内では天然痘が猛威を振るっており、疫病という「見えない同盟者」の働きは征服者側の記録も認めている。この線が走るのと同じ時間、太平洋上ではマゼラン艦隊の線(航海と探検レイヤー)が進んでいた。探検の達成と征服の暴力は、重ねてみれば同時代である。', null,
-          'verified', null, 'user', 12) returning id)
+          'disputed', '包囲の起点には5月22日(テスココ出立)・5月26日・5月30日など複数の説があり、広く言われる「93日」も数え方により約80日とする整理があるなど、期間の長さは確定していない。', 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Fall of Tenochtitlan', 'https://en.wikipedia.org/wiki/Fall_of_Tenochtitlan')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-age-of-discovery'),
@@ -772,7 +772,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-asian-financial-crisis') and name = '政治と社会'),
           '1998-01-15', null, 'day', 'point', 'スハルトがIMF追加合意に署名、権威の失墜', 'インドネシアのスハルト大統領が、追加のIMF合意文書に署名しました。署名する大統領を腕組みして見下ろすカムドシュIMF専務理事の写真は、主権国家と国際機関の力関係の象徴として世界に流れています。
 
-合意された補助金の削減は物価の急騰を招き、30年続いた開発体制の正統性は、経済成長の停止とともに崩れていきました。通貨の暴落(通貨と市場レイヤー)が政治体制の動揺へ転化していく、その局面の始まりです。', null,
+合意された補助金の削減は物価の急騰を招き、32年続いた開発体制の正統性は、経済成長の停止とともに崩れていきました。通貨の暴落(通貨と市場レイヤー)が政治体制の動揺へ転化していく、その局面の始まりです。', null,
           'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Suharto', 'https://en.wikipedia.org/wiki/Suharto')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -957,7 +957,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-bakumatsu-meiji'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-bakumatsu-meiji') and name = '思想と人物'),
-          '1867-12-10', null, 'day', 'point', '坂本龍馬、京都近江屋で暗殺される', '大政奉還の1か月後、坂本龍馬と中岡慎太郎が京都の宿・近江屋で襲われ死亡した。龍馬は33歳、旧暦慶応3年11月15日。龍馬は薩長同盟の仲介、海援隊、大政奉還につながる建白などに関わり、新政府構想「船中八策」の伝承でも知られる。
+          '1867-12-10', null, 'day', 'point', '坂本龍馬、京都近江屋で暗殺される', '大政奉還の1か月後、坂本龍馬と中岡慎太郎が京都の宿・近江屋で襲われ死亡した。龍馬は享年33、旧暦慶応3年11月15日。龍馬は薩長同盟の仲介、海援隊、大政奉還につながる建白などに関わり、新政府構想「船中八策」の伝承でも知られる。
 
 幕府レイヤーで大政奉還が実現し、王政復古を目前にした時期の死であり、以後の政局は西郷・大久保・岩倉らの主導で武力による決着へ進む。外交レイヤーでは兵庫開港が翌月に迫っていた。', null,
           'disputed', '実行犯は京都見廻組とする説が有力だが、新選組説や薩摩藩関与説など諸説があり、確定していない。「船中八策」の史料的裏付けにも疑義がある。', 'user', 13) returning id)
@@ -1080,7 +1080,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-cold-war'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-cold-war') and name = '軍事と核'),
-          '1950-06-25', '1953-07-27', 'day', 'period', '朝鮮戦争の3年、冷戦初の熱戦', '38度線を越えた北朝鮮軍の南進で始まり、米国主導の国連軍が介入、中国義勇軍が参戦して膠着した。3年後に休戦協定が結ばれたが、平和条約は結ばれていない。マッカーサーの核使用検討は却下され、核保有国同士が直接対決を避ける「限定戦争」の型ができる。
+          '1950-06-25', '1953-07-27', 'day', 'period', '朝鮮戦争の3年、冷戦初の熱戦', '38度線を越えた北朝鮮軍の南進で始まり、米国主導の国連軍が介入、中国人民志願軍が参戦して膠着した。3年後に休戦協定が結ばれたが、平和条約は結ばれていない。マッカーサーの核使用検討は却下され、核保有国同士が直接対決を避ける「限定戦争」の型ができる。
 
 日本では特需で経済が回復し、警察予備隊が発足した。文化と社会レイヤーではマッカーシズムが最盛期にあり、外交レイヤーではスターリンの死(1953年3月)が休戦を後押しした。', null,
           'unverified', '軍人・民間人の死者数は数百万人規模とされるが、推計は資料により大きく異なり確定値がない。', 'user', 5) returning id)
@@ -1454,7 +1454,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-digital-democracy'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-digital-democracy') and name = '操作と分断'),
-          '2013-06-06', null, 'day', 'point', 'スノーデンがNSAの大量監視を暴露', '元NSA契約職員スノーデンの提供資料に基づいて、米国家安全保障局が通信記録を大量に収集するプログラムが報道されました。大手テック企業のデータへのアクセスも明るみに出ます。
+          '2013-06-05', null, 'day', 'point', 'スノーデンがNSAの大量監視を暴露', '元NSA契約職員スノーデンの提供資料に基づいて、米国家安全保障局が通信記録を大量に収集するプログラムが報道されました。大手テック企業のデータへのアクセスも明るみに出ます。
 
 民主国家が自ら**インフラ化した監視**を運用していた、という事実は、ネット自由論の前提を根本から揺さぶりました。EUのデータ保護強化(制度とプラットフォームレイヤー)を加速させ、プライバシーは民主主義の問題として定義し直されることになります。', null,
           'verified', null, 'user', 5) returning id)
@@ -1942,7 +1942,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-french-revolution') and name = '戦争と外交'),
           '1815-06-18', null, 'day', 'point', 'ワーテルローの戦い、百日天下の終焉', 'エルバ島を脱出して復位したナポレオンは、ブリュッセル南方ワーテルローでウェリントンの英蘭連合軍と対峙し、プロイセン軍の到着により決定的に敗れた。再退位の後、セントヘレナ島へ流される。
 
-25年に及んだ革命戦争・ナポレオン戦争の終幕であり、ウィーン体制下で各国は王政へ回帰した。しかし法典・行政制度・国民主権の理念は消えず、**帝政は滅び、原理は残った**。以後の19世紀欧州は、この反動と継承の緊張のうえで動いていく。', null,
+23年に及んだ革命戦争・ナポレオン戦争の終幕であり、ウィーン体制下で各国は王政へ回帰した。しかし法典・行政制度・国民主権の理念は消えず、**帝政は滅び、原理は残った**。以後の19世紀欧州は、この反動と継承の緊張のうえで動いていく。', null,
           'verified', null, 'user', 21) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Battle of Waterloo', 'https://en.wikipedia.org/wiki/Battle_of_Waterloo')) as v(title, url);
 
@@ -2218,7 +2218,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'history-industrial-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'history-industrial-revolution') and name = '技術と発明'),
-          '1825-09-27', null, 'day', 'point', '世界初の公共鉄道が開業', '1825年9月27日、スティーヴンソンの機関車ロコモーション号が客車と貨車を牽いてストックトン・アンド・ダーリントン鉄道を走った。蒸気機関車が牽く世界初の公共鉄道である。
+          '1825-09-27', null, 'day', 'point', '蒸気機関車が牽く世界初の公共鉄道が開業', '1825年9月27日、スティーヴンソンの機関車ロコモーション号が客車と貨車を牽いてストックトン・アンド・ダーリントン鉄道を走った。蒸気機関車が牽く世界初の公共鉄道である。
 
 もとは炭鉱の石炭を港へ運ぶための路線だったが、蒸気機関が「据え付けの動力」から「移動する動力」へ変わった意味は大きい。5年後のリバプール・マンチェスター鉄道(経済と都市レイヤー)で、鉄道の時代が本格的に開く。', null,
           'verified', null, 'user', 11) returning id)

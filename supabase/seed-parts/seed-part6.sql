@@ -941,7 +941,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-blockchain'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-blockchain') and name = '市場と資本'),
-          '2021-12-01', '2024-01-31', 'month', 'period', '❄️ 二度目の冬、2年2か月', '高値から一転、利上げとともに資本が引き、TerraとFTXの崩壊が追い打ちをかけた2年2か月です。Bitcoinは1万6000ドル台まで沈み、業界の信頼も底へ。最初の冬より、事件の規模はひと回り大きくなりました。
+          '2021-12-01', '2024-01-31', 'month', 'period', '❄️ 二度目の冬、2年2か月', '高値から一転、利上げとともに資本が引き、TerraとFTXの崩壊が追い打ちをかけた2年2か月です。Bitcoinは1万5000ドル台まで沈み、業界の信頼も底へ。最初の冬より、事件の規模はひと回り大きくなりました。
 
 強気相場の線に端をそろえて始まり、現物ETF承認(2024年1月)とともに明けました。冬の線の上でThe Merge(技術)が粛々と完了しているのも、DeFiが育った最初の冬と同じ反復です。祭りと冬をくり返しながら、市場は少しずつ制度の側へ寄っていきます。', null,
           'disputed', '冬の起点には2021年11月の高値からの下落、2022年5月のTerra崩壊など諸説あり、ここでは高値の翌月からETF承認までを採りました。', 'user', 16) returning id)
@@ -1716,7 +1716,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-mobile-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-mobile-revolution') and name = '技術と端末'),
-          '2007-11-05', null, 'day', 'point', 'GoogleらがAndroidとOpen Handset Allianceを発表', 'Googleと端末・通信34社がオープンソースのモバイルOS「Android」とOpen Handset Allianceを発表。iPhone発表から10か月後に、対抗する開放型の陣営が形成された。
+          '2007-11-05', null, 'day', 'point', 'GoogleらがAndroidとOpen Handset Allianceを発表', 'Googleを含む端末・通信34社がオープンソースのモバイルOS「Android」とOpen Handset Allianceを発表。iPhone発表から10か月後に、対抗する開放型の陣営が形成された。
 
 OSを無償で端末メーカーに提供する戦略は、Samsungや中国メーカーの台頭を促し、世界のスマホ出荷台数の大半をAndroidが占める構図をつくった。同時に、検索やアプリストアを通じたGoogleの支配力が、後年のEUデジタル市場法(社会と制度レイヤー)の主要な争点となる。', null,
           'verified', null, 'user', 4) returning id)
@@ -1726,7 +1726,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-mobile-revolution') and name = 'アプリとビジネス'),
           '2008-07-10', null, 'day', 'point', 'App Store開設、アプリ経済圏の始まり', 'AppleがiPhone向けApp Storeを開設。約500本のアプリで始まり、開発者への70%配分モデルがアプリ産業の標準となった。iモードの公式サイト課金と異なり、審査を通れば世界中の開発者が同じ条件で配信できる仕組みが、個人開発者から大手までを引き込んだ。
 
-翌日にはiPhone 3Gが日本を含む22か国で発売され(技術と端末)、端末とストアが同時に世界展開された。この**30%手数料は十数年後にEpic訴訟やDMA(社会と制度)で問われる**ことになる。', null,
+翌日にはiPhone 3Gが日本を含む21か国で発売され(技術と端末)、端末とストアが同時に世界展開された。この**30%手数料は十数年後にEpic訴訟やDMA(社会と制度)で問われる**ことになる。', null,
           'verified', null, 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Apple Newsroom: iPhone 3G on Sale Tomorrow (2008-07-10)', 'https://www.apple.com/newsroom/2008/07/10iPhone-3G-on-Sale-Tomorrow/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -1812,7 +1812,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-mobile-revolution'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-mobile-revolution') and name = '社会と制度'),
-          '2019-01-01', null, 'year', 'point', 'スマホの世帯保有率が固定電話を上回る', '総務省の通信利用動向調査で、2019年のスマートフォン世帯保有率は83.4%となり、固定電話(69.0%)を初めて上回った。2010年の約1割から10年足らずで8割超に達し、スマホが「電話」の主役の座を固定電話から奪ったことを示す象徴的な数値である。
+          '2019-01-01', null, 'year', 'point', 'スマホの世帯保有率が8割超、固定電話に大差', '総務省の通信利用動向調査で、2019年のスマートフォン世帯保有率は83.4%となり、固定電話(69.0%)を大きく引き離した。両者が逆転したのは2017年(スマホ75.1%、固定電話70.6%)である。2010年の約1割から10年足らずで8割超に達し、スマホが「電話」の主役の座を奪ったことを示す。
 
 同時期にPayPayなど決済アプリ(アプリとビジネス)が普及し、翌年のコロナ禍ではCOCOAや給付金申請など行政サービスもスマホ前提で設計されるようになる。5Gの国内商用開始(2020年、技術と端末)も目前だった。', null,
           'disputed', '83.4%と69.0%は令和元年調査の公表値だが、調査年により集計方法が見直されており、経年比較の解釈には注意が必要。', 'user', 16) returning id)
@@ -2294,10 +2294,10 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-semiconductor-war'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-semiconductor-war') and name = '技術と製造'),
-          '2019-01-01', null, 'year', 'point', 'EUV露光が量産適用、微細化の限界を突破', 'TSMCとサムスンが7nm世代のロジック半導体でEUV露光の量産適用を開始した。1997年のEUV LLC結成から20年余り、装置1台150億円超のASML製EUV露光機がようやく製造ラインに入った。
+          '2019-01-01', null, 'year', 'point', 'EUV露光が量産適用、微細化の限界を突破', 'サムスンが2018年10月に7nm世代でEUV露光によるウェハー生産を始め、TSMCもN7+で2019年に量産へ入った。1997年のEUV LLC結成から20年余り、装置1台150億円超のASML製EUV露光機がようやく製造ラインに入った。
 
 最先端の微細化を続けられる企業はこの時点でTSMC・サムスン・(遅れて)Intelの3社に絞られた。EUV機を持つことが国力の指標のように扱われはじめ、対中輸出の管理対象(国家と地政学レイヤー)にもEUVが真っ先に挙がった。', null,
-          'verified', null, 'user', 10) returning id)
+          'disputed', 'EUV量産適用の「開始」時期は各社の発表基準によって異なり、サムスンの7LPP生産開始(2018年10月)とTSMC N7+の量産(2019年)のどちらを起点とするかで年が前後する。', 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Extreme ultraviolet lithography', 'https://en.wikipedia.org/wiki/Extreme_ultraviolet_lithography')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-semiconductor-war'),
@@ -2628,7 +2628,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'tech-space-internet'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'tech-space-internet') and name = '規制と社会'),
-          '2020-07-30', null, 'day', 'point', '米FCCがアマゾンの衛星網Project Kuiperを認可', '米連邦通信委員会(FCC)がアマゾンの衛星コンステレーション計画「Project Kuiper」の3,236基を認可しました。2020年代末までに半数を配備することが条件として付されています。
+          '2020-07-30', null, 'day', 'point', '米FCCがアマゾンの衛星網Project Kuiperを認可', '米連邦通信委員会(FCC)がアマゾンの衛星コンステレーション計画「Project Kuiper」の3,236基を認可しました。2026年7月までに半数、2029年7月までに全数を配備することが条件として付されています。
 
 巨大IT企業の本格参入を規制当局が認めた節目で、低軌道の軌道枠と周波数の割当が競争の主戦場になったことを示しました。配備期限という規制上の仕掛けは、後にKuiperの打ち上げを急がせる強制力(事業と競争レイヤー)として働くことになります。', null,
           'verified', null, 'user', 8) returning id)

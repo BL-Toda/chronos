@@ -340,9 +340,9 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-artificial-organs'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-artificial-organs') and name = '制度と倫理'),
-          '1961-01-01', '1972-10-30', 'year', 'period', 'シアトル、透析を選別した11年', 'シアトルの透析センターで、匿名の市民委員会が透析を受けられる患者を選ぶ体制が始まりました。1962年にライフ誌が「彼らが誰が生き、誰が死ぬかを決める」と報じ、職業や家族構成、社会への貢献までが考慮された実態が知られます。
+          '1962-01-01', '1972-10-30', 'year', 'period', 'シアトル、透析を選別した10年', 'シアトルの透析センターで、匿名の市民委員会が透析を受けられる患者を選ぶ体制が始まりました。1962年にライフ誌が「彼らが誰が生き、誰が死ぬかを決める」と報じ、職業や家族構成、社会への貢献までが考慮された実態が知られます。
 
-救命ボートの席を割り当てるような、**誰を生かすかを委員会が決める**11年でした。それはスクリブナーのシャント(機器と技術レイヤー)が生んだ、希少な延命技術の配分問題そのものです。線の終点は1972年、透析費用を公的保険が引き受ける法改正(同じレイヤー)にぴったり接しています。', null,
+救命ボートの席を割り当てるような、**誰を生かすかを委員会が決める**10年でした。それはスクリブナーのシャント(機器と技術レイヤー)が生んだ、希少な延命技術の配分問題そのものです。線の終点は1972年、透析費用を公的保険が引き受ける法改正(同じレイヤー)にぴったり接しています。', null,
           'unverified', '委員会の運営実態は当事者の証言とライフ誌の取材に基づいており、体系的に検証できる一次記録は限られています。', 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('LIFE (1962-11-09): They Decide Who Lives, Who Dies', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -591,7 +591,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astronomy-turning-points'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astronomy-turning-points') and name = '観測と技術'),
-          '1965-05-01', null, 'month', 'point', '宇宙マイクロ波背景放射の発見', 'ベル研究所のペンジアスとウィルソンが、アンテナからどうしても消えない雑音として、全天からほぼ等しく届くマイクロ波を検出しました。これが宇宙誕生の名残の光、宇宙マイクロ波背景放射と同定されます。
+          '1965-07-01', null, 'month', 'point', '宇宙マイクロ波背景放射の発見', 'ベル研究所のペンジアスとウィルソンが、アンテナからどうしても消えない雑音として、全天からほぼ等しく届くマイクロ波を検出しました。これが宇宙誕生の名残の光、宇宙マイクロ波背景放射と同定されます。
 
 ビッグバン理論と定常宇宙論の論争に事実上の決着をつけ、宇宙論(宇宙像の転換レイヤー)を思弁から精密観測の科学へ変える突破口になりました(1978年ノーベル賞)。同じ放射を予言していたプリンストンのチームとの同時期の遭遇は、科学史に残る偶然です。', null,
           'verified', null, 'user', 13) returning id)
@@ -1009,7 +1009,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 運動は1.5℃特別報告書が示した「2030年まで」の期限を掲げ、科学レイヤーの数字がスローガンになった例といえる。同年、EUと英国は2050年カーボンニュートラルを法制化・宣言し、企業や自治体の目標設定も加速した。', null,
           'unverified', '参加人数は主催者発表に基づく推計で、独立した集計はなく、報道により300万〜760万人と幅がある。', 'user', 18) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Fridays for Future: Global Climate Strike, September 2019', null), ('The Guardian (2019-09-21) Climate crisis: 6 million people join latest wave of global protests', null)) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Fridays for Future: Global Climate Strike, September 2019', null), ('The Guardian (2019-09-27) Climate crisis: 6 million people join latest wave of global protests', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '科学の発見'),
@@ -1772,7 +1772,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mars-missions'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-mars-missions') and name = '競争と構想'),
-          '1971-12-02', null, 'day', 'point', 'ソ連のマルス3号、初の火星軟着陸', 'ソ連のマルス3号の着陸機が、人類として初めて火星への軟着陸をやり遂げました。ただ、送信は着陸の約20秒後に途絶えてしまい、意味のある画像は残せませんでした。
+          '1971-12-02', null, 'day', 'point', 'ソ連のマルス3号、初の火星軟着陸', 'ソ連のマルス3号の着陸機が、人類として初めて火星への軟着陸をやり遂げました。ただ、送信は着陸から20秒足らずで途絶えてしまい、意味のある画像は残せませんでした。
 
 同じ時期、米国のマリナー9号は初の火星周回機となり、全球の撮影に成功しています。着陸はソ連が先んじ、観測は米国が制した。この対照的な結果は、火星が**国家の威信を測る場**だったことと、そこへ届くことの難しさを、同時に物語っています。', null,
           'verified', null, 'user', 3) returning id)
@@ -1788,7 +1788,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mars-missions'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-mars-missions') and name = '競争と構想'),
-          '1976-09-03', '1997-07-04', 'day', 'period', '着陸の空白、21年', 'バイキング2号の着陸を最後に、火星の地表へ新しく降り立つ探査機は21年間現れませんでした。生命探査の結果への失望と予算の縮小で計画は途絶え、1992年のマーズ・オブザーバーも到着直前に消息を絶っています。
+          '1976-09-03', '1997-07-04', 'day', 'period', '着陸の空白、21年', 'バイキング2号の着陸を最後に、火星の地表へ新しく降り立つ探査機は21年間現れませんでした。生命探査の結果への失望と予算の縮小で計画は途絶え、1992年打ち上げのマーズ・オブザーバーも到着直前に消息を絶っています。
 
 この空白の線の終わり近くには、隕石ALH84001の「生命の痕跡」騒動(水と生命の探査レイヤー)が置かれています。世論と予算を動かしたあの発表の翌年、パスファインダーの着陸で線は途切れました。探査の歴史は、進んだ時間より止まった時間のほうが長いのです。', null,
           'verified', null, 'user', 5) returning id)
@@ -2073,7 +2073,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-mathematics') and name = '定理と証明'),
           '2013-05-01', null, 'month', 'point', '張益唐、素数の間隔に有限の上界を証明', 'ほぼ無名だった張益唐が、差が7,000万以下である素数の組が無限に存在することを証明し、論文がアナルズ誌に受理された。差2の組を問う双子素数予想に対する、史上初の「有限の壁」だった。
 
-発表直後から世界中の数学者がオンライン共同研究「Polymath」で改良を重ね、上界は数カ月で246まで縮んだ。孤高の証明と開かれた共同作業が連続したこの出来事は、数学の営みの新旧両面を同時に見せた。', null,
+発表直後から世界中の数学者がオンライン共同研究「Polymath」で改良を重ね、上界は1年ほどで246まで縮んだ。孤高の証明と開かれた共同作業が連続したこの出来事は、数学の営みの新旧両面を同時に見せた。', null,
           'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Yitang Zhang', 'https://en.wikipedia.org/wiki/Yitang_Zhang')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -2154,7 +2154,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-neuroscience'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-neuroscience') and name = '医療と社会'),
-          '1953-09-01', '2008-12-02', 'month', 'period', '患者H.M.と記憶研究の55年', '重いてんかんの治療のため、患者ヘンリー・モレゾン(H.M.)の左右の海馬を含む内側側頭葉が切除されました。新しい出来事を覚えられなくなった彼は、2008年に82歳で亡くなるまでの55年間、記憶研究に協力し続けます。
+          '1953-08-01', '2008-12-02', 'month', 'period', '患者H.M.と記憶研究の55年', '重いてんかんの治療のため、患者ヘンリー・モレゾン(H.M.)の左右の海馬を含む内側側頭葉が切除されました。新しい出来事を覚えられなくなった彼は、2008年に82歳で亡くなるまでの55年間、記憶研究に協力し続けます。
 
 新しいページが増えなくなったアルバムのような記憶とともに生きた、長い線です。この線の上に、場所細胞(1971年)や長期増強(1973年、脳の理解レイヤー)の発見の点が乗っています。**患者の犠牲の上に立つ知見**という研究倫理の問いも、線の長さの分だけ深くなりました。', null,
           'verified', null, 'user', 7) returning id)
@@ -2621,7 +2621,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-renewable-energy') and name = '技術の芽'),
           '1839-01-01', null, 'year', 'point', 'ベクレル、光起電力効果を発見', 'フランスの19歳の物理学者エドモン・ベクレルが、電解液に浸した電極に光を当てると電流が生じる現象を報告しました。光を電気に変える太陽電池の原理につながる、最初の観察とされています。
 
-実用にはほど遠く、シリコン太陽電池(1954年)まで115年。まかれた種が花を咲かせるまでの、**原理の発見から産業になるまでの時間差**は、この年表を貫く主題です。なお、放射能を発見した孫のアンリ・ベクレルの方が、後世には有名になりました。', null,
+実用にはほど遠く、シリコン太陽電池(1954年)まで115年。まかれた種が花を咲かせるまでの、**原理の発見から産業になるまでの時間差**は、この年表を貫く主題です。なお、放射能を発見した息子のアンリ・ベクレルの方が、後世には有名になりました。', null,
           'disputed', 'ベクレルが観察した現象は、今日の半導体の光起電力効果とは機構が異なる光電気化学反応で、「太陽電池の起源」とみなせるかには学説上の幅があります。', 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Edmond Becquerel', 'https://en.wikipedia.org/wiki/Edmond_Becquerel')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -2950,7 +2950,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-vaccines'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-vaccines') and name = '科学と技術'),
-          '2020-12-02', null, 'day', 'point', '💉 英国がmRNAワクチンを世界に先駆け承認', '英国の規制当局MHRAがファイザー・ビオンテックのmRNAワクチンを承認し、西側諸国で初の新型コロナワクチン実用化となりました。8日後には、90歳の女性が臨床試験の外で世界初の接種を受けています。
+          '2020-12-02', null, 'day', 'point', '💉 英国がmRNAワクチンを世界に先駆け承認', '英国の規制当局MHRAがファイザー・ビオンテックのmRNAワクチンを承認し、西側諸国で初の新型コロナワクチン実用化となりました。6日後には、90歳の女性が臨床試験の外で世界初の接種を受けています。
 
 ウイルスの遺伝子配列の公開から約11か月。**着手から1年未満での実用化**は、「ワクチン開発は10年仕事」という常識を覆しました。カリコらの基礎研究、各国政府の先行購入という資本、緊急承認という制度(制度と公衆衛生レイヤー)。三つの力の足し算でした。', null,
           'verified', null, 'user', 18) returning id)

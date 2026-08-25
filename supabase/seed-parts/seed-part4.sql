@@ -396,7 +396,7 @@ select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-career-turns'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-career-turns') and name = '経済と働き方'),
-          '2011-01-01', null, 'year', 'point', 'スマートフォン保有世帯が3割へ急伸', '総務省の通信利用動向調査で、スマートフォンを保有する世帯の割合が3割近くに達したとされます。前年から倍増のペースで、企業サイトのスマホ対応が一斉に発注される特需が生まれました。
+          '2011-01-01', null, 'year', 'point', 'スマートフォン保有世帯が3割へ急伸', '総務省の通信利用動向調査で、スマートフォンを保有する世帯の割合が3割近くに達したとされます。前年の3倍近い伸びで、企業サイトのスマホ対応が一斉に発注される特需が生まれました。
 
 フリーランス2年目の私の仕事の半分は、このスマホ対応の案件でした。技術の普及曲線が、個人の売上曲線をそのまま持ち上げた年です。', null,
           'unverified', '世帯保有率は総務省の公表統計ですが、調査年版によって端末分類の定義が変わっており、当該年の正確な数値は確認できていません。', 'user', 11) returning id)
@@ -909,7 +909,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-family-history'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-family-history') and name = '時代の出来事'),
-          '2001-11-23', null, 'day', 'point', 'ヨドバシカメラ マルチメディア梅田が開業', '大阪駅前に大型家電量販店ヨドバシカメラ マルチメディア梅田が開業し、初日から長蛇の列になりました。ポイント還元と豊富な在庫を武器に、家電の買い場は郊外店と都心の大型店へ集中していきます。
+          '2001-11-22', null, 'day', 'point', 'ヨドバシカメラ マルチメディア梅田が開業', '大阪駅前に大型家電量販店ヨドバシカメラ マルチメディア梅田が開業し、初日から長蛇の列になりました。ポイント還元と豊富な在庫を武器に、家電の買い場は郊外店と都心の大型店へ集中していきます。
 
 町の電器店には、価格で勝てない時代の到来でした。父は「うちは売る店やなく、直す店や」と方針を切り替え、配線工事と修理、高齢のお客さんの御用聞きに軸足を移していきました。', null,
           'verified', null, 'user', 11) returning id)
@@ -1824,7 +1824,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 完走者の年齢層は上がったとも言われます。私もその一人で、50代の完走者は珍しくなくなりました。この線の上で、私は20回目のフルを走っています。', null,
           'disputed', '参加費や給水方式の変化、完走者の年齢層が上がったという傾向は大会ごとに事情が異なり、全国的な統計として確定したものではない。', 'user', 18) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('東京マラソン財団: 東京マラソン2022 大会概要', null)) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('東京マラソン財団: 東京マラソン2021（2022年3月6日開催）大会概要', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-marathon'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-marathon') and name = 'レースと記録'),
@@ -1935,7 +1935,7 @@ select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-moving-history'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-moving-history') and name = '家族の節目'),
-          '1985-05-01', null, 'month', 'point', '結婚', '29歳の春に、同じ会社の同期と結婚しました。式は横浜の小さな会場で挙げ、寮を出る日には管理人さんが赤飯を炊いてくれました。新居の家具は、ふたりの貯金で少しずつ揃えたものです。
+          '1985-05-01', null, 'month', 'point', '結婚', '30歳の春に、同じ会社の同期と結婚しました。式は横浜の小さな会場で挙げ、寮を出る日には管理人さんが赤飯を炊いてくれました。新居の家具は、ふたりの貯金で少しずつ揃えたものです。
 
 結婚は住まいの転機でもあり、翌月にはふたりで中野の賃貸2DKへ移ります(引っ越しの記録レイヤー)。この年の秋のプラザ合意から円高と地価高騰の時代が始まることを、当時のふたりはまだ知りませんでした。', null,
           'verified', null, 'user', 9) returning id)
@@ -2106,7 +2106,7 @@ select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-music-practice'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-music-practice') and name = '練習と演奏'),
-          '2018-11-01', null, 'month', 'point', '16年ぶりの発表会でショパンのワルツ', '大人の生徒だけの小さな発表会で、ショパンのワルツ第19番イ短調を弾きました。直前の1週間は毎晩指が冷たくなるほど緊張して、本番では中間部で一度和音を外しました。
+          '2018-11-01', null, 'month', 'point', '18年ぶりの発表会でショパンのワルツ', '大人の生徒だけの小さな発表会で、ショパンのワルツ第19番イ短調を弾きました。直前の1週間は毎晩指が冷たくなるほど緊張して、本番では中間部で一度和音を外しました。
 
 それでも弾き終えたとき、13歳の発表会では感じなかった種類の満足があったんです!翌週のレッスンで講師に言われた「大人の本番は減点法ではない」を、以後ずっと支えにしています。', null,
           'verified', null, 'user', 9) returning id)
@@ -2273,7 +2273,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 長女は2歳児クラスだったので、恩恵は翌年度から。認可外に月7万円を払っていた頃と比べると、制度の谷間にいた時期の記憶が、あらためてよみがえりました。', null,
           'verified', null, 'user', 8) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('内閣府: 幼児教育・保育の無償化について', 'https://www8.cao.go.jp/shoushi/shinseido/musyouka/index.html')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('こども家庭庁: 幼児教育・保育の無償化', 'https://www.cfa.go.jp/policies/kokoseido/mushouka/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '社会と制度'),
@@ -2317,7 +2317,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-parenting'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-parenting') and name = '子どもの成長'),
-          '2022-11-14', null, 'day', 'point', '第二子、誕生', '長女が5歳の秋に、次女が生まれました。コロナ禍の面会制限はまだ続いていて、立ち会いは夫だけ。長女は退院の日まで妹に会えず、玄関で待っていてくれました。初対面の長女は妹の指を握って、思ったより小さい、と言いました。
+          '2022-11-14', null, 'day', 'point', '第二子、誕生', '長女が6歳の秋に、次女が生まれました。コロナ禍の面会制限はまだ続いていて、立ち会いは夫だけ。長女は退院の日まで妹に会えず、玄関で待っていてくれました。初対面の長女は妹の指を握って、思ったより小さい、と言いました。
 
 前の月に始まった産後パパ育休を夫が取ることが決まっていて、退院の翌日から、家に大人がふたりいる暮らしが始まりました。6年前の長女のときには、なかった選択肢です。👶', null,
           'verified', null, 'user', 14) returning id)
@@ -2377,7 +2377,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 すでに認可に通っている次女は、直接の対象ではありません。それでも、10年前に「保育園落ちた」が国会で語られたことを思うと、預ける理由を問わない制度が全国に広がる予定というだけで、**時代の距離**を感じます。', null,
           'unverified', '2026年度からの全国実施は制度設計上の予定であり、自治体ごとの実施時期や利用可能時間の運用は本記録作成時点で確定していない。', 'user', 21) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('こども家庭庁: こども誰でも通園制度について', 'https://www.cfa.go.jp/policies/kokoseido/daredemo-tsuen')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('こども家庭庁: こども誰でも通園制度について', 'https://www.cfa.go.jp/policies/hoiku/daredemo-tsuen')) as v(title, url);
 
 -- ═══ personal-reading-log — 読書遍歴 1990–2026
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
@@ -2629,7 +2629,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-travel-album') and name = '旅と時代'),
           '1987-01-01', '1991-12-31', 'year', 'period', 'テンミリオン計画の5年', '運輸省が、海外旅行者を5年間で年間1000万人に倍増させる「海外旅行倍増計画」を進めた5年間です。貿易黒字への国際的な批判をかわす狙いもあり、休暇を海外で使うことが政策として勧められました。
 
-目標は3年目に前倒しで達成されます。ただ、この5年はまるごと、わが家が海外へ出なかった10年の内側にありました。旅行会社の店頭にあふれ始めたパンフレットを、私は横目で見ていただけだったのです。', null,
+目標は1年前倒しで達成されます。ただ、この5年はまるごと、わが家が海外へ出なかった10年の内側にありました。旅行会社の店頭にあふれ始めたパンフレットを、私は横目で見ていただけだったのです。', null,
           'unverified', '計画の存在と1987年の策定は広く言われていますが、計画期間の区切りや目標値の決め方の詳しいところまでは、一次資料で確かめられていません。', 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('運輸省「海外旅行倍増計画(テンミリオン計画)」(1987)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -2741,7 +2741,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-travel-album') and name = '旅の記録'),
           '2023-10-01', null, 'month', 'point', '3年半ぶりの海外、台湾で孫と', '水際措置の終わりを待って、68歳で3世代の台湾旅行に出ました。新しいパスポートを10年用にするか5年用にするか、人生で初めて迷ったものです。九份の坂道を、4歳の孫と手をつないで登りました。
 
-44年前の香港で始まった旅の記録に、孫の代が加わった巻です。夜市の匂いは、あの頃と同じでした。孫が屋台で選んだ提灯の写真が、この巻の最初のページになっています。', null,
+43年前の香港で始まった旅の記録に、孫の代が加わった巻です。夜市の匂いは、あの頃と同じでした。孫が屋台で選んだ提灯の写真が、この巻の最初のページになっています。', null,
           'verified', null, 'user', 20) returning id)
 select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -2782,7 +2782,7 @@ select 1 from ev;
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = 'ふたりの出来事'),
-          '2015-03-21', null, 'day', 'point', '付き合い始める', '出会いから10か月。写真展のあとも月に一度は顔を合わせていたのに、関係に名前をつけるまでずいぶんかかりました。三連休の初日、井の頭公園のまだ蕾の桜並木を歩きながら、次の春も一緒に見に来ようという話になったのです。
+          '2015-03-21', null, 'day', 'point', '付き合い始める', '出会いから10か月。写真展のあとも月に一度は顔を合わせていたのに、関係に名前をつけるまでずいぶんかかりました。春分の日の土曜日、井の頭公園のまだ蕾の桜並木を歩きながら、次の春も一緒に見に来ようという話になったのです。
 
 特別な告白の言葉はありませんでした。帰り道にKが「じゃあ、そういうことで」と言ったのが始まりだと、当時の手帳に書いてあります。🌸', null,
           'verified', null, 'user', 2) returning id)
@@ -2842,7 +2842,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 わたしたちはこの年の秋に入籍するのですが、婚姻届の元号欄をどちらで書こうか、という小さな会話をした記憶があります。時代の区切りが自分たちの書類の書式にまで及ぶことを、静かに実感した年でした。', null,
           'verified', null, 'user', 9) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('首相官邸: 新元号「令和」について（平成31年4月1日）', 'https://www.kantei.go.jp/jp/98_abe/statement/2019/0401singengou.html')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('内閣府: 元号について（元号を改める政令・改元に際しての内閣総理大臣談話）', 'https://www.cao.go.jp/others/soumu/gengou/index.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = 'ふたりの出来事'),
@@ -2934,7 +2934,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'personal-two-of-us'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'personal-two-of-us') and name = 'ふたりの出来事'),
-          '2024-05-17', null, 'day', 'point', '出会いから10年、神保町へ', '新居への引っ越しを翌月に控えた土曜日、出会いから10年の日に、神保町へ行きました。あの写真展のギャラリーは別のお店に変わっていたけれど、通りの古書店は変わらずにあって、同じ喫茶店で、缶コーヒーではなく珈琲を飲みました。
+          '2024-05-17', null, 'day', 'point', '出会いから10年、神保町へ', '新居への引っ越しを翌月に控えた金曜日、出会いから10年の日に、神保町へ行きました。あの写真展のギャラリーは別のお店に変わっていたけれど、通りの古書店は変わらずにあって、同じ喫茶店で、缶コーヒーではなく珈琲を飲みました。
 
 この10年で消費税は2度上がり、元号が変わり、感染症で街が静まり、金利が動きました。わたしたちの記録は、**大きな流れの脇に置かれた小さな注釈**のようなものです。玄関の赤い防災リュックは、次の家にも持っていきます。☕', null,
           'verified', null, 'user', 21) returning id)

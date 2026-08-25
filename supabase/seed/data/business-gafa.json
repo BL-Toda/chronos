@@ -130,16 +130,16 @@
       ]
     },
     {
-      "date": "2005-08-01",
+      "date": "2005-07-01",
       "precision": "month",
       "end_date": null,
       "type": "point",
       "layer": "買収と資本",
       "title": "GoogleがAndroidを買収",
-      "summary": "2005年8月、GoogleがモバイルOS開発のスタートアップAndroidを買収。買収額は非公表、報道では約5,000万ドル。当時の受け止めは小さな買収だった。\n\n2007年のiPhone登場後、GoogleはAndroidをオープンソースで端末メーカーに提供し、モバイル検索と広告の入り口を確保する。製品面ではiPhoneとApp Storeが先行し、Android初端末の発売は2008年秋である。",
+      "summary": "2005年7月、GoogleがモバイルOS開発のスタートアップAndroidを買収。買収額は非公表、報道では約5,000万ドル。当時の受け止めは小さな買収だった。\n\n2007年のiPhone登場後、GoogleはAndroidをオープンソースで端末メーカーに提供し、モバイル検索と広告の入り口を確保する。製品面ではiPhoneとApp Storeが先行し、Android初端末の発売は2008年秋である。",
       "detail": null,
       "credibility": "unverified",
-      "credibility_note": "買収の事実と時期は確実。額は非公表で、約5,000万ドルは報道による推計値。",
+      "credibility_note": "買収の時期は資料により2005年7月とも8月ともされる。額は非公表で、約5,000万ドルは報道による推計値。",
       "sources": [
         {
           "title": "Wikipedia: Android (operating system)",

@@ -152,8 +152,8 @@
       "credibility_note": null,
       "sources": [
         {
-          "title": "内閣府: 幼児教育・保育の無償化について",
-          "url": "https://www8.cao.go.jp/shoushi/shinseido/musyouka/index.html"
+          "title": "こども家庭庁: 幼児教育・保育の無償化",
+          "url": "https://www.cfa.go.jp/policies/kokoseido/mushouka/"
         }
       ]
     },
@@ -249,7 +249,7 @@
       "type": "point",
       "layer": "子どもの成長",
       "title": "第二子、誕生",
-      "summary": "長女が5歳の秋に、次女が生まれました。コロナ禍の面会制限はまだ続いていて、立ち会いは夫だけ。長女は退院の日まで妹に会えず、玄関で待っていてくれました。初対面の長女は妹の指を握って、思ったより小さい、と言いました。\n\n前の月に始まった産後パパ育休を夫が取ることが決まっていて、退院の翌日から、家に大人がふたりいる暮らしが始まりました。6年前の長女のときには、なかった選択肢です。👶",
+      "summary": "長女が6歳の秋に、次女が生まれました。コロナ禍の面会制限はまだ続いていて、立ち会いは夫だけ。長女は退院の日まで妹に会えず、玄関で待っていてくれました。初対面の長女は妹の指を握って、思ったより小さい、と言いました。\n\n前の月に始まった産後パパ育休を夫が取ることが決まっていて、退院の翌日から、家に大人がふたりいる暮らしが始まりました。6年前の長女のときには、なかった選択肢です。👶",
       "detail": null,
       "credibility": "verified",
       "credibility_note": null,
@@ -357,7 +357,7 @@
       "sources": [
         {
           "title": "こども家庭庁: こども誰でも通園制度について",
-          "url": "https://www.cfa.go.jp/policies/kokoseido/daredemo-tsuen"
+          "url": "https://www.cfa.go.jp/policies/hoiku/daredemo-tsuen"
         }
       ]
     }

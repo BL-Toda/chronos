@@ -327,7 +327,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1941-07-01', null, 'day', 'point', '世界初のテレビCM、ブローバの時計広告', '米NBC系のWNBTで、時計メーカー・ブローバの広告が放送されました。野球中継の前に流れた短い映像で、料金は9ドルだったとされています。商業テレビ放送が認可された初日の出来事でした。
 
 以後半世紀にわたり、テレビは広告費の最大の受け皿として広告産業の構造を決めていきます。クリエイティブ革命(広告産業とクリエイティブレイヤー)も、テレビとグラフィック広告の黄金期に起きることになります。', null,
-          'verified', null, 'user', 2) returning id)
+          'disputed', '米国で最初の商業テレビCMである点は確かですが、「世界初」という位置づけと料金(4ドル・9ドルなど)は資料により記述が異なります。', 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Bulova', 'https://en.wikipedia.org/wiki/Bulova')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-advertising-100'),
@@ -352,7 +352,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 フォルクスワーゲンやエイビスのキャンペーンが代表例で、広告が文化として語られ、批評される時代が始まります。期間の区切りは概説によって異なりますが、テレビ(メディアと技術レイヤー)の普及期と重なっている点が本質です。', null,
           'unverified', '「クリエイティブ革命」の期間区分は論者により異なるため、1960年代全般とする概説に依拠しました。', 'user', 5) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Creative revolution', 'https://en.wikipedia.org/wiki/Creative_revolution')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: William Bernbach', 'https://en.wikipedia.org/wiki/William_Bernbach')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-advertising-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-advertising-100') and name = '広告産業とクリエイティブ'),
@@ -364,7 +364,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-advertising-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-advertising-100') and name = '社会と規制'),
-          '1971-01-02', '2026-06-30', 'day', 'period', '米タバコCM禁止、55年続く規制', '公衆衛生タバコ喫煙法の施行により、米国のテレビ・ラジオでのタバコ広告が禁止されました。最後のCMは前夜の年越し番組の枠で流れています。この規制は撤廃されないまま、半世紀を超えて現在も続いています。
+          '1971-01-02', '2026-06-30', 'day', 'period', '米タバコCM禁止、55年続く規制', '公衆衛生タバコ喫煙法の施行により、米国のテレビ・ラジオでのタバコ広告が禁止されました。最後のCMは前夜の深夜番組の枠で流れています。この規制は撤廃されないまま、半世紀を超えて現在も続いています。
 
 **何を広告してよいかを社会が決める**時代の始まりでした。この線が始まったころ、日本ではテレビが広告費の首位に就こうとしていました(メディアと技術レイヤー)。放送の黄金時代は、米国では最大級の広告主を締め出したまま続いたことになります。', null,
           'verified', null, 'user', 7) returning id)
@@ -399,7 +399,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1994-10-27', null, 'day', 'point', 'HotWiredに世界初のバナー広告', '米ウェブメディアHotWiredに、AT&Tなどのバナー広告が掲載されました。ウェブ広告の事実上の始まりとされ、AT&Tのバナーのクリック率は44%に達したと伝えられています。
 
 **クリックという行動の測定**ができるようになったことで、広告の効果は推定から計測へ移り始めました。ニールセン以来の「視聴の通貨」(広告産業とクリエイティブレイヤー)とは別の、行動データに基づく取引の系譜がここから始まります。', null,
-          'verified', null, 'user', 11) returning id)
+          'disputed', '1993年にGlobal Network Navigatorがクリック可能な広告を販売した例があり、「世界初」はバナー形式に限った位置づけです。クリック率44%も当時の報道による数字です。', 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Web banner', 'https://en.wikipedia.org/wiki/Web_banner')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-advertising-100'),
@@ -1068,7 +1068,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 主要排出国の長期目標が出そろい始めた時期にあたり、国内ではGX（グリーントランスフォーメーション）関連政策やトランジション・ファイナンスの制度設計が始動する。政府目標の明示は企業の脱炭素計画と開示の前提条件を変え、投資と市場レイヤーの国内ESG投資残高拡大を後押しした。', null,
           'verified', null, 'user', 12) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('首相官邸: 第二百三回国会における菅内閣総理大臣所信表明演説 (2020-10-26)', 'https://www.kantei.go.jp/jp/99_suga/statement/2020/1026shoshinhyomei.html')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('首相官邸: 第二百三回国会における菅内閣総理大臣所信表明演説 (2020-10-26)（国立国会図書館WARP保存版）', 'https://warp.ndl.go.jp/info:ndljp/pid/11842657/www.kantei.go.jp/jp/99_suga/statement/2020/1026shoshinhyomei.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-esg-investing'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-esg-investing') and name = '規制と基準'),
@@ -1295,7 +1295,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 プラットフォームの登場(1999年)から言葉の誕生(2009年)、各国の司法判断と立法を経て、日本でも専用法の執行という段階に届きました。**雇用によらない働き方**を制度が追いかける往復運動は、生成AI(働き手と社会レイヤー)という新しい変数を迎えて、今も続いています。', null,
           'verified', null, 'user', 17) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('公正取引委員会: フリーランス法特設サイト', 'https://www.jftc.go.jp/freelancelaw/')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('公正取引委員会: フリーランスの取引適正化に向けた公正取引委員会の取組', 'https://www.jftc.go.jp/fllaw_limited.html')) as v(title, url);
 
 -- ═══ business-gafa — GAFA帝国の形成
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
@@ -1358,10 +1358,10 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-gafa'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-gafa') and name = '買収と資本'),
-          '2005-08-01', null, 'month', 'point', 'GoogleがAndroidを買収', '2005年8月、GoogleがモバイルOS開発のスタートアップAndroidを買収。買収額は非公表、報道では約5,000万ドル。当時の受け止めは小さな買収だった。
+          '2005-07-01', null, 'month', 'point', 'GoogleがAndroidを買収', '2005年7月、GoogleがモバイルOS開発のスタートアップAndroidを買収。買収額は非公表、報道では約5,000万ドル。当時の受け止めは小さな買収だった。
 
 2007年のiPhone登場後、GoogleはAndroidをオープンソースで端末メーカーに提供し、モバイル検索と広告の入り口を確保する。製品面ではiPhoneとApp Storeが先行し、Android初端末の発売は2008年秋である。', null,
-          'unverified', '買収の事実と時期は確実。額は非公表で、約5,000万ドルは報道による推計値。', 'user', 6) returning id)
+          'unverified', '買収の時期は資料により2005年7月とも8月ともされる。額は非公表で、約5,000万ドルは報道による推計値。', 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Android (operating system)', 'https://en.wikipedia.org/wiki/Android_(operating_system)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-gafa'),
@@ -1517,7 +1517,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 この目標自体は達成されず、開業率は5%前後にとどまりました。それでも、以降のJ-Startupやスタートアップ育成5か年計画へ続く政策系譜の起点になった閣議決定です。', null,
           'verified', null, 'user', 2) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('首相官邸: 日本再興戦略 -JAPAN is BACK-', 'https://www.kantei.go.jp/jp/singi/keizaisaisei/pdf/saikou_jpn.pdf')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('内閣官房: 日本再興戦略 -JAPAN is BACK-', 'https://www.cas.go.jp/jp/seisaku/seicho/pdf/saikou_jpn.pdf')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-japan-unicorns') and name = '企業と資金調達'),
@@ -1581,7 +1581,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 事業終了直前の2020年春には新型コロナの緊急事態宣言が出され、非接触決済の需要がさらに高まりました。**政策・技術・社会情勢が同じ方向に働いた稀な期間**だったと思います。', null,
           'verified', null, 'user', 10) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('経済産業省 キャッシュレス・ポイント還元事業', 'https://cashless.go.jp/')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('経済産業省 キャッシュレス・ポイント還元事業', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-japan-unicorns') and name = '制度と市場'),
@@ -1613,15 +1613,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 
 同月にはPayPalによるPaidy買収も発表され、2021年は評価額と資金調達額がともに高水準となった年として記録されます。ただし評価額は同社が公式に確認した数値ではなく、報道と投資家筋の情報に基づくものです。', null,
           'unverified', '評価額は非公表で報道ベースです。同社は調達額のみ公表しています。', 'user', 14) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: SmartNews', 'https://en.wikipedia.org/wiki/SmartNews')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('SmartNewsの資金調達に関する報道(2021年9月)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-japan-unicorns') and name = '企業と資金調達'),
-          '2021-09-08', null, 'day', 'point', 'PayPalがPaidyを約3,000億円で買収', '米PayPalが後払い決済のPaidyを約3,000億円で買収すると発表し、国内スタートアップの大型M&Aとして注目を集めました。IPO以外の出口として海外大手による買収が成立し、投資家の回収手段が広がった意味は大きいと思います。
+          '2021-09-07', null, 'day', 'point', 'PayPalがPaidyを約3,000億円で買収', '米PayPalが後払い決済のPaidyを約3,000億円で買収すると発表し、国内スタートアップの大型M&Aとして注目を集めました。IPO以外の出口として海外大手による買収が成立し、投資家の回収手段が広がった意味は大きいと思います。
 
 技術面ではPayPay以降のキャッシュレス化と、コロナ禍でのEC拡大が後払い決済の需要を押し上げていました。制度面では翌2022年の東証再編と育成5か年計画を控え、出口の多様化が政策課題として意識され始めた時期です。', null,
           'verified', null, 'user', 15) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('PayPal ニュースリリース（2021年9月8日）', null), ('Wikipedia: Paidy', 'https://en.wikipedia.org/wiki/Paidy')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('PayPal ニュースリリース（2021年9月7日）', null), ('Wikipedia: Paidy', 'https://en.wikipedia.org/wiki/Paidy')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-japan-unicorns'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-japan-unicorns') and name = '制度と市場'),
@@ -1694,7 +1694,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-ma-battles') and name = '金融技術と市場'),
           '1983-01-01', '1990-02-13', 'year', 'period', 'ジャンク債の時代、買収資金の革命', '1983年頃から、ドレクセル・バーナムのマイケル・ミルケンが育てた高利回り債（ジャンク債）市場が、敵対的買収とLBOの資金源として急拡大。
 
-信用力の低い買い手にも巨額調達の道が開け、1980年代の米国買収ブームを金融面から支えた。1990年2月、ミルケンの訴追とドレクセルの経営破綻で時代は終幕。ただしハイイールド債市場そのものは定着した。', null,
+信用力の低い買い手にも巨額調達の道が開け、1980年代の米国買収ブームを金融面から支えた。1989年3月のミルケン訴追に続き、1990年2月のドレクセルの経営破綻で時代は終幕。ただしハイイールド債市場そのものは定着した。', null,
           'unverified', '「ジャンク債の時代」の期間区分は概説によるもの。始期の設定は資料により幅がある。', 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Drexel Burnham Lambert', 'https://en.wikipedia.org/wiki/Drexel_Burnham_Lambert')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -1719,7 +1719,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2000-02-01', null, 'month', 'point', 'ボーダフォンがマンネスマン買収に成功', '2000年2月、約1800億ドル。英ボーダフォンによる独マンネスマンへの敵対的買収が決着した。金額において史上最大級の買収とされる。
 
 衝撃は、敵対的買収がほぼ存在しなかったドイツでの成立。株主資本主義が大陸欧州の企業統治を塗り替える転機となり、従業員と地域を重視する欧州型経営と資本市場の論理の衝突として、長く論争の対象であり続けた。', null,
-          'verified', null, 'user', 5) returning id)
+          'disputed', '取引総額は約1,809億ドルとする集計が広く引用されるが、算定基準と為替により1,800億〜1,900億ドル超まで資料で幅がある。', 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Mannesmann', 'https://en.wikipedia.org/wiki/Mannesmann')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-ma-battles'),
@@ -1911,7 +1911,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-real-estate-bubbles'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-real-estate-bubbles') and name = '金融と政策'),
-          '2001-01-03', '2004-06-30', 'month', 'period', '米FRBの超低金利期、住宅ブームの燃料に', '2001年、ITバブル崩壊と同時多発テロを受け、FRBは11回の利下げを実施。政策金利は2003年に1%まで下がり、2004年半ばまで低水準に据え置かれた。
+          '2001-01-03', '2004-06-30', 'day', 'period', '米FRBの超低金利期、住宅ブームの燃料に', '2001年、ITバブル崩壊と同時多発テロを受け、FRBは11回の利下げを実施。政策金利は2003年に1%まで下がり、2004年半ばまで低水準に据え置かれた。
 
 低金利と「住宅価格が全国一斉に下がったことはない」という経験則が融資の規律を緩め、信用力の低い層へのサブプライムローンと、それを組み替えて売る証券化が急拡大する。日本の1980年代後半と同じく、**緩和マネーの行き先**が次の危機の発生場所を決めた。', null,
           'verified', null, 'user', 7) returning id)
@@ -2224,7 +2224,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2000-02-01', '2000-11-07', 'month', 'period', 'Pets.com、IPOから清算までの268日', 'ペット用品ECのPets.comは2000年2月に上場し、268日後の11月7日に事業清算を発表しました。ドットコム崩壊の象徴として語り継がれる、あまりに短い上場企業の線です。
 
 IPOの1か月後にナスダック急落の線が始まり、この線はほぼ全体が崩壊の線に覆われています。スーパーボウルCMなど巨額の広告費に対し、送料負けする低粗利の商品構成という構造的な難しさを抱えていました。**認知度は売上ではない**という教訓は、検証と教訓レイヤーの失敗分析で繰り返し引用されていきます。', null,
-          'verified', null, 'user', 2) returning id)
+          'disputed', '「268日」は広く引用される数字ですが、2000年2月11日の上場から11月7日の清算発表までは実際には約270日で、起算日の取り方により数え方が異なります。', 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Pets.com', 'https://en.wikipedia.org/wiki/Pets.com')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-startup-failures'),
@@ -2408,7 +2408,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-subscription'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-subscription') and name = '技術と課金インフラ'),
-          '2006-08-25', null, 'day', 'point', 'Amazon EC2ベータ公開、従量課金のクラウドへ', 'AmazonがクラウドサーバーのEC2をベータ公開し、計算資源を時間単位で借りる使い方を実用化しました。前年公開のストレージS3と合わせ、AWSの中核が出そろいます。
+          '2006-08-25', null, 'day', 'point', 'Amazon EC2ベータ公開、従量課金のクラウドへ', 'AmazonがクラウドサーバーのEC2をベータ公開し、計算資源を時間単位で借りる使い方を実用化しました。同年3月公開のストレージS3と合わせ、AWSの中核が出そろいます。
 
 自前サーバーへの初期投資なしにサービスを始められる環境は、スタートアップがSaaSや配信サービスを低コストで立ち上げる土台になりました。売る側も買う側も「使った分・使う権利に払う」構造への転換で、サブスク経済を物理的に支えるインフラの登場です。', null,
           'verified', null, 'user', 4) returning id)
@@ -2488,10 +2488,10 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-subscription'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'business-subscription') and name = '消費者と社会'),
-          '2019-12-01', null, 'month', 'point', '「サブスク」が新語・流行語大賞トップ10に', '「サブスク(サブスクリプション)」が2019年の新語・流行語大賞トップ10に選ばれました。音楽・動画だけでなく、洋服・家具・車・飲食店まで定額制をうたうサービスが相次いだ年です。
+          '2019-12-01', null, 'month', 'point', '「サブスク」が新語・流行語大賞にノミネート', '「サブスク(サブスクリプション)」が2019年の新語・流行語大賞の候補30語に選ばれました。音楽・動画だけでなく、洋服・家具・車・飲食店まで定額制をうたうサービスが相次いだ年です。
 
 言葉の流行は、定額制が一部のデジタルサービスの課金方式から**消費のスタイルそのもの**へ広がったことを映しています。一方で「解約しにくい」「使っていないのに払い続けている」という不満も、この頃から消費者相談に現れ始めました。', null,
-          'disputed', 'トップ10選出は主催者(自由国民社)の2019年発表に基づきますが、賞の区分(大賞・トップ10・ノミネート)は資料により表記が揺れます。', 'user', 14) returning id)
+          'disputed', '候補30語への選出は主催者発表で確認できますが、トップ10・年間大賞には入っていません。消費者相談に現れ始めた時期の記述も概括的なものです。', 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('自由国民社「現代用語の基礎知識」選 ユーキャン新語・流行語大賞 2019', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'business-subscription'),

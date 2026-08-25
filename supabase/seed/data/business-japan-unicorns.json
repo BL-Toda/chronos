@@ -74,8 +74,8 @@
       "credibility_note": null,
       "sources": [
         {
-          "title": "首相官邸: 日本再興戦略 -JAPAN is BACK-",
-          "url": "https://www.kantei.go.jp/jp/singi/keizaisaisei/pdf/saikou_jpn.pdf"
+          "title": "内閣官房: 日本再興戦略 -JAPAN is BACK-",
+          "url": "https://www.cas.go.jp/jp/seisaku/seicho/pdf/saikou_jpn.pdf"
         }
       ]
     },
@@ -235,7 +235,7 @@
       "sources": [
         {
           "title": "経済産業省 キャッシュレス・ポイント還元事業",
-          "url": "https://cashless.go.jp/"
+          "url": null
         }
       ]
     },
@@ -306,13 +306,13 @@
       "credibility_note": "評価額は非公表で報道ベースです。同社は調達額のみ公表しています。",
       "sources": [
         {
-          "title": "Wikipedia: SmartNews",
-          "url": "https://en.wikipedia.org/wiki/SmartNews"
+          "title": "SmartNewsの資金調達に関する報道(2021年9月)",
+          "url": null
         }
       ]
     },
     {
-      "date": "2021-09-08",
+      "date": "2021-09-07",
       "precision": "day",
       "end_date": null,
       "type": "point",
@@ -324,7 +324,7 @@
       "credibility_note": null,
       "sources": [
         {
-          "title": "PayPal ニュースリリース（2021年9月8日）",
+          "title": "PayPal ニュースリリース（2021年9月7日）",
           "url": null
         },
         {
