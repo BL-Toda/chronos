@@ -533,7 +533,7 @@
   /* ===== VIEWER-SPECIFIC ===== */
   /* Public hero */
   .pub-hero {
-    text-align:center; padding:32px 20px 24px;
+    text-align:left; padding:32px 20px 24px;
     max-width:1080px; margin:0 auto;
     border-bottom:1px solid var(--border);
     opacity:0; animation:fadeUp 0.8s ease forwards 0.1s;
@@ -544,8 +544,8 @@
     color:var(--text-h); margin-bottom:12px; line-height:var(--lh-display);
   }
   .pub-meta {
-    display:flex; align-items:center; justify-content:center;
-    gap:12px; margin-bottom:16px; flex-wrap:wrap;
+    display:flex; align-items:center; justify-content:flex-start;
+    gap:16px; margin-bottom:24px; flex-wrap:wrap;
   }
   .pub-author { display:flex; align-items:center; gap:8px; font-size:var(--fs-sm); line-height:var(--lh-sm); color:var(--text2); }
   .pub-avatar {
@@ -561,7 +561,7 @@
   }
   .pub-desc {
     font-size:var(--fs-body); color:var(--text); line-height:var(--lh-body);
-    max-width:680px; margin:0 auto;
+    max-width:680px; margin:0; text-align:left;
   }
 
   /* Like button */
@@ -952,9 +952,7 @@ function render(){
   document.getElementById('pubAuthor').textContent = '@' + au.username;
   document.querySelector('.pub-avatar').textContent = au.username[0].toUpperCase();
   const era = `${yearLabel(t.start_year)}–${yearLabel(t.end_year)}`;
-  const cred = t.events.reduce((a,e) => (a[e.credibility] = (a[e.credibility]||0)+1, a), {});
-  document.getElementById('pubStat').textContent =
-    `${t.events.length} events · ${t.layers.length} layers · ${era} · 検証済み ${cred.verified||0} / 諸説あり ${cred.disputed||0} / 未検証 ${cred.unverified||0}`;
+  document.getElementById('pubStat').textContent = `${t.events.length} events · ${t.layers.length} layers · ${era}`;
   document.getElementById('pubCat').textContent = CAT_NAME[t.category] || t.category;
   // カバー写真
   const ph = pickPhoto(t), cw = document.getElementById('coverWrap');
