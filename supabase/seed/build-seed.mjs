@@ -10,6 +10,12 @@ const here = dirname(fileURLToPath(import.meta.url));
 const dataDir = join(here, "data");
 const out = join(here, "..", "seed.sql");
 
+// "0044-03-15 BC" / "2020-05-28" → 時系列順に比較できる数値
+const dkey = (str) => {
+  const bc = /\sBC$/.test(str);
+  const [y, m, d] = str.replace(/\sBC$/, "").split("-").map(Number);
+  return (bc ? -y : y) * 10000 + m * 100 + d;
+};
 const q = (v) => (v === null || v === undefined ? "null" : `'${String(v).replace(/'/g, "''")}'`);
 const jq = (v) => (v === null || v === undefined ? "null" : `'${JSON.stringify(v).replace(/'/g, "''")}'::jsonb`);
 
@@ -52,7 +58,8 @@ for (const f of files) {
   if (new Set(colors).size !== colors.length) problems.push(`${t.slug}: layer color duplicated`);
   for (const [i, e] of t.events.entries()) {
     if (!layerNames.has(e.layer)) problems.push(`${t.slug}#${i}: unknown layer "${e.layer}"`);
-    if (e.type === "period" && (!e.end_date || e.end_date < e.date)) problems.push(`${t.slug}#${i}: bad period`);
+    // 紀元前("0508-01-01 BC")を含むため、文字列比較ではなく数値キーで比較する
+    if (e.type === "period" && (!e.end_date || dkey(e.end_date) < dkey(e.date))) problems.push(`${t.slug}#${i}: bad period`);
     if ((e.credibility === "disputed" || e.credibility === "unverified") && !e.credibility_note)
       problems.push(`${t.slug}#${i}: note required for ${e.credibility}`);
     // 「!」はペルソナ許可制（AUTHORS.json の tone に明記されたオーサーのみ）。titleは常に禁止
@@ -60,7 +67,7 @@ for (const f of files) {
     if (/[!！]/.test(`${e.summary}${e.detail ?? ""}`) && !exclamOK.has(ownerBySlug[t.slug]))
       problems.push(`${t.slug}#${i}: "!" by author without permission`);
   }
-  const years = t.events.map((e) => +e.date.slice(0, 4));
+  const years = t.events.map((e) => Math.trunc(dkey(e.date) / 10000));
   const startYear = t.start_year ?? Math.min(...years);
   const endYear = t.end_year ?? Math.max(...years);
 

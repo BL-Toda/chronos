@@ -5,7 +5,7 @@
   "category": "business",
   "language": "ja",
   "start_year": 1922,
-  "end_year": 2024,
+  "end_year": 2026,
   "layers": [
     {
       "name": "メディアと技術",
@@ -76,6 +76,24 @@
       ]
     },
     {
+      "date": "1947-01-01",
+      "precision": "year",
+      "end_date": "1974-12-31",
+      "type": "period",
+      "layer": "メディアと技術",
+      "title": "新聞が広告費の首位だった28年",
+      "summary": "電通の推計「日本の広告費」で確認できる範囲で、日本の広告費の首位は長らく新聞でした。戦後の復興期から高度経済成長のさなかまで、企業がまず予算を割く媒体は朝刊の紙面だったのです。\n\nこの線の最後の10年あまりは、テレビ受像機が各家庭へ行き渡っていく時期と重なります。そして1975年、首位はテレビへ交代しました。同じ主役交代の劇は約半世紀後、テレビとネットの間で繰り返されることになります(社会と規制レイヤーの2019年)。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "電通「日本の広告費」の推計が始まった1947年を線の始点としており、それ以前の首位媒体は統計がなく確認できません。テレビへの首位交代は1975年とされます。",
+      "sources": [
+        {
+          "title": "電通「日本の広告費」各年版",
+          "url": null
+        }
+      ]
+    },
+    {
       "date": "1957-01-01",
       "precision": "year",
       "end_date": null,
@@ -132,11 +150,11 @@
     {
       "date": "1971-01-02",
       "precision": "day",
-      "end_date": null,
-      "type": "point",
+      "end_date": "2026-06-30",
+      "type": "period",
       "layer": "社会と規制",
-      "title": "米国でタバコのテレビ・ラジオ広告禁止",
-      "summary": "公衆衛生タバコ喫煙法の施行により、米国のテレビ・ラジオでのタバコ広告が禁止されました。最後のCMは前夜の年越し番組の枠で流れています。\n\nテレビ広告の大口出稿者を法律が締め出した初の大型規制で、広告が公衆衛生政策の対象になりました。**何を広告してよいかを社会が決める**時代の始まりで、以後、規制の対象は酒類・医薬品・子ども向け広告へと広がっていきます。",
+      "title": "米タバコCM禁止、55年続く規制",
+      "summary": "公衆衛生タバコ喫煙法の施行により、米国のテレビ・ラジオでのタバコ広告が禁止されました。最後のCMは前夜の年越し番組の枠で流れています。この規制は撤廃されないまま、半世紀を超えて現在も続いています。\n\n**何を広告してよいかを社会が決める**時代の始まりでした。この線が始まったころ、日本ではテレビが広告費の首位に就こうとしていました(メディアと技術レイヤー)。放送の黄金時代は、米国では最大級の広告主を締め出したまま続いたことになります。",
       "detail": null,
       "credibility": "verified",
       "credibility_note": null,
@@ -144,6 +162,24 @@
         {
           "title": "Wikipedia: Public Health Cigarette Smoking Act",
           "url": "https://en.wikipedia.org/wiki/Public_Health_Cigarette_Smoking_Act"
+        }
+      ]
+    },
+    {
+      "date": "1975-01-01",
+      "precision": "year",
+      "end_date": "2018-12-31",
+      "type": "period",
+      "layer": "メディアと技術",
+      "title": "テレビが広告費の首位だった44年",
+      "summary": "電通の推計で、日本の広告費の首位が新聞からテレビへ交代しました。以後2018年まで44年間、お茶の間のCMこそが広告の主戦場であり続けます。\n\n新聞首位の線と端をそろえて始まり、ネット広告費の逆転(2019年、社会と規制レイヤー)で途切れる線です。「1984」のようなCMのイベント化(広告産業とクリエイティブレイヤー)も、この線の上の出来事でした。私たちが夕食どきにテレビの前へ集まる習慣が、そのまま広告費の地図だったのです。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "電通「日本の広告費」各年版",
+          "url": null
         }
       ]
     },
@@ -276,11 +312,11 @@
     {
       "date": "2018-05-25",
       "precision": "day",
-      "end_date": null,
-      "type": "point",
+      "end_date": "2026-06-30",
+      "type": "period",
       "layer": "社会と規制",
-      "title": "GDPR施行、ターゲティング広告に規制の網",
-      "summary": "EUの一般データ保護規則(GDPR)が施行され、個人データの処理に同意などの法的根拠と高額の制裁金が定められました。行動ターゲティング広告は最大の影響領域になります。\n\n**同意が広告取引の前提条件になった**ことで、同意管理ツールの普及や文脈連動広告への回帰が起きました。サイトを開くたびに同意を尋ねられるあの画面は、プラットフォームへのデータ集中(広告産業とクリエイティブレイヤー)に規制が対抗する構図の、身近な表れです。",
+      "title": "GDPRの8年、同意を求められる日々",
+      "summary": "EUの一般データ保護規則(GDPR)が施行され、個人データの処理に同意などの法的根拠と高額の制裁金が定められました。行動ターゲティング広告は最大の影響領域で、この規制の線は現在も続いています。\n\n**同意が広告取引の前提条件になった**ことで、サイトを開くたびに同意を尋ねられる日々が始まりました。この線の上には、ATT導入(2021年)の点も、Cookie廃止計画の迷走の線(メディアと技術レイヤー)も、そっくり乗っています。",
       "detail": null,
       "credibility": "verified",
       "credibility_note": null,
@@ -305,6 +341,28 @@
       "sources": [
         {
           "title": "電通「2019年 日本の広告費」(2020年3月発表)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2020-01-14",
+      "precision": "day",
+      "end_date": "2024-07-22",
+      "type": "period",
+      "layer": "メディアと技術",
+      "title": "Cookie廃止計画、迷走の4年半",
+      "summary": "GoogleがChromeでのサードパーティCookie廃止方針を打ち出しました。ここから3度の延期を経て2024年7月に撤回するまで、廃止計画は4年半にわたり広告業界を振り回し続けます。\n\n廃止を見込んで代替技術への投資が進む一方、計画は英競争当局の監視下に置かれ、プライバシー保護と競争政策の板挟みが表面化しました。この線はGDPRの線(社会と規制レイヤー)の上で始まりと終わりを迎えています。私たちを追いかける技術の行方が、一企業の判断で揺れ続けた期間でした。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Chromium Blog: Building a more private web (2020-01-14)",
+          "url": null
+        },
+        {
+          "title": "Google Privacy Sandbox: A new path for Privacy Sandbox on the web (2024-07-22)",
           "url": null
         }
       ]
@@ -359,24 +417,6 @@
       "sources": [
         {
           "title": "Meta: AI Sandbox発表(2023年5月)ほか各社発表",
-          "url": null
-        }
-      ]
-    },
-    {
-      "date": "2024-07-22",
-      "precision": "day",
-      "end_date": null,
-      "type": "point",
-      "layer": "メディアと技術",
-      "title": "GoogleがサードパーティCookie廃止を撤回",
-      "summary": "GoogleがChromeにおけるサードパーティCookie廃止計画の撤回を発表しました。2020年の廃止表明から4年、3度の延期を経た方針転換です。\n\n廃止は代替技術Privacy Sandboxをめぐる競争上の懸念から英競争当局の監視下にあり、プライバシー保護と競争政策の板挟みが表面化しました。私たちを追いかける技術の行方が一企業の判断に委ねられていること自体が、規制側の新しい論点になっています。",
-      "detail": null,
-      "credibility": "verified",
-      "credibility_note": null,
-      "sources": [
-        {
-          "title": "Google Privacy Sandbox: A new path for Privacy Sandbox on the web (2024-07-22)",
           "url": null
         }
       ]

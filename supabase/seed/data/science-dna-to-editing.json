@@ -5,7 +5,7 @@
   "category": "science-nature",
   "language": "ja",
   "start_year": 1869,
-  "end_year": 2025,
+  "end_year": 2026,
   "layers": [
     {
       "name": "発見と理論",
@@ -152,6 +152,28 @@
       ]
     },
     {
+      "date": "1980-12-02",
+      "precision": "day",
+      "end_date": "1997-12-02",
+      "type": "period",
+      "layer": "倫理と制度",
+      "title": "コーエン・ボイヤー特許の17年",
+      "summary": "組換えDNAの基本技術を覆うコーエン・ボイヤー特許が成立し、1997年の失効まで17年間有効だった。スタンフォード大学は非独占・低額のライセンス方針を採り、数百社が利用して大学側に累計2億ドルを超える収入をもたらしたとされる。\n\nチャクラバーティ判決と同じ年に始まるこの線の上には、技術と応用の線のヒトインスリン承認もPCRの発表も乗っている。初期バイオ産業の商業化の多くはこの特許の期間内の出来事であり、大学発ライセンスという制度の型をつくった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "US Patent 4,237,224 (Cohen & Boyer, granted Dec. 2, 1980)",
+          "url": null
+        },
+        {
+          "title": "Stanford University Office of Technology Licensing: Cohen-Boyer patent licensing",
+          "url": null
+        }
+      ]
+    },
+    {
       "date": "1982-10-01",
       "precision": "month",
       "end_date": null,
@@ -258,6 +280,28 @@
       ]
     },
     {
+      "date": "1999-09-17",
+      "precision": "day",
+      "end_date": "2012-10-25",
+      "type": "period",
+      "layer": "技術と応用",
+      "title": "遺伝子治療、停滞の13年",
+      "summary": "ゲルシンガー事件を境に、遺伝子治療の臨床試験と投資は世界的に冷え込んだ。2002年以降には仏のX-SCID治療で白血病の発症が相次いで報告され、ベクターの安全性への疑念が停滞をさらに長引かせた。\n\nこの停滞の線は、ヒトゲノム計画の完了とちょうど重なっている。**「読む」計画が完成する傍らで、「直す」試みは止まっていた**のである。線が終わる2012年には欧州初の承認薬グリベラが生まれ、同じ年にCRISPRの論文が次の時代を開いた。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "停滞の始まりはゲルシンガー事件でおおむね一致するが、終わりは2012年の欧州初承認（グリベラ）や2017年の米国での相次ぐ承認など捉え方が分かれる。ここでは欧州委員会によるグリベラ承認までを採った。",
+      "sources": [
+        {
+          "title": "European Medicines Agency: Glybera (alipogene tiparvovec) EPAR",
+          "url": null
+        },
+        {
+          "title": "Hacein-Bey-Abina, S. et al. (2003) LMO2-Associated Clonal T Cell Proliferation in Two Patients after Gene Therapy for SCID-X1. Science",
+          "url": null
+        }
+      ]
+    },
+    {
       "date": "2000-06-26",
       "precision": "day",
       "end_date": null,
@@ -324,16 +368,16 @@
       ]
     },
     {
-      "date": "2017-02-15",
-      "precision": "day",
-      "end_date": null,
-      "type": "point",
+      "date": "2016-01-01",
+      "precision": "month",
+      "end_date": "2026-06-30",
+      "type": "period",
       "layer": "倫理と制度",
-      "title": "米特許審判部、CRISPR特許紛争でブロード研究所側を支持",
-      "summary": "真核細胞でのCRISPR-Cas9利用に関する特許について、米特許審判部がカリフォルニア大学側の主張を退けブロード研究所側の特許を維持。2012年のダウドナらの発表と2013年のチャンらの実証のどちらが発明にあたるかが争点となった。\n\n米国では2022年にも審判部がブロード側に有利な判断を示した一方、欧州特許庁では判断が異なり、地域ごとに権利関係が分かれている。ライセンス構造の複雑さは治療開発企業の契約に影響し、2023年の治療承認まで続く背景となった。",
+      "title": "CRISPR特許紛争、係争の10年",
+      "summary": "真核細胞でのCRISPR-Cas9利用の発明者をめぐり、米特許商標庁がカリフォルニア大学側とブロード研究所側の抵触審査を宣言した。2017年と2022年の審判部判断はいずれもブロード側に有利だったが控訴が続き、欧州では大学側が優位に立つなど地域で判断が割れている。\n\n係争の線は10年を超えてなお続き、その上に2020年のノーベル化学賞も2023年のカスジェビー承認も乗っている。権利の帰属が定まらないまま科学の評価と臨床応用が先へ進み、ライセンス構造の複雑さとして今も治療開発の現場に影響を残す。",
       "detail": null,
       "credibility": "disputed",
-      "credibility_note": "発明の先取権をめぐる争いは控訴や地域ごとの判断の違いが続いており、最終的な権利関係は確定していない。",
+      "credibility_note": "発明の先取権をめぐる争いは控訴や地域ごとの判断の違いが続いており、最終的な権利関係は確定していない。係争の起点をどの手続に置くかにも幅がある（ここでは2016年1月の抵触審査宣言を採った）。",
       "sources": [
         {
           "title": "USPTO Patent Trial and Appeal Board, Interference No. 106,048 (Decision on Motions, Feb. 15, 2017)",

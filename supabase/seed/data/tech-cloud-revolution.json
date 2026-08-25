@@ -5,7 +5,7 @@
   "category": "technology",
   "language": "ja",
   "start_year": 2006,
-  "end_year": 2021,
+  "end_year": 2026,
   "layers": [
     {
       "name": "技術とサービス",
@@ -36,6 +36,24 @@
         {
           "title": "AWS News Blog: Amazon S3 (2006-03-14)",
           "url": "https://aws.amazon.com/blogs/aws/amazon_s3/"
+        }
+      ]
+    },
+    {
+      "date": "2006-03-14",
+      "precision": "day",
+      "end_date": "2026-06-30",
+      "type": "period",
+      "layer": "企業競争",
+      "title": "👑 AWSシェア首位の20年",
+      "summary": "S3で市場そのものを作って以来、AWSはクラウドインフラのシェア首位を一度も譲っていません。調査会社の推計で世界シェア3割前後の首位が、現在まで続いています。\n\nこの年表の企業競争レイヤーは、実はぜんぶ「この線への挑戦の記録」です。Azureの参入も、ナデラの改革も、IBMの大型買収も、20年走り続ける1本の線に向かって置かれた点。首位の線を敷いてみると、追う側の必死さが逆に浮かび上がってきます。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "シェアはSynergy Researchなど調査会社の推計で数値に幅があります。市場統計が整うのは2010年代以降のため、起点は市場の始まりであるS3公開(2006年3月)を採りました。",
+      "sources": [
+        {
+          "title": "Synergy Research Group: クラウドインフラ市場シェア調査(各四半期)",
+          "url": null
         }
       ]
     },
@@ -71,6 +89,24 @@
       "sources": [
         {
           "title": "Google公式ブログ: Introducing Google App Engine (2008-04-07)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2008-08-01",
+      "precision": "month",
+      "end_date": "2016-01-31",
+      "type": "period",
+      "layer": "利用者と社会",
+      "title": "🎞️ Netflixクラウド移行の7年半",
+      "summary": "自社データセンターの障害でDVD発送が止まった2008年夏、Netflixはクラウド移行を決断します。そこから完全移行を宣言する2016年初頭まで、7年半がかりの引っ越しでした。\n\nこの線の後半は、Docker公開やKubernetes(技術とサービスレイヤー)の点と同じ時間を走っています。移行の途中でコンテナ時代が来た、という重なりです。完了とともに「クラウドは本番システムには不向き」という慎重論はほぼ終わり、世界190か国への同時展開が実現しました。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Netflix Tech Blog: Completing the Netflix Cloud Migration (2016-02)",
           "url": null
         }
       ]
@@ -184,6 +220,24 @@
       ]
     },
     {
+      "date": "2013-03-01",
+      "precision": "month",
+      "end_date": "2018-03-06",
+      "type": "period",
+      "layer": "技術とサービス",
+      "title": "🐳 コンテナ標準化の5年",
+      "summary": "Dockerの公開から、KubernetesがCNCFを「卒業」して事実上の標準と認められるまでの5年間です。クラウドの主戦場が仮想マシンからコンテナ基盤へ移った、技術の世代交代の線です。\n\n線の途中にKubernetes公開(2014年)の点が乗り、線と同じ時間を企業競争レイヤーの激しい争いが走っています。競争は激しいのに、土台の技術だけはオープンソースとして共有されていく。クラウドという市場の不思議な性格が、この5年に凝縮されています。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "「標準化の完了」に公式な定義はありません。ここではDocker公開(2013年3月)からKubernetesのCNCF卒業(2018年3月6日)までを採りました。",
+      "sources": [
+        {
+          "title": "CNCF: Kubernetes Is First CNCF Project To Graduate (2018-03-06)",
+          "url": null
+        }
+      ]
+    },
+    {
       "date": "2014-02-04",
       "precision": "day",
       "end_date": null,
@@ -256,24 +310,6 @@
       ]
     },
     {
-      "date": "2016-02-01",
-      "precision": "month",
-      "end_date": null,
-      "type": "point",
-      "layer": "利用者と社会",
-      "title": "🎞️ Netflixがクラウド完全移行を完了",
-      "summary": "Netflixが7年がかりの取り組みを経て、自社データセンターを閉じ、配信事業の基盤をAWSへ完全移行したと発表しました。世界190か国への同時展開を、クラウドの伸縮性が支えます。\n\n大規模サービスでも自前設備なしで運営できると示した代表例で、「クラウドは本番システムには不向き」という残っていた慎重論をほぼ終わらせました。障害を前提に設計する同社の手法(カオスエンジニアリング)も、業界標準に影響を与えています。",
-      "detail": null,
-      "credibility": "verified",
-      "credibility_note": null,
-      "sources": [
-        {
-          "title": "Netflix Tech Blog: Completing the Netflix Cloud Migration (2016-02)",
-          "url": null
-        }
-      ]
-    },
-    {
       "date": "2018-10-28",
       "precision": "day",
       "end_date": null,
@@ -330,11 +366,11 @@
     {
       "date": "2021-09-01",
       "precision": "day",
-      "end_date": null,
-      "type": "point",
+      "end_date": "2026-06-30",
+      "type": "period",
       "layer": "利用者と社会",
-      "title": "🗾 デジタル庁発足、ガバメントクラウド整備へ",
-      "summary": "日本でデジタル庁が発足し、国と自治体の情報システムを共通のクラウド基盤に載せる「ガバメントクラウド」の整備が始まりました。初年度の対象にはAWSとGoogle Cloudが選ばれています。\n\nコロナ禍で露呈した行政デジタル化の遅れへの、制度としての回答です。一方で選定が海外勢に偏ったことは国内産業界に議論を呼び、クラウドをめぐる経済安全保障という論点を日本でも顕在化させました。",
+      "title": "🗾 ガバメントクラウド整備、5年目も進行中",
+      "summary": "デジタル庁の発足とともに、国と自治体の情報システムを共通のクラウド基盤へ載せ替えるガバメントクラウドの整備が始まりました。自治体システムの移行は期限の見直しを挟みながら、現在も続いています。\n\nこの線の起点は、コロナ禍のクラウド需要急増の線(同じレイヤー)が終わった直後です。有事にクラウドで社会が回った経験が、平時の行政を作り替える制度になった。初年度の選定が海外勢に偏ったことは議論を呼び、経済安全保障の論点も顕在化させました。",
       "detail": null,
       "credibility": "verified",
       "credibility_note": null,

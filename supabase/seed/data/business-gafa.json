@@ -1,11 +1,11 @@
 {
   "slug": "business-gafa",
   "title": "GAFA帝国の形成",
-  "description": "1976年のApple創業から2020年代の規制強化まで。Google・Apple・Facebook（Meta）・Amazonの歩みを、製品とプラットフォーム・買収と資本・規制と社会の3層で重ね、買収額と制裁金の数字から帝国の構造を読む。",
+  "description": "1976年のApple創業から2020年代の規制強化まで。Google・Apple・Facebook（Meta）・Amazonの歩みを、製品とプラットフォーム・買収と資本・規制と社会の3層で重ねる。ゼロ金利、複占、係争。点の裏に走る期間の線を引き、買収額と制裁金の数字から帝国の構造を読む。",
   "category": "business",
   "language": "ja",
   "start_year": 1976,
-  "end_year": 2024,
+  "end_year": 2026,
   "layers": [
     {
       "name": "製品とプラットフォーム",
@@ -220,6 +220,42 @@
       ]
     },
     {
+      "date": "2008-12-16",
+      "precision": "day",
+      "end_date": "2015-12-16",
+      "type": "period",
+      "layer": "買収と資本",
+      "title": "米ゼロ金利の7年、買収資金の追い風",
+      "summary": "2008年12月から2015年12月まで、FRBは政策金利を0〜0.25%に据え置いた。7年間のゼロ金利。カネ余りは成長企業の株価を押し上げ、大型買収の原資となった。\n\nInstagram買収（2012年）もWhatsApp買収（2014年）も、この線の内側の出来事である。安い資本が「競争相手の芽を摘む買収」を容易にした構図。規制と社会レイヤーの提訴が問うたのは、この7年の蓄積だった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Federal Reserve: Open Market Operations - historical federal funds target rate",
+          "url": "https://www.federalreserve.gov/monetarypolicy/openmarket.htm"
+        }
+      ]
+    },
+    {
+      "date": "2012-01-01",
+      "precision": "year",
+      "end_date": "2026-06-30",
+      "type": "period",
+      "layer": "製品とプラットフォーム",
+      "title": "iOSとAndroid、複占の14年",
+      "summary": "2012年前後、BlackBerryとWindows Phoneが脱落し、モバイルOSはiOSとAndroidの二強に収斂した。以後、両者の世界シェア合計は9割超で推移し、この複占は現在も続く。\n\nアプリ流通、手数料、検索の入り口。GAFAを巡る論点の多くがこの線の上に載っている。米司法省対Googleの係争の線も、EUデジタル市場法も、複占という前提への応答である。**帝国の土台は製品ではなく構造**だった。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "二強への収斂時期は集計により幅がある。2012年は他OSのシェアが急減した時期の目安。シェアの数値はStatCounter等の推計による。",
+      "sources": [
+        {
+          "title": "Wikipedia: Mobile operating system",
+          "url": "https://en.wikipedia.org/wiki/Mobile_operating_system"
+        }
+      ]
+    },
+    {
       "date": "2012-04-09",
       "precision": "day",
       "end_date": null,
@@ -312,11 +348,11 @@
     {
       "date": "2020-10-20",
       "precision": "day",
-      "end_date": null,
-      "type": "point",
+      "end_date": "2024-08-05",
+      "type": "period",
       "layer": "規制と社会",
-      "title": "米司法省がGoogleを反トラスト法違反で提訴",
-      "summary": "2020年10月、米司法省と11州がGoogleを検索・検索広告市場の独占維持で提訴。1998年のMicrosoft訴訟以来の大型事件である。争点は、Appleなど端末メーカーへの巨額支払いによるデフォルト検索の確保が、違法な独占維持にあたるか。\n\n背景には、iPhoneとAndroidの二大プラットフォームが検索の入り口を握る構図。同年12月にはFTCがInstagram・WhatsApp買収を問題視してFacebookを提訴し、GAFAへの競争法執行が本格化した。",
+      "title": "米司法省 対 Google、係争の3年10か月",
+      "summary": "2020年10月、米司法省と11州がGoogleを検索市場の違法な独占維持で提訴。1998年のMicrosoft訴訟以来の大型事件である。争点は、Appleなど端末メーカーへの年間巨額支払いでデフォルト検索の座を買い続ける行為の適法性。\n\n審理は3年10か月に及び、2024年8月の独占認定でこの線は終わる。線の全体がiOSとAndroidの複占期（製品とプラットフォームレイヤー）の上に乗っている点が本質。入り口を二社が握る構造こそ、係争の前提だった。",
       "detail": null,
       "credibility": "verified",
       "credibility_note": null,

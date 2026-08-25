@@ -1,11 +1,11 @@
 {
   "slug": "business-esg-investing",
   "title": "ESG投資の潮流",
-  "description": "2004年の「ESG」誕生からGPIFの参入、グリーンウォッシング摘発、反ESGの逆風まで。投資マネー・規制と基準・社会の圧力の3層で、金融が気候と倫理を織り込んでいく20年を構造で追う。",
+  "description": "2004年の「ESG」誕生からGPIFの参入、グリーンウォッシング摘発、反ESGの逆風まで。投資と市場・規制と基準・社会と気候の3層で重ねる。資金流入、金融同盟、反ESG。膨張と退潮を期間の線で引き、金融が気候と倫理を織り込む20年を構造で追う。",
   "category": "business",
   "language": "ja",
   "start_year": 2004,
-  "end_year": 2025,
+  "end_year": 2026,
   "layers": [
     {
       "name": "投資と市場",
@@ -150,18 +150,36 @@
     {
       "date": "2018-08-20",
       "precision": "day",
-      "end_date": null,
-      "type": "point",
+      "end_date": "2020-03-13",
+      "type": "period",
       "layer": "社会と気候",
-      "title": "グレタ・トゥーンベリが学校ストライキを開始",
-      "summary": "2018年8月、15歳のグレタ・トゥーンベリがスウェーデン議会前で「気候のための学校ストライキ」を一人で開始。\n\n抗議はFridays for Futureとして世界の若者運動に拡大し、翌年の国連気候行動サミット演説で頂点に達する。株主総会での気候関連決議や機関投資家への働きかけも増加。**社会の圧力が投資行動を動かす**回路がはっきり可視化された時期の象徴であり、企業のネットゼロ宣言が相次ぐ背景となった。",
+      "title": "気候ストライキ、街頭の19か月",
+      "summary": "2018年8月20日、15歳のグレタ・トゥーンベリがスウェーデン議会前で座り込みを開始。抗議はFridays for Futureとして世界の若者運動へ拡大し、コロナ禍で街頭活動が止まる2020年3月まで、19か月にわたり金曜日の風景を変えた。\n\n**社会の圧力が投資行動を動かす**回路の可視化。この線の上でESGファンドへの資金流入（投資と市場レイヤー）が加速し、企業のネットゼロ宣言が相次いだ。",
       "detail": null,
-      "credibility": "verified",
-      "credibility_note": null,
+      "credibility": "disputed",
+      "credibility_note": "始点は本人の記録により確定。終点はコロナ禍で世界的な街頭活動が休止した2020年3月を目安とした。運動自体はオンラインで継続している。",
       "sources": [
         {
           "title": "Wikipedia: Greta Thunberg",
           "url": "https://en.wikipedia.org/wiki/Greta_Thunberg"
+        }
+      ]
+    },
+    {
+      "date": "2019-01-01",
+      "precision": "year",
+      "end_date": "2021-12-31",
+      "type": "period",
+      "layer": "投資と市場",
+      "title": "ESGマネー流入の3年",
+      "summary": "2019年から2021年、世界のサステナブルファンドへの資金流入が急拡大した。2021年の年間流入は約6,000億ドル、残高は約3兆ドル規模に達したとされる。\n\n始点側には気候ストライキの線（社会と気候レイヤー）、終点側にはネットゼロ金融同盟の発足が重なる。社会の圧力が資金を動かし、資金が同盟を生む3年。ただし集計は運用調査会社の推計であり、定義次第で数値は大きく振れる。",
+      "detail": null,
+      "credibility": "unverified",
+      "credibility_note": "流入額・残高はMorningstar等の集計に基づく推計。「サステナブルファンド」の定義により数値が大きく異なり、ブームの期間の切り方にも幅がある。",
+      "sources": [
+        {
+          "title": "Morningstar: Global Sustainable Fund Flows",
+          "url": null
         }
       ]
     },
@@ -252,6 +270,28 @@
         {
           "title": "EUR-Lex: Regulation (EU) 2019/2088 (SFDR)",
           "url": "https://eur-lex.europa.eu/eli/reg/2019/2088/oj"
+        }
+      ]
+    },
+    {
+      "date": "2021-04-21",
+      "precision": "day",
+      "end_date": "2025-01-13",
+      "type": "period",
+      "layer": "投資と市場",
+      "title": "ネットゼロ金融同盟の4年",
+      "summary": "2021年4月のGFANZ発足から2025年1月のNZAM活動停止まで、約4年。加盟機関の資産計130兆ドルを掲げた金融同盟の膨張と縮小が、この1本の線に収まる。\n\n線の後半は、米国の反ESG運動の期間（社会と気候レイヤー）とそっくり重なる。政治の圧力が強まるほど同盟は痩せ、終点で旗は畳まれた。130兆ドルの同盟は、政治の前では脆かった。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "終点はNZAMの活動停止日を採った。GFANZ自体は2025年に体制を再編して存続しており、同盟の「終わり」の切り方には幅がある。",
+      "sources": [
+        {
+          "title": "GFANZ: Glasgow Financial Alliance for Net Zero 発足発表 (2021-04-21)",
+          "url": null
+        },
+        {
+          "title": "Net Zero Asset Managers initiative: Statement (2025-01-13)",
+          "url": null
         }
       ]
     },
@@ -348,11 +388,11 @@
     {
       "date": "2024-01-01",
       "precision": "year",
-      "end_date": null,
-      "type": "point",
+      "end_date": "2026-06-30",
+      "type": "period",
       "layer": "規制と基準",
-      "title": "EUで企業サステナビリティ報告指令(CSRD)適用開始",
-      "summary": "2024年度から、EUの企業サステナビリティ報告指令（CSRD）が段階適用。大企業は欧州サステナビリティ報告基準（ESRS）に基づく詳細な開示を義務付けられ、対象はEU域内で事業を行う域外企業にも及ぶ広範な設計だった。\n\nだが報告負担への反発は強く、2025年には適用対象を大幅に絞り込む「オムニバス」簡素化案が提示され、規制の振り子は緩和方向へ。開示規制の到達点と、その行き過ぎの修正が同時に観察できる事例である。",
+      "title": "CSRD適用と揺り戻しの2年半",
+      "summary": "2024年度から、EUの企業サステナビリティ報告指令（CSRD）が段階適用。大企業に詳細な開示を義務付ける制度の運用が始まり、この線は現在も続いている。\n\nだが報告負担への反発は強く、2025年には適用対象を大幅に絞る「オムニバス」簡素化案が提示された。適用の線の内側で、規制の振り子が緩和へ振れる。反ESG運動の期間（社会と気候レイヤー）と重ねると、言葉の退潮と制度の定着が併存する構図が見える。",
       "detail": null,
       "credibility": "verified",
       "credibility_note": null,

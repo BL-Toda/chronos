@@ -297,7 +297,7 @@ on conflict (id) do update set username = excluded.username, display_name = excl
 
 -- ═══ science-artificial-organs — 🫀 人工臓器の進化
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-artificial-organs', '00000000-0000-4000-8000-53afa1095b21', '🫀 人工臓器の進化', '人工腎臓と人工心臓から、人工内耳、iPS細胞、異種移植まで。機器と技術、患者と社会、制度と倫理の3つの層を重ねながら、「臓器を作る」という挑戦が医療と社会をどう変えてきたかを、やさしく語りなおす年表です。', 'science-nature', 'ja', 'public', 's_science-artificial-organs', 1943, 2024, 'science-artificial-organs')
+values ('science-artificial-organs', '00000000-0000-4000-8000-53afa1095b21', '🫀 人工臓器の進化', '人工腎臓と人工心臓から、人工内耳、iPS細胞、異種移植まで。機器と技術、患者と社会、制度と倫理の3つの層を重ねながら、「臓器を作る」という挑戦が医療と社会をどう変えてきたかを、やさしく語りなおす年表です。', 'science-nature', 'ja', 'public', 's_science-artificial-organs', 1943, 2026, 'science-artificial-organs')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-artificial-organs');
@@ -324,9 +324,9 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-artificial-organs'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-artificial-organs') and name = '機器と技術'),
-          '1958-10-08', null, 'day', 'point', '世界初の植込み型心臓ペースメーカー移植', 'ストックホルムで外科医セニングが、技術者エルムクヴィストの設計した完全植込み型心臓ペースメーカーを、患者アーネ・ラーソンに移植しました。体内に完全に埋め込まれた人工臓器デバイスの、世界初の例とされています。
+          '1958-10-08', '2001-12-28', 'day', 'period', 'ラーソン、ペースメーカーとの43年', 'ストックホルムで外科医セニングが、技術者エルムクヴィストの設計した完全植込み型心臓ペースメーカーを、患者アーネ・ラーソンに移植しました。体内に完全に埋め込まれた人工臓器デバイスの、世界初の例とされています。
 
-最初の装置は数時間で故障しましたが、ラーソンは車を乗り換えるように生涯で26台を乗り継ぎ、2001年まで86歳の生涯を全うしました。「機械と共に生きる患者」(患者と社会レイヤー)の最初の一人で、植込み医療が一回の手術ではなく生涯の伴走であることを示しています。', null,
+最初の装置は数時間で故障しましたが、ラーソンは車を乗り換えるように生涯で26台を乗り継ぎ、2001年に86歳で亡くなるまで機械とともに生きました。植込み医療が一回の手術ではなく生涯の伴走であることを、この43年の線そのものが示しています。', null,
           'verified', null, 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Arne Larsson', 'https://en.wikipedia.org/wiki/Arne_Larsson')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -340,9 +340,9 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-artificial-organs'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-artificial-organs') and name = '制度と倫理'),
-          '1962-11-09', null, 'day', 'point', 'ライフ誌がシアトルの「神の委員会」を報道', 'ライフ誌が、シアトルの透析センターで匿名の市民委員会が透析を受けられる患者を選別している実態を、「彼らが誰が生き、誰が死ぬかを決める」と報じました。職業や家族構成、社会への貢献までが考慮されたといいます。
+          '1961-01-01', '1972-10-30', 'year', 'period', 'シアトル、透析を選別した11年', 'シアトルの透析センターで、匿名の市民委員会が透析を受けられる患者を選ぶ体制が始まりました。1962年にライフ誌が「彼らが誰が生き、誰が死ぬかを決める」と報じ、職業や家族構成、社会への貢献までが考慮された実態が知られます。
 
-救命ボートの席を割り当てるような、**誰を生かすかを委員会が決める**という事態。それはスクリブナーのシャント(機器と技術レイヤー)が生んだ、希少な延命技術の配分問題そのものでした。医療資源の配分を社会に突きつけ、生命倫理学誕生の契機の一つとされています。', null,
+救命ボートの席を割り当てるような、**誰を生かすかを委員会が決める**11年でした。それはスクリブナーのシャント(機器と技術レイヤー)が生んだ、希少な延命技術の配分問題そのものです。線の終点は1972年、透析費用を公的保険が引き受ける法改正(同じレイヤー)にぴったり接しています。', null,
           'unverified', '委員会の運営実態は当事者の証言とライフ誌の取材に基づいており、体系的に検証できる一次記録は限られています。', 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('LIFE (1962-11-09): They Decide Who Lives, Who Dies', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -355,19 +355,35 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Christiaan Barnard', 'https://en.wikipedia.org/wiki/Christiaan_Barnard')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-artificial-organs'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-artificial-organs') and name = '患者と社会'),
+          '1968-01-01', '1983-12-31', 'year', 'period', '心臓移植、熱狂のあとの停滞の15年', 'バーナードの成功に続けと、1968年だけで世界で100例を超える心臓移植が行われました。しかし拒絶反応の壁で生存成績は伸びず、多くの施設が手術を取りやめて、移植医療は長い停滞に入ります。
+
+一斉に走り出して、ほぼ全員が立ち止まった。いわばフライングの後の長い仕切り直しです。この停滞の線の上に、クーリーの人工心臓(1969年、機器と技術レイヤー)やバーニー・クラークの112日(1982年)が乗っています。移植が頼れない時代こそが機械の心臓を求めさせたのであり、線は免疫抑制薬シクロスポリンの登場とともに終わります。', null,
+          'disputed', '停滞期の区切りには幅があります。ここでは追随手術が相次いだ1968年から、免疫抑制薬シクロスポリンが米国で承認された1983年までを採りました。', 'user', 6) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Heart transplantation', 'https://en.wikipedia.org/wiki/Heart_transplantation')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'science-artificial-organs'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-artificial-organs') and name = '制度と倫理'),
+          '1968-08-08', '1999-02-28', 'day', 'period', '日本の心臓移植、31年の空白', '札幌医科大学で和田寿郎が日本初の心臓移植を行いましたが、ドナーの脳死判定や移植の適応をめぐる疑義から刑事告発に発展し、以後、日本では心臓移植が一度も行われない時代が続きました。
+
+一度のつまずきが、国全体の足を31年間止めた形です。1997年の臓器移植法の成立を経て、1999年2月に大阪大学で移植が再開されるまで、この空白の線は続きました。臓器提供の少なさは今も残っており、補助人工心臓が事実上の長期治療になる日本の特殊事情(2011年、同じレイヤー)の源流が、ここにあります。', null,
+          'verified', null, 'user', 7) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 和田心臓移植事件', 'https://ja.wikipedia.org/wiki/%E5%92%8C%E7%94%B0%E5%BF%83%E8%87%93%E7%A7%BB%E6%A4%8D%E4%BA%8B%E4%BB%B6')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'science-artificial-organs'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-artificial-organs') and name = '機器と技術'),
           '1969-04-04', null, 'day', 'point', 'クーリーが世界初の完全人工心臓を植込み', 'ヒューストンの外科医クーリーが、心臓移植までのつなぎとして、世界初の完全人工心臓(リオッタ心臓)を患者に植え込みました。いわば橋が架かるまでの仮の渡し舟です。患者は64時間後に心臓移植を受けましたが、その後亡くなりました。
 
 装置は上司格にあたるデベーキーの研究室で開発途上のもので、無断使用だとする非難から、米国外科史に残る確執へ発展します。功名心と患者の利益、実験と治療の境界という、**人工臓器開発の倫理の原型**がこの一件に現れています。', null,
-          'disputed', '装置使用の承認をめぐるクーリーとデベーキーの主張は真っ向から対立しており、実施に至る経緯の詳細には諸説あります。', 'user', 6) returning id)
+          'disputed', '装置使用の承認をめぐるクーリーとデベーキーの主張は真っ向から対立しており、実施に至る経緯の詳細には諸説あります。', 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Domingo Liotta', 'https://en.wikipedia.org/wiki/Domingo_Liotta')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-artificial-organs'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-artificial-organs') and name = '制度と倫理'),
-          '1972-10-30', null, 'day', 'point', '米国、末期腎不全の透析費用を公的保険で負担', '米国で社会保障法改正が成立し、末期腎不全患者の透析と腎移植の費用が、年齢を問わずメディケアの給付対象になりました。特定の疾患だけを対象とした、異例の公的保険の拡大です。
+          '1972-10-30', '2026-06-30', 'day', 'period', '米国、透析の公的負担が続く54年', '米国で社会保障法改正が成立し、末期腎不全患者の透析と腎移植の費用が、年齢を問わずメディケアの給付対象になりました。特定の疾患だけを対象とした、異例の公的保険の拡大です。この線は現在も続いています。
 
-シアトルの委員会が象徴した選別の重荷を、公的保険という大きな財布が引き受けた。つまり**命の選別を制度が引き取った**出来事で、米国の透析患者はやがて数十万人規模に増えていきます。一方で膨らみ続ける費用は、人工臓器医療と保険財政の緊張という、現在まで続く問題の始まりでもありました。', null,
-          'verified', null, 'user', 7) returning id)
+シアトルの委員会が象徴した選別の重荷を、公的保険という大きな財布が引き受けた。つまり**命の選別を制度が引き取った**線で、委員会の線が終わる場所から途切れずに始まっています。米国の透析患者はやがて数十万人規模になり、膨らみ続ける費用との緊張も、線の長さの分だけ続いてきました。', null,
+          'verified', null, 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('US Social Security Amendments of 1972 (P.L. 92-603) ESRD Program', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-artificial-organs'),
@@ -375,7 +391,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1982-12-02', '1983-03-23', 'day', 'period', 'バーニー・クラーク、人工心臓で112日間生存', 'ユタ大学でデブリーズが、退役歯科医バーニー・クラークに、恒久使用を前提とした完全人工心臓ジャービック7を植え込みました。クラークは体外の大型駆動装置と管でつながれたまま112日間生きました。経過は連日、世界に報道されます。
 
 **人工心臓と生きた112日**は技術の到達点であると同時に、生活の質を欠いた延命の是非という問いを社会に残しました。この経験が、恒久型の完全人工心臓への期待を、移植までの「つなぎ」や補助人工心臓(制度と倫理レイヤーの承認へ続く)へと方向転換させる契機になります。', null,
-          'verified', null, 'user', 8) returning id)
+          'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Barney Clark', 'https://en.wikipedia.org/wiki/Barney_Clark')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-artificial-organs'),
@@ -383,7 +399,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1985-10-01', null, 'month', 'point', '👂 FDAが多チャンネル人工内耳を承認', '米FDAが、多チャンネル方式の人工内耳「ニュークリアス22」を成人向けに承認しました。音を電気の信号に翻訳して聴神経へ直接届ける、感覚そのものを代替する人工臓器の本格的な実用化です。
 
 1990年には小児へ適用が広がり、装用者は世界で数十万人規模になっていきます。一方、ろう者コミュニティ(患者と社会レイヤー)からは「ろうは治すべき欠損なのか」という根源的な異議が示され、人工臓器が文化やアイデンティティと衝突しうることを教えた出来事でもあります。', null,
-          'verified', null, 'user', 9) returning id)
+          'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Cochlear implant', 'https://en.wikipedia.org/wiki/Cochlear_implant')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-artificial-organs'),
@@ -391,15 +407,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1994-01-01', null, 'year', 'point', 'FDAが補助人工心臓ハートメイトを承認', '米FDAが、空気駆動式の左心補助人工心臓(LVAD)ハートメイトを、心臓移植までの「つなぎ」として承認しました。心臓を丸ごと取り替えるのではなく、疲れた心臓に助手を付けて支える。その現実路線が、規制の場で公認されたのです。
 
 2001年のREMATCH試験では、移植できない患者への恒久使用でも薬物治療を上回る生存が示され、補助人工心臓は人工心臓医療の主流になっていきます。バーニー・クラーク(患者と社会レイヤー)以後の方向転換が、制度に結実した出来事です。', null,
-          'verified', null, 'user', 10) returning id)
+          'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Ventricular assist device', 'https://en.wikipedia.org/wiki/Ventricular_assist_device')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-artificial-organs'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-artificial-organs') and name = '機器と技術'),
-          '2001-07-02', null, 'day', 'point', '完全植込み型人工心臓アビオコアの初症例', '米アビオメッド社の完全植込み型人工心臓アビオコアが、ケンタッキー州で初めて患者に植え込まれました。皮膚越しにエネルギーを送る方式で、管や配線を体の外へ一切出さない、いわば密閉された機械の心臓です。
+          '2001-07-02', '2001-11-30', 'day', 'period', 'アビオコア初症例、151日の生存', '米アビオメッド社の完全植込み型人工心臓アビオコアが、ケンタッキー州で患者ロバート・ツールズに植え込まれました。皮膚越しにエネルギーを送り、管や配線を体の外へ一切出さない、いわば密閉された機械の心臓です。
 
-初例の患者は151日間生存しましたが、装置の大きさと血栓の問題から適用は広がらず、2006年に人道的機器免除の枠組みで承認(制度と倫理レイヤー)された後も、植込みはごく少数にとどまりました。恒久型の完全人工心臓の難しさを、あらためて示した症例です。', null,
-          'verified', null, 'user', 11) returning id)
+ツールズは記者会見に応じるまで回復し、151日間を機械の心臓とともに生きました。しかし装置の大きさと血栓の問題から適用は広がらず、恒久型の完全人工心臓の難しさをあらためて示します。19年前のバーニー・クラークの112日(患者と社会レイヤー)の線を、少し先まで延ばした形でした。', null,
+          'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: AbioCor', 'https://en.wikipedia.org/wiki/AbioCor')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-artificial-organs'),
@@ -407,7 +423,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2006-08-01', null, 'month', 'point', '🧫 山中らがiPS細胞の樹立を発表', '山中伸弥と高橋和利が、4つの遺伝子の導入により、マウスの体細胞を多能性幹細胞(iPS細胞)へ初期化することに成功したと発表しました。いわば細胞の時計を巻き戻す技術で、翌2007年にはヒトの細胞でも樹立に成功します。
 
 胚を使う倫理問題と拒絶反応を避けながら、**体細胞から臓器の材料を作る**道を開き、人工臓器の発想を「機械による代替」から「細胞による再建」へと広げました。2012年にノーベル賞を受賞し、日本では再生医療の法制度整備(制度と倫理レイヤー)が一気に進む契機になります。', null,
-          'verified', null, 'user', 12) returning id)
+          'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Cell: Induction of Pluripotent Stem Cells from Mouse Embryonic and Adult Fibroblast Cultures by Defined Factors', 'https://doi.org/10.1016/j.cell.2006.07.024')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-artificial-organs'),
@@ -415,7 +431,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2011-04-01', null, 'month', 'point', '日本で植込み型補助人工心臓が保険適用に', '日本で植込み型補助人工心臓が薬事承認を経て保険適用となり、心臓移植の待機患者が、装置とともに在宅で移植を待てる体制が始まりました。それまで患者の多くは、体外式装置での長期入院を強いられていたのです。
 
 臓器提供が極端に少ない日本では移植待機が数年に及び、補助人工心臓は事実上の長期治療として使われています。同じ種でも土壌が違えば育ち方が変わるように、機器(機器と技術レイヤー)は同じでも、制度と文化の違いが使われ方を大きく変える例です。', null,
-          'unverified', '国内の薬事承認と保険適用の正確な時期・対象機種の対応関係は、公的資料での確認が取り切れていません。', 'user', 13) returning id)
+          'unverified', '国内の薬事承認と保険適用の正確な時期・対象機種の対応関係は、公的資料での確認が取り切れていません。', 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('日本循環器学会・関連学会: 植込み型補助人工心臓の適正使用に関する資料', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-artificial-organs'),
@@ -423,7 +439,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2014-09-12', null, 'day', 'point', 'iPS細胞由来の網膜シート、世界初の移植', '理化学研究所の高橋政代らのチームが、患者本人のiPS細胞から作った網膜色素上皮シートを、加齢黄斑変性の患者に移植しました。iPS細胞由来の組織がヒトに移植された、世界初の症例です。
 
 山中らの樹立(機器と技術レイヤー)からわずか8年での臨床到達でした。再生医療関連法の施行前夜という転換期に、慎重な審査を経て行われています。視力の回復ではなく安全性の確認を主な目的とする、石橋を叩いて渡るような設計で、「細胞で臓器を作る」医療の現実的な一歩目になりました。', null,
-          'verified', null, 'user', 14) returning id)
+          'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('理化学研究所: iPS細胞由来網膜色素上皮シート移植手術の実施について(2014年9月)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-artificial-organs'),
@@ -431,7 +447,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2016-03-23', null, 'day', 'point', '人工気管移植のマッキャリーニ、不正が問題化', '「幹細胞を播種した人工気管」の移植で脚光を浴びた外科医マッキャリーニをめぐり、患者の相次ぐ死亡と論文の誇張が問題になり、カロリンスカ研究所が解雇を発表しました。のちに複数の論文が撤回され、2023年にはスウェーデンで有罪判決が確定しています。
 
 再生医療への過剰な期待が、審査の目を曇らせてしまった。そう総括された事件です。先端的な人工臓器・再生医療の臨床応用における研究不正の教訓として、各国の制度に影を落としました。', null,
-          'verified', null, 'user', 15) returning id)
+          'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Paolo Macchiarini', 'https://en.wikipedia.org/wiki/Paolo_Macchiarini')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-artificial-organs'),
@@ -439,7 +455,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2021-09-25', null, 'day', 'point', '脳死者の体でブタ腎臓の機能を実証', 'ニューヨーク大学の医療チームが、遺伝子改変ブタの腎臓を脳死状態の提供者の血管につなぎ、54時間にわたって尿の生成が続き、超急性拒絶反応が起きないことを確かめました。
 
 家族の同意のもとで脳死者を移植研究の場とした点で、科学的な前進であると同時に、新しい研究倫理の枠組みの試行でもありました。いわば本番前の舞台稽古です。この検証が翌2022年の生体患者への異種心臓移植(患者と社会レイヤー)への橋渡しとなり、異種移植を臨床の射程に引き入れました。', null,
-          'verified', null, 'user', 16) returning id)
+          'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('NYU Langone Health: 遺伝子改変ブタ腎臓の機能実証に関する発表(2021年10月)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-artificial-organs'),
@@ -447,7 +463,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2022-01-07', '2022-03-08', 'day', 'period', '世界初のブタ心臓移植、ベネット氏60日の生存', 'メリーランド大学で、末期心不全のデービッド・ベネットに、遺伝子改変ブタの心臓が移植されました。生体の人間への異種心臓移植は世界初。他に治療手段のない患者に開かれる特別な扉、FDAの拡大アクセス制度によって実施され、ベネットは60日間生存しました。
 
 **種の壁を越えた移植**は、臓器不足の根本的な解決策として世界の注目を集めましたが、死後の分析でブタ由来ウイルスの関与が示唆され、安全性の課題も残りました。移植を受けられない患者の存在(制度と倫理レイヤー)が、この挑戦の背景にあります。', null,
-          'disputed', '死因は移植心の機能不全に至る複合的な要因が指摘されており、ブタサイトメガロウイルスの寄与の程度をめぐって見解が分かれます。', 'user', 17) returning id)
+          'disputed', '死因は移植心の機能不全に至る複合的な要因が指摘されており、ブタサイトメガロウイルスの寄与の程度をめぐって見解が分かれます。', 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('University of Maryland School of Medicine: 遺伝子改変ブタ心臓移植に関する発表(2022年1月)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-artificial-organs'),
@@ -455,12 +471,12 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2024-03-16', null, 'day', 'point', '生体患者への世界初のブタ腎臓移植', 'マサチューセッツ総合病院で、遺伝子改変ブタの腎臓が、末期腎不全のリチャード・スレイマンに移植されました。生体の人間へのブタ腎臓移植は世界初で、患者はいったん透析を離れて退院しています。
 
 スレイマンは約2か月後に亡くなりましたが、病院は移植との直接の関連を否定しています。コルフの人工腎臓(機器と技術レイヤー)から約80年。機械の腎臓から始まった物語は、遺伝子を書き換えた生体臓器という、新しい選択肢にたどり着きました。', null,
-          'verified', null, 'user', 18) returning id)
+          'verified', null, 'user', 20) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Massachusetts General Hospital: 遺伝子改変ブタ腎臓の生体移植に関する発表(2024年3月)', null)) as v(title, url);
 
 -- ═══ science-astronomy-turning-points — 🔭 天文学の転換点
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-astronomy-turning-points', '00000000-0000-4000-8000-e4529396d344', '🔭 天文学の転換点', 'コペルニクスの地動説から望遠鏡、相対性理論、系外惑星、重力波、JWSTまで。観測技術・宇宙像・社会の3層を重ねて、「宇宙の見え方」がひっくり返った瞬間を選んで並べました。見上げる夜空の意味が変わってきた記録です 🌌', 'science-nature', 'ja', 'public', 's_science-astronomy-turning-points', 1543, 2023, 'science-astronomy-turning-points')
+values ('science-astronomy-turning-points', '00000000-0000-4000-8000-e4529396d344', '🔭 天文学の転換点', 'コペルニクスの地動説から望遠鏡、相対性理論、系外惑星、重力波、JWSTまで。観測技術・宇宙像・社会の3層を重ねて、「宇宙の見え方」がひっくり返った瞬間を選んで並べました。見上げる夜空の意味が変わってきた記録です 🌌', 'science-nature', 'ja', 'public', 's_science-astronomy-turning-points', 1543, 2026, 'science-astronomy-turning-points')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astronomy-turning-points');
@@ -495,18 +511,26 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astronomy-turning-points'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astronomy-turning-points') and name = '社会と宇宙観'),
+          '1616-03-05', '1835-01-01', 'day', 'period', '地動説の書、禁書目録の219年', 'ローマの検邪聖省が地動説を誤りと断じ、コペルニクスの「天球の回転について」は「訂正されるまで停止」として禁書目録に加えられました。地動説を事実として説くことが、公式に禁じられたのです。
+
+この禁の線は驚くほど長く、地動説の本が目録から外れるのは1835年の版になってからでした。線の途中でガリレオが裁かれ、ニュートン力学が君臨し(宇宙像の転換レイヤー)、科学の側の決着はとうに付いています。**制度の時間は宇宙像の時間よりずっと遅れて流れる**ことを、この線は見せてくれます。', null,
+          'verified', null, 'user', 3) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Index Librorum Prohibitorum', 'https://en.wikipedia.org/wiki/Index_Librorum_Prohibitorum')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'science-astronomy-turning-points'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astronomy-turning-points') and name = '社会と宇宙観'),
           '1633-06-22', null, 'day', 'point', '異端審問所がガリレオに有罪宣告', 'ローマの異端審問所がガリレオに有罪を宣告し、地動説を「異端の疑いが濃厚」として撤回させました。ガリレオは終身の軟禁下に置かれ、主著「天文対話」は禁書目録に載ります。
 
 科学と宗教的権威の衝突を象徴する事件として、以後何世紀も語り継がれることになりました。ローマ教皇庁が裁判の誤りを公式に認めたのは、1992年のことです。一方で、軟禁の中でもガリレオが力学研究を続けたことは、ニュートン(宇宙像の転換レイヤー)への橋渡しになりました。', null,
-          'verified', null, 'user', 3) returning id)
+          'verified', null, 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Galileo affair', 'https://en.wikipedia.org/wiki/Galileo_affair')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astronomy-turning-points'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astronomy-turning-points') and name = '宇宙像の転換'),
-          '1687-07-05', null, 'day', 'point', 'ニュートン「プリンキピア」刊行', 'ニュートンの「自然哲学の数学的諸原理(プリンキピア)」が刊行されました。万有引力と運動の法則によって、物体の落下から惑星の公転までを同じ数学で説明し、ケプラーの法則を導いてみせたのです。
+          '1687-07-05', '1846-09-23', 'day', 'period', 'プリンキピア、力学が君臨した159年', 'ニュートンの「自然哲学の数学的諸原理(プリンキピア)」が刊行されました。万有引力と運動の法則によって、物体の落下から惑星の公転までを同じ数学で説明し、ケプラーの法則まで導いてみせたのです。
 
-天の上も地の上も、同じ法則が支配している。この統一が、天動説と地動説の対立を最終的に過去のものにしました。以後160年間この力学は完璧に見え、そのわずかな揺らぎ(1846年の海王星発見、1915年の一般相対性理論)自体が、次の転換点になっていきます。', null,
-          'verified', null, 'user', 4) returning id)
+天の上も地の上も、同じ法則が支配する。この体系がほぼ疑われなかった159年間を、ここでは1本の線にしました。線の終わりは1846年、計算が海王星を言い当てた最大の凱歌の日です。そしてこの力学が説明しきれずに残した水星のずれが、1915年の一般相対性理論への扉になります。', null,
+          'verified', null, 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Philosophiæ Naturalis Principia Mathematica', 'https://en.wikipedia.org/wiki/Philosophi%C3%A6_Naturalis_Principia_Mathematica')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astronomy-turning-points'),
@@ -514,7 +538,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1846-09-23', null, 'day', 'point', '計算が予言した惑星、海王星の発見', 'ベルリン天文台のガレが、フランスのルヴェリエの計算が示した位置のすぐ近くに、海王星を見つけました。天王星の軌道のずれから未知の惑星の居場所を割り出した、理論天文学の金字塔です。
 
 **紙と計算だけで惑星を予言した**この成功は、ニュートン力学の権威を頂点へ押し上げました。発見の栄誉をめぐっては英国のアダムズの計算が先だとする声が上がり英仏間の論争になりましたが、近年の史料再検証では、英国側の主張を割り引く見方が進んでいます。', null,
-          'disputed', 'アダムズの計算の先行性と精度をめぐる評価は英仏間で長く対立してきました。近年の史料再検証では、英国側の主張を割り引く見解が有力です。', 'user', 5) returning id)
+          'disputed', 'アダムズの計算の先行性と精度をめぐる評価は英仏間で長く対立してきました。近年の史料再検証では、英国側の主張を割り引く見解が有力です。', 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Discovery of Neptune', 'https://en.wikipedia.org/wiki/Discovery_of_Neptune')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astronomy-turning-points'),
@@ -522,15 +546,23 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1915-11-25', null, 'day', 'point', 'アインシュタインが一般相対性理論を発表', 'アインシュタインがプロイセン科学アカデミーで、一般相対性理論の重力場方程式を発表しました。重力を力ではなく時空の曲がりとして描き、ニュートン以来の重力観を根本から置き換えたのです。
 
 水星の近日点移動という積年の謎を説明したうえ、光の湾曲と重力波という検証できる予言を生みました。前者は1919年の日食観測(社会と宇宙観レイヤー)で、後者はちょうど100年後、2015年の直接検出(観測と技術レイヤー)で確かめられることになります。', null,
-          'verified', null, 'user', 6) returning id)
+          'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: General relativity', 'https://en.wikipedia.org/wiki/General_relativity')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'science-astronomy-turning-points'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astronomy-turning-points') and name = '宇宙像の転換'),
+          '1916-06-01', '2015-09-14', 'month', 'period', '重力波、予言のままの99年', '一般相対性理論を発表した翌年、アインシュタインは時空のさざ波、重力波の存在を理論的に導きました。ただしその振幅はあまりに小さく、本人ですら検出は不可能だろうと考えていたと伝えられています。
+
+予言は99年間、予言のまま夜空に浮かんでいました。1974年発見の連星パルサーの観測が間接的な証拠を与え、線の終わりは2015年9月14日、LIGOの直接検出(観測と技術レイヤー)にぴったり重なります。理論の線の長さは、それを確かめる装置が育つのに必要だった時間でもあるのです。', null,
+          'verified', null, 'user', 8) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Gravitational wave', 'https://en.wikipedia.org/wiki/Gravitational_wave')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astronomy-turning-points'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astronomy-turning-points') and name = '社会と宇宙観'),
           '1919-05-29', null, 'day', 'point', '日食観測が相対性理論を実証、世界的事件に', 'エディントンらの遠征隊が西アフリカとブラジルで皆既日食を観測し、太陽の重力による星の光の湾曲が一般相対性理論の予言と一致すると、同年11月に発表しました。「ニュートンの宇宙が覆された」と新聞が書き立て、アインシュタインは一夜で世界的な名声を得ます。
 
 科学の成果がメディアを通じて大衆的な事件になった、最初期の例です。当時の観測精度は低く、データの取捨選択への批判も長く続きましたが、後年の再解析は結論をおおむね支持しています。', null,
-          'disputed', '観測精度の低さとデータ選択の妥当性への批判は長くありましたが、後年の再解析では、結論はおおむね支持されています。', 'user', 7) returning id)
+          'disputed', '観測精度の低さとデータ選択の妥当性への批判は長くありましたが、後年の再解析では、結論はおおむね支持されています。', 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Eddington experiment', 'https://en.wikipedia.org/wiki/Eddington_experiment')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astronomy-turning-points'),
@@ -538,7 +570,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1923-10-06', null, 'day', 'point', 'ハッブル、アンドロメダが銀河系の外と示す', 'ハッブルがウィルソン山天文台の100インチ望遠鏡で、アンドロメダ「星雲」の中にセファイド変光星を見つけ、その距離が銀河系の大きさをはるかに超えることを示しました。変光星を意味する「VAR」と興奮のままに書き込んだ写真乾板が残っています。
 
 宇宙は銀河系がすべてか否かを争った1920年の「大論争」に決着をつけ、**銀河系は無数の銀河の一つ**にすぎないと確定させました。距離の物差しになったのは、リービットが1912年に見つけた変光星の周期光度関係です。', null,
-          'verified', null, 'user', 8) returning id)
+          'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Edwin Hubble', 'https://en.wikipedia.org/wiki/Edwin_Hubble')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astronomy-turning-points'),
@@ -546,7 +578,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1929-03-15', null, 'day', 'point', '宇宙膨張の観測的証拠、ハッブルの法則', 'ハッブルが、遠い銀河ほど速く遠ざかるという、距離と後退速度の比例関係を発表しました。宇宙そのものが膨張していることの観測的な根拠で、永遠不変の静的な宇宙像は放棄を迫られます。
 
 膨張を時間的に遡れば、宇宙には「始まり」があったことになる。ビッグバン宇宙論への道はここから開けました。同様の関係は1927年にルメートルが理論とともに導いていて、先取権をめぐる長い議論の末、2018年に「ハッブル–ルメートルの法則」へ改称されています。', null,
-          'disputed', '法則の先取権については1927年のルメートルの論文との関係で議論が続き、IAUが2018年に名称変更を決議した経緯があります。', 'user', 9) returning id)
+          'disputed', '法則の先取権については1927年のルメートルの論文との関係で議論が続き、IAUが2018年に名称変更を決議した経緯があります。', 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Hubble''s law', 'https://en.wikipedia.org/wiki/Hubble%27s_law')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astronomy-turning-points'),
@@ -554,7 +586,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1957-10-04', null, 'day', 'point', 'スプートニク1号打ち上げ、宇宙時代の幕開け', 'ソ連が世界初の人工衛星スプートニク1号の打ち上げに成功しました。直径58cmの球体が発する電波は世界中のアマチュア無線家にも届き、米国には「スプートニク・ショック」と呼ばれる衝撃が走ります 📡
 
 宇宙が「観測するだけの場所」から「人類が機械を送り込む場所」へ変わった瞬間です。冷戦下の宇宙開発競争は、結果として宇宙望遠鏡や惑星探査機(観測と技術レイヤー)という、大気の外から宇宙を見る新しい道具を天文学にもたらしていきます。', null,
-          'verified', null, 'user', 10) returning id)
+          'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Sputnik 1', 'https://en.wikipedia.org/wiki/Sputnik_1')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astronomy-turning-points'),
@@ -562,7 +594,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1965-05-01', null, 'month', 'point', '宇宙マイクロ波背景放射の発見', 'ベル研究所のペンジアスとウィルソンが、アンテナからどうしても消えない雑音として、全天からほぼ等しく届くマイクロ波を検出しました。これが宇宙誕生の名残の光、宇宙マイクロ波背景放射と同定されます。
 
 ビッグバン理論と定常宇宙論の論争に事実上の決着をつけ、宇宙論(宇宙像の転換レイヤー)を思弁から精密観測の科学へ変える突破口になりました(1978年ノーベル賞)。同じ放射を予言していたプリンストンのチームとの同時期の遭遇は、科学史に残る偶然です。', null,
-          'verified', null, 'user', 11) returning id)
+          'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Cosmic microwave background', 'https://en.wikipedia.org/wiki/Cosmic_microwave_background')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astronomy-turning-points'),
@@ -570,15 +602,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1967-11-28', null, 'day', 'point', 'ジョスリン・ベルがパルサーを発見', 'ケンブリッジ大学の大学院生ジョスリン・ベルが、電波観測データの中に、正確な周期で届くパルスを見つけました。当初は半ば冗談で「小さな緑の人(LGM-1)」と呼ばれた信号は、高速で自転する中性子星、パルサーと同定されます。
 
 理論上の存在だった中性子星が実在すると示し、極限状態の物理を観測できる高エネルギー天体物理学の扉を開きました。1974年のノーベル物理学賞は指導教員ヒューイッシュらに贈られ、発見者本人が外れたことは、科学界の長い論争として残っています。', null,
-          'verified', null, 'user', 12) returning id)
+          'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Jocelyn Bell Burnell', 'https://en.wikipedia.org/wiki/Jocelyn_Bell_Burnell')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astronomy-turning-points'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astronomy-turning-points') and name = '観測と技術'),
-          '1990-04-24', null, 'day', 'point', 'ハッブル宇宙望遠鏡の打ち上げ', 'スペースシャトルによって、ハッブル宇宙望遠鏡が打ち上げられました。大気の揺らぎに邪魔されない軌道の上から宇宙を見ることは天文学の悲願で、口径2.4mのこの望遠鏡は、30年以上も観測を続けることになります。
+          '1990-04-24', '2026-06-30', 'day', 'period', 'ハッブル宇宙望遠鏡、観測の36年', 'スペースシャトルで打ち上げられたハッブル宇宙望遠鏡は、直後に主鏡の研磨誤差が見つかり「欠陥望遠鏡」と酷評されました。1993年の修理ミッションで性能を取り戻し、そこから本来の観測が始まります。
 
-直後に主鏡の研磨誤差が見つかり「欠陥望遠鏡」と酷評されましたが、1993年の修理ミッションで性能を回復しました。以後は宇宙膨張の加速の測定(宇宙像の転換レイヤー)などに貢献し、公開された画像は、私たちが思い浮かべる宇宙のイメージそのものを塗り替えています。', null,
-          'verified', null, 'user', 13) returning id)
+以来この線は、36年目の現在も途切れていません。線の上には系外惑星の発見も、宇宙膨張の加速の測定(宇宙像の転換レイヤー)も乗っています。2021年からはJWSTの線が並走を始めましたが、世代交代ではなく2台体制。軌道の上の目は、いまも夜ごと宇宙を見つめています。', null,
+          'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Hubble Space Telescope', 'https://en.wikipedia.org/wiki/Hubble_Space_Telescope')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astronomy-turning-points'),
@@ -586,7 +618,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1995-10-06', null, 'day', 'point', '太陽に似た恒星を回る初の系外惑星発見', 'スイスのマイヨールとケローが、ペガスス座51番星を回る惑星の発見を発表しました。太陽に似た恒星を回る系外惑星の確認は史上初。しかも木星級の巨大惑星がわずか4日で公転するという、太陽系の常識の外にある姿でした 🪐
 
 **太陽系が特別ではなくなった**転換点です。「灼熱の木星」の存在は惑星形成理論の書き換えを迫り、系外惑星はその後の探査で5000個を超えて見つかっていきます。2019年、二人にはノーベル物理学賞が贈られました。', null,
-          'verified', null, 'user', 14) returning id)
+          'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 51 Pegasi b', 'https://en.wikipedia.org/wiki/51_Pegasi_b')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astronomy-turning-points'),
@@ -594,7 +626,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1998-01-01', null, 'year', 'point', '宇宙膨張の加速とダークエネルギーの発見', '遠方の超新星を観測していた2つの国際チームが、宇宙の膨張は減速ではなく、むしろ加速しているという結果を相次いで発表しました。加速を引き起こす正体不明の何かは「ダークエネルギー」と名付けられます。
 
 **膨張は加速していた**。この発見は、宇宙の約7割が正体不明のエネルギーで占められることを意味し、物理学最大級の未解決問題を生みました。観測自体は追試で確立して2011年のノーベル賞に至りましたが、ダークエネルギーの正体は今も分かっていません。', null,
-          'verified', null, 'user', 15) returning id)
+          'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Accelerating expansion of the universe', 'https://en.wikipedia.org/wiki/Accelerating_expansion_of_the_universe')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astronomy-turning-points'),
@@ -602,7 +634,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2015-09-14', null, 'day', 'point', 'LIGOが重力波を初めて直接検出', '米国の重力波検出器LIGOが、約13億光年彼方のブラックホール連星の合体から届いた重力波を、史上初めて直接検出しました。一般相対性理論(宇宙像の転換レイヤー)の予言から、ちょうど100年目の検証です。
 
 電磁波に頼らず、時空のさざ波そのものを捉える。**宇宙を「聴く」観測**の始まりでした。2017年には中性子星合体を重力波と光の双方で捉えるマルチメッセンジャー天文学も実現し、検出は同年のノーベル物理学賞の対象になっています。', null,
-          'verified', null, 'user', 16) returning id)
+          'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Physical Review Letters: Observation of Gravitational Waves from a Binary Black Hole Merger', 'https://doi.org/10.1103/PhysRevLett.116.061102')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astronomy-turning-points'),
@@ -610,7 +642,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2019-04-10', null, 'day', 'point', 'ブラックホールの「影」を初めて撮像・公開', '国際協力イベント・ホライズン・テレスコープ(EHT)が、楕円銀河M87の中心にある超大質量ブラックホールの「影」の画像を、世界6か所の同時会見で公開しました。ブラックホールが直接撮像された、史上初の例です。
 
 地球規模の電波望遠鏡網(観測と技術レイヤー)が成し遂げた成果であると同時に、あのオレンジ色のリングが一夜で世界中に共有される、科学とメディアの新しい関係も見せてくれました。理論上の存在だったブラックホールは、誰もが見た「実在」になったのです。', null,
-          'verified', null, 'user', 17) returning id)
+          'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Event Horizon Telescope', 'https://en.wikipedia.org/wiki/Event_Horizon_Telescope')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astronomy-turning-points'),
@@ -618,7 +650,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2021-12-25', '2022-07-12', 'day', 'period', 'JWST打ち上げから最初の科学画像公開まで', 'ジェイムズ・ウェッブ宇宙望遠鏡(JWST)が打ち上げられ、地球から150万kmのラグランジュ点への航行と、口径6.5mの主鏡の展開・調整を経て、2022年7月12日に最初の科学画像が公開されました 🌌
 
 赤外線で宇宙最初期の銀河まで見通す設計で、開発には四半世紀と約100億ドルが投じられています。最初の画像公開は米大統領も参加する社会的なイベント(社会と宇宙観レイヤー)となり、観測データは公開直後から、初期宇宙の描像(宇宙像の転換レイヤー)を揺さぶり始めました。', null,
-          'verified', null, 'user', 18) returning id)
+          'verified', null, 'user', 20) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: James Webb Space Telescope', 'https://en.wikipedia.org/wiki/James_Webb_Space_Telescope')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astronomy-turning-points'),
@@ -626,12 +658,12 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2023-02-01', null, 'month', 'point', 'JWSTが初期宇宙に「重すぎる銀河」候補を発見', 'JWSTの初期観測データから、ビッグバン後5〜7億年の宇宙に、標準的な銀河形成モデルの予想を大きく上回る質量を持つとみられる銀河の候補が、複数報告されました。
 
 候補の多くは測光観測による赤方偏移の推定に基づいていて、分光での確認や質量見積もりの下方修正も進行中です。宇宙論の修正が要るのかどうかは、まだ分かりません。新しい観測装置(観測と技術レイヤー)が宇宙像を揺さぶるという、この年表で繰り返されてきた構図の、いちばん新しい一幕です。', null,
-          'unverified', '銀河候補の距離と質量は測光的な推定に基づく初期報告で、分光確認と再解析によって、見積もりが変わる可能性が高い段階です。', 'user', 19) returning id)
+          'unverified', '銀河候補の距離と質量は測光的な推定に基づく初期報告で、分光確認と再解析によって、見積もりが変わる可能性が高い段階です。', 'user', 21) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Nature: A population of red candidate massive galaxies ~600 Myr after the Big Bang (Labbé et al., 2023)', null)) as v(title, url);
 
 -- ═══ science-astrophysics — 🌌 宇宙物理学の革命
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-astrophysics', '00000000-0000-4000-8000-e4529396d344', '🌌 宇宙物理学の革命', '1915年の一般相対性理論から、重力波、そしてJWSTまで。理論の飛躍と、それを確かめた観測と装置、発見に沸いた人と社会。3つの層を重ねて、宇宙の姿が塗り替えられてきた100年あまりをたどります。夜空の向こうで起きてきたことの記録です 🔭', 'science-nature', 'ja', 'public', 's_science-astrophysics', 1915, 2023, 'science-astrophysics')
+values ('science-astrophysics', '00000000-0000-4000-8000-e4529396d344', '🌌 宇宙物理学の革命', '1915年の一般相対性理論から、重力波、そしてJWSTまで。理論の飛躍と、それを確かめた観測と装置、発見に沸いた人と社会。3つの層を重ねて、宇宙の姿が塗り替えられてきた100年あまりをたどります。夜空の向こうで起きてきたことの記録です 🔭', 'science-nature', 'ja', 'public', 's_science-astrophysics', 1915, 2026, 'science-astrophysics')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics');
@@ -738,18 +770,34 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '観測と装置'),
+          '1989-11-18', '1993-12-23', 'day', 'period', 'COBE、宇宙の産声を測った4年', 'NASAの宇宙背景放射探査衛星COBEが打ち上げられ、1993年末までの4年あまり、宇宙誕生の名残の光を測り続けました。1990年には背景放射がほぼ完全な黒体放射であることを示し、1992年には温度のわずかなむらの検出を発表しています。
+
+このむらこそ、銀河の種になった量子ゆらぎの痕跡でした。1981年のインフレーション理論(理論レイヤー)の予測に、観測の線が初めて応えたのです。マザーとスムートは2006年にノーベル物理学賞を受け、精密宇宙論の時代がここから始まりました。', null,
+          'verified', null, 'user', 12) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('NASA: Cosmic Background Explorer (COBE)', null), ('The Nobel Prize in Physics 2006', 'https://www.nobelprize.org/prizes/physics/2006/summary/')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'science-astrophysics'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '観測と装置'),
           '1990-04-24', '1993-12-13', 'day', 'period', 'ハッブル宇宙望遠鏡、打ち上げから光学系修理まで', 'スペースシャトルで打ち上げられたハッブル宇宙望遠鏡に、直後から像がぼやける主鏡の研磨誤差「球面収差」が見つかり、巨額の計画への批判が噴き出しました。1993年12月、エンデバー号の飛行士が補正光学系を取り付け、本来の視力を取り戻します 🔭
 
 以後は深宇宙の撮像、宇宙年齢の決定、加速膨張の発見と、数々の成果を生みました。装置の失敗と回復が、科学予算への社会の視線を左右した例でもあり、次世代望遠鏡JWSTの慎重な開発姿勢にも影響しています。', null,
-          'verified', null, 'user', 12) returning id)
+          'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('NASA: Hubble Space Telescope', 'https://science.nasa.gov/mission/hubble/'), ('NASA: STS-61 Mission Archives (First Hubble Servicing Mission)', null)) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'science-astrophysics'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '人と社会'),
+          '1996-01-01', '2021-12-25', 'year', 'period', 'JWST、構想から打ち上げまでの25年', 'ハッブルの後継となる赤外線宇宙望遠鏡の構想が1996年に始まり、打ち上げまでに25年を要しました。予算は当初の見積もりから約100億ドルにまで膨らみ、2011年には米議会で計画中止の動きまで出ています。
+
+開発の線が延びるあいだに、加速膨張の発見やハッブル定数の不一致(理論レイヤー)など、この望遠鏡が挑むべき宿題が積み上がっていきました。線が終わる2021年12月25日、そこからJWSTの観測の線(観測と装置レイヤー)が始まります。巨大な科学装置は、一世代がかりの事業になったのです。', null,
+          'verified', null, 'user', 14) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('NASA: James Webb Space Telescope', 'https://science.nasa.gov/mission/webb/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '観測と装置'),
           '1998-01-01', null, 'year', 'point', '遠方超新星の観測で宇宙の加速膨張を発見', 'リースらとパールマッターらの2チームが、Ia型超新星の距離測定から、宇宙の膨張は減速ではなく加速していると報告しました。重力でブレーキがかかるはずという理論レイヤーの前提を覆し、アインシュタインが撤回した宇宙項に相当する「ダークエネルギー」の存在を示唆します。
 
 精度を支えたのはハッブル宇宙望遠鏡の追観測でした。通常物質約5%、暗黒物質約27%、ダークエネルギー約68%という現代の宇宙の描像はここから固まり、3人は2011年にノーベル物理学賞を受けました。', null,
-          'verified', null, 'user', 13) returning id)
+          'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Riess, A. G. et al. (1998) Observational Evidence from Supernovae for an Accelerating Universe and a Cosmological Constant. The Astronomical Journal', 'https://doi.org/10.1086/300499'), ('Perlmutter, S. et al. (1999) Measurements of Ω and Λ from 42 High-Redshift Supernovae. The Astrophysical Journal', 'https://doi.org/10.1086/307221')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
@@ -757,7 +805,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2014-03-17', '2015-01-30', 'day', 'period', 'BICEP2「原始重力波の痕跡」発表から撤回まで', '南極の望遠鏡BICEP2が、インフレーションの証拠となる原始重力波起源の偏光パターンを検出したと発表しました。記者会見と動画で「ノーベル賞級」と報じられ、理論の直接証拠として大きく取り上げられます。
 
 しかしプランク衛星との共同解析で、信号の大部分は銀河系内の塵によるものと結論され、2015年1月に主張は事実上撤回されました。査読前の発表と科学報道のあり方が問われる一方で、誤りが公開の場で正されていく、科学の自己修正が働いた事例でもあります。', null,
-          'verified', null, 'user', 14) returning id)
+          'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('BICEP2 Collaboration (2014) Detection of B-Mode Polarization at Degree Angular Scales by BICEP2. Physical Review Letters', 'https://doi.org/10.1103/PhysRevLett.112.241101'), ('BICEP2/Keck and Planck Collaborations (2015) Joint Analysis of BICEP2/Keck Array and Planck Data. Physical Review Letters', 'https://doi.org/10.1103/PhysRevLett.114.101301')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
@@ -765,15 +813,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2015-09-14', null, 'day', 'point', 'LIGO、重力波を初めて直接検出', '観測再開の直後、約13億光年先のブラックホール連星の合体から届いた重力波GW150914を、2台の検出器が同時に捉えました。太陽の約36倍と29倍のブラックホールが合体し、約3太陽質量分のエネルギーが重力波として放たれ、2016年2月11日に公表されます。
 
 **一般相対論が1916年に予言してから、ほぼ100年後の直接検出**です。2017年8月には中性子星合体GW170817が電磁波でも同時観測されてマルチメッセンジャー天文学が幕を開け、ワイス、バリッシュ、ソーンは2017年にノーベル物理学賞を受けました。', null,
-          'verified', null, 'user', 15) returning id)
+          'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Abbott, B. P. et al. (LIGO Scientific Collaboration and Virgo Collaboration) (2016) Observation of Gravitational Waves from a Binary Black Hole Merger. Physical Review Letters', 'https://doi.org/10.1103/PhysRevLett.116.061102'), ('The Nobel Prize in Physics 2017', 'https://www.nobelprize.org/prizes/physics/2017/summary/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '理論'),
-          '2019-01-01', null, 'year', 'point', '「ハッブル定数の不一致」が統計的に有意と報告される', '近くの宇宙で距離はしごを組んで測った膨張率と、宇宙背景放射から標準モデルで導いた値のずれが、約4σを超えたと報告されました。セファイド変光星と超新星による測定は毎秒毎メガパーセクあたり約74km、プランク衛星側は約67kmで、誤差では説明がつきません。
+          '2019-01-01', '2026-06-30', 'year', 'period', 'ハッブル定数の不一致、7年目の緊張', '近くの宇宙で距離はしごを組んで測った膨張率と、宇宙背景放射から標準モデルで導いた値のずれが約4σを超えたと報告され、「ハッブル・テンション」と呼ばれる緊張が始まりました。セファイド変光星側は毎秒毎メガパーセクあたり約73km、プランク衛星側は約67kmです。
 
-原因が測定の系統誤差なのか、暗黒エネルギーの性質や初期宇宙の物理の見直しを迫る新しい物理なのかは、まだ決着していません。JWSTによる距離尺度の再検証が、2020年代の大きな宿題になっています。', null,
-          'disputed', 'ずれの原因が未知の系統誤差なのか標準宇宙モデルの不備なのか、研究者の間でも見解が分かれていて、独立した距離測定法ごとに値も異なります。', 'user', 16) returning id)
+原因が測定の系統誤差なのか、標準モデルの見直しを迫る新しい物理なのか。7年たった現在も決着はついていません。この未解決の線の上には、JWSTの観測の線(観測と装置レイヤー)が重なって走っていて、距離はしごの再検証というかたちで、2本の線は同じ問いを見つめています。', null,
+          'disputed', 'ずれの原因が未知の系統誤差なのか標準宇宙モデルの不備なのか、研究者の間でも見解が分かれていて、独立した距離測定法ごとに値も異なります。', 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Riess, A. G. et al. (2019) Large Magellanic Cloud Cepheid Standards Provide a 1% Foundation for the Determination of the Hubble Constant and Stronger Evidence for Physics beyond ΛCDM. The Astrophysical Journal', null), ('Planck Collaboration (2020) Planck 2018 results. VI. Cosmological parameters. Astronomy & Astrophysics', 'https://doi.org/10.1051/0004-6361/201833910')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
@@ -781,15 +829,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2020-10-06', null, 'day', 'point', 'ペンローズ、ゲンツェル、ゲズにノーベル物理学賞', 'ブラックホールの形成が一般相対論の帰結だと証明したペンローズと、天の川銀河の中心に太陽の約400万倍の質量を突き止めたゲンツェル、ゲズに、ノーベル物理学賞が贈られました。ペンローズの特異点定理は1965年、星の軌道追跡の観測は1990年代からの積み重ねです。
 
 前年の2019年4月には、イベント・ホライズン・テレスコープがM87のブラックホールの影を初めて撮像していました。**理論と観測と社会的な評価が、105年の時を経てひとつに集まった**瞬間です。', null,
-          'verified', null, 'user', 17) returning id)
+          'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('The Nobel Prize in Physics 2020', 'https://www.nobelprize.org/prizes/physics/2020/summary/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-astrophysics') and name = '観測と装置'),
-          '2021-12-25', null, 'day', 'point', 'ジェイムズ・ウェッブ宇宙望遠鏡を打ち上げ', '口径6.5mの赤外線宇宙望遠鏡ジェイムズ・ウェッブが、クリスマスの日に仏領ギアナからアリアン5で打ち上げられました。1996年の構想から25年、度重なる延期と予算超過を経て総額約100億ドルの計画が実現し、2022年7月に最初の科学画像が公開されます 🌌
+          '2021-12-25', '2026-06-30', 'day', 'period', 'JWST、打ち上げから観測の4年半', '口径6.5mの赤外線宇宙望遠鏡ジェイムズ・ウェッブが、クリスマスの日に仏領ギアナから打ち上げられました。L2への長い航海と主鏡の展開を終え、2022年7月に最初の科学画像を公開。以来、最初期の銀河や系外惑星の大気を捉える観測が現在も続いています 🌌
 
-太陽・地球のラグランジュ点L2から赤外線で、最初期の銀河、系外惑星の大気、星が生まれる現場を捉えます。ハッブルの後継として距離尺度の再検証にも投入され、2019年の「ハッブル定数の不一致」の解決も期待されています。', null,
-          'verified', null, 'user', 18) returning id)
+この観測の線は、構想から25年かけた開発の線(人と社会レイヤー)が終わった、まさにその日から始まっています。線の途中には初期宇宙の「重すぎる銀河」の報告があり、ハッブル定数の不一致という理論の線とも並走しながら、宇宙像を揺さぶり続けています。', null,
+          'verified', null, 'user', 20) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('NASA: James Webb Space Telescope', 'https://science.nasa.gov/mission/webb/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-astrophysics'),
@@ -797,12 +845,12 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2023-02-22', null, 'day', 'point', 'JWST、初期宇宙に予想外に重い銀河候補を報告', 'ビッグバンから約5〜7億年の時点に、標準モデルの予想を超える質量を持つとみられる銀河の候補が見つかったと、Nature誌に報告されました。ラベらのチームは赤外線の色から6個の候補の質量を見積もり、当時の宇宙にある通常物質の量に対して多すぎると指摘し、銀河形成理論の見直しの可能性を投げかけています。
 
 ただし推定は測光に基づくもので、分光での確認や活動銀河核の寄与、質量の見積もり方によって結論は変わりえます。追観測で一部の候補は距離や質量が下方修正されていて、評価はいまも続いています。', null,
-          'unverified', '候補天体の距離と質量は測光推定に基づいていて、分光の追観測やモデルの違いで大きく変わりうるため、標準モデルとの矛盾はまだ確定していません。', 'user', 19) returning id)
+          'unverified', '候補天体の距離と質量は測光推定に基づいていて、分光の追観測やモデルの違いで大きく変わりうるため、標準モデルとの矛盾はまだ確定していません。', 'user', 21) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Labbé, I. et al. (2023) A population of red candidate massive galaxies ~600 Myr after the Big Bang. Nature', 'https://doi.org/10.1038/s41586-023-05786-2')) as v(title, url);
 
 -- ═══ science-climate-100 — 気候変動の100年
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-climate-100', '00000000-0000-4000-8000-fc964faa4f01', '気候変動の100年', '1896年のアレニウスの計算から2020年代の1.5℃到達まで。科学の発見、大気と気温の観測記録、国際政策と社会運動の3層を重ね、知見が政策に届くまでの遅れと加速を読む。', 'science-nature', 'ja', 'public', 's_science-climate-100', 1896, 2024, 'science-climate-100')
+values ('science-climate-100', '00000000-0000-4000-8000-fc964faa4f01', '気候変動の100年', '1896年のアレニウスの計算から2020年代の1.5℃到達まで。科学の発見、大気と気温の観測記録、国際政策と社会運動の3層を重ね、知見が政策に届くまでの遅れと加速を読む。', 'science-nature', 'ja', 'public', 's_science-climate-100', 1896, 2026, 'science-climate-100')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100');
@@ -821,9 +869,9 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '観測と現象'),
-          '1958-03-01', null, 'month', 'point', 'キーリング、マウナロアでCO2の連続観測を開始', '国際地球観測年を機に、スクリップス海洋研究所のチャールズ・キーリングがハワイ・マウナロア山頂で大気中CO2濃度の高精度な定常観測を開始。開始時の濃度は約315ppmだった。
+          '1958-03-01', '2026-06-30', 'month', 'period', 'マウナロアCO2連続観測の68年', '国際地球観測年を機に、スクリップス海洋研究所のチャールズ・キーリングがハワイ・マウナロア山頂で大気中CO2濃度の定常観測を開始した。開始時の約315ppmから、2022年の噴火で観測点を一時マウナケアへ移しながらも測定は続き、現在は420ppmを超えている。
 
-観測は季節変動を伴いながら右肩上がりに増える「キーリング曲線」を生み、人為的なCO2増加を初めて連続データで示した。1960年代以降の理論研究や1965年の大統領諮問報告が依拠する基礎となる。', null,
+季節変動を伴って右肩上がりに増える「キーリング曲線」は、この年表の土台を走り続ける観測の線である。1965年の政府警告も京都議定書もパリ協定も、政策と社会の線の節目はすべて、この一本の線が示す数字を前提にしてきた。', null,
           'verified', null, 'user', 1) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Scripps Institution of Oceanography: The Keeling Curve', 'https://keelingcurve.ucsd.edu/'), ('NOAA Global Monitoring Laboratory: Trends in Atmospheric Carbon Dioxide', 'https://gml.noaa.gov/ccgg/trends/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -861,10 +909,18 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '科学の発見'),
+          '1988-11-01', '2026-06-30', 'month', 'period', 'IPCC、評価を重ねる37年', 'ハンセン証言と同じ1988年、WMOと国連環境計画が気候変動に関する政府間パネル（IPCC）を設立した。世界の科学者が数年がかりで知見を評価する仕組みで、第1次から第6次まで評価報告書を重ね、現在は第7次の作業サイクルが続いている。
+
+この線の37年の間に、人為的影響の表現は「不確実」から「疑う余地がない」へと段階的に強まった。枠組条約、京都議定書、パリ協定という政策と社会の線の節目は、いずれも直前の評価報告書を土台にしている。', null,
+          'verified', null, 'user', 6) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('IPCC: About the IPCC', 'https://www.ipcc.ch/about/')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'science-climate-100'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '科学の発見'),
           '1990-08-01', null, 'month', 'point', 'IPCC第1次評価報告書を公表', '1988年に設立されたIPCCが初の評価報告書をまとめ、人為的排出が温室効果を強めていることを確認。排出が続けば21世紀に10年あたり約0.3℃の昇温が起きうると予測する一方、観測された昇温の人為的寄与についてはなお不確実と慎重に記した。
 
 この科学的評価が同年の第2回世界気候会議を経て、1992年の気候変動枠組条約の交渉に直接つながった。', null,
-          'verified', null, 'user', 6) returning id)
+          'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('IPCC (1990) Climate Change: The IPCC Scientific Assessment (First Assessment Report)', 'https://www.ipcc.ch/reports/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
@@ -872,15 +928,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1992-06-01', null, 'month', 'point', '地球サミットで気候変動枠組条約が署名開放', 'リオデジャネイロの国連環境開発会議で、温室効果ガス濃度を「気候系に危険な人為的干渉を及ぼさない水準」で安定させることを究極目的とする気候変動枠組条約に各国が署名。条約は1994年に発効した。
 
 数値目標を伴わない枠組みだったため、具体的な削減義務は1997年の京都議定書へ持ち越された。IPCC第1次報告から2年、ハンセン証言から4年での国際合意である。', null,
-          'verified', null, 'user', 7) returning id)
+          'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('UNFCCC: What is the United Nations Framework Convention on Climate Change?', 'https://unfccc.int/process-and-meetings/the-convention/what-is-the-united-nations-framework-convention-on-climate-change')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '政策と社会'),
-          '1997-12-11', null, 'day', 'point', '京都議定書を採択', 'COP3で先進国に法的拘束力ある削減目標を課す京都議定書が採択。先進国全体で2008〜2012年に1990年比約5%、日本は6%の削減を約束した。米国は署名したが批准せず、発効は2005年まで待つことになる。
+          '1997-12-11', '2005-02-16', 'day', 'period', '京都議定書、採択から発効までの7年', 'COP3で、先進国に法的拘束力ある削減目標を課す京都議定書が採択された。先進国全体で2008〜2012年に1990年比約5%、日本は6%の削減を約束したが、発効には排出大国を含む批准の積み上げが必要で、条約は7年余り宙づりのままだった。
 
-採択の翌年、観測レイヤーでは強いエルニーニョで1998年が当時の観測史上最高気温を記録し、科学レイヤーでは過去1000年の気温復元が発表されるなど、政策・観測・科学が同時に動いた時期だった。', null,
-          'verified', null, 'user', 8) returning id)
+2001年に最大の排出国だった米国が離脱を表明し、発効はロシアの批准を待った2005年2月までずれ込んだ。この線の長さそのものが、科学の警告が実行に変わるまでの距離を示している。2003年の欧州熱波は、この空白の只中で起きた。', null,
+          'verified', null, 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('UNFCCC: Kyoto Protocol', 'https://unfccc.int/kyoto_protocol')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
@@ -888,15 +944,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1998-04-01', null, 'month', 'point', 'マンら、過去600年の気温復元「ホッケースティック」を発表', 'マンらが年輪などの代替指標から北半球の気温変動を復元し、20世紀の昇温が突出していると示した論文がNatureに掲載。翌年には復元期間が過去1000年に延長された。
 
 IPCC第3次報告（2001年）に採用されて温暖化の象徴的な図となった一方、統計手法や代替指標の選択をめぐる批判が続いた。2006年の米国研究評議会の検証では大筋の結論が支持されたが、中世の気温との比較の確からしさには議論が残った。', null,
-          'disputed', '復元手法（主成分分析の中心化や代替指標の選択）に対する批判があり、20世紀以前の詳細な気温変動については専門家間で評価が分かれる。', 'user', 9) returning id)
+          'disputed', '復元手法（主成分分析の中心化や代替指標の選択）に対する批判があり、20世紀以前の詳細な気温変動については専門家間で評価が分かれる。', 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Mann, M. E., Bradley, R. S. & Hughes, M. K. (1998) Global-scale temperature patterns and climate forcing over the past six centuries. Nature', 'https://doi.org/10.1038/33859'), ('National Research Council (2006) Surface Temperature Reconstructions for the Last 2,000 Years', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '観測と現象'),
-          '2003-08-01', null, 'month', 'point', '欧州熱波、初めて人為的寄与が定量評価される', '西欧を襲った記録的熱波で、フランスなどでは8月上旬に40℃前後が続き、高齢者を中心に数万人規模の超過死亡が生じた。
+          '2003-06-01', '2003-08-31', 'month', 'period', '2003年欧州熱波の夏', '西欧が6月から8月にかけて記録的な高温に覆われ、フランスでは8月上旬に40℃前後が続いた。高齢者を中心に、欧州全体で数万人規模の超過死亡が生じたと推計されている。
 
-翌2004年、ストットらは人為的な温室効果ガスがこの規模の熱波の発生リスクを少なくとも2倍にしたと推定し、個別の異常気象に人為的寄与を割り当てる「イベント・アトリビューション」の先駆けとなった。政策レイヤーでは京都議定書がなお未発効だった。', null,
-          'unverified', '超過死亡数は約3万人から7万人超まで推計に幅があり、対象国や集計期間によって数値が異なる。', 'user', 10) returning id)
+翌2004年、ストットらは人為的な温室効果ガスがこの規模の熱波の発生リスクを少なくとも2倍にしたと推定し、個別の異常気象に人為的寄与を割り当てる「イベント・アトリビューション」の先駆けとなった。政策と社会の線では、京都議定書がなお発効までの空白の中にあった。', null,
+          'unverified', '超過死亡数は約3万人から7万人超まで推計に幅があり、対象国や集計期間によって数値が異なる。', 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Stott, P. A., Stone, D. A. & Allen, M. R. (2004) Human contribution to the European heatwave of 2003. Nature', 'https://doi.org/10.1038/nature03089'), ('Robine, J.-M. et al. (2008) Death toll exceeded 70,000 in Europe during the summer of 2003. Comptes Rendus Biologies', 'https://doi.org/10.1016/j.crvi.2007.12.001')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
@@ -904,7 +960,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2007-02-02', null, 'day', 'point', 'IPCC第4次報告「温暖化は疑う余地がない」', 'IPCC第1作業部会が気候系の温暖化を「疑う余地がない」と断定し、20世紀半ば以降の昇温の大部分が人為的温室効果ガスによる可能性を90%以上と評価した。
 
 同年9月には北極海の夏季海氷面積が当時の観測史上最小を記録し、10月にはIPCCとアル・ゴアがノーベル平和賞を受賞。科学の断定、観測の異変、社会的評価が同じ年に重なった。', null,
-          'verified', null, 'user', 11) returning id)
+          'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('IPCC (2007) Climate Change 2007: The Physical Science Basis. Summary for Policymakers', 'https://www.ipcc.ch/report/ar4/wg1/'), ('The Nobel Peace Prize 2007', 'https://www.nobelprize.org/prizes/peace/2007/summary/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
@@ -912,7 +968,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2008-01-01', '2012-12-31', 'year', 'period', '京都議定書 第一約束期間', '先進国が削減義務を負う5年間が始まる。日本は6%削減目標を森林吸収と海外クレジットを含めて達成した。
 
 **採択から11年を経てようやく始まった義務期間**だったが、米国不参加のうえカナダは2011年に離脱を表明し、排出が急増する中国・インドには義務がなかった。期間中の2009年COP15コペンハーゲンでは次期枠組みの合意に失敗し、全ての国が参加する仕組みへの転換は2015年のパリ協定まで持ち越された。', null,
-          'verified', null, 'user', 12) returning id)
+          'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('UNFCCC: Kyoto Protocol', 'https://unfccc.int/kyoto_protocol'), ('環境省: 京都議定書目標達成計画の進捗状況', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
@@ -920,7 +976,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2013-05-09', null, 'day', 'point', 'マウナロアの日平均CO2濃度が初めて400ppmを超える', 'キーリングの観測開始から55年、マウナロアの大気中CO2の日平均値が400ppmの節目に到達した。1958年の観測開始時は約315ppmだった。
 
 400ppmは少なくとも数十万年ぶりの水準とされ、報道を通じて象徴的な数字として広まった。以後、年平均でも2015年に400ppmを超え、季節的な低下でも下回らなくなる。同年9月にはIPCC第5次報告が公表され、人為的影響の確からしさが「極めて高い」に引き上げられた。', null,
-          'verified', null, 'user', 13) returning id)
+          'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('NOAA Global Monitoring Laboratory: Trends in Atmospheric Carbon Dioxide', 'https://gml.noaa.gov/ccgg/trends/'), ('Scripps Institution of Oceanography: The Keeling Curve', 'https://keelingcurve.ucsd.edu/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
@@ -928,7 +984,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2015-03-01', '2016-05-31', 'month', 'period', '2015〜16年の強いエルニーニョ', '1997〜98年に匹敵する強いエルニーニョが発生。太平洋赤道域の海面水温上昇に伴い、地球温暖化の長期傾向に上乗せして世界平均気温を押し上げ、2015年、2016年が相次いで観測史上最高気温を更新した。
 
 エルニーニョは自然変動であり、温暖化の傾向に周期的に重なる。パリ協定の交渉が進んだ2015年12月はまさにこの現象の最盛期で、記録的な暖冬や熱波が交渉の背景にあった。', null,
-          'disputed', '発生期間の定義は機関により異なり、気象庁は2014年夏〜2016年春、NOAAは2015年春〜2016年春を発生期間としている。', 'user', 14) returning id)
+          'disputed', '発生期間の定義は機関により異なり、気象庁は2014年夏〜2016年春、NOAAは2015年春〜2016年春を発生期間としている。', 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('NOAA Climate Prediction Center: Oceanic Niño Index (ONI)', 'https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php'), ('気象庁: エルニーニョ現象およびラニーニャ現象の発生期間', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
@@ -936,7 +992,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2015-12-12', null, 'day', 'point', 'パリ協定を採択', 'COP21で全ての国が参加する枠組みに合意。産業革命前比で2℃を十分下回り、1.5℃に抑える努力を追求するとし、京都議定書と異なり各国が自ら削減目標を掲げて5年ごとに更新する仕組みをとった。
 
 1.5℃目標は島嶼国の要求で盛り込まれ、その科学的根拠の整理がIPCCに要請されて2018年の特別報告書につながる。採択の年、観測レイヤーでは強いエルニーニョのもと世界平均気温が初めて産業革命前比1℃を超えたと報告された。', null,
-          'verified', null, 'user', 15) returning id)
+          'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('UNFCCC: The Paris Agreement', 'https://unfccc.int/process-and-meetings/the-paris-agreement')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
@@ -944,7 +1000,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2018-10-08', null, 'day', 'point', 'IPCC「1.5℃特別報告書」を公表', 'パリ協定の要請を受けたIPCCの特別報告書が1.5℃と2℃の影響の差を示し、1.5℃に抑えるには2030年頃までにCO2排出をほぼ半減、2050年頃に実質ゼロが必要と提示。現在のペースでは2030〜2052年に1.5℃に達すると見積もった。
 
 「2050年ネットゼロ」という時間軸はこの報告書から各国政策と企業目標に広がり、公表の翌年には若者の気候ストライキが世界に拡大。**科学の提示した期限が社会運動の言葉となった**。', null,
-          'verified', null, 'user', 16) returning id)
+          'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('IPCC (2018) Global Warming of 1.5°C. Special Report', 'https://www.ipcc.ch/sr15/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
@@ -952,7 +1008,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2019-09-20', null, 'day', 'point', '世界気候ストライキ、数百万人規模に拡大', 'スウェーデンの学生の座り込みから広がった運動が、国連気候行動サミットの直前に世界150か国以上で一斉行動を実施。参加者は主催者発表で約400万人と、若者主導の気候運動として最大規模となった。
 
 運動は1.5℃特別報告書が示した「2030年まで」の期限を掲げ、科学レイヤーの数字がスローガンになった例といえる。同年、EUと英国は2050年カーボンニュートラルを法制化・宣言し、企業や自治体の目標設定も加速した。', null,
-          'unverified', '参加人数は主催者発表に基づく推計で、独立した集計はなく、報道により300万〜760万人と幅がある。', 'user', 17) returning id)
+          'unverified', '参加人数は主催者発表に基づく推計で、独立した集計はなく、報道により300万〜760万人と幅がある。', 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Fridays for Future: Global Climate Strike, September 2019', null), ('The Guardian (2019-09-21) Climate crisis: 6 million people join latest wave of global protests', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
@@ -960,20 +1016,20 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2021-08-09', null, 'day', 'point', 'IPCC第6次報告「人間の影響が温暖化させたことは疑う余地がない」', 'IPCC第1作業部会が人為的影響を初めて断定的に記述。1990年の第1次報告が「不確実」とし、2007年に「可能性が非常に高い」、2013年に「極めて高い」としてきた表現が、20年間の観測とモデルの進歩に支えられ、ついに「疑う余地なし」に至った。
 
 同じ年、真鍋淑郎らが気候モデルの基礎を築いた功績でノーベル物理学賞を受賞。11月のCOP26では1.5℃目標の追求を確認し、石炭火力の段階的削減が初めて合意文書に入った。', null,
-          'verified', null, 'user', 18) returning id)
+          'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('IPCC (2021) Climate Change 2021: The Physical Science Basis. Summary for Policymakers', 'https://www.ipcc.ch/report/ar6/wg1/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-climate-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-climate-100') and name = '観測と現象'),
-          '2024-01-01', null, 'year', 'point', '2024年、初めて年平均で産業革命前比1.5℃を超過', '観測史上最も暑い年となり、複数のデータセットで年平均気温が産業革命前比1.5℃を上回ったと報告された。2023年に続く記録更新で、エルニーニョと長期的な温暖化が重なった。
+          '2024-01-01', '2024-12-31', 'year', 'period', '1.5℃を超えた最初の1年', '観測史上最も暑い1年となり、複数のデータセットで年平均気温が産業革命前比1.5℃を上回ったと報告された。2023年に続く記録更新で、エルニーニョと長期的な温暖化の重なりが背景にある。
 
-パリ協定の1.5℃目標は20〜30年平均で評価されるため単年の超過は目標の失敗を意味しないが、**アレニウスの計算から128年、パリ協定から9年**で象徴的な水準に達した。政策レイヤーでは各国の削減目標の積み上げがなお2℃経路にも届いていない。', null,
-          'disputed', 'コペルニクスは1.60℃、WMOは1.55±0.13℃と報告し、データセットや基準期間の取り方によっては1.5℃をわずかに下回る評価もある。', 'user', 19) returning id)
+パリ協定の1.5℃目標は20〜30年平均で評価されるため、この1年の線だけでは目標の失敗を意味しない。それでも**アレニウスの計算から128年、パリ協定から9年**での到達である。マウナロアの観測の線は、この年も静かに更新を続けていた。', null,
+          'disputed', 'コペルニクスは1.60℃、WMOは1.55±0.13℃と報告し、データセットや基準期間の取り方によっては1.5℃をわずかに下回る評価もある。', 'user', 20) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Copernicus Climate Change Service: Global Climate Highlights 2024', null), ('WMO: State of the Global Climate 2024', null)) as v(title, url);
 
 -- ═══ science-deep-sea — 🌊 深海探査の記録
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-deep-sea', '00000000-0000-4000-8000-331f1727ba8b', '🌊 深海探査の記録', 'チャレンジャー号の測深から有人・無人での最深部到達、熱水噴出孔の生態系、深海採掘をめぐる攻防まで。探査技術・生命の発見・資源と環境の3層で、人類と深海の150年を追いかけます。海のいちばん深いところの記録帳です。', 'science-nature', 'ja', 'public', 's_science-deep-sea', 1872, 2023, 'science-deep-sea')
+values ('science-deep-sea', '00000000-0000-4000-8000-331f1727ba8b', '🌊 深海探査の記録', 'チャレンジャー号の測深から有人・無人での最深部到達、熱水噴出孔の生態系、深海採掘をめぐる攻防まで。探査技術・生命の発見・資源と環境の3層で、人類と深海の150年を追いかけます。海のいちばん深いところの記録帳です。', 'science-nature', 'ja', 'public', 's_science-deep-sea', 1872, 2026, 'science-deep-sea')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-deep-sea');
@@ -984,7 +1040,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-deep-sea'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-deep-sea') and name = '探査と技術'),
-          '1872-12-21', '1876-05-24', 'day', 'period', 'チャレンジャー号探検航海、海洋学の出発点', '英国のチャレンジャー号が、3年半をかけて世界の海をめぐる科学探検の航海に出ました。約13万kmを走りながら水深測定と生物採集を体系的に重ね、4700種を超える新種を記録しています。
+          '1872-12-21', '1876-05-24', 'day', 'period', 'チャレンジャー号の3年半、海洋学の出発点', '英国のチャレンジャー号が、3年半をかけて世界の海をめぐる科学探検の航海に出ました。約13万kmを走りながら水深測定と生物採集を体系的に重ね、4700種を超える新種を記録しています。
 
 1875年にはマリアナ海溝で当時最深の8184mを測深し、最深部はのちに「チャレンジャー海淵」と名付けられました。50巻に及ぶ報告書は**海洋学という学問の誕生**を告げるものとされ、深海探査の話はいつもこの航海から始まります。', null,
           'verified', null, 'user', 0) returning id)
@@ -992,9 +1048,9 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-deep-sea'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-deep-sea') and name = '探査と技術'),
-          '1934-08-15', null, 'day', 'point', 'バチスフィアで潜航深度923mに到達', '生物学者ビービと技師バートンが、鋼鉄球「バチスフィア」に乗ってバミューダ沖で潜航深度923mに達しました。人類が深海の生物を生きたまま直接観察した、最初の本格的な記録です。
+          '1930-06-06', '1934-08-15', 'day', 'period', 'バチスフィア、バミューダ沖の潜航4年', '生物学者ビービと技師バートンが、鋼鉄球「バチスフィア」でバミューダ沖の潜航を重ねた4年間です。1930年6月の初潜航に始まり、1934年8月には潜航深度923mに達しました。人類が深海の生物を生きたまま直接観察した、最初の本格的な記録です。
 
-母船からケーブルで吊るされた直径1.4mの球からの観察は世間を熱狂させました。ただ、ビービが報告した発光魚の一部は後年の調査で確認されておらず、観察の正確さをめぐる議論が残ります。深海が「観察できる場所」になった出発点でした。', null,
+母船からケーブルで吊るされた直径1.4mの球からの観察は世間を熱狂させました。ただ、ビービが報告した発光魚の一部は後年の調査で確認されておらず、観察の正確さをめぐる議論が残ります。深海が「観察できる場所」になった4年間でした。', null,
           'disputed', 'ビービが報告した未確認の発光魚など一部の観察記録は、後年の調査で裏付けが得られておらず、真偽をめぐって議論があります。', 'user', 1) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Bathysphere', 'https://en.wikipedia.org/wiki/Bathysphere')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -1023,11 +1079,19 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Trieste (bathyscaphe)', 'https://en.wikipedia.org/wiki/Trieste_(bathyscaphe)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-deep-sea'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-deep-sea') and name = '資源・環境と社会'),
+          '1965-01-01', '1982-12-10', 'year', 'period', 'マンガン団塊ブームの17年', '鉱山技師メロの著書『海の鉱物資源』が、太平洋の海底に広がるマンガン団塊を無尽蔵の鉱床のように描き、深海採鉱ブームに火を付けました。1970年代には各国の企業連合が探査に乗り出し、採鉱船を装った特殊な船まで登場します。
+
+ブームのただ中の1977年、掘るはずの深海底で熱水噴出孔の生態系(深海の生命と発見レイヤー)が見つかりました。採る海と守る海の線は、ここで初めて重なります。金属価格の下落と海洋法条約の採択でブームは冷えますが、この宿題は2021年のナウルの通告まで持ち越されました。', null,
+          'disputed', 'ブームの区切りには諸説あります。ここではメロの著書刊行(1965年)から国連海洋法条約の採択(1982年12月)までを採りました。', 'user', 5) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('J. L. Mero: The Mineral Resources of the Sea (1965)', null)) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'science-deep-sea'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-deep-sea') and name = '深海の生命と発見'),
           '1977-02-01', null, 'month', 'point', 'アルビン号が熱水噴出孔の生態系を発見', '米国の潜水調査船アルビン号が、ガラパゴス沖の海嶺で熱水噴出孔と、そこに密集するチューブワームや二枚貝の群れを見つけました。冷たく暗い深海に、誰も予想していなかった豊かな生態系が広がっていたのです。
 
-光合成ではなく硫化水素の化学合成を土台にする**太陽に依存しない生態系**の発見は生命観を塗り替え、生命の起源や地球外生命の研究にも波及しました。噴出孔が作る鉱床は、のちに深海採掘(資源・環境と社会レイヤー)の標的にもなっていきます。', null,
-          'verified', null, 'user', 5) returning id)
+光合成ではなく硫化水素の化学合成を土台にする**太陽に依存しない生態系**の発見は生命観を塗り替え、生命の起源や地球外生命の研究にも波及しました。マンガン団塊ブーム(資源・環境と社会レイヤー)のただ中の発見で、噴出孔が作る鉱床はのちに深海採掘の標的にもなっていきます。', null,
+          'verified', null, 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Hydrothermal vent', 'https://en.wikipedia.org/wiki/Hydrothermal_vent')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-deep-sea'),
@@ -1035,7 +1099,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1982-12-10', null, 'day', 'point', '国連海洋法条約が採択、深海底は人類の財産に', '国連海洋法条約が採択され、各国の管轄の外にある深海底とその鉱物資源を、特定の国に属さない**人類の共同の財産**と定めました。管理機関として国際海底機構(ISA)の設立も定められ、条約は1994年に発効します。
 
 マンガン団塊など深海底資源への期待が高まった時代の産物で、探査(探査と技術レイヤー)が進むほど「深海は誰のものか」が問われる構図を、法として先取りしていました。2021年以降の採掘ルールをめぐる攻防も、この条約の枠内で起きています。', null,
-          'verified', null, 'user', 6) returning id)
+          'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: United Nations Convention on the Law of the Sea', 'https://en.wikipedia.org/wiki/United_Nations_Convention_on_the_Law_of_the_Sea')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-deep-sea'),
@@ -1043,31 +1107,39 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1985-09-01', null, 'day', 'point', 'タイタニック号の残骸を海底で発見', 'バラード率いる米仏合同チームが、水深約3800mの北大西洋の海底でタイタニック号の船体を見つけました。曳航式カメラ「アルゴ」が捉えた、散らばるボイラーが決め手です。
 
 無人探査技術の実力を世界に示すと同時に、深海を「歴史が保存される場所」として大衆に印象づけました。調査が米海軍の原子力潜水艦残骸調査の副産物だったことは後年の公表です。沈没船を目指す深海観光は、2023年のタイタン事故(資源・環境と社会レイヤー)まで続く系譜の起点になりました。', null,
-          'verified', null, 'user', 7) returning id)
+          'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Wreck of the Titanic', 'https://en.wikipedia.org/wiki/Wreck_of_the_Titanic')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-deep-sea'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-deep-sea') and name = '探査と技術'),
-          '1989-08-11', null, 'day', 'point', 'しんかい6500が6527mの潜航記録', '日本の有人潜水調査船しんかい6500が、三陸沖で水深6527mへの潜航に成功しました。当時の有人調査船として世界最深の記録で、以後も稼働する調査船では世界最深級の能力を長く保ち続けます。
+          '1989-08-11', '2026-06-30', 'day', 'period', 'しんかい6500、潜りつづける37年', '日本の有人潜水調査船しんかい6500が、三陸沖で水深6527mへの潜航に成功しました。当時の有人調査船として世界最深の記録で、ここから37年に及ぶ調査潜航の線が始まります。
 
-日本海溝ではプレート境界の亀裂を直接観察して地震研究に貢献し、熱水噴出域の生物調査(深海の生命と発見レイヤー)でも成果を重ねました。深海探査が一度きりの記録競争から、繰り返し通う科学インフラへ移ったことを示す船です。', null,
-          'verified', null, 'user', 8) returning id)
+日本海溝ではプレート境界の亀裂を直接観察して地震研究に貢献し、熱水噴出域の生物調査(深海の生命と発見レイヤー)でも成果を重ねました。海洋生物センサスの10年とも並走した線です。一度きりの記録競争ではなく繰り返し通う科学インフラとして、現在も潜りつづけています。', null,
+          'verified', null, 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('JAMSTEC: 有人潜水調査船しんかい6500', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-deep-sea'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-deep-sea') and name = '探査と技術'),
-          '1995-03-24', null, 'day', 'point', '無人探査機かいこう、最深部10,911mに到達', 'JAMSTECの無人探査機かいこうが、チャレンジャー海淵で水深10,911mに到達しました。トリエステ号以来35年ぶりの最深部で、無人機としては世界初です。
+          '1995-03-24', '2003-05-29', 'day', 'period', '無人探査機かいこうの8年', 'JAMSTECの無人探査機かいこうが、チャレンジャー海淵で水深10,911mに到達しました。トリエステ号以来35年ぶりの最深部で、無人機としては世界初です。
 
 持ち帰った堆積物からは超深海の微生物が数多く見つかり、極限環境生物学(深海の生命と発見レイヤー)に貴重な材料を提供しました。人が乗らないからこそ反復調査ができることを示し、**無人機が主役になる深海探査**の時代を開きます。かいこう自体は2003年に洋上で失われました。', null,
-          'verified', null, 'user', 9) returning id)
+          'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('JAMSTEC: 無人探査機かいこう', null)) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'science-deep-sea'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-deep-sea') and name = '深海の生命と発見'),
+          '2000-01-01', '2010-10-04', 'year', 'period', '海洋生物センサスの10年', '80カ国超・約2,700人の研究者が加わった国際調査「海洋生物センサス」の10年間です。海の生き物の多様性・分布・個体数を体系的に記録し、2010年の最終報告までに1,200種を超える新種を正式に記載しました。
+
+一度きりの航海ではなく、世界規模で観測をつなぐデータベースづくりへと海洋研究のやり方を変えた計画です。この10年の線には、しんかい6500の稼働の線と、かいこうの最後の3年(いずれも探査と技術レイヤー)が重なっています。深海の記載種が一気に増えたのは、この重なりの上でのことでした。', null,
+          'unverified', '参加者数や新種数は計画側の最終報告に基づく集計で、その後の分類学的な見直しによって数値は変わりえます。', 'user', 11) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Census of Marine Life', 'https://en.wikipedia.org/wiki/Census_of_Marine_Life')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-deep-sea'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-deep-sea') and name = '探査と技術'),
           '2012-03-26', null, 'day', 'point', 'キャメロン、52年ぶりの有人最深部到達', '映画監督ジェームズ・キャメロンが、単独操縦の潜水艇ディープシー・チャレンジャーでチャレンジャー海淵の水深10,908mに到達しました。有人での最深部到達はトリエステ号以来52年ぶり、単独潜航としては史上初です。
 
 民間の資金と独自設計による挑戦で、国家プロジェクトだった深海探査が個人と民間の領域へ移ったことを象徴します。撮影された映像と採取試料は科学チームと共有され、探査と映像文化(資源・環境と社会レイヤー)の結びつきも更新されました。', null,
-          'verified', null, 'user', 10) returning id)
+          'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Deepsea Challenger', 'https://en.wikipedia.org/wiki/Deepsea_Challenger')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-deep-sea'),
@@ -1075,7 +1147,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2012-07-01', null, 'month', 'point', '🦑 生きたダイオウイカの深海撮影に世界初成功', '国立科学博物館の窪寺恒己らが、小笠原沖の水深600m超で生きたダイオウイカの動画撮影に成功しました。深海を泳ぐ生きた姿の撮影は世界初で、映像は翌年NHKなどで放送され、世界的な反響を呼んでいます。
 
 何世紀も船乗りの伝説として語られてきた巨大イカが、ようやく生きた姿で記録されました。深海生物の眼に配慮した赤色光や発光ルアーなど、生き物の感覚に合わせた撮影手法の成果で、観察が「捕る」から「そっと見る」へ移る流れを象徴します。', null,
-          'verified', null, 'user', 11) returning id)
+          'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('国立科学博物館・NHK: 小笠原沖ダイオウイカ撮影(2012年)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-deep-sea'),
@@ -1083,15 +1155,23 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2017-05-01', null, 'month', 'point', '水深8178mで魚類の最深映像記録', 'JAMSTECらの調査で、マリアナ海溝の水深8178mを泳ぐシンカイクサウオ属の魚が撮影され、当時の魚類の生息最深映像記録になりました。8000m級の海底では、餌に群がる端脚類の大群も確認されています。
 
 魚類は浸透圧調整物質の濃度の限界から、水深8200〜8400m付近が生息下限と予測されていて、この記録は理論限界の実証という意味も持ちました。記録は2022年、伊豆・小笠原海溝の水深8336mで撮影されたクサウオ類が更新しています。', null,
-          'verified', null, 'user', 12) returning id)
+          'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('JAMSTEC: マリアナ海溝における魚類の世界最深映像記録(2017年)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-deep-sea'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-deep-sea') and name = '探査と技術'),
-          '2018-12-19', '2019-08-24', 'day', 'period', 'ファイブ・ディープス探検、五大洋最深部を制覇', '投資家ヴェスコボが潜水艇リミティング・ファクターで、五大洋すべての最深部に潜る「ファイブ・ディープス探検」をやり遂げました。2019年4月にはチャレンジャー海淵で潜航深度10,928mを記録したと発表しています。
+          '2017-06-01', '2026-06-30', 'month', 'period', 'Seabed 2030、海底を測りつづける9年', '海底地形の全容解明を目指す国際プロジェクト「Seabed 2030」が始まりました。開始時点で、現代的な水準で測深済みだったのは世界の海底の約6%。以来、各国と民間の測深データを持ち寄って空白を埋める作業が、現在も続いています。
+
+計画側の発表では、測深済みの割合は2023年に約25%まで伸びました。月や火星の表面より粗くしか知られていない海底の地図は、探査・資源・環境(資源・環境と社会レイヤー)のあらゆる議論の土台です。「2年ルール」の2年間が走ったのも、まだ2割ほどしか測れていないこの線の上でした。', null,
+          'unverified', '進捗率はプロジェクト側の自己発表値で、「マッピング済み」とする解像度基準の定義によって数値は変わりえます。', 'user', 15) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('The Nippon Foundation-GEBCO Seabed 2030 Project 進捗発表', null)) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'science-deep-sea'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-deep-sea') and name = '探査と技術'),
+          '2018-12-19', '2019-08-24', 'day', 'period', 'ファイブ・ディープス探検、五大洋の8か月', '投資家ヴェスコボが潜水艇リミティング・ファクターで、五大洋すべての最深部に潜る「ファイブ・ディープス探検」をやり遂げました。2019年4月にはチャレンジャー海淵で潜航深度10,928mを記録したと発表しています。
 
 何度でも潜れる商用認証を得た潜水艇の登場で、最深部は「一度きりの到達点」から繰り返し通える場所に変わりました。ただし発表された深度と過去の記録の差は計測誤差の範囲内で、「最深記録の更新」という位置づけには議論があります。', null,
-          'disputed', '潜航深度10,928mは計測誤差を伴う値です。トリエステ号やキャメロンの記録との差は誤差範囲内とされ、記録更新という位置づけには議論があります。', 'user', 13) returning id)
+          'disputed', '潜航深度10,928mは計測誤差を伴う値です。トリエステ号やキャメロンの記録との差は誤差範囲内とされ、記録更新という位置づけには議論があります。', 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Five Deeps Expedition', 'https://en.wikipedia.org/wiki/Five_Deeps_Expedition')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-deep-sea'),
@@ -1099,31 +1179,23 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2020-03-01', null, 'month', 'point', 'プラスチックの名を持つ超深海の新種', 'マリアナ海溝の水深6900m超で採集された端脚類の新種が、体内からマイクロプラスチックが検出されたことにちなんで「ユーリテネス・プラスティクス」と命名されました。
 
 人類が数回しか到達していない**最深部にまで届いたプラスチック**という事実は、深海がもう手つかずの領域ではないことを突きつけます。命名は研究者による汚染への警告で、発見の年表(深海の生命と発見レイヤー)が環境問題の年表と重なり始めたことを象徴する種です。', null,
-          'verified', null, 'user', 14) returning id)
+          'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Zootaxa: Eurythenes plasticus sp. nov. (Weston et al., 2020)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-deep-sea'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-deep-sea') and name = '資源・環境と社会'),
-          '2021-06-01', null, 'month', 'point', 'ナウルが深海採掘の「2年ルール」を発動', '太平洋の島国ナウルが、後援する企業による深海採掘の計画を念頭に、国際海底機構(ISA)へ「2年ルール」の適用を通告しました。2年以内に採掘規則が完成しなくても、採掘申請の審査が始まりうる状況が生まれています。
+          '2021-06-01', '2023-07-01', 'month', 'period', '「2年ルール」カウントダウンの2年間', '太平洋の島国ナウルが、後援する企業による深海採掘の計画を念頭に、国際海底機構(ISA)へ「2年ルール」の適用を通告しました。ここから期限の2023年7月まで、採掘規則づくりを急かすカウントダウンの2年間が走ります。
 
-電気自動車の電池金属の需要増を背景に、1982年の海洋法条約が定めた「人類の共同の財産」の商業利用が、初めて現実の日程に載りました。科学者からは、熱水噴出孔などの生態系(深海の生命と発見レイヤー)への不可逆な影響を心配する声が相次いでいます。', null,
-          'verified', null, 'user', 15) returning id)
+電気自動車の電池金属の需要増を背景に、1982年の条約が定めた「人類の共同の財産」の商業利用が、初めて現実の日程に載りました。科学者からは熱水噴出孔などの生態系(深海の生命と発見レイヤー)への不可逆な影響を心配する声が相次ぎ、線の終点では規則が完成しないまま期限だけが切れています。', null,
+          'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Deep sea mining', 'https://en.wikipedia.org/wiki/Deep_sea_mining')) as v(title, url);
-with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
-  values ((select id from public.timelines where slug = 'science-deep-sea'),
-          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-deep-sea') and name = '探査と技術'),
-          '2023-06-01', null, 'month', 'point', '海底地図化プロジェクト、進捗25%に', '海底地形の全容解明を目指す国際プロジェクト「Seabed 2030」が、世界の海底の約25%が現代的な水準で測深済みになったと発表しました。プロジェクト開始時の2017年には約6%でした。
-
-月や火星の表面より粗くしか知られていない海底の地図は、探査・資源・環境(資源・環境と社会レイヤー)のあらゆる議論の土台です。2030年の完全地図化には各国と民間の測深データ提供が欠かせず、データを共有する仕組みづくりが技術と並ぶ課題になっています。', null,
-          'unverified', '進捗率はプロジェクト側の自己発表値で、「マッピング済み」とする解像度基準の定義によって数値は変わりえます。', 'user', 16) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('The Nippon Foundation-GEBCO Seabed 2030 Project 進捗発表', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-deep-sea'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-deep-sea') and name = '資源・環境と社会'),
           '2023-06-18', null, 'day', 'point', '潜水艇タイタンが圧壊、乗員5人死亡', 'タイタニック号の見学ツアーへ向かった民間潜水艇タイタンが潜航中に圧壊し、乗員5人全員が亡くなりました。船体には、第三者認証を受けていない炭素繊維複合材の耐圧殻が使われていました。
 
 深海観光という新しい市場での安全規制の空白があらわになり、業界の認証制度と冒険的な民間探査の関係が問い直されています。1985年のタイタニック発見(探査と技術レイヤー)に始まる大衆的な深海への憧れが、最悪の形で裏返った事故でした。', null,
-          'verified', null, 'user', 17) returning id)
+          'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Titan submersible implosion', 'https://en.wikipedia.org/wiki/Titan_submersible_implosion')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-deep-sea'),
@@ -1131,12 +1203,12 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2023-07-01', null, 'month', 'point', '深海採掘の規則できず、対立が鮮明に', '国際海底機構の理事会・総会は、期限とされた時期までに商業採掘の規則を完成できず、採択目標を先送りしました。一方でモラトリアム(一時停止)や予防的中断を支持する国は20か国を超えたとされ、推進派との対立が際立っています。
 
 ナウルの通告から2年。規則がないまま採掘申請が可能になりうる異例の局面で、**採掘か保全か**の対立が続きます。深海の科学的知見の少なさ(深海の生命と発見レイヤー)そのものが、判断を先送りさせる理由になっています。', null,
-          'unverified', 'モラトリアム等を支持する国の数は環境団体や報道による集計で20か国超とされますが、立場の分け方によって数え方は異なります。', 'user', 18) returning id)
+          'unverified', 'モラトリアム等を支持する国の数は環境団体や報道による集計で20か国超とされますが、立場の分け方によって数え方は異なります。', 'user', 20) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('国際海底機構(ISA)第28回会期に関する報道・IISD Earth Negotiations Bulletin', null)) as v(title, url);
 
 -- ═══ science-dinosaur-research — 🦴 恐竜研究の進化
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-dinosaur-research', '00000000-0000-4000-8000-331f1727ba8b', '🦴 恐竜研究の進化', '最初の化石記載から羽毛恐竜、絶滅論争、化石の競売まで。発見・学説・大衆文化の3層を重ねて、恐竜の姿が「愚鈍な爬虫類」から「鳥の祖先」へ塗り替えられていく200年を追いかけます。地層と骨から歴史を読む記録帳です。', 'science-nature', 'ja', 'public', 's_science-dinosaur-research', 1824, 2020, 'science-dinosaur-research')
+values ('science-dinosaur-research', '00000000-0000-4000-8000-331f1727ba8b', '🦴 恐竜研究の進化', '最初の化石記載から羽毛恐竜、絶滅論争、化石の競売まで。発見・学説・大衆文化の3層を重ねて、恐竜の姿が「愚鈍な爬虫類」から「鳥の祖先」へ塗り替えられていく200年を追いかけます。地層と骨から歴史を読む記録帳です。', 'science-nature', 'ja', 'public', 's_science-dinosaur-research', 1824, 2026, 'science-dinosaur-research')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dinosaur-research');
@@ -1163,9 +1235,9 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dinosaur-research'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dinosaur-research') and name = '大衆文化と市場'),
-          '1853-12-31', null, 'day', 'point', 'イグアノドン模型の中での晩餐会', 'ロンドンの水晶宮公園に展示される実物大恐竜模型の完成を前に、彫刻家ホーキンスとオーウェンらが、未完成のイグアノドン模型の鋳型の中で約20人の晩餐会を開きました。
+          '1854-06-10', '2026-06-30', 'day', 'period', '水晶宮の恐竜たち、公開172年', 'ロンドンの水晶宮公園で、彫刻家ホーキンスが造った世界初の実物大恐竜模型群が公開されました。完成に先立つ前年の大晦日には、未完成のイグアノドン模型の鋳型の中で、オーウェンらを招いた約20人の晩餐会が開かれています。
 
-翌年公開された模型群は世界初の恐竜テーマの常設展示となり、恐竜を**科学者だけのものから見世物へ**と押し広げます。復元姿勢は今の知見と大きく違いますが、模型は歴史遺産として、今も同じ公園に残っています。', null,
+恐竜を**科学者だけのものから見世物へ**と押し広げた展示は、172年たった現在も同じ公園に立ちつづけています。復元姿勢は今の知見と大きく違いますが、模型は歴史遺産として保護されました。化石戦争(発見と化石レイヤー)も恐竜ルネサンス(学説の転換レイヤー)も、この長い線の上で起きた出来事です。', null,
           'verified', null, 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Crystal Palace Dinosaurs', 'https://en.wikipedia.org/wiki/Crystal_Palace_Dinosaurs')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -1179,9 +1251,9 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dinosaur-research'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dinosaur-research') and name = '発見と化石'),
-          '1877-01-01', '1892-01-01', 'year', 'period', 'コープ対マーシュ、「化石戦争」の時代', '米国の古生物学者コープとマーシュが化石の発見を競い、発掘隊の引き抜きや発掘地の妨害まで伴う激しい争いを繰り広げました。ふたり合わせて130種以上の恐竜を命名し、トリケラトプスやステゴサウルスもこの時期の発見です。
+          '1877-01-01', '1892-01-01', 'year', 'period', 'コープ対マーシュ、化石戦争の15年', '米国の古生物学者コープとマーシュが化石の発見を競い、発掘隊の引き抜きや発掘地の妨害まで伴う激しい争いを繰り広げました。ふたり合わせて130種以上の恐竜を命名し、トリケラトプスやステゴサウルスもこの時期の発見です。
 
-私財を投じた競争は科学を一気に加速させ、同時に、急ぎすぎた記載による分類の混乱も残しました。**発見の量が学問を作り、競争がそれを歪める**という構図の原型です。', null,
+私財を投じた競争は科学を一気に加速させ、同時に、急ぎすぎた記載による分類の混乱も残しました。**発見の量が学問を作り、競争がそれを歪める**という構図の原型です。水晶宮の模型(大衆文化と市場レイヤー)が観客を集めつづけた時代、発見の主戦場は米国の荒野へ移っていました。', null,
           'disputed', '「化石戦争」の始まりと終わりをいつと見るかは諸説あって、ふたりの対立自体は1870年代前半から続いていました。', 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Bone Wars', 'https://en.wikipedia.org/wiki/Bone_Wars')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -1195,10 +1267,10 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dinosaur-research'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dinosaur-research') and name = '学説の転換'),
-          '1969-01-01', null, 'year', 'point', 'オストロムがデイノニクスを記載', 'イェール大学のオストロムが、大きな鉤爪を持つ軽くて俊敏な肉食恐竜デイノニクスを記載し、恐竜が活発で代謝の高い動物だった可能性を骨格の証拠から論じました。
+          '1969-01-01', '1996-01-01', 'year', 'period', 'デイノニクスに始まる恐竜ルネサンスの27年', 'イェール大学のオストロムが、大きな鉤爪を持つ軽くて俊敏な肉食恐竜デイノニクスを記載し、恐竜が活発で代謝の高い動物だった可能性を骨格の証拠から論じました。「のろまな爬虫類」という半世紀来の常識を覆すこの論文から、**恐竜ルネサンス**と呼ばれる論争の27年が始まります。
 
-「のろまな爬虫類」という半世紀来の常識を覆し、始祖鳥との骨格の類似から鳥類の恐竜起源説も再提起します。**恐竜ルネサンス**と呼ばれる研究の刷新はこの記載が起点で、教え子のバッカーが論争の顔になっていきました。', null,
-          'verified', null, 'user', 6) returning id)
+温血か冷血か、鳥は恐竜の子孫か。論争の線は『ジュラシック・パーク』の公開(大衆文化と市場レイヤー)をまたぎ、1996年、遼寧の羽毛恐竜(発見と化石レイヤー)という動かぬ物証にたどり着きました。教え子のバッカーが論争の顔になったのも、この線の上でのことです。', null,
+          'disputed', '「恐竜ルネサンス」の区切りには諸説あります。ここではデイノニクスの記載(1969年)から、羽毛の直接証拠となったシノサウロプテリクスの報告(1996年)までを採りました。', 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Deinonychus', 'https://en.wikipedia.org/wiki/Deinonychus')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dinosaur-research'),
@@ -1211,17 +1283,17 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dinosaur-research'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dinosaur-research') and name = '学説の転換'),
-          '1980-06-06', null, 'day', 'point', 'アルバレス父子が隕石衝突絶滅説を発表', '物理学者ルイス・アルバレスと地質学者ウォルターの父子らが、白亜紀末の地層境界で高濃度のイリジウムを見つけ、小惑星衝突が恐竜を含む大量絶滅を引き起こしたとサイエンス誌で提唱しました。
+          '1980-06-06', '2010-03-05', 'day', 'period', '隕石衝突絶滅説、論争の30年', '物理学者ルイス・アルバレスと地質学者ウォルターの父子らが、白亜紀末の地層境界で高濃度のイリジウムを見つけ、小惑星衝突が恐竜を含む大量絶滅を引き起こしたとサイエンス誌で提唱しました。ここから30年に及ぶ論争が始まります。
 
-天文学・地質学・古生物学をまたぐ仮説は、当初は強い抵抗を受けます。それでも、分野を横断して証拠を検証する新しい研究のやり方を持ち込みました。決定的な物証となるクレーターの特定(発見と化石レイヤーの地質版)は、11年後まで待つことになります。', null,
-          'verified', null, 'user', 8) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Alvarez hypothesis', 'https://en.wikipedia.org/wiki/Alvarez_hypothesis')) as v(title, url);
+火山説との応酬が続き、1991年のチクシュルーブ・クレーターの同定で仮説は定説へ大きく前進しました。2010年には41人の研究者が連名の総説で衝突説を支持し、論争はひと区切りを迎えます。『ジュラシック・パーク』の公開(大衆文化と市場レイヤー)もスーの係争も、この線の上の出来事でした。', null,
+          'disputed', '論争の終わりをどこに置くかには諸説あります。ここでは衝突説を支持する41人連名の総説(2010年3月)までを採りました。デカン火山活動の寄与をめぐる議論は今も続いています。', 'user', 8) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Alvarez hypothesis', 'https://en.wikipedia.org/wiki/Alvarez_hypothesis'), ('Schulte et al., Science 327: The Chicxulub Asteroid Impact and Mass Extinction at the Cretaceous-Paleogene Boundary (2010)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dinosaur-research'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dinosaur-research') and name = '発見と化石'),
-          '1990-08-12', null, 'day', 'point', '史上最も完全なT. rex「スー」発見', '化石ハンターのスー・ヘンドリクソンがサウスダコタ州で、骨格の約9割が残るティラノサウルスを見つけました。標本は発見者にちなんで「スー」と名付けられます。
+          '1990-08-12', '1997-10-04', 'day', 'period', 'スー、発見から競売までの7年', '化石ハンターのスー・ヘンドリクソンがサウスダコタ州で、骨格の約9割が残るティラノサウルス「スー」を見つけました。ここから競売の日まで、世紀の標本が倉庫と法廷を行き来する7年間が始まります。
 
-保存状態のよさで研究価値は際立っていましたが、発掘地の権利をめぐって連邦政府・先住民部族・地主・発掘団体の間で法廷闘争になり、化石は連邦当局に差し押さえられました。**化石は誰のものか**という問いが表面化し、7年後の競売につながっていきます。', null,
+発掘地の権利をめぐって連邦政府・先住民部族・地主・発掘団体が争い、化石は連邦当局に差し押さえられました。**化石は誰のものか**という問いが初めて正面から争われた線で、その終点の1997年10月4日、大衆文化と市場レイヤーに競売の点が立ちます。', null,
           'verified', null, 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Sue (dinosaur)', 'https://en.wikipedia.org/wiki/Sue_(dinosaur)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -1237,7 +1309,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dinosaur-research') and name = '大衆文化と市場'),
           '1993-06-11', null, 'day', 'point', '映画『ジュラシック・パーク』公開', 'スピルバーグ監督の『ジュラシック・パーク』が米国で公開され、当時の世界興行収入記録を塗り替えました。CGとアニマトロニクスによる恐竜は、「本物らしさ」の基準を一変させています。
 
-描かれた俊敏で賢い恐竜像は恐竜ルネサンス(学説の転換レイヤー)の成果を映したもので、オストロムらの研究が下敷きです。この映画を見て古生物学者を志した世代が、2000年代以降の羽毛恐竜研究などを担っていきます。', null,
+描かれた俊敏で賢い恐竜像は恐竜ルネサンス(学説の転換レイヤー)の成果を映したもので、オストロムらの研究が下敷きです。公開の裏では、隕石衝突説の論争の線とスーの係争の線(発見と化石レイヤー)が、どちらもまだ走っている最中でした。この映画で古生物学者を志した世代が、のちの羽毛恐竜研究を担っていきます。', null,
           'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Jurassic Park (film)', 'https://en.wikipedia.org/wiki/Jurassic_Park_(film)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -1253,7 +1325,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dinosaur-research') and name = '大衆文化と市場'),
           '1997-10-04', null, 'day', 'point', '「スー」が競売で約836万ドルで落札', '法廷闘争の末に競売へかけられたスーを、シカゴのフィールド自然史博物館がディズニーやマクドナルドなどの資金協力を得て、約836万ドルで落札しました。化石の取引額として桁違いの記録です。
 
-重要標本が公的機関に残った点ではほっとする結果でしたが、化石に巨額の市場価値がつく前例は、商業発掘を刺激するという懸念も現実にしました。この構図は2020年の「スタン」競売で、さらに極端な形で繰り返されます。', null,
+重要標本が公的機関に残った点ではほっとする結果でしたが、化石に巨額の市場価値がつく前例は、商業発掘を刺激するという懸念も現実にしました。発見から7年続いた係争の線(発見と化石レイヤー)は、この日で終わります。この構図は2020年の「スタン」競売で、さらに極端な形で繰り返されました。', null,
           'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Sue (dinosaur)', 'https://en.wikipedia.org/wiki/Sue_(dinosaur)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -1275,7 +1347,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dinosaur-research'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dinosaur-research') and name = '学説の転換'),
-          '2014-09-11', null, 'day', 'point', 'スピノサウルス半水生説の提唱', 'イブラヒムらがモロッコの新標本をもとに、スピノサウルスは短い後肢と密な骨を持つ半水生の恐竜だったとサイエンス誌で発表しました。「恐竜に水生の種はいない」という長年の通説への挑戦です。
+          '2014-09-11', '2026-06-30', 'day', 'period', 'スピノサウルス半水生説、論争の12年', 'イブラヒムらがモロッコの新標本をもとに、スピノサウルスは短い後肢と密な骨を持つ半水生の恐竜だったとサイエンス誌で発表しました。「恐竜に水生の種はいない」という長年の通説への挑戦です。
 
 その後もひれ状の尾の発見と、遊泳能力を疑う解析が交互に発表されていて、論争は現在進行形です。断片的な化石(発見と化石レイヤー)から生態をどこまで復元できるか、この分野の方法論そのものが試されています。', null,
           'disputed', '半水生説には骨密度や遊泳能力の解析からの異論があって、水中を泳いだのか水辺で待ち伏せたのかは決着していません。', 'user', 16) returning id)
@@ -1291,7 +1363,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 
 -- ═══ science-dna-to-editing — DNAから遺伝子編集まで
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-dna-to-editing', '00000000-0000-4000-8000-fc964faa4f01', 'DNAから遺伝子編集まで', '1869年の核酸発見からCRISPR治療の承認まで。生命の設計図をめぐる発見と理論、それを操作する技術、そして社会がどう線を引いてきたかの3層を重ね、150年の歩みを一望する。', 'science-nature', 'ja', 'public', 's_science-dna-to-editing', 1869, 2025, 'science-dna-to-editing')
+values ('science-dna-to-editing', '00000000-0000-4000-8000-fc964faa4f01', 'DNAから遺伝子編集まで', '1869年の核酸発見からCRISPR治療の承認まで。生命の設計図をめぐる発見と理論、それを操作する技術、そして社会がどう線を引いてきたかの3層を重ね、150年の歩みを一望する。', 'science-nature', 'ja', 'public', 's_science-dna-to-editing', 1869, 2026, 'science-dna-to-editing')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing');
@@ -1357,11 +1429,19 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Diamond v. Chakrabarty, 447 U.S. 303 (1980)', 'https://supreme.justia.com/cases/federal/us/447/303/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing') and name = '倫理と制度'),
+          '1980-12-02', '1997-12-02', 'day', 'period', 'コーエン・ボイヤー特許の17年', '組換えDNAの基本技術を覆うコーエン・ボイヤー特許が成立し、1997年の失効まで17年間有効だった。スタンフォード大学は非独占・低額のライセンス方針を採り、数百社が利用して大学側に累計2億ドルを超える収入をもたらしたとされる。
+
+チャクラバーティ判決と同じ年に始まるこの線の上には、技術と応用の線のヒトインスリン承認もPCRの発表も乗っている。初期バイオ産業の商業化の多くはこの特許の期間内の出来事であり、大学発ライセンスという制度の型をつくった。', null,
+          'verified', null, 'user', 7) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('US Patent 4,237,224 (Cohen & Boyer, granted Dec. 2, 1980)', null), ('Stanford University Office of Technology Licensing: Cohen-Boyer patent licensing', null)) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'science-dna-to-editing'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing') and name = '技術と応用'),
           '1982-10-01', null, 'month', 'point', '遺伝子組換えヒトインスリンを米FDAが承認', '大腸菌に作らせたヒトインスリン「ヒューマリン」を米FDAが承認し、組換えDNA技術による初の医薬品が実用化。ジェネンテックが開発しイーライリリーが製造し、それまでのブタ・ウシ由来インスリンに代わって供給の安定と免疫反応の低減をもたらした。
 
 1973年の技術確立から9年、1975年のアシロマ会議で定められた封じ込め基準のもとで開発が進み、規制と産業化が両立しうることを示した。以後、成長ホルモンやワクチンなど組換え医薬品が続いた。', null,
-          'verified', null, 'user', 7) returning id)
+          'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Genentech: Press release, First recombinant DNA drug approved by FDA (1982)', null), ('FDA: Celebrating a Milestone: FDA''s Approval of First Genetically-Engineered Product', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
@@ -1369,7 +1449,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1985-12-20', null, 'day', 'point', 'PCR法の論文が発表される', 'マリスの着想に基づくシータス社の研究チームが、DNAの特定領域を試験管内で指数的に増幅するPCR法をScience誌に発表。1988年の耐熱性DNAポリメラーゼの導入で実用技術となった。
 
 微量DNAの増幅は診断・法科学・ゲノム計画の全てを支え、マリスは1993年にノーベル化学賞を受賞した。ただし増幅の原理は1971年にクレッペらが記述しており、着想の先取権と貢献の配分には議論がある。', null,
-          'disputed', '基本原理は1971年のクレッペらの論文に先例があり、マリス個人の着想とチームの貢献の配分についても関係者の証言が食い違う。', 'user', 8) returning id)
+          'disputed', '基本原理は1971年のクレッペらの論文に先例があり、マリス個人の着想とチームの貢献の配分についても関係者の証言が食い違う。', 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Saiki, R. K. et al. (1985) Enzymatic amplification of β-globin genomic sequences and restriction site analysis for diagnosis of sickle cell anemia. Science', 'https://doi.org/10.1126/science.2999980'), ('The Nobel Prize in Chemistry 1993', 'https://www.nobelprize.org/prizes/chemistry/1993/summary/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
@@ -1377,7 +1457,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1990-09-14', null, 'day', 'point', '承認された初のヒト遺伝子治療臨床試験を実施', '米NIHでアンダーソン、ブレーズらのチームが、ADA欠損症の4歳女児に対し、レトロウイルスベクターで正常遺伝子を導入したT細胞を戻す、承認された初のヒト遺伝子治療を実施した。
 
 患者は長期にわたり良好な経過をたどったが、酵素補充療法（PEG-ADA）を併用していたため遺伝子治療単独の効果を切り分けることは難しい。同年10月にはヒトゲノム計画が始動し、「読む」計画と「直す」試みが同時に幕を開けた。分野は1999年のゲルシンガー事件で一度大きく後退する。', null,
-          'unverified', '臨床的改善への遺伝子治療の寄与度は、併用された酵素補充療法の影響を分離できないため確定していない。', 'user', 9) returning id)
+          'unverified', '臨床的改善への遺伝子治療の寄与度は、併用された酵素補充療法の影響を分離できないため確定していない。', 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Blaese, R. M. et al. (1995) T Lymphocyte-Directed Gene Therapy for ADA-SCID: Initial Trial Results After 4 Years. Science', 'https://doi.org/10.1126/science.270.5235.475')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
@@ -1385,7 +1465,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1990-10-01', '2003-04-14', 'month', 'period', 'ヒトゲノム計画', '米英日仏独中の国際共同で約30億塩基対のヒトゲノムを解読する計画が始動。1977年のサンガー法を自動化・大規模化して進められ、日本は理化学研究所などが21番・18番染色体などを担当した。
 
 1998年にセレラ社が参入して官民の競争となり、2000年6月に草案、2001年2月に論文発表を経て、二重らせん発表50周年に合わせた2003年4月、当初の15年計画を前倒しして完了が宣言された。全塩基配列という「地図」が、後の疾患遺伝子探索とゲノム編集の標的設計を可能にした。', null,
-          'verified', null, 'user', 10) returning id)
+          'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('National Human Genome Research Institute: The Human Genome Project', 'https://www.genome.gov/human-genome-project'), ('International Human Genome Sequencing Consortium (2001) Initial sequencing and analysis of the human genome. Nature', 'https://doi.org/10.1038/35057062')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
@@ -1393,15 +1473,23 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1999-09-17', null, 'day', 'point', '遺伝子治療の臨床試験で被験者ジェシー・ゲルシンガーが死亡', 'ペンシルベニア大学の遺伝子治療臨床試験で、アデノウイルスベクター投与後に18歳の被験者ジェシー・ゲルシンガーが死亡。調査で被験者選定基準の逸脱や有害事象報告の不備、研究者の利益相反が指摘され、FDAは同大学の試験を停止した。
 
 1990年の初試験以来の期待は一転し、投資と臨床試験数は数年にわたり落ち込んだ。**被験者保護と利益相反開示の制度強化**につながり、2010年代の遺伝子治療復活と2018年のゲノム編集ベビー問題の際にも安全性議論の原点として参照された。', null,
-          'verified', null, 'user', 11) returning id)
+          'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wilson, J. M. (2009) Lessons learned from the gene therapy trial for ornithine transcarbamylase deficiency. Molecular Genetics and Metabolism', null), ('FDA (2000) Warning letter to the Institute for Human Gene Therapy, University of Pennsylvania', null)) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'science-dna-to-editing'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing') and name = '技術と応用'),
+          '1999-09-17', '2012-10-25', 'day', 'period', '遺伝子治療、停滞の13年', 'ゲルシンガー事件を境に、遺伝子治療の臨床試験と投資は世界的に冷え込んだ。2002年以降には仏のX-SCID治療で白血病の発症が相次いで報告され、ベクターの安全性への疑念が停滞をさらに長引かせた。
+
+この停滞の線は、ヒトゲノム計画の完了とちょうど重なっている。**「読む」計画が完成する傍らで、「直す」試みは止まっていた**のである。線が終わる2012年には欧州初の承認薬グリベラが生まれ、同じ年にCRISPRの論文が次の時代を開いた。', null,
+          'disputed', '停滞の始まりはゲルシンガー事件でおおむね一致するが、終わりは2012年の欧州初承認（グリベラ）や2017年の米国での相次ぐ承認など捉え方が分かれる。ここでは欧州委員会によるグリベラ承認までを採った。', 'user', 13) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('European Medicines Agency: Glybera (alipogene tiparvovec) EPAR', null), ('Hacein-Bey-Abina, S. et al. (2003) LMO2-Associated Clonal T Cell Proliferation in Two Patients after Gene Therapy for SCID-X1. Science', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing') and name = '発見と理論'),
           '2000-06-26', null, 'day', 'point', 'ヒトゲノム草案を国際計画とセレラ社が共同発表', 'クリントン米大統領とブレア英首相の立ち会いで、公的な国際計画と民間セレラ社がヒトゲノム草案の完成を同時に発表。1998年に参入したセレラ社が全ゲノムショットガン法で公的計画を追い上げ、政治的仲介で「引き分け」の共同発表となった。
 
 翌2001年2月、Nature誌とScience誌に別々の論文が掲載された。ヒト遺伝子数が当初の10万前後の予想を大きく下回る2万〜2万5千程度と判明したのはこの成果からで、遺伝子の数より制御の複雑さが問われる時代に入った。', null,
-          'disputed', '草案の完成度（カバー率）と両陣営の貢献の大きさについては公的計画とセレラ社の主張が食い違い、セレラ社が公的データを利用した程度も論争となった。', 'user', 12) returning id)
+          'disputed', '草案の完成度（カバー率）と両陣営の貢献の大きさについては公的計画とセレラ社の主張が食い違い、セレラ社が公的データを利用した程度も論争となった。', 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('International Human Genome Sequencing Consortium (2001) Initial sequencing and analysis of the human genome. Nature', 'https://doi.org/10.1038/35057062'), ('Venter, J. C. et al. (2001) The Sequence of the Human Genome. Science', 'https://doi.org/10.1126/science.1058040')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
@@ -1409,7 +1497,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2012-06-28', null, 'day', 'point', 'ダウドナとシャルパンティエ、CRISPR-Cas9を編集ツールとして提示', 'ダウドナとシャルパンティエらがScience誌のオンライン公開論文で、細菌の獲得免疫機構CRISPRを、Cas9とガイドRNAの組み合わせだけで任意のDNA配列を切断できる汎用ツールに転用できることを試験管内で実証した。
 
 翌2013年1月にはチャン、チャーチらがヒト細胞での編集を報告し、以後、技術は爆発的に普及する。ジンクフィンガーやTALENに比べ設計が容易で安価な点が決定的で、同時に特許紛争と倫理議論の火種にもなった。', null,
-          'verified', null, 'user', 13) returning id)
+          'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Jinek, M. et al. (2012) A Programmable Dual-RNA-Guided DNA Endonuclease in Adaptive Bacterial Immunity. Science', 'https://doi.org/10.1126/science.1225829'), ('Cong, L. et al. (2013) Multiplex Genome Engineering Using CRISPR/Cas Systems. Science', 'https://doi.org/10.1126/science.1231143')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
@@ -1417,15 +1505,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2015-12-01', null, 'day', 'point', '第1回ヒトゲノム編集国際サミット開催', '米英中の科学アカデミーが第1回ヒトゲノム編集国際サミットをワシントンで開催。基礎研究は容認しつつ、生殖細胞系列の臨床応用は安全性と社会的合意が得られるまで行うべきでなく「現時点で無責任」との声明を発表した。
 
 同年4月に中国のチームが受精しない三倍体ヒト胚での編集実験を報告し、是非が急浮上したことを受けた対応で、**CRISPR論文からわずか3年半でのルール形成**だった。しかし2018年の香港での第2回サミット直前に、その線を越える事例が公表される。', null,
-          'verified', null, 'user', 14) returning id)
+          'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('National Academies of Sciences, Engineering, and Medicine (2015) On Human Gene Editing: International Summit Statement', null), ('Liang, P. et al. (2015) CRISPR/Cas9-mediated gene editing in human tripronuclear zygotes. Protein & Cell', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-dna-to-editing') and name = '倫理と制度'),
-          '2017-02-15', null, 'day', 'point', '米特許審判部、CRISPR特許紛争でブロード研究所側を支持', '真核細胞でのCRISPR-Cas9利用に関する特許について、米特許審判部がカリフォルニア大学側の主張を退けブロード研究所側の特許を維持。2012年のダウドナらの発表と2013年のチャンらの実証のどちらが発明にあたるかが争点となった。
+          '2016-01-01', '2026-06-30', 'month', 'period', 'CRISPR特許紛争、係争の10年', '真核細胞でのCRISPR-Cas9利用の発明者をめぐり、米特許商標庁がカリフォルニア大学側とブロード研究所側の抵触審査を宣言した。2017年と2022年の審判部判断はいずれもブロード側に有利だったが控訴が続き、欧州では大学側が優位に立つなど地域で判断が割れている。
 
-米国では2022年にも審判部がブロード側に有利な判断を示した一方、欧州特許庁では判断が異なり、地域ごとに権利関係が分かれている。ライセンス構造の複雑さは治療開発企業の契約に影響し、2023年の治療承認まで続く背景となった。', null,
-          'disputed', '発明の先取権をめぐる争いは控訴や地域ごとの判断の違いが続いており、最終的な権利関係は確定していない。', 'user', 15) returning id)
+係争の線は10年を超えてなお続き、その上に2020年のノーベル化学賞も2023年のカスジェビー承認も乗っている。権利の帰属が定まらないまま科学の評価と臨床応用が先へ進み、ライセンス構造の複雑さとして今も治療開発の現場に影響を残す。', null,
+          'disputed', '発明の先取権をめぐる争いは控訴や地域ごとの判断の違いが続いており、最終的な権利関係は確定していない。係争の起点をどの手続に置くかにも幅がある（ここでは2016年1月の抵触審査宣言を採った）。', 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('USPTO Patent Trial and Appeal Board, Interference No. 106,048 (Decision on Motions, Feb. 15, 2017)', null), ('Nature News (2017) Broad Institute wins bitter battle over CRISPR patents', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
@@ -1433,7 +1521,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2018-11-26', null, 'day', 'point', '賀建奎、ゲノム編集した双子の誕生を公表', '中国の研究者・賀建奎が、CRISPRでCCR5遺伝子を改変した受精卵から双子が生まれたと香港での第2回ヒトゲノム編集国際サミット直前に公表し、国際的な非難を招いた。2015年の第1回サミット声明が「無責任」とした生殖細胞系列の臨床応用が実際に行われたことが明らかになった。
 
 中国当局は違法な医療行為として2019年12月に懲役3年の判決を下し、WHOは登録制度と各国規制の整備を勧告。**1975年のアシロマ以来の「研究者の自主規制」モデルの限界**が問われた事件でもある。', null,
-          'verified', null, 'user', 16) returning id)
+          'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Nature News (2018) Genome-edited baby claim provokes international outcry', 'https://doi.org/10.1038/d41586-018-07545-0'), ('新華社 (2019-12-30) 「基因編輯嬰兒」案一審宣判', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
@@ -1441,7 +1529,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2020-10-07', null, 'day', 'point', 'シャルパンティエとダウドナにノーベル化学賞', 'CRISPR-Cas9による「遺伝子のはさみ」の開発が評価され、シャルパンティエとダウドナにノーベル化学賞。女性2人のみの共同受賞として初であり、2012年の論文発表から8年という異例の早さでの受賞は技術の影響の大きさを示した。
 
 同じ時期、技術レイヤーでは鎌状赤血球症へのCRISPR治療の臨床試験結果が報告され、制度レイヤーでは特許紛争と生殖細胞系列編集の国際ルール作りが続いていた。受賞対象は基礎的発見であり、真核細胞での応用をめぐる特許の争点とは別に評価された。', null,
-          'verified', null, 'user', 17) returning id)
+          'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('The Nobel Prize in Chemistry 2020', 'https://www.nobelprize.org/prizes/chemistry/2020/summary/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
@@ -1449,7 +1537,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2023-11-16', null, 'day', 'point', '世界初のCRISPR治療「カスジェビー」を英国が承認', '鎌状赤血球症とβサラセミアに対するCRISPR-Cas9を用いた世界初の治療「カスジェビー」を英MHRAが承認し、12月には米FDAも承認した。患者自身の造血幹細胞を体外で編集し胎児型ヘモグロビンの産生を回復させる治療で、バーテックス社とCRISPRセラピューティクス社が開発した。
 
 2012年の論文から11年で臨床承認に至った一方、価格は1回あたり約220万ドルとされ、**患者数の多いアフリカなどでの利用可能性**が新たな倫理・制度の課題となった。', null,
-          'verified', null, 'user', 18) returning id)
+          'verified', null, 'user', 20) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('FDA (2023-12-08) FDA Approves First Gene Therapies to Treat Patients with Sickle Cell Disease', 'https://www.fda.gov/news-events/press-announcements/fda-approves-first-gene-therapies-treat-patients-sickle-cell-disease'), ('MHRA (2023-11-16) MHRA authorises world-first gene therapy that aims to cure sickle-cell disease and transfusion-dependent β-thalassemia', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-dna-to-editing'),
@@ -1457,12 +1545,12 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2025-05-15', null, 'day', 'point', '個別化した塩基編集治療を乳児に初めて適用と報告', '希少な代謝疾患CPS1欠損症の乳児1人のために設計された塩基編集治療の投与結果がNEJMに報告された。米国の研究チームが患者固有の変異に合わせて約6か月で治療を設計・製造し、肝臓を標的に脂質ナノ粒子で投与した。
 
 DNA二本鎖を切らずに一塩基を書き換える塩基編集の体内投与例であり、「1人のための薬」の規制上の枠組みも同時に試された。ただし1例の短期報告であり、長期の安全性と有効性は今後の追跡による。', null,
-          'unverified', '症例1例の短期経過報告にとどまり、長期的な安全性・有効性は未確認。', 'user', 19) returning id)
+          'unverified', '症例1例の短期経過報告にとどまり、長期的な安全性・有効性は未確認。', 'user', 21) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Musunuru, K. et al. (2025) Patient-Specific In Vivo Gene Editing to Treat a Rare Genetic Disease. New England Journal of Medicine', null)) as v(title, url);
 
 -- ═══ science-infectious-diseases — 🦠 感染症との闘い
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-infectious-diseases', '00000000-0000-4000-8000-53afa1095b21', '🦠 感染症との闘い', '1798年の種痘から新型コロナまで。病原体の流行、医学と公衆衛生の応答、国際的な制度づくりの3つの層を重ねながら、対策がいつも流行の少し後ろを追いかけ、それでも一歩ずつ前に進んできた200年あまりをたどる年表です。', 'science-nature', 'ja', 'public', 's_science-infectious-diseases', 1798, 2023, 'science-infectious-diseases')
+values ('science-infectious-diseases', '00000000-0000-4000-8000-53afa1095b21', '🦠 感染症との闘い', '1798年の種痘から新型コロナまで。病原体の流行、医学と公衆衛生の応答、国際的な制度づくりの3つの層を重ねながら、対策がいつも流行の少し後ろを追いかけ、それでも一歩ずつ前に進んできた200年あまりをたどる年表です。', 'science-nature', 'ja', 'public', 's_science-infectious-diseases', 1798, 2026, 'science-infectious-diseases')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-infectious-diseases');
@@ -1488,11 +1576,19 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: John Snow', 'https://en.wikipedia.org/wiki/John_Snow')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-infectious-diseases'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-infectious-diseases') and name = '病原体と流行'),
+          '1855-01-01', '1960-12-31', 'year', 'period', '第三次ペスト・パンデミックの約100年', '中国の雲南省で始まったとされるペストの流行が、香港からインド、世界の港町へと広がりました。約1世紀におよぶ第三次パンデミックで、犠牲者はインドを中心に1000万人を超えたと推定されています。
+
+蒸気船の航路網が、いわば火の通り道になった流行でした。この長い線の上に、1894年の香港でのペスト菌発見の点が乗っています。流行のただ中で病原体が特定された最初のパンデミックであり、WHOが終息とみなしたのは1960年のことでした。', null,
+          'disputed', '始まりを1855年の雲南省の流行、終わりをWHOが終息とみなした1960年に置きましたが、期間の区切りには諸説あります。', 'user', 2) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Third plague pandemic', 'https://en.wikipedia.org/wiki/Third_plague_pandemic')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'science-infectious-diseases'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-infectious-diseases') and name = '医学と公衆衛生'),
           '1882-03-24', null, 'day', 'point', '🔬 コッホ、結核菌を発見', 'ロベルト・コッホが、ベルリンの生理学会で結核菌の発見を報告しました。独自の染色法と純粋培養、動物への感染実験を重ね、当時の死因の筆頭級だった結核が、特定の細菌による感染症であることを示したのです。
 
 炭疽菌、コレラ菌と続く一連の発見で、「犯人を突き止めれば手を打てる」という細菌学の時代が確立しました。この日は後に世界結核デーになります。ただし治療薬ストレプトマイシンの登場は、まだ60年以上先のことでした。', null,
-          'verified', null, 'user', 2) returning id)
+          'verified', null, 'user', 3) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Robert Koch', 'https://en.wikipedia.org/wiki/Robert_Koch')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-infectious-diseases'),
@@ -1500,7 +1596,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1894-06-01', null, 'month', 'point', '香港でペスト菌を発見', '香港のペスト流行のさなか、イェルサンと北里柴三郎が、ほぼ同じ時期に病原菌を分離して報告しました。19世紀を通じて世界へ広がった、第三次ペスト・パンデミックの最中の成果です。
 
 どちらが先かをめぐる論争は長く続きましたが、現在は両者の貢献を認める見方が一般的で、学名はイェルサンに由来します。ネズミとノミを介する感染経路の解明はこの後に続き、中世以来の脅威が、ようやく科学の顕微鏡の下に置かれました。', null,
-          'disputed', '先に純粋な菌を分離したのがどちらかは、当時の報告の読み方によって諸説あり、発見者の扱いは資料によって異なります。', 'user', 3) returning id)
+          'disputed', '先に純粋な菌を分離したのがどちらかは、当時の報告の読み方によって諸説あり、発見者の扱いは資料によって異なります。', 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Alexandre Yersin', 'https://en.wikipedia.org/wiki/Alexandre_Yersin'), ('Wikipedia: 北里柴三郎', 'https://ja.wikipedia.org/wiki/%E5%8C%97%E9%87%8C%E6%9F%B4%E4%B8%89%E9%83%8E')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-infectious-diseases'),
@@ -1508,7 +1604,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1918-03-01', '1920-04-01', 'month', 'period', 'インフルエンザ・パンデミック(スペインかぜ)', 'H1N1型のインフルエンザが、第一次大戦下の兵員の移動に乗って世界へ広がり、3つの波にわたって流行しました。世界人口の3分の1ほどが感染したと推定されています。
 
 死者は1700万〜5000万人とされ、推計の幅は大きいままです。参戦国の戦時検閲で報道が抑えられ、報道が自由だった中立国スペインの名が付きました。いわば濡れ衣のような命名で、**情報統制が流行対策を歪める**例でもあります。ウイルスの同定は1933年でした。', null,
-          'disputed', '死者数は1700万〜5000万人(1億人とする説も)と推計に大きな幅があり、確定していません。', 'user', 4) returning id)
+          'disputed', '死者数は1700万〜5000万人(1億人とする説も)と推計に大きな幅があり、確定していません。', 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Spanish flu', 'https://en.wikipedia.org/wiki/Spanish_flu')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-infectious-diseases'),
@@ -1516,7 +1612,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1928-09-01', null, 'month', 'point', 'フレミング、ペニシリンを発見', 'アレクサンダー・フレミングが、休暇中に置きっぱなしにした培養皿で、アオカビの周囲だけブドウ球菌が育たないことに気づきました。カビの周りの透明な輪は、いわば細菌の立ち入り禁止区域。この抗菌物質はペニシリンと名付けられます。
 
 実用化には、フローリーとチェインによる精製と、第二次大戦中に米英の国家事業として進んだ量産(社会と制度レイヤー)が必要でした。感染症が「治る病気」になる抗生物質時代の起点ですが、フレミング自身は早くから耐性菌の出現に警鐘を鳴らしていました。', null,
-          'verified', null, 'user', 5) returning id)
+          'verified', null, 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Alexander Fleming', 'https://en.wikipedia.org/wiki/Alexander_Fleming')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-infectious-diseases'),
@@ -1524,7 +1620,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1948-04-07', null, 'day', 'point', '世界保健機関(WHO)発足', '国連の専門機関として、世界保健機関(WHO)が発足しました。憲章は健康を基本的人権と位置づけており、感染症対策の国際的な司令塔にあたる常設組織が、初めて整ったことになります。憲章発効の4月7日は、世界保健デーになりました。
 
 19世紀以来の国際衛生会議の系譜を受け継ぎ、天然痘根絶やポリオ対策など、**国境を越える病気には国境を越える制度**で応じる枠組みの中心になります。各国に流行の通報を義務づける国際保健規則(IHR)の運用役でもあります。', null,
-          'verified', null, 'user', 6) returning id)
+          'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: World Health Organization', 'https://en.wikipedia.org/wiki/World_Health_Organization')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-infectious-diseases'),
@@ -1532,15 +1628,23 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1955-04-12', null, 'day', 'point', 'ソークのポリオワクチン、有効と発表', '米国で約180万人の子どもが参加した大規模野外試験の結果が発表され、ソークの不活化ポリオワクチンの有効性が確認されました。いわば国ぐるみの壮大な実験が実を結んだ形で、発表は全米に中継され、各地で祝賀が起きたと伝えられます。
 
 ただし直後に、一部の製造ロットの不活化不良による感染事故(カッター事件)が起き、品質管理と国の監督体制が整えられる契機にもなりました。セービンの経口生ワクチンとともに、後の世界ポリオ根絶計画(社会と制度レイヤー)の土台になります。', null,
-          'verified', null, 'user', 7) returning id)
+          'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Jonas Salk', 'https://en.wikipedia.org/wiki/Jonas_Salk')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'science-infectious-diseases'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-infectious-diseases') and name = '社会と制度'),
+          '1967-01-01', '1980-05-08', 'year', 'period', 'WHO天然痘根絶強化計画の13年', 'WHOが天然痘根絶計画を強化し、専任の組織と予算を付けて、流行が残るアジアとアフリカでの制圧に乗り出しました。全員接種にこだわらず、患者を見つけて周囲を接種で囲い込む包囲接種へ戦略を切り替えたことが、決め手になります。
+
+飛び火を一つずつ消して回る作業を、世界地図の全部でやり切ったような13年です。この線の上に1977年の最後の自然感染例(病原体と流行レイヤー)の点が乗り、線の終点はそのまま1980年の根絶宣言につながっています。', null,
+          'verified', null, 'user', 9) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Smallpox', 'https://en.wikipedia.org/wiki/Smallpox')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-infectious-diseases'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-infectious-diseases') and name = '病原体と流行'),
           '1977-10-26', null, 'day', 'point', '天然痘、最後の自然感染例', 'ソマリアの病院職員アリ・マオ・マーランが、天然痘(小痘瘡)を発症しました。これが、世界で確認された最後の自然感染例になります。本人は回復し、後にポリオ根絶の活動に携わりました。
 
 WHOが1967年に強化した根絶計画は、全員接種ではなく、患者の周りを接種で囲い込む「包囲接種」への切り替えで成果を上げました。火事の周囲に防火帯を作るような戦い方です。ジェンナーの種痘(医学と公衆衛生レイヤー)から約180年、根絶の一歩手前の瞬間でした。', null,
-          'verified', null, 'user', 8) returning id)
+          'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Ali Maow Maalin', 'https://en.wikipedia.org/wiki/Ali_Maow_Maalin')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-infectious-diseases'),
@@ -1548,15 +1652,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1980-05-08', null, 'day', 'point', '🌍 WHO、天然痘の根絶を宣言', '第33回世界保健総会が、天然痘の世界根絶を宣言しました。人類が意図して根絶した最初の感染症です。ワクチンの原型の誕生から約180年、いわば世代を超えたリレーがようやくゴールした到達点でした。
 
 冷戦下で米ソが協力できた数少ない事業でもあり、**制度と現場が噛み合えば根絶はできる**という成功体験は、ポリオや麻疹の根絶・排除計画に受け継がれました。一方で、研究用に残されたウイルス株を廃棄すべきかどうかの議論は、今も決着していません。', null,
-          'verified', null, 'user', 9) returning id)
+          'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Smallpox', 'https://en.wikipedia.org/wiki/Smallpox')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-infectious-diseases'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-infectious-diseases') and name = '病原体と流行'),
-          '1981-06-05', null, 'day', 'point', '米CDC、後のエイズとなる症例を初報告', '米疾病予防管理センターの週報MMWRに、ロサンゼルスの若い男性5人にみられた珍しい肺炎(ニューモシスチス肺炎)が報告されました。後にエイズと名付けられる病気の最初の公式記録、いわば巨大な氷山の最初に見えた一角です。
+          '1981-06-05', '2026-06-30', 'day', 'period', 'エイズ流行、報告から続く45年', '米疾病予防管理センターの週報に、ロサンゼルスの若い男性5人にみられた珍しい肺炎が報告されました。後にエイズと名付けられる病気の最初の公式記録、いわば巨大な氷山の最初に見えた一角です。流行はここから世界へ広がり、累計の死者は4000万人を超えると推定されています。
 
-原因が分からないまま流行は広がり、患者への偏見と差別が初動の対策を遅らせました。病原体の特定(医学と公衆衛生レイヤー)まで2年、有効な治療の確立までは15年。社会の側の反応が被害を左右することを示した出来事です。', null,
-          'verified', null, 'user', 10) returning id)
+この長い線の上に、1983年のウイルス分離や1996年の多剤併用療法(医学と公衆衛生レイヤー)の点が乗っています。治療の進歩で付き合いながら管理できる病気に変わりましたが、根絶には至っておらず、流行の線は現在も続いています。', null,
+          'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('CDC MMWR: Pneumocystis Pneumonia --- Los Angeles (1981-06-05)', null), ('Wikipedia: HIV/AIDS', 'https://en.wikipedia.org/wiki/HIV/AIDS')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-infectious-diseases'),
@@ -1564,7 +1668,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1983-05-20', null, 'day', 'point', 'HIVの分離を報告', 'パスツール研究所のバレシヌシとモンタニエらが、エイズ患者のリンパ節から新種のレトロウイルス(後のHIV)を分離したと、Science誌に報告しました。見えなかった相手の姿が、ようやく捉えられたのです。
 
 翌年には米国のギャロも同種のウイルスを報告し、発見の先取権と検査法特許をめぐる米仏の争いに発展します。1987年に両国政府間で決着しましたが、2008年のノーベル賞はパスツール研究所側だけに贈られました。抗体検査の確立で、血液製剤の安全対策も始まります。', null,
-          'disputed', '発見の先取権は米仏で長く争われ、政治決着とノーベル賞の授賞を経てもなお、評価には立場による差が残っています。', 'user', 11) returning id)
+          'disputed', '発見の先取権は米仏で長く争われ、政治決着とノーベル賞の授賞を経てもなお、評価には立場による差が残っています。', 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: HIV', 'https://en.wikipedia.org/wiki/HIV')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-infectious-diseases'),
@@ -1572,7 +1676,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1996-01-01', null, 'year', 'point', '💊 HIV多剤併用療法(HAART)が確立', 'プロテアーゼ阻害薬の登場で、働き方の違う薬を組み合わせてウイルスの増殖を抑え込む多剤併用療法が確立しました。1種類では突破されてしまう守りも、組み合わせれば破られにくくなる、という発想です。この年の国際エイズ会議で治療の転換が示され、先進国の死亡率は数年で急減しました。
 
 エイズは「死の病」から、付き合いながら管理できる慢性疾患へと変わります。ただし高価な薬が途上国に届くまでには、特許と価格をめぐる制度の攻防(社会と制度レイヤー)が続き、治療アクセスの格差そのものが国際保健の主題になっていきました。', null,
-          'verified', null, 'user', 12) returning id)
+          'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Management of HIV/AIDS', 'https://en.wikipedia.org/wiki/Management_of_HIV/AIDS')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-infectious-diseases'),
@@ -1580,7 +1684,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2002-11-16', '2003-07-05', 'day', 'period', 'SARSの流行', '中国広東省で始まった重症急性呼吸器症候群(SARS)が、香港を経由して約30の国・地域へ広がり、感染者約8000人、死者774人を出しました。2003年7月、WHOが流行の封じ込めを宣言します。
 
 原因は新種のコロナウイルスと特定され、初期の情報開示の遅れには国際的な批判が集まりました。この教訓から国際保健規則が2005年に大きく改正され、**次の新興感染症への備え**が制度化されます。いわば避難訓練の手順書が書き直されたのですが、17年後、同じ属のウイルスが再び現れました。', null,
-          'verified', null, 'user', 13) returning id)
+          'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: SARS', 'https://en.wikipedia.org/wiki/SARS')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-infectious-diseases'),
@@ -1588,7 +1692,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2014-03-01', '2016-06-01', 'month', 'period', '西アフリカでエボラ出血熱が大流行', 'ギニアで確認されたエボラウイルス病がリベリア、シエラレオネへ広がり、感染者2万8000人超、死者1万1000人超という過去最大の流行になりました。2014年8月には、WHOが緊急事態を宣言します。
 
 数か月におよんだWHOの初動の遅れは厳しく検証され、火が回ってから消防車が出たようなものだという反省が、緊急対応体制の改革(社会と制度レイヤー)につながりました。流行のさなかに候補ワクチンの臨床試験が行われ、後の正式承認への道を開いた点でも転機でした。', null,
-          'verified', null, 'user', 14) returning id)
+          'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Western African Ebola virus epidemic', 'https://en.wikipedia.org/wiki/Western_African_Ebola_virus_epidemic')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-infectious-diseases'),
@@ -1596,15 +1700,23 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2016-05-19', null, 'day', 'point', '薬剤耐性(AMR)レビュー最終報告', '英政府が委託したオニール・レビューの最終報告が公表されました。対策を怠れば、2050年には薬剤耐性菌による死者が年1000万人に達しうると警告し、抗菌薬の適正使用と新薬開発の促進を提言しています。
 
 1000万人という数字はいくつもの仮定を重ねた推計で、学術的な異論もあります。それでも、抗生物質時代の起点(1928年、医学と公衆衛生レイヤー)から続く**特効薬が効かなくなる時代**への警鐘として、いわば薬の「効き目の貯金」が減っていく問題を国際政治の議題に載せました。', null,
-          'unverified', '年1000万人という死者予測はモデルに基づく推計で、前提の置き方によって大きく変わりうる数字です。', 'user', 15) returning id)
+          'unverified', '年1000万人という死者予測はモデルに基づく推計で、前提の置き方によって大きく変わりうる数字です。', 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('UK Review on Antimicrobial Resistance: Tackling Drug-Resistant Infections Globally (2016)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-infectious-diseases'),
-          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-infectious-diseases') and name = '社会と制度'),
-          '2020-01-30', null, 'day', 'point', 'WHO、新型コロナで緊急事態を宣言', 'WHOが新型コロナウイルス感染症について、「国際的に懸念される公衆衛生上の緊急事態(PHEIC)」を宣言しました。前年12月末の武漢での症例報告から、約1か月での判断です。
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-infectious-diseases') and name = '病原体と流行'),
+          '2019-12-01', '2023-05-05', 'month', 'period', '新型コロナ、世界流行の3年半', '武漢で原因不明の肺炎の集積が確認され、新型コロナウイルスは数か月で世界のほぼすべての国と地域へ広がりました。感染の波が何度も押し寄せ、確認された感染者は7億人を超えています。
 
-3月11日にはパンデミックと表明し、各国は渡航制限や都市封鎖に踏み切りました。SARSの後に改正された国際保健規則という警報装置が実際に鳴らされ、その実効性と限界が同時にあらわになった場面です。ワクチン開発(医学と公衆衛生レイヤー)は、宣言と同時並行で始まっていました。', null,
-          'verified', null, 'user', 16) returning id)
+いわば地球全体が同じ嵐に巻き込まれた3年半でした。線の始まりの1か月あまり後に緊急事態宣言(社会と制度レイヤー)が、約1年後にワクチン接種開始(医学と公衆衛生レイヤー)の点が続きます。ここでは緊急事態の終了を線の区切りとしましたが、ウイルス自体は今も季節性の流行を続けています。', null,
+          'disputed', '始まりは2019年12月の武漢での症例集積に置き、終わりは緊急事態の終了(2023年5月)を便宜的な区切りとしました。流行自体の明確な終点は定まっていません。', 'user', 18) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: COVID-19 pandemic', 'https://en.wikipedia.org/wiki/COVID-19_pandemic')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'science-infectious-diseases'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-infectious-diseases') and name = '社会と制度'),
+          '2020-01-30', '2023-05-05', 'day', 'period', '新型コロナ緊急事態の3年3か月', 'WHOが新型コロナについて「国際的に懸念される公衆衛生上の緊急事態(PHEIC)」を宣言し、2023年5月の終了発表まで3年3か月続きました。この間に報告された死者は約700万人、WHOは2020〜21年だけで約1500万人の超過死亡を推計しています。
+
+SARSの後に書き直された国際保健規則という警報装置が、実際に鳴らされ続けた期間です。流行そのものの線(病原体と流行レイヤー)より1か月あまり遅れて始まるこの小さなずれこそ、対策がいつも流行の少し後ろを追いかけるという、この年表の主題の縮図です。', null,
+          'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: COVID-19 pandemic', 'https://en.wikipedia.org/wiki/COVID-19_pandemic')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-infectious-diseases'),
@@ -1612,7 +1724,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2020-12-08', null, 'day', 'point', '💉 mRNAワクチン、一般接種が開始', '英国で90歳の女性を第1号として、ファイザー・ビオンテック製の新型コロナmRNAワクチンの一般接種が始まりました。ウイルスの遺伝情報の公開から約11か月という、異例の速さでの実用化です。
 
 何十年にもわたる基礎研究の蓄積が緊急時に結実したもので、長い助走があってこその跳躍でした。カリコとワイスマンの基盤技術は、2023年のノーベル賞になります。一方で、供給が富裕国に偏る「ワクチン格差」は、制度の側(社会と制度レイヤー)に大きな宿題を残しました。', null,
-          'verified', null, 'user', 17) returning id)
+          'verified', null, 'user', 20) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: COVID-19 vaccine', 'https://en.wikipedia.org/wiki/COVID-19_vaccine')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-infectious-diseases'),
@@ -1620,20 +1732,12 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2021-03-30', null, 'day', 'point', 'WHO調査団、新型コロナ起源の報告書', 'WHOと中国の合同調査団が、武漢での現地調査に基づく報告書を公表しました。コウモリ由来のウイルスが中間宿主を介して人に達した経路を「可能性が高い」、研究所からの流出を「極めて考えにくい」と評価しています。
 
 しかし直後に、WHO事務局長自身がデータへのアクセスの制約に触れ、追加調査を求めました。ウイルスの起源は今も確定していません。答えの欄を空白のまま提出するような難しさ、つまり**分からないことを分からないまま記録する**難しさを示す事例です。', null,
-          'unverified', 'ウイルスの起源は自然由来説・研究所関連説のいずれにも決定的な証拠がなく、未確定のままです。', 'user', 18) returning id)
+          'unverified', 'ウイルスの起源は自然由来説・研究所関連説のいずれにも決定的な証拠がなく、未確定のままです。', 'user', 21) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('WHO-convened Global Study of Origins of SARS-CoV-2: China Part (2021)', null)) as v(title, url);
-with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
-  values ((select id from public.timelines where slug = 'science-infectious-diseases'),
-          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-infectious-diseases') and name = '社会と制度'),
-          '2023-05-05', null, 'day', 'point', 'WHO、新型コロナの緊急事態を終了', 'WHOが、新型コロナに関する緊急事態(PHEIC)の終了を発表しました。宣言から3年3か月。報告された死者は約700万人にのぼり、WHOは2020〜21年だけで約1500万人の超過死亡を推計しています。
-
-各国はパンデミック条約の交渉と国際保健規則の再改正へ進みましたが、資金と権限をめぐる対立は残りました。1798年の種痘以来くり返されてきたように、のど元を過ぎて熱さを忘れる前に制度を整えられるか。それが問われています。', null,
-          'verified', null, 'user', 19) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: COVID-19 pandemic', 'https://en.wikipedia.org/wiki/COVID-19_pandemic')) as v(title, url);
 
 -- ═══ science-mars-missions — 🚀 火星探査ミッション
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-mars-missions', '00000000-0000-4000-8000-e4529396d344', '🚀 火星探査ミッション', '運河の幻から探査車の隊列、そしてサンプルリターン計画まで。ミッションの成否・水と生命の証拠・競争と構想の3層を重ねて、人類が「隣の惑星」をどう読み解いてきたかをたどります。望遠鏡の中の赤い点が、歩き回れる大地になるまでの記録です。', 'science-nature', 'ja', 'public', 's_science-mars-missions', 1877, 2024, 'science-mars-missions')
+values ('science-mars-missions', '00000000-0000-4000-8000-e4529396d344', '🚀 火星探査ミッション', '運河の幻から探査車の隊列、そしてサンプルリターン計画まで。ミッションの成否・水と生命の証拠・競争と構想の3層を重ねて、人類が「隣の惑星」をどう読み解いてきたかをたどります。望遠鏡の中の赤い点が、歩き回れる大地になるまでの記録です。', 'science-nature', 'ja', 'public', 's_science-mars-missions', 1877, 2026, 'science-mars-missions')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-mars-missions');
@@ -1644,9 +1748,9 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mars-missions'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-mars-missions') and name = '競争と構想'),
-          '1877-01-01', null, 'year', 'point', 'スキャパレリが火星の「溝」を報告', 'イタリアの天文学者スキャパレリが大接近の火星を望遠鏡で観測し、表面に線状の地形を認めて「canali(溝)」と記録しました。これが英語圏で「運河」と訳されたことから、人工物という連想がひとり歩きを始めます。
+          '1877-01-01', '1965-07-14', 'year', 'period', '運河の幻、88年', 'イタリアの天文学者スキャパレリが大接近の火星に線状の地形を認め、「canali(溝)」と記録しました。これが英語圏で「運河」と訳されたことから人工物という連想がひとり歩きし、ローウェルらが**知的生命の築いた運河網**という解釈を広めていきます。
 
-ローウェルらが**知的生命の築いた運河網**という解釈を広め、SFの火星人像を育てていきました。この幻は1965年の探査機の写真(ミッションと技術レイヤー)まで88年間も生き続け、観測と願望を混ぜてはいけないという教訓として語り継がれています。', null,
+SFの火星人像を育てたこの幻は、1965年にマリナー4号が素顔を写す(ミッションと技術レイヤー)まで、88年間も生き続けました。観測と願望を混ぜてはいけないという教訓を、この長い線は静かに伝えています。', null,
           'verified', null, 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Giovanni Schiaparelli', 'https://en.wikipedia.org/wiki/Giovanni_Schiaparelli')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -1676,26 +1780,34 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mars-missions'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-mars-missions') and name = 'ミッションと技術'),
-          '1976-07-20', null, 'day', 'point', 'バイキング1号が着陸、生命探査実験を実施', 'NASAのバイキング1号がクリュセ平原に降り立ち、火星の地表からの撮影と、土壌の生命探査実験を初めて本格的に行いました。実験の一部は、当初は生命を思わせる反応を返しています。
+          '1976-07-20', '1982-11-11', 'day', 'period', 'バイキング1号、火星に立った6年', 'NASAのバイキング1号がクリュセ平原に降り立ち、以後6年あまり、火星の地表からの撮影と観測を続けました。着陸直後には土壌の生命探査実験を行い、一部は当初、生命を思わせる反応を返しています。
 
-結果は最終的に「生命の証拠なし」と解釈されましたが、標識放出実験の読み方には今も異論が残ります。期待と失望の落差はその後20年の着陸の空白の一因となり、次に火星の地面に立つ探査機は、1997年まで現れませんでした。', null,
+実験結果は最終的に「証拠なし」と解釈されましたが、標識放出実験の読み方には今も異論が残ります。1982年11月にこの線が途切れたあと、火星の地面に新しい線が戻るのは1997年。期待と失望の落差が生んだ長い空白(競争と構想レイヤー)が、そのまま隣の線になっています。', null,
           'verified', null, 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Viking 1', 'https://en.wikipedia.org/wiki/Viking_1')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'science-mars-missions'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-mars-missions') and name = '競争と構想'),
+          '1976-09-03', '1997-07-04', 'day', 'period', '着陸の空白、21年', 'バイキング2号の着陸を最後に、火星の地表へ新しく降り立つ探査機は21年間現れませんでした。生命探査の結果への失望と予算の縮小で計画は途絶え、1992年のマーズ・オブザーバーも到着直前に消息を絶っています。
+
+この空白の線の終わり近くには、隕石ALH84001の「生命の痕跡」騒動(水と生命の探査レイヤー)が置かれています。世論と予算を動かしたあの発表の翌年、パスファインダーの着陸で線は途切れました。探査の歴史は、進んだ時間より止まった時間のほうが長いのです。', null,
+          'verified', null, 'user', 5) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Exploration of Mars', 'https://en.wikipedia.org/wiki/Exploration_of_Mars')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mars-missions'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-mars-missions') and name = '水と生命の探査'),
           '1996-08-07', null, 'day', 'point', '火星隕石に「生命の痕跡」発表', 'NASAの研究チームが、南極で見つかった火星起源の隕石ALH84001に、微生物の化石に似たナノメートル級の構造があると発表しました。クリントン大統領が声明を出すほどの騒ぎになります。
 
 主張の多くはのちに非生物的な過程で説明され、現在は懐疑的な見方が主流です。それでもこの騒動は宇宙生物学という分野の確立と火星探査予算の復活を後押しし、**証拠の解釈をめぐる火星生命論争**の型が、ここで定まりました。', null,
-          'disputed', 'ナノメートル級の構造を生物起源とする解釈には、非生物的な生成過程による説明が示されていて、現在は懐疑的な見方が主流です。', 'user', 5) returning id)
+          'disputed', 'ナノメートル級の構造を生物起源とする解釈には、非生物的な生成過程による説明が示されていて、現在は懐疑的な見方が主流です。', 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Allan Hills 84001', 'https://en.wikipedia.org/wiki/Allan_Hills_84001')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mars-missions'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-mars-missions') and name = 'ミッションと技術'),
-          '1997-07-04', null, 'day', 'point', 'パスファインダー着陸、初の火星ローバー', 'NASAのマーズ・パスファインダーがエアバッグで弾みながら着陸し、初の火星ローバー「ソジャーナ」が地表を走り出しました。画像はウェブで即時公開され、当時として記録的なアクセスを集めています 🚀
+          '1997-07-04', '1997-09-27', 'day', 'period', 'パスファインダーの85日', 'NASAのマーズ・パスファインダーがエアバッグで弾みながら着陸し、初の火星ローバー「ソジャーナ」が地表を走り出しました。画像はウェブで即時公開され、当時として記録的なアクセスを集めています 🚀
 
-「より速く、より良く、より安く」路線の象徴で、バイキング以来21年ぶりの着陸成功が探査の空白を破りました。動き回り、岩を選んで調べるというローバーの様式は、以後の火星探査の標準になっていきます。', null,
-          'verified', null, 'user', 6) returning id)
+運用は設計寿命を大きく超え、9月27日の最後の交信まで85日間続きました。21年の空白(競争と構想レイヤー)を破ったこの短い線のあとに、オポチュニティの15年、キュリオシティの14年と、ローバーの線はどんどん長くなっていきます。線の長さそのものが、技術の進歩の記録なのです。', null,
+          'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Mars Pathfinder', 'https://en.wikipedia.org/wiki/Mars_Pathfinder')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mars-missions'),
@@ -1703,7 +1815,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1999-09-23', null, 'day', 'point', 'マーズ・クライメイト・オービター喪失', 'NASAの火星気候周回機が、軌道投入の際に大気圏へ深く入りすぎて失われました。原因は、開発側がヤード・ポンド法、運用側がメートル法の数値を前提にしていたという、単位の取り違えでした。
 
 直後のマーズ・ポーラー・ランダーの失敗と併せて、低コスト路線の管理体制が厳しく問い直されます。初歩的な取り違えが1億ドル超の機体を失わせた事例として、システム工学の教材に今も登場し続けています。', null,
-          'verified', null, 'user', 7) returning id)
+          'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Mars Climate Orbiter', 'https://en.wikipedia.org/wiki/Mars_Climate_Orbiter')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mars-missions'),
@@ -1711,7 +1823,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2004-01-25', '2019-02-13', 'day', 'period', 'オポチュニティ、90日の予定を15年走る', '双子ローバーの片割れオポチュニティが、メリディアニ平原に着陸しました。設計寿命90日のところを約15年・45km超も走り抜き、2018年の全球砂嵐で交信が途絶え、2019年2月にミッション終了が告げられます。
 
 着陸直後には水中で形成された鉱物を見つけ、**かつて水をたたえていた火星**の姿を決定づけました(水と生命の探査レイヤー)。想定を超えて生き続けた運用のノウハウは、キュリオシティ以降の設計と計画に受け継がれています。', null,
-          'verified', null, 'user', 8) returning id)
+          'verified', null, 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Opportunity (rover)', 'https://en.wikipedia.org/wiki/Opportunity_(rover)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mars-missions'),
@@ -1719,15 +1831,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2008-06-01', null, 'month', 'point', 'フェニックス、火星の水の氷を直接確認', '北極域に着陸したNASAのフェニックスが、掘った溝に現れた白い塊が数日のうちに昇華して消えていく様子を撮影し、地表のすぐ下に水の氷があることを、初めてその場で確かめました。
 
 周回機の中性子観測による推定を、地上で裏づけた成果です。土壌からは過塩素酸塩も検出され、生命探査の条件と将来の水資源利用の両面で、以後の着陸地選びの前提を変えることになりました。', null,
-          'verified', null, 'user', 9) returning id)
+          'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Phoenix (spacecraft)', 'https://en.wikipedia.org/wiki/Phoenix_(spacecraft)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mars-missions'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-mars-missions') and name = 'ミッションと技術'),
-          '2012-08-06', null, 'day', 'point', 'キュリオシティ、スカイクレーンで着陸', '1トン級ローバーのキュリオシティが、ロケット噴射で空中に静止したクレーンから吊り下ろされる新方式「スカイクレーン」で、ゲールクレーターに降り立ちました。「恐怖の7分間」という言葉とともに、世界が中継を見守りました。
+          '2012-08-06', '2026-06-30', 'day', 'period', 'キュリオシティ、走り続けて14年目', '1トン級ローバーのキュリオシティが、ロケット噴射で空中に静止したクレーンから吊り下ろされる新方式「スカイクレーン」で、ゲールクレーターに降り立ちました。「恐怖の7分間」の中継を世界が見守り、着陸後まもなく古代の河床の礫を見つけています。
 
-重い科学機材を安全に降ろすこの方式は、のちのパーサヴィアランスにも受け継がれます。着陸からまもなく古代の河床の礫を見つけ、湖の痕跡を追う探査(水と生命の探査レイヤー)が本格的に始まりました。', null,
-          'verified', null, 'user', 10) returning id)
+古代湖の発見もメタンの検出(いずれも水と生命の探査レイヤー)も、この長い運用の線の上に乗った成果です。車輪の摩耗と付き合いながら、線は14年目の現在もシャープ山の斜面で延び続けています。90日設計のローバーの時代から、火星探査は本当に遠くまで来ました。', null,
+          'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Curiosity (rover)', 'https://en.wikipedia.org/wiki/Curiosity_(rover)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mars-missions'),
@@ -1735,15 +1847,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2013-12-01', null, 'month', 'point', 'ゲールクレーターに古代湖、生命居住可能と判定', 'キュリオシティの掘削試料の分析から、ゲールクレーターにはかつて中性の淡水湖があり、微生物が生きられる化学環境だったとする一連の論文が、サイエンス誌に載りました。
 
 「水があったか」から「**住める環境だったのか**」へ、問いが一段深まった画期です。ただ、生命そのものの痕跡を探査車の機器で見つけるのは難しく、その検証は、将来のサンプルリターン(競争と構想レイヤー)に託されています。', null,
-          'verified', null, 'user', 11) returning id)
+          'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Grotzinger et al., Science: A Habitable Fluvio-Lacustrine Environment at Yellowknife Bay, Gale Crater, Mars (2014)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mars-missions'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-mars-missions') and name = '水と生命の探査'),
-          '2014-12-01', null, 'month', 'point', 'キュリオシティがメタンの一時的増加を検出', 'キュリオシティ搭載の分析計が、火星大気のメタン濃度が数カ月にわたって背景値の約10倍に高まる現象を捉えたと報告されました。メタンは生物からも地質からも生まれうる、注目の分子です。
+          '2014-12-01', '2026-06-30', 'month', 'period', '火星メタンの謎、解けない12年', 'キュリオシティ搭載の分析計が、火星大気のメタン濃度が数カ月にわたって背景値の約10倍に高まる現象を捉えました。メタンは生物からも地質からも生まれうる、注目の分子です。
 
-ところがその後、高感度の欧州周回機TGOはメタンをほとんど検出せず、測定どうしの食い違いは解けないまま残っています。検出のたびに期待と懐疑が入れ替わる経過は、ALH84001から続く火星生命論争の続編といえそうです。', null,
-          'unverified', 'メタンの検出は時期や観測手段によって結果が一致せず、欧州のTGOはほぼ検出していません。発生源も消える過程も含めて、まだ確定していません。', 'user', 12) returning id)
+ところが高感度の欧州周回機TGOはメタンをほとんど検出せず、測定どうしの食い違いは12年たった現在も解けていません。この未解決の線は、キュリオシティの運用の線(ミッションと技術レイヤー)にぴったり重なって走っています。同じ探査機が、発見と謎を同時に運び続けているのです。', null,
+          'unverified', 'メタンの検出は時期や観測手段によって結果が一致せず、欧州のTGOはほぼ検出していません。発生源も消える過程も含めて、まだ確定していません。', 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Webster et al., Science: Mars methane detection and variability at Gale crater (2015)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mars-missions'),
@@ -1751,7 +1863,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2015-09-28', null, 'day', 'point', 'NASA「現在の火星に液体の水」と発表', '周回機MROの分光観測から、斜面に季節ごとに現れて伸びる筋状地形(RSL)に含水塩が検出されたとして、NASAが「現在の火星に液体の水が流れている証拠」と大きく発表しました。
 
 しかし2年後には、乾いた砂の流れでも同じ地形を説明できるという反論が示され、解釈は覆されつつあります。派手な発表と静かな訂正という経過は、**発表の科学と検証の科学の時差**を示す例として、よく引かれています。', null,
-          'disputed', '含水塩に基づく「液体の水」という解釈には、その後、乾いた砂の流動とする説が有力に示されていて、決着していません。', 'user', 13) returning id)
+          'disputed', '含水塩に基づく「液体の水」という解釈には、その後、乾いた砂の流動とする説が有力に示されていて、決着していません。', 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Seasonal flows on warm Martian slopes', 'https://en.wikipedia.org/wiki/Seasonal_flows_on_warm_Martian_slopes')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mars-missions'),
@@ -1759,7 +1871,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2016-09-27', null, 'day', 'point', 'スペースXが火星移民構想を発表', 'マスクが国際宇宙会議で「人類を複数惑星種にする」と題した講演を行い、100人乗りの大型ロケット(のちのスターシップ)による火星都市建設の構想を披露しました。
 
 国家機関の科学探査とは別に、民間企業による移民という目標が公の議論に載った転換点です。示されたスケジュールはその後繰り返し延期されていますが、大型機の開発そのものは進み、独自の着陸手段を持たないNASAの月・火星計画にも影響を与えています。', null,
-          'verified', null, 'user', 14) returning id)
+          'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('SpaceX: Making Humans a Multiplanetary Species (IAC 2016 講演)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mars-missions'),
@@ -1767,15 +1879,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2018-07-25', null, 'day', 'point', '南極冠の地下に「湖」検出と発表', '欧州の周回機マーズ・エクスプレスのレーダー観測から、南極冠の氷の下およそ1.5kmに幅約20kmの液体の水域があると、イタリアの研究チームがサイエンス誌で発表しました。
 
 極低温でも塩分が濃ければ液体を保てるという解釈ですが、粘土鉱物などでも似たレーダー反射を説明できるという反論が続いています。地球の氷底湖に微生物の生態系があることを思い出させる発見だけに、検証の行方から目が離せません。', null,
-          'disputed', 'レーダー反射の解釈には、粘土鉱物など塩水以外による説明も示されていて、湖が本当にあるのかをめぐる議論が続いています。', 'user', 15) returning id)
+          'disputed', 'レーダー反射の解釈には、粘土鉱物など塩水以外による説明も示されていて、湖が本当にあるのかをめぐる議論が続いています。', 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Orosei et al., Science: Radar evidence of subglacial liquid water on Mars (2018)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mars-missions'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-mars-missions') and name = 'ミッションと技術'),
-          '2021-02-18', null, 'day', 'point', 'パーサヴィアランス着陸、サンプル採取開始', 'NASAのパーサヴィアランスが、かつて川のデルタが広がっていたジェゼロクレーターに着陸しました。試料を採取・密封して地表に残し、将来の回収を待つ。サンプルリターン計画の第一段階を担うローバーです。
+          '2021-02-18', '2026-06-30', 'day', 'period', 'パーサヴィアランス、探査の5年', 'NASAのパーサヴィアランスが、かつて川のデルタが広がっていたジェゼロクレーターに着陸しました。同年4月には搭載ヘリコプター「インジェニュイティ」が、他の天体で初めての動力飛行に成功しています 🚁
 
-同じ月にはUAEと中国の探査機も相次いで火星に到着していて(競争と構想レイヤー)、火星は多極化した探査の舞台になりました。搭載ヘリコプター「インジェニュイティ」が同年4月、他の天体で初めての動力飛行に成功したことも見逃せません 🚁', null,
-          'verified', null, 'user', 16) returning id)
+ローバーは試料を採取・密封しながら現在も走り続けていますが、回収計画の見直し(競争と構想レイヤー)で、持ち帰りの目途は立っていません。運用の線が延びる一方で、成果を地球へ運ぶ線はまだ始まらない。この重なりが、いまの火星探査の現在地です。', null,
+          'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Perseverance (rover)', 'https://en.wikipedia.org/wiki/Perseverance_(rover)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mars-missions'),
@@ -1783,7 +1895,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2021-05-15', null, 'day', 'point', '中国の祝融号が着陸、米ソに続く3カ国目', '中国の天問1号ミッションの着陸機がユートピア平原に軟着陸し、ローバー祝融号が走行を始めました。初挑戦で周回・着陸・走行の3つを一度に成し遂げた国は、初めてです。
 
 火星着陸の成功国は旧ソ連(部分的成功)、米国に続く3カ国目で、**一極化していた火星探査の多極化**を決定づけました。中国はサンプルリターンでも独自計画を進めていて、見直しが続く米欧の計画と、試料を持ち帰る時期を競う構図になっています。', null,
-          'verified', null, 'user', 17) returning id)
+          'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Zhurong (rover)', 'https://en.wikipedia.org/wiki/Zhurong_(rover)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mars-missions'),
@@ -1791,7 +1903,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2022-03-17', null, 'day', 'point', 'ロシア侵攻でExoMarsローバー打上げ中止', '欧州宇宙機関(ESA)が、ロシアのウクライナ侵攻を受けて、同国と共同で進めていたExoMarsローバーの2022年打ち上げを断念し、ロシアとの協力を止めると決めました。
 
 着陸システムをロシア側が担う分担だったため、計画は根本からの設計し直しとなり、打ち上げは2028年以降に延期されています。地上の地政学が惑星探査の時間割を直接書き換えた、冷戦後ではもっとも明確な事例です。', null,
-          'verified', null, 'user', 18) returning id)
+          'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: ExoMars', 'https://en.wikipedia.org/wiki/ExoMars')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mars-missions'),
@@ -1799,12 +1911,12 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2024-04-15', null, 'day', 'point', 'NASA、サンプルリターン計画の見直しを表明', 'NASAが火星サンプルリターン計画について、このままでは費用が最大110億ドル、試料の地球到着は2040年になるという独立評価を受け、より安く早い代替案を産業界からも募ると発表しました。
 
 パーサヴィアランスが密封した試料(ミッションと技術レイヤー)は、回収の目途が立たないまま、火星の地表で待ち続けています。生命の痕跡の決定的な検証は地球の実験室でしかできないだけに、この計画の行方が火星生命論争(水と生命の探査レイヤー)全体を左右します。', null,
-          'verified', null, 'user', 19) returning id)
+          'verified', null, 'user', 20) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Mars sample-return mission', 'https://en.wikipedia.org/wiki/Mars_sample-return_mission')) as v(title, url);
 
 -- ═══ science-mathematics — 数学の美しい定理
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-mathematics', '00000000-0000-4000-8000-248a21205e28', '数学の美しい定理', 'フェルマーの余白の書き込みからポアンカレ予想の解決まで。定理の証明・予想の提示・応用への波及の3層を重ね、抽象的な美しさが時を経て世界を動かす瞬間をたどる。', 'science-nature', 'ja', 'public', 's_science-mathematics', 1637, 2023, 'science-mathematics')
+values ('science-mathematics', '00000000-0000-4000-8000-248a21205e28', '数学の美しい定理', 'フェルマーの余白の書き込みからポアンカレ予想の解決まで。定理の証明・予想の提示・応用への波及の3層を重ね、抽象的な美しさが時を経て世界を動かす瞬間をたどる。', 'science-nature', 'ja', 'public', 's_science-mathematics', 1637, 2026, 'science-mathematics')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-mathematics');
@@ -1815,9 +1927,9 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mathematics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-mathematics') and name = '予想と問題提起'),
-          '1637-01-01', null, 'year', 'point', 'フェルマー、「最終定理」を欄外に書き残す', 'フェルマーがディオファントス『算術』の余白に、3以上の冪では成り立たない旨の命題と「真に驚くべき証明を見つけたが、この余白は狭すぎる」という言葉を書き残したとされる。時期は1637年頃と推定される。
+          '1637-01-01', '1995-05-01', 'year', 'period', 'フェルマーの余白、未解決の358年', 'フェルマーがディオファントス『算術』の余白に、3以上の冪では成り立たない旨の命題と「真に驚くべき証明を見つけたが、この余白は狭すぎる」という言葉を書き残したとされる。時期は1637年頃と推定される。
 
-見た目の単純さと証明の困難さの落差が数学者を358年間ひきつけ、その挑戦の過程で代数的数論という分野が育った。**余白の一行が生んだ358年**の物語の起点である。', null,
+以後この命題は証明も反証もされないまま数学者をひきつけ続け、挑戦の過程で代数的数論という分野が育った。**余白の一行が生んだ358年**の線は本年表のほぼ全体を貫き、1995年5月、ワイルズの証明(定理と証明レイヤー)の完結とともにようやく閉じる。', null,
           'unverified', '欄外書き込みの年は本人による日付の記録がなく、1637年頃とする後世の推定に基づく。', 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Fermat''s Last Theorem', 'https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -1863,9 +1975,9 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mathematics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-mathematics') and name = '予想と問題提起'),
-          '1859-01-01', null, 'year', 'point', 'リーマン予想の提示', 'リーマンが論文「与えられた数より小さい素数の個数について」で、ゼータ関数を複素数へ拡張し、その非自明な零点はすべて実部1/2の直線上にあると予想した。
+          '1859-01-01', '2026-06-30', 'year', 'period', 'リーマン予想、未解決の167年', 'リーマンが論文「与えられた数より小さい素数の個数について」で、ゼータ関数を複素数へ拡張し、その非自明な零点はすべて実部1/2の直線上にあると予想した。
 
-バーゼル問題(定理と証明レイヤー)に始まる級数が、素数の分布という数論の核心と結ばれた瞬間である。予想は1900年のヒルベルトの23問題、2000年のミレニアム懸賞問題に引き継がれ、今なお未解決の**数学最大の未解決問題**とされる。', null,
+バーゼル問題(定理と証明レイヤー)に始まる級数が、素数の分布という数論の核心と結ばれた瞬間である。予想はヒルベルトの23問題、ミレニアム懸賞問題という同じレイヤーの節目に引き継がれながら、167年後の現在も開いたままだ。フェルマーの線は閉じたが、**数学最大の未解決問題**の線はまだ延び続けている。', null,
           'verified', null, 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Riemann hypothesis', 'https://en.wikipedia.org/wiki/Riemann_hypothesis')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -1879,18 +1991,26 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mathematics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-mathematics') and name = '予想と問題提起'),
-          '1900-08-08', null, 'day', 'point', 'ヒルベルト、23の問題を提示', 'パリの国際数学者会議でヒルベルトが講演し、20世紀の数学が取り組むべき23の問題を提示した。リーマン予想や連続体仮説、算術の無矛盾性の証明などが含まれる。
+          '1900-08-08', '2000-05-24', 'day', 'period', 'ヒルベルトの23問題、地図の100年', 'パリの国際数学者会議でヒルベルトが講演し、20世紀の数学が取り組むべき23の問題を提示した。リーマン予想や連続体仮説、算術の無矛盾性の証明などが含まれる。
 
-**問いを立てること自体が数学を駆動する**ことを示した講演であり、以後100年の研究の地図となった。皮肉にも、算術の無矛盾性を証明せよという第2問題は、31年後のゲーデル(定理と証明レイヤー)によって否定的な形で決着する。', null,
+**問いを立てること自体が数学を駆動する**ことを示したこの講演から、23の問題が研究の地図であり続けた100年を1本の線とした。線上ではゲーデルが第2問題を否定的な形で決着させ(定理と証明レイヤー)、終点の2000年5月24日、地図はミレニアム懸賞問題へと引き継がれる。', null,
           'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Hilbert''s problems', 'https://en.wikipedia.org/wiki/Hilbert%27s_problems')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'science-mathematics'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-mathematics') and name = '予想と問題提起'),
+          '1904-01-01', '2002-11-11', 'year', 'period', 'ポアンカレ予想、未解決の98年', 'ポアンカレが論文の末尾で、単連結な3次元閉多様体は3次元球面に限るかと問うた。宇宙の形にも通じるこの位相幾何学の問いに、彼自身は「この問題はわれわれをあまりに遠くへ導くだろう」と述べて答えを保留している。
+
+以後98年、著名な数学者による証明の試みが繰り返し破綻し、問題は難問の代名詞となった。線の終わりの2年前にはミレニアム懸賞問題(同じレイヤー)に選ばれ、2002年11月11日、ペレルマンの最初の投稿に始まる証明の線(定理と証明レイヤー)と端点で接して閉じる。', null,
+          'verified', null, 'user', 9) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Poincaré conjecture', 'https://en.wikipedia.org/wiki/Poincar%C3%A9_conjecture')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mathematics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-mathematics') and name = '定理と証明'),
           '1931-01-01', null, 'year', 'point', 'ゲーデルの不完全性定理', 'ゲーデルが、算術を含む無矛盾な形式体系には証明も反証もできない命題が必ず存在すること、そして体系は自身の無矛盾性を証明できないことを示した。
 
 数学の完全な基礎づけを目指すヒルベルトの計画(予想と問題提起レイヤー)に根本的な限界を突きつけた結果だが、その証明技法は計算可能性の理論を生み、チューリングを経てコンピュータの理論的な土台となった。限界の証明が新しい分野を開いた逆説である。', null,
-          'verified', null, 'user', 9) returning id)
+          'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Gödel''s incompleteness theorems', 'https://en.wikipedia.org/wiki/G%C3%B6del%27s_incompleteness_theorems')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mathematics'),
@@ -1898,7 +2018,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1948-07-01', null, 'month', 'point', 'シャノン「通信の数学的理論」発表', 'シャノンが情報を確率とビットで定量化する理論を発表し、あらゆる通信路には誤りなく情報を送れる限界(通信路容量)が存在することを数学的に示した。
 
 ブール代数や確率論という純粋数学の道具が、通信という工学の全体を一つの理論で説明してみせた。デジタル革命の理論的な出発点であり、エントロピーの概念を介して物理学や統計学とも結ばれている。', null,
-          'verified', null, 'user', 10) returning id)
+          'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: A Mathematical Theory of Communication', 'https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mathematics'),
@@ -1906,15 +2026,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1976-01-01', null, 'year', 'point', '四色定理、コンピュータで証明される', 'どんな地図も4色あれば隣り合う領域を塗り分けられるという1852年以来の予想を、アッペルとハーケンが約2,000通りの配置をコンピュータで検証することにより証明した。
 
 人間が一生かけても読み切れない証明は「これは数学の証明といえるのか」という論争を呼んだ。証明とは何かという問いを実務のレベルで突きつけた最初の事件であり、半世紀後の形式検証(応用への波及レイヤー)を先取りしていた。', null,
-          'disputed', '定理自体への反例は見つかっていないが、コンピュータに依存する証明を数学的証明と認めるかは当時激しく議論され、検証方法の評価には現在も立場の差がある。', 'user', 11) returning id)
+          'disputed', '定理自体への反例は見つかっていないが、コンピュータに依存する証明を数学的証明と認めるかは当時激しく議論され、検証方法の評価には現在も立場の差がある。', 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Four color theorem', 'https://en.wikipedia.org/wiki/Four_color_theorem')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mathematics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-mathematics') and name = '応用への波及'),
-          '1977-01-01', null, 'year', 'point', 'RSA暗号の考案、数論が社会基盤になる', 'リベスト、シャミア、エイドルマンの3人が、大きな数の素因数分解の難しさに安全性の根拠を置く公開鍵暗号を考案した。鍵をあらかじめ受け渡さなくても秘密の通信ができる。
+          '1977-01-01', '2026-06-30', 'year', 'period', 'RSA暗号、社会基盤の49年', 'リベスト、シャミア、エイドルマンの3人が、大きな数の素因数分解の難しさに安全性の根拠を置く公開鍵暗号を考案した。鍵をあらかじめ受け渡さなくても秘密の通信ができる。
 
-フェルマーやオイラーの整数論という**最も実用から遠いとされた分野**が、オンライン取引と通信の安全を支える社会基盤へ転じた。数論の「無用さ」を誇ったハーディの随筆から約40年後の逆転である。', null,
-          'disputed', '同等の方式は英国GCHQのコックスが1973年に先に考案していたことが1997年の機密解除で判明しており、発明の先後関係は文脈により語られ方が分かれる。', 'user', 12) returning id)
+フェルマーやオイラーの整数論という**最も実用から遠いとされた分野**が通信の安全を支える基盤へ転じ、その線は49年後の現在も続いている。線の途中にはショアのアルゴリズム(1994年、同じレイヤー)という量子の影が落ち、耐量子暗号への置き換えが始まったが、線はまだ切れていない。', null,
+          'disputed', '同等の方式は英国GCHQのコックスが1973年に先に考案していたことが1997年の機密解除で判明しており、発明の先後関係は文脈により語られ方が分かれる。', 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: RSA (cryptosystem)', 'https://en.wikipedia.org/wiki/RSA_(cryptosystem)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mathematics'),
@@ -1922,7 +2042,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1993-06-23', '1995-05-01', 'day', 'period', 'ワイルズ、フェルマー最終定理を証明', 'ワイルズがケンブリッジでの連続講演の最後に証明を発表した。直後の査読で見つかった欠陥を教え子テイラーとともに修正し、1995年5月の論文出版をもって358年の懸案が決着した。
 
 証明の実体は、楕円曲線とモジュラー形式を結ぶ谷山–志村予想の(半安定な場合の)解決である。フェルマーの素朴な問い(予想と問題提起レイヤー)は、現代数学の最深部と結ばれることで初めて落ちた。', null,
-          'verified', null, 'user', 13) returning id)
+          'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Wiles''s proof of Fermat''s Last Theorem', 'https://en.wikipedia.org/wiki/Wiles%27s_proof_of_Fermat%27s_Last_Theorem')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mathematics'),
@@ -1930,7 +2050,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1994-01-01', null, 'year', 'point', 'ショアのアルゴリズム発表', 'ショアが、量子コンピュータであれば素因数分解を効率的に解けるアルゴリズムを発表した。大規模な量子計算機が実現すれば、RSA暗号(1977年)の安全性の前提は崩れることになる。
 
 数論から暗号へ、暗号から量子計算へという応用の連鎖が一巡し、暗号の置き換え(耐量子暗号)という新しい社会課題を生んだ。一つの定理が数十年単位で社会のリスク構造を変えることを示す例である。', null,
-          'verified', null, 'user', 14) returning id)
+          'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Shor''s algorithm', 'https://en.wikipedia.org/wiki/Shor%27s_algorithm')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mathematics'),
@@ -1938,7 +2058,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2000-05-24', null, 'day', 'point', 'クレイ研究所がミレニアム懸賞問題を発表', 'クレイ数学研究所が、リーマン予想、ポアンカレ予想、P対NP問題など7つの未解決問題に各100万ドルの懸賞金をかけると発表した。ヒルベルトの23問題からちょうど100年後にあたる。
 
 賞金という分かりやすい形で、数学の未解決問題が一般のニュースとして扱われるようになった。7問のうち解決されたのは現在までポアンカレ予想(定理と証明レイヤー)のみで、しかも解決者は賞金を辞退することになる。', null,
-          'verified', null, 'user', 15) returning id)
+          'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Millennium Prize Problems', 'https://en.wikipedia.org/wiki/Millennium_Prize_Problems')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mathematics'),
@@ -1946,7 +2066,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2002-11-11', '2006-08-22', 'day', 'period', 'ペレルマン、ポアンカレ予想を証明', 'ペレルマンが3本のプレプリントをarXivに投稿し、リッチフローを用いてポアンカレ予想を含む幾何化予想を解決した。国際的な検証には約4年を要し、2006年のフィールズ賞は本人が辞退した。
 
 査読誌を経ずアーカイブ投稿のみで公表し、後にクレイ研究所の賞金100万ドルも辞退した。宇宙の形にも通じる位相幾何学の百年の難問が、**名誉と無縁の一人の研究者**によって静かに閉じられた。', null,
-          'verified', null, 'user', 16) returning id)
+          'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('arXiv: The entropy formula for the Ricci flow and its geometric applications (math/0211159)', 'https://arxiv.org/abs/math/0211159')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mathematics'),
@@ -1954,7 +2074,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2013-05-01', null, 'month', 'point', '張益唐、素数の間隔に有限の上界を証明', 'ほぼ無名だった張益唐が、差が7,000万以下である素数の組が無限に存在することを証明し、論文がアナルズ誌に受理された。差2の組を問う双子素数予想に対する、史上初の「有限の壁」だった。
 
 発表直後から世界中の数学者がオンライン共同研究「Polymath」で改良を重ね、上界は数カ月で246まで縮んだ。孤高の証明と開かれた共同作業が連続したこの出来事は、数学の営みの新旧両面を同時に見せた。', null,
-          'verified', null, 'user', 17) returning id)
+          'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Yitang Zhang', 'https://en.wikipedia.org/wiki/Yitang_Zhang')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-mathematics'),
@@ -1962,12 +2082,12 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2023-12-01', null, 'month', 'point', 'タオら、最新の定理を証明支援系Leanで形式化', 'フィールズ賞受賞者テレンス・タオらが、発表から数週間しか経っていない最新の定理(多項式フライマン–ルジャ予想の解決)を証明支援システムLeanで形式化し、機械による検証を完了したと報告した。
 
 四色定理(定理と証明レイヤー)が突きつけた「計算機による証明は信用できるか」という問いから約半世紀を経て、今度は計算機が証明の正しさを保証する側に回った。大人数が分担して証明を検証する、数学の共同研究の新しい形も示した。', null,
-          'unverified', '形式化完了の時期と作業規模は著者らのブログ等の当事者発信に基づき、第三者によるまとまった検証記録はない。', 'user', 18) returning id)
+          'unverified', '形式化完了の時期と作業規模は著者らのブログ等の当事者発信に基づき、第三者によるまとまった検証記録はない。', 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Terence Tao''s blog: Formalizing the proof of PFR in Lean4 (2023)', null)) as v(title, url);
 
 -- ═══ science-neuroscience — 🧠 脳科学の最前線
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-neuroscience', '00000000-0000-4000-8000-53afa1095b21', '🧠 脳科学の最前線', '1848年の事故症例から、脳と機械をつなぐインターフェースまで。脳の理解をめぐる発見、計測と操作の技術、医療と社会への波及の3つの層を重ねながら、いちばん身近なのにいちばん未知の臓器へ、人がどう近づいてきたかを語りなおす年表です。', 'science-nature', 'ja', 'public', 's_science-neuroscience', 1848, 2024, 'science-neuroscience')
+values ('science-neuroscience', '00000000-0000-4000-8000-53afa1095b21', '🧠 脳科学の最前線', '1848年の事故症例から、脳と機械をつなぐインターフェースまで。脳の理解をめぐる発見、計測と操作の技術、医療と社会への波及の3つの層を重ねながら、いちばん身近なのにいちばん未知の臓器へ、人がどう近づいてきたかを語りなおす年表です。', 'science-nature', 'ja', 'public', 's_science-neuroscience', 1848, 2026, 'science-neuroscience')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-neuroscience');
@@ -2002,10 +2122,10 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-neuroscience'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-neuroscience') and name = '脳の理解'),
-          '1888-01-01', null, 'year', 'point', 'カハール、ニューロン説の証拠を示す', 'カハールがゴルジ染色を改良し、神経細胞どうしは連続した一枚の網ではなく、独立した細胞として接している、とする観察を発表し始めました。手はつなぐけれど融合はしない。神経系の単位をニューロンとする学説の、実証的な土台です。
+          '1888-01-01', '1954-12-31', 'year', 'period', 'ニューロン説と網状説、論争の66年', 'カハールがゴルジ染色を改良し、神経細胞は独立した単位だとする観察を発表し始めました。神経系は連続した一枚の網だとする網状説との論争はここから始まり、電子顕微鏡がシナプスの実在を捉える1950年代まで、およそ66年におよびます。
 
-皮肉にも、染色法の開発者ゴルジ自身は細胞が融合した網だとする網状説を支持し続け、1906年に2人が同時受賞したノーベル賞の記念講演でも真っ向から対立しました。接合部シナプスの実在が電子顕微鏡で確認されるのは、1950年代のことです。', null,
-          'verified', null, 'user', 3) returning id)
+皮肉にも、染色法の開発者ゴルジ自身は網状説の側に立ち続け、1906年に2人が同時受賞したノーベル賞の記念講演でも真っ向から対立しました。いわば脳の地図の描き方をめぐる長い法廷のような論争で、最終弁論はいつも、新しい観察装置(計測と操作の技術レイヤー)が持ち込んだのです。', null,
+          'disputed', '論争の終わりは、電子顕微鏡でシナプス構造が確認された1950年代半ばに置きましたが、決着の時点の置き方は文献により異なります。', 'user', 3) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Santiago Ramón y Cajal', 'https://en.wikipedia.org/wiki/Santiago_Ram%C3%B3n_y_Cajal')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-neuroscience'),
@@ -2017,19 +2137,27 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Hans Berger', 'https://en.wikipedia.org/wiki/Hans_Berger')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-neuroscience'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-neuroscience') and name = '医療と社会'),
+          '1935-11-01', '1955-12-31', 'month', 'period', 'ロボトミーが広がった20年', 'ポルトガルのモニスが行った最初のロボトミー(前頭葉切截術)を起点に、精神疾患への外科手術が世界へ広がり、米国だけで数万件が実施されました。1949年には、モニスにノーベル賞まで贈られています。
+
+仕組みの分からない機械の配線を、まとめて切ってしまうような治療でした。抗精神病薬が登場した1950年代半ばに、線は急速に細くなります。患者H.M.の手術(1953年)がこの線の終わり近くに乗っていることは、脳に手を入れることへの当時のためらいの小ささを、静かに物語っています。', null,
+          'disputed', '始まりはモニスの最初の手術(1935年11月)に置きましたが、手術が下火になる時期は国によって異なり、期間の区切りには幅があります。', 'user', 5) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Lobotomy', 'https://en.wikipedia.org/wiki/Lobotomy')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'science-neuroscience'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-neuroscience') and name = '脳の理解'),
           '1952-01-01', null, 'year', 'point', 'ホジキン・ハクスリーの神経興奮モデル', 'ホジキンとハクスリーが、ヤリイカの巨大軸索を使った実験から、神経の電気信号(活動電位)はナトリウムとカリウムのイオンの流れで生じることを示し、その全過程を微分方程式で記述しました。いわば神経を電気回路として、数式に写し取ったのです。
 
 脳の働きを物理と数学の言葉で定量的に説明したこの仕事は、脳を計算する装置として扱う計算論的神経科学の原点になりました。2人は1963年にノーベル賞を受賞しています。イオンの通り道であるチャネルの実体の解明は、後年に続きます。', null,
-          'verified', null, 'user', 5) returning id)
+          'verified', null, 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Hodgkin–Huxley model', 'https://en.wikipedia.org/wiki/Hodgkin%E2%80%93Huxley_model')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-neuroscience'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-neuroscience') and name = '医療と社会'),
-          '1953-09-01', null, 'month', 'point', '患者H.M.の手術、記憶研究の転機に', '重いてんかんの治療のため、米国の患者ヘンリー・モレゾン(H.M.)の左右の海馬を含む内側側頭葉が切除されました。発作は減りましたが、彼は新しい出来事を覚えられなくなりました。新しいページが増えなくなったアルバムのような状態です。
+          '1953-09-01', '2008-12-02', 'month', 'period', '患者H.M.と記憶研究の55年', '重いてんかんの治療のため、患者ヘンリー・モレゾン(H.M.)の左右の海馬を含む内側側頭葉が切除されました。新しい出来事を覚えられなくなった彼は、2008年に82歳で亡くなるまでの55年間、記憶研究に協力し続けます。
 
-ミルナーらによる半世紀の研究で、記憶には海馬を必要とする種類とそうでない種類があることが分かり、記憶研究の土台になりました。治療が生んだ悲劇が科学を進めたという**患者の犠牲の上に立つ知見**であり、研究倫理の教材でもあります。', null,
-          'verified', null, 'user', 6) returning id)
+新しいページが増えなくなったアルバムのような記憶とともに生きた、長い線です。この線の上に、場所細胞(1971年)や長期増強(1973年、脳の理解レイヤー)の発見の点が乗っています。**患者の犠牲の上に立つ知見**という研究倫理の問いも、線の長さの分だけ深くなりました。', null,
+          'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Henry Molaison', 'https://en.wikipedia.org/wiki/Henry_Molaison')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-neuroscience'),
@@ -2037,7 +2165,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1959-01-01', null, 'year', 'point', 'ヒューベルとウィーゼル、視覚野の応答を発見', 'ヒューベルとウィーゼルが、ネコの一次視覚野に、特定の傾きの線分にだけ反応する神経細胞があることを発見しました。視覚は完成した絵をそのまま受け取るのではなく、線の傾きのような部品から段階的に組み立てられる。その理解の出発点です。
 
 幼少期の経験が視覚回路を形作る「臨界期」の発見と合わせて、1981年のノーベル賞になりました。階層的に特徴を取り出すという考え方は、半世紀後の深層学習における畳み込みネットワークの設計にも影響を与えています。', null,
-          'verified', null, 'user', 7) returning id)
+          'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: David H. Hubel', 'https://en.wikipedia.org/wiki/David_H._Hubel')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-neuroscience'),
@@ -2045,7 +2173,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1971-01-01', null, 'year', 'point', '🧠 オキーフ、場所細胞を発見', 'オキーフらが、ラットの海馬に「自分が特定の場所にいるときだけ発火する」神経細胞を見つけ、場所細胞と名付けました。脳のなかに空間の地図が実在することを示す発見で、いわば頭の中のカーナビの部品が見つかった形です。
 
 2005年にはモーザー夫妻が、格子状の座標系を作るグリッド細胞を発見し、3人は2014年のノーベル賞を受賞しました。H.M.の症例(医療と社会レイヤー)が示した海馬と記憶の深い関係に、細胞レベルの説明を与えていく系譜の起点です。', null,
-          'verified', null, 'user', 8) returning id)
+          'verified', null, 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Place cell', 'https://en.wikipedia.org/wiki/Place_cell')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-neuroscience'),
@@ -2053,7 +2181,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1973-01-01', null, 'year', 'point', '長期増強(LTP)の発見', 'ブリスとレモが、ウサギの海馬で、シナプスの伝達効率が刺激の後に長時間強まったままになる現象を報告し、長期増強(LTP)と名付けました。よく通る道が踏み固められて歩きやすくなるように、使われたつなぎ目は強くなるのです。
 
 「記憶はシナプスの強さの変化として蓄えられる」という1949年のヘッブの仮説に、初めて具体的な生理現象を対応づけた発見でした。記憶の分子機構の研究はこの現象を軸に展開し、後の認知症治療の研究(医療と社会レイヤー)にも基礎を提供しています。', null,
-          'verified', null, 'user', 9) returning id)
+          'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Long-term potentiation', 'https://en.wikipedia.org/wiki/Long-term_potentiation')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-neuroscience'),
@@ -2061,7 +2189,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1990-01-01', null, 'year', 'point', 'fMRIの原理となるBOLD信号を発見', '米ベル研究所の小川誠二が、血液中の酸素量の変化がMRI信号に影響する現象(BOLD効果)を報告しました。神経活動に伴う血流の変化を、造影剤なしで画像にできることを意味する発見です。
 
 数年のうちに機能的MRI(fMRI)として実用化され、健常な人間の脳活動を傷つけずに見る研究が爆発的に広がりました。心を画像で語る時代の幕開けです。ただし血流は、煙突の煙から火の勢いを推し量るような間接的な指標であることも、くり返し指摘されてきました。', null,
-          'verified', null, 'user', 10) returning id)
+          'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Functional magnetic resonance imaging', 'https://en.wikipedia.org/wiki/Functional_magnetic_resonance_imaging')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-neuroscience'),
@@ -2069,7 +2197,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1990-01-01', '1999-12-31', 'year', 'period', '米国「脳の10年」', '米国が1990年代を「脳の10年」と定め、大統領布告のもとで脳研究の振興と社会への普及を図りました。脳研究に国の看板が掛かった、最初の例です。
 
 神経科学の学会規模と研究費はこの時期に大きく育ち、fMRI(計測と操作の技術レイヤー)の普及とも重なって、健常者の心を扱う認知神経科学が確立しました。国家主導の大型脳科学という路線は、2013年の米欧のプロジェクトへ引き継がれていきます。', null,
-          'verified', null, 'user', 11) returning id)
+          'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Decade of the Brain', 'https://en.wikipedia.org/wiki/Decade_of_the_Brain')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-neuroscience'),
@@ -2077,39 +2205,39 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2005-08-01', null, 'month', 'point', '💡 光遺伝学、神経活動を光で操作', 'ボイデンとダイセロスらが、藻類由来の光感受性タンパク質を神経細胞に発現させ、光を当てるだけで特定の細胞の活動をミリ秒単位で制御する手法を報告しました。いわば神経細胞にリモコンのスイッチを取り付ける技術、光遺伝学の実質的な誕生です。
 
 「観察する」から、**狙った回路を操作して因果を確かめる**への転換をもたらし、神経科学の標準手法として一気に広まりました。特定の記憶を人工的に呼び起こす実験など、かつては思考実験だった研究を現実のものにしています。', null,
-          'verified', null, 'user', 12) returning id)
+          'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Optogenetics', 'https://en.wikipedia.org/wiki/Optogenetics')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-neuroscience'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-neuroscience') and name = '医療と社会'),
-          '2013-04-02', null, 'day', 'point', '米BRAINイニシアチブ発表', 'オバマ大統領が、脳の神経回路の活動を大規模に記録・解読する技術開発を掲げる研究計画、BRAINイニシアチブを発表しました。ヒトゲノム計画に続く、国家主導の大型生命科学と位置づけられています。
+          '2013-04-02', '2026-06-30', 'day', 'period', '米BRAINイニシアチブ、続く13年', 'オバマ大統領が、脳の神経回路の活動を大規模に記録・解読する技術開発を掲げる研究計画、BRAINイニシアチブを発表しました。ヒトゲノム計画に続く国家主導の大型生命科学と位置づけられ、この線は現在も続いています。
 
-「脳の10年」(1990年代)から続く投資の系譜にありますが、疾患の解明そのものより計測技術の開発を主眼に据えた設計が特徴です。望遠鏡が天文学を変えたように、まず道具から。光遺伝学(計測と操作の技術レイヤー)以後の時代を映した計画といえます。', null,
-          'verified', null, 'user', 13) returning id)
+「脳の10年」(1990年代)から続く投資の系譜にありますが、疾患の解明そのものより計測技術の開発を主眼に据えた設計が特徴です。望遠鏡が天文学を変えたように、まず道具から。同じ年に始まった欧州のヒューマン・ブレイン・プロジェクトと、大西洋をはさんで並走した線でもあります。', null,
+          'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: BRAIN Initiative', 'https://en.wikipedia.org/wiki/BRAIN_Initiative')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-neuroscience'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-neuroscience') and name = '医療と社会'),
-          '2013-10-01', null, 'month', 'point', 'ヒューマン・ブレイン・プロジェクト始動', 'EUの旗艦プロジェクトとして、ヒューマン・ブレイン・プロジェクト(HBP)が始動しました。提唱者マークラムは10年でヒトの脳全体をスーパーコンピュータ上に再現すると訴え、約10億ユーロ規模の予算が組まれています。
+          '2013-10-01', '2023-09-30', 'month', 'period', 'ヒューマン・ブレイン計画の10年', 'EUの旗艦プロジェクトとして、ヒューマン・ブレイン・プロジェクト(HBP)が始まりました。10年でヒトの脳全体をスーパーコンピュータ上に再現するという看板を掲げ、約10億ユーロ規模の予算が組まれます。
 
-しかし「10年で脳のシミュレーション」という看板は、掲げるには大きすぎたのかもしれません。実現性への疑問から、発足翌年には数百人の研究者が公開書簡で抗議し、運営は再編されました。2023年の終了までに研究基盤は残りましたが、当初の看板は実現しませんでした。', null,
-          'unverified', '「10年でヒト脳全体をシミュレーションする」という当初目標は科学的な裏づけが確立しておらず、実現しないまま計画は再編・終了しました。', 'user', 14) returning id)
+その看板は、背負うには大きすぎたのかもしれません。発足翌年には数百人の研究者が公開書簡で抗議し、運営は再編されました。2023年9月の終了までに研究基盤は残りましたが、当初の看板は実現しないまま、米BRAINイニシアチブ(同じレイヤー)と並走した10年の線は静かに閉じています。', null,
+          'unverified', '「10年でヒト脳全体をシミュレーションする」という当初目標は科学的な裏づけが確立しておらず、実現しないまま計画は再編・終了しました。', 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Human Brain Project', 'https://en.wikipedia.org/wiki/Human_Brain_Project')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-neuroscience'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-neuroscience') and name = '医療と社会'),
-          '2021-06-07', null, 'day', 'point', 'アルツハイマー新薬アデュカヌマブ承認', '米FDAが、脳内のアミロイドβを取り除く抗体薬アデュカヌマブを、約20年ぶりのアルツハイマー病新薬として迅速承認しました。原因物質とされるタンパク質を、いわば直接掃除しにいく発想の、初めての承認薬です。
+          '2021-06-07', '2024-01-31', 'day', 'period', 'アデュカヌマブ、承認から3年で撤退', '米FDAが、脳内のアミロイドβを取り除く抗体薬アデュカヌマブを、約20年ぶりのアルツハイマー病新薬として迅速承認しました。しかし臨床効果の証拠が不十分だとして諮問委員会はほぼ全会一致で反対しており、承認後に委員3名が辞任する異例の事態になります。
 
-しかし臨床的な有効性の証拠は不十分だとして、諮問委員会はほぼ全会一致で承認に反対しており、承認後に委員3名が辞任する異例の事態になりました。アミロイド仮説(脳の理解レイヤー)の妥当性をめぐる論争を象徴する出来事です。', null,
-          'disputed', '認知機能の低下を抑える臨床効果があるかどうかで評価が真っ二つに分かれ、FDA内部と諮問委員会の判断も対立しました。', 'user', 15) returning id)
+原因物質を直接掃除しにいく発想の最初の承認薬は、公的保険の給付制限もあってほとんど使われないまま、2024年1月に開発元が撤退を発表しました。承認という追い風を受けても滑走路で止まった飛行機のような3年で、アミロイド仮説をめぐる論争(脳の理解レイヤー)はこの線の間も続いていました。', null,
+          'disputed', '認知機能の低下を抑える臨床効果があるかどうかで評価が真っ二つに分かれ、FDA内部と諮問委員会の判断も対立しました。', 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Aducanumab', 'https://en.wikipedia.org/wiki/Aducanumab')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-neuroscience'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-neuroscience') and name = '脳の理解'),
-          '2022-07-21', null, 'day', 'point', 'アミロイド研究の重要論文に画像疑義', 'Science誌の調査報道が、アルツハイマー病のアミロイド仮説を支えてきた2006年の著名論文に、画像の加工疑惑があると報じました。問題の論文は、2024年に撤回されています。
+          '2022-07-21', '2024-06-30', 'day', 'period', 'アミロイド論文、疑義から撤回の2年', 'Science誌の調査報道が、アルツハイマー病のアミロイド仮説を支えてきた2006年の著名論文に、画像の加工疑惑があると報じました。検証と議論が続き、問題の論文は2024年6月に撤回されます。
 
-特定のアミロイド種の役割を示したとされる論文への疑義は、**一つの仮説に研究資源が集中する危うさ**の議論を呼びました。ただし、建物を支える柱は一本ではありません。仮説自体は他の証拠にも支えられており、翌年のレカネマブ承認(医療と社会レイヤー)で治療応用は一定の裏づけを得ています。', null,
-          'disputed', '画像加工の疑義と論文撤回は確定しましたが、それがアミロイド仮説全体の妥当性をどこまで揺るがすかは、研究者の間で評価が分かれています。', 'user', 16) returning id)
+疑義の提起から撤回まで2年。建物を支える柱の一本を検査し直すような期間でした。**一つの仮説に研究資源が集中する危うさ**の議論を呼びましたが、仮説自体は他の証拠にも支えられており、この線のさなかに正式承認されたレカネマブ(2023年、医療と社会レイヤー)で、治療応用は一定の裏づけを得ています。', null,
+          'disputed', '画像加工の疑義と論文撤回は確定しましたが、それがアミロイド仮説全体の妥当性をどこまで揺るがすかは、研究者の間で評価が分かれています。', 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Science: Blots on a field? (2022-07-21)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-neuroscience'),
@@ -2117,7 +2245,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2023-07-06', null, 'day', 'point', 'レカネマブ、正式承認', '米FDAが、エーザイとバイオジェンの抗アミロイド抗体薬レカネマブを正式承認しました。臨床試験では認知機能の低下を27%緩やかにしたと報告され、日本でも同年9月に承認されています。
 
 下り坂の傾きを少し緩くするような効果が、患者の生活にとって意味のある水準かどうかは議論が続きます。それでも、症状への対症療法ではなく、疾患の進行そのものに働きかける治療が初めて標準医療に入りました。LTP(1973年)以来の基礎研究が、半世紀を経て薬に結実した形です。', null,
-          'verified', null, 'user', 17) returning id)
+          'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Lecanemab', 'https://en.wikipedia.org/wiki/Lecanemab')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-neuroscience'),
@@ -2125,7 +2253,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2023-08-23', null, 'day', 'point', '💬 脳信号から会話を復元するBCI', '脳に埋め込んだ電極の信号から、発話を毎分約60〜80語の速さで文章化する脳直結インターフェース(BCI)の成果を、米国の2チームがNature誌に同時発表しました。ALSや脳幹梗塞で話せなくなった参加者が、考えるだけで会話できることを示したのです。
 
 いわば脳と機械のあいだに通訳が入った形で、ベルガーの脳波(1929年)から続く「脳を読む」技術が、実用的な意思疎通の速さに達した画期です。読み取り精度の向上は、思考のプライバシーという倫理問題(医療と社会レイヤー)も現実のものにしました。', null,
-          'verified', null, 'user', 18) returning id)
+          'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Brain–computer interface', 'https://en.wikipedia.org/wiki/Brain%E2%80%93computer_interface')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-neuroscience'),
@@ -2133,12 +2261,12 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2024-01-29', null, 'day', 'point', 'ニューラリンク、初のヒト埋め込みを発表', 'イーロン・マスク率いるニューラリンク社が、脳埋め込み型デバイスを初めてヒトに移植したと、SNS上で発表しました。同社はその後、頸髄損傷のある参加者が思考でカーソルを操作する様子を配信しています。
 
 学術界のBCI研究(2023年)と違い、査読という関所を通る前に企業の発表が先行する点には批判があります。脳インターフェースの主戦場が研究室から企業へ広がったことを示す出来事で、安全性と透明性の検証はこれからです。', null,
-          'unverified', '移植の実施と経過は同社および参加者本人の発表・配信に基づいており、査読を経た詳細データは公表されていません。', 'user', 19) returning id)
+          'unverified', '移植の実施と経過は同社および参加者本人の発表・配信に基づいており、査読を経た詳細データは公表されていません。', 'user', 20) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Neuralink', 'https://en.wikipedia.org/wiki/Neuralink')) as v(title, url);
 
 -- ═══ science-ocean-exploration — ⚓ 海洋探査の歴史
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-ocean-exploration', '00000000-0000-4000-8000-331f1727ba8b', '⚓ 海洋探査の歴史', '帆船での世界周航から有人潜水艇、無人機、そして深海資源をめぐる国際ルールまで。探査技術・発見・制度の3層を重ねて、人類が最後のフロンティアである深海へどう潜っていったのかをたどります。船の上と海の底の記録帳です。', 'science-nature', 'ja', 'public', 's_science-ocean-exploration', 1872, 2023, 'science-ocean-exploration')
+values ('science-ocean-exploration', '00000000-0000-4000-8000-331f1727ba8b', '⚓ 海洋探査の歴史', '帆船での世界周航から有人潜水艇、無人機、そして深海資源をめぐる国際ルールまで。探査技術・発見・制度の3層を重ねて、人類が最後のフロンティアである深海へどう潜っていったのかをたどります。船の上と海の底の記録帳です。', 'science-nature', 'ja', 'public', 's_science-ocean-exploration', 1872, 2026, 'science-ocean-exploration')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-ocean-exploration');
@@ -2149,7 +2277,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-ocean-exploration'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-ocean-exploration') and name = '発見と科学'),
-          '1872-12-21', '1876-05-24', 'day', 'period', '⚓ チャレンジャー号探検航海、海洋学の誕生', '英国のチャレンジャー号がポーツマスを出航し、3年半かけて約13万kmを周航しました。約360地点で測深と生物採集を重ね、4,700種余りの新種を報告。マリアナ海溝の深部も測っています。
+          '1872-12-21', '1876-05-24', 'day', 'period', '⚓ チャレンジャー号の3年半、海洋学の誕生', '英国のチャレンジャー号がポーツマスを出航し、3年半かけて約13万kmを周航しました。約360地点で測深と生物採集を重ね、4,700種余りの新種を報告。マリアナ海溝の深部も測っています。
 
 国家が科学のために船を出した最初期の例で、全50巻の報告書は海洋学という学問の出発点とされます。ここから先の探査は「深さ」への挑戦(探査技術レイヤー)と、海のルールづくり(社会と制度レイヤー)に分かれていきます。', null,
           'verified', null, 'user', 0) returning id)
@@ -2157,7 +2285,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-ocean-exploration'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-ocean-exploration') and name = '探査技術'),
-          '1925-04-01', '1927-06-01', 'month', 'period', 'メテオール号が音響測深で南大西洋を観測', 'ドイツの観測船メテオール号が南大西洋を14回横断し、音響測深機で6万点を超える水深データを取りました。大西洋中央海嶺が南北に連なる巨大山脈だと分かったのは、この航海です。
+          '1925-04-01', '1927-06-01', 'month', 'period', 'メテオール号、南大西洋を測った2年', 'ドイツの観測船メテオール号が南大西洋を14回横断し、音響測深機で6万点を超える水深データを取りました。大西洋中央海嶺が南北に連なる巨大山脈だと分かったのは、この航海です。
 
 ロープを下ろして測る時代から**音で海底を測る**時代への転換点でした。ここで見えてきた海底地形が、のちの海洋底拡大説とプレートテクトニクスの確立(発見と科学レイヤー)の伏線になります。', null,
           'verified', null, 'user', 1) returning id)
@@ -2165,9 +2293,9 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-ocean-exploration'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-ocean-exploration') and name = '探査技術'),
-          '1934-08-15', null, 'day', 'point', 'ビービとバートン、潜水球で水深923mに到達', '生物学者ビービと技師バートンが、鋼鉄球「バチスフィア」でバミューダ沖の水深923m(3,028フィート)まで潜りました。人類が深海の生物をその場で直接観察した、最初の記録です。
+          '1930-06-06', '1934-08-15', 'day', 'period', '潜水球バチスフィアの4年、深海を目で見る', '生物学者ビービと技師バートンが、バミューダ沖で鋼鉄球「バチスフィア」の潜航を重ねた4年間です。1930年6月の初潜航から回を重ね、1934年8月15日には水深923m(3,028フィート)に達しました。人類が深海の生物をその場で直接観察した、最初の記録です。
 
-母船からケーブルで吊るす方式なので動ける範囲は限られましたが、発光生物の目撃記録は深海生物学への関心を一気に高めました。自力で潜航するバチスカーフ(1960年のトリエステ)へ続く技術的な布石です。', null,
+母船からケーブルで吊るす方式のため動ける範囲は限られましたが、発光生物の目撃記録は深海生物学への関心を一気に高めました。自力で潜航するバチスカーフ(1960年のトリエステ)へ続く、観測の助走の4年でした。', null,
           'verified', null, 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Bathysphere', 'https://en.wikipedia.org/wiki/Bathysphere')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -2188,20 +2316,20 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Trieste (bathyscaphe)', 'https://en.wikipedia.org/wiki/Trieste_(bathyscaphe)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-ocean-exploration'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-ocean-exploration') and name = '社会と制度'),
+          '1973-12-03', '1982-12-10', 'day', 'period', '「海の憲法」を書いた9年、第三次海洋法会議', '「海の憲法」と呼ばれる国連海洋法条約を書き上げるため、第三次国連海洋法会議が9年にわたり続きました。領海12海里と排他的経済水域200海里を定め、深海底とその資源を**人類の共同財産**と位置づけて、1982年12月にジャマイカのモンテゴ・ベイで署名開放されます。
+
+測深と地質調査の積み重ねで深海採鉱が現実味を帯びたことが、深海底の制度をめぐる交渉を長引かせた一因でした。会議のさなかの1977年には、熱水噴出孔の発見(発見と科学レイヤー)がこの線に重なります。発効はさらに12年後の1994年でした。', null,
+          'verified', null, 'user', 5) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: United Nations Convention on the Law of the Sea', 'https://en.wikipedia.org/wiki/United_Nations_Convention_on_the_Law_of_the_Sea')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'science-ocean-exploration'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-ocean-exploration') and name = '発見と科学'),
           '1977-02-01', null, 'month', 'point', 'ガラパゴス沖で熱水噴出孔を発見', '潜水艇アルビン号の調査隊が、ガラパゴス地溝帯の水深約2,500mで熱水噴出孔を見つけました。周りにはチューブワームや二枚貝が密集し、太陽の光に頼らない生態系が広がっていたのです。
 
-光合成ではなく**化学合成が支える生態系**の発見は生物学の前提をひっくり返し、生命の起源や地球外生命の議論にも波及しました。1960年代の有人潜水艇の整備(探査技術レイヤー)が実を結んだ代表例です。', null,
-          'verified', null, 'user', 5) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Hydrothermal vent', 'https://en.wikipedia.org/wiki/Hydrothermal_vent')) as v(title, url);
-with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
-  values ((select id from public.timelines where slug = 'science-ocean-exploration'),
-          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-ocean-exploration') and name = '社会と制度'),
-          '1982-12-10', null, 'day', 'point', '国連海洋法条約、モンテゴ・ベイで署名開放', '「海の憲法」と呼ばれる国連海洋法条約が、ジャマイカのモンテゴ・ベイで署名開放されました。領海12海里と排他的経済水域200海里を定め、深海底とその資源を**人類の共同財産**と位置づけています。
-
-測深と地質調査の積み重ねで深海採鉱が現実味を帯びたことが、深海底の制度をめぐる交渉を長引かせた一因でした。発効は12年後の1994年。探査技術の進歩に制度が追いつくまでの時差が見えます。', null,
+光合成ではなく**化学合成が支える生態系**の発見は生物学の前提をひっくり返し、生命の起源や地球外生命の議論にも波及しました。1960年代の有人潜水艇の整備(探査技術レイヤー)が実を結んだ成果で、折しも海の憲法を書く会議(社会と制度レイヤー)が続いていた最中の発見でした。', null,
           'verified', null, 'user', 6) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: United Nations Convention on the Law of the Sea', 'https://en.wikipedia.org/wiki/United_Nations_Convention_on_the_Law_of_the_Sea')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Hydrothermal vent', 'https://en.wikipedia.org/wiki/Hydrothermal_vent')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-ocean-exploration'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-ocean-exploration') and name = '発見と科学'),
@@ -2221,15 +2349,15 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-ocean-exploration'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-ocean-exploration') and name = '探査技術'),
-          '1995-03-24', null, 'day', 'point', '無人探査機かいこうがチャレンジャー海淵に到達', '海洋科学技術センター(現JAMSTEC)の無人探査機「かいこう」が、チャレンジャー海淵で水深10,911mを記録しました。無人機として初めての世界最深部到達です。
+          '1995-03-24', '2003-05-29', 'day', 'period', '無人探査機かいこう、活躍の8年', '海洋科学技術センター(現JAMSTEC)の無人探査機「かいこう」が、チャレンジャー海淵で水深10,911mを記録しました。無人機として初めての世界最深部到達で、ここから8年間の活躍が始まります。
 
-以後かいこうは最深部の堆積物を持ち帰り、超高圧の泥の中で生きる微生物の研究へ道を開きます。1960年のトリエステ以来35年ぶりの最深部到達を無人機が果たしたことは、深海探査の主役交代を印象づけました。', null,
+以後かいこうは最深部の堆積物を持ち帰り、超高圧の泥の中で生きる微生物の研究へ道を開きました。トリエステ以来35年ぶりの最深部到達を無人機が果たしたことは深海探査の主役交代を印象づけましたが、2003年5月、荒天の海でケーブルが切れ、機体は還りませんでした。', null,
           'verified', null, 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Kaikō ROV', 'https://en.wikipedia.org/wiki/Kaik%C5%8D_ROV')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-ocean-exploration'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-ocean-exploration') and name = '発見と科学'),
-          '2000-01-01', '2010-10-04', 'year', 'period', '国際共同調査「海洋生物センサス」', '80カ国超・約2,700人の研究者が加わる10年計画の国際調査「海洋生物センサス」が始まりました。海の生き物の多様性・分布・個体数を体系的に記録し、2010年の最終報告までに1,200種を超える新種を正式に記載しています。
+          '2000-01-01', '2010-10-04', 'year', 'period', '海洋生物センサスの10年', '80カ国超・約2,700人の研究者が加わる10年計画の国際調査「海洋生物センサス」が始まりました。海の生き物の多様性・分布・個体数を体系的に記録し、2010年の最終報告までに1,200種を超える新種を正式に記載しています。
 
 一度きりの航海ではなく**世界規模のデータベースづくり**へと海洋研究のやり方を変えた計画で、成果は公海の保護区設計(社会と制度レイヤー)の科学的な土台にもなっていきます。', null,
           'unverified', '参加者数や新種数は計画側の最終報告に基づく集計で、その後の分類学的な見直しによって数値は変わりえます。', 'user', 10) returning id)
@@ -2237,9 +2365,9 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-ocean-exploration'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-ocean-exploration') and name = '探査技術'),
-          '2007-11-01', null, 'month', 'point', '海洋観測フロート網Argoが3,000基体制に', '世界の海にセンサー付きの自動フロートを漂わせる国際観測網Argoが、目標としていた3,000基の展開に到達したと発表されました。各フロートは約10日ごとに潜っては浮かび、水温・塩分の鉛直データを衛星経由で送り続けます。
+          '2000-01-01', '2026-06-30', 'year', 'period', '海洋観測網Argo、見張りつづける四半世紀', '世界の海にセンサー付きの自動フロートを漂わせる国際観測網Argoが、2000年から投入を始めました。各フロートは約10日ごとに潜っては浮かび、水温・塩分の鉛直データを衛星経由で送り続けます。2007年11月には目標の3,000基体制に到達しました。
 
-船が行かない海域まで含めて海の内部を常時見張る体制が初めて整い、海面上昇や海洋熱吸収の評価など、気候変動をめぐる政策議論(社会と制度レイヤー)を支える基礎インフラになりました。', null,
+船が行かない海域まで含めて海の内部を常時見張る体制は、四半世紀たった現在も続いています。同じ2000年に始まった海洋生物センサス(発見と科学レイヤー)と並走した最初の10年は、海を航海ではなくデータで測る時代の幕開けでした。', null,
           'unverified', '3,000基到達の時期は計画側の集計に基づくもので、稼働中フロートの定義や集計時点によって数値は前後します。', 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Argo (oceanography)', 'https://en.wikipedia.org/wiki/Argo_(oceanography)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -2253,25 +2381,25 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-ocean-exploration'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-ocean-exploration') and name = '発見と科学'),
-          '2017-06-01', null, 'month', 'point', '🗺️ 海底地形図計画「Seabed 2030」開始', '日本財団とGEBCOが、2030年までに世界の海底地形図を完成させる国際プロジェクト「Seabed 2030」を国連海洋会議で発表しました。開始時点で、現代的な水準で測深済みの海底は全体の約6%しかありません。
+          '2017-06-01', '2026-06-30', 'month', 'period', '🗺️ 海底地図づくりの9年、Seabed 2030', '日本財団とGEBCOが、2030年までに世界の海底地形図を完成させる国際プロジェクト「Seabed 2030」を国連海洋会議で発表しました。開始時点で、現代的な水準で測深済みの海底は全体の約6%。以来、地図の空白を埋める航海が現在も続いています。
 
-火星の地形より粗くしか分かっていない足元の海底を埋めていく試みで、各国の調査船や民間船が持つ測深データを持ち寄る方式です。地形データは資源探査や大陸棚の境界画定(社会と制度レイヤー)にも直結します。', null,
+各国の調査船や民間船が持つ測深データを持ち寄る方式で、計画側の集計では測深済みの割合は2023年に約25%まで伸びました。地形データは資源探査や大陸棚の境界画定(社会と制度レイヤー)に直結します。ファイブ・ディープス遠征の測深データも、この計画に提供されました。', null,
           'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('The Nippon Foundation-GEBCO Seabed 2030 Project', 'https://seabed2030.org')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-ocean-exploration'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-ocean-exploration') and name = '探査技術'),
-          '2019-04-28', null, 'day', 'point', 'ファイブ・ディープス遠征、五大洋最深部へ', '投資家ヴェスコヴォが潜水艇リミッティング・ファクターでチャレンジャー海淵に潜り、水深10,928mと発表しました。五大洋すべての最深部に潜るファイブ・ディープス遠征の一環で、遠征は約10カ月で完遂されています。
+          '2018-12-19', '2019-08-24', 'day', 'period', 'ファイブ・ディープス遠征、五大洋の8か月', '投資家ヴェスコヴォが潜水艇リミッティング・ファクターに乗り、五大洋すべての最深部に潜る遠征を8か月余りでやり遂げました。2019年4月にはチャレンジャー海淵で潜航し、水深10,928mと発表しています。
 
-何度でも潜れる商用認証艇の登場で、最深部は一度きりの偉業の場から**繰り返し通える場所**に変わりました。同艇はその後、各国の研究者を乗せた科学潜航にも使われています。', null,
+何度でも潜れる商用認証艇の登場で、最深部は一度きりの偉業の場から**繰り返し通える場所**に変わりました。同艇はその後、各国の研究者を乗せた科学潜航にも使われています。遠征で得た測深データはSeabed 2030(発見と科学レイヤー)に持ち込まれ、地図づくりの線とも重なりました。', null,
           'disputed', '記録水深10,928mは遠征側の発表値です。計測・較正の方法をめぐって、過去の記録との比較には議論があります。', 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Five Deeps Expedition', 'https://en.wikipedia.org/wiki/Five_Deeps_Expedition')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-ocean-exploration'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-ocean-exploration') and name = '社会と制度'),
-          '2021-06-01', null, 'month', 'point', 'ナウルが深海採鉱の「2年ルール」を発動', '太平洋の島国ナウルが、支援する企業による深海底採鉱の計画を念頭に、2年以内の採掘規則完成を国際海底機構に求める条項を発動しました。規則が未完成のままでも、採掘申請の審査が始まりうる状況です。
+          '2021-06-01', '2023-07-01', 'month', 'period', 'ナウルが発動、「2年ルール」の2年間', '太平洋の島国ナウルが、支援する企業による深海底採鉱の計画を念頭に、2年以内の採掘規則完成を国際海底機構に求める条項を発動しました。ここから期限の2023年7月まで、カウントダウンの2年間が走ります。
 
-主な対象はクラリオン・クリッパートン海域の多金属団塊で、背景には電池向け金属の需要増があります。科学界からは深海生態系(発見と科学レイヤー)の知見不足を理由にモラトリアムを求める声が上がり、各国の賛否も割れています。', null,
+主な対象はクラリオン・クリッパートン海域の多金属団塊で、背景には電池向け金属の需要増があります。科学界からは深海生態系(発見と科学レイヤー)の知見不足を理由にモラトリアムを求める声が上がりました。海底地図づくりの線(Seabed 2030)がまだ2割ほどしか進まないうちに、期限だけが先に来たのです。', null,
           'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('国際海底機構(ISA)へのナウルによる2年ルール発動通知(2021年6月)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -2293,7 +2421,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 
 -- ═══ science-particle-physics — 素粒子物理学の旅
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-particle-physics', '00000000-0000-4000-8000-248a21205e28', '素粒子物理学の旅', '1897年の電子発見からヒッグス粒子、次世代加速器構想まで。理論の予言、実験と加速器による検証、巨大科学を支える国際協力の3層を重ね、物質の最小単位を問い続ける旅を辿る。', 'science-nature', 'ja', 'public', 's_science-particle-physics', 1897, 2025, 'science-particle-physics')
+values ('science-particle-physics', '00000000-0000-4000-8000-248a21205e28', '素粒子物理学の旅', '1897年の電子発見からヒッグス粒子、次世代加速器構想まで。理論の予言、実験と加速器による検証、巨大科学を支える国際協力の3層を重ね、物質の最小単位を問い続ける旅を辿る。', 'science-nature', 'ja', 'public', 's_science-particle-physics', 1897, 2026, 'science-particle-physics')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-particle-physics');
@@ -2344,9 +2472,9 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-particle-physics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-particle-physics') and name = '巨大科学と協力'),
-          '1954-09-29', null, 'day', 'point', '欧州合同原子核研究機関(CERN)設立', '欧州12か国の批准によりCERNが正式に発足した。第二次大戦で疲弊し人材が米国へ流出した欧州が、一国では持てない大型加速器を共同で保有するために作った国際機関である。
+          '1954-09-29', '2026-06-30', 'day', 'period', 'CERN、国際協力の72年', '欧州12か国の批准によりCERNが正式に発足した。第二次大戦で疲弊し人材が米国へ流出した欧州が、一国では持てない大型加速器を共同で保有するために作った国際機関である。
 
-「科学による欧州の再建」を掲げた設立は、素粒子物理が**一国では担えない巨大科学**へ向かう転換点となった。後にW/Z粒子の発見、LHC、さらに副産物としてのWeb発明(1989年)まで、協力の枠組みそのものが成果を生み続ける。', null,
+「科学による欧州の再建」を掲げたこの枠組みは、**一国では担えない巨大科学**の器として72年目の現在も続いている。W/Z粒子の発見、副産物としてのWebの発明(1989年)、そしてLHCの建設と運転。本年表の後半の線の多くは、この長い協力の線の上に乗っている。', null,
           'verified', null, 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: CERN', 'https://en.wikipedia.org/wiki/CERN')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -2376,10 +2504,18 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-particle-physics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-particle-physics') and name = '理論'),
+          '1964-08-01', '2012-07-04', 'month', 'period', 'ヒッグス粒子、未発見の48年', '質量の起源を説明する機構が予言した粒子は、提唱から48年間、見つからないままだった。標準模型の他の粒子が次々と発見されていく中で、最後の一片だけが残り続けたのである。
+
+この未発見の線の上で、探索を担うはずだったSSCが中止され(1993年、巨大科学と協力レイヤー)、代わってLHCが建設された。一つの粒子を待つ時間が加速器計画の興亡と重なって走るこの線は、2012年7月4日の発見の点でようやく閉じる。', null,
+          'verified', null, 'user', 9) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Higgs boson', 'https://en.wikipedia.org/wiki/Higgs_boson')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'science-particle-physics'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-particle-physics') and name = '理論'),
           '1967-11-20', null, 'day', 'point', 'ワインバーグ、電弱統一理論を発表', 'ワインバーグが電磁気力と弱い力を一つの枠組みで記述する理論を発表した。ヒッグス機構を組み込み、未発見のW粒子とZ粒子の質量を予言するものだった。サラムも独立に同様の理論へ到達している。
 
 発表当初はほとんど引用されなかったが、1971年にトフーフトが計算の整合性(繰り込み可能性)を証明すると一気に主流となり、素粒子の「標準模型」の柱となった。予言の検証は1983年のCERN(実験と加速器レイヤー)を待つ。', null,
-          'verified', null, 'user', 9) returning id)
+          'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Electroweak interaction', 'https://en.wikipedia.org/wiki/Electroweak_interaction')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-particle-physics'),
@@ -2387,7 +2523,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1974-11-11', null, 'day', 'point', 'J/ψ粒子の同時発見(11月革命)', '米国のブルックヘブン研究所とSLACの2チームが、同じ新粒子J/ψの発見を同日に発表した。異常に長い寿命を持つこの粒子は、第4のクォーク(チャーム)と反クォークの束縛状態と解釈された。
 
 クォーク模型と電弱理論(理論レイヤー)の予言が一挙に裏づけられ、標準模型が定説となる「11月革命」と呼ばれる転換点になった。一方でティン側が結果の公表を数か月遅らせた経緯には食い違いが残り、名称も両陣営の呼称を併記する異例の形となった。', null,
-          'disputed', 'ブルックヘブン側がいつ発見と確信し、なぜ公表を遅らせたのかについては、当事者の回想の間に食い違いがある。', 'user', 10) returning id)
+          'disputed', 'ブルックヘブン側がいつ発見と確信し、なぜ公表を遅らせたのかについては、当事者の回想の間に食い違いがある。', 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: J/psi meson', 'https://en.wikipedia.org/wiki/J/psi_meson')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-particle-physics'),
@@ -2395,7 +2531,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1983-01-25', null, 'day', 'point', 'CERN、W粒子の発見を発表', 'ルビア率いるUA1実験が、陽子・反陽子衝突の中にW粒子の証拠を確認したと発表した。同年6月にはZ粒子の発見も発表され、いずれも電弱統一理論(理論レイヤー)の予言どおりの質量だった。
 
 反陽子を貯めて冷却するファンデルメーアの技術革新が発見を可能にし、両名は翌1984年にノーベル賞を受賞。欧州が素粒子実験の主導権を米国から取り戻した出来事とも評され、探索の焦点は残るヒッグス粒子へ移っていく。', null,
-          'verified', null, 'user', 11) returning id)
+          'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: W and Z bosons', 'https://en.wikipedia.org/wiki/W_and_Z_bosons')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-particle-physics'),
@@ -2403,7 +2539,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1987-02-23', null, 'day', 'point', '超新星1987Aのニュートリノを検出', '大マゼラン雲で起きた超新星爆発からのニュートリノを、岐阜県神岡のカミオカンデを含む3つの検出器がほぼ同時に捉えた。カミオカンデは11個の事象を時刻とエネルギー付きで記録した。
 
 超新星理論の中核を初めて直接検証した観測であり、ニュートリノで宇宙を見る「ニュートリノ天文学」を開いた。小柴昌俊は2002年にノーベル賞を受賞し、後継機スーパーカミオカンデによる振動発見(1998年)へと日本の実験の系譜が続く。', null,
-          'verified', null, 'user', 12) returning id)
+          'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: SN 1987A', 'https://en.wikipedia.org/wiki/SN_1987A')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-particle-physics'),
@@ -2411,7 +2547,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1993-10-01', null, 'month', 'point', '米国、超伝導超大型加速器(SSC)を中止', '米議会が、テキサス州で建設中だった周長約87kmの加速器SSCの計画中止を決定した。すでに約20億ドルが投じられトンネルの一部も掘られていたが、費用の膨張と冷戦終結後の優先順位の変化が致命傷となった。
 
 素粒子物理の主導権は、より小さい周長27kmのLHCを選んだ欧州へ移る。**巨大科学の成否を決めるのは政治と予算**であることを見せつけた事件であり、以後の大型計画は最初から国際分担を前提に設計されるようになった。', null,
-          'verified', null, 'user', 13) returning id)
+          'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Superconducting Super Collider', 'https://en.wikipedia.org/wiki/Superconducting_Super_Collider')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-particle-physics'),
@@ -2419,7 +2555,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1998-01-01', '2008-09-10', 'year', 'period', 'LHC建設、100か国規模の協力事業に', 'CERNで大型ハドロン衝突型加速器(LHC)の建設が進み、2008年9月10日に最初のビーム周回に到達した。周長27kmのトンネルに超伝導磁石を並べ、検出器の建設には日本や米国を含む100を超える国・地域の研究者が参加した。
 
 SSC中止(1993年)後の素粒子物理の希望を一身に背負った計画である。周回の9日後に磁石接続部の事故で1年余り停止する挫折も経て2010年から本格運転に入り、2年後のヒッグス粒子発見の舞台となる。', null,
-          'verified', null, 'user', 14) returning id)
+          'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Large Hadron Collider', 'https://en.wikipedia.org/wiki/Large_Hadron_Collider')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-particle-physics'),
@@ -2427,31 +2563,39 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1998-06-05', null, 'day', 'point', 'ニュートリノ振動の発見', 'スーパーカミオカンデのグループが、大気ニュートリノが飛行中に種類を変える「振動」の証拠を岐阜県高山市での国際会議で発表した。振動が起きることは、ニュートリノに質量があることを意味する。
 
 標準模型はニュートリノの質量をゼロと仮定しており、これは**標準模型の綻びを示した初の確かな実験事実**となった。梶田隆章とマクドナルドは2015年にノーベル賞を受賞。質量の起源や宇宙の物質優勢の謎へ続く未解決領域が開かれた。', null,
-          'verified', null, 'user', 15) returning id)
+          'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Neutrino oscillation', 'https://en.wikipedia.org/wiki/Neutrino_oscillation')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'science-particle-physics'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-particle-physics') and name = '巨大科学と協力'),
+          '2008-09-10', '2026-06-30', 'day', 'period', 'LHC、事故を越えた稼働の18年', '建設の線が終わった最初のビーム周回の日から、LHCの稼働の線が始まる。だが9日後に磁石接続部の事故で液体ヘリウムが噴出し、復旧に1年余りを要した。本格的な衝突実験の開始は2010年3月である。
+
+以後、2012年のヒッグス粒子発見(実験と加速器レイヤー)をはじめ数々の成果がこの線の上に乗り、装置は改良を挟みながら現在も運転を続けている。高輝度化(HL-LHC)への改修も予定され、線はまだ先へ延びる見込みである。', null,
+          'verified', null, 'user', 17) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Large Hadron Collider', 'https://en.wikipedia.org/wiki/Large_Hadron_Collider')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-particle-physics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-particle-physics') and name = '実験と加速器'),
           '2012-07-04', null, 'day', 'point', 'ヒッグス粒子の発見を発表', 'CERNのATLASとCMSの両実験が、質量約125GeVの新粒子の発見を発表した。1964年に提唱されたヒッグス機構(理論レイヤー)が予言する粒子と矛盾しない性質で、その後の測定でも裏づけられた。
 
 標準模型最後の未発見粒子が48年越しに見つかり、翌年アングレールとヒッグスがノーベル賞を受賞した。**半世紀前の理論を数千人の実験が検証する**という、この分野の時間スケールと協力の規模を象徴する到達点である。', null,
-          'verified', null, 'user', 16) returning id)
+          'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Higgs boson', 'https://en.wikipedia.org/wiki/Higgs_boson')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-particle-physics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-particle-physics') and name = '巨大科学と協力'),
-          '2013-08-23', null, 'day', 'point', 'ILC、国内候補地に北上山地を選定', '次世代の直線加速器・国際リニアコライダー(ILC)について、日本の研究者組織が国内候補地を岩手県などにまたがる北上山地に一本化した。発見されたばかりのヒッグス粒子を精密測定する「ヒッグス工場」の構想である。
+          '2013-08-23', '2026-06-30', 'day', 'period', 'ILC誘致、宙に浮いた13年', '次世代の直線加速器・国際リニアコライダー(ILC)について、日本の研究者組織が国内候補地を岩手県などにまたがる北上山地に一本化した。発見されたばかりのヒッグス粒子を精密測定する「ヒッグス工場」の構想である。
 
-しかし巨額の建設費の国際分担は固まらず、日本政府は誘致の意思表明を保留し続けた。SSC中止(1993年)と同様に、次の一手を決めるのは物理ではなく政治と資金であるという構図が繰り返されている。', null,
-          'unverified', '候補地選定は研究者側の決定であり、政府の誘致判断・国際的な費用分担・実現時期はいずれも未確定のままである。', 'user', 17) returning id)
+しかし巨額の建設費の国際分担は固まらず、日本政府が誘致の意思表明を保留したまま、この線は13年目に入った。その間に欧州の議論はFCC(2025年)へ重心を移しつつある。SSC中止と同じく、次の一手を決めるのは物理ではなく政治と資金であるという構図が、現在進行形で続いている。', null,
+          'unverified', '候補地選定は研究者側の決定であり、政府の誘致判断・国際的な費用分担・実現時期はいずれも未確定のままである。', 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 国際リニアコライダー', 'https://ja.wikipedia.org/wiki/%E5%9B%BD%E9%9A%9B%E3%83%AA%E3%83%8B%E3%82%A2%E3%82%B3%E3%83%A9%E3%82%A4%E3%83%80%E3%83%BC')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-particle-physics'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-particle-physics') and name = '実験と加速器'),
-          '2021-04-07', null, 'day', 'point', 'ミューオンg-2、標準模型とのずれを報告', '米フェルミ研究所のMuon g-2実験が、ミューオンの磁気異常の測定値が標準模型の予測と食い違うとする最初の結果を発表した。先行するブルックヘブンの測定とも一致し、ずれの統計的有意性が高まった。
+          '2021-04-07', '2025-06-03', 'day', 'period', 'ミューオンg-2、4年の攻防', '米フェルミ研究所のMuon g-2実験が、ミューオンの磁気異常の測定値が標準模型の予測と食い違うとする最初の結果を発表した。先行するブルックヘブンの測定とも一致し、未知の粒子の兆候かと注目を集めた。
 
-未知の粒子の兆候かと注目されたが、同時期に格子QCDによる新しい理論計算が実験値に近い値を示し、**ずれているのは自然か、それとも理論計算か**という論争になった。標準模型の先を探る現在進行形の戦線である。', null,
-          'disputed', '実験値と理論値の乖離は、理論側の計算手法(データ駆動法と格子QCD)の間の不一致が未解決のため、新物理の証拠かどうか結論が出ていない。', 'user', 18) returning id)
+だが同時期に格子QCDによる理論計算が実験値に近い値を示し、**ずれているのは自然か、それとも理論計算か**という攻防が続く。2025年6月の最終結果の発表で実験値はほぼ確定したが、理論側の計算手法どうしの不一致は残ったままで、決着はなお持ち越されている。', null,
+          'disputed', '実験値は2025年6月の最終結果でほぼ確定したが、理論予測はデータ駆動法と格子QCDの間の不一致が未解決のため、新物理の証拠かどうか結論が出ていない。', 'user', 20) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Muon g-2', 'https://en.wikipedia.org/wiki/Muon_g-2')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-particle-physics'),
@@ -2459,12 +2603,12 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2025-03-31', null, 'day', 'point', 'CERN、次期加速器FCCの実現可能性報告', 'CERNが周長約91kmの次期円形加速器FCCの実現可能性調査の最終報告をまとめた。まず電子・陽電子衝突でヒッグス粒子を精密測定し、将来は陽子衝突で未知の高エネルギー領域を探る二段構えの構想である。
 
 建設費は第1段階だけで150億スイスフラン規模とされ、承認は加盟国の判断に委ねられる。1954年の設立以来続いてきた国際協力の枠組みが、数十年がかりの次の賭けに踏み出せるかが問われている。', null,
-          'unverified', '報告書は構想段階の計画であり、費用見積りと建設の可否・時期は未承認・未確定。公表日は報道に基づく。', 'user', 19) returning id)
+          'unverified', '報告書は構想段階の計画であり、費用見積りと建設の可否・時期は未承認・未確定。公表日は報道に基づく。', 'user', 21) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Future Circular Collider', 'https://en.wikipedia.org/wiki/Future_Circular_Collider')) as v(title, url);
 
 -- ═══ science-renewable-energy — 🌱 再生可能エネルギー史
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-renewable-energy', '00000000-0000-4000-8000-53afa1095b21', '🌱 再生可能エネルギー史', '1839年の光起電力効果の発見から、世界の電力の3割へ。技術の芽、産業と価格の変動、政策の後押しの3つの層を重ねながら、再生可能エネルギーが補助輪を外して走り出すまでの長い道のりを、やさしく語りなおす年表です。', 'science-nature', 'ja', 'public', 's_science-renewable-energy', 1839, 2024, 'science-renewable-energy')
+values ('science-renewable-energy', '00000000-0000-4000-8000-53afa1095b21', '🌱 再生可能エネルギー史', '1839年の光起電力効果の発見から、世界の電力の3割へ。技術の芽、産業と価格の変動、政策の後押しの3つの層を重ねながら、再生可能エネルギーが補助輪を外して走り出すまでの長い道のりを、やさしく語りなおす年表です。', 'science-nature', 'ja', 'public', 's_science-renewable-energy', 1839, 2026, 'science-renewable-energy')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-renewable-energy');
@@ -2498,19 +2642,27 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Solar cell', 'https://en.wikipedia.org/wiki/Solar_cell')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-renewable-energy'),
-          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-renewable-energy') and name = '政策と社会'),
-          '1973-10-01', null, 'month', 'point', '第一次石油危機', '第四次中東戦争を機にアラブ産油国が原油の減産と禁輸を発動し、原油価格は数か月で約4倍に高騰しました。石油に頼りきっていた先進国の経済は、大きな打撃を受けます。
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-renewable-energy') and name = '産業と価格'),
+          '1958-03-17', '1973-12-31', 'day', 'period', '太陽電池、宇宙が主市場だった16年', '電池交換のできない人工衛星ヴァンガード1号に太陽電池が搭載され、初めて継続的な使い道が生まれました。以後、太陽電池のほぼ唯一の顧客は宇宙開発で、地上で使うにはまだ高価すぎる技術だったのです。
 
-燃料の蛇口を他人に握られている。そんな**エネルギーを他国に握られる恐怖**が、代替エネルギー研究への公的投資を初めて本格化させました。日本のサンシャイン計画(1974年)や米国の太陽エネルギー研究所の設立など、現在の再エネ技術の源流の多くがこの危機に発しています。', null,
-          'verified', null, 'user', 3) returning id)
+価格よりも信頼性がすべてという注文主に鍛えられた、いわば特注品だけを作る工房の時代です。競争のない市場で改良と生産の経験を積んだ太陽電池は、石油危機(1973年、政策と社会レイヤー)を境に地上へ降りてきます。この線の終わりは、地上の産業の線の始まりでもありました。', null,
+          'disputed', '地上向けの販売が宇宙向けを上回った時期の推定は資料により異なり、ここでは石油危機(1973年)を便宜的な区切りとしました。', 'user', 3) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Vanguard 1', 'https://en.wikipedia.org/wiki/Vanguard_1')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'science-renewable-energy'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-renewable-energy') and name = '政策と社会'),
+          '1973-10-01', '1974-03-31', 'month', 'period', '第一次石油危機の半年', '第四次中東戦争を機にアラブ産油国が原油の減産と禁輸を発動し、原油価格は数か月で約4倍に高騰しました。禁輸が解かれる1974年3月までの半年間、石油に頼りきっていた先進国の経済は大きく揺さぶられます。
+
+燃料の蛇口を他人に握られている。この短い線が残した**エネルギーを他国に握られる恐怖**は、線の長さに不釣り合いなほど深く、代替エネルギー研究への公的投資を初めて本格化させました。日本のサンシャイン計画(1974年)も米国の太陽エネルギー研究所も、この線から芽を出しています。', null,
+          'verified', null, 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 1973 oil crisis', 'https://en.wikipedia.org/wiki/1973_oil_crisis')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-renewable-energy'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-renewable-energy') and name = '政策と社会'),
-          '1979-06-20', null, 'day', 'point', 'カーター、ホワイトハウスに太陽熱パネル', 'カーター米大統領が、ホワイトハウスの屋根に32枚の太陽熱温水パネルを設置し、2000年までにエネルギーの2割を太陽由来にする目標を掲げました。第二次石油危機のさなかの、象徴的な行動です。
+          '1979-06-20', '1986-12-31', 'day', 'period', 'ホワイトハウスの太陽熱パネル、7年', 'カーター米大統領が、ホワイトハウスの屋根に32枚の太陽熱温水パネルを設置し、2000年までにエネルギーの2割を太陽由来にする目標を掲げました。第二次石油危機のさなかの、象徴的な行動です。
 
-パネルは石油価格が下がった後の1986年、レーガン政権下で撤去されました。屋根の上のパネルが、いわば政策の風見鶏になったのです。再エネ政策が**政権交代のたびに揺れる**ことを示す最初の分かりやすい例で、同じ構図は2010年代以降の米国でもくり返されます。', null,
-          'verified', null, 'user', 4) returning id)
+パネルは油価が下がった後の1986年、レーガン政権下で撤去されました。屋根の上の7年は、いわば政策の風見鶏です。再エネ支援が**政権交代のたびに揺れる**ことを示す最初の分かりやすい例で、同じ時期に膨らんでしぼんだカリフォルニアの風力ラッシュ(産業と価格レイヤー)と、ほぼ同じ場所で線が途切れています。', null,
+          'verified', null, 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Scientific American: Where Did the Carter White House''s Solar Panels Go? (2010)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-renewable-energy'),
@@ -2518,7 +2670,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1981-01-01', '1986-12-31', 'year', 'period', 'カリフォルニア風力ラッシュ', '石油危機後の手厚い税制優遇を追い風に、カリフォルニア州の峠に数千基規模の風車が林立しました。当時の世界の風力発電容量の大半が同州に集中する、いわば風のゴールドラッシュです。
 
 優遇の失効と油価の下落でブームは崩壊し、粗製乱造された風車の残骸は、再エネ懐疑論の格好の材料になりました。一方で、着実に改良を重ねたデンマークの製造業者が生き残り、風力産業の主導権は欧州へ移ります。補助金の設計が産業の質を左右する、教訓の残る出来事です。', null,
-          'verified', null, 'user', 5) returning id)
+          'verified', null, 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Altamont Pass Wind Farm', 'https://en.wikipedia.org/wiki/Altamont_Pass_Wind_Farm')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-renewable-energy'),
@@ -2526,7 +2678,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1991-01-01', null, 'year', 'point', '🌊 世界初の洋上風力発電所ヴィンデビー', 'デンマーク沖に、世界初の洋上風力発電所ヴィンデビーが完成しました。450kW機が11基、合計約5MWという小さな規模ながら、風がよく吹き土地の取り合いもない海の上へ、風車を引っ越しさせた最初の一歩です。
 
 実証を積み重ねるデンマークの漸進主義は、ブームと崩壊をくり返したカリフォルニア(産業と価格レイヤー)と対照をなします。洋上風力はその後、北海を中心に主力電源級へ成長しました。ヴィンデビーは2017年に役目を終えて、静かに解体されています。', null,
-          'verified', null, 'user', 6) returning id)
+          'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Vindeby Offshore Wind Farm', 'https://en.wikipedia.org/wiki/Vindeby_Offshore_Wind_Farm')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-renewable-energy'),
@@ -2534,23 +2686,31 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1997-12-11', null, 'day', 'point', '京都議定書を採択', '気候変動枠組条約の第3回締約国会議(COP3)が京都で開かれ、先進国に温室効果ガスの削減義務を課す京都議定書が採択されました。気候変動対策が国際法上の義務になった、最初の枠組みです。
 
 提出期限のある宿題のような削減義務ができたことで、再エネは「環境に良い選択肢」から「義務を果たすための手段」へと変わりました。各国の導入支援策が2000年前後に出揃う下地となり、世界の太陽光市場を作ったドイツの固定価格買取制度(2000年)へ直結します。', null,
-          'verified', null, 'user', 7) returning id)
+          'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Kyoto Protocol', 'https://en.wikipedia.org/wiki/Kyoto_Protocol')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-renewable-energy'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-renewable-energy') and name = '政策と社会'),
-          '2000-04-01', null, 'day', 'point', 'ドイツ、再エネ固定価格買取制度(EEG)', 'ドイツで再生可能エネルギー法(EEG)が施行され、再エネ電力を20年間固定価格で買い取ることが電力会社に義務づけられました。発電した分だけ確実に収入になる仕組みが、家の屋根や農地を小さな発電所に変え、個人や農家までも発電事業者にしたのです。
+          '2000-04-01', '2016-12-31', 'day', 'period', 'ドイツEEG、固定価格買取の17年', 'ドイツで再生可能エネルギー法(EEG)が施行され、再エネ電力を20年間固定価格で買い取ることが電力会社に義務づけられました。発電した分だけ確実に収入になる仕組みが、家の屋根や農地を小さな発電所に変え、個人や農家までも発電事業者にしたのです。
 
-生まれた巨大な需要は太陽電池の量産投資を呼び、のちに中国メーカーの規模拡大(産業と価格レイヤー)を通じて世界の価格を押し下げました。**一国の制度設計が世界の価格曲線を動かした**例として、政策史の画期とされています。', null,
-          'verified', null, 'user', 8) returning id)
+生まれた巨大な需要は太陽電池の量産投資を呼び、中国メーカーの規模拡大を経て、世界的な価格急落(産業と価格レイヤー)を引き起こしました。**一国の制度設計が世界の価格曲線を動かした**線です。制度が育てた市場は成熟し、2017年の改正で大規模電源は入札制へ移りました。', null,
+          'disputed', 'EEG自体は現在も続いており、「固定価格の時代」の終わりを2014年と2017年のどちらの改正に置くかは、見方が分かれます。ここでは大規模電源の入札制移行(2017年)を区切りとしました。', 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: German Renewable Energy Sources Act', 'https://en.wikipedia.org/wiki/German_Renewable_Energy_Sources_Act')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'science-renewable-energy'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-renewable-energy') and name = '産業と価格'),
+          '2008-01-01', '2013-12-31', 'year', 'period', '太陽電池、価格急落の6年', 'シリコン原料の増産と中国メーカーの大規模投資が重なり、太陽電池モジュールの価格は6年ほどで約8割下がったとされます。高価な特注品だった太陽光発電が、どこでも買える量産品へ変わった期間です。
+
+いわば階段を数段飛ばしで駆け下りるような値下がりでした。この線の途中にソリンドラの破綻(2011年、同じレイヤー)が乗り、線の終わり近くには日本のFIT開始(2012年、政策と社会レイヤー)が重なります。安くなったパネルと高い買取価格の組み合わせこそ、日本のメガソーラー急増の正体でした。', null,
+          'unverified', '下落率はモジュール価格のどの集計を用いるかで幅があり、期間の区切りも資料によって異なります。', 'user', 10) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Growth of photovoltaics', 'https://en.wikipedia.org/wiki/Growth_of_photovoltaics')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-renewable-energy'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-renewable-energy') and name = '技術の芽'),
           '2009-01-01', null, 'year', 'point', '宮坂力ら、ペロブスカイト太陽電池を報告', '桐蔭横浜大学の宮坂力らが、ペロブスカイト結晶を光吸収材に使う新型太陽電池を論文で報告しました。当初の変換効率は、わずか3.8%でした。
 
 いわば塗って印刷するように作れる、軽くて曲げられる電池です。2012年ごろから効率が急伸し、研究レベルではシリコンに迫る25%超に達しました。ビルの壁面や耐荷重の小さい屋根など、設置場所を一気に広げうる次世代の本命として、日本発の技術の産業化競争(産業と価格レイヤー)が現在も続いています。', null,
-          'verified', null, 'user', 9) returning id)
+          'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Perovskite solar cell', 'https://en.wikipedia.org/wiki/Perovskite_solar_cell')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-renewable-energy'),
@@ -2558,7 +2718,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2011-06-30', null, 'day', 'point', 'ドイツ、脱原発と再エネ転換を決定', '福島第一原発事故を受けて、ドイツ連邦議会が2022年までの原発全廃を圧倒的多数で可決しました。再エネを電力供給の柱に据える「エネルギーヴェンデ(転換)」の加速が、国策として確定します。
 
 遠い国の事故という外からの出来事が、一国のエネルギーの舵を大きく切らせた事例です。移行期の石炭依存や電力価格の上昇といった代償も大きく、脱原発と脱炭素のどちらを先にするかという論争は、世界の再エネ政策に影響を与え続けました。', null,
-          'verified', null, 'user', 10) returning id)
+          'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Energiewende', 'https://en.wikipedia.org/wiki/Energiewende')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-renewable-energy'),
@@ -2566,15 +2726,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2011-09-01', null, 'month', 'point', '米ソリンドラ破綻、価格競争の象徴に', '米政府の債務保証を受けていた新興太陽電池メーカーのソリンドラが、経営破綻しました。シリコンを使わない円筒形パネルという独自技術は、シリコン価格の暴落で「シリコンは高い」という前提を失い、いわば足場ごと崩れたのです。
 
 破綻は米政界で再エネ支援策への攻撃材料になりましたが、背景にあったのは中国メーカーの大増産による太陽電池の世界的な値崩れでした。**価格下落は産業の淘汰と普及を同時に進める**という、この時期の太陽光の二面性を象徴しています。', null,
-          'verified', null, 'user', 11) returning id)
+          'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Solyndra', 'https://en.wikipedia.org/wiki/Solyndra')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-renewable-energy'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-renewable-energy') and name = '政策と社会'),
-          '2012-07-01', null, 'day', 'point', '日本、再エネ固定価格買取制度を開始', '福島第一原発事故後のエネルギー政策見直しのなかで、日本でも再エネの固定価格買取制度(FIT)が始まりました。高めに設定された買取価格を追って、メガソーラーの建設が全国で殺到します。
+          '2012-07-01', '2026-06-30', 'day', 'period', '日本のFIT、続く14年', '福島第一原発事故後のエネルギー政策見直しのなかで、日本でも再エネの固定価格買取制度(FIT)が始まりました。高めに設定された買取価格を追って、メガソーラーの建設が全国で殺到します。
 
-太陽光の導入量は数年で世界有数の規模になった一方、電気料金への賦課金の膨張や、山林開発をめぐる摩擦も生まれ、入札制への移行(2017年以降)につながりました。ドイツ(2000年)が先にたどった軌跡を、いわば早送りで再生したような経過です。', null,
-          'verified', null, 'user', 12) returning id)
+太陽光の導入量は数年で世界有数の規模になった一方、賦課金の膨張や山林開発をめぐる摩擦も生まれ、2017年以降の入札制、2022年の市場連動型(FIP)の導入と、手直しを重ねながら制度は現在も続いています。先を行くドイツのEEG(同じレイヤー)の線と2010年代前半で並走しており、先行する軌跡をいわば早送りで再生したような経過です。', null,
+          'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('資源エネルギー庁: 再生可能エネルギー固定価格買取制度', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-renewable-energy'),
@@ -2582,7 +2742,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2015-12-12', null, 'day', 'point', 'パリ協定を採択', 'COP21で、産業革命前からの気温上昇を2℃より十分低く、できれば1.5℃に抑えることを目指すパリ協定が採択されました。途上国を含むすべての国が削減目標を掲げる、いわば初めて全員参加になった約束事です。
 
 今世紀後半の実質排出ゼロが長期目標となったことで、再エネは移行の中心手段と位置づけられ、企業の投資判断や金融の基準にまで浸透していきます。義務型の京都議定書(1997年)から、自主目標を積み上げる方式への転換でもありました。', null,
-          'verified', null, 'user', 13) returning id)
+          'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Paris Agreement', 'https://en.wikipedia.org/wiki/Paris_Agreement')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-renewable-energy'),
@@ -2590,7 +2750,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2016-09-01', null, 'month', 'point', '太陽光入札、当時最安級の価格が相次ぐ', 'アブダビの発電事業入札で、1kWh当たり2.42米セントという当時世界最安水準の太陽光の応札価格が報じられました。この前後、中東や中南米で最安記録の更新が相次ぎます。
 
 補助金なしでも化石燃料と競える水準に達したことを、いわば市場自身が値札で示した局面です。ただしこれらの数字は、日照や金利、土地の条件が揃った案件の値で、単純な国際比較はできません。それでも、価格の向かう方向は誰の目にも明らかになりました。', null,
-          'unverified', '入札価格は報道ベースで、契約条件や補助の有無が案件ごとに異なるため、「最安記録」の比較には幅があります。', 'user', 14) returning id)
+          'unverified', '入札価格は報道ベースで、契約条件や補助の有無が案件ごとに異なるため、「最安記録」の比較には幅があります。', 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('PV Magazine等による2016年アブダビ・スウェイハン入札の報道', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-renewable-energy'),
@@ -2598,7 +2758,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2019-10-09', null, 'day', 'point', '🔋 リチウムイオン電池にノーベル化学賞', 'リチウムイオン電池を開発したグッドイナフ、ウィッティンガム、吉野彰の3氏に、ノーベル化学賞が贈られました。授賞理由には、化石燃料に依存しない社会を可能にする基盤、という位置づけが明記されています。
 
 天候で出力が変わる太陽光・風力を使いこなす鍵は、電気の貯金箱ともいえる蓄電にあります。電気自動車の量産が電池価格を押し下げる好循環(産業と価格レイヤー)が2010年代に確立し、1970年代の石油危機に始まった研究が、再エネの弱点を埋める形で実を結びました。', null,
-          'verified', null, 'user', 15) returning id)
+          'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('The Nobel Prize in Chemistry 2019', 'https://www.nobelprize.org/prizes/chemistry/2019/summary/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-renewable-energy'),
@@ -2606,7 +2766,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2020-10-01', null, 'month', 'point', 'IEA「太陽光は史上最も安い電力」', '国際エネルギー機関(IEA)が、年次報告書の世界エネルギー見通しで、好条件の太陽光発電を「歴史上最も安い電力源」と表現しました。再エネの成長を長年控えめに見積もってきた同機関だけに、いわば慎重な目利きが太鼓判を押した転換として注目されます。
 
 ベクレルの発見(1839年)から181年、ベル研の電池(1954年)から66年での到達です。以後の争点は、発電コストそのものから、送電網への統合や蓄電といった変動対策(技術の芽レイヤー)へと移っていきます。', null,
-          'verified', null, 'user', 16) returning id)
+          'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('IEA: World Energy Outlook 2020', 'https://www.iea.org/reports/world-energy-outlook-2020')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-renewable-energy'),
@@ -2614,7 +2774,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2022-08-16', null, 'day', 'point', '米インフレ抑制法(IRA)成立', '気候・エネルギー対策に約3700億ドルを投じる、米インフレ抑制法が成立しました。税額控除を軸に、再エネ発電から蓄電池や部材の製造まで国内投資を誘導する、米国史上最大の気候立法です。
 
 規制や炭素価格というムチではなく、補助というアメで産業を自国に呼び込む設計は、各国の産業政策競争を誘発しました。再エネが気候対策であると同時に**産業の主導権争いの主戦場**になったことを象徴します。政権交代による見直しという、米国特有のリスクも残りました。', null,
-          'verified', null, 'user', 17) returning id)
+          'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Inflation Reduction Act', 'https://en.wikipedia.org/wiki/Inflation_Reduction_Act')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-renewable-energy'),
@@ -2622,7 +2782,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2023-12-13', null, 'day', 'point', 'COP28、再エネ3倍と脱化石燃料を合意', 'ドバイでのCOP28で、2030年までに世界の再エネ容量を3倍にする目標と、エネルギーシステムにおける「化石燃料からの脱却」が、初めて合意文書に明記されました。
 
 産油国のお膝元でこの文言が入ったことは象徴的ですが、法的な拘束力はなく、実現は各国の実行にかかっています。いわば号令はかかったものの、走るのはこれから。目標達成には送電網の増強と資金、とりわけ途上国への投資という壁が残ると、採択の当日から指摘されていました。', null,
-          'verified', null, 'user', 18) returning id)
+          'verified', null, 'user', 20) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 2023 United Nations Climate Change Conference', 'https://en.wikipedia.org/wiki/2023_United_Nations_Climate_Change_Conference')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-renewable-energy'),
@@ -2630,12 +2790,12 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2024-05-01', null, 'month', 'point', '🌍 世界の発電量の30%が再エネに', 'エネルギー分野のシンクタンクのエンバーが、2023年に世界の発電量に占める再エネの比率が初めて30%を超えたとする分析を公表しました。伸びを引っ張ったのは水力ではなく、太陽光と風力です。
 
 分析は各国統計の集計と推計を含む速報値ですが、方向ははっきりしています。1839年に実験室で見つかった小さな現象は、185年かけて世界の電力の3分の1近くを灯すまでになりました。焦点は「増やせるか」から、「どこまで速く置き換えられるか」へ移っています。', null,
-          'unverified', '30%超という比率はエンバーの集計・推計に基づく速報値で、確定統計では数値が改定されることがあります。', 'user', 19) returning id)
+          'unverified', '30%超という比率はエンバーの集計・推計に基づく速報値で、確定統計では数値が改定されることがあります。', 'user', 21) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Ember: Global Electricity Review 2024', null)) as v(title, url);
 
 -- ═══ science-vaccines — 💉 ワクチン開発の歴史
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('science-vaccines', '00000000-0000-4000-8000-53afa1095b21', '💉 ワクチン開発の歴史', 'ジェンナーの種痘からmRNAワクチンまで、およそ230年。科学の突破、感染症と社会の反応、制度と公衆衛生の整備の3つの層を重ねながら、ワクチンが一人の発明から社会みんなの基盤へ変わっていく道のりを、やさしく語りなおす年表です。', 'science-nature', 'ja', 'public', 's_science-vaccines', 1796, 2023, 'science-vaccines')
+values ('science-vaccines', '00000000-0000-4000-8000-53afa1095b21', '💉 ワクチン開発の歴史', 'ジェンナーの種痘からmRNAワクチンまで、およそ230年。科学の突破、感染症と社会の反応、制度と公衆衛生の整備の3つの層を重ねながら、ワクチンが一人の発明から社会みんなの基盤へ変わっていく道のりを、やさしく語りなおす年表です。', 'science-nature', 'ja', 'public', 's_science-vaccines', 1796, 2026, 'science-vaccines')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'science-vaccines');
@@ -2654,9 +2814,9 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-vaccines'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-vaccines') and name = '制度と公衆衛生'),
-          '1853-01-01', null, 'year', 'point', '英国で種痘法成立、乳児への接種を義務化', '英国で1853年種痘法が成立し、乳児への天然痘ワクチン接種が罰則付きで義務づけられました。国家が国民に予防接種を義務として課した、初期の代表例です。
+          '1853-01-01', '1898-12-31', 'year', 'period', '英国の種痘義務、罰則付きの45年', '英国で1853年種痘法が成立し、乳児への天然痘ワクチン接種が罰則付きで義務づけられました。国家が予防接種を国民の義務とした初期の代表例で、この体制は1898年に「良心的拒否」の条項が認められるまで、45年間続きます。
 
-直後から**接種の義務化と反対運動**が、コインの表と裏のように対になって現れ、反ワクチン同盟の結成や「良心的拒否」条項の追加(1898年)を生みました。ワクチンが個人の医療から公衆衛生の制度へ変わる出発点で、感染症と社会レイヤーでくり返される忌避運動の原型もここにあります。', null,
+義務の線が引かれたその上で、**接種の義務化と反対運動**がコインの表と裏のように対になって現れ、反ワクチン同盟の結成につながりました。感染症と社会レイヤーでくり返される忌避運動の原型は、この線の上で生まれたのです。', null,
           'verified', null, 'user', 1) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Vaccination Act', 'https://en.wikipedia.org/wiki/Vaccination_Act')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -2678,10 +2838,18 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-vaccines'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-vaccines') and name = '感染症と社会'),
+          '1916-06-01', '1961-12-31', 'month', 'period', '米国でポリオの流行が続いた45年', '1916年のニューヨークの大流行を皮切りに、米国では夏が来るたびにポリオの流行がくり返されました。1952年には年間5万7000人を超える患者が報告され、プールや映画館が閉鎖される夏が続きます。
+
+毎年決まって戻ってくる、いわば夏の影のような病気でした。この長い線の終わり近くに、1955年のソークワクチン有効の発表とカッター事故(科学と技術・制度と公衆衛生レイヤー)の点が乗っています。ワクチンの登場からわずか数年で、線は急速に細くなり消えていきました。', null,
+          'disputed', '始まりは1916年の大流行に置きましたが、毎年の季節的な流行の集まりをどこからどこまでと区切るかは、文献により異なります。', 'user', 4) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: History of polio', 'https://en.wikipedia.org/wiki/History_of_polio')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'science-vaccines'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-vaccines') and name = '感染症と社会'),
           '1918-03-01', '1920-04-30', 'month', 'period', 'スペインかぜ大流行、ワクチンなき最後の大災禍', 'H1N1型インフルエンザが世界的に大流行し、世界人口の3割前後が感染、死者は1700万人から1億人と推定されています。当時はインフルエンザウイルスの分離すらできておらず、人類はワクチンという盾を持たないまま向き合うしかありませんでした。
 
 「病原体が分からないまま流行が過ぎ去る」最後の世界的大流行となり、各国の公衆衛生体制と国際協調(制度と公衆衛生レイヤー)の必要性を刻みました。流行の最中にワクチンが作られた約1世紀後の新型コロナと、くっきりと対をなす出来事です。', null,
-          'disputed', '死者数は推計手法により1700万人から1億人まで大きな幅があり、流行の発生地についても米国起源説など諸説あります。', 'user', 4) returning id)
+          'disputed', '死者数は推計手法により1700万人から1億人まで大きな幅があり、流行の発生地についても米国起源説など諸説あります。', 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Spanish flu', 'https://en.wikipedia.org/wiki/Spanish_flu')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-vaccines'),
@@ -2689,7 +2857,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1921-07-01', null, 'month', 'point', 'BCGワクチン、パリで初めて新生児に投与', 'カルメットとゲランが13年かけて230代以上植え継ぎ、病原性が弱まるまで「育てた」ウシ型結核菌(BCG)が、パリで初めて新生児に投与されました。当時最大級の死因だった結核に対する、最初のワクチンです。
 
 長い継代培養で菌の気性を穏やかに変えていく手法は、パスツール流の方法論の到達点でした。1930年のリューベック事故で信頼が大きく揺らぎながらも、戦後はWHOとユニセフの大規模接種事業(制度と公衆衛生レイヤー)を通じ、世界で最も広く接種されるワクチンになります。', null,
-          'unverified', '初回投与の正確な日付は資料により記載が異なり、1921年7月とする文献が多いものの、確定的な一次記録は確認できていません。', 'user', 5) returning id)
+          'unverified', '初回投与の正確な日付は資料により記載が異なり、1921年7月とする文献が多いものの、確定的な一次記録は確認できていません。', 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: BCG vaccine', 'https://en.wikipedia.org/wiki/BCG_vaccine')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-vaccines'),
@@ -2697,7 +2865,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1948-04-07', null, 'day', 'point', '世界保健機関(WHO)が発足', '国連の専門機関として、世界保健機関(WHO)が発足しました。憲章発効日の4月7日は、のちに「世界保健デー」となります。感染症対策を国ごとの事業から国際協調の枠組みへ移す、その拠点が生まれました。
 
 種痘の国際的な調整はここから本格化し、1959年の根絶決議、1967年の根絶強化計画を経て、1980年の天然痘根絶宣言(感染症と社会レイヤー)へ至ります。いわばワクチンを世界へ「配る」ための、物流と調整の中心が定まった出来事です。', null,
-          'verified', null, 'user', 6) returning id)
+          'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('WHO: Constitution of the World Health Organization', 'https://www.who.int/about/governance/constitution')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-vaccines'),
@@ -2705,7 +2873,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1955-04-12', null, 'day', 'point', 'ソークのポリオワクチン、有効性が発表される', 'フランシス報告により、ソークの不活化ポリオワクチンが大規模野外試験で有効と発表されました。約180万人の児童が参加した史上最大級の臨床試験の結果に、ポリオに怯えていた米国は祝賀に沸きます。
 
 発表はラジオで中継され、各地で教会の鐘が鳴らされたと伝えられる社会的事件でした(感染症と社会レイヤー)。ワクチンへの公的な信頼が、いちばん高いところにあった瞬間といえます。しかしわずか2週間後、カッター事故が製造管理の未熟さをあらわにするのです。', null,
-          'verified', null, 'user', 7) returning id)
+          'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Polio vaccine', 'https://en.wikipedia.org/wiki/Polio_vaccine')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-vaccines'),
@@ -2713,7 +2881,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1955-04-27', null, 'day', 'point', 'カッター事故、ワクチン規制強化の転機に', 'カッター研究所製の不活化ポリオワクチンに、不活化が不十分な生きたウイルスが混ざっていたことが分かり、接種した子どもたちに麻痺患者と死者が出ました。政府は同社製品を回収し、接種計画はいったん止まります。
 
 事故の調査を通じて、連邦政府によるワクチンの品質管理と規制の体制が根本から強化され、後の生物製剤監督制度の原型になりました。転んだ場所に手すりが付くように、**失敗が制度を作る**。この年表でくり返される構図の、最初のはっきりした事例です。', null,
-          'verified', null, 'user', 8) returning id)
+          'verified', null, 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Cutter incident', 'https://en.wikipedia.org/wiki/Cutter_incident')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-vaccines'),
@@ -2721,15 +2889,23 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1961-07-01', null, 'month', 'point', '日本、ポリオ生ワクチンを緊急輸入し一斉投与', '日本でポリオ患者が急増するなか、母親たちを中心とする世論の強い求めを受けて、政府はソ連・カナダから経口生ワクチン約1300万人分を緊急輸入し、全国一斉投与に踏み切りました。患者数は翌年から激減します。
 
 平時の薬事手続きをいったん脇に置く、いわば非常ボタンを押すような政治判断で接種が実現した例です。市民の声が制度(制度と公衆衛生レイヤー)を動かした出来事として記憶され、以後の日本のポリオ定期接種の起点になりました。', null,
-          'unverified', '緊急輸入の数量は約1300万人分とする資料が多いものの文献により幅があり、投与実績の集計も資料間で異なります。', 'user', 9) returning id)
+          'unverified', '緊急輸入の数量は約1300万人分とする資料が多いものの文献により幅があり、投与実績の集計も資料間で異なります。', 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('厚生労働省・国立感染症研究所によるポリオ(急性灰白髄炎)関連資料', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-vaccines'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-vaccines') and name = '制度と公衆衛生'),
-          '1974-01-01', null, 'year', 'point', 'WHOが拡大予防接種計画(EPI)を開始', 'WHOが拡大予防接種計画(EPI)を始め、結核・ジフテリア・百日咳・破傷風・ポリオ・麻疹の6つの病気のワクチンを、世界のすべての子どもに届けるという目標を掲げました。
+          '1967-01-01', '1980-05-08', 'year', 'period', 'WHO天然痘根絶強化計画の13年', 'WHOが天然痘の根絶計画を強化し、専任の組織と予算を付けて、流行が残るアジアとアフリカでの制圧に乗り出しました。全員接種ではなく、患者を見つけて周囲を接種で囲い込む包囲接種への戦略転換が、成功の鍵になります。
 
-当時の途上国での接種率は5%程度とされます。ワクチンが存在することと、届くことは別の問題。いわばラストワンマイル、**すべての子どもに届ける仕組み**こそが課題だと、国際保健の中心に据えた計画です。のちのGAVIワクチンアライアンス(2000年)やCOVAX(2020年)も、この延長線上にあります。', null,
-          'verified', null, 'user', 10) returning id)
+火元の周りに防火帯を作るような戦い方でした。1948年に発足したWHO(同じレイヤー)の最大の成果とされるこの線は、1980年の根絶宣言(感染症と社会レイヤー)の点で終わります。凍結乾燥ワクチンと分岐針という、技術の裏方の働きも忘れずに記しておきたいところです。', null,
+          'verified', null, 'user', 11) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Smallpox', 'https://en.wikipedia.org/wiki/Smallpox')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'science-vaccines'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-vaccines') and name = '制度と公衆衛生'),
+          '1974-01-01', '2026-06-30', 'year', 'period', '拡大予防接種計画、続く52年', 'WHOが拡大予防接種計画(EPI)を始め、結核・ジフテリア・百日咳・破傷風・ポリオ・麻疹の6つの病気のワクチンを、世界のすべての子どもに届けるという目標を掲げました。開始当時、途上国での接種率は5%程度とされます。
+
+ワクチンが存在することと、届くことは別の問題。いわばラストワンマイル、**すべての子どもに届ける仕組み**こそが本体だと据えた計画で、名前を変えながら現在も続いています。GAVI(2000年)やCOVAX(2021年、同じレイヤー)も、この線の途中から生えた枝にあたります。', null,
+          'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('WHO: Essential Programme on Immunization', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-vaccines'),
@@ -2737,15 +2913,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1980-05-08', null, 'day', 'point', '🌍 WHOが天然痘の世界根絶を宣言', 'WHO総会が、天然痘の世界根絶を宣言しました。ジェンナーの種痘から184年、天然痘は**人類が計画的に根絶した最初の感染症**になりました。最後の自然感染例は、1977年のソマリアで確認されています。
 
 サーベイランスと包囲接種という戦略、凍結乾燥ワクチンと分岐針という技術、WHOという制度(制度と公衆衛生レイヤー)。三つの歯車が噛み合って初めて届いた到達点です。ワクチンの力を示す金字塔ですが、以後「根絶」は麻疹でもポリオでも達成できていません。', null,
-          'verified', null, 'user', 11) returning id)
+          'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Smallpox', 'https://en.wikipedia.org/wiki/Smallpox')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-vaccines'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-vaccines') and name = '感染症と社会'),
-          '1998-02-28', null, 'day', 'point', 'MMRと自閉症を結びつけた論文、忌避の起点に', '英国の医師ウェイクフィールドらが、MMRワクチンと自閉症の関連を示唆する論文をランセット誌に発表しました。のちに研究不正が認定され、2010年に論文は撤回、本人は医籍を抹消されています。
+          '1998-02-28', '2010-02-02', 'day', 'period', 'MMR不正論文が生きていた12年', '英国の医師ウェイクフィールドらが、MMRワクチンと自閉症の関連を示唆する論文をランセット誌に発表しました。研究不正が認定されて論文が撤回されるまでに、12年かかっています。本人は医籍も抹消されました。
 
-撤回までの12年間に英国などでMMR接種率が大きく下がり、麻疹の再流行を招きました。一度こぼれた水が元に戻らないように、科学的には完全に否定された主張が、SNS時代の**ワクチン忌避**の中核的な言説として生き残り続ける。その起点となった出来事です。', null,
-          'verified', null, 'user', 12) returning id)
+この線が伸びるあいだに英国などで接種率が大きく下がり、麻疹の再流行を招きました。一度こぼれた水が元に戻らないように、科学的に否定された主張は撤回後も**ワクチン忌避**の中核的な言説として生き残り続けています。誤りの訂正は、誤りの拡散よりいつも遅いのです。', null,
+          'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Lancet MMR autism fraud', 'https://en.wikipedia.org/wiki/Lancet_MMR_autism_fraud')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-vaccines'),
@@ -2753,15 +2929,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2006-06-08', null, 'day', 'point', 'FDAが初のHPVワクチンを承認', '米FDAが、初のヒトパピローマウイルス(HPV)ワクチン「ガーダシル」を承認しました。子宮頸がんの主因となるウイルス型の感染を防ぐ、いわば「がんを予防する注射」の実用化です。
 
 感染症の盾ががん対策にも使われるようになった転換点で、豪州など早期に導入した国では、前がん病変の減少が確認されていきます。一方、日本では2013年に積極的勧奨が中止され(制度と公衆衛生レイヤー)、普及の明暗が国によって大きく分かれました。', null,
-          'verified', null, 'user', 13) returning id)
+          'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Gardasil', 'https://en.wikipedia.org/wiki/Gardasil')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-vaccines'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'science-vaccines') and name = '制度と公衆衛生'),
-          '2013-06-14', null, 'day', 'point', '日本、HPVワクチンの積極的勧奨を中止', '厚生労働省が、接種後の多様な症状の報告を受けて、HPVワクチンの積極的勧奨を一時差し控えました。定期接種の位置づけは残ったものの、接種率は70%前後から1%未満へ、崖から落ちるように急落します。
+          '2013-06-14', '2022-04-01', 'day', 'period', 'HPV勧奨差し控え、空白の9年', '厚生労働省が、接種後の多様な症状の報告を受けて、HPVワクチンの積極的勧奨を差し控えました。定期接種の位置づけは残りましたが、接種率は70%前後から1%未満へ急落し、この状態は2022年4月の再開まで約9年続きます。
 
-その後の疫学研究で症状とワクチンの因果関係は支持されず、2022年4月に勧奨は再開されました。しかし約9年の空白は、対象世代で防げたはずの子宮頸がんを増やすと推計されています。科学・制度・社会(感染症と社会レイヤー)の緊張関係が凝縮した事例です。', null,
-          'verified', null, 'user', 14) returning id)
+道路は開いているのに、案内標識だけが外された。いわばそんな9年でした。その後の疫学研究は症状とワクチンの因果関係を支持せず、勧奨は再開されましたが、空白の世代では防げたはずの子宮頸がんが増えると推計されています。再開の判断は、新型コロナのパンデミック(感染症と社会レイヤー)のさなかに行われました。', null,
+          'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('厚生労働省: HPVワクチンの積極的勧奨差し控えに関する勧告(2013年6月14日)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-vaccines'),
@@ -2769,7 +2945,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2020-01-30', '2023-05-05', 'day', 'period', '新型コロナのパンデミック(緊急事態宣言期間)', '新型コロナウイルス感染症が世界的に流行し、WHOは2020年1月30日に「国際的に懸念される公衆衛生上の緊急事態」を宣言、2023年5月5日に終了を発表しました。確認された死者は690万人を超え、超過死亡は1500万人前後と推計されています。
 
 スペインかぜから約1世紀。今回は流行の最中にワクチンが開発・接種された初の世界的大流行となり、mRNA技術の実力(科学と技術レイヤー)と分配の不平等(制度と公衆衛生レイヤー)、その両方を映す鏡になりました。', null,
-          'verified', null, 'user', 15) returning id)
+          'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: COVID-19 pandemic', 'https://en.wikipedia.org/wiki/COVID-19_pandemic')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-vaccines'),
@@ -2777,7 +2953,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2020-12-02', null, 'day', 'point', '💉 英国がmRNAワクチンを世界に先駆け承認', '英国の規制当局MHRAがファイザー・ビオンテックのmRNAワクチンを承認し、西側諸国で初の新型コロナワクチン実用化となりました。8日後には、90歳の女性が臨床試験の外で世界初の接種を受けています。
 
 ウイルスの遺伝子配列の公開から約11か月。**着手から1年未満での実用化**は、「ワクチン開発は10年仕事」という常識を覆しました。カリコらの基礎研究、各国政府の先行購入という資本、緊急承認という制度(制度と公衆衛生レイヤー)。三つの力の足し算でした。', null,
-          'verified', null, 'user', 16) returning id)
+          'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Pfizer–BioNTech COVID-19 vaccine', 'https://en.wikipedia.org/wiki/Pfizer%E2%80%93BioNTech_COVID-19_vaccine')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-vaccines'),
@@ -2785,7 +2961,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2021-02-24', null, 'day', 'point', 'COVAX初の供給便がガーナに到着', 'ワクチンの共同購入・分配の国際枠組みCOVAXによる初の供給便が、ガーナの首都アクラに到着しました。高所得国による買い占めに対して、いわば先に並んだ人だけが買える列に順番を作ろうとする試みです。
 
 しかし2021年の供給目標20億回分は大幅な未達に終わり、先進国でブースター接種が進む一方、低所得国の接種率が1桁台にとどまる時期が続きました。**分配の不平等**が、技術ではなく制度の限界として刻まれた出来事です。', null,
-          'unverified', '供給実績や各国の接種率の数値は、GaviやWHOの自己報告と推計に基づいており、集計時点や定義により幅があります。', 'user', 17) returning id)
+          'unverified', '供給実績や各国の接種率の数値は、GaviやWHOの自己報告と推計に基づいており、集計時点や定義により幅があります。', 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Gavi/WHO/UNICEF: COVAX共同声明・供給実績報告', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-vaccines'),
@@ -2793,7 +2969,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2021-10-06', null, 'day', 'point', 'WHOが初のマラリアワクチンを推奨', 'WHOがマラリアワクチンRTS,S(モスキリックス)について、サハラ以南アフリカなどの子どもへの広い使用を初めて推奨しました。寄生虫による感染症に対する、世界初の実用ワクチンです。
 
 有効率は3割ほどと高くありませんが、患者数が膨大なため、公衆衛生上の効果は大きいと判断されました。小さな網でも魚の多い海なら多く掬える、という考え方です。30年を超えた開発は官民連携の資金に支えられ、市場任せでは進まないワクチン開発を制度が支えた例として、COVAXと同じ文脈に置かれます。', null,
-          'verified', null, 'user', 18) returning id)
+          'verified', null, 'user', 20) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: RTS,S', 'https://en.wikipedia.org/wiki/RTS,S')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'science-vaccines'),
@@ -2801,6 +2977,6 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2023-10-02', null, 'day', 'point', 'カリコとワイスマンにノーベル生理学・医学賞', 'mRNAワクチンを可能にした塩基修飾の発見により、カタリン・カリコとドリュー・ワイスマンにノーベル生理学・医学賞が贈られました。授賞理由には、新型コロナワクチン開発への貢献が明記されています。
 
 カリコの研究は長年、資金難と降格のなかで続けられ、鍵となる2005年の論文も当初はほとんど注目されませんでした。パンデミックという需要が、**基礎研究の長い助走**を一気に社会実装の跳躍へ変えた。この年表の締めくくりにふさわしい物語です。', null,
-          'verified', null, 'user', 19) returning id)
+          'verified', null, 'user', 21) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('NobelPrize.org: The Nobel Prize in Physiology or Medicine 2023', 'https://www.nobelprize.org/prizes/medicine/2023/press-release/')) as v(title, url);
 

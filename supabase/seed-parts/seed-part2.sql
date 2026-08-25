@@ -297,7 +297,7 @@ on conflict (id) do update set username = excluded.username, display_name = excl
 
 -- ═══ culture-anime-global — 📺 アニメ文化の世界進出
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('culture-anime-global', '00000000-0000-4000-8000-88ca25792997', '📺 アニメ文化の世界進出', '1963年のテレビアニメ誕生から劇場作品の世界的ヒット、配信による産業化まで。作品・産業と配信・海外の受容の3層を重ねて、日本のアニメが世界の主流娯楽になっていく流れをカルチャーの現場目線で追う年表です。', 'culture', 'ja', 'public', 's_culture-anime-global', 1963, 2025, 'culture-anime-global')
+values ('culture-anime-global', '00000000-0000-4000-8000-88ca25792997', '📺 アニメ文化の世界進出', '1963年のテレビアニメ誕生から劇場作品の世界的ヒット、配信による産業化まで。作品・産業と配信・海外の受容の3層を重ねて、日本のアニメが世界の主流娯楽になっていく流れをカルチャーの現場目線で追う年表です。', 'culture', 'ja', 'public', 's_culture-anime-global', 1963, 2026, 'culture-anime-global')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-anime-global');
@@ -308,9 +308,9 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-anime-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-anime-global') and name = '作品と表現'),
-          '1963-01-01', null, 'day', 'point', '🤖 「鉄腕アトム」放送開始、テレビアニメの原点', '手塚治虫の虫プロダクションが制作した「鉄腕アトム」がフジテレビ系で放送開始。日本初の本格的な30分連続テレビアニメです。
+          '1963-01-01', '1966-12-31', 'day', 'period', '🤖 「鉄腕アトム」放送の4年', '手塚治虫の虫プロダクションが制作した「鉄腕アトム」がフジテレビ系で放送開始。日本初の本格的な30分連続テレビアニメは、1966年の大晦日まで4年間走り続けました。
 
-週1本の放送を回すために止め絵や作画の使い回しを体系化した**リミテッドアニメ**の手法は、低予算で物語の密度を追いかける日本アニメの生産様式と表現の型を作りました。この方式が、以後の産業と表現の両方を長く決めていくことになります。', null,
+週1本を回すために止め絵や作画の使い回しを体系化した**リミテッドアニメ**の手法は、この4年の線の上で日本アニメの生産様式になりました。放送開始からわずか9か月で「Astro Boy」として海を渡っている(海外の受容とファンレイヤー)のも、この線の見どころです。', null,
           'verified', null, 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('手塚プロダクション公式サイト: 鉄腕アトム', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -342,7 +342,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-anime-global') and name = '作品と表現'),
           '1988-07-16', null, 'day', 'point', '「AKIRA」公開、ジャパニメーションの衝撃', '大友克洋監督の「AKIRA」が公開。当時としては破格の制作費とセル画枚数を注ぎ込んだ緻密な作画で、崩壊後の東京を描くSF大作です。
 
-翌年以降の海外公開でカルト的な支持を獲得して、「ジャパニメーション」の代名詞として欧米のクリエイターに影響を与えました。アニメは子ども向けという既成観念をひっくり返して、大人の観客という新しい市場を海外の受容レイヤーに切り開いた1本です。', null,
+翌年以降の海外公開でカルト的な支持を獲得して、「ジャパニメーション」の代名詞になりました。ファンサブVHSの時代(海外の受容とファンレイヤー)の線のただ中に落ちた衝撃で、ダビングを重ねたテープが、大人の観客という新しい市場を海外に切り開いていきます。', null,
           'verified', null, 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Akira (1988 film)', 'https://en.wikipedia.org/wiki/Akira_(1988_film)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -372,10 +372,10 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-anime-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-anime-global') and name = '海外の受容とファン'),
-          '1998-01-01', null, 'year', 'point', '「ドラゴンボールZ」が米Toonami枠で人気爆発', '米カートゥーン・ネットワークの放送枠Toonamiで「ドラゴンボールZ」の放送がスタート。再放送を重ねながら、10代を中心に絶大な人気を得ました。
+          '1998-01-01', '2003-12-31', 'year', 'period', '「ドラゴンボールZ」、Toonamiの5年', '米カートゥーン・ネットワークの放送枠Toonamiで「ドラゴンボールZ」の放送が始まって、再放送を重ねながら10代を中心に絶大な人気を保ち続けました。完結までおよそ5年、日本アニメが北米のテレビの日常だった線です。
 
-ケーブル局の専門枠という受け皿を得て、日本アニメは字幕ビデオのマニア文化からテレビの日常になります。この時期にToonamiで育った世代の視聴体験が、2000年代以降の北米市場拡大と配信サービス(産業と配信レイヤー)の顧客基盤の土台になりました。', null,
-          'verified', null, 'user', 8) returning id)
+この線は、北米アニメブーム(産業と配信レイヤー)の線の序盤にちょうど重なっています。Toonamiで育った世代の視聴体験が、DVD市場の拡大と、その後の配信サービスの顧客基盤の土台になりました。', null,
+          'disputed', 'Toonamiでの放送期間は再放送を含めて区切り方に幅があり、ここでは放送開始(1998年)から新規エピソードの放送終了(2003年)までを採りました。なお本作は1996〜97年にシンジケーションで先行放送されています。', 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Toonami', 'https://en.wikipedia.org/wiki/Toonami')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-anime-global'),
@@ -387,11 +387,19 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Pokémon', 'https://en.wikipedia.org/wiki/Pok%C3%A9mon')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-anime-global'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-anime-global') and name = '産業と配信'),
+          '1998-09-01', '2008-12-31', 'month', 'period', '北米アニメブーム、DVDバブルの10年', 'ポケモンの本格上陸を口火に、北米でアニメのテレビ放送・ライセンス・DVD販売の市場が一気に膨らんだ10年です。専門の販売会社が乱立して、書店にマンガの棚ができたのもこの時期でした。
+
+ドラゴンボールZのToonamiの線(海外の受容とファンレイヤー)は、この線の序盤にそのまま重なっています。しかしDVD市場は2008年ごろに崩壊して大手の撤退が相次ぎ、翌年からサイマル配信(同じレイヤー)の線へと主役が交代しました。', null,
+          'disputed', '北米アニメ市場の拡大と縮小の区切りには定説がなく、ポケモン本格展開(1998年9月)から大手販売会社の撤退・倒産が相次いだ2008年までを便宜的に採りました。', 'user', 10) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Jonathan Clements: Anime: A History (BFI, 2013)', null)) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'culture-anime-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-anime-global') and name = '作品と表現'),
           '2003-03-23', null, 'day', 'point', '🏆 「千と千尋の神隠し」がアカデミー賞受賞', '宮崎駿監督の「千と千尋の神隠し」が、第75回アカデミー賞長編アニメーション部門を受賞しました!前年にはベルリン国際映画祭で金熊賞も受けています。
 
 日本で歴代興行収入1位になった作品が米映画界の最高賞まで届いたことで、**作家性への世界的承認**が決定的になりました。CG全盛へ向かう時期に手描きの表現が評価された意味も大きくて、以後の劇場アニメの海外展開への強い追い風になります。', null,
-          'verified', null, 'user', 10) returning id)
+          'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Spirited Away', 'https://en.wikipedia.org/wiki/Spirited_Away')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-anime-global'),
@@ -399,15 +407,23 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2006-01-01', null, 'year', 'point', 'Crunchyroll創業、ファン発の配信サービス', '米国でアニメ動画サイトCrunchyrollが創業。最初は無許諾のアップロードを含むファン主導のサイトでしたが、後に権利者と提携して正規のサイマル配信へ転換しました。
 
 日本の放送直後に字幕付きで世界へ届けるサイマル配信は、ファンサブが満たしていた需要を合法の市場に変えます。ファン文化の内側から産業が生まれた例で、配信時代のアニメ経済圏の原型になりました。', null,
-          'verified', null, 'user', 11) returning id)
+          'verified', null, 'user', 12) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Crunchyroll', 'https://en.wikipedia.org/wiki/Crunchyroll')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'culture-anime-global'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-anime-global') and name = '産業と配信'),
+          '2009-01-01', '2026-06-30', 'month', 'period', 'サイマル配信、世界同時の17年', '日本の放送直後に字幕付きで世界へ届くサイマル配信が、Crunchyrollの正規化を皮切りに業界の標準になっていきました。国内と海外の時差が消えたこの線は、17年たったいまも続いています。
+
+進撃の巨人の放送10年(作品と表現レイヤー)も、鬼滅の刃の世界的ヒットも、全部この線の上の出来事です。DVDバブル(同じレイヤー)が崩れた翌年に始まっているのがポイントで、ディスクから配信へという受容の主役交代が、はっきり線に出ています。', null,
+          'disputed', '始点はCrunchyrollが権利者公認のサイマル配信を始めた2009年1月を便宜的に採りました。終点は生成時点(2026年6月)でキャップしていますが、この体制は現在も続いています。', 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Crunchyroll', 'https://en.wikipedia.org/wiki/Crunchyroll')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-anime-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-anime-global') and name = '作品と表現'),
-          '2013-04-01', null, 'month', 'point', '「進撃の巨人」放送、配信で世界同時ブームに', '諫山創原作のテレビアニメ「進撃の巨人」が放送開始。配信サービスを通じてほぼ同時に海外へ届いて、SNS上の考察・リアクション文化とともに世界規模のブームになりました。
+          '2013-04-01', '2023-11-30', 'month', 'period', '「進撃の巨人」放送の10年', '諫山創原作のテレビアニメ「進撃の巨人」が放送開始。完結編まで断続的に10年続いたシリーズは、配信を通じてほぼ同時に海外へ届いて、SNSの考察・リアクション文化とともに世界規模のブームになりました。
 
-国内放送から海外人気までの時差がほぼ消えた最初期の例です。世界の反応が製作委員会の収益と続編の判断に直結する構造が定着していって、作品レイヤーと産業と配信レイヤーの結び付きが、配信によって一段深まりました。', null,
-          'verified', null, 'user', 12) returning id)
+この10年の線は、サイマル配信の時代(産業と配信レイヤー)の線の上に丸ごと乗っています。国内放送から海外人気までの時差が消えた最初期の例で、世界の反応が続編の判断に直結する構造は、この線の間にすっかり当たり前になりました。', null,
+          'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Attack on Titan', 'https://en.wikipedia.org/wiki/Attack_on_Titan')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-anime-global'),
@@ -415,7 +431,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2016-08-26', null, 'day', 'point', '「君の名は。」公開、アジアで記録的ヒット', '新海誠監督の「君の名は。」が公開されて、日本で興行収入約250億円。中国や韓国でも当時の日本映画の記録を塗り替える大ヒットになりました!
 
 スタジオジブリ以外の作家では初めての世界的メガヒットで、とりわけ中国市場の急成長を強く印象づけます。個人の作家性とSNS時代の拡散力が結び付いた事例で、劇場アニメの海外収益が事業計画の柱になる転機でした。', null,
-          'verified', null, 'user', 13) returning id)
+          'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Your Name', 'https://en.wikipedia.org/wiki/Your_Name')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-anime-global'),
@@ -423,7 +439,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2020-01-01', null, 'year', 'point', 'Netflixが「1億世帯超がアニメ視聴」と公表', 'Netflixが、直近1年間で全世界の1億を超える世帯が同社でアニメを見たと公表して、オリジナルアニメへの投資拡大を打ち出しました。
 
 数字は自社発表で外部の検証はありませんが、世界最大級の配信プラットフォームがアニメを主要ジャンルと位置づけた意味は大きいです。配信マネーの流入は、制作現場の待遇や製作委員会方式のあり方をめぐる議論も同時に呼び起こしました。', null,
-          'unverified', '視聴世帯数はNetflixの自社発表に基づく数字で、集計基準の詳しい開示や第三者による検証はありません。', 'user', 14) returning id)
+          'unverified', '視聴世帯数はNetflixの自社発表に基づく数字で、集計基準の詳しい開示や第三者による検証はありません。', 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Netflixのアニメ視聴に関する発表(2020年)への各社報道', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-anime-global'),
@@ -431,7 +447,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2020-10-16', null, 'day', 'point', '「鬼滅の刃 無限列車編」が2020年世界興収首位', '「劇場版 鬼滅の刃 無限列車編」が公開されて、日本歴代1位の興行収入を記録。パンデミック下の2020年の世界年間興行収入でも首位になりました!
 
 テレビ放送と配信で広がったファン層が劇場に殺到する、**配信が観客を育てる**時代の象徴です。日本映画が世界の年間首位に立つのは初めてで、ハリウッドの公開延期が続いた特殊な年という条件を差し引いても、産業の地力を見せました。', null,
-          'verified', null, 'user', 15) returning id)
+          'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 劇場版「鬼滅の刃」無限列車編', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-anime-global'),
@@ -439,7 +455,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2021-08-09', null, 'day', 'point', 'ソニーがCrunchyroll買収を完了', 'ソニー傘下のファニメーションが、AT&TからのCrunchyroll買収を完了しました。買収額は11.75億ドルで、傘下の配信ブランドは後にCrunchyrollへ統合されます。
 
 日本の権利元に近い資本が海外アニメ配信の最大手を押さえたことで、製作から世界配信までの垂直統合が進みました。**流通の主導権**をめぐる再編で、アニメが国際的なメディア資本の主戦場になったことを示しています。', null,
-          'verified', null, 'user', 16) returning id)
+          'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Sony Pictures / Funimationプレスリリース(2021-08-09)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-anime-global'),
@@ -447,7 +463,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2024-01-01', null, 'year', 'point', 'アニメ産業市場が3兆円突破と報告される', '日本動画協会の「アニメ産業レポート2024」で、2023年の広義のアニメ産業市場が初めて3兆円を超えたと報告されました。海外市場が全体のおよそ半分を占める構造が続いています。
 
 この数値は関連事業者の売上を積み上げた推計で、集計範囲の設定によって規模感は変わります。それでも約10年で市場が倍増して、**成長の主役は海外**という傾向は一貫していて、この年表の到達点を数字で裏づけています。', null,
-          'disputed', '市場規模は日本動画協会による広義市場の推計で、集計範囲や手法をめぐって数値の評価が分かれています。', 'user', 17) returning id)
+          'disputed', '市場規模は日本動画協会による広義市場の推計で、集計範囲や手法をめぐって数値の評価が分かれています。', 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('日本動画協会「アニメ産業レポート2024」', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-anime-global'),
@@ -455,7 +471,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2025-07-01', null, 'month', 'point', '「鬼滅の刃 無限城編」が世界で記録的ヒット', '「劇場版 鬼滅の刃 無限城編 第一章」が公開されて、日本で歴代最速級の興行記録を更新!北米でもアニメ映画の公開週末記録を塗り替えたと報じられています。
 
 興行の数字は集計途上で確定していませんが、字幕・吹替を問わず世界の一般客層が公開初週から動く状況は、半世紀にわたる受容の積み重ねの現在地です。海外レイヤーで「特別な趣味」だったアニメは、もう主流の娯楽になっています。', null,
-          'unverified', '公開後の興行数値は報道ベースの速報値で、確定値や最終的な順位は集計途上です。', 'user', 18) returning id)
+          'unverified', '公開後の興行数値は報道ベースの速報値で、確定値や最終的な順位は集計途上です。', 'user', 20) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('「劇場版 鬼滅の刃 無限城編」の興行に関する各社報道(2025)', null)) as v(title, url);
 
 -- ═══ culture-architecture — 建築様式の進化
@@ -471,9 +487,9 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-architecture'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-architecture') and name = '技術と材料'),
-          '1851-05-01', null, 'day', 'point', 'ロンドン万博の水晶宮が開幕', '第1回万国博覧会の会場として、ジョセフ・パクストン設計の水晶宮が開幕しました。鋳鉄とガラスの規格部材を工場で量産し、現場で組み立てる方式により、巨大な展示空間をわずか数か月で建て上げています。
+          '1851-05-01', '1936-11-30', 'day', 'period', '水晶宮の85年', '第1回万国博覧会の会場として、ジョセフ・パクストン設計の水晶宮が開幕しました。鋳鉄とガラスの規格部材を工場で量産し、現場で組み立てる方式により、巨大な展示空間をわずか数か月で建て上げています。博覧会後はシドナムの丘へ移築され、1936年の火災で焼失するまで85年間立ち続けました。
 
-建築家ではなく温室技師の手による建物が時代の象徴となり、**部材の工業生産**という20世紀建築の前提がここで示されました。石を積む建築から、組み立てる建築への転換点です。', null,
+建築家ではなく温室技師の手による建物が時代の象徴となり、**部材の工業生産**という20世紀建築の前提がここで示されました。この線が続くあいだに、シカゴの高層化もエッフェル塔もバウハウス(様式と思想レイヤー)も現れています。', null,
           'verified', null, 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: The Crystal Palace', 'https://en.wikipedia.org/wiki/The_Crystal_Palace')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -511,10 +527,10 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-architecture'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-architecture') and name = '様式と思想'),
-          '1932-02-01', null, 'month', 'point', 'MoMA「近代建築展」が国際様式を定義', 'ニューヨーク近代美術館で、ヒッチコックとフィリップ・ジョンソンの企画による近代建築の展覧会が開かれ、欧州の新しい建築を「インターナショナル・スタイル」として整理・命名しました。
+          '1932-02-01', '1966-12-31', 'month', 'period', '国際様式の34年', 'ニューヨーク近代美術館で、ヒッチコックとフィリップ・ジョンソンの企画による近代建築展が開かれ、欧州の新しい建築が「インターナショナル・スタイル」として整理・命名されました。以後この様式は、戦後の企業建築の標準として世界を覆っていきます。
 
-社会改革の思想を帯びていた欧州モダニズムを、様式すなわち見た目の語彙として米国へ紹介した展覧会と評されています。命名により普及が加速する一方で、思想の脱色という代償も指摘され、のちのポストモダンからの批判の伏線となりました。', null,
-          'verified', null, 'user', 5) returning id)
+社会改革の思想を帯びていた欧州モダニズムを、見た目の語彙として米国へ紹介した点には、思想の脱色という代償も指摘されています。シーグラム・ビル(1958年、技術と材料レイヤー)はこの線の頂点であり、1966年のヴェンチューリの批判が、線の終わりを告げました。', null,
+          'disputed', '展覧会の開催は事実ですが、「国際様式の時代」の終点をどこに置くかは論者により異なります。ここではヴェンチューリ『建築の多様性と対立性』刊行(1966年)までを採りました。', 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('MoMA: Modern Architecture: International Exhibition (1932)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-architecture'),
@@ -526,11 +542,27 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Fondation Le Corbusier: Unité d''habitation, Marseille', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-architecture'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-architecture') and name = '都市と生活'),
+          '1954-01-01', '1976-12-31', 'year', 'period', 'プルーイット・アイゴー団地の22年', '米セントルイスに、モダニズムの手法で計画された大規模公営住宅プルーイット・アイゴーが完成し、入居が始まりました。荒廃と空室化が進み、1972年3月の爆破解体開始から1976年の全棟撤去まで、竣工からわずか22年の生涯でした。
+
+評論家ジェンクスは爆破の瞬間を「**モダニズム建築が死んだ日**」と呼びましたが、失敗の主因を設計に帰すこの語りには、人種隔離や維持財源の欠如といった政策要因を軽視しているとの批判が根強くあります。国際様式の線(様式と思想レイヤー)が批判にさらされ始めた直後に、建物の線も終わりました。', null,
+          'disputed', '解体をモダニズム建築の失敗の証拠とする解釈は象徴的な語りであり、主因は住宅政策や運営にあったとする研究が有力です。入居開始や完成の時期は棟により異なります。', 'user', 7) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Pruitt–Igoe', 'https://en.wikipedia.org/wiki/Pruitt%E2%80%93Igoe')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'culture-architecture'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-architecture') and name = '都市と生活'),
+          '1954-12-01', '1973-11-30', 'month', 'period', '日本の高度経済成長、19年', '神武景気に始まり第一次オイルショックで終わる、日本経済が急拡大を続けた19年間です。都市への人口集中と深刻な住宅不足を背景に団地とニュータウンの建設が進み、建築界にも巨大な需要をもたらしました。
+
+1960年のメタボリズム宣言(様式と思想レイヤー)は、この成長の線が生んだ建築運動でした。中銀カプセルタワービルが竣工したのは線の終わる前年にあたり、成長を前提とした「交換する建築」の理念は、成長の終わりとともに現実との距離を広げていきます。', null,
+          'disputed', '高度経済成長の期間には諸説あります。ここでは神武景気の始まり(1954年12月)から第一次オイルショック(1973年11月)までを採りました。', 'user', 8) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('内閣府: 景気基準日付', null)) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'culture-architecture'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-architecture') and name = '技術と材料'),
           '1958-01-01', null, 'year', 'point', 'シーグラム・ビル完成、カーテンウォールの規範に', 'ミース・ファン・デル・ローエ設計のシーグラム・ビルが、ニューヨークに完成しました。ブロンズとガラスのカーテンウォールと前面広場を持つ構成は、以後の超高層オフィスの世界的な規範となります。
 
 「レス・イズ・モア」の美学の到達点とされ、当時最も建設費の高い超高層とも報じられました。前面広場の評価は、のちにニューヨークの容積率優遇制度(都市と生活レイヤー)を生み、企業の威信が都市空間を形づくる時代を象徴しています。', null,
-          'unverified', '「当時世界で最も建設費の高い超高層」という言及は報道・二次資料に基づくもので、一次的な費用の開示は確認できません。', 'user', 7) returning id)
+          'unverified', '「当時世界で最も建設費の高い超高層」という言及は報道・二次資料に基づくもので、一次的な費用の開示は確認できません。', 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Seagram Building', 'https://en.wikipedia.org/wiki/Seagram_Building')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-architecture'),
@@ -538,7 +570,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1960-01-01', null, 'year', 'point', '世界デザイン会議で「メタボリズム」宣言', '東京で開かれた世界デザイン会議に合わせ、菊竹清訓、黒川紀章らが宣言文書「METABOLISM 1960」を発表しました。都市と建築を新陳代謝する生命体と捉え、成長と交換を前提とする設計を唱えています。
 
 高度成長期の日本の人口集中という、都市と生活レイヤーの現実が生んだ日本発の建築運動です。理念はのちに中銀カプセルタワービルで実作となりますが、その建物の運命は、思想と現実の距離をも示すことになります。', null,
-          'verified', null, 'user', 8) returning id)
+          'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Metabolism (architecture)', 'https://en.wikipedia.org/wiki/Metabolism_(architecture)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-architecture'),
@@ -546,31 +578,23 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1966-01-01', null, 'year', 'point', 'ヴェンチューリ『建築の多様性と対立性』刊行', 'ロバート・ヴェンチューリが著書のなかで「レス・イズ・ア・ボア(退屈)」と切り返し、単純明快を求めるモダニズムに対して、曖昧さや折衷、歴史的引用を含む建築の豊かさを擁護しました。
 
 MoMAから出版された本書は、ポストモダン建築の理論的な出発点とされています。国際様式がその定義から30年余りで内部から批判された形であり、様式の交代がまず思想の言葉から始まるという、本年表の型を示す例でもあります。', null,
-          'verified', null, 'user', 9) returning id)
+          'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('MoMA: Complexity and Contradiction in Architecture (1966)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-architecture'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-architecture') and name = '都市と生活'),
-          '1972-01-01', null, 'year', 'point', '中銀カプセルタワービル完成', '黒川紀章設計の中銀カプセルタワービルが、東京・銀座に完成しました。工場生産した140個のカプセル住戸を2本のコアに取り付ける構成で、メタボリズムの理念を体現した代表的な実作です。
+          '1972-01-01', '2022-04-30', 'year', 'period', '中銀カプセルタワービルの50年', '黒川紀章設計の中銀カプセルタワービルが、東京・銀座に完成しました。工場生産した140個のカプセル住戸を2本のコアに取り付ける、メタボリズムの理念を体現した実作です。想定されていたカプセルの交換は、2022年に解体が始まるまでの50年間、一度も実現しませんでした。
 
-カプセルは将来の交換が想定され、世界初のカプセル型集合住宅と紹介されることも多い建物です。都心に暮らす単身ビジネスマンという新しい生活像に応えた点で、都市と生活レイヤーの実験でもありました。', null,
-          'disputed', '「世界初のカプセル型集合住宅」という位置づけは定義に依存し、先行例の扱いによって見解が分かれます。', 'user', 10) returning id)
+交換により生き続けるはずだった建築が、交換できないまま終わった結末は、**新陳代謝の思想と現実の距離**を示しています。竣工は高度経済成長の線が尽きる前年のことでした。一部のカプセルは取り外されて美術館などに再生され、保存問題を広く喚起しています。', null,
+          'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Nakagin Capsule Tower', 'https://en.wikipedia.org/wiki/Nakagin_Capsule_Tower')) as v(title, url);
-with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
-  values ((select id from public.timelines where slug = 'culture-architecture'),
-          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-architecture') and name = '都市と生活'),
-          '1972-03-16', null, 'day', 'point', 'プルーイット・アイゴー団地の爆破解体が始まる', '米セントルイスの大規模公営住宅プルーイット・アイゴーで、荒廃した棟の爆破解体が始まりました。モダニズムの手法で計画された団地の、竣工から20年足らずでの取り壊しでした。
-
-評論家ジェンクスは爆破の瞬間を「**モダニズム建築が死んだ日**」と呼びましたが、失敗の主因を設計に帰すこの語りには、人種隔離や維持財源の欠如といった政策要因を軽視しているとの批判が根強くあります。建築に何が背負えるのかを問う事件です。', null,
-          'disputed', '解体をモダニズム建築の失敗の証拠とする解釈は象徴的な語りであり、主因は住宅政策や運営にあったとする研究が有力です。', 'user', 11) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Pruitt–Igoe', 'https://en.wikipedia.org/wiki/Pruitt%E2%80%93Igoe')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-architecture'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-architecture') and name = '技術と材料'),
           '1977-01-31', null, 'day', 'point', 'ポンピドゥー・センター開館', 'パリに、レンゾ・ピアノとリチャード・ロジャース設計のポンピドゥー・センターが開館しました。構造や配管、動線を色分けして建物の外側に露出し、内部を自由な無柱空間とする、ハイテク建築の代表作です。
 
 歴史都市の中心に現れた精製工場のような姿は激しい賛否を呼びましたが、前面広場とともに、市民へ開かれた文化装置として定着しました。技術の表現がそのまま様式となる、技術と材料レイヤーの思想化を示す例です。', null,
-          'verified', null, 'user', 12) returning id)
+          'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Centre Pompidou: The Building', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-architecture'),
@@ -578,7 +602,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1984-01-01', null, 'year', 'point', 'AT&Tビル完成、ポストモダンの記念碑に', 'フィリップ・ジョンソン設計のAT&Tビルが、ニューヨークに完成しました。頂部に家具のような割れたペディメントを載せた石張りの超高層は、ガラスの箱への決別を宣言するものでした。
 
 1932年に国際様式を米国へ紹介した本人によるポストモダン転向であるだけに象徴性は大きく、歴史的意匠の引用が企業建築の主流となる80年代を開きました。ヴェンチューリの理論が、超高層のスケールで実現した形といえます。', null,
-          'verified', null, 'user', 13) returning id)
+          'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 550 Madison Avenue', 'https://en.wikipedia.org/wiki/550_Madison_Avenue')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-architecture'),
@@ -586,7 +610,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1997-10-01', null, 'month', 'point', 'グッゲンハイム美術館ビルバオ開館', 'フランク・ゲーリー設計のグッゲンハイム美術館が、造船業の衰退したスペイン・ビルバオに開館しました。チタンで覆われた曲面の群れは、航空機設計ソフトを転用する手法(技術と材料レイヤー)で実現されています。
 
 開館後の観光客急増による経済再生は**ビルバオ効果**と呼ばれ、各都市が象徴建築を求める潮流を生みました。ただし効果の金額は自治体系の推計が中心で、他都市での再現性には懐疑も残ります。デジタル設計普及の起点でもあります。', null,
-          'unverified', '経済効果とされる数値は州・市当局や関係機関の推計に基づいており、独立した検証は限られています。', 'user', 14) returning id)
+          'unverified', '経済効果とされる数値は州・市当局や関係機関の推計に基づいており、独立した検証は限られています。', 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Guggenheim Bilbao: The Building', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-architecture'),
@@ -594,7 +618,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2010-01-04', null, 'day', 'point', 'ブルジュ・ハリファ開業、高さ828メートル', 'ドバイに、世界一の高さ828メートルを誇るブルジュ・ハリファが開業しました。風の影響を抑えるため上昇につれて断面を細めるY字形の平面と、超高強度コンクリートを高所へ圧送する技術が、この高さを支えています。
 
 金融危機でドバイが債務危機に陥った直後の開業であり、支援した隣国首長の名へ改称された経緯は、超高層が経済と威信の指標であることを物語ります。高さ競争の舞台は湾岸・アジアへ移り、欧米中心の摩天楼史が塗り替えられました。', null,
-          'verified', null, 'user', 15) returning id)
+          'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Burj Khalifa', 'https://en.wikipedia.org/wiki/Burj_Khalifa')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-architecture'),
@@ -602,7 +626,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2014-03-01', null, 'month', 'point', '坂茂がプリツカー賞受賞、紙の建築が評価される', '紙管を構造材とする避難所や仮設住宅を各地の被災地で建ててきた坂茂が、プリツカー賞を受賞しました。神戸の紙の教会からニュージーランドの紙のカテドラルに至る実践が評価されています。
 
 記念碑ではなく、緊急時の生活を支える建築に最高の栄誉が与えられたことは、象徴建築の造形競争が続いた2000年代からの転換と受け止められました。建築の社会的役割を問い直す流れは、以後の同賞の受賞者選定にも続いていきます。', null,
-          'verified', null, 'user', 16) returning id)
+          'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('The Pritzker Architecture Prize: Shigeru Ban', 'https://www.pritzkerprize.com/laureates/shigeru-ban')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-architecture'),
@@ -610,20 +634,12 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2019-03-01', null, 'month', 'point', 'ミョーストーネ完成、木造超高層の時代へ', 'ノルウェーに、高さ85.4メートル、18階建ての木造高層ビル、ミョーストーネが完成し、CTBUHに当時の世界最高の木造建築と認定されました。集成材と直交集成板(CLT)による構造です。
 
 炭素を蓄える木材は脱炭素時代の構造材として再評価され、各国で耐火規制の見直しと高層木造の計画が続いています。鉄とガラスから始まった本年表が、**木への回帰**という円環を描いて現在に至ることを示す事例です。', null,
-          'verified', null, 'user', 17) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('CTBUH: Mjøstårnet', null)) as v(title, url);
-with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
-  values ((select id from public.timelines where slug = 'culture-architecture'),
-          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-architecture') and name = '都市と生活'),
-          '2022-04-01', null, 'month', 'point', '中銀カプセルタワービル解体始まる', '老朽化と修繕の困難から、中銀カプセルタワービルの解体が始まりました。設計時に想定されたカプセルの交換は、竣工から50年のあいだに一度も実現しませんでした。
-
-交換により生き続けるはずだった建築が、交換できないまま終わった結末は、**新陳代謝の思想と現実の距離**を示しています。一部のカプセルは取り外されて美術館などに収蔵・再生され、解体をめぐる議論は、戦後日本の名建築の保存問題を広く喚起しました。', null,
           'verified', null, 'user', 18) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Nakagin Capsule Tower', 'https://en.wikipedia.org/wiki/Nakagin_Capsule_Tower')) as v(title, url);
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('CTBUH: Mjøstårnet', null)) as v(title, url);
 
 -- ═══ culture-cinema-100 — 映画100年史
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('culture-cinema-100', '00000000-0000-4000-8000-3df26bfd5b76', '映画100年史', '1895年のリュミエール兄弟から2020年代の配信時代まで。撮影・上映の技術、作品と作家、産業と観客の3層を重ね、技術の節目がいかに表現と興行を作り替えてきたかを追う。', 'culture', 'ja', 'public', 's_culture-cinema-100', 1895, 2023, 'culture-cinema-100')
+values ('culture-cinema-100', '00000000-0000-4000-8000-3df26bfd5b76', '映画100年史', '1895年のリュミエール兄弟から2020年代の配信時代まで。撮影・上映の技術、作品と作家、産業と観客の3層を重ね、技術の節目がいかに表現と興行を作り替えてきたかを追う。', 'culture', 'ja', 'public', 's_culture-cinema-100', 1895, 2026, 'culture-cinema-100')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100');
@@ -641,11 +657,19 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Institut Lumière (公式)', 'https://www.institut-lumiere.org/'), ('Wikipedia: Auguste and Louis Lumière', 'https://en.wikipedia.org/wiki/Auguste_and_Louis_Lumi%C3%A8re')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '技術'),
+          '1895-12-28', '1929-12-31', 'day', 'period', 'サイレント映画の34年', '映画は音を持たずに生まれ、およそ34年のあいだ無声のまま世界へ広がった。弁士や楽団の生演奏が音を補い、字幕と身振りが言語の壁を越えたため、サイレント映画は最初から国際商品だった。
+
+この線の上に、メリエスの魔術も日活の設立も乗っている(作品と作家・産業と観客レイヤー)。線を断ち切ったのは『ジャズ・シンガー』の成功である。音のない34年は、映画がもっとも自由に国境を越えた時代でもあった。', null,
+          'disputed', 'サイレント期の終点は国により異なる(米国は1929年頃、日本は弁士文化により1930年代半ばまで)。ここでは米国でトーキーが主流化した1929年末までを便宜的に採った。', 'user', 1) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Silent film', 'https://en.wikipedia.org/wiki/Silent_film')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '作品と作家'),
           '1902-09-01', null, 'month', 'point', 'メリエス『月世界旅行』公開', '舞台の手品師出身のメリエスが、セットと特殊効果で約14分の物語映画『月世界旅行』を作り、映画を「見世物」から「語り」へ導いた。多重露光やストップ・トリックといった技術レイヤーの発明を、物語のために体系的に用いた最初期の作品である。
 
 無許可の複製が米国で流通して収益を奪われた経緯は、産業レイヤーで著作権と配給の仕組みが未整備だったことを示す。着色版が近年再発見され、修復のうえ上映されている。', null,
-          'verified', null, 'user', 1) returning id)
+          'verified', null, 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: A Trip to the Moon', 'https://en.wikipedia.org/wiki/A_Trip_to_the_Moon')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
@@ -653,7 +677,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1912-09-10', null, 'day', 'point', '日本活動写真株式会社（日活）設立', '国内4社が合併して日本活動写真株式会社（日活）が誕生し、製作・配給・興行を束ねる日本最初期の大手映画会社が生まれた。
 
 欧米でも同時期にスタジオが形成されており、日本の映画産業が世界とほぼ同時に企業化したことを示す。技術レイヤーでは輸入映写機と国産フィルムの整備が進み、作品レイヤーでは弁士付きの上映が独自の受容文化を作っていた。以後、松竹（1920年）などの参入で競争構造が形作られる。', null,
-          'verified', null, 'user', 2) returning id)
+          'verified', null, 'user', 3) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('日活: 会社沿革（公式）', 'https://www.nikkatsu.com/company/history.html'), ('Wikipedia: 日活', 'https://ja.wikipedia.org/wiki/%E6%97%A5%E6%B4%BB')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
@@ -661,7 +685,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1927-10-06', null, 'day', 'point', '『ジャズ・シンガー』公開、トーキーの商業的成功', 'ワーナー・ブラザースのヴァイタフォン方式で同期音声を持つ長編『ジャズ・シンガー』が公開され、部分トーキーながら興行の成功が各社の設備投資を決定づけた。数年でサイレントは主流から退く。
 
 **音の導入は撮影所の防音化、俳優の声、音楽著作権と、技術・作品・産業のすべてを組み替えた**。同じ年には映画芸術科学アカデミーが設立され、業界の自己組織化が進む。日本では弁士文化のためトーキー化が数年遅れた。', null,
-          'verified', null, 'user', 3) returning id)
+          'verified', null, 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: The Jazz Singer', 'https://en.wikipedia.org/wiki/The_Jazz_Singer')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
@@ -669,15 +693,23 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1930-01-01', '1948-05-03', 'year', 'period', 'ハリウッド・スタジオシステムの全盛期', '大手5社が製作・配給・興行を垂直統合し、専属契約の俳優と監督で量産した時代。トーキー化に伴う設備投資が寡占を強め、大恐慌下でも週7,000万人以上が映画館に通った。
 
 作品レイヤーではジャンル映画とスターシステムが確立し、1934年の製作倫理規定（ヘイズ・コード）の厳格運用で表現の枠も産業側が決めた。技術レイヤーではテクニカラーが浸透していく。1948年の反トラスト判決で体制は崩れ始める。', null,
-          'disputed', '始点と終点は論者により異なる（トーキー化の1927〜1929年を起点とする説、テレビ普及の1950年代までとする説など）。', 'user', 4) returning id)
+          'disputed', '始点と終点は論者により異なる（トーキー化の1927〜1929年を起点とする説、テレビ普及の1950年代までとする説など）。', 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Studio system', 'https://en.wikipedia.org/wiki/Studio_system')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'culture-cinema-100'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '産業と観客'),
+          '1934-07-01', '1968-11-01', 'month', 'period', 'ヘイズ・コードの34年', '製作倫理規定(ヘイズ・コード)の運用が厳格化され、承認印のない映画は大手の劇場網でかけられなくなった。犯罪の肯定や性的描写を細かく禁じ、**表現の枠を産業が自主的に決めた**34年間である。
+
+スタジオシステムの線と重ねると、規定は体制の崩壊後もなお20年生き延びたことが見える。線の終わり、1968年のレーティング制度への移行は、ヌーヴェルヴァーグ以後の観客の変化(作品と作家レイヤー)と地続きだった。', null,
+          'verified', null, 'user', 6) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Motion Picture Production Code', 'https://en.wikipedia.org/wiki/Motion_Picture_Production_Code')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '作品と作家'),
           '1941-05-01', null, 'day', 'point', 'オーソン・ウェルズ『市民ケーン』公開', '25歳のオーソン・ウェルズが『市民ケーン』を発表。パンフォーカス、非線形の語り、天井の見える構図で撮影所の慣習を組み替え、後世の批評で最高作と繰り返し評された。撮影監督グレッグ・トーランドの深い被写界深度は、高感度フィルムと照明技術の進歩という技術レイヤーに支えられていた。
 
 モデルとされた新聞王ハーストの妨害で興行は振るわず、産業レイヤーではスタジオが有力者の圧力に弱いことを露呈した。アカデミー賞は脚本賞のみの受賞に終わった。', null,
-          'verified', null, 'user', 5) returning id)
+          'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Citizen Kane', 'https://en.wikipedia.org/wiki/Citizen_Kane')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
@@ -685,31 +717,31 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1948-05-03', null, 'day', 'point', '米最高裁「パラマウント判決」、スタジオの劇場所有を違法と判断', '米最高裁が製作会社による映画館チェーンの所有と抱き合わせ配給を反トラスト法違反と認定し、スタジオの垂直統合が解体へ向かった。判決の翌年からスタジオは劇場部門の分離を進め、2020年に同意判決が終了するまで70年以上ハリウッドの産業構造を規定した。
 
 同時期にテレビが家庭に入り始め、観客動員は減少に転じる。スタジオは大作主義とワイドスクリーンや立体といった技術的な差別化で対抗し、独立プロと監督の裁量が拡大した。', null,
-          'verified', null, 'user', 6) returning id)
+          'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: United States v. Paramount Pictures, Inc.', 'https://en.wikipedia.org/wiki/United_States_v._Paramount_Pictures,_Inc.')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'culture-cinema-100'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '産業と観客'),
+          '1951-01-01', '1963-12-31', 'year', 'period', '日本映画の黄金期の13年', '『羅生門』の国際的な評価に始まり、テレビに観客を奪われて入場者数がピークの半分を下回るまで。大手6社が週替わり2本立てで年500本以上を作り、1958年には年間入場者数が約11億2,700万人の最高記録に達した。
+
+頂点はしかし、崩壊の始まりと同じ場所にある。皇太子成婚の中継を機にテレビ受像機が茶の間へ入り、**家庭が「観客席」になっていく**(技術レイヤー)。この線が閉じる頃、入場者数は5億人余りまで落ちていた。', null,
+          'disputed', '「黄金期」の区切りには諸説ある。ここでは『羅生門』ヴェネツィア受賞の1951年から、年間入場者数がピーク(1958年・約11.3億人)の半分を下回った1963年までを採った。', 'user', 9) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('日本映画製作者連盟: 過去データ一覧(入場人員)', 'http://www.eiren.org/toukei/data.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '作品と作家'),
           '1951-09-10', null, 'day', 'point', '黒澤明『羅生門』、ヴェネツィア国際映画祭で金獅子賞', '前年公開の黒澤明『羅生門』がヴェネツィア国際映画祭で最高賞の金獅子賞を受賞し、日本映画が国際的に発見された。国内では評価が割れた作品を、海外の映画祭という制度が押し上げた例である。
 
-以後、溝口・小津らが欧州の映画祭で評価される。産業レイヤーでは日本の映画館入場者数が急増期にあり、1950年代を通じて年10億人規模に達する。技術レイヤーでは宮川一夫が太陽に直接カメラを向ける撮影を試み、表現の常識を更新した。', null,
-          'verified', null, 'user', 7) returning id)
+以後、溝口・小津らが欧州の映画祭で評価される。産業レイヤーでは、この年を起点に日本映画の黄金期の線が引かれ、入場者数は年10億人規模へ向かう。技術レイヤーでは宮川一夫が太陽に直接カメラを向ける撮影を試み、表現の常識を更新した。', null,
+          'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 羅生門 (1950年の映画)', 'https://ja.wikipedia.org/wiki/%E7%BE%85%E7%94%9F%E9%96%80_(1950%E5%B9%B4%E3%81%AE%E6%98%A0%E7%94%BB)')) as v(title, url);
-with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
-  values ((select id from public.timelines where slug = 'culture-cinema-100'),
-          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '産業と観客'),
-          '1958-01-01', null, 'year', 'point', '日本の映画館入場者数が約11億2,700万人でピーク', '日本映画製作者連盟の統計で年間入場者数が約11億2,700万人の過去最高を記録。作品レイヤーでは大手6社が週替わり2本立てで年500本以上を製作した黄金期である。
-
-技術レイヤーではテレビ受像機が皇太子成婚（1959年）を機に普及し、**家庭が「観客席」になっていく**。翌年のテレビ普及本格化とともに入場者数は急減に転じ、1960年代を通じて3分の1以下に落ち込んで撮影所システムの再編を促した。', null,
-          'verified', null, 'user', 8) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('日本映画製作者連盟: 過去データ一覧（入場人員）', 'http://www.eiren.org/toukei/data.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '作品と作家'),
           '1959-05-01', '1968-05-31', 'month', 'period', 'ヌーヴェルヴァーグの時代', 'トリュフォー『大人は判ってくれない』のカンヌ受賞からゴダールらの活動を経て、1968年のカンヌ中止までの時代。作家主義が世界に広がった。
 
 **軽量カメラと高感度フィルム、同時録音機という技術レイヤーの進歩が、撮影所を出て街頭で撮る手法を可能にした**。批評誌『カイエ・デュ・シネマ』出身の監督たちは「作家」という概念を定着させ、産業レイヤーではスタジオ外の低予算製作が興行として成立することを示した。', null,
-          'disputed', '運動の始点・終点には諸説あり（1958年『美しきセルジュ』を起点、1960年代前半で終わるとする見方など）。本項は便宜的な区切り。', 'user', 9) returning id)
+          'disputed', '運動の始点・終点には諸説あり（1958年『美しきセルジュ』を起点、1960年代前半で終わるとする見方など）。本項は便宜的な区切り。', 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: French New Wave', 'https://en.wikipedia.org/wiki/French_New_Wave')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
@@ -717,15 +749,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1975-06-20', null, 'day', 'point', '『ジョーズ』公開、ブロックバスター興行の原型に', '『ジョーズ』が全米400館超の同時公開とテレビCMの大量投下で夏興行を制し、公開規模とマーケティングの型を作った。それまで大作は都市部の少数館から順次拡大するのが通例で、広域一斉公開は例外だった。
 
 作品レイヤーではスピルバーグら「映画学校世代」が主流に入り、技術レイヤーでは1977年の『スター・ウォーズ』がモーションコントロール撮影とドルビーステレオで続く。以後、夏と年末の大作商戦が産業のリズムになる。', null,
-          'verified', null, 'user', 10) returning id)
+          'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Jaws (film)', 'https://en.wikipedia.org/wiki/Jaws_(film)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '技術'),
-          '1976-09-01', null, 'month', 'point', '日本ビクターがVHS方式のビデオデッキを発売', '日本ビクターがVHS方式のビデオデッキを発売し、家庭で映画を録画・再生できる時代が始まった。ベータマックスとの規格競争を経てVHSが標準となり、レンタルビデオ市場を生む。
+          '1976-09-01', '2003-06-30', 'month', 'period', 'VHSとレンタルビデオの27年', '日本ビクターがVHS方式のビデオデッキを発売し、規格競争を経て、家庭で映画を録画・再生する時代が四半世紀あまり続いた。レンタルビデオ店が街に生まれ、1980年代にはビデオ収入が劇場興行を上回る収益源となった。
 
-産業レイヤーでは映画会社が当初は違法録画を恐れて訴訟を起こしたが（ベータマックス訴訟）、1980年代にはビデオ販売とレンタルが劇場興行を上回る収益源となった。作品レイヤーでは旧作や小規模作品が「棚」で発見される機会が生まれ、**後の配信時代の視聴形態を先取り**した。', null,
-          'unverified', '発表は1976年9月、発売は同年10月とする資料もあり、月の特定は要確認。', 'user', 11) returning id)
+映画会社は当初この技術を訴訟で迎えたが(ベータマックス訴訟)、やがて最大の顧客になった。旧作や小規模作品が「棚」で発見される視聴形態は、この線の終わりに現れるDVD、そして配信の時代(同じ技術レイヤーの次の線)へ引き継がれていく。', null,
+          'disputed', '発売時期には発表1976年9月・発売同年10月とする資料差がある。「ビデオの時代」の終点も明確でなく、ここでは米国でDVDレンタルがVHSを初めて上回ったと業界団体が発表した2003年6月を便宜的な終点とした。', 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: VHS', 'https://en.wikipedia.org/wiki/VHS')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
@@ -733,7 +765,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1995-11-22', null, 'day', 'point', '『トイ・ストーリー』公開、全編CGによる初の長編', 'ピクサーがコンピュータ・グラフィックスだけで長編『トイ・ストーリー』を完成させ、アニメーションと実写の双方に転換をもたらした。1993年『ジュラシック・パーク』の恐竜が実写合成の壁を越えたのに続く節目である。
 
 産業レイヤーではディズニーとの配給契約が長編CG映画の商業モデルを確立し、2000年代の手描きアニメ縮小につながる。作品レイヤーでは「デジタルの作家」という新しい職能が生まれた。', null,
-          'verified', null, 'user', 12) returning id)
+          'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Toy Story', 'https://en.wikipedia.org/wiki/Toy_Story')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
@@ -741,7 +773,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1997-12-19', null, 'day', 'point', '『タイタニック』公開、世界興行収入が初めて10億ドルを突破', '製作費超過で不安視された大作『タイタニック』が記録的なロングランとなり、世界興行収入が初めて10億ドルを突破。世界同時マーケティングとリピート鑑賞の力を示した。
 
 技術レイヤーではCGと大規模セットの併用が標準になり、作品レイヤーではメロドラマと災害映画の合体という古典的な語りが最新技術で再生された。同年、DVDが米国で発売されて家庭視聴の画質が上がる一方、映画館は「大画面でしか味わえない体験」を売る方向へ向かう。', null,
-          'verified', null, 'user', 13) returning id)
+          'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Titanic (1997 film)', 'https://en.wikipedia.org/wiki/Titanic_(1997_film)'), ('Box Office Mojo: Titanic', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
@@ -749,15 +781,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2005-01-01', '2014-12-31', 'year', 'period', 'フィルム上映からデジタル上映への転換期', 'DCI規格の策定を起点に、主要国の映画館がフィルム映写機をデジタルプロジェクターへ置き換えた期間。2009年『アバター』の3D興行がデジタル化の投資を一気に正当化し、2012年にはコダックが連邦破産法を申請した。
 
 産業レイヤーでは配給コストが激減する一方、小規模館の設備投資負担が問題化した。作品レイヤーではデジタルカメラでの撮影が標準となり、フィルムは一部作家の選択肢に退いた。', null,
-          'unverified', '始点・終点は規格策定と主要国の移行完了時期から概略で置いたもので、国別の移行時期は大きく異なる。', 'user', 14) returning id)
+          'unverified', '始点・終点は規格策定と主要国の移行完了時期から概略で置いたもので、国別の移行時期は大きく異なる。', 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Digital cinema', 'https://en.wikipedia.org/wiki/Digital_cinema')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-cinema-100') and name = '技術'),
-          '2007-01-01', null, 'month', 'point', 'Netflixがストリーミング配信を開始', 'DVD郵送レンタルから始まったNetflixがオンライン視聴を導入し、**映画が「届く」から「呼び出す」ものへ変わる**起点となった。ブロードバンドの普及という技術基盤の上で、月額定額のライブラリという新しい消費形態が定着する。
+          '2007-01-01', '2026-06-30', 'month', 'period', 'ストリーミング配信の時代、20年目', 'DVD郵送レンタルから始まったNetflixがオンライン視聴を導入し、**映画が「届く」から「呼び出す」ものへ変わった**。月額定額のライブラリという消費形態は各国へ広がり、この線は現在も続いている。
 
-産業レイヤーでは劇場・ビデオ・テレビという公開順序（ウィンドウ）が揺らぎ、作品レイヤーでは2010年代半ばから配信会社の自社製作が映画祭と賞レースに参入していく。', null,
-          'verified', null, 'user', 15) returning id)
+線の途中にはデジタル上映への転換(同じ技術レイヤー)が並走し、『パラサイト』の受賞も、ワーナーの同日公開も、パンデミックによる劇場休業も、すべてこの線の上で起きた。劇場の100年余りに対して、配信はまだ20年目の若い線である。', null,
+          'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Netflix', 'https://en.wikipedia.org/wiki/Netflix')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
@@ -765,7 +797,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2009-12-18', null, 'day', 'point', '『アバター』公開、3Dとデジタル上映を興行の主流に押し上げる', 'パフォーマンス・キャプチャと立体撮影を組み合わせた大作『アバター』が世界興行収入の記録を更新し、3D上映の設備投資を加速させた。
 
 1950年代の3Dブームがテレビ対策として短命に終わったのに対し、今回はデジタル上映への移行と結びついて劇場の設備を恒久的に変えた。産業レイヤーでは3D追加料金が興行収入を押し上げ、作品レイヤーではその後数年、大作の3D化が半ば義務のようになった。', null,
-          'verified', null, 'user', 16) returning id)
+          'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Avatar (2009 film)', 'https://en.wikipedia.org/wiki/Avatar_(2009_film)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
@@ -773,7 +805,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2020-02-09', null, 'day', 'point', '『パラサイト 半地下の家族』、非英語作品で初のアカデミー作品賞', 'ポン・ジュノ監督『パラサイト 半地下の家族』が非英語作品で初めてアカデミー作品賞を受賞し、監督賞など4部門を制した。前年のカンヌ最高賞に続き、英語圏中心の評価軸が動いた。
 
 韓国映画産業の1990年代以降の投資と映画振興策の成果が国際的な制度で認められた形である。技術・産業レイヤーでは字幕付き作品が配信で日常的に視聴される環境が受容の土壌を作っており、翌月にはパンデミックで世界の映画館が休業し、配信への移行が一気に進む。', null,
-          'verified', null, 'user', 17) returning id)
+          'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Parasite (2019 film)', 'https://en.wikipedia.org/wiki/Parasite_(2019_film)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
@@ -781,7 +813,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2020-12-03', null, 'day', 'point', 'ワーナー、2021年全作品を劇場と配信で同日公開と発表', 'パンデミック下でワーナーが2021年全作品の劇場とHBO Maxでの同日公開を発表し、**劇場優先の公開順序（ウィンドウ）が大手スタジオによって公然と崩された**。
 
 映画館の休業と配信加入者の急増という産業レイヤーの変化が、技術レイヤーで整っていた配信基盤に一気に流れ込んだ形である。作家や劇場チェーンの反発を受けて翌年には劇場独占期間を短縮した形で折り合いがついたが、45日ウィンドウなど新しい慣行が定着した。同年、日本では『劇場版「鬼滅の刃」無限列車編』が興行収入の国内記録を更新し、劇場体験の需要が消えていないことも示された。', null,
-          'verified', null, 'user', 18) returning id)
+          'verified', null, 'user', 20) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: HBO Max (Warner Bros. day-and-date releases)', null), ('Warner Bros. Discovery: プレスリリース (2020年12月3日)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-cinema-100'),
@@ -789,12 +821,12 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2023-07-21', null, 'day', 'point', '『バービー』と『オッペンハイマー』が同日公開、劇場に観客が戻る', '対照的な『バービー』と『オッペンハイマー』の同日公開が「バーベンハイマー」現象を生み、パンデミック後の劇場興行回復を象徴した。SNS上の観客発の話題化がマーケティングを上回る効果を持った例である。
 
 技術レイヤーではIMAX70mmフィルム上映が話題になるなど、配信では代替できない体験が再評価された。同時期に全米で脚本家・俳優組合のストライキが起き、配信時代の報酬とAI利用をめぐる産業構造の再交渉が並行していた。', null,
-          'verified', null, 'user', 19) returning id)
+          'verified', null, 'user', 21) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Barbenheimer', 'https://en.wikipedia.org/wiki/Barbenheimer')) as v(title, url);
 
 -- ═══ culture-design-thinking — デザイン思考の歴史
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('culture-design-thinking', '00000000-0000-4000-8000-512d7b8348dc', 'デザイン思考の歴史', 'バウハウスからd.school、そして批判の時代へ。思想・企業実践・教育制度の3層を重ね、デザインが造形の技能から問題解決の方法論へと広がり、流行と反省を経て定着するまでを静かに辿る年表です。', 'culture', 'ja', 'public', 's_culture-design-thinking', 1919, 2023, 'culture-design-thinking')
+values ('culture-design-thinking', '00000000-0000-4000-8000-512d7b8348dc', 'デザイン思考の歴史', 'バウハウスからd.school、そして批判の時代へ。思想・企業実践・教育制度の3層を重ね、デザインが造形の技能から問題解決の方法論へと広がり、流行と反省を経て定着するまでを静かに辿る年表です。', 'culture', 'ja', 'public', 's_culture-design-thinking', 1919, 2026, 'culture-design-thinking')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-design-thinking');
@@ -805,7 +837,7 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-design-thinking'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-design-thinking') and name = '教育と制度'),
-          '1919-04-01', '1933-07-01', 'month', 'period', 'バウハウス開校', '芸術と技術の統合を掲げる造形学校バウハウスが、独ヴァイマルに開校しました。工業生産を前提に、素材と機能から発想する基礎教育を体系化し、ナチス政権の圧力で1933年に閉校するまで、モダンデザインの規範を作っています。
+          '1919-04-01', '1933-07-01', 'month', 'period', 'バウハウスの14年', '芸術と技術の統合を掲げる造形学校バウハウスが、独ヴァイマルに開校しました。工業生産を前提に、素材と機能から発想する基礎教育を体系化し、ナチス政権の圧力で1933年に閉校するまで、モダンデザインの規範を作っています。
 
 閉校後は、教員たちの亡命によって方法論が米国の大学へ移植されました。デザインを**個人の才能ではなく教えられる方法**とみなす伝統はここに始まり、後年のd.schoolに連なる「デザイン教育の制度化」の源流となります。', null,
           'verified', null, 'user', 0) returning id)
@@ -884,19 +916,27 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Tim Brown, "Design Thinking", Harvard Business Review (June 2008)', 'https://hbr.org/2008/06/design-thinking')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-design-thinking'),
-          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-design-thinking') and name = '教育と制度'),
-          '2010-01-01', null, 'year', 'point', '人間中心設計が国際規格ISO 9241-210に', 'インタラクティブシステムの人間中心設計プロセスが、国際規格ISO 9241-210として発行されました。利用状況の理解、ユーザーの関与、反復的な設計と評価などを、開発の要件として定めています。
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-design-thinking') and name = '思想と方法論'),
+          '2008-06-01', '2018-12-31', 'month', 'period', '流行語「デザイン思考」の10年', 'ティム・ブラウンのHBR論文を合図に、「デザイン思考」は経営とイノベーションの流行語として世界を駆け巡りました。研修、認定講座、コンサルティングが一大市場となり、5段階のプロセス図が会議室の共通言語になった10年間です。
 
-デザイン思考の核心にある人間中心の考え方が、調達仕様や開発標準に書き込める形式へと翻訳されました。流行とは独立に実務へ定着する経路であり、後年ブームが退潮しても残る「制度化された成果」の代表です。', null,
-          'verified', null, 'user', 10) returning id)
+この線の上に、IBMの大規模デザイン組織も、デザイン会社の買収ブーム(いずれも企業と実践レイヤー)も乗っています。2017年のジェンの批判で潮目が変わり、線の終わり近くに日本の「デザイン経営」宣言(教育と制度レイヤー)が置かれているのは、約10年の時差の縮図といえます。', null,
+          'disputed', '流行の始点・終点に定説はありません。ここではHBR論文(2008年6月)から、批判が潮流となりブームの退潮が語られるようになる2018年ごろまでを採りました。', 'user', 10) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Design thinking', 'https://en.wikipedia.org/wiki/Design_thinking')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'culture-design-thinking'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-design-thinking') and name = '教育と制度'),
+          '2010-03-01', '2026-06-30', 'month', 'period', '国際規格ISO 9241-210の16年', 'インタラクティブシステムの人間中心設計プロセスが、国際規格ISO 9241-210として発行されました。利用状況の理解、ユーザーの関与、反復的な設計と評価などを開発の要件として定め、2019年の改訂を経て、現在も効力を持ち続けています。
+
+デザイン思考の核心にある人間中心の考え方が、調達仕様や開発標準に書き込める形式へと翻訳された線です。流行語の線(思想と方法論レイヤー)が2010年代の末に細っていくのを尻目に、この線は静かに延び続けました。流行が去っても規格は残ることを、線の長さが示しています。', null,
+          'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('ISO 9241-210:2010 Ergonomics of human-system interaction — Part 210: Human-centred design', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-design-thinking'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-design-thinking') and name = '教育と制度'),
-          '2011-01-01', null, 'year', 'point', '英政府がGDS設立、行政にデザインが常駐', '英政府が、行政サービスのデジタル化組織Government Digital Service(GDS)を設立しました。利用者ニーズから出発する設計原則を掲げ、政府サイトを統合したGOV.UKは、2013年に英国のデザイン・オブ・ザ・イヤーを受賞しています。
+          '2011-01-01', '2026-06-30', 'year', 'period', '英GDS、行政に常駐する15年', '英政府が、行政サービスのデジタル化組織Government Digital Service(GDS)を設立しました。利用者ニーズから出発する設計原則を掲げ、政府サイトを統合したGOV.UKは2013年に英国のデザイン・オブ・ザ・イヤーを受賞しています。組織は現在も英政府の中で活動を続けています。
 
-デザイン思考的な手法が、一国の行政の標準装備になった画期です。米国の18Fや日本のデジタル庁など、各国の政府デジタル組織のモデルとなりました。教育機関の外で方法論が制度化された、代表的な例です。', null,
-          'verified', null, 'user', 11) returning id)
+デザイン思考的な手法が一国の行政の標準装備になった線であり、米国の18Fや日本のデジタル庁など、各国の政府デジタル組織のモデルとなりました。流行語の線(思想と方法論レイヤー)が終わったあとも続くこの線は、教育機関の外での方法論の制度化を示しています。', null,
+          'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Government Digital Service', 'https://en.wikipedia.org/wiki/Government_Digital_Service')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-design-thinking'),
@@ -904,15 +944,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2013-01-01', null, 'year', 'point', 'IBMが大規模デザイン組織を始動', 'IBMが、米オースティンを拠点にデザイン部門IBM Designを発足させました。デザイナー1000人超の採用計画と、全社員向け研修プログラムIBM Design Thinkingの展開を打ち出したと報じられています。
 
 「史上最大級のデザイン投資」と喧伝され、大企業がデザイン組織を内製する流れを決定づけました。同時期のデザイン会社買収ブーム(同レイヤー)と合わせ、実践の主導権はデザイン事務所から事業会社へと移っていきます。', null,
-          'unverified', '採用規模や投資額は同社発表と報道に基づく数字で、独立した検証はありません。', 'user', 12) returning id)
+          'unverified', '採用規模や投資額は同社発表と報道に基づく数字で、独立した検証はありません。', 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('IBM Design (公式サイト)', 'https://www.ibm.com/design/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-design-thinking'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-design-thinking') and name = '企業と実践'),
-          '2013-01-01', '2017-12-31', 'year', 'period', 'デザイン会社の買収ブーム', 'AccentureによるFjord買収、Capital OneによるAdaptive Path買収、McKinseyによるLunar買収など、コンサルティング会社・金融・事業会社によるデザイン会社の買収が相次ぎました。
+          '2013-01-01', '2017-12-31', 'year', 'period', 'デザイン会社の買収ブーム、5年', 'AccentureによるFjord買収、Capital OneによるAdaptive Path買収、McKinseyによるLunar買収など、コンサルティング会社・金融・事業会社によるデザイン会社の買収が相次ぎました。
 
 デザインが、外注するサービスから**経営資源として買われる対象**へと変わったことを示す潮流です。ジョン・マエダの年次報告書Design in Tech Reportがこの動きを毎年集計し、業界の合言葉になりました。', null,
-          'disputed', '買収件数の集計はDesign in Tech Report等の民間集計によるもので、集計基準により件数は変動します。', 'user', 13) returning id)
+          'disputed', '買収件数の集計はDesign in Tech Report等の民間集計によるもので、集計基準により件数は変動します。', 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Design in Tech Report (John Maeda)', 'https://designintech.report')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-design-thinking'),
@@ -920,7 +960,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2017-06-01', null, 'month', 'point', 'ナターシャ・ジェンのデザイン思考批判講演', 'ペンタグラムのパートナー、ナターシャ・ジェンが、ニューヨークの99Uカンファレンスでデザイン思考を痛烈に批判する講演を行いました。5段階図式の形骸化と、付箋に頼る安易なワークショップ文化を槍玉に挙げています。
 
 デザインに不可欠な批評(クリット)の不在という指摘は、方法論の大衆化が生んだ質の劣化を突くものでした。流行の頂点で内部から上がった、最初の広く知られた異議であり、以後、批判は散発から潮流へと変わっていきます。', null,
-          'verified', null, 'user', 14) returning id)
+          'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Natasha Jen: 99U Conference講演 (2017)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-design-thinking'),
@@ -928,7 +968,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2018-05-23', null, 'day', 'point', '経産省・特許庁が「デザイン経営」宣言', '経済産業省と特許庁の研究会が、報告書「デザイン経営」を公表しました。最高デザイン責任者の経営参画やデザイン投資の効果を説き、日本企業へのデザイン思考導入を、国の政策として後押ししています。
 
 米国では企業実践が先行し、批判期に入りつつあった時期に、日本では官庁がブームの推進役を担いました。約10年の時差を伴って方法論が輸入されるという、日本のデザイン受容に繰り返し現れる構図です。', null,
-          'verified', null, 'user', 15) returning id)
+          'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('経済産業省・特許庁「産業競争力とデザインを考える研究会」報告書『「デザイン経営」宣言』(2018)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-design-thinking'),
@@ -936,7 +976,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2018-10-01', null, 'month', 'point', 'マッキンゼー「デザインの経営価値」報告書', 'マッキンゼーが、報告書「デザインの経営価値」を公表しました。約300社を5年間追跡し、独自のデザイン指標で上位に入る企業は、売上成長と株主リターンで業界平均を上回った、と結論づけています。
 
 デザイン投資を財務の言葉で正当化する際の、定番の引用元となりました。ブームが測定と投資対効果の言葉で語られる段階に入ったことを示しますが、相関を因果として引用する例の多さには、慎重な見方もあります。', null,
-          'disputed', '報告書の分析は相関にとどまり、デザイン投資が業績を高めるという因果関係は実証されていません。指標の妥当性にも議論があります。', 'user', 16) returning id)
+          'disputed', '報告書の分析は相関にとどまり、デザイン投資が業績を高めるという因果関係は実証されていません。指標の妥当性にも議論があります。', 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('McKinsey: The Business Value of Design (2018)', 'https://www.mckinsey.com/capabilities/mckinsey-design/our-insights/the-business-value-of-design')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-design-thinking'),
@@ -944,7 +984,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2023-02-01', null, 'month', 'point', '「デザイン思考はどこで間違ったのか」', 'MITテクノロジーレビュー誌が、「デザイン思考は世界を直すはずだった。どこで間違ったのか」と題する長編記事を掲載しました。d.school関係者を含む当事者への取材から、方法論の限界と形骸化を総括しています。
 
 万能の問題解決法という物語の終わりを象徴する記事とされます。一方で人間中心設計は、国際規格や行政の標準(教育と制度レイヤー)として定着しており、**「流行の終わり」と「定着」は別物**であることも読み取れます。', null,
-          'verified', null, 'user', 17) returning id)
+          'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('MIT Technology Review: Design thinking was supposed to fix the world. Where did it go wrong? (2023-02)', null)) as v(title, url);
 
 -- ═══ culture-fashion — ファッションの変遷
@@ -967,27 +1007,43 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('The Metropolitan Museum of Art: Poiret: King of Fashion (2007年展覧会)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-fashion'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-fashion') and name = '社会と身体'),
+          '1920-01-01', '1929-12-31', 'year', 'period', 'フラッパーの1920年代', '第一次大戦後の欧米で、短い髪に膝丈のドレス、コルセットを捨てた直線的なシルエットの若い女性像「フラッパー」が広まりました。装いの軽さが、参政権や就労といった女性の生活の変化と分かちがたく結びついた10年間です。
+
+シャネルのリトル・ブラック・ドレス(1926年)は、この線のただ中に置かれた提案でした。デザイナーの美意識(デザイナーと美意識レイヤー)と身体の解放が同じ方向を向いて並走した時代であり、1929年の大恐慌とともに、装いの気分もまた転調していきます。', null,
+          'disputed', '「フラッパー」の流行期は慣習的に1920年代とされますが、明確な始点・終点を定める基準はありません。ここでは暦の上の1920年代を採っています。', 'user', 1) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Flapper', 'https://en.wikipedia.org/wiki/Flapper')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'culture-fashion'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-fashion') and name = 'デザイナーと美意識'),
           '1926-10-01', null, 'month', 'point', 'シャネルのリトル・ブラック・ドレスがVogue誌に', '米Vogue誌1926年10月号がシャネルのシンプルな黒いドレスを掲載し、誰もが乗る量産車になぞらえて「シャネルのフォード」と評しました。
 
 喪の色であった黒を日常の装いへと転じ、装飾ではなく簡素さを豊かさとする美意識を示した提案です。第一次大戦後の女性の社会進出と呼応しており、のちに産業と流通レイヤーが前提とする「定番」という考え方の原型となりました。', null,
-          'verified', null, 'user', 1) returning id)
+          'verified', null, 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Vogue (US) 1926年10月1日号', null), ('Wikipedia: Little black dress', 'https://en.wikipedia.org/wiki/Little_black_dress')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-fashion'),
-          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-fashion') and name = 'デザイナーと美意識'),
-          '1947-02-12', null, 'day', 'point', 'ディオールが「ニュールック」を発表', 'クリスチャン・ディオールが最初のコレクションで、なで肩・絞った腰・長く豊かなスカートのシルエットを発表しました。米誌編集長スノーの命名「ニュールック」とともに、世界へ広まっていきます。
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-fashion') and name = '社会と身体'),
+          '1941-06-01', '1949-03-15', 'day', 'period', '英国の衣料配給制、8年', '第二次大戦下の英国で、衣料品の購入をクーポンで制限する配給制が始まりました。物資を軍需へ回すための統制で、政府は装飾を省いた「ユーティリティ・クロージング」の規格も定めています。統制は戦後もしばらく続き、解除は1949年3月でした。
 
-布地を惜しみなく使う優雅さは、戦時の物資統制と実用一辺倒の服からの転換を告げるものでした。パリ・オートクチュールの復権を象徴する一方で贅沢への反発も招き、**服が時代の気分を映す**ことを示す代表例となっています。', null,
-          'verified', null, 'user', 2) returning id)
+この線の終わり近く、1947年にディオールのニュールック(デザイナーと美意識レイヤー)が現れます。配給がなお続くなかで布地を贅沢に使うスカートへの反発は強く、**統制の線と優雅さの線が重なった2年間**に、戦後モードの緊張が凝縮されています。', null,
+          'verified', null, 'user', 3) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Imperial War Museums: Clothes Rationing in Britain', null)) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'culture-fashion'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-fashion') and name = 'デザイナーと美意識'),
+          '1947-02-12', '1957-10-24', 'day', 'period', 'ニュールック、ディオールの10年', 'クリスチャン・ディオールが最初のコレクションで、なで肩・絞った腰・長く豊かなスカートのシルエットを発表しました。米誌編集長スノーの命名「ニュールック」とともに世界へ広まり、1957年に急逝するまでの10年間、ディオールはパリ・モードの中心にあり続けます。
+
+布地を惜しみなく使う優雅さは戦時の統制からの転換を告げましたが、発表の時点では英国の衣料配給制の線(社会と身体レイヤー)がまだ2年残っており、贅沢への反発も招きました。**服が時代の気分を映す**ことを示す10年です。', null,
+          'verified', null, 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Christian Dior', 'https://en.wikipedia.org/wiki/Christian_Dior')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-fashion'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-fashion') and name = 'デザイナーと美意識'),
-          '1964-01-01', null, 'year', 'point', 'ミニスカートが若者のモードを塗り替える', 'ロンドンのマリー・クワントが膝上丈のスカートを大衆化し、パリのクレージュも同時期にミニを発表しました。若者の街のスタイルが高級モードを動かすという、逆流が起きた年です。
+          '1964-01-01', '1970-12-31', 'year', 'period', 'ミニスカートの7年', 'ロンドンのマリー・クワントが膝上丈のスカートを大衆化し、パリのクレージュも同時期にミニを発表しました。若者の街のスタイルが高級モードを動かした、逆流の数年間です。1970年前後にマキシ丈やパンツが台頭するまで、ミニは若さの制服であり続けました。
 
-「発明者」がクワントかクレージュかは当時から論争があり、クワント自身は、考案したのは街の女の子たちだと語っています。**ストリートがモードを動かす**構図の最初の明確な事例であり、社会と身体レイヤーの若者文化と直結しています。', null,
-          'disputed', 'ミニスカートの考案者をクワントとする説とクレージュとする説が併存し、流行の起点年にも幅があるため、決着はついていません。', 'user', 3) returning id)
+「発明者」がクワントかクレージュかは当時から論争があり、クワント自身は、考案したのは街の女の子たちだと語っています。**ストリートがモードを動かす**構図の最初の明確な事例であり、サンローランのル・スモーキング(1966年)も、この線の上の出来事でした。', null,
+          'disputed', 'ミニスカートの考案者をクワントとする説とクレージュとする説が併存します。流行の起点・終点にも幅があり、ここでは1964年から、丈が長く戻る1970年ごろまでを採りました。', 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Miniskirt', 'https://en.wikipedia.org/wiki/Miniskirt')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-fashion'),
@@ -995,15 +1051,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1966-01-01', null, 'year', 'point', 'サンローランが「ル・スモーキング」を発表', 'イヴ・サンローランが1966年秋冬コレクションで、男性の夜会服タキシードを女性のワードローブへ翻訳した「ル・スモーキング」を発表しました。
 
 パンツ姿の女性が高級レストランで入店を断られることもあった時代に、性差の記号を組み替えるこの提案は挑発でもありました。同時期の既製服ライン展開とも重なり、デザイナーの美意識が社会の性規範(社会と身体レイヤー)へ踏み込んだ例となっています。', null,
-          'verified', null, 'user', 4) returning id)
+          'verified', null, 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Musée Yves Saint Laurent Paris: Le Smoking', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-fashion'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-fashion') and name = '社会と身体'),
-          '1974-01-01', null, 'year', 'point', 'ウエストウッドらの店「SEX」がパンクの発信地に', 'ヴィヴィアン・ウエストウッドとマルコム・マクラーレンが、ロンドン・キングス・ロードの店を「SEX」と改名しました。破れやボンデージの要素を取り込んだ服で、パンクの美学を発信していきます。
+          '1974-01-01', '1976-12-31', 'year', 'period', 'ウエストウッドらの店「SEX」、パンクの3年', 'ヴィヴィアン・ウエストウッドとマルコム・マクラーレンが、ロンドン・キングス・ロードの店を「SEX」と改名しました。破れやボンデージの要素を取り込んだ服でパンクの美学を発信し、1976年末に店名を「セディショナリーズ」へ改めるまでの3年間、反抗の衣装部となります。
 
-店にはセックス・ピストルズの面々が集い、音楽と服が一体となった反抗の文化として広がりました。反体制の記号は、やがて高級モードのコレクションにも引用されていきます。ストリートと高級モードの往復運動の、重要な起点のひとつです。', null,
-          'unverified', '店は1971年の開店後に業態と店名の変更を重ねており、「SEX」への改称時期は1974年とする資料が多いものの、記録により記述が異なります。', 'user', 5) returning id)
+店にはセックス・ピストルズの面々が集い、音楽と服が一体となった文化として広がりました。反体制の記号はやがて高級モードのコレクションにも引用されていきます。ストリートと高級モードの往復運動の、重要な起点となった線です。', null,
+          'unverified', '店は1971年の開店後に業態と店名の変更を重ねており、「SEX」への改称と「セディショナリーズ」への再改称の時期は、資料により記述が異なります。', 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('V&A: Vivienne Westwood', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-fashion'),
@@ -1011,7 +1067,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1975-01-01', null, 'year', 'point', 'ザラ1号店がスペインで開業', 'アマンシオ・オルテガが、スペイン北西部ア・コルーニャにザラの1号店を開きました。流行を素早く製品化し、店頭を高い頻度で入れ替える手法の出発点です。
 
 のちにインディテックスは世界最大級のアパレル企業となり、企画から店頭まで数週間という速度が業界の標準を塗り替えていきます。デザイナーレイヤーの創造をただちに大衆価格へ翻訳する、**ファストファッション**の原型がここに生まれました。', null,
-          'verified', null, 'user', 6) returning id)
+          'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Zara (retailer)', 'https://en.wikipedia.org/wiki/Zara_(retailer)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-fashion'),
@@ -1019,7 +1075,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1981-01-01', null, 'year', 'point', '川久保玲と山本耀司がパリコレクションに初参加', 'コム・デ・ギャルソンの川久保玲とヨウジヤマモトの山本耀司が、1981年にパリで初のショーを行いました。黒を基調に、非対称や穴あきを含む服を提示しています。
 
 「黒の衝撃」と呼ばれたこの提案は、身体を理想形に整える西欧服飾の伝統への異議として受け止められ、賛否を巻き起こしました。酷評も浴びましたが、以後の脱構築的なデザイナーたちへ道を開き、黒は都市の知的な制服として定着していきます。', null,
-          'verified', null, 'user', 7) returning id)
+          'verified', null, 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Rei Kawakubo', 'https://en.wikipedia.org/wiki/Rei_Kawakubo')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-fashion'),
@@ -1027,15 +1083,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1988-01-01', '1997-12-31', 'year', 'period', 'スーパーモデルの時代', 'リンダ・エヴァンジェリスタ、ナオミ・キャンベルら少数のモデルが雑誌表紙と主要ショーを独占し、モデル本人がブランドを超える知名度を持つ時代が続きました。
 
 背景には雑誌とテレビという媒体の最盛期があり、彼女たちの発言力は出演料の高騰にも表れています。90年代後半に女優起用などの流れで退潮したとされますが、**顔が服を売る**仕組みは、SNS時代のインフルエンサーへと引き継がれていきます。', null,
-          'disputed', '「スーパーモデルの時代」の起点・終点は論者により異なり、明確な区切りが存在するわけではありません。', 'user', 8) returning id)
+          'disputed', '「スーパーモデルの時代」の起点・終点は論者により異なり、明確な区切りが存在するわけではありません。', 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Supermodel', 'https://en.wikipedia.org/wiki/Supermodel')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-fashion'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-fashion') and name = '産業と流通'),
-          '1998-01-01', null, 'year', 'point', 'ユニクロのフリースブームが服の買い方を変える', 'ファーストリテイリングが原宿出店とともにフリースを1,900円で大量販売し、爆発的なブームとなりました。企画・生産・販売を一体で担う、SPAモデルの力を示した出来事です。
+          '1998-11-01', '2000-12-31', 'month', 'period', 'ユニクロのフリースブーム、3年', 'ファーストリテイリングが原宿出店とともにフリースを1,900円で大量販売し、爆発的なブームとなりました。販売枚数は1998年の約200万枚から2000年には約2,600万枚へと駆け上がり、企画・生産・販売を一体で担うSPAモデルの力を示しています。
 
-安くても品質が足りるという感覚を広め、日本の衣料消費の基準を変えました。ザラやH&Mの世界展開と並び、産業と流通レイヤーがデザイナーレイヤーから主導権を奪っていく潮流の、日本における象徴といえます。', null,
-          'verified', null, 'user', 9) returning id)
+安くても品質が足りるという感覚を広め、日本の衣料消費の基準を変えた3年間です。ザラやH&Mの世界展開と並び、産業と流通レイヤーがデザイナーレイヤーから主導権を奪っていく潮流の、日本における象徴といえます。', null,
+          'disputed', '販売枚数は同社の発表・報道に基づく数字です。ブームの区切りには幅があり、ここでは原宿出店(1998年11月)から販売枚数が頂点に達した2000年までを採りました。', 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('ファーストリテイリング: 沿革', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-fashion'),
@@ -1043,7 +1099,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2000-06-01', null, 'month', 'point', 'ネッタポルテ創業、高級服のEC販売が始まる', 'ナタリー・マスネがロンドンで、高級ファッション専門のECサイト、ネッタポルテを開設しました。雑誌のように編集された誌面から、そのまま服を買える体験を提示しています。
 
 高級ブランドの多くはECを敬遠していましたが、同社の成功で流通の常識が変わり、のちの越境ECやブランド直販への流れが開かれました。買う場所が店から画面へ移ることで、ショー映像の即時公開など、情報の流れ方も変わっていきます。', null,
-          'verified', null, 'user', 10) returning id)
+          'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Net-a-Porter', 'https://en.wikipedia.org/wiki/Net-a-Porter')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-fashion'),
@@ -1051,7 +1107,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2013-04-24', null, 'day', 'point', 'ラナ・プラザ崩落、犠牲者1,100人超', 'バングラデシュ・ダッカ近郊で、縫製工場が入る商業ビル、ラナ・プラザが崩落し、1,100人を超える労働者が亡くなりました。多くが、欧米ブランド向けの衣料を縫製していました。
 
 前日に建物の亀裂が指摘されながら、操業は続けられていました。**誰がこの服を作ったのか**という問いが世界に広がり、Fashion Revolution運動やサプライチェーン開示の要求へつながる、産業倫理の転換点となっています。', null,
-          'verified', null, 'user', 11) returning id)
+          'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('ILO: The Rana Plaza Accident', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-fashion'),
@@ -1059,7 +1115,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2017-01-01', null, 'month', 'point', 'ルイ・ヴィトンがシュプリームとの協業を発表', 'ルイ・ヴィトンが2017年秋冬メンズショーで、ストリートブランドのシュプリームとの協業を発表しました。モノグラムとボックスロゴを組み合わせた製品は、世界的な争奪戦となります。
 
 かつて高級メゾンが模倣を訴えた相手と手を組む逆転劇であり、ストリートウェアの購買力と発信力を高級産業が公式に認めた瞬間でした。転売市場の過熱という流通(産業と流通レイヤー)の新しい現象も、ここで広く可視化されています。', null,
-          'verified', null, 'user', 12) returning id)
+          'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Supreme (brand)', 'https://en.wikipedia.org/wiki/Supreme_(brand)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-fashion'),
@@ -1067,7 +1123,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2018-03-01', null, 'month', 'point', 'アブローがルイ・ヴィトンのメンズ芸術監督に', 'オフホワイト創業者のヴァージル・アブローが、ルイ・ヴィトンのメンズ部門芸術監督に任命されました。同メゾンの主要部門を黒人デザイナーが率いるのは、初めてのことです。
 
 建築を学び、DJとしても活動した経歴は、服飾の徒弟制の外から頂点へ至る新しい道筋を示しました。ストリートと高級モードの融合を制度の側が引き受けた人事であり、2021年の急逝後も、その影響は業界の人材観に残り続けています。', null,
-          'verified', null, 'user', 13) returning id)
+          'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Virgil Abloh', 'https://en.wikipedia.org/wiki/Virgil_Abloh')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-fashion'),
@@ -1075,15 +1131,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2019-08-01', null, 'month', 'point', 'G7で「ファッション協定」が発足', '仏ビアリッツでのG7サミットに合わせ、ケリング会長ピノーの主導で、気候・生物多様性・海洋保護を柱とする業界共同の枠組み「ファッション協定」が発足し、多数の大手企業が署名しました。
 
 拘束力のない自主的な枠組みへの批判もありますが、産業の環境負荷が首脳外交の場の議題に載った意味は小さくありません。ラナ・プラザ以降の倫理の問いが、労働から環境へと広がったことを示す出来事です。', null,
-          'verified', null, 'user', 14) returning id)
+          'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('The Fashion Pact', 'https://www.thefashionpact.org')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-fashion'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-fashion') and name = '産業と流通'),
-          '2020-03-01', '2022-03-31', 'month', 'period', 'パンデミックがファッションウィークを変える', '新型コロナの流行で世界のファッションウィークが中止・無観客となり、各都市はショーの映像配信やデジタル開催へ移行しました。店舗休業により、ECへの移行も一気に進みます。
+          '2020-03-01', '2022-03-31', 'month', 'period', 'パンデミック下のファッションウィーク、2年', '新型コロナの流行で世界のファッションウィークが中止・無観客となり、各都市はショーの映像配信やデジタル開催へ移行しました。店舗休業により、ECへの移行も一気に進みます。
 
 集うことが本質であったショーの形式が問い直され、快適さを重視する需要の変化も起きました。制約下の2年間は、シーズン制や過剰生産という業界の前提を見直す議論を加速させ、対面回帰後もデジタル併用が常態となっています。', null,
-          'verified', null, 'user', 15) returning id)
+          'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('The Business of Fashion / McKinsey: The State of Fashion 2021', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-fashion'),
@@ -1091,7 +1147,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2022-01-01', null, 'year', 'point', 'SHEINが米国ファストファッション市場を席巻', '中国発のシーインが、超低価格と毎日数千点規模の新商品投入で急成長しました。報道では、米国のファストファッション売上でH&Mやザラを上回ったと伝えられています。
 
 需要データから極小ロットで生産する手法は、流通の速度を極限まで高めました。一方で労働環境や環境負荷、デザイン盗用への批判(社会と身体レイヤー)も集中しており、速さの果てに何が残るのかという、本年表の現在地を示す事例です。', null,
-          'unverified', '非上場のため売上やシェアの数値は調査会社・報道の推計に基づくもので、公式な開示はありません。', 'user', 16) returning id)
+          'unverified', '非上場のため売上やシェアの数値は調査会社・報道の推計に基づくもので、公式な開示はありません。', 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('SHEINの米国市場シェアに関する各社報道(2022)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-fashion'),
@@ -1099,12 +1155,12 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2022-03-30', null, 'day', 'point', 'EUが「持続可能な繊維戦略」を発表', '欧州委員会が「持続可能で循環型の繊維のためのEU戦略」を公表しました。2030年までにEU市場の繊維製品を長寿命でリサイクル可能なものとする方針や、売れ残り廃棄への規制の方向性を示しています。
 
 ファストファッションの過剰生産を名指しで問題視し、自主協定から法規制へと段階が進みました。美意識・産業・社会の3層が「速さと量」をめぐって正面から向き合う、現在進行形の局面です。', null,
-          'verified', null, 'user', 17) returning id)
+          'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('European Commission: EU Strategy for Sustainable and Circular Textiles (COM(2022) 141)', null)) as v(title, url);
 
 -- ═══ culture-food-globalization — 食文化のグローバル化
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('culture-food-globalization', '00000000-0000-4000-8000-3df26bfd5b76', '食文化のグローバル化', '回転寿司と即席麺の発明から、ミシュランの東京上陸、宅配アプリの席巻まで。料理と店・制度と認定・技術と流通の3層を重ね、食が国境を越える経路を描く年表。', 'culture', 'ja', 'public', 's_culture-food-globalization', 1958, 2024, 'culture-food-globalization')
+values ('culture-food-globalization', '00000000-0000-4000-8000-3df26bfd5b76', '食文化のグローバル化', '回転寿司と即席麺の発明から、ミシュランの東京上陸、宅配アプリの席巻まで。料理と店・制度と認定・技術と流通の3層を重ね、食が国境を越える経路を描く年表。', 'culture', 'ja', 'public', 's_culture-food-globalization', 1958, 2026, 'culture-food-globalization')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-food-globalization');
@@ -1170,11 +1226,19 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: カップヌードル', 'https://ja.wikipedia.org/wiki/カップヌードル')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-food-globalization'),
-          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-food-globalization') and name = '制度と認定'),
-          '1989-12-10', null, 'day', 'point', 'スローフード宣言がパリで調印', 'ファストフードの世界的拡大に対抗し、イタリア発の運動体が15か国の代表とともにパリで「スローフード宣言」に調印した。郷土料理と食の多様性、ゆっくり味わう暮らしの保護を掲げた。
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-food-globalization') and name = '料理と店'),
+          '1980-01-01', '1989-12-31', 'year', 'period', '米国の寿司ブーム、1980年代の10年', '健康志向の高まりと日本経済への関心を背景に、1980年代の米国で寿司が都市の流行になった。寿司バーは日本人街を出て金融街やハリウッドへ広がり、SUSHIは説明のいらない外来語として定着していく。
 
-源流は1986年、ローマのスペイン広場へのマクドナルド出店に対する反対運動にある。食の均質化への最初の組織的な異議申し立てであり、以後この年表の底流には「広がる食」と「守る食」の緊張が流れ続ける。', null,
-          'verified', null, 'user', 7) returning id)
+この線の手前に置かれたBENIHANAの興行的な翻訳と、カリフォルニアロールの発明が、生魚への抵抗を先に解いていた。そして線が閉じる直前、パリでスローフード宣言(制度と認定レイヤー)が調印される。広がる食への最初の組織的な異議は、寿司が世界食になる速度と無関係ではなかった。', null,
+          'disputed', '「寿司ブーム」の起点・終点に明確な定義はない。テレビドラマ『将軍』(1980年)の放映や健康志向を背景とした1980年代の現象とする言説が一般的で、区切りは便宜的なもの。', 'user', 7) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: History of sushi', 'https://en.wikipedia.org/wiki/History_of_sushi')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'culture-food-globalization'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-food-globalization') and name = '制度と認定'),
+          '1989-12-10', '2026-06-30', 'day', 'period', 'スローフード運動の36年、現在も続く', 'ファストフードの世界的拡大に抗し、イタリア発の運動体が15か国の代表とともにパリで「スローフード宣言」に調印した。源流は1986年、ローマのスペイン広場へのマクドナルド出店反対運動にある。運動は各国へ支部を広げ、現在も続いている。
+
+この年表で「広がる食」を描く線たち、即席麺、宅配アプリ、日本食レストランの急増の下を、この線だけが逆向きに走り続ける。**「守る食」の一本の線**が通っているからこそ、他のすべての線の速さが見えるのである。', null,
+          'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Slow Food', 'https://en.wikipedia.org/wiki/Slow_Food')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-food-globalization'),
@@ -1182,15 +1246,23 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1996-08-02', null, 'day', 'point', 'スターバックス北米外1号店が銀座に開店', 'スターバックスが北米以外で初となる店舗を東京・銀座に開いた。禁煙のカフェでカスタマイズしたラテを片手に過ごすシアトル流の様式は、喫茶店文化の根づいていた日本で新しい定番になった。
 
 エスプレッソ文化はイタリアから米国へ渡り、商業様式として磨かれて日本へ届いた。マクドナルドの銀座上陸から四半世紀、銀座は外来の食文化が日本社会に試される実験場であり続けている。', null,
-          'verified', null, 'user', 8) returning id)
+          'verified', null, 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: スターバックス', 'https://ja.wikipedia.org/wiki/スターバックス')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'culture-food-globalization'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-food-globalization') and name = '制度と認定'),
+          '2006-01-01', '2023-10-31', 'year', 'period', '海外日本食レストラン、8倍に増えた17年', '農林水産省が海外の日本食レストラン数の調査を始めた2006年、店数は約2万4,000だった。直近の2023年調査では約18万7,000店。17年でおよそ8倍に増えた計算になり、この年表でもっとも傾きの急な線である。
+
+線の途中に、ミシュラン東京版の刊行も、和食のユネスコ登録も、Instagramの登場(技術と流通レイヤー)も乗っている。増加の主役は日本人経営ではない現地資本の店で、寿司もラーメンも**担い手ごと現地化する**段階に入った。', null,
+          'unverified', '店舗数は在外公館等を通じた推計値で、日本食レストランの定義や集計方法により数値には幅がある。期間は調査の開始年から直近調査までを区切ったもの。', 'user', 10) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('農林水産省: 海外における日本食レストラン数の調査結果(2023年)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-food-globalization'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-food-globalization') and name = '制度と認定'),
           '2007-11-01', null, 'month', 'point', 'ミシュランガイド東京版が刊行', 'ミシュランガイドが欧米以外で初めてとなる東京版を刊行した。東京は掲載店の星の総数で世界最多となり、「世界一の美食都市」という評価が国際的に流通し始めた。
 
 フランスの権威が日本の食を格付けする構図は、料理だけでなく**評価制度そのものの越境**を意味した。ガイドは以後アジア各都市へ拡大し、6年後の和食のユネスコ登録に至る「日本食の制度的公認」の流れを開いた。', null,
-          'verified', null, 'user', 9) returning id)
+          'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: ミシュランガイド', 'https://ja.wikipedia.org/wiki/ミシュランガイド')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-food-globalization'),
@@ -1198,7 +1270,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2008-03-01', null, 'month', 'point', '一風堂がニューヨークに出店', '博多ラーメンの一風堂がニューヨークに海外1号店を開いた。行列のできる人気と有力メディアの高評価を得て、ラーメンは「安い麺料理」から「専門店で並んで食べる一杯」へと地位を変えた。
 
 即席麺(技術と流通レイヤー)が先に世界へ届けていたラーメンの認知の上に、専門店の食体験が乗った構図である。以後ロンドンやパリにも専門店が広がり、RAMENは寿司に続く日本食の世界語となった。', null,
-          'verified', null, 'user', 10) returning id)
+          'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Ippudo', 'https://en.wikipedia.org/wiki/Ippudo')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-food-globalization'),
@@ -1206,7 +1278,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2010-10-06', null, 'day', 'point', 'Instagram登場、「映える」食が拡散力を持つ', '写真共有アプリのInstagramが公開された。料理を撮って投稿する行為が世界共通の習慣となり、食のトレンドが国境を越えて数週間で伝播する時代が始まった。
 
 タピオカドリンクやスフレパンケーキの世界的流行は、このインフラ抜きには説明できない。店の評判を左右する力はガイドブックからフィードへ移り、後年の評価制度(制度と認定レイヤー)のあり方にも影響を与えていく。', null,
-          'verified', null, 'user', 11) returning id)
+          'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Instagram', 'https://en.wikipedia.org/wiki/Instagram')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-food-globalization'),
@@ -1214,23 +1286,31 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2010-11-16', null, 'day', 'point', 'フランスの美食術がユネスコ無形文化遺産に', '「フランス人の美食術」がユネスコ無形文化遺産に登録された。食文化の登録は初めてで、同じ委員会で地中海料理とメキシコの伝統料理も認められた。
 
 食が「守るべき人類の文化」として国際制度に組み込まれた転換点である。以後、各国が自国の食文化を国家ブランドとして申請する競争が始まり、3年後の和食の登録へ直結していく。スローフード運動が訴えた「守る食」の思想が、制度の言葉に翻訳された瞬間でもあった。', null,
-          'verified', null, 'user', 12) returning id)
+          'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('UNESCO ICH: Gastronomic meal of the French', 'https://ich.unesco.org/en/RL/gastronomic-meal-of-the-french-00437')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'culture-food-globalization'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-food-globalization') and name = '制度と認定'),
+          '2012-01-01', '2019-12-31', 'year', 'period', 'インバウンド急拡大の8年', 'ビザ緩和や円安を追い風に、訪日外国人客は2012年の約836万人から2019年の約3,188万人へと、8年でほぼ4倍になった。和食のユネスコ登録はこの線の立ち上がりに重なり、食は観光政策の柱に据えられていく。
+
+海外で日本食レストランが増える線と、日本へ人が来る線が、同じ時期に並んで走っている。この線は2020年、コロナ禍の線(技術と流通レイヤー)の始まりとともに垂直に断ち切られ、回復は2023年を待つことになる。', null,
+          'verified', null, 'user', 15) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('日本政府観光局(JNTO): 訪日外客統計', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-food-globalization'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-food-globalization') and name = '制度と認定'),
           '2013-12-04', null, 'day', 'point', '「和食」がユネスコ無形文化遺産に登録', '「和食;日本人の伝統的な食文化」がユネスコ無形文化遺産に登録された。個別の料理ではなく、自然の尊重を核とし正月行事などと結びついた社会的慣習として認められた点が特徴である。
 
 日本政府は和食を輸出促進とインバウンド観光の柱に据え、海外の日本食レストラン急増を制度面から後押しした。制度による公認が市場の拡大を牽引する、この年表の典型的な構図である。', null,
-          'verified', null, 'user', 13) returning id)
+          'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('農林水産省: 「和食」のユネスコ無形文化遺産登録', 'https://www.maff.go.jp/j/keikaku/syokubunka/ich/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-food-globalization'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-food-globalization') and name = '技術と流通'),
-          '2014-08-01', null, 'month', 'point', 'UberFRESH開始、料理宅配のアプリ化', 'Uberがロサンゼルス近郊のサンタモニカで料理宅配サービス「UberFRESH」を始めた(翌年UberEATSに改称)。配車アプリの車両網を食の物流に転用する発想だった。
+          '2014-08-01', '2026-06-30', 'month', 'period', 'アプリ宅配の12年、現在も続く', 'Uberがロサンゼルス近郊のサンタモニカで料理宅配サービス「UberFRESH」を始めた(翌年UberEATSに改称)。配車アプリの車両網を食の物流に転用する発想は各国で模倣され、DoorDashやDeliveroo、出前館など同型のサービスが育って、この線は現在も続いている。
 
-DoorDashやDeliveroo、出前館など各国で同型のサービスが急成長し、レストランの商圏は店の立地から配達網の範囲へと広がった。この構造は数年後のコロナ禍で一気に社会の主流になる。', null,
-          'verified', null, 'user', 14) returning id)
+レストランの商圏は、店の立地から配達網の範囲へと広がった。線の途中に重なるコロナ禍の線が、この変化を一気に社会の主流へ押し上げることになる。', null,
+          'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Uber Eats', 'https://en.wikipedia.org/wiki/Uber_Eats')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-food-globalization'),
@@ -1238,36 +1318,28 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2019-05-02', null, 'day', 'point', 'ビヨンド・ミート上場、代替肉が資本市場へ', '植物由来の代替肉を開発する米ビヨンド・ミートがナスダックに上場し、初日に株価が2倍を超えた。食品スタートアップのIPOとして異例の注目を集めた。
 
 気候変動と食の持続可能性が投資テーマとなったことを象徴する出来事で、世界のファストフードチェーンが相次いで植物由来メニューを試験導入した。食のグローバル化に「地球環境」という制約条件が加わった転換点である。', null,
-          'verified', null, 'user', 15) returning id)
+          'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Beyond Meat', 'https://en.wikipedia.org/wiki/Beyond_Meat')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-food-globalization'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-food-globalization') and name = '技術と流通'),
           '2020-03-01', '2022-12-31', 'month', 'period', 'コロナ禍で宅配とゴーストキッチンが急拡大', '新型コロナウイルスの流行で世界の都市の外食が制限され、料理宅配とテイクアウトが生活インフラになった。客席を持たず宅配アプリ上にだけ存在する「ゴーストキッチン」も急増した。
 
-**「店」と「料理」の分離**という構造変化が一気に可視化された期間である。一方で老舗の廃業も世界規模で進み、宅配プラットフォームの手数料をめぐる摩擦など、新しい流通の支配力も問われ始めた。', null,
-          'verified', null, 'user', 16) returning id)
+**「店」と「料理」の分離**という構造変化が一気に可視化された期間である。2014年から続くアプリ宅配の線に重なり、それを一気に太くした線でもある。老舗の廃業も世界規模で進み、宅配プラットフォームの手数料をめぐる摩擦など、新しい流通の支配力も問われ始めた。', null,
+          'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Ghost kitchen', 'https://en.wikipedia.org/wiki/Ghost_kitchen')) as v(title, url);
-with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
-  values ((select id from public.timelines where slug = 'culture-food-globalization'),
-          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-food-globalization') and name = '制度と認定'),
-          '2023-10-01', null, 'month', 'point', '海外の日本食レストラン、約18.7万店に', '農林水産省の調査で、海外の日本食レストランは約18万7000店と推計された。調査が始まった2006年の約2万4000店から、17年でおよそ8倍に増えた計算になる。
-
-増加の主役は日本人経営ではない現地資本の店で、寿司もラーメンももはや「日本人が作る料理」ではない。**担い手ごと現地化する**段階に入ったことを、この数字は示している。', null,
-          'unverified', '店舗数は在外公館等を通じた推計値で、日本食レストランの定義や集計方法により数値には幅がある。', 'user', 17) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('農林水産省: 海外における日本食レストラン数の調査結果(2023年)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-food-globalization'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-food-globalization') and name = '制度と認定'),
           '2024-01-01', null, 'year', 'point', '訪日客の最大の目的は「日本食を食べること」', '観光庁の訪日外国人消費動向調査では、「訪日前に最も期待していたこと」として「日本食を食べること」を挙げる回答が例年最多を占める。食は日本観光の中心的な動機になっている。
 
-1958年に技術の力で国境を越え始めた日本の食は、制度の公認と店の越境を経て、いまや**人を日本へ呼び寄せる引力**へと変わった。食文化のグローバル化が一巡したことを示す到達点である。', null,
-          'unverified', '「最多」は複数年の同調査で続くとされる傾向だが、調査年・設問形式により数値は変動する。', 'user', 18) returning id)
+1958年に技術の力で国境を越え始めた日本の食は、制度の公認と店の越境を経て、いまや**人を日本へ呼び寄せる引力**へと変わった。コロナ禍で断ち切られたインバウンドの線の先に、この点は置かれている。', null,
+          'unverified', '「最多」は複数年の同調査で続くとされる傾向だが、調査年・設問形式により数値は変動する。', 'user', 20) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('観光庁: 訪日外国人消費動向調査', null)) as v(title, url);
 
 -- ═══ culture-game-industry — 🎮 ゲーム産業の爆発
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('culture-game-industry', '00000000-0000-4000-8000-88ca25792997', '🎮 ゲーム産業の爆発', 'アーケードの始まりからファミコン、スマホ、巨大買収まで。コントローラーを握って育った目線で、ハード・ソフト・ビジネスと社会の3層を重ねながら、遊びが世界最大級のエンタテインメント産業に育っていく流れを追う年表です 🎮', 'culture', 'ja', 'public', 's_culture-game-industry', 1972, 2023, 'culture-game-industry')
+values ('culture-game-industry', '00000000-0000-4000-8000-88ca25792997', '🎮 ゲーム産業の爆発', 'アーケードの始まりからファミコン、スマホ、巨大買収まで。コントローラーを握って育った目線で、ハード・ソフト・ビジネスと社会の3層を重ねながら、遊びが世界最大級のエンタテインメント産業に育っていく流れを追う年表です 🎮', 'culture', 'ja', 'public', 's_culture-game-industry', 1972, 2025, 'culture-game-industry')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-game-industry');
@@ -1286,10 +1358,10 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-game-industry'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-game-industry') and name = 'ソフトと表現'),
-          '1978-06-01', null, 'month', 'point', '👾 スペースインベーダー稼働、日本中がブームに', 'タイトーのスペースインベーダーが稼働開始。専用の「インベーダーハウス」が各地に生まれて、喫茶店にまでテーブル筐体が並ぶ社会現象になりました。
+          '1978-06-01', '1979-12-31', 'month', 'period', '👾 スペースインベーダーブーム、熱狂の1年半', 'タイトーのスペースインベーダーが稼働開始。専用の「インベーダーハウス」が各地に生まれて、喫茶店にまでテーブル筐体が並ぶ社会現象になりました。「100円玉が足りなくなった」という逸話は有名ですが、裏付けは乏しいそうです。
 
-「100円玉が足りなくなった」という逸話は有名ですが、裏付けは乏しいそうです。ブームは翌年にかけて過熱と反動を経験して、ゲーセンと青少年をめぐる摩擦(ビジネスと社会レイヤー)の原型に。日本のゲーム産業の人材とお金の多くは、この熱狂から出発しています。', null,
-          'disputed', '「100円玉が不足して造幣局が増産した」という逸話は広く知られていますが、公的記録による裏付けはなく、俗説とする指摘が有力です。', 'user', 1) returning id)
+熱狂はおよそ1年半で沈静化して、反動はゲーセンと青少年をめぐる摩擦(ビジネスと社会レイヤー)の原型になります。この短く太い線から出た人材とお金が、5年後に始まるファミコンの時代の線へ流れ込んでいきました。', null,
+          'disputed', '「100円玉が不足して造幣局が増産した」という逸話は広く知られていますが、公的記録による裏付けはなく、俗説とする指摘が有力です。ブームの終わりにも明確な区切りはなく、ここでは沈静化した1979年末までを採っています。', 'user', 1) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Space Invaders', 'https://en.wikipedia.org/wiki/Space_Invaders')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-game-industry'),
@@ -1302,9 +1374,9 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-game-industry'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-game-industry') and name = 'ハードとプラットフォーム'),
-          '1983-07-15', null, 'day', 'point', '任天堂がファミリーコンピュータ発売', '任天堂が家庭用ゲーム機ファミリーコンピュータを発売。14,800円という思い切った価格と専用チップの性能で、日本の家庭用ゲーム機の事実上の標準になりました。
+          '1983-07-15', '1990-11-21', 'day', 'period', 'ファミコンの時代、スーファミ交代までの7年', '任天堂がファミリーコンピュータを発売。14,800円という思い切った価格と専用チップの性能で日本の家庭の標準機になって、スーパーファミコンに交代するまでの7年、この線は途切れませんでした。
 
-同じ年、北米はアタリショック(ビジネスと社会レイヤー)で崩壊中。任天堂はソフトの品質審査とライセンス制でこれを教訓化しました。**プラットフォームがソフトを審査する**という産業構造はここから始まって、以後の家庭用ゲームビジネスの基本形になります。', null,
+線の最初の2年は、北米のアタリショック(ビジネスと社会レイヤー)の線とちょうど重なっています。市場が崩壊する海の向こうを横目に、任天堂はソフトの品質審査とライセンス制を敷きました。**プラットフォームがソフトを審査する**産業構造は、この7年の間に業界の基本形になります。', null,
           'verified', null, 'user', 3) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Nintendo Entertainment System', 'https://en.wikipedia.org/wiki/Nintendo_Entertainment_System')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -1318,9 +1390,9 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-game-industry'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-game-industry') and name = 'ハードとプラットフォーム'),
-          '1989-04-21', null, 'day', 'point', 'ゲームボーイ発売、携帯ゲームの時代へ', '任天堂が携帯型ゲーム機ゲームボーイを発売。モノクロ液晶に単3電池4本という割り切った設計は、画面のきれいさより電池のもち・値段・頑丈さを取ったものでした。
+          '1989-04-21', '2001-03-21', 'day', 'period', 'ゲームボーイの12年', '任天堂が携帯型ゲーム機ゲームボーイを発売。モノクロ液晶に単3電池4本という割り切った設計で、画面のきれいさより電池のもち・値段・頑丈さを取りました。カラー化をはさみつつ、ゲームボーイアドバンスに主役を譲るまで、この線は12年続きます。
 
-同梱・併売されたテトリスが子ども以外の層まで巻き込んで、通信ケーブルは後のポケットモンスター(ソフトと表現レイヤー)の交換文化の土台に。**ゲームを持ち歩く**という習慣はここから始まって、後の携帯電話ゲーム時代への遠い伏線になりました。', null,
+面白いのは、線の7年目にポケットモンスター(ソフトと表現レイヤー)という最大のヒットが乗ってくることです。通信ケーブルの交換文化が旧世代ハードを蘇らせた形で、**ゲームを持ち歩く**習慣はこの長い線の上で世界の日常になりました。', null,
           'verified', null, 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Game Boy', 'https://en.wikipedia.org/wiki/Game_Boy')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -1334,9 +1406,9 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-game-industry'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-game-industry') and name = 'ハードとプラットフォーム'),
-          '1994-12-03', null, 'day', 'point', 'PlayStation発売、3DとCD-ROMの時代', 'ソニー・コンピュータエンタテインメントがPlayStationを発売。CD-ROMと3Dグラフィックスを核に、音楽流通で培った手法を応用したソフト流通の改革まで持ち込みました。
+          '1994-12-03', '2000-03-04', 'day', 'period', 'PlayStation、3DとCD-ROMの6年', 'ソニー・コンピュータエンタテインメントがPlayStationを発売。CD-ROMと3Dグラフィックスを核に、音楽流通で培った手法でソフト流通の改革まで持ち込みました。PlayStation 2にバトンを渡すまでの6年が、この線です。
 
-セガサターンとの競争を経て世界1億台に到達して、ゲームの買い手を大人まで広げます。ファイナルファンタジーVIIの陣営移籍に象徴されるソフト獲得競争は、**ハードの勝ち負けはソフトが決める**ことを改めて見せつけました。', null,
+セガサターンとの競争を経て世界1億台に到達して、ゲームの買い手を大人まで広げました。ファイナルファンタジーVIIの陣営移籍に象徴されるソフト獲得競争は、**ハードの勝ち負けはソフトが決める**ことを改めて見せつけます。', null,
           'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: PlayStation (console)', 'https://en.wikipedia.org/wiki/PlayStation_(console)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -1344,7 +1416,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-game-industry') and name = 'ソフトと表現'),
           '1996-02-27', null, 'day', 'point', 'ポケットモンスター赤・緑発売', 'ゲームボーイ用ソフト、ポケットモンスター赤・緑が発売。発売当初から口コミでじわじわ売れて、通信ケーブルでの交換と対戦を核に社会現象になりました。
 
-アニメ・カードゲーム・映画へ広がって、ポケモンは世界最大級のメディアフランチャイズに成長します。発売から6年経った旧世代ハード(ハードとプラットフォームレイヤー)から出た世界的ヒットで、遊びの仕組みの発明はハード性能に勝る、を体現した作品です。', null,
+アニメ・カードゲーム・映画へ広がって、ポケモンは世界最大級のメディアフランチャイズに成長します。ゲームボーイの12年(ハードとプラットフォームレイヤー)の線の7年目に乗った世界的ヒットで、遊びの仕組みの発明はハード性能に勝る、を体現した作品です。', null,
           'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Pokémon Red and Blue', 'https://en.wikipedia.org/wiki/Pokémon_Red_and_Blue')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -1390,9 +1462,9 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-game-industry'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-game-industry') and name = 'ハードとプラットフォーム'),
-          '2017-03-03', null, 'day', 'point', 'Nintendo Switch発売', '任天堂がNintendo Switchを発売。据置機と携帯機の垣根をなくすハイブリッド設計で、前世代Wii Uの不振から一転、世界1億台を超える成功になりました!
+          '2017-03-03', '2025-06-05', 'day', 'period', 'Nintendo Switchの8年', '任天堂がNintendo Switchを発売。据置機と携帯機の垣根をなくすハイブリッド設計で、前世代Wii Uの不振から一転、後継機Switch 2に交代するまでの8年で世界1億台を大きく超える成功になりました!
 
-ゼルダの伝説 ブレス オブ ザ ワイルド(ソフトと表現レイヤー)を筆頭に自社ソフトの求心力を見せつけて、スマートフォン全盛の時代でも専用ゲーム機の市場は成立すると証明します。持ち歩ける据置機という設計は、ゲームボーイから続く系譜の到達点でもあります。', null,
+この長い線の真ん中には、コロナ禍の巣ごもり特需(ビジネスと社会レイヤー)の線が重なっています。あつまれ どうぶつの森のヒットも品薄騒動も、まさにこの重なりの上の出来事でした。スマホ全盛の時代でも専用ゲーム機は成立すると証明した8年です。', null,
           'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Nintendo Switch', 'https://en.wikipedia.org/wiki/Nintendo_Switch')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -1430,15 +1502,15 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-game-industry'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-game-industry') and name = 'ビジネスと社会'),
-          '2023-10-13', null, 'day', 'point', 'MicrosoftがActivision Blizzard買収完了', 'MicrosoftがActivision Blizzardの買収を完了しました。687億ドルはゲーム産業史上最大の買収額で、発表から完了まで各国競争当局の審査は約20か月に及びました。
+          '2022-01-18', '2023-10-13', 'day', 'period', 'MicrosoftのActivision買収、審査の20か月', 'MicrosoftがActivision Blizzardの買収を発表してから完了するまで、各国競争当局の審査は20か月に及びました。687億ドルはゲーム産業史上最大の買収額です。クラウドゲームへの影響が主要な論点で、英国当局は一度買収を差し止めています。
 
-クラウドゲームの競争への影響が審査の主要な論点で、英国当局は当初、買収を差し止めています。**ゲームが各国の競争政策の主戦場になる**規模まで産業が育ったことを示す出来事で、Pongから約半世紀、この年表の到達点です。', null,
+発表されたのは、巣ごもり特需(同じレイヤー)の線が途切れた直後でした。**ゲームが各国の競争政策の主戦場になる**規模まで産業が育ったことを示す線で、Pongから約半世紀、この年表の到達点です。', null,
           'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Acquisition of Activision Blizzard by Microsoft', 'https://en.wikipedia.org/wiki/Acquisition_of_Activision_Blizzard_by_Microsoft')) as v(title, url);
 
 -- ═══ culture-hiphop-50 — 🎙️ ヒップホップの50年
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('culture-hiphop-50', '00000000-0000-4000-8000-be575a20b1ee', '🎙️ ヒップホップの50年', '1973年ブロンクスの一夜のパーティーから50周年まで。音楽と表現・産業とメディア・社会とストリートの3層を重ねて、地域の路上文化が世界最大級の音楽ジャンルに育っていく50年をたどります 🎤', 'culture', 'ja', 'public', 's_culture-hiphop-50', 1973, 2023, 'culture-hiphop-50')
+values ('culture-hiphop-50', '00000000-0000-4000-8000-be575a20b1ee', '🎙️ ヒップホップの50年', '1973年ブロンクスの一夜のパーティーから50周年まで。音楽と表現・産業とメディア・社会とストリートの3層を重ねて、地域の路上文化が世界最大級の音楽ジャンルに育っていく50年をたどります 🎤', 'culture', 'ja', 'public', 's_culture-hiphop-50', 1973, 2026, 'culture-hiphop-50')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50');
@@ -1488,19 +1560,35 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Def Jam Recordings', 'https://en.wikipedia.org/wiki/Def_Jam_Recordings')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '社会とストリート'),
+          '1984-01-01', '1993-12-31', 'year', 'period', '💊 クラック禍の10年', '安価なクラック・コカインが米国の都市部に広がり、暴力犯罪の急増と大量収監が黒人コミュニティを直撃した約10年間です。1986年の量刑法はクラックの所持を粉末コカインの100倍の重さで罰し、被害と処罰が同じ地区に集中しました。
+
+この線を音楽の線に重ねると、N.W.Aの点も、ギャングスタラップを生んだゴールデンエイジの後半も、この上に乗っています。「現実を語る」ラップが描いた現実とは、かなりの部分がこの線のことでした。', null,
+          'disputed', '「クラック・エピデミック」の期間には諸説あります。ここでは疫学研究で流行期とされることが多い1984〜1993年前後を採りました。', 'user', 5) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Crack epidemic in the United States', 'https://en.wikipedia.org/wiki/Crack_epidemic_in_the_United_States')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'culture-hiphop-50'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '音楽と表現'),
+          '1986-01-01', '1996-12-31', 'year', 'period', '✨ ゴールデンエイジの10年', 'Run-D.M.C.の全国区ヒットからだいたい90年代半ばまで、サンプリングの発明と多様なスタイルが一気に開花した時期は、のちに「ゴールデンエイジ」と呼ばれます。パブリック・エナミー、デ・ラ・ソウル、ウータン・クラン。名盤の密度が異常な10年です!
+
+線の始まりには「Walk This Way」の点が、終わりには東西抗争の線の暗い出口が重なります。祝祭として始まった黄金期が抗争の喪失で区切られるところに、この時代の光と影の両方が出ています。', null,
+          'disputed', '「ゴールデンエイジ」の範囲は論者によって大きく異なります（1980年代半ば〜1990年代半ばとする説が多数）。ここでは1986〜1996年を便宜的に採りました。', 'user', 6) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Golden age hip hop', 'https://en.wikipedia.org/wiki/Golden_age_hip_hop')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '音楽と表現'),
           '1986-07-01', null, 'month', 'point', '🎸 Run-D.M.C.とエアロスミスの「Walk This Way」', 'Run-D.M.C.がエアロスミスと共演した「Walk This Way」を発表し、全米チャートの上位に。ロックの名曲をラップで作り直すという、当時としては異例の顔合わせでした。
 
 MTVがラップのビデオを本格的に流すきっかけになり、白人ロック聴衆とラップの間の壁を壊した曲と評されます。ジャンルの越境がヒットの方程式になり得ることを示して、産業とメディアの扉を内側から開けた一曲です。', null,
-          'verified', null, 'user', 5) returning id)
+          'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Walk This Way', 'https://en.wikipedia.org/wiki/Walk_This_Way')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '産業とメディア'),
-          '1988-08-01', null, 'month', 'point', '📺 MTVでラップ専門番組「Yo MTV Raps」開始', 'MTVでラップ専門番組「Yo MTV Raps」がスタートし、高い視聴率を記録。ヒップホップのビデオが全米、さらに国際放送網で日常的に流れる、最初の大きな窓口です。
+          '1988-08-01', '1995-08-31', 'month', 'period', '📺 「Yo MTV Raps」放送の7年', 'MTVのラップ専門番組「Yo MTV Raps」が高視聴率で走り続けた7年間です。ヒップホップのビデオが全米、さらに国際放送網で日常的に流れる、最初の大きな窓口になりました。
 
-都市ごとに分かれていたシーンの音とファッションが全国で同時に共有され、地方や海外の若者がヒップホップに出会う入口になりました。メディアの回路が、文化の広がる速度を一変させた例です。', null,
-          'verified', null, 'user', 6) returning id)
+都市ごとに分かれていたシーンの音とファッションが全国で同時に共有され、地方や海外の若者の入口に。この放送の線はゴールデンエイジの線のほぼ真ん中を走っていて、黄金期の音を茶の間へ運ぶベルトコンベアの役でした。番組の終了は、東西抗争が過熱していく時期と重なります。', null,
+          'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Yo MTV Raps(ラップ専門番組)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
@@ -1508,15 +1596,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1988-08-08', null, 'day', 'point', '🚨 N.W.A『ストレイト・アウタ・コンプトン』発売', 'N.W.Aがアルバム『ストレイト・アウタ・コンプトン』を発売。ロサンゼルス・コンプトンの警察との緊張や街の暴力を生々しく描いて、ギャングスタラップを全国区に押し上げました。
 
 収録曲への抗議としてFBI職員がレーベルに書簡を送る事態にまで発展し、**表現の自由をめぐる係争地**としてのヒップホップの立ち位置が定まります。ラジオにほとんど頼らず売れた点も、産業とメディアの常識を崩しました。', null,
-          'verified', null, 'user', 7) returning id)
+          'verified', null, 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Straight Outta Compton', 'https://en.wikipedia.org/wiki/Straight_Outta_Compton')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '社会とストリート'),
-          '1990-06-01', null, 'month', 'point', '⚖️ 2ライヴ・クルーのアルバムに猥褻判定', 'フロリダ州の連邦地裁が2ライヴ・クルーのアルバム『As Nasty As They Wanna Be』を猥褻と判定し、販売した店主やメンバーの逮捕が相次ぎました。音楽アルバムへの猥褻判定は極めて異例です。
+          '1990-06-01', '1992-05-31', 'month', 'period', '⚖️ 2ライヴ・クルー猥褻裁判の2年', 'フロリダ州の連邦地裁がアルバム『As Nasty As They Wanna Be』を猥褻と判定してから、控訴審で覆るまでの2年間の係争です。判定の直後には、販売した店主やメンバーの逮捕が相次ぎました。音楽アルバムへの猥褻判定は極めて異例です。
 
-判定は1992年の控訴審で覆り、表現の自由の側の勝利で決着します。ラップが法廷や議会で繰り返し標的になる90年代の摩擦の始まりで、論争自体が知名度と売上を押し上げるという皮肉な構図も生まれました。', null,
-          'verified', null, 'user', 8) returning id)
+決着は表現の自由の側の勝利でした。ラップが法廷や議会で繰り返し標的になる90年代の摩擦の始まりで、論争自体が知名度と売上を押し上げる皮肉な構図も生まれます。この係争の線は、ちょうどサウンドスキャン導入の点をまたいでいます。', null,
+          'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: As Nasty as They Wanna Be', 'https://en.wikipedia.org/wiki/As_Nasty_as_They_Wanna_Be')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
@@ -1524,7 +1612,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1991-05-01', null, 'month', 'point', '📊 サウンドスキャン導入、ラップの実売が可視化', 'ビルボードがPOSデータに基づく集計方式サウンドスキャンを導入し、店員への聞き取りに頼っていたチャートが実売ベースに変わりました。すると導入直後から、ラップとカントリーの順位が急上昇します。
 
 業界の思い込みで過小評価されていた**ラップの本当の勢い**が数字で証明され、メジャー各社の投資が本格化しました。測り方が変わるだけで、文化の勢力図の見え方まで変わることを示した転換点です。', null,
-          'verified', null, 'user', 9) returning id)
+          'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Nielsen SoundScan', 'https://en.wikipedia.org/wiki/Nielsen_SoundScan')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
@@ -1532,7 +1620,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1994-01-01', '1997-03-09', 'year', 'period', '🕊️ 東西抗争の時代', 'ニューヨークのバッド・ボーイ勢とロサンゼルスのデス・ロウ勢の対立が、雑誌報道や楽曲での応酬を通じて過熱しました。1996年に2パック、1997年にノトーリアス・B.I.G.が相次いで射殺され、抗争の時代は最悪の形で幕を閉じます。
 
 両事件とも全容解明には至っていません。メディアが対立の構図を煽って売上に変えた側面が指摘され、以後のシーンには対立の商業的な演出への自省が残りました。地域性という文化の核が、暴力と結び付いてしまった時代です。', null,
-          'disputed', '「東西抗争」の起点や範囲の区分は論者によって異なり、二つの射殺事件と抗争との因果関係も確定していません。', 'user', 10) returning id)
+          'disputed', '「東西抗争」の起点や範囲の区分は論者によって異なり、二つの射殺事件と抗争との因果関係も確定していません。', 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: East Coast–West Coast hip hop rivalry', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
@@ -1540,7 +1628,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1996-07-07', null, 'day', 'point', '🗼 「さんピンCAMP」開催、日本語ラップの金字塔', '東京・日比谷野外音楽堂で日本語ラップのイベント「さんピンCAMP」が開催され、ランプアイ、キングギドラら当時のシーンの中心的なアーティストが一堂に会しました。
 
 記録映像が繰り返し参照されることで、日本語でラップするという表現が独自の到達点を示した日として語り継がれています。ワイルド・スタイル来日から10年余り、**輸入文化のローカル化**が一つの頂点に達した瞬間です!', null,
-          'unverified', '動員数や当日の詳細は主催関係者の証言と映像作品に頼っていて、公的な記録での確認は難しいです。', 'user', 11) returning id)
+          'unverified', '動員数や当日の詳細は主催関係者の証言と映像作品に頼っていて、公的な記録での確認は難しいです。', 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: さんピンCAMP', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
@@ -1548,7 +1636,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1999-02-01', null, 'month', 'point', '🏆 ローリン・ヒルがグラミー5部門受賞', 'ローリン・ヒルが『ミスエデュケーション』でグラミー賞の最優秀アルバムを含む5部門を受賞。ヒップホップ系のアルバムが主要部門の頂点に立つのは、これが初めてでした。
 
 ソウルやレゲエを溶かし込んだ音楽性と内省的な詞が、ラップを賞の外側に置いてきた音楽業界の評価軸を動かします。女性アーティストの達成としても画期的で、主流化の決定的な一歩になりました!', null,
-          'verified', null, 'user', 12) returning id)
+          'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: The Miseducation of Lauryn Hill', 'https://en.wikipedia.org/wiki/The_Miseducation_of_Lauryn_Hill')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
@@ -1556,15 +1644,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2005-09-02', null, 'day', 'point', '📢 カニエ・ウェストが生放送で災害対応を批判', 'ハリケーン・カトリーナの被災者支援の生放送番組で、カニエ・ウェストが台本を離れ、報道の偏りと政府の対応を批判して「ジョージ・ブッシュは黒人を気にかけていない」と発言しました。
 
 発言は激しい論争を呼びましたが、ヒップホップのアーティストが黒人コミュニティの代弁者として国政に直言する構図を、全国に見えるようにした出来事です。路上で生まれた音楽が、世論の回路として機能することを示しました。', null,
-          'verified', null, 'user', 13) returning id)
+          'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: A Concert for Hurricane Relief', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '産業とメディア'),
-          '2017-01-01', null, 'year', 'point', '👑 ヒップホップが米国で最も聴かれるジャンルに', 'ニールセンの2017年の統計で、R&B/ヒップホップがロックを抜いて米国で最も消費される音楽ジャンルになったと報告されました。ストリーミング再生を含む集計方法が大きく効いています。
+          '2017-01-01', '2026-06-30', 'year', 'period', '👑 最大ジャンルの時代、いまも続く', 'ニールセンの2017年の統計で、R&B/ヒップホップがロックを抜いて米国で最も消費される音楽ジャンルに。ストリーミング再生を含む集計が効いた逆転で、以後この首位はおおむね守られたまま、線は現在も続いています。
 
-CD時代に築かれたロックの優位が、聴取行動を直接測る**ストリーミングの時代**にひっくり返った形です。サウンドスキャン導入（1991年）と同じく、測定方法の変化が文化の実勢をあらわにした節目でした。', null,
-          'verified', null, 'user', 14) returning id)
+CD時代に築かれたロックの優位が、聴取行動を直接測る**ストリーミングの時代**にひっくり返った形です。サウンドスキャン導入（1991年）と同じく、測り方の変化が文化の実勢をあらわにしました。50周年の祝祭も、この線の上の出来事です。', null,
+          'unverified', '2017年の首位はニールセン（現ルミネート）の報告に基づきます。以後も首位が続いているという判断は各年の年次レポートに基づく概括で、指標の取り方によっては順位が入れ替わる場合があります。', 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Nielsen Music Mid-Year Report U.S. 2017', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
@@ -1572,7 +1660,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2018-04-16', null, 'day', 'point', '🖋️ ケンドリック・ラマーにピュリッツァー賞', 'ケンドリック・ラマーのアルバム『DAMN.』がピュリッツァー賞音楽部門を受賞。同部門でクラシックとジャズ以外の作品が選ばれるのは初めてです!
 
 「現代の黒人の生活の複雑さを捉えた作品集」という授賞理由は、ラップの詞を文学として正面から認めるものでした。半世紀前に路上で生まれた表現形式への、制度の側からの**芸術としての承認**を象徴する出来事です。', null,
-          'verified', null, 'user', 15) returning id)
+          'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('The Pulitzer Prizes: Kendrick Lamar', 'https://www.pulitzer.org/winners/kendrick-lamar')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
@@ -1580,15 +1668,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2018-05-01', null, 'month', 'point', '🎥 「This Is America」が銃社会を撃つ', 'チャイルディッシュ・ガンビーノが「This Is America」を発表。陽気なダンスと突然の銃撃を交錯させるミュージックビデオが米国の銃暴力と黒人の生を主題化し、世界で爆発的に再生されました。
 
 MVという形式そのものを批評の道具に変えた達成で、翌年のグラミー賞では主要2部門を制します。「ザ・メッセージ」以来の「現実を語る」系譜が、映像とSNSの時代の文法で更新されたと言えます。', null,
-          'verified', null, 'user', 16) returning id)
+          'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: This Is America (song)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-hiphop-50') and name = '産業とメディア'),
-          '2019-08-01', null, 'month', 'point', '🤠 「オールド・タウン・ロード」が19週連続首位', 'リル・ナズ・Xの「オールド・タウン・ロード」が、ビルボードHot 100で史上最長となる19週連続1位を達成。カントリーとトラップを混ぜた曲で、TikTok上のミーム拡散がヒットの起点でした。
+          '2019-04-13', '2019-08-17', 'day', 'period', '🤠 「オールド・タウン・ロード」首位19週の夏', 'リル・ナズ・Xの「オールド・タウン・ロード」が、ビルボードHot 100の1位に居座り続けた史上最長の19週間です。カントリーとトラップを混ぜた曲で、TikTok上のミーム拡散がヒットの起点でした。
 
-カントリーチャートから除外された経緯は、ジャンル分類と人種の関係をめぐる論争を呼びます。SNSがラジオに代わるヒットの入口になったことを決定づけ、ヒップホップの語法があらゆるポップの土台になった現在を象徴する曲です。', null,
-          'verified', null, 'user', 17) returning id)
+カントリーチャートから除外された経緯は、ジャンル分類と人種の関係をめぐる論争を呼びます。この19週の線が「最大ジャンルの時代」の線の上に乗っているのがポイントで、SNSがラジオに代わるヒットの入口になったことを決定づけた、短くて濃い1本の線です。', null,
+          'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Old Town Road', 'https://en.wikipedia.org/wiki/Old_Town_Road')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-hiphop-50'),
@@ -1596,12 +1684,12 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2023-08-11', null, 'day', 'point', '🎉 ヒップホップ生誕50周年、発祥の地で記念公演', 'クール・ハークのパーティーからちょうど50年の当日、ブロンクスのヤンキー・スタジアムでRun-D.M.C.らが出演する大規模な記念公演が開かれました!この年はグラミー賞の特別企画など、一年を通して50周年が祝われています。
 
 誕生日という語りに神話が含まれることは指摘されつつも、地域の路上文化が半世紀で世界最大級のポップカルチャーに到達したことを、発祥の地で確かめる一年になりました。この年表の締めくくりです。', null,
-          'verified', null, 'user', 18) returning id)
+          'verified', null, 'user', 20) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Hip Hop 50 Live at Yankee Stadium (2023年8月11日)に関する各社報道', null)) as v(title, url);
 
 -- ═══ culture-impressionism-to-street — 印象派からストリートアートへ
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('culture-impressionism-to-street', '00000000-0000-4000-8000-fc964faa4f01', '印象派からストリートアートへ', '1874年の第1回印象派展から2010年代のバンクシーまで。作品と運動、それを受け入れ値付けする制度と市場、表現を支えた技術と社会の3層を重ね、「前衛」が周縁から中心へ移る反復を追う。', 'culture', 'ja', 'public', 's_culture-impressionism-to-street', 1874, 2018, 'culture-impressionism-to-street')
+values ('culture-impressionism-to-street', '00000000-0000-4000-8000-fc964faa4f01', '印象派からストリートアートへ', '1874年の第1回印象派展から2010年代のバンクシーまで。作品と運動、それを受け入れ値付けする制度と市場、表現を支えた技術と社会の3層を重ね、「前衛」が周縁から中心へ移る反復を追う。', 'culture', 'ja', 'public', 's_culture-impressionism-to-street', 1874, 2026, 'culture-impressionism-to-street')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street');
@@ -1668,18 +1756,26 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '技術と社会'),
+          '1933-01-30', '1945-05-08', 'day', 'period', 'ナチス政権による美術統制の12年', 'ヒトラー政権の成立からドイツ降伏まで、国家が美術を統制した12年間である。表現主義や抽象は「退廃」の烙印を押されて美術館から約1万6千点が押収され、1937年の「退廃芸術展」(同じレイヤー)がその見せしめの頂点となった。
+
+この線の間に多くの作家が亡命し、受け皿の一つが開館まもないMoMA(制度と市場レイヤー)を持つニューヨークだった。線が切れた2年後、同じ街でポロックのドリップ期(作品と運動レイヤー)が始まる。統制の線の終わりは、戦後美術の中心の移動と地続きである。', null,
+          'verified', null, 'user', 7) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Degenerate art', 'https://en.wikipedia.org/wiki/Degenerate_art')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '技術と社会'),
           '1937-07-19', null, 'day', 'point', 'ナチス政権、ミュンヘンで「退廃芸術展」を開催', 'ナチス政権がミュンヘンで「退廃芸術展」を開催。表現主義や抽象などを「退廃」として見せしめ展示し、国家による美術の統制と没収が公然化した。美術館からは約1万6千点が押収され、一部は国外で売却・破棄された。
 
 多くの作家が亡命し、戦後の抽象表現主義がニューヨークで開花する遠因となる。作品と制度が政治に従属した極端な例で、同じ年のパリ万博ではピカソ《ゲルニカ》がスペイン館に展示されていた。', null,
-          'verified', null, 'user', 7) returning id)
+          'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Degenerate Art exhibition', 'https://en.wikipedia.org/wiki/Degenerate_Art_exhibition')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '作品と運動'),
-          '1947-01-01', null, 'year', 'point', 'ポロック、床置きキャンバスへの「ドリップ」を本格化', 'ポロックが床置きキャンバスに絵具を垂らし飛ばす「ドリップ」を本格化させ、オールオーヴァーの画面を生んだ。工業用エナメル塗料と巨大なキャンバスという素材の変化が、身体の運動を画面に記録する手法を可能にした。
+          '1947-01-01', '1950-12-31', 'year', 'period', 'ポロック、ドリップ絵画の4年', 'ポロックが床置きキャンバスに絵具を垂らし飛ばす「ドリップ」に集中した、1947年から1950年までの4年間である。工業用エナメル塗料と巨大なキャンバスという素材の変化が、身体の運動を画面に記録するオールオーヴァーの手法を可能にした。1949年の『ライフ』誌特集で大衆的な知名度も得た。
 
-1949年の『ライフ』誌特集で大衆的にも知られる存在となる。冷戦下で抽象表現主義は「自由な米国美術」として国務省や美術館の海外展に組み込まれ、制度と政治が作品の評価を後押しした。', null,
-          'disputed', 'ドリップ技法の「開始年」は諸説あり、1936年のシケイロス工房での実験や1943年頃の試作を起点とする見方もある。', 'user', 8) returning id)
+この4年の線は、ナチスの統制の線(技術と社会レイヤー)が切れた2年後に始まる。亡命作家が耕した前衛の土壌の上で、抽象表現主義は冷戦下に「自由な米国美術」として国務省や美術館の海外展に組み込まれ、制度と政治が評価を後押しした。', null,
+          'disputed', 'ドリップ技法の開始と終息の区切りには諸説あり、1936年のシケイロス工房での実験を起点とする見方や、1951年以降の「ブラック・ポーリング」まで含める見方もある。', 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('MoMA: Jackson Pollock (作家解説)', 'https://www.moma.org/artists/4675'), ('Wikipedia: Jackson Pollock', 'https://en.wikipedia.org/wiki/Jackson_Pollock')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
@@ -1687,7 +1783,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1962-07-09', null, 'day', 'point', 'ウォーホル《キャンベル・スープ缶》をロサンゼルスで初展示', 'ウォーホルがロサンゼルスのフェラス画廊で32点の缶詰を並べた初個展を開催。スーパーマーケットの陳列を模した展示で、大量生産品と広告のイメージが美術館の壁に入り、消費社会そのものが主題になった。
 
 同年にはシルクスクリーンによる複製技法を採用し、作家の手仕事という価値観を揺さぶる。テレビと雑誌広告が家庭に浸透した時期と重なり、後のストリートアートが広告的手法を用いる伏線となる。', null,
-          'verified', null, 'user', 9) returning id)
+          'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('MoMA: Campbell''s Soup Cans (作品解説)', 'https://www.moma.org/collection/works/79809'), ('Wikipedia: Campbell''s Soup Cans', 'https://en.wikipedia.org/wiki/Campbell%27s_Soup_Cans')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
@@ -1695,7 +1791,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1970-01-01', '1989-05-12', 'year', 'period', 'ニューヨーク地下鉄グラフィティの時代', '1970年代の財政危機と治安悪化を背景に、ニューヨークの地下鉄が最大のキャンバスとなった時代。車両全面のピースからワイルドスタイルまで様式が発達し、1989年にMTAが「グラフィティのない地下鉄」を宣言して終息した。
 
 写真家マーサ・クーパーらの記録と、1983年の映画『ワイルド・スタイル』や写真集『Subway Art』が世界に様式を伝え、ヨーロッパや日本へ波及した。行政は洗浄と車両更新で対抗し、80年代後半に舞台は路上へ移る。', null,
-          'verified', null, 'user', 10) returning id)
+          'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Graffiti in New York City', 'https://en.wikipedia.org/wiki/Graffiti_in_New_York_City'), ('Martha Cooper & Henry Chalfant『Subway Art』(1984)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
@@ -1703,7 +1799,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1971-07-21', null, 'day', 'point', '『ニューヨーク・タイムズ』が「TAKI 183」を報道', '『ニューヨーク・タイムズ』がマンハッタン中に名前を書き残す少年「TAKI 183」を紹介し、地下鉄グラフィティが社会現象として認知された。記事は模倣者を急増させ、都市財政危機下のニューヨークで行政との攻防が始まる。
 
 スプレー缶とマーカーという安価な道具、地下鉄という移動する画面が「タグ」の文化を生んだ。同じ1970年代初頭、美術界ではコンセプチュアル・アートが「もの」を離れつつあり、路上では逆に名前を可視化する欲望が噴出していた。', null,
-          'disputed', 'TAKI 183を「最初のグラフィティ・ライター」とする通説には異論があり、フィラデルフィアのCornbreadら先行例を挙げる見方がある。', 'user', 11) returning id)
+          'disputed', 'TAKI 183を「最初のグラフィティ・ライター」とする通説には異論があり、フィラデルフィアのCornbreadら先行例を挙げる見方がある。', 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: TAKI 183', 'https://en.wikipedia.org/wiki/TAKI_183')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
@@ -1711,7 +1807,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1973-10-18', null, 'day', 'point', 'スカル・コレクション競売、現代美術の投機時代を告げる', 'ロバートとエセルのスカル夫妻が所蔵50点をサザビー・パーク・バーネットで競売にかけ、落札額が購入価格を大きく上回った。約900ドルで購入されたラウシェンバーグ《Thaw》は8万5千ドルで落札され、作家が会場でコレクターに詰め寄った逸話が残る。
 
 存命作家の作品が短期間で値上がりする構図が可視化され、以後オークションが現代美術の価格形成の中心となる。作家への再販利益還元（追及権）の議論も高まった。', null,
-          'verified', null, 'user', 12) returning id)
+          'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Robert C. Scull', 'https://en.wikipedia.org/wiki/Robert_C._Scull')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
@@ -1719,15 +1815,23 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1980-06-01', null, 'month', 'point', '「タイムズ・スクエア・ショー」開催', '作家集団コラボが元マッサージ店の廃屋で雑居展「タイムズ・スクエア・ショー」を開催。グラフィティ、パンク、ポルノ地区の風景を取り込んだ展示は「最初のラディカルな80年代アートショー」と評され、バスキア、ヘリングら路上系の若手が美術界と接続した。
 
 同年のニューヨーク市は財政再建の途上にあり、空き家と低家賃が若手の実験を可能にしていた。数年後、同じ作家たちがソーホーの画廊と競売に吸収されていく。', null,
-          'unverified', '開催期間の正確な日付と参加作家の全リストは資料により異同があり、本項は6月開催という概略のみ記載。', 'user', 13) returning id)
+          'unverified', '開催期間の正確な日付と参加作家の全リストは資料により異同があり、本項は6月開催という概略のみ記載。', 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: The Times Square Show', 'https://en.wikipedia.org/wiki/The_Times_Square_Show')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '制度と市場'),
+          '1986-12-01', '1991-02-28', 'month', 'period', '日本のバブル景気と美術品高騰の51か月', '内閣府の景気基準日付でいう平成景気の51か月。円高と余剰資金を背景に日本の企業と個人が美術品市場へ参入し、印象派を中心に落札額が急騰した。頂点の1990年には斎藤了英がゴッホ《医師ガシェの肖像》を8,250万ドルで落札している。
+
+この線の序盤に《ひまわり》落札(同じレイヤー)が刺さる。線が途切れると日本勢は市場から退き、高値で買われた作品の多くが担保として市場から姿を消した。景気の線と落札額の曲線がほぼ一致した、市場が価値を規定する時代の極点である。', null,
+          'verified', null, 'user', 15) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('内閣府: 景気基準日付', null), ('Wikipedia: Portrait of Dr. Gachet', 'https://en.wikipedia.org/wiki/Portrait_of_Dr._Gachet')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '制度と市場'),
           '1987-03-30', null, 'day', 'point', 'ゴッホ《ひまわり》、約2,475万ポンドで落札', 'クリスティーズ・ロンドンでゴッホ《ひまわり》が約2,475万ポンドで落札され、当時の美術品最高額を記録。落札者は安田火災海上保険で、日本マネーの本格参入を示した。
 
 **1874年に嘲笑された印象派が、一世紀後には最も高価な資産となった**。プラザ合意後の円高と日本のバブル経済が価格を押し上げ、1990年には斎藤了英がゴッホ《医師ガシェの肖像》を8,250万ドルで落札する。制度と市場のレイヤーが作品評価を規定する時代の頂点である。', null,
-          'verified', null, 'user', 14) returning id)
+          'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('SOMPO美術館: ゴッホ《ひまわり》(所蔵作品解説)', 'https://www.sompo-museum.org/collections/sunflowers/'), ('Wikipedia: Sunflowers (Van Gogh series)', 'https://en.wikipedia.org/wiki/Sunflowers_(Van_Gogh_series)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
@@ -1735,7 +1839,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2005-08-01', null, 'month', 'point', 'バンクシー、ヨルダン川西岸の分離壁に9点の壁画', 'バンクシーがヨルダン川西岸の分離壁に、少女が風船で壁を越える図像など9点の壁画を制作。壁面を政治的メッセージの媒体にし、匿名の作家像が国際的に知られるようになった。
 
 短時間で高精度の図像を残せるステンシル技法によるパレスチナでの制作は、路上の表現が観光地化と報道を通じて拡散する初期の例で、写真がウェブで共有される時代の到来と一体だった。作家は匿名を保ち、公式サイトと代理人以外の「認証」がないため、帰属の確認は常に困難を伴う。', null,
-          'unverified', '制作時期は報道と作家側の発表に基づく概略で、日付レベルの一次資料は確認できていない。', 'user', 15) returning id)
+          'unverified', '制作時期は報道と作家側の発表に基づく概略で、日付レベルの一次資料は確認できていない。', 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Banksy', 'https://en.wikipedia.org/wiki/Banksy')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
@@ -1743,15 +1847,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2008-05-23', null, 'day', 'point', 'テート・モダン、外壁を舞台に「Street Art」展を開催', 'テート・モダンが建物正面の外壁を舞台に「Street Art」展を開催し、6組の作家が巨大壁画を制作。**ストリートアートが公的制度に正面から迎え入れられた**。
 
 同じ月、ロンドン・ウォータールーの地下道ではバンクシー主催の「カンズ・フェスティバル」が開かれ、公的制度と自主企画が並走した。地下鉄グラフィティが洗浄された20年前と比べ、行政と美術館の態度は反転している。以後、路上作品の切り出し販売や保護をめぐる法的議論が続く。', null,
-          'verified', null, 'user', 16) returning id)
+          'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Tate: Street Art (2008年展覧会ページ)', 'https://www.tate.org.uk/whats-on/tate-modern/street-art')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-impressionism-to-street') and name = '技術と社会'),
-          '2010-10-06', null, 'day', 'point', 'Instagramがサービス開始', 'Instagramがサービスを開始し、スマートフォンで撮影と共有が一体化した。壁画は現地に行かなくても「消える前に」世界へ届く画像となる。
+          '2010-10-06', '2026-06-30', 'day', 'period', 'Instagram以後、路上が即時に世界へ届く時代', 'Instagramのサービス開始以降、撮影と共有がスマートフォンの上で一体化し、壁画は現地へ行かなくても「消える前に」世界へ届く画像になった。1888年のコダックが撮影を大衆化したように、発表と流通が大衆化された。この線は現在も続いている。
 
-1888年のコダックが撮影を大衆化したように、Instagramは発表と流通を大衆化した。ストリートアートは制作直後に撮影・共有され、消去や上書きを前提とした表現が画像として残る。作家の匿名性とフォロワー数が価値の一部となり、美術館や画廊を経由しない評価回路が形成された。', null,
-          'verified', null, 'user', 17) returning id)
+線の上にはバンクシーのニューヨーク滞在制作(作品と運動レイヤー)や《風船と少女》の裁断(制度と市場レイヤー)が乗る。消去や上書きを前提とした路上の表現が画像として残り、美術館や画廊を経由しない評価回路が形成された。', null,
+          'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Instagram', 'https://en.wikipedia.org/wiki/Instagram')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
@@ -1759,7 +1863,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2013-10-01', '2013-10-31', 'day', 'period', 'バンクシー「Better Out Than In」ニューヨーク滞在制作', 'バンクシーが10月の1か月間、毎日1点をニューヨーク市内に発表する滞在制作「Better Out Than In」を実施。作品の場所はウェブとSNSで公表され、市民が探し歩いた。
 
 発表はInstagramと専用サイト、鑑賞は市民のスマートフォン、市長は「器物損壊」と非難し、一部作品は数時間で上書きされるなど、作品と技術と社会のレイヤーが同時に動いた例である。セントラルパークで本人の作品を1点60ドルで無名販売する企画は、市場が値付けする「作家名」の機能を露わにした。', null,
-          'verified', null, 'user', 18) returning id)
+          'verified', null, 'user', 20) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Better Out Than In', 'https://en.wikipedia.org/wiki/Better_Out_Than_In')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-impressionism-to-street'),
@@ -1767,12 +1871,12 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2018-10-05', null, 'day', 'point', 'サザビーズで落札直後、バンクシー《風船と少女》が自ら裁断', 'サザビーズでバンクシー《風船と少女》が約104万ポンドで落札された直後、額縁内のシュレッダーが作動。半分裁断された作品は《愛はごみ箱の中に》と改題された。実行の映像はSNSで拡散され、技術と社会のレイヤーが市場の出来事を即時に世界化した。
 
 市場批判のパフォーマンスが結果として作品価値を高める逆説となり、2021年の再出品では約1,870万ポンドで落札される。1973年のスカル競売で作家が抗議した構図から半世紀、**抗議そのものが商品化される段階**に達した。', null,
-          'verified', null, 'user', 19) returning id)
+          'verified', null, 'user', 21) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Love is in the Bin', 'https://en.wikipedia.org/wiki/Love_is_in_the_Bin'), ('Sotheby''s: Banksy, Love is in the Bin (2021年セール解説)', null)) as v(title, url);
 
 -- ═══ culture-jpop-streaming — 🎧 J-POPとストリーミングの30年
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('culture-jpop-streaming', '00000000-0000-4000-8000-be575a20b1ee', '🎧 J-POPとストリーミングの30年', '1990年代のCDバブルから2020年代のグローバルヒットまで。ヒット作とアーティスト、流通と技術、産業と制度の3層を重ねて、「売れる形」が円盤から再生回数へ変わっていく30年を、あの頃の記憶と一緒にたどります 🎧', 'culture', 'ja', 'public', 's_culture-jpop-streaming', 1988, 2024, 'culture-jpop-streaming')
+values ('culture-jpop-streaming', '00000000-0000-4000-8000-be575a20b1ee', '🎧 J-POPとストリーミングの30年', '1990年代のCDバブルから2020年代のグローバルヒットまで。ヒット作とアーティスト、流通と技術、産業と制度の3層を重ねて、「売れる形」が円盤から再生回数へ変わっていく30年を、あの頃の記憶と一緒にたどります 🎧', 'culture', 'ja', 'public', 's_culture-jpop-streaming', 1988, 2026, 'culture-jpop-streaming')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming');
@@ -1782,11 +1886,19 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 insert into public.layers (timeline_id, name, color, position) values ((select id from public.timelines where slug = 'culture-jpop-streaming'), '産業と制度', 'gold', 2);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '流通と技術'),
+          '1988-02-01', '2000-12-31', 'month', 'period', '🎼 短冊シングルの時代：8cmCDの13年', '縦に細長い「短冊」のパッケージ、覚えていますか?8cmCDシングルは1988年2月に登場して、90年代のヒット曲の多くはこの小さな円盤で買われました。手に取りやすい価格が、ミリオンセラー量産の土台です。
+
+この線は、産業レイヤーのCDバブルの線とほぼ並走しています。タイアップで知った曲を短冊で買う流れが、2本の線を支え合わせていました。バブルの線が終わった2年後、シングルは12cmへ置き換わり、この線も静かに消えます。', null,
+          'disputed', '8cm規格の登場は1988年2月ですが、12cmへの移行が完了した時期ははっきりしません。ここでは主要リリースから8cmがほぼ消えた2000年前後を終点に置きました。', 'user', 0) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 8センチCD', 'https://ja.wikipedia.org/wiki/8%E3%82%BB%E3%83%B3%E3%83%81CD')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '産業と制度'),
           '1988-10-01', null, 'day', 'point', '📻 J-WAVE開局、「J-POP」の呼称が広まる', '東京のFM局J-WAVEが開局。洋楽中心の編成の中で流す邦楽を指す言葉として「J-POP」が使われ始めたとされています。「歌謡曲」でも「ニューミュージック」でもない、洋楽と並べても浮かない邦楽。この呼び名の誕生です。
 
 放送局側のネーミングがジャンルの意識を作ったというのが面白いところ。90年代のCDバブルと一緒にレコード店の棚やチャートの言葉として定着して、いつの間にか業界の当たり前になっていました。', null,
-          'disputed', '呼称の起源はJ-WAVE開局前後の局内用語という説が有力ですが、誰がいつ言い始めたかは諸説あって、一次資料では確定していません。', 'user', 0) returning id)
+          'disputed', '呼称の起源はJ-WAVE開局前後の局内用語という説が有力ですが、誰がいつ言い始めたかは諸説あって、一次資料では確定していません。', 'user', 1) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: J-POP', 'https://ja.wikipedia.org/wiki/J-POP'), ('烏賀陽弘道『Jポップとは何か』岩波新書 (2005)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
@@ -1794,7 +1906,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1991-01-01', '1998-12-31', 'year', 'period', '💿 CDバブル：音楽ソフト生産額が右肩上がりの時代', 'ドラマ・CMタイアップとミリオンセラーが量産され、1998年に音楽ソフト生産金額が過去最高を記録するまで拡大が続いた時代です。8cmシングルとタイアップ、そしてカラオケの普及が**「知ってる曲を買う」循環**を回していました。
 
 同じ頃、流通と技術レイヤーではCDがレコードを完全に置き換え、レンタル店が全国に。ピークの1998年に宇多田ヒカルがデビューして、翌年から市場は縮小に転じます。', null,
-          'verified', null, 'user', 1) returning id)
+          'verified', null, 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('日本レコード協会: 音楽ソフト種類別生産金額推移', 'https://www.riaj.or.jp/g/data/annual/ms_m.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
@@ -1802,7 +1914,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1992-05-27', null, 'day', 'point', '🎤 米米CLUB「君がいるだけで」発売、ドラマ主題歌が大ヒット', '米米CLUB「君がいるだけで」がドラマ『素顔のままで』の主題歌としてシングル約289万枚を売り上げ、タイアップ型ヒットの代表例になりました。
 
 毎週ドラマで流れた曲を、CDショップとレンタル店で手に入れる。この90年代型ヒットの流れ、覚えている人も多いはず。同じ年にはミリオンセラーが相次いでシングル市場が拡大期に入り、曲はメディア露出とセットで設計される時代へ。翌年以降もタイアップ曲がミリオンを量産しました。', null,
-          'verified', null, 'user', 2) returning id)
+          'verified', null, 'user', 3) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 君がいるだけで', 'https://ja.wikipedia.org/wiki/%E5%90%9B%E3%81%8C%E3%81%84%E3%82%8B%E3%81%A0%E3%81%91%E3%81%A7')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
@@ -1810,7 +1922,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1994-01-01', '1998-12-31', 'year', 'period', '🎹 小室哲哉プロデュース作品の全盛期', 'TRF、globe、安室奈美恵。プロデュース作がチャート上位を占めて、「小室サウンド」がJ-POPの音そのものだった時代です。シンセとダンスビートを軸にした制作の裏には、デジタル機材が安くなったという技術レイヤーの変化がありました。
 
 プロデューサーの名前で売れるという構造は、のちのアイドル運営型や動画発ヒットと対照的な「作り手中心」のモデル。市場拡大期と重なって、CD売上のピークを支えました。', null,
-          'disputed', '全盛期をいつからいつまでと見るかは論者によって違うので、ここでは主要ヒットが集中した1994〜1998年を便宜的に採用しています。', 'user', 3) returning id)
+          'disputed', '全盛期をいつからいつまでと見るかは論者によって違うので、ここでは主要ヒットが集中した1994〜1998年を便宜的に採用しています。', 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 小室哲哉', 'https://ja.wikipedia.org/wiki/%E5%B0%8F%E5%AE%A4%E5%93%B2%E5%93%89')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
@@ -1818,7 +1930,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1998-01-01', null, 'year', 'point', '📀 音楽ソフト生産金額が約6,075億円で過去最高に', '日本レコード協会の統計で、音楽ソフト生産金額が約6,075億円のピークに到達。ここが頂点で、以後CD市場は長い縮小局面に入ります。
 
 同じ年に宇多田ヒカルがデビューして、翌年の『First Love』が史上最多のアルバム売上を記録。作品の頂点と市場の頂点が重なった転換点です。技術レイヤーではMP3プレーヤーとCD-Rが普及し始めていて、「複製できる音楽」への移行が静かに始まっていました。', null,
-          'verified', null, 'user', 4) returning id)
+          'verified', null, 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('日本レコード協会: 音楽ソフト種類別生産金額推移', 'https://www.riaj.or.jp/g/data/annual/ms_m.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
@@ -1826,30 +1938,22 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1999-03-10', null, 'day', 'point', '🎧 宇多田ヒカル『First Love』発売、日本史上最多売上アルバムに', '宇多田ヒカルのデビューアルバム『First Love』が累計約765万枚（オリコン）を記録して、日本史上最多売上アルバムに。R&Bを土台にした音作りと15歳でのデビューは、J-POPの言葉づかいを更新しました!
 
 産業レイヤーでは前年に生産金額がピークを打っていて、この記録は「上り坂の最後」ではなく「下り坂の始まり」に立った作品。以後、この枚数を超えるアルバムは現れていません。', null,
-          'verified', null, 'user', 5) returning id)
+          'verified', null, 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: First Love (宇多田ヒカルのアルバム)', 'https://ja.wikipedia.org/wiki/First_Love_(%E5%AE%87%E5%A4%9A%E7%94%B0%E3%83%92%E3%82%AB%E3%83%AB%E3%81%AE%E3%82%A2%E3%83%AB%E3%83%90%E3%83%A0)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '流通と技術'),
-          '2002-03-01', null, 'month', 'point', '💽 エイベックス、国内初のコピーコントロールCDを発売', 'エイベックスが、PCでの複製を防ぐ国内初のコピーコントロールCD（CCCD）を発売しました。CD-Rとファイル交換ソフトによる複製への防衛策でしたが、規格外ディスクの再生トラブルと音質への不満でリスナーの反発を招き、数年で各社が撤退します。
+          '2002-03-01', '2004-09-30', 'month', 'period', '💽 コピーコントロールCDの2年半', 'エイベックスが2002年3月に国内初のコピーコントロールCD（CCCD）を発売してから、各社が撤退へ向かうまでの約2年半です。PCでの複製を防ぐ狙いでしたが、規格外ディスクの再生トラブルと音質への不満で、リスナーの強い反発を招きました。
 
-同時期には違法コピー対策の議論も本格化していました。技術で流通を縛る路線から配信で稼ぐ路線へ、転換を促す反面教師になった出来事です。', null,
-          'verified', null, 'user', 6) returning id)
+同じ2002年の暮れには、すぐ隣で着うたの線が始まっています。技術で複製を縛る路線と、携帯の課金で売る路線が並走して、生き残ったのは後者でした。配信で稼ぐ流れへの転換を促した、反面教師の期間です。', null,
+          'disputed', '撤退時期は各社で異なります。ここでは主要レーベルが運用を見直した2004年秋を便宜的な終点にしました（一部レーベルは2006年頃まで継続）。', 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: コピーコントロールCD', 'https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%94%E3%83%BC%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%ABCD')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '流通と技術'),
-          '2002-12-01', null, 'month', 'point', '📱 auが「着うた」サービスを開始', 'auが、携帯電話で楽曲の一部を着信音として買える「着うた」サービスを開始。日本独自の音楽配信市場が、携帯電話の上で立ち上がりました。
+          '2002-12-01', '2016-12-31', 'month', 'period', '🎵 着うた時代：携帯電話が音楽配信の主戦場', '2002年12月にauが始めた「着うた」から着うたフルへ、携帯電話が有料配信の中心だった14年間です。**ガラケーの課金基盤に乗った配信が先に成立した**のが日本らしいところで、iTunesのようなPC中心のモデルとは別の道を作りました。
 
-PC向け配信が広がる前に、**携帯キャリアの課金基盤に乗った配信が先に成立した**のが日本らしいところです。2004年の「着うたフル」で1曲丸ごと買えるようになり、2000年代後半には有料配信売上の大半を占めました。産業レイヤーでは、CDの縮小を配信が一部補う構図が生まれます。', null,
-          'verified', null, 'user', 7) returning id)
-insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 着うた', 'https://ja.wikipedia.org/wiki/%E7%9D%80%E3%81%86%E3%81%9F')) as v(title, url);
-with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
-  values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
-          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '流通と技術'),
-          '2002-12-01', '2016-12-31', 'month', 'period', '🎵 着うた時代：携帯電話が音楽配信の主戦場', '着うた・着うたフルが有料配信の中心だった期間です。ガラケーの課金基盤とキャリア主導の流通が、iTunesのようなPC中心のモデルとは別の道を作りました。
-
-「サビが着うたで売れる曲」が意識されたのもこの頃。配信売上は2008〜2009年頃に一度ピークを迎えます。iPhone以降は主導権がアプリ事業者に移り、スマートフォンの普及とともに縮小して、2010年代半ばに役割を終えました。', null,
+「サビが着うたで売れる曲」が意識されたのもこの頃。配信売上は2008〜2009年頃に一度ピークを迎えます。iPhone以降は主導権がアプリ事業者へ移り、スマホの普及とともに縮んで、2010年代半ばに役割を終えました。', null,
           'unverified', '終わりの時期は主要キャリアのサービス終了時期からざっくり置いたもので、正確な終了日は事業者・サービス名によって異なります。', 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 着うた', 'https://ja.wikipedia.org/wiki/%E7%9D%80%E3%81%86%E3%81%9F'), ('日本レコード協会: 有料音楽配信売上実績', 'https://www.riaj.or.jp/g/data/annual/dg_m.html')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -1871,10 +1975,10 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '作品とアーティスト'),
-          '2010-10-27', null, 'day', 'point', '🤝 AKB48「Beginner」発売、初週ミリオンを記録', 'AKB48「Beginner」がオリコン週間で初週100万枚超を記録。握手券や投票券を同梱した特典付きCDの大量購入を前提にした売り方が、シングル市場を支えていました。
+          '2010-10-27', '2020-02-29', 'day', 'period', '🤝 握手券がCDを動かした10年', 'AKB48「Beginner」が初週100万枚を超えた2010年から、握手券や投票券つきCDの大量購入がシングル市場を支え続けた約10年です。**CDが「聴く媒体」から「体験と権利のチケット」へ**変わった時代でした。
 
-この手法は**CDを「音楽を聴くための媒体」から「体験と権利のチケット」へ**変えたと言えます。シングルの枚数は回復して見える一方、実際の聴取は配信と動画へ。指標としてのCD売上と実態のズレが広がった時期で、音楽性の評価とは別の議論も呼びました。', null,
-          'verified', null, 'user', 11) returning id)
+2015年からは、流通レイヤーでサブスクの線がこの線の下を並走し始めます。枚数のチャートと再生回数のチャートが別の顔ぶれを映す「二重指標」の数年間は、この重なりが生んだもの。線の終わりは2020年、コロナ禍で握手会が止まった春です。', null,
+          'disputed', '「握手券の時代」に公式な区切りはありません。ここでは初週ミリオンが定着した2010年秋から、感染症対策で握手会が中止された2020年2月までを採りました。', 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Beginner (AKB48の曲)', 'https://ja.wikipedia.org/wiki/Beginner_(AKB48%E3%81%AE%E6%9B%B2)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
@@ -1887,9 +1991,9 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '流通と技術'),
-          '2015-05-27', null, 'day', 'point', '🎧 AWA・LINE MUSICが開始、国内で定額制配信が本格化', 'AWA（5月27日）、LINE MUSIC（6月11日）が相次いでスタートし、7月にはApple Musicも日本上陸。定額聴き放題が国内でも選択肢になった年で、月額1,000円前後という相場もここで決まりました。
+          '2015-05-27', '2026-06-30', 'day', 'period', '🎧 サブスク時代、11年目も更新中', 'AWA、LINE MUSIC、そしてApple Musicが相次いで始まった2015年から、定額聴き放題が聴き方の標準になっていく、現在も続いている線です。月額1,000円前後という相場も、この年に決まりました。
 
-ただ最初は主要邦楽アーティストの曲がなかなか揃わず、「あの曲がない」を体験した人も多いはず。CD売上と配信収益のバランスをめぐってレーベル各社の判断は分かれ、以後は再生回数がヒットの指標として意識され始めます。', null,
+最初は主要邦楽が揃わず「あの曲がない」だらけだったのに、いつの間にか全部ある。この線の上にはSpotify上陸の点、Lemonの線、夜に駆けるの点が次々に乗っていきます。ヒットのものさしが枚数から再生回数へ入れ替わる舞台は、ぜんぶこの1本の上でした。', null,
           'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: AWA (音楽配信サービス)', null), ('Wikipedia: LINE MUSIC', 'https://ja.wikipedia.org/wiki/LINE_MUSIC')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -1903,9 +2007,9 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-jpop-streaming'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-jpop-streaming') and name = '作品とアーティスト'),
-          '2018-03-14', null, 'day', 'point', '🍋 米津玄師「Lemon」発売、配信時代のロングヒットの原型に', '米津玄師「Lemon」がドラマ主題歌として発売され、Billboard JAPAN Hot 100で2018年・2019年と2年連続の年間1位に。
+          '2018-03-14', '2019-12-31', 'day', 'period', '🍋 米津玄師「Lemon」、走り続けた2年', '米津玄師「Lemon」がドラマ主題歌として発売され、Billboard JAPAN Hot 100で2018年・2019年と2年連続の年間1位に。発売日という点ではなく、**チャートを2年間走り続けた線そのもの**がこの曲の記録です。
 
-ボーカロイド出身の作り手が、テレビ主題歌という90年代型タイアップと、動画・配信という2010年代型の流通を両立させた曲です。**CD初週ではなく数年単位の積み重ねで評価される「ロングヒット」**の代表例で、産業レイヤーではストリーミング認定制度の導入につながる状況を作りました。', null,
+この線は、流通レイヤーのサブスク時代の線の上にすっぽり乗っています。定額制だから再生は積み上がり続ける。ボカロ出身の作り手と、テレビ主題歌という90年代型タイアップが配信の上で合流して、ストリーミング認定制度の導入につながる状況を作りました。', null,
           'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Lemon (米津玄師の曲)', 'https://ja.wikipedia.org/wiki/Lemon_(%E7%B1%B3%E6%B4%A5%E7%8E%84%E5%B8%AB%E3%81%AE%E6%9B%B2)'), ('Billboard JAPAN: 年間チャート', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -1943,7 +2047,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 
 -- ═══ culture-kpop-global — 🎤 K-POPグローバル化
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('culture-kpop-global', '00000000-0000-4000-8000-be575a20b1ee', '🎤 K-POPグローバル化', 'ソウルの練習生システムからビルボード制覇、育成システムの輸出まで。音楽と作品・産業とシステム・ファンダムとメディアの3層で、K-POPが世界標準の生産方式になっていく30年を、ファン目線で追いかけます 🌟', 'culture', 'ja', 'public', 's_culture-kpop-global', 1992, 2024, 'culture-kpop-global')
+values ('culture-kpop-global', '00000000-0000-4000-8000-be575a20b1ee', '🎤 K-POPグローバル化', 'ソウルの練習生システムからビルボード制覇、育成システムの輸出まで。音楽と作品・産業とシステム・ファンダムとメディアの3層で、K-POPが世界標準の生産方式になっていく30年を、ファン目線で追いかけます 🌟', 'culture', 'ja', 'public', 's_culture-kpop-global', 1992, 2026, 'culture-kpop-global')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global');
@@ -1954,26 +2058,26 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = '音楽と作品'),
-          '1992-04-11', null, 'day', 'point', '🎬 ソ・テジワ・アイドルズがデビュー', '3人組ソ・テジワ・アイドルズが、MBCの新人番組で「ナン・アラヨ」を披露してデビュー。審査員の評価は低かったと伝えられますが、楽曲は韓国のチャートを長期間支配し、ラップとダンスを韓国歌謡のど真ん中に持ち込みました。
+          '1992-04-11', '1996-01-31', 'day', 'period', '🎬 ソ・テジワ・アイドルズの4年、すべての起点', '3人組ソ・テジワ・アイドルズが「ナン・アラヨ」でデビューしてから、突然の引退宣言までの約4年間です。デビュー時の審査員の評価は低かったと伝えられますが、楽曲はチャートを長期間支配して、ラップとダンスを韓国歌謡のど真ん中に持ち込みました。
 
-10代市場の大きさを見せつけた世代交代の事件で、K-POP史の起点として一番よく引かれる場面です。この成功が、才能の出現を待たずにスターを設計して生産する事務所システムの構想を生みました。', null,
-          'disputed', 'デビュー番組で審査員から最低点を付けられたという逸話は有名ですが、番組の演出や採点の詳細には諸説あります。', 'user', 0) returning id)
+10代市場の大きさを見せつけたこの4年の線が、K-POP史の起点です。線が途切れた1996年1月の8か月後、同じ年のうちにH.O.T.の線が始まります。才能の出現を待たずにスターを設計する事務所システムは、この空白を埋めるために生まれました。', null,
+          'disputed', 'デビュー番組で審査員から最低点を付けられたという逸話には諸説あります。引退宣言は1996年1月31日ですが、活動期間の区切り方には幅があります。', 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Seo Taiji and Boys', 'https://en.wikipedia.org/wiki/Seo_Taiji_and_Boys')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = '産業とシステム'),
-          '1995-01-01', null, 'year', 'point', '🏢 SMエンターテインメント設立', '歌手出身のプロデューサー、イ・スマンがSMエンターテインメントを設立。オーディションで原石を見つけて、歌唱・ダンスから語学まで数年がかりで鍛えて送り出す**練習生システム**を体系化しました。
+          '1995-01-01', '2020-10-14', 'year', 'period', '🏢 SM設立、三大事務所体制の25年', '歌手出身のイ・スマンが1995年にSMを設立して、オーディションで原石を見つけて数年がかりで鍛える**練習生システム**を体系化しました。YG、JYPが続いて、いわゆる三大事務所がK-POPの生産方式を握る時代が四半世紀続きます。
 
-音楽制作・育成・マネジメントを丸ごと抱える韓国型事務所の原型です。YG、JYPが続いて「三大事務所」体制が生まれ、K-POPを再現可能な生産方式に変えた出発点になりました。', null,
-          'verified', null, 'user', 1) returning id)
+この長い線の終点は、同じレイヤーのHYBE上場の点にぴったり重なります。BTSを擁する新興が時価総額で御三家の合計を上回った2020年10月、「三大」という言葉の前提が変わりました。', null,
+          'disputed', '三大事務所体制の「終わり」に公式な定義はありません。ここでは時価総額で構図が塗り替わったHYBE上場(2020年10月)を便宜的な終点にしています。', 'user', 1) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: SM Entertainment', 'https://en.wikipedia.org/wiki/SM_Entertainment')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = '産業とシステム'),
-          '1996-09-07', null, 'day', 'point', 'H.O.T.デビュー、企画型アイドルの原型', '⭐ SMの5人組H.O.T.がデビュー。コンセプト設計から衣装、ファンクラブ運営まで事務所が一体で設計する「企画型アイドル」の最初の大成功例で、第1世代アイドルの時代を開きました。
+          '1996-09-07', '2001-05-31', 'day', 'period', '⭐ H.O.T.の5年、企画型アイドルの原型', 'SMの5人組H.O.T.がデビューしてから、契約問題で事実上解散するまでの約5年間です。コンセプト設計から衣装、ファンクラブ運営まで事務所が一体で設計する「企画型アイドル」の最初の大成功例で、第1世代の時代を開きました。
 
-人気は中国・台湾へ広がり、のちに「韓流」という言葉を生みます。国内ヒットの延長ではなく、最初から輸出を前提に設計されたK-POPの原型が、ここで完成しました。', null,
-          'verified', null, 'user', 2) returning id)
+人気は中国・台湾へ広がって、のちに「韓流」という言葉を生みます。この線のちょうど真ん中あたり、2000年2月に北京公演の点が乗っています。最初から輸出を前提に設計されたK-POPの原型が、この5年で完成しました。', null,
+          'disputed', '解散は公式に宣言されておらず、メンバー3人のSMとの専属契約終了が明らかになった2001年5月を便宜的な終点にしています。', 'user', 2) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: H.O.T.', 'https://en.wikipedia.org/wiki/H.O.T.')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
@@ -2010,10 +2114,10 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = 'ファンダムとメディア'),
-          '2012-10-13', null, 'day', 'point', '🎪 第1回KCONを米カリフォルニアで開催', 'CJグループが、K-POPと韓国文化の総合イベントKCONを米カリフォルニア州アーバインで初開催。コンサートに美容・食・ドラマの体験ブースを併設して、約1万人を集めたと発表されました。
+          '2012-10-13', '2026-06-30', 'day', 'period', '🎪 KCON、世界を巡回しつづける14年目', 'CJグループがK-POPと韓国文化の総合イベントKCONを米カリフォルニア州アーバインで初開催。約1万人と発表された第1回から、ロサンゼルス、ニューヨーク、東京、中東へと会場を広げて、現在も毎年続いている線です。
 
-音楽を入口に韓国製品全体へ関心を広げる「ファンダムの見本市」です。文化輸出を消費財輸出につなげる国家戦略を、民間の興行として形にした装置とも言えます。以後、世界各都市で定例化しました。', null,
-          'unverified', '観客数（約1万人）は主催者発表に基づく数字で、第三者による検証はありません。', 'user', 7) returning id)
+コンサートに美容・食・ドラマの体験ブースを併設する「ファンダムの見本市」は、文化輸出を消費財輸出につなげる国家戦略を、民間の興行として形にした装置でもあります。コロナ禍でツアーが止まった2年間も、この線はオンライン開催でつながっていました。', null,
+          'unverified', '第1回の観客数(約1万人)は主催者発表で、第三者による検証はありません。開催は現在も続いていますが、年ごとの開催地・規模は変動します。', 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: KCON (music festival)', 'https://en.wikipedia.org/wiki/KCON_(music_festival)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
@@ -2026,15 +2130,15 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = '音楽と作品'),
-          '2013-06-13', null, 'day', 'point', '🌱 防弾少年団(BTS)デビュー', 'Big Hitエンターテインメントから7人組の防弾少年団(BTS)がデビュー。大手3社の外にある中小事務所の出身で、当初は国内での注目度も限られていました。
+          '2013-06-13', '2022-06-14', 'day', 'period', '🌱 BTS、完全体活動の9年', 'Big Hitから7人組の防弾少年団(BTS)がデビューしてから、グループ活動の一時休止を発表するまでの9年間の線です。大手3社の外にある中小事務所の出身で、当初は国内での注目度も限られていました。
 
-メンバー自身が制作に関わる楽曲と、SNSでの日常的な発信を武器に、テレビ中心の勝ち筋とは別ルートで支持を積み上げていきます。ファンダムとメディアの構造変化を一番体現するグループの、これが出発点です。', null,
-          'verified', null, 'user', 9) returning id)
+SNSでの日常的な発信を武器に、テレビ中心の勝ち筋とは別ルートで頂点へ。面白いのは、この線の真ん中に**中国市場が閉ざされた限韓令の線**がそっくり重なることです。最大市場を失った期間に、彼らは米国のビルボードを制していました。兵役を経て、線の続きはこれからです。', null,
+          'disputed', '2022年6月の発表については、事務所が「解散や活動休止ではない」と補足しており、グループ活動の区切りをどこに置くかは解釈が分かれます。', 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: BTS', 'https://en.wikipedia.org/wiki/BTS')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = '産業とシステム'),
-          '2016-08-01', '2021-12-31', 'month', 'period', '🚧 中国の「限韓令」で最大市場が閉ざされる', '在韓米軍のTHAAD配備決定への報復として、中国で韓国コンテンツの放送や公演が事実上制限されたとされます。K-POP公演の許可が下りなくなり、最大級の成長市場が突然閉ざされました。
+          '2016-08-01', '2021-12-31', 'month', 'period', '🚧 限韓令の5年、最大市場が閉ざされる', '在韓米軍のTHAAD配備決定への報復として、中国で韓国コンテンツの放送や公演が事実上制限されたとされます。K-POP公演の許可が下りなくなり、最大級の成長市場が突然閉ざされました。
 
 各社は日本・東南アジア・欧米へ軸足を移して、市場リスクの分散を迫られます。結果として特定市場に依存しない世界展開が加速したと評価される、地政学がエンタメ産業の形を変えた代表例です。', null,
           'disputed', '中国政府は「限韓令」の存在を公式に認めておらず、開始時期・対象範囲・解除の経緯はいずれも報道に基づく推定です。', 'user', 10) returning id)
@@ -2065,11 +2169,19 @@ SNSと放送局に頼っていたファンとの接点を、事務所が自前�
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Weverse', 'https://en.wikipedia.org/wiki/Weverse')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = '産業とシステム'),
+          '2020-03-01', '2022-03-31', 'month', 'period', '😷 コロナ禍、ワールドツアーが止まった2年', 'パンデミックで各国の入国制限と集会制限が重なり、K-POPのワールドツアーがほぼ全面的に止まった約2年間です。CDとグッズの販売、そして急ごしらえの有料オンライン公演が、興行収入の穴を埋める柱になりました。
+
+この止まった線の上に、75万人が同時視聴したBANG BANG CONの点と、配信市場を狙った「Dynamite」の点が乗っています。会場が閉じたからこそ画面の中の勝負が磨かれた、という逆説の2年でした。ソウルでの大規模公演が戻るのは2022年春のことです。', null,
+          'disputed', 'ツアー停止の始点・終点は国とアーティストごとに異なります。ここでは世界的な公演中止が広がった2020年3月から、ソウルで大規模公演が再開した2022年3月までを採りました。', 'user', 14) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('各社報道: コロナ禍における公演中止とオンライン公演の拡大(2020〜2022)', null)) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'culture-kpop-global'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-kpop-global') and name = 'ファンダムとメディア'),
           '2020-06-14', null, 'day', 'point', '💜 オンライン公演「BANG BANG CON The Live」', 'コロナ禍でワールドツアーが中止になる中、BTSが有料オンライン公演「BANG BANG CON The Live」を開催。107の国と地域から約75万人が同時視聴したと発表されました。
 
 会場の収容人数という物理的な限界を超える興行モデルの実証になり、各社が有料オンライン公演やハイブリッド興行を常設化します。パンデミックがファンダムとメディアの関係を作り替えた、代表的な出来事です。', null,
-          'unverified', '同時視聴者数（約75万人）は主催者発表で、第三者による検証はありません。', 'user', 14) returning id)
+          'unverified', '同時視聴者数（約75万人）は主催者発表で、第三者による検証はありません。', 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Big Hit Entertainment発表: BANG BANG CON The Live 視聴者数(2020-06)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
@@ -2077,7 +2189,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2020-08-21', null, 'day', 'point', '🧨 「Dynamite」が米Hot 100で1位', 'BTSが初の全編英語曲「Dynamite」を発表し、米ビルボードHot 100で韓国アーティストとして初めての1位を獲得!ディスコ調の明るい一曲でした。
 
 韓国語のままビルボード200を制した後の、あえての英語曲による頂点獲得です。コロナ禍で停滞する音楽市場での戦略も奏功して、オンライン公演とともにパンデミック期のK-POPを象徴しています。', null,
-          'verified', null, 'user', 15) returning id)
+          'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Dynamite (BTS song)', 'https://en.wikipedia.org/wiki/Dynamite_(BTS_song)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
@@ -2085,7 +2197,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2020-10-15', null, 'day', 'point', '💹 Big Hit(現HYBE)がKOSPI上場', 'BTSの所属事務所Big Hitエンターテインメントが韓国取引所に上場。時価総額は初日に一時8兆ウォン台に達し、既存エンタメ大手3社の合計を上回る規模と報じられました。
 
 翌年HYBEに社名を変え、米イサカ・ホールディングス買収などで総合エンタメ企業化を進めます。アイドル事務所が資本市場の主要プレイヤーになり、K-POPの生産方式そのものが投資対象になった段階です。', null,
-          'verified', null, 'user', 16) returning id)
+          'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Hybe Corporation', 'https://en.wikipedia.org/wiki/Hybe_Corporation')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
@@ -2093,7 +2205,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2023-04-15', null, 'day', 'point', '🌴 BLACKPINKがコーチェラのヘッドライナーに', 'BLACKPINKが米コーチェラ・フェスティバルで、K-POPアーティストとして初めてヘッドライナーを務めました。2019年の同フェス出演から、4年での主役化です。
 
 欧米の大型フェス市場で興行の主役を張れることを示し、ガールグループが世界ツアー市場の主力になったことを印象づけます。ストリーミングとSNSで育った人気が、伝統的な興行の序列を塗り替えた形です。', null,
-          'verified', null, 'user', 17) returning id)
+          'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Blackpink', 'https://en.wikipedia.org/wiki/Blackpink')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
@@ -2101,7 +2213,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2023-09-01', null, 'month', 'point', '🌐 HYBEとゲフィンが米国発グループを育成', 'HYBEと米ゲフィン・レコードの合弁が、世界中から候補者を集めたオーディション企画「The Debut: Dream Academy」を実施。ここから翌年、多国籍6人組KATSEYEが米国を拠点にデビューします。
 
 韓国人グループの輸出ではなく、練習生制度という**育成システムそのものの輸出**への転換です。K-POPが国籍や言語を離れた「方法論」として扱われる段階に入ったことを象徴しています。', null,
-          'verified', null, 'user', 18) returning id)
+          'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Katseye', 'https://en.wikipedia.org/wiki/Katseye')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-kpop-global'),
@@ -2109,12 +2221,12 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2024-10-18', null, 'day', 'point', '🍷 ロゼ「APT.」が世界的ヒット', 'BLACKPINKのロゼが、ブルーノ・マーズとのデュエット曲「APT.」を発表。韓国の飲み会の遊び「アパート」を織り込んだ曲は各国のチャートで1位となり、米ビルボードGlobal 200でも首位を獲得しました。
 
 グループ活動と並行したソロでのグローバルヒットで、K-POPアイドルが個人として世界のポップ市場に立つ段階を示しました。米国のスーパースターとの対等な共作という形も、産業の成熟を物語っています。', null,
-          'verified', null, 'user', 19) returning id)
+          'verified', null, 'user', 20) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: APT. (Rosé and Bruno Mars song)', null)) as v(title, url);
 
 -- ═══ culture-literary-awards — 文学賞の系譜
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('culture-literary-awards', '00000000-0000-4000-8000-3df26bfd5b76', '文学賞の系譜', 'ノーベル賞から芥川賞・本屋大賞まで。賞という制度、作家と作品、読者と市場の3層を重ね、文学賞が文学をどう動かし、時に文学が賞の外で動いたかをたどる年表。', 'culture', 'ja', 'public', 's_culture-literary-awards', 1901, 2024, 'culture-literary-awards')
+values ('culture-literary-awards', '00000000-0000-4000-8000-3df26bfd5b76', '文学賞の系譜', 'ノーベル賞から芥川賞・本屋大賞まで。賞という制度、作家と作品、読者と市場の3層を重ね、文学賞が文学をどう動かし、時に文学が賞の外で動いたかをたどる年表。', 'culture', 'ja', 'public', 's_culture-literary-awards', 1901, 2026, 'culture-literary-awards')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-literary-awards');
@@ -2157,10 +2269,10 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-literary-awards'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-literary-awards') and name = '読者と市場'),
-          '1956-05-01', null, 'month', 'point', '「太陽族」ブームが社会現象に', '「太陽の季節」の映画公開を機に、無軌道な若者風俗を指す「太陽族」という語が流行し、若者の模倣を懸念する映画への批判運動も起きた。
+          '1956-05-01', '1956-09-30', 'month', 'period', '「太陽族」ブームの一夏', '「太陽の季節」の映画公開から、批判の高まりを受けて映画各社が同種作品の製作中止を申し合わせるまで、ひと夏のあいだ「太陽族」という語が紙面を賑わせた。無軌道な若者風俗への不安が、そのまま流行語になった夏である。
 
-芥川賞(賞の制度レイヤー)が生んだ作品が、文学の枠を超えて風俗現象となった事例である。ただし「太陽族」の語の起源や現象の実際の規模には諸説があり、メディアが作り上げた流行という側面も指摘されている。', null,
-          'disputed', '「太陽族」という語の起源(大宅壮一の命名とする説など)や、若者風俗としての実態・規模については諸説ある。', 'user', 4) returning id)
+1月の芥川賞受賞(作家と作品レイヤー)から数えても、1年に満たない。賞が点を打ち、市場が線を引き、その線が世論の反発で断ち切られる。賞と流行の距離の近さと危うさを、この短い線は示している。', null,
+          'disputed', '「太陽族」という語の起源(大宅壮一の命名とする説など)や現象の実態・規模には諸説があり、期間の区切り(映画公開から映画各社の製作自粛の申し合わせまで)も便宜的なもの。', 'user', 4) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 太陽族', 'https://ja.wikipedia.org/wiki/太陽族')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-literary-awards'),
@@ -2173,9 +2285,9 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-literary-awards'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-literary-awards') and name = '賞の制度'),
-          '1969-01-01', null, 'year', 'point', '英国でブッカー賞創設', '英国で英連邦の作家を対象とする長編小説の賞、ブッカー賞が創設され、第1回はP・H・ニュービーの「Something to Answer For」が受賞した。
+          '1969-01-01', '2013-12-31', 'year', 'period', 'ブッカー賞、英連邦限定の45年', '英国で長編小説の賞、ブッカー賞が創設された。第1回受賞はP・H・ニュービー。対象は英連邦やアイルランドなどの作家に限られ、この資格規定は2013年まで45年間維持された。候補の段階的発表や賭け率の報道まで含む「レース」の演出で部数を動かす、英国型の賞のモデルを確立した45年でもある。
 
-後に候補作の段階的発表や賭け率の報道まで含めた「レース」の演出で部数を動かす賞となり、賞を出版マーケティングの中核に据える英国型モデルを確立する。2005年には国際版も設けられ、翻訳文学の市場(読者と市場レイヤー)を世界的に広げた。', null,
+期間の途中、2005年には翻訳文学を対象とする国際版が生まれている。英語圏の内側で選び続けた線のすぐ外に、のちにハン・ガン(作家と作品レイヤー)を世界へ押し出す回路が育っていた。', null,
           'verified', null, 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('The Booker Prizes: 賞の沿革', null), ('Wikipedia: Booker Prize', 'https://en.wikipedia.org/wiki/Booker_Prize')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -2189,10 +2301,10 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-literary-awards'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-literary-awards') and name = '読者と市場'),
-          '1987-09-01', null, 'month', 'point', '「ノルウェイの森」が記録的ベストセラー', '村上春樹の長編「ノルウェイの森」が講談社から刊行され、上下巻あわせて数百万部と伝えられる記録的なベストセラーとなった。
+          '1987-09-01', '1988-12-31', 'month', 'period', '「ノルウェイの森」現象の16か月', '村上春樹の長編「ノルウェイの森」が刊行され、上下巻あわせて数百万部と伝えられる売れ行きが翌年末まで続いた。赤と緑の装丁が書店の平台を埋め、普段は小説を読まない層まで巻き込む社会現象と呼ばれた。
 
-村上は芥川賞を受賞しないまま国内最大の作家となり、後年は毎年ノーベル賞報道の的となる。**賞の外側で文学市場が動く**ことを示した代表例であり、賞の制度レイヤーの権威と市場の論理の乖離を象徴する存在であり続けている。', null,
-          'disputed', '累計部数は集計時点や上下巻の合算方法により400万部超などと幅があり、確定した数値はない。', 'user', 8) returning id)
+村上は芥川賞を受賞しないまま国内最大の作家となり、後年は毎秋ノーベル賞報道の的となる。**賞の外側で文学市場が動く**ことを、この線ほどはっきり示した例はない。賞の制度レイヤーのどの線とも接続せずに走った、市場だけの線である。', null,
+          'disputed', '累計部数は集計時点や上下巻の合算方法により400万部超などと幅があり、「現象」とされる期間の区切りも便宜的なもの。', 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: ノルウェイの森', 'https://ja.wikipedia.org/wiki/ノルウェイの森')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-literary-awards'),
@@ -2204,11 +2316,19 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('NobelPrize.org: The Nobel Prize in Literature 1994', 'https://www.nobelprize.org/prizes/literature/1994/summary/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-literary-awards'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-literary-awards') and name = '読者と市場'),
+          '1997-01-01', '2026-06-30', 'year', 'period', '紙の出版販売額、縮小の30年', '出版科学研究所の推計で、紙の書籍・雑誌の推定販売金額は1996年の約2兆6,600億円を頂点に減少へ転じた。途中わずかな持ち直しを挟みながらも基調は変わらず、この線は現在も続いている。書店の数も並行して減っていった。
+
+この下り坂の上に、本屋大賞の創設も、「火花」の熱狂も、K文学ブームも乗っている。**縮む市場ほど、賞という装置を必要とする**。この年表の後半の賞をめぐる出来事は、すべてこの線を背景に読むことができる。', null,
+          'verified', null, 'user', 10) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('出版科学研究所『出版指標年報』', null)) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'culture-literary-awards'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-literary-awards') and name = '作家と作品'),
           '2004-01-01', null, 'month', 'point', '綿矢りさ・金原ひとみが最年少で同時受賞', '第130回芥川賞を19歳の綿矢りさ「蹴りたい背中」と20歳の金原ひとみ「蛇にピアス」が同時受賞し、史上最年少記録を更新した。若い女性作家2人の受賞は文芸の枠を超えて報道された。
 
 受賞作を掲載した「文藝春秋」は異例の売れ行き(読者と市場レイヤー)となり、賞が若さと話題性を増幅する装置として機能した平成期の頂点といえる。純文学の読者層を一時的に大きく広げた出来事でもあった。', null,
-          'verified', null, 'user', 10) returning id)
+          'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 芥川龍之介賞', 'https://ja.wikipedia.org/wiki/芥川龍之介賞')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-literary-awards'),
@@ -2216,15 +2336,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2004-02-01', null, 'month', 'point', '受賞作掲載の「文藝春秋」が100万部超', '綿矢りさ・金原ひとみの受賞作を全文掲載した「文藝春秋」2004年3月号が発売され、同誌として過去最大級となる100万部を超える発行部数に達したと発表された。
 
 総合月刊誌が受賞作掲載号で100万部を超えるのは異例であり、芥川賞というブランドの集客力を数字で示した。1935年の創設時に組み込まれた、賞が雑誌を売るという構図(賞の制度レイヤー)の約70年後の到達点である。', null,
-          'disputed', '「100万部超」は発行元の発表に基づく発行・増刷部数であり、実売数の第三者による検証はない。', 'user', 11) returning id)
+          'disputed', '「100万部超」は発行元の発表に基づく発行・増刷部数であり、実売数の第三者による検証はない。', 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('文藝春秋2004年3月号(第130回芥川賞発表号)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-literary-awards'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-literary-awards') and name = '賞の制度'),
           '2004-04-01', null, 'month', 'point', '本屋大賞創設、第1回は「博士の愛した数式」', '全国の書店員の投票だけで「いちばん売りたい本」を決める本屋大賞が創設され、第1回は小川洋子「博士の愛した数式」が受賞した。運営は書店員有志によるNPOが担う。
 
-作家や批評家による選考会という従来の権威への異議として生まれ、受賞作が確実に売れる賞として出版界での存在感を急速に高めた。**選ぶ権威が選考委員から売り場へ**移った、賞の歴史の転換点である。', null,
-          'verified', null, 'user', 12) returning id)
+作家や批評家による選考会という従来の権威への異議として生まれ、縮小の続く文芸市場(読者と市場レイヤー)で「受賞作が確実に売れる賞」として存在感を急速に高めた。**選ぶ権威が選考委員から売り場へ**移った、賞の歴史の転換点である。', null,
+          'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('本屋大賞公式サイト', 'https://www.hontai.or.jp/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-literary-awards'),
@@ -2232,7 +2352,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2015-07-01', null, 'month', 'point', '又吉直樹「火花」が芥川賞受賞', 'お笑い芸人・又吉直樹の中編「火花」が第153回芥川賞を受賞した。純文学の新人賞を現役の芸人が受けたことは、テレビ・ネット・出版を横断する大きな話題となった。
 
 単行本は芥川賞受賞作として過去最大級の部数に達したと発表され、文芸書市場の縮小が続くなかで賞の集客力(読者と市場レイヤー)を改めて示した。テレビというメディアと文学賞の距離が最も縮まった事例である。', null,
-          'verified', null, 'user', 13) returning id)
+          'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 火花 (小説)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-literary-awards'),
@@ -2240,15 +2360,15 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2017-10-05', null, 'day', 'point', 'カズオ・イシグロがノーベル文学賞受賞', '長崎生まれの英国作家カズオ・イシグロがノーベル文学賞を受賞した。「日の名残り」「わたしを離さないで」で知られ、日本では「日系作家」の受賞として大きく報じられた。
 
 5歳で渡英し英語で書き続けた作家の受賞は、国籍や母語で文学を区分する視線の限界を示した。前年の音楽家ボブ・ディランへの授賞に続き、ノーベル賞自体が「文学」の境界を広げつつある時期の受賞でもあった。', null,
-          'verified', null, 'user', 14) returning id)
+          'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('NobelPrize.org: The Nobel Prize in Literature 2017', 'https://www.nobelprize.org/prizes/literature/2017/summary/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-literary-awards'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-literary-awards') and name = '賞の制度'),
-          '2018-05-04', null, 'day', 'point', 'ノーベル文学賞、2018年の発表見送り', '選考主体のスウェーデン・アカデミーが、関係者を巡るスキャンダルと内部対立を受けて2018年のノーベル文学賞の発表見送りを決めた。授与の延期は1949年以来の事態と報じられた。
+          '2017-11-01', '2019-10-10', 'month', 'period', 'ノーベル文学賞、危機と刷新の2年', '選考主体スウェーデン・アカデミーの関係者を巡る疑惑の報道に始まり、内部対立と会員の辞任が続いて、2018年の賞は発表見送りとなった。授与の延期は1949年以来と報じられた。
 
-**賞という制度そのものの信頼が問われた**出来事であり、選考体制の刷新を経て2019年に2年分がまとめて発表された。権威が人の組織である以上、賞もまた歴史の審判を受けることを示した。', null,
-          'verified', null, 'user', 15) returning id)
+外部委員を加えた選考体制の立て直しを経て、2019年10月に2年分がまとめて発表され、この線は閉じた。**賞という制度そのものが歴史の審判を受けた**2年間である。同じ頃、賞とは無関係の回路で韓国文学が日本の読者を広げていた(読者と市場レイヤー)。', null,
+          'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('NobelPrize.org: The Nobel Prize in Literature 2018', 'https://www.nobelprize.org/prizes/literature/2018/summary/')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-literary-awards'),
@@ -2256,7 +2376,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2018-12-01', '2021-12-31', 'month', 'period', '「キム・ジヨン」邦訳とK文学ブーム', 'チョ・ナムジュ「82年生まれ、キム・ジヨン」の邦訳刊行を起点に、韓国文学の翻訳出版が日本で相次ぎ、「K文学ブーム」と呼ばれる状況が生まれた。
 
 書店の棚づくりとSNSの読者コミュニティが牽引した現象で、賞の制度レイヤーとは別の回路で翻訳文学の市場が動いた例である。2024年のハン・ガンのノーベル文学賞受賞は、日本ではこのブームの延長線上で受け止められた。', null,
-          'unverified', '「ブーム」の起点・終点に明確な定義はなく、期間の区切りは便宜的なもの。市場規模を示す統一的な統計もない。', 'user', 16) returning id)
+          'unverified', '「ブーム」の起点・終点に明確な定義はなく、期間の区切りは便宜的なもの。市場規模を示す統一的な統計もない。', 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('筑摩書房: 82年生まれ、キム・ジヨン(日本語版)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-literary-awards'),
@@ -2264,7 +2384,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2024-10-10', null, 'day', 'point', 'ハン・ガンがノーベル文学賞受賞', '韓国の作家ハン・ガンがノーベル文学賞を受賞した。韓国初のノーベル文学賞であり、「菜食主義者」「少年が来る」など、歴史的な傷に向き合う詩的な散文が評価された。
 
 2016年の国際ブッカー賞(賞の制度レイヤー)が世界的評価の足場となっており、翻訳者との協働を含め**賞が賞を呼ぶ**現代の評価回路を体現する。日本ではK文学ブームで広がった読者層がこの受賞を迎えた。', null,
-          'verified', null, 'user', 17) returning id)
+          'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('NobelPrize.org: The Nobel Prize in Literature 2024', 'https://www.nobelprize.org/prizes/literature/2024/summary/')) as v(title, url);
 
 -- ═══ culture-photography — 写真表現の進化
@@ -2312,7 +2432,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-photography'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-photography') and name = '表現と作家'),
-          '1935-01-01', '1943-12-31', 'year', 'period', 'FSAの写真事業、記録が世論を動かす', '米農業安全保障局(FSA)が、大恐慌下の農村の窮状を記録する写真事業を組織し、ドロシア・ラングやウォーカー・エヴァンズらが全国を撮影しました。ラングの「移民の母」(1936)はその象徴です。
+          '1935-01-01', '1943-12-31', 'year', 'period', 'FSAの写真事業、世論を動かした9年', '米農業安全保障局(FSA)が、大恐慌下の農村の窮状を記録する写真事業を組織し、ドロシア・ラングやウォーカー・エヴァンズらが全国を撮影しました。ラングの「移民の母」(1936)はその象徴です。
 
 政府が写真家を雇い、写真で世論を動かすという、ドキュメンタリー写真の制度化の出発点となりました。写真はグラフ雑誌(メディアと社会レイヤー)と結びつき、社会を映す公共の記録という地位を確立していきます。', null,
           'verified', null, 'user', 4) returning id)
@@ -2320,9 +2440,9 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-photography'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-photography') and name = 'メディアと社会'),
-          '1936-11-23', null, 'day', 'point', '写真週刊誌LIFE創刊', 'ヘンリー・ルースが、写真週刊誌LIFEを創刊しました。写真を主役に据えた誌面は創刊号から売り切れが続き、グラフジャーナリズムの黄金時代を開いています。
+          '1936-11-23', '1972-12-29', 'day', 'period', '写真週刊誌LIFE、週刊の36年', 'ヘンリー・ルースが写真週刊誌LIFEを創刊しました。写真を主役に据えた誌面は創刊号から売り切れが続き、以後36年間、グラフジャーナリズムの黄金時代を支え続けます。週刊誌としての刊行は、1972年末の号で幕を下ろしました。
 
-写真家に大量の仕事と巨大な観客を与え、複数の写真で物語を組み立てるフォトエッセイの形式を確立しました。マグナム(表現と作家レイヤー)の写真家たちの主要な発表の場でもあり、テレビが普及するまで、写真は世界の出来事を見るための窓であり続けました。', null,
+写真家に大量の仕事と巨大な観客を与え、フォトエッセイの形式を確立した線です。マグナム(表現と作家レイヤー)の写真家たちの主要な発表の場でもありました。線の終わりはテレビの勝利を意味し、ベトナム戦争の線が尽きるより先に、写真の窓のほうが閉じたのです。', null,
           'verified', null, 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Life (magazine)', 'https://en.wikipedia.org/wiki/Life_(magazine)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -2336,9 +2456,9 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-photography'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-photography') and name = '技術と機材'),
-          '1948-11-01', null, 'month', 'point', 'ポラロイド、インスタントカメラ発売', 'エドウィン・ランドのポラロイド社が、撮影後その場で写真ができるランドカメラ95型を発売しました。ボストンの百貨店に並んだ初回分は、即日完売したと伝えられています。
+          '1948-11-01', '2008-12-31', 'month', 'period', 'ポラロイドの60年', 'エドウィン・ランドのポラロイド社が、撮影後その場で写真ができるランドカメラ95型を発売しました。ボストンの百貨店に並んだ初回分は即日完売したと伝えられています。以後60年間、インスタント写真は「その場で見る」楽しみを担い続け、フィルムの生産は2008年に終了しました。
 
-現像所を介さず、撮ることと見ることが一体になる体験は、写真をその場で見せ合う遊びへと変えました。撮ってすぐ共有したいという欲望は、インスタントカメラからデジタルカメラの背面液晶、そしてSNS(メディアと社会レイヤー)へと受け継がれていきます。', null,
+現像所を介さず、撮ることと見ることが一体になる体験は、写真をその場で見せ合う遊びへと変えました。撮ってすぐ共有したいという欲望はこの線が育てたものであり、線が途切れた2年後に現れるInstagram(メディアと社会レイヤー)の初期アイコンが、ポラロイド風のカメラだったことは象徴的です。', null,
           'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Land Camera', 'https://en.wikipedia.org/wiki/Land_Camera')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
@@ -2351,19 +2471,27 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('アンリ・カルティエ=ブレッソン『決定的瞬間』(1952)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-photography'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-photography') and name = 'メディアと社会'),
+          '1955-11-01', '1975-04-30', 'month', 'period', 'ベトナム戦争の20年', 'インドシナ戦争の終結後、南北に分かれたベトナムで長い戦争が続きました。米国の本格介入(1965年)以降は検閲の緩い「テレビと写真の戦争」となり、報道写真家が最前線まで同行しています。1975年4月のサイゴン陥落で、線は終わります。
+
+この線の上に、ニコンF(技術と機材レイヤー)を携えた写真家たちの仕事と、「戦争の恐怖」(1972年)が乗っています。日本の「プロヴォーク」(表現と作家レイヤー)が報道写真の規範を疑ったのも、この戦争のさなかでした。写真が戦争を終わらせたという通説には、検証の余地が残ります。', null,
+          'disputed', '戦争の起点には1955年、1960年、1964年など複数の慣習があります。ここでは南北分断後の内戦の始まり(1955年11月)からサイゴン陥落までを採りました。', 'user', 9) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Vietnam War', 'https://en.wikipedia.org/wiki/Vietnam_War')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'culture-photography'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-photography') and name = '技術と機材'),
           '1959-01-01', null, 'year', 'point', 'ニコンF発売、報道の標準機に', '日本光学工業が、一眼レフカメラのニコンFを発売しました。堅牢なボディと豊富な交換レンズ群のシステム化により、報道や戦場の現場の標準機となっていきます。
 
 ベトナム戦争(メディアと社会レイヤー)の報道写真の多くが日本製カメラで撮影され、カメラ産業の中心はドイツから日本へ移りました。機材の進化が「誰が、どこまで撮れるか」を規定することを示す例です。', null,
-          'verified', null, 'user', 9) returning id)
+          'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Nikon F', 'https://en.wikipedia.org/wiki/Nikon_F')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-photography'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-photography') and name = '表現と作家'),
-          '1968-11-01', '1970-03-31', 'month', 'period', '「プロヴォーク」、アレ・ブレ・ボケの反逆', '中平卓馬、高梨豊、多木浩二らが季刊誌「プロヴォーク」を創刊し、第2号から森山大道が参加しました。「アレ・ブレ・ボケ」と呼ばれる荒れた画面で、既成の写真言語を否定しています。
+          '1968-11-01', '1970-03-31', 'month', 'period', '「プロヴォーク」の17か月、アレ・ブレ・ボケの反逆', '中平卓馬、高梨豊、多木浩二らが季刊誌「プロヴォーク」を創刊し、第2号から森山大道が参加しました。「アレ・ブレ・ボケ」と呼ばれる荒れた画面で、既成の写真言語を否定しています。
 
 3号と総括の書籍を残して終わった短命の運動でしたが、写真は記録か表現かという問いを先鋭化させ、日本の写真が国際的に再評価される起点となりました。整った構図で意味を伝える報道写真の規範に対する、内部からの反逆でした。', null,
-          'verified', null, 'user', 10) returning id)
+          'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('プロヴォーク(1968-1970、復刻版・研究文献)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-photography'),
@@ -2371,7 +2499,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1972-06-08', null, 'day', 'point', '「戦争の恐怖」、一枚の写真が世界を撃つ', 'ベトナム戦争で、ナパーム弾に焼かれて逃げる少女を捉えた写真「戦争の恐怖」がAP通信から世界へ配信され、翌年ピュリツァー賞を受けました。
 
 **一枚の写真が世論を動かす**という、フォトジャーナリズムの力の象徴とされてきた作品です。なお2025年には撮影者の同定をめぐって調査と論争が起き、World Press Photoは撮影者表記を保留しました。写真の記録性そのものが、半世紀を経て再審に付された事例でもあります。', null,
-          'disputed', '従来ニック・ウトの撮影とされてきましたが、2025年に別人の撮影とする調査報道が出て、World Press Photoは撮影者表記を停止しました。AP通信は自社調査に基づき、クレジットを維持しています。', 'user', 11) returning id)
+          'disputed', '従来ニック・ウトの撮影とされてきましたが、2025年に別人の撮影とする調査報道が出て、World Press Photoは撮影者表記を停止しました。AP通信は自社調査に基づき、クレジットを維持しています。', 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: The Terror of War', null), ('World Press Photo: 撮影者表記に関する声明(2025)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-photography'),
@@ -2379,7 +2507,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1975-12-01', null, 'month', 'point', 'コダック社内でデジタルカメラ試作機が完成', 'コダックの技術者スティーブン・サッソンが、CCDを使った自己完結型デジタルカメラの試作機を完成させました。重さ約3.6kg、記録媒体はカセットテープ、画像は白黒0.01メガピクセルでした。
 
 社内では「誰も紙の写真を捨てない」と冷遇されたと、本人はのちに回想しています。**フィルムの王者が自らデジタルを発明し、活かせなかった**この出来事は、37年後の同社の経営破綻と対で語られ、イノベーションのジレンマの代表例に挙げられます。', null,
-          'unverified', '試作機の完成時期や社内での反応は、主に後年のサッソン本人の回想と1978年の特許記録に基づいており、当時の一次記録は乏しいものです。', 'user', 12) returning id)
+          'unverified', '試作機の完成時期や社内での反応は、主に後年のサッソン本人の回想と1978年の特許記録に基づいており、当時の一次記録は乏しいものです。', 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Steven Sasson', 'https://en.wikipedia.org/wiki/Steven_Sasson')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-photography'),
@@ -2387,7 +2515,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1995-03-01', null, 'month', 'point', 'カシオQV-10、液晶付きデジカメの登場', 'カシオが、液晶モニターを搭載したデジタルカメラQV-10を発売しました。撮った画像をその場で確認し、不要なら消して撮り直せる体験を、初めて大衆的な価格で提供しています。
 
 レンズ部が回転して自分に向けられる構造は、のちの自撮り文化(メディアと社会レイヤー)の先駆けとされます。フィルムを消費しない写真は撮影枚数の心理的な上限を取り払い、写真の総量が爆発する時代の入口となりました。', null,
-          'verified', null, 'user', 13) returning id)
+          'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('カシオ計算機: QV-10(1995年発売)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-photography'),
@@ -2395,7 +2523,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2000-11-01', null, 'month', 'point', 'カメラ付き携帯J-SH04発売、写メール誕生', 'シャープ製のカメラ付き携帯電話J-SH04が、J-フォンから発売されました。11万画素のカメラを内蔵し、撮った写真をメールで送る「写メール」という言葉を生んでいます。
 
 電話とカメラの融合は「常に持ち歩く道具」に撮影機能を組み込み、写真を通信の一部へと変えました。なお1999年発売のカメラ内蔵端末が先行しており、「世界初のカメラ付き携帯」という位置づけには諸説があります。', null,
-          'disputed', '「世界初のカメラ付き携帯電話」と紹介されることが多いものの、1999年発売の京セラVP-210などが先行しており、定義により見解が分かれます。', 'user', 14) returning id)
+          'disputed', '「世界初のカメラ付き携帯電話」と紹介されることが多いものの、1999年発売の京セラVP-210などが先行しており、定義により見解が分かれます。', 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('シャープ: J-SH04(2000年)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-photography'),
@@ -2403,7 +2531,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2010-10-06', null, 'day', 'point', 'Instagram公開、写真がSNSの中心に', '写真共有アプリInstagramが公開され、初日に2万5千人が登録したとされています。正方形のフォーマットとフィルターにより、誰の写真も「作品風」に仕上がりました。
 
 撮影から共有、他者の反応までが数秒で完結する回路は、写真を記録から**コミュニケーションの通貨**へと変えました。写真の価値が「何を写したか」から「どう見られるか」へ移る転換点であり、写真文化の重心は決定的にスマートフォンへ移っていきます。', null,
-          'verified', null, 'user', 15) returning id)
+          'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Instagram', 'https://en.wikipedia.org/wiki/Instagram')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-photography'),
@@ -2411,7 +2539,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2012-01-19', null, 'day', 'point', 'コダックが経営破綻', 'イーストマン・コダックが、連邦破産法11条(チャプター11)の適用を申請しました。1888年に写真の大衆化を切り開いた企業の経営破綻は、フィルム時代の終わりを象徴する出来事となりました。
 
 デジタルカメラを世界で最初に試作(1975年)しながら、フィルムの収益構造を守るうちに転換が遅れたと総括されています。同じ年、社員十数人のInstagram(メディアと社会レイヤー)が10億ドルでFacebookに買収され、両者の対照が広く論じられました。', null,
-          'verified', null, 'user', 16) returning id)
+          'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Kodak', 'https://en.wikipedia.org/wiki/Kodak')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-photography'),
@@ -2419,7 +2547,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2013-11-01', null, 'month', 'point', '「selfie」が今年の言葉に', 'オックスフォード辞典が、2013年の「今年の言葉」にselfie(自撮り)を選びました。使用頻度がこの1年で急増したことが、選定の理由とされています。
 
 スマートフォンの前面カメラとSNSの組み合わせにより、自分を撮ることが日常の所作となったことを、言語の側から裏づけた出来事です。かつて写真館の儀式であった肖像写真は、毎日、自分の手の中で作られるものになりました。写真の主題の中心に「撮る自分」が座った時代の指標です。', null,
-          'verified', null, 'user', 17) returning id)
+          'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Oxford Languages: Word of the Year 2013 "selfie"', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-photography'),
@@ -2427,7 +2555,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2017-01-01', null, 'year', 'point', '世界の年間撮影枚数、1兆枚超の推計', '米調査会社InfoTrendsなどの推計で、世界で1年間に撮影される写真が1兆枚を超えたとされました。その大半は専用カメラではなく、スマートフォン(技術と機材レイヤー)による撮影です。
 
 写真史の大半の期間の総撮影量を、単年で上回るともいわれる規模です。撮ることが希少な行為だった時代の終わりを示す数字であり、膨大な写真をどう選び、見返し、忘れるかという、写真との関係の再設計が新たな課題となりました。', null,
-          'unverified', '「1兆枚」は調査会社による推計値であり、算出方法の詳細は公開情報からは検証できません。', 'user', 18) returning id)
+          'unverified', '「1兆枚」は調査会社による推計値であり、算出方法の詳細は公開情報からは検証できません。', 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('InfoTrends/Keypoint Intelligence: 世界写真撮影枚数の推計', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-photography'),
@@ -2435,7 +2563,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2023-04-01', null, 'month', 'point', 'AI生成画像が写真賞に、作家が受賞辞退', 'ソニー・ワールド・フォトグラフィー・アワードのクリエイティブ部門で、ボリス・エルダグセンの入選作が生成AIによる画像だったことを本人が明かし、受賞を辞退しました。
 
 本人は「AI画像が写真のコンペで通用するかを試した」と説明し、写真とAI画像を分けて扱うよう問題提起しています。カメラを介さない「写真のような画像」の登場は、**写真とは何か**という1839年以来の問いを、最も鋭い形で再演しています。', null,
-          'verified', null, 'user', 19) returning id)
+          'verified', null, 'user', 20) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Boris Eldagsen: Sony World Photography Awards 2023に関する声明', null)) as v(title, url);
 
 -- ═══ culture-street-culture — 🛹 ストリートカルチャー
@@ -2474,35 +2602,51 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Skateboarding', 'https://en.wikipedia.org/wiki/Skateboarding')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-street-culture') and name = 'スケートとファッション'),
+          '1973-01-01', '1980-12-31', 'year', 'period', '第2次スケートブームの8年', 'ウレタンウィールの登場に火をつけられて、スケートボードが2度目の大流行を迎えた8年間です。カリフォルニアを中心に商業スケートパークが次々にオープンして、専門誌とプロシーンもこの線の上で育ちました。
+
+でも保険料の高騰でパークは軒並み閉鎖、ブームは1980年ごろ急速にしぼみます。行き場を失ったスケーターが向かった先が、街でした。この線の終盤に生まれたオーリー(同じレイヤー)が、次のストリートスケートの時代への橋になります。', null,
+          'disputed', '第2次ブームの区切りには定説がなく、ここではウレタンウィールの普及(1973年ごろ)からスケートパークの閉鎖が相次いだ1980年ごろまでを採りました。', 'user', 3) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Skateboarding', 'https://en.wikipedia.org/wiki/Skateboarding')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'culture-street-culture'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-street-culture') and name = '音楽とダンス'),
           '1973-08-11', null, 'day', 'point', 'ブロンクスのパーティー、ヒップホップの神話', 'ニューヨーク・ブロンクスのアパートの集会室で、DJクール・ハークが妹の新学期の費用を集めるパーティーを開催。レコードの間奏部分(ブレイク)を2枚使いで繰り返す手法が、ここで披露されたとされています。
 
 このパーティーは後年**ヒップホップ誕生の日**として記念されることになります。ブレイクで踊るB-Boyたち、MCの語り、そして壁のグラフィティ(グラフィティとアートレイヤー)が、同じ街区で一つの文化に束ねられていきました。', null,
-          'disputed', 'この日を「ヒップホップ誕生日」とする位置づけは後年の回顧と記念行事で定着したもので、当時の一次記録は乏しいです。', 'user', 3) returning id)
+          'disputed', 'この日を「ヒップホップ誕生日」とする位置づけは後年の回顧と記念行事で定着したもので、当時の一次記録は乏しいです。', 'user', 4) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: DJ Kool Herc', 'https://en.wikipedia.org/wiki/DJ_Kool_Herc')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'culture-street-culture'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-street-culture') and name = '音楽とダンス'),
+          '1973-08-11', '1979-09-30', 'day', 'period', 'レコード以前、ブロックパーティーの6年', 'クール・ハークのパーティーからラッパーズ・ディライトのヒットまで、ヒップホップがレコードにならずに路上とパーティーだけで育った6年間です。DJの技もMCの語りもB-Boyの踊りも、全部この線の上で発明されました。
+
+この同じ6年、スケートとファッションのレイヤーではウレタンウィールとオーリーが生まれています。ブロンクスとカリフォルニア、遠く離れた場所で路上の文化が同時に仕込まれていたことが、線を並べるとよく見えます。', null,
+          'disputed', '始点の1973年8月11日は後年「ヒップホップ誕生日」として定着した象徴的な日付で、終点はレコード商品化の始まり(1979年9月)を便宜的に採っています。', 'user', 5) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: DJ Kool Herc', 'https://en.wikipedia.org/wiki/DJ_Kool_Herc')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-street-culture') and name = 'スケートとファッション'),
           '1978-01-01', null, 'year', 'point', 'オーリー誕生、都市が遊び場になる', 'フロリダのスケートパークで、アラン・ゲレファンドが手を使わずに板ごと跳び上がる技を編み出して、仲間から「オーリー」と呼ばれました。垂直の壁面での浮遊技として生まれたこの動作が、スケートボードの語彙を根本から変えていきます。
 
-後にロドニー・ミュレンが平地でのオーリーを確立して、街の縁石も階段も手すりも、全部が技の対象になりました。都市そのものを遊び場に読み替えるストリートスケートの、技術的な前提です。', null,
-          'disputed', 'オーリー考案の時期は1977年とも1978年ともいわれていて、正確な日付を示す記録はありません。', 'user', 4) returning id)
+生まれた場所は、第2次スケートブーム(同じレイヤー)の線の終盤のパークでした。直後にブームは冷めますが、後にロドニー・ミュレンが平地のオーリーを確立して、街の縁石も階段も手すりも全部が技の対象に。都市を遊び場に読み替えるストリートスケートの、技術的な前提です。', null,
+          'disputed', 'オーリー考案の時期は1977年とも1978年ともいわれていて、正確な日付を示す記録はありません。', 'user', 6) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Ollie (skateboarding)', 'https://en.wikipedia.org/wiki/Ollie_(skateboarding)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-street-culture') and name = '音楽とダンス'),
           '1979-09-01', null, 'month', 'point', '「ラッパーズ・ディライト」がヒット', 'シュガーヒル・ギャングの「ラッパーズ・ディライト」が発売されて、ヒップホップのレコードとして初めて全米チャートのヒットになりました。
 
-パーティーの現場の即興だったMCの語りが、レコードという商品になって世界へ流通した瞬間です。一方でシーンの当事者からは「よそ者が先に商品化した」という批判も受けました。路上の文化と商業の緊張関係は、ヒップホップには最初から刻み込まれていたんですね。', null,
-          'verified', null, 'user', 5) returning id)
+パーティーの現場の即興だったMCの語りが、レコードという商品になって世界へ流通した瞬間で、ブロックパーティーの時代(同じレイヤー)の線はここで終わります。一方でシーンの当事者からは「よそ者が先に商品化した」という批判も受けました。路上と商業の緊張関係は、最初から刻み込まれていたんですね。', null,
+          'verified', null, 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Rapper''s Delight', 'https://en.wikipedia.org/wiki/Rapper''s_Delight')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-street-culture') and name = 'グラフィティとアート'),
-          '1982-01-01', null, 'year', 'point', 'バスキア、路上から画廊へ', 'SAMOの署名で街に詩的な言葉を残していたジャン=ミシェル・バスキアが、ニューヨークのギャラリーで個展を開いて、美術市場に本格的に迎え入れられました。
+          '1982-01-01', '1988-08-12', 'year', 'period', 'バスキア、路上から画廊への6年', 'SAMOの署名で街に詩的な言葉を残していたジャン=ミシェル・バスキアが、ニューヨークのギャラリーで個展を開いて、美術市場に本格的に迎え入れられました。27歳で急逝するまで、画家としての線はわずか6年です。
 
-**路上から画廊へ**という回路が開いた瞬間で、キース・ヘリングたちもこれに続きます。落書きとして排除される者と作家として買われる者の線引きは誰がするのか。この問いは、以後のストリートアートにずっとつきまとうことになります。', null,
-          'verified', null, 'user', 6) returning id)
+**路上から画廊へ**という回路が開いた瞬間で、キース・ヘリングたちも続きます。この短い線は、地下鉄グラフィティの時代(同じレイヤー)の線の最終盤にすっぽり収まっていて、路上の壁が消される直前に画廊の扉が開いたことを教えてくれます。', null,
+          'verified', null, 'user', 8) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Jean-Michel Basquiat', 'https://en.wikipedia.org/wiki/Jean-Michel_Basquiat')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
@@ -2510,7 +2654,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1982-01-01', '1984-12-31', 'year', 'period', 'ヒップホップ映画ブーム、世界への伝播', '「ワイルド・スタイル」「フラッシュダンス」「ビート・ストリート」など、ヒップホップ文化を描く映画が立て続けに公開されて、ブレイクダンスとグラフィティの映像が世界中の若者に届きました!
 
 ブロンクスの路上の文化は映画を通じて日本を含む各国へ一気に伝わり、各地でブレイクダンスのチームが生まれます。**映像が文化の輸出路になった**時期で、40年後のパリ五輪でのブレイキン採用につながる国際的な裾野はここで作られました。', null,
-          'verified', null, 'user', 7) returning id)
+          'verified', null, 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Wild Style', 'https://en.wikipedia.org/wiki/Wild_Style')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
@@ -2518,15 +2662,23 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1986-01-01', null, 'year', 'point', '👟 Run-D.M.C.、ヒップホップを主流へ', 'Run-D.M.C.がアルバム「Raising Hell」を発表。エアロスミスと共演した「Walk This Way」でロックの聴衆にまで届いて、「My Adidas」をきっかけにアディダスとの大型契約を結びました。
 
 ヒップホップのグループとスポーツ用品ブランドの先駆的な契約とされていて、ストリートファッション(スケートとファッションレイヤー)と音楽が市場で合流する原型です。何を履くかが何者であるかを語る。あの路上の記号の文化が、ここで産業とつながりました。', null,
-          'verified', null, 'user', 8) returning id)
+          'verified', null, 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Raising Hell (album)', 'https://en.wikipedia.org/wiki/Raising_Hell_(album)')) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'culture-street-culture'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-street-culture') and name = '音楽とダンス'),
+          '1986-01-01', '1993-12-31', 'year', 'period', 'ヒップホップ黄金時代の8年', 'Run-D.M.C.のブレイクに続いて、サンプリングの発明競争とメッセージ性の爆発で、ヒップホップの表現が一気に多様化した時期です。後から「ゴールデンエイジ」と呼ばれるようになりました。
+
+この線の真ん中の1989年に、グラフィティとアートのレイヤーでは地下鉄グラフィティの時代の線が終わります。音楽が主流へ駆け上がるのと同じ時期に、出発点だった路上の壁は消されていく。同じ文化の上り線と下り線が、ここで交差しています。', null,
+          'disputed', '「ゴールデンエイジ」の範囲には定説がなく、1985年ごろから1990年代半ばまでとする資料もあります。ここでは1986〜1993年を採りました。', 'user', 11) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Golden age hip hop', 'https://en.wikipedia.org/wiki/Golden_age_hip_hop')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-street-culture') and name = 'スケートとファッション'),
           '1994-04-01', null, 'month', 'point', 'Supreme、ラファイエット通りに開店', 'ジェームス・ジェビアがニューヨークのラファイエット通りにスケートショップSupremeをオープン。真ん中を広く空けた売り場はボードに乗ったまま入れる設計で、店員も現役のスケーターでした。
 
 少量生産と口コミで飢餓感を作る「ドロップ」の手法で熱狂的な支持を集めて、ストリートウェアを高級ブランドが参照する存在に育っていきます。2017年のルイ・ヴィトンとの協業に至る長い助走が、この小さな店から始まりました。', null,
-          'unverified', '開店は1994年4月とされることが多いですが、正確な開店日を示す一次記録は乏しいです。', 'user', 9) returning id)
+          'unverified', '開店は1994年4月とされることが多いですが、正確な開店日を示す一次記録は乏しいです。', 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Supreme (brand)', 'https://en.wikipedia.org/wiki/Supreme_(brand)')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
@@ -2534,7 +2686,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '1999-06-27', null, 'day', 'point', 'トニー・ホークが900を成功', 'サンフランシスコのXゲームズで、トニー・ホークが大会史上初の900(空中2回転半)をメイク!同じ年に発売されたゲーム「トニー・ホーク プロ・スケーター」も世界的なヒットになります。
 
 ヒップホップがレコードと映画(音楽とダンスレイヤー)を通って主流化した過程を、スケートはテレビ中継とゲームでなぞりました。不良の遊びから子ども部屋の憧れへ。ただ、競技化と商業化が進むほど、路上の文化との距離も開き始めます。', null,
-          'verified', null, 'user', 10) returning id)
+          'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Tony Hawk', 'https://en.wikipedia.org/wiki/Tony_Hawk')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
@@ -2542,7 +2694,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2008-05-01', null, 'month', 'point', 'テート・モダンが「Street Art」展', 'ロンドンのテート・モダンが、美術館の外壁そのものを会場にした「Street Art」展を開催して、世界の6組のアーティストが巨大壁画を制作しました。
 
 犯罪として排除されてきた表現を、国立級の美術館が正面から展示した画期です。同じ時期、路上ではバンクシーの神出鬼没の作品が話題を集めていて、制度の内と外の境界線は誰が引くのかという問いが、美術の世界で表面化しました。', null,
-          'verified', null, 'user', 11) returning id)
+          'verified', null, 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Tate Modern: Street Art exhibition (2008)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
@@ -2550,7 +2702,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2017-01-01', null, 'month', 'point', 'ルイ・ヴィトンがSupremeと協業発表', 'ルイ・ヴィトンがパリのメンズコレクションでSupremeとの協業を発表。2000年に自社の柄を無断使用したSupremeのデッキに法的措置をとった過去がある、その両者の合流でした。
 
 **ラグジュアリーがストリートを迎え入れた**象徴とされて、以後、高級ブランドはストリートウェアの手法と人材を次々に取り込みます。翌年にはストリート出身のヴァージル・アブローが、ルイ・ヴィトンのメンズ・デザイナーに就任しました。', null,
-          'verified', null, 'user', 12) returning id)
+          'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Louis Vuitton 2017-18秋冬メンズコレクション(Supremeとの協業)報道', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
@@ -2558,7 +2710,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2017-05-18', null, 'day', 'point', 'バスキア作品、1億ドルで落札', 'バスキアが1982年に描いた頭蓋骨の絵「Untitled」が、サザビーズで1億1050万ドルで落札されました。米国人作家のオークション最高額で、落札したのは日本の起業家、前澤友作です。
 
 路上に言葉を書くことから出発した画家の作品が、美術市場の最高価格帯に到達した出来事です。1988年に27歳で亡くなった作家の評価の高騰は、ストリート出自の表現が投資対象の資産として扱われる時代の到来を告げました。', null,
-          'verified', null, 'user', 13) returning id)
+          'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Sotheby''s: Jean-Michel Basquiat, Untitled (1982) 落札(2017年5月)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
@@ -2566,7 +2718,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2018-10-05', null, 'day', 'point', 'バンクシー、落札直後の自動裁断', 'サザビーズのオークションで、バンクシーの「風船と少女」が約104万ポンドで落札された直後、額縁に仕込まれたシュレッダーが作動して、絵の下半分が裁断されました。
 
 美術市場への批評として仕掛けられたパフォーマンスでしたが、裁断された作品は「愛はごみ箱の中に」と改題されて、2021年には約16倍の価格で再落札されます。市場への挑発すら市場価値に変換される。ストリートアートの現在地が露わになった出来事です。', null,
-          'verified', null, 'user', 14) returning id)
+          'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Sotheby''s: Banksy, Love is in the Bin (2018)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
@@ -2574,7 +2726,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2021-07-25', null, 'day', 'point', '🏅 スケートボードが五輪競技デビュー', '東京五輪でスケートボードが五輪競技として初めて実施されて、ストリート種目で堀米雄斗が初代金メダリストに。女子では13歳の西矢椛が優勝しました!
 
 警察に追われる遊びだったスケートボードが、**路上の遊びから五輪種目へ**と公認された到達点です。ただ、競技化が路上の文化の自由さを損なうという当事者の異論も根強くて、公認と自律のあいだの緊張は、滑る側の実感としてもいまも続いています。', null,
-          'verified', null, 'user', 15) returning id)
+          'verified', null, 'user', 18) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Skateboarding at the 2020 Summer Olympics', 'https://en.wikipedia.org/wiki/Skateboarding_at_the_2020_Summer_Olympics')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-street-culture'),
@@ -2582,12 +2734,12 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2024-08-09', null, 'day', 'point', 'ブレイキンがパリ五輪で正式競技に', 'パリ五輪でブレイキン(ブレイクダンス)が五輪競技として初めて実施されて、B-GirlsとB-Boysの各種目で世界のダンサーがバトルを繰り広げました。
 
 ブロンクスの路上で生まれた踊りが、半世紀でオリンピックの正式競技まで来ました。グラフィティは美術館へ(グラフィティとアートレイヤー)、スケートボードは五輪へ(スケートとファッションレイヤー)。3つの層が同じ結末に収束したことを示す、この年表の終着点です。なお次のロサンゼルス大会では実施されません。', null,
-          'verified', null, 'user', 16) returning id)
+          'verified', null, 'user', 19) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: Breaking at the 2024 Summer Olympics', 'https://en.wikipedia.org/wiki/Breaking_at_the_2024_Summer_Olympics')) as v(title, url);
 
 -- ═══ culture-traditional-crafts — 伝統工芸の現在
 insert into public.timelines (slug, owner_id, title, description, category, language, visibility, share_id, start_year, end_year, cover_seed)
-values ('culture-traditional-crafts', '00000000-0000-4000-8000-512d7b8348dc', '伝統工芸の現在', '人間国宝の制度から民藝の思想、能登の震災復興まで。産地と職人・制度と保護・市場とデザインの3層を重ね、伝統工芸が「保存」と「産業」のあいだで生き続ける道を静かに描く年表です。', 'culture', 'ja', 'public', 's_culture-traditional-crafts', 1924, 2024, 'culture-traditional-crafts')
+values ('culture-traditional-crafts', '00000000-0000-4000-8000-512d7b8348dc', '伝統工芸の現在', '人間国宝の制度から民藝の思想、能登の震災復興まで。産地と職人・制度と保護・市場とデザインの3層を重ね、伝統工芸が「保存」と「産業」のあいだで生き続ける道を静かに描く年表です。', 'culture', 'ja', 'public', 's_culture-traditional-crafts', 1924, 2026, 'culture-traditional-crafts')
 on conflict (slug) do update set owner_id = excluded.owner_id, title = excluded.title, description = excluded.description, category = excluded.category,
   start_year = excluded.start_year, end_year = excluded.end_year, updated_at = now();
 delete from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-traditional-crafts');
@@ -2598,15 +2750,15 @@ insert into public.layers (timeline_id, name, color, position) values ((select i
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-traditional-crafts'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-traditional-crafts') and name = '産地と職人'),
-          '1924-01-01', null, 'year', 'point', '濱田庄司が益子に移住', '英国での作陶生活から戻った陶芸家の濱田庄司が、栃木県益子に移り住みました。地元の土と釉薬を使い、日用の器を基礎に置く作陶を始め、無名の窯業地だった益子は「作家のいる産地」として知られていきます。
+          '1924-01-01', '1978-01-05', 'year', 'period', '濱田庄司、益子の54年', '英国での作陶生活から戻った陶芸家の濱田庄司が、栃木県益子に居を定めました。地元の土と釉薬を使い、日用の器を基礎に置く作陶を1978年に没するまで半世紀にわたって続け、無名の窯業地だった益子は「作家のいる産地」として知られていきます。
 
-濱田は柳宗悦らの民藝運動(市場とデザインレイヤー)の中心人物であり、1955年には最初の人間国宝の一人に認定されます(制度と保護レイヤー)。産地・思想・制度という、本年表の3層のすべてを生きた職人です。', null,
+この54年の線は、民藝運動の線(市場とデザインレイヤー)とほぼ並走しています。1955年には最初の人間国宝の一人に認定され(制度と保護レイヤー)、産地・思想・制度という本年表の3層のすべてが、一人の職人の線の上で交差しました。', null,
           'verified', null, 'user', 0) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 濱田庄司', 'https://ja.wikipedia.org/wiki/濱田庄司')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-traditional-crafts'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-traditional-crafts') and name = '市場とデザイン'),
-          '1926-01-01', '1961-12-31', 'year', 'period', '民藝運動が始まる', '柳宗悦・河井寬次郎・濱田庄司らが「日本民藝美術館設立趣意書」を発表し、民藝運動が本格的に始まりました。無名の職人が作る日用品にこそ健やかな美が宿るとする思想で、柳の死(1961年)までに美術館・雑誌・流通網を確立しています。
+          '1926-01-01', '1961-12-31', 'year', 'period', '民藝運動の35年', '柳宗悦・河井寬次郎・濱田庄司らが「日本民藝美術館設立趣意書」を発表し、民藝運動が本格的に始まりました。無名の職人が作る日用品にこそ健やかな美が宿るとする思想で、柳の死(1961年)までに美術館・雑誌・流通網を確立しています。
 
 名工の作や茶道具が中心だった工芸の価値観を**無名の手仕事**へと転倒させた運動であり、「用の美」という語彙は現在のクラフトブームまで生き続けています。工芸を語る言葉そのものを作った出来事といえます。', null,
           'disputed', '「民藝」の語は1925年末に柳らが考案したとされ、運動の起点を1925年と1926年のどちらに置くかなど、時期の区切りには諸説あります。', 'user', 1) returning id)
@@ -2646,7 +2798,7 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-traditional-crafts'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-traditional-crafts') and name = '産地と職人'),
-          '1979-01-01', '2016-12-31', 'year', 'period', '産地の従事者、約29万人から約6万人へ', '伝統的工芸品産地の従事者は、1979年ごろの約29万人をピークに減少を続け、2010年代には約6万人台まで落ち込んだとされています。生産額も、同じ期間に大きく縮小しました。
+          '1979-01-01', '2016-12-31', 'year', 'period', '従事者減少の37年、29万人から6万人へ', '伝統的工芸品産地の従事者は、1979年ごろの約29万人をピークに減少を続け、2010年代には約6万人台まで落ち込んだとされています。生産額も、同じ期間に大きく縮小しました。
 
 生活様式の変化による需要減、安価な量産品や輸入品への代替、後継者不足という三重の圧力によるものです。指定や認定といった制度による保護(制度と保護レイヤー)だけでは、産地の雇用を維持できないことを示しました。', null,
           'disputed', '従事者数・生産額は伝統的工芸品産業振興協会等の集計に基づく数字で、対象品目の追加や調査方法の変更を含むため、単純な時系列比較には注意が必要です。', 'user', 6) returning id)
@@ -2654,18 +2806,26 @@ insert into public.event_sources (event_id, title, url) select ev.id, v.title, v
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-traditional-crafts'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-traditional-crafts') and name = '市場とデザイン'),
-          '1981-01-01', null, 'year', 'point', '呉服市場がピーク、以後長期縮小へ', 'きもの関連の小売市場は、1980年代初頭に約1.8兆円の規模でピークを迎えたと推計されています。以後、生活様式の変化とともに縮小が続き、近年は2千数百億円規模とされます。
+          '1981-01-01', '2026-06-30', 'year', 'period', '呉服市場、縮小の45年', 'きもの関連の小売市場は、1980年代初頭に約1.8兆円の規模でピークを迎えたと推計されています。以後、生活様式の変化とともに縮小が続き、近年は2千数百億円規模とされる長い下り坂が、現在もなお続いています。
 
-染織は伝統的工芸品の指定品目でも大きな割合を占める中核分野であり、この市場の縮小が、西陣織や京友禅など主要産地の疲弊(産地と職人レイヤー)に直結しました。**需要の消失こそが最大の危機**であることを示す数字です。', null,
-          'unverified', '市場規模は矢野経済研究所等の民間調査による推計で、対象範囲や推計方法により数値には幅があります。', 'user', 7) returning id)
+染織は伝統的工芸品の指定品目でも大きな割合を占める中核分野であり、この線は産地の従事者が減り続ける線(産地と職人レイヤー)とほぼ重なって下っていきます。**需要の消失こそが最大の危機**であることを、二本の線の並走が示しています。', null,
+          'unverified', '市場規模は矢野経済研究所等の民間調査による推計で、対象範囲や推計方法により数値には幅があります。縮小の起点をピーク時(1980年代初頭)に置く区切りにも幅があります。', 'user', 7) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('矢野経済研究所「呉服市場に関する調査」', null)) as v(title, url);
+with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
+  values ((select id from public.timelines where slug = 'culture-traditional-crafts'),
+          (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-traditional-crafts') and name = '制度と保護'),
+          '2006-04-20', '2026-06-30', 'day', 'period', 'ユネスコ無形文化遺産条約の20年', '2003年に採択された無形文化遺産保護条約が発効し、技や祭礼といった無形の文化を国際的に登録・保護する枠組みが動き始めました。日本は早期の締約国としてこの制度を積極的に活用しており、線は現在も続いています。
+
+結城紬(2010年)、和紙(2014年)、伝統建築工匠の技(2020年)と、本年表の登録の点はすべてこの線の上に並んでいます。1950年の文化財保護法に始まる「技を守る」思想が国際標準となった時代であり、ロエベ財団の賞(市場とデザインレイヤー)と並んで、工芸の評価の国際化を支えています。', null,
+          'verified', null, 'user', 8) returning id)
+insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('UNESCO: 無形文化遺産保護条約(2003年採択・2006年発効)', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-traditional-crafts'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-traditional-crafts') and name = '市場とデザイン'),
           '2008-05-01', null, 'month', 'point', 'ふるさと納税開始、工芸品の新販路に', '地方税法の改正により、ふるさと納税制度が始まりました。返礼品競争の拡大とともに、南部鉄器や江戸切子、今治タオルなどの工芸品・地場産品が、返礼品として全国の家庭へ届く販路となっていきます。
 
 都市の消費者が寄付という形で産地を支える仕組みは、問屋流通の衰退で細った販路(産地と職人レイヤー)を部分的に補いました。自治体が産品のマーケティング主体になるという、工芸の売られ方の変化も生んでいます。', null,
-          'verified', null, 'user', 8) returning id)
+          'verified', null, 'user', 9) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('総務省: ふるさと納税ポータルサイト', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-traditional-crafts'),
@@ -2673,7 +2833,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2009-01-01', null, 'year', 'point', '中川政七商店が産地の経営支援を開始', '奈良晒を起源とする1716年創業の中川政七商店が、他産地の工芸メーカーを支援する経営コンサルティング事業を始めました。最初期の案件となった波佐見焼のメーカーからは、ヒットブランド「HASAMI」が生まれています。
 
 問屋への下請けから自社ブランドの製造小売へ、という転換の型を各地の産地に持ち込み、**デザインと経営の言葉**で工芸を立て直す潮流の先駆けとなりました。「日本の工芸を元気にする」を掲げる同社自身も、全国区へと成長しています。', null,
-          'unverified', 'コンサルティング事業の開始時期や最初の案件については、同社の発信・インタビューに基づく情報で、時期の記述には幅があります。', 'user', 9) returning id)
+          'unverified', 'コンサルティング事業の開始時期や最初の案件については、同社の発信・インタビューに基づく情報で、時期の記述には幅があります。', 'user', 10) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('中川政七商店 公式サイト', 'https://www.nakagawa-masashichi.jp')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-traditional-crafts'),
@@ -2681,7 +2841,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2010-11-16', null, 'day', 'point', '結城紬がユネスコ無形文化遺産に登録', '本場結城紬の織物技術が、ユネスコ無形文化遺産に登録されました。真綿から手でつむいだ無撚りの糸を、腰で張力を調える地機で織る、分業による手仕事の体系が評価されています。
 
 国内の重要無形文化財(1956年指定)からユネスコへという、**保護の国際化**を示す登録です。ただし登録は着物需要の回復(市場とデザインレイヤー)を保証するものではなく、「名誉と存続は別」という課題も浮き彫りにしました。', null,
-          'verified', null, 'user', 10) returning id)
+          'verified', null, 'user', 11) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 結城紬', 'https://ja.wikipedia.org/wiki/結城紬')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-traditional-crafts'),
@@ -2689,7 +2849,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2012-01-01', null, 'year', 'point', '京都の後継者ユニット「GO ON」結成', '西陣織の細尾、茶筒の開化堂、朝日焼など、京都の工芸の後継者6人がユニット「GO ON」を結成しました。海外での展示や、グローバル企業との協働プロダクトの開発に、共同で取り組む枠組みです。
 
 細尾はその後、西陣織をホテルやメゾンの内装材として海外へ販売する事業を拡大しました。**後継者自身が新しい市場を作りに行く**世代交代の象徴であり、「守る工芸」から「攻める工芸」への転換点とされています。', null,
-          'verified', null, 'user', 11) returning id)
+          'verified', null, 'user', 12) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('GO ON(京都・工芸後継者ユニット)公式サイト', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-traditional-crafts'),
@@ -2697,7 +2857,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2014-11-26', null, 'day', 'point', '「和紙 日本の手漉和紙技術」ユネスコ登録', '石州半紙・本美濃紙・細川紙の3つの手漉和紙技術が、「和紙 日本の手漉和紙技術」としてユネスコ無形文化遺産に登録されました。楮のみを原料とする伝統技法が対象です。
 
 登録を機に注目されたのが文化財修復の市場で、ルーブル美術館や大英博物館の修復現場でも、日本の和紙が使われています。伝統素材が世界の保存修復インフラになるという、新しい販路(市場とデザインレイヤー)を示しました。', null,
-          'verified', null, 'user', 12) returning id)
+          'verified', null, 'user', 13) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 和紙', 'https://ja.wikipedia.org/wiki/和紙')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-traditional-crafts'),
@@ -2705,7 +2865,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2016-01-01', null, 'year', 'point', '有田焼創業400年、海外デザイナーと協働', '日本磁器発祥の地とされる有田が創業400年を迎え、佐賀県などが国際的な記念事業を展開しました。オランダのデザインスタジオが指揮を執り、国内外16組のデザイナーと窯元が協働したブランド「2016/」が発表されています。
 
 記念の年を産地の構造転換の機会に変える試みであり、有田の技術を世界の同時代デザインに接続する実験として注目されました。産地が海外デザイナーと直接組むこの型は、その後ほかの産地にも広がっています。', null,
-          'disputed', '磁器創業を1616年とする起点は李参平による泉山陶石発見の伝承に基づくもので、創業年については考古学的に諸説あります。', 'user', 13) returning id)
+          'disputed', '磁器創業を1616年とする起点は李参平による泉山陶石発見の伝承に基づくもので、創業年については考古学的に諸説あります。', 'user', 14) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 有田焼', 'https://ja.wikipedia.org/wiki/有田焼')) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-traditional-crafts'),
@@ -2713,7 +2873,7 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2016-01-01', null, 'year', 'point', 'ロエベ財団クラフトプライズ創設', 'スペイン発のファッションブランド、ロエベの財団が、現代工芸を対象とする国際賞「ロエベ財団 クラフトプライズ」を創設しました。工芸を現代アートと同格に扱う賞として注目され、日本人作家が毎回多数ファイナリストに選ばれています。
 
 ラグジュアリー産業が工芸を**同時代の芸術**として顕彰する動きです。工芸の評価軸が、国内の伝統継承の文脈から国際的なアートマーケットへ広がったことを象徴し、工芸品の価格形成にも影響を与え始めています。', null,
-          'verified', null, 'user', 14) returning id)
+          'verified', null, 'user', 15) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('LOEWE FOUNDATION Craft Prize 公式サイト', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-traditional-crafts'),
@@ -2721,14 +2881,14 @@ with ev as (insert into public.events (timeline_id, layer_id, event_date, end_da
           '2020-12-17', null, 'day', 'point', '「伝統建築工匠の技」ユネスコ登録', '宮大工や左官、檜皮葺、畳製作など、木造建造物を受け継ぐための17分野の伝統技術が、「伝統建築工匠の技」としてユネスコ無形文化遺産に登録されました。
 
 建物という有形ではなく、修理を担う職人の技という無形を登録した点が特徴です。1950年の文化財保護法(同レイヤー)以来の「技を守る」思想の、国際的な到達点といえます。背景には、担い手の高齢化(産地と職人レイヤー)への強い危機感があります。', null,
-          'verified', null, 'user', 15) returning id)
+          'verified', null, 'user', 16) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('文化庁: 「伝統建築工匠の技」ユネスコ無形文化遺産登録', null)) as v(title, url);
 with ev as (insert into public.events (timeline_id, layer_id, event_date, end_date, date_precision, event_type, title, summary, detail, credibility, credibility_note, origin, position)
   values ((select id from public.timelines where slug = 'culture-traditional-crafts'),
           (select id from public.layers where timeline_id = (select id from public.timelines where slug = 'culture-traditional-crafts') and name = '産地と職人'),
-          '2024-01-01', null, 'day', 'point', '能登半島地震で輪島塗産地が被災', '元日に発生した能登半島地震で、輪島市は最大震度7の揺れと大規模火災に見舞われ、輪島塗の工房や店舗、道具や漆器の在庫が多数失われました。分業を担う職人たち自身も被災し、各地への避難を余儀なくされています。
+          '2024-01-01', '2026-06-30', 'day', 'period', '能登半島地震、輪島塗再建の2年半', '元日に発生した能登半島地震で、輪島市は最大震度7の揺れと大規模火災に見舞われ、輪島塗の工房や店舗、道具や漆器の在庫が多数失われました。分業を担う職人たち自身も被災し、仮設工房などでの再建が現在も続いています。
 
-国や県は仮設工房の整備や道具の再調達支援を進め、県外からの応援購入も広がりました。**災害は産地の分業構造ごと壊す**という伝統工芸の脆さと、産地の外から支える新しい形が、同時に現れた出来事です。', null,
-          'verified', null, 'user', 16) returning id)
+国や県は道具の再調達や工房の再建を支援し、県外からの応援購入も広がりました。**災害は産地の分業構造ごと壊す**という伝統工芸の脆さと、産地の外から支える新しい形が、同時に現れています。制度と保護のレイヤーが半世紀かけて築いた仕組みが、いま試されているのです。', null,
+          'verified', null, 'user', 17) returning id)
 insert into public.event_sources (event_id, title, url) select ev.id, v.title, v.url from ev, (values ('Wikipedia: 令和6年能登半島地震', 'https://ja.wikipedia.org/wiki/令和6年能登半島地震')) as v(title, url);
 

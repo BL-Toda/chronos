@@ -5,7 +5,7 @@
   "category": "technology",
   "language": "ja",
   "start_year": 1986,
-  "end_year": 2024,
+  "end_year": 2026,
   "layers": [
     {
       "name": "攻撃と脅威",
@@ -60,14 +60,14 @@
     {
       "date": "1991-06-01",
       "precision": "month",
-      "end_date": null,
-      "type": "point",
+      "end_date": "2000-01-14",
+      "type": "period",
       "layer": "防御と技術",
-      "title": "PGP公開、強い暗号が市民の手に",
-      "summary": "フィル・ジマーマンが、公開鍵暗号を誰でも使えるメール暗号化ソフトPGPを無償公開しました。軍事技術と扱われてきた強い暗号が、初めて一般市民の手に渡った瞬間です。\n\n米政府は暗号の輸出規制違反としてジマーマンを捜査し、「暗号戦争」と呼ばれる政府と技術者の対立(法と国家レイヤー)が始まりました。捜査は後に打ち切られますが、この対立の構図は2013年のスノーデン事件を経て、現在の暗号化論争まで続いています。",
+      "title": "PGP公開、暗号戦争の9年",
+      "summary": "フィル・ジマーマンが、公開鍵暗号を誰でも使えるメール暗号化ソフトPGPを無償公開しました。軍事技術と扱われてきた強い暗号が、初めて一般市民の手に渡った瞬間です。\n\n米政府は暗号の輸出規制違反としてジマーマンを捜査し、「暗号戦争」と呼ばれる政府と技術者の対立(法と国家レイヤー)が続きました。この線の一応の終点は、輸出規制が大幅に緩和された2000年1月です。ただし対立の構図は2013年のスノーデン事件を経て、現在の暗号化論争まで尾を引いています。",
       "detail": null,
-      "credibility": "verified",
-      "credibility_note": null,
+      "credibility": "disputed",
+      "credibility_note": "「暗号戦争」の期間には諸説あります。ここではPGP公開(1991年6月)から米国の暗号輸出規制の大幅緩和(2000年1月)までを採りました。",
       "sources": [
         {
           "title": "Wikipedia: Pretty Good Privacy",
@@ -99,7 +99,7 @@
       "end_date": "2007-05-18",
       "type": "period",
       "layer": "攻撃と脅威",
-      "title": "エストニアに大規模サイバー攻撃",
+      "title": "エストニアへの3週間のサイバー攻撃",
       "summary": "ソ連兵士像の移設をめぐるロシアとの対立を背景に、エストニアの政府・銀行・報道機関のサイトが約3週間にわたり大規模なDDoS攻撃を受けました。電子政府先進国の行政サービスが、断続的に止まります。\n\n**国家全体が攻撃対象になった**初の事例と位置づけられ、翌年NATOはタリンにサイバー防衛協力センターを設立しました(法と国家レイヤー)。国家間攻撃の交戦規定を論じる「タリン・マニュアル」も、ここから生まれています。",
       "detail": null,
       "credibility": "disputed",
@@ -186,11 +186,11 @@
     {
       "date": "2015-12-03",
       "precision": "day",
-      "end_date": null,
-      "type": "point",
+      "end_date": "2026-06-30",
+      "type": "period",
       "layer": "防御と技術",
-      "title": "Let's Encryptが公開ベータ、常時HTTPS時代へ",
-      "summary": "無料でサーバー証明書を自動発行する認証局Let's Encryptが公開ベータを始めました。年間数万円の費用と煩雑な手続きが要った通信の暗号化を、誰でも無料で自動化できるようにした取り組みです。\n\nスノーデンの告発(法と国家レイヤー)後に高まった暗号化の要請に、費用の壁を壊すことで応えました。主要ブラウザの後押しもあり、ウェブの暗号化率は数年で過半から9割超へ。**平文の通信が例外になる**時代を作りました。",
+      "title": "Let's Encrypt、常時HTTPS化の11年",
+      "summary": "無料でサーバー証明書を自動発行する認証局Let's Encryptが公開ベータを始めました。年間数万円の費用と煩雑な手続きが要った通信の暗号化を、誰でも無料で自動化できるようにした取り組みで、この線は現在もウェブの土台として続いています。\n\nスノーデンの告発(法と国家レイヤー)後に高まった暗号化の要請に、費用の壁を壊すことで応えました。主要ブラウザの後押しもあり、ウェブの暗号化率は数年で過半から9割超へ。**平文の通信が例外になる**時代を作った線です。",
       "detail": null,
       "credibility": "verified",
       "credibility_note": null,
@@ -198,6 +198,24 @@
         {
           "title": "Wikipedia: Let's Encrypt",
           "url": "https://en.wikipedia.org/wiki/Let%27s_Encrypt"
+        }
+      ]
+    },
+    {
+      "date": "2016-12-01",
+      "precision": "month",
+      "end_date": "2024-08-13",
+      "type": "period",
+      "layer": "防御と技術",
+      "title": "🔐 NISTポスト量子暗号、標準化の8年",
+      "summary": "米国立標準技術研究所(NIST)が、量子コンピュータでも解読困難な暗号方式の国際公募を始めました。世界から集まった候補を8年がかりで選抜・評価し、2024年8月に最初の連邦標準3件(FIPS 203/204/205)の発表へ至ります。\n\n将来の量子計算機に現在の暗号が破られる前に、いま流れている通信を守る移行の線です。「今のうちに暗号文を集めて後で解読する」攻撃(攻撃と脅威レイヤー)への備えでもあり、防御が攻撃の実現に先回りした珍しい8年でした。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "NIST: Post-Quantum Cryptography Project",
+          "url": "https://csrc.nist.gov/projects/post-quantum-cryptography"
         }
       ]
     },
@@ -220,13 +238,31 @@
       ]
     },
     {
-      "date": "2020-12-13",
-      "precision": "day",
-      "end_date": null,
-      "type": "point",
+      "date": "2019-01-01",
+      "precision": "year",
+      "end_date": "2026-06-30",
+      "type": "period",
       "layer": "攻撃と脅威",
-      "title": "SolarWinds事件、供給網攻撃の衝撃",
-      "summary": "米SolarWinds社の運用管理ソフトの更新プログラムにバックドアが仕込まれ、同ソフトを導入する米政府機関や大手企業など約1万8000組織に配布されていたことが発覚しました。米政府はロシア対外情報庁(SVR)の関与を指摘しています。\n\n信頼して受け取る正規のアップデート自体が攻撃経路になる。サプライチェーン攻撃の代表例となり、ソフトウェア部品表(SBOM)の義務化など翌年の米大統領令(法と国家レイヤー)に直結しました。",
+      "title": "ランサムウェア産業化の8年",
+      "summary": "攻撃ツールを開発する者、侵入経路を売る者、実行する者。ランサムウェアが分業化された「産業」になり、RaaS(サービス型)と、暗号化に加えてデータ暴露で脅す二重恐喝が定着しました。この線は現在も途切れていません。\n\nColonial Pipeline、そしてKADOKAWA。この年表の後半の大きな事件は、みなこの線の上に載っています。LockBit摘発(法と国家レイヤー)のような反撃はあっても、分業構造そのものは崩れていない。**攻撃が組織犯罪の産業になった**時代を、私たちはまだ生きています。",
+      "detail": null,
+      "credibility": "disputed",
+      "credibility_note": "産業化の起点には諸説あります。ここではRaaSと二重恐喝の手口が広く定着した2019年を起点として採りました。",
+      "sources": [
+        {
+          "title": "Europol: Internet Organised Crime Threat Assessment (IOCTA)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2020-03-01",
+      "precision": "month",
+      "end_date": "2020-12-13",
+      "type": "period",
+      "layer": "攻撃と脅威",
+      "title": "SolarWinds、潜伏の9か月",
+      "summary": "米SolarWinds社の運用管理ソフトの更新プログラムにバックドアが仕込まれ、2020年3月頃から約1万8000組織に配布されていました。発覚は同年12月。米政府機関や大手企業のネットワークで、侵入は9か月あまり気づかれないまま続いたことになります。\n\n信頼して受け取る正規のアップデート自体が攻撃経路になる。米政府はロシア対外情報庁(SVR)の関与を指摘しています。潜伏の線の長さこそがこの事件の本体で、ソフトウェア部品表(SBOM)の義務化を盛り込んだ翌年の米大統領令(法と国家レイヤー)に直結しました。",
       "detail": null,
       "credibility": "verified",
       "credibility_note": null,
@@ -360,24 +396,6 @@
         {
           "title": "CrowdStrike: Falcon Content Update Remediation and Guidance Hub (2024-07)",
           "url": null
-        }
-      ]
-    },
-    {
-      "date": "2024-08-13",
-      "precision": "day",
-      "end_date": null,
-      "type": "point",
-      "layer": "防御と技術",
-      "title": "🔐 NISTがポスト量子暗号の最初の標準を発表",
-      "summary": "米国立標準技術研究所(NIST)が、量子コンピュータでも解読困難な暗号方式の最初の連邦標準3件(FIPS 203/204/205)を発表しました。約8年の国際公募と評価を経た成果です。\n\n将来の量子計算機に現在の暗号が破られる前に、いま流れている通信を守る移行が始まりました。「今のうちに暗号文を集めて後で解読する」攻撃(攻撃と脅威レイヤー)への備えでもあり、防御が攻撃の実現に先回りした初の事例といえます。",
-      "detail": null,
-      "credibility": "verified",
-      "credibility_note": null,
-      "sources": [
-        {
-          "title": "NIST: Post-Quantum Cryptography Project",
-          "url": "https://csrc.nist.gov/projects/post-quantum-cryptography"
         }
       ]
     }

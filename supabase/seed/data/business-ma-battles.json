@@ -1,11 +1,11 @@
 {
   "slug": "business-ma-battles",
   "title": "M&A戦略の名勝負",
-  "description": "1976年のKKR設立から日鉄・USスチールまで、50年のM&A名勝負。買収の攻防・防衛と規制・金融技術と市場の3層で重ねる。買収の武器、防衛策、そして国家の論理。三つの力の競い合いを金額とともに追う。",
+  "description": "1976年のKKR設立から日鉄・USスチールまで、50年のM&A名勝負。買収の攻防・防衛と規制・金融技術と市場の3層で重ねる。買収の武器、防衛策、そして国家の論理。攻防と審査は点ではなく期間である。係争の線を金額とともに引く。",
   "category": "business",
   "language": "ja",
   "start_year": 1976,
-  "end_year": 2025,
+  "end_year": 2026,
   "layers": [
     {
       "name": "買収の攻防",
@@ -136,11 +136,11 @@
     {
       "date": "2005-02-08",
       "precision": "day",
-      "end_date": null,
-      "type": "point",
+      "end_date": "2005-04-18",
+      "type": "period",
       "layer": "買収の攻防",
-      "title": "ライブドア、ニッポン放送株を大量取得",
-      "summary": "2005年2月、ライブドアが東証の時間外取引でニッポン放送株の約3割を取得。フジテレビとの争奪戦が始まった。ニッポン放送側の新株予約権発行は、裁判所が差し止めた。\n\n**ルールの隙間を突く買収**が日本の茶の間の話題となり、敵対的買収と企業価値の議論を一気に大衆化させた。翌年以降の買収防衛策導入ラッシュと制度整備（防衛と規制レイヤー）の直接の引き金である。",
+      "title": "ライブドア対フジ、攻防の70日",
+      "summary": "2005年2月8日、ライブドアが東証の時間外取引でニッポン放送株の約3割を取得。フジテレビとの争奪戦は、4月18日の和解合意まで70日間続いた。ニッポン放送側の新株予約権発行は、裁判所が差し止めている。\n\n**ルールの隙間を突く買収**が茶の間の話題となり、敵対的買収と企業価値の議論を一気に大衆化させた70日。翌年の王子・北越の攻防、買収防衛策の導入ラッシュと制度整備（防衛と規制レイヤー）の直接の引き金である。",
       "detail": null,
       "credibility": "verified",
       "credibility_note": null,
@@ -172,11 +172,11 @@
     {
       "date": "2006-07-01",
       "precision": "month",
-      "end_date": null,
-      "type": "point",
+      "end_date": "2006-09-30",
+      "type": "period",
       "layer": "防衛と規制",
-      "title": "王子製紙が北越製紙へ敵対的TOB",
-      "summary": "2006年7月、王子製紙が同業の北越製紙へ敵対的TOB。日本の大手企業同士では戦後初とされる。\n\n北越は三菱商事への第三者割当増資で対抗、日本製紙も北越株を買い増し、TOBは不成立に終わった。安定株主による防衛が機能した事例であり、当時の日本で敵対的買収が成立しにくい構造を改めて示した。13年後の伊藤忠・デサント（買収の攻防レイヤー）と対をなす。",
+      "title": "王子・北越の攻防、2か月余り",
+      "summary": "2006年7月、王子製紙が同業の北越製紙へ敵対的TOBを表明。日本の大手企業同士では戦後初とされる攻防は、9月のTOB不成立まで2か月余り続いた。\n\n北越は三菱商事への第三者割当増資で対抗、日本製紙も北越株を買い増した。安定株主による防衛が機能した2か月。当時の日本で敵対的買収が成立しにくい構造を示したこの線は、13年後の伊藤忠・デサント（買収の攻防レイヤー）と対をなす。",
       "detail": null,
       "credibility": "verified",
       "credibility_note": null,
@@ -296,6 +296,24 @@
       ]
     },
     {
+      "date": "2018-08-13",
+      "precision": "day",
+      "end_date": "2026-06-30",
+      "type": "period",
+      "layer": "防衛と規制",
+      "title": "安全保障審査の時代、8年目",
+      "summary": "2018年8月、米国で外国投資リスク審査現代化法（FIRRMA）が成立し、CFIUSの審査権限が大幅に拡大した。対内投資を安全保障で審査する枠組みの強化は各国へ波及し、この線は現在も続く。\n\n直前のブロードコム阻止が助走、線の終端側には日鉄・USスチールの1年半（買収の攻防レイヤー）が乗る。株主の論理の上に国家の論理が重なった時代。M&Aの成否を決める最後の審査者が変わった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Committee on Foreign Investment in the United States",
+          "url": "https://en.wikipedia.org/wiki/Committee_on_Foreign_Investment_in_the_United_States"
+        }
+      ]
+    },
+    {
       "date": "2019-03-01",
       "precision": "month",
       "end_date": null,
@@ -332,31 +350,13 @@
       ]
     },
     {
-      "date": "2022-10-27",
+      "date": "2022-01-18",
       "precision": "day",
-      "end_date": null,
-      "type": "point",
-      "layer": "買収の攻防",
-      "title": "マスクによるTwitter買収が完了",
-      "summary": "2022年10月、イーロン・マスクによるTwitter買収が約440億ドルで完了。同年4月の合意後にマスク側が撤回を表明したが、会社側の履行請求訴訟を経て、公判直前に当初条件のまま決着した。\n\n買収契約の履行をデラウェア州の裁判所が担保する米国実務の強さを示した事例。個人による大型買収と、完了後の急激な経営改変は、M&Aと企業統治の議論に新しい題材を提供した。",
-      "detail": null,
-      "credibility": "verified",
-      "credibility_note": null,
-      "sources": [
-        {
-          "title": "Wikipedia: Acquisition of Twitter by Elon Musk",
-          "url": "https://en.wikipedia.org/wiki/Acquisition_of_Twitter_by_Elon_Musk"
-        }
-      ]
-    },
-    {
-      "date": "2023-10-13",
-      "precision": "day",
-      "end_date": null,
-      "type": "point",
+      "end_date": "2023-10-13",
+      "type": "period",
       "layer": "防衛と規制",
-      "title": "MSのActivision買収、2年の審査を経て完了",
-      "summary": "2023年10月、MicrosoftによるActivision Blizzardの買収が約687億ドルで完了。2022年1月の発表から、米FTCの差し止め請求と英CMAの当初の禁止決定を経て、条件修正の末の承認である。\n\nクラウドゲーム配信権の一部譲渡という構造的救済策で英当局が翻意。巨大テックのM&Aが世界の競争当局の同時審査に服する現実を示し、審査に2年近くを要すること自体が大型M&Aの新常態となった。",
+      "title": "MS・Activision、審査の21か月",
+      "summary": "2022年1月の発表から2023年10月の完了まで21か月。MicrosoftによるActivision Blizzard買収（約687億ドル）は、米FTCの差し止め請求と英CMAの当初の禁止決定を乗り越えての成立だった。\n\nクラウドゲーム配信権の一部譲渡という構造的救済策で英当局が翻意。巨大テックのM&Aが世界の当局の同時審査に服し、**審査期間そのものが取引コスト**になった。安全保障審査の時代（同じ防衛と規制レイヤー）と並走する線である。",
       "detail": null,
       "credibility": "verified",
       "credibility_note": null,
@@ -364,6 +364,24 @@
         {
           "title": "Wikipedia: Acquisition of Activision Blizzard by Microsoft",
           "url": "https://en.wikipedia.org/wiki/Acquisition_of_Activision_Blizzard_by_Microsoft"
+        }
+      ]
+    },
+    {
+      "date": "2022-04-14",
+      "precision": "day",
+      "end_date": "2022-10-27",
+      "type": "period",
+      "layer": "買収の攻防",
+      "title": "マスクのTwitter買収、迷走の6か月",
+      "summary": "2022年4月の買収提案から10月の完了まで6か月余り。イーロン・マスクによる約440億ドルのTwitter買収は、合意、撤回表明、会社側の履行請求訴訟を経て、公判直前に当初条件のまま決着した。\n\n買収契約の履行をデラウェア州の裁判所が担保する米国実務の強さを示した半年。同時期に閉じたSPACブームの線（金融技術と市場レイヤー）と重ねると、金利上昇が買収の景色を一変させた2022年が浮かぶ。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "Wikipedia: Acquisition of Twitter by Elon Musk",
+          "url": "https://en.wikipedia.org/wiki/Acquisition_of_Twitter_by_Elon_Musk"
         }
       ]
     },

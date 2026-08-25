@@ -7,9 +7,18 @@
   "start_year": 2015,
   "end_year": 2026,
   "layers": [
-    {"name": "技術と標準化", "color": "blue"},
-    {"name": "事業者と市場", "color": "orange"},
-    {"name": "政策と地政学", "color": "teal"}
+    {
+      "name": "技術と標準化",
+      "color": "blue"
+    },
+    {
+      "name": "事業者と市場",
+      "color": "orange"
+    },
+    {
+      "name": "政策と地政学",
+      "color": "teal"
+    }
   ],
   "events": [
     {
@@ -24,7 +33,10 @@
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "ITU-R勧告 M.2083: IMT Vision - Framework and overall objectives of the future development of IMT for 2020 and beyond", "url": "https://www.itu.int/rec/R-REC-M.2083"}
+        {
+          "title": "ITU-R勧告 M.2083: IMT Vision - Framework and overall objectives of the future development of IMT for 2020 and beyond",
+          "url": "https://www.itu.int/rec/R-REC-M.2083"
+        }
       ]
     },
     {
@@ -39,7 +51,10 @@
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "3GPP発表: First 5G NR specs approved (2017-12-21)", "url": null}
+        {
+          "title": "3GPP発表: First 5G NR specs approved (2017-12-21)",
+          "url": null
+        }
       ]
     },
     {
@@ -54,7 +69,10 @@
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "3GPP発表: Release 15 SA仕様承認 (2018-06)", "url": null}
+        {
+          "title": "3GPP発表: Release 15 SA仕様承認 (2018-06)",
+          "url": null
+        }
       ]
     },
     {
@@ -69,37 +87,64 @@
       "credibility": "disputed",
       "credibility_note": "どちらが「世界初」かは、開始時刻の定義や対象(一般向けか限定提供か)によって主張が分かれている。",
       "sources": [
-        {"title": "韓国科学技術情報通信部発表・Reuters報道 (2019-04)", "url": null}
+        {
+          "title": "韓国科学技術情報通信部発表・Reuters報道 (2019-04)",
+          "url": null
+        }
       ]
     },
     {
       "date": "2019-05-15",
       "precision": "day",
-      "end_date": null,
-      "type": "point",
+      "end_date": "2026-06-30",
+      "type": "period",
       "layer": "政策と地政学",
-      "title": "米国がファーウェイへ事実上の禁輸措置",
-      "summary": "米政権が情報通信サプライチェーンを守るとする大統領令に署名し、商務省はファーウェイをエンティティリストへ追加すると発表。米国由来の技術・部品の供給が原則許可制となった。\n\n5G基地局シェア首位の企業を狙い撃つ措置は、通信インフラが**安全保障の最前線**になったことを示した。以後、同盟国へ排除への同調圧力が広がり、機器市場の勢力図(事業者と市場レイヤー)を書き換えていく。",
+      "title": "米国のファーウェイ規制、8年目へ",
+      "summary": "米政権が情報通信サプライチェーンを守るとする大統領令に署名し、商務省はファーウェイをエンティティリストへ追加した。米国由来の技術・部品の供給は原則許可制となり、規制は半導体製造分野へ範囲を広げながら現在も続いている。\n\n5G基地局シェア首位の企業を狙い撃つ措置は、通信インフラが**安全保障の最前線**になったことを示した。この線の上に英国の排除決定(2020年)が乗り、3週間後に始まる中国の国家主導整備の線と7年にわたって並走していく。機器市場の勢力図は、この2本の線の間で書き換えられ続けている。",
       "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "米商務省産業安全保障局(BIS)発表 (2019-05)", "url": null}
+        {
+          "title": "米商務省産業安全保障局(BIS)発表 (2019-05)",
+          "url": null
+        }
       ]
     },
     {
       "date": "2019-06-06",
       "precision": "day",
-      "end_date": null,
-      "type": "point",
+      "end_date": "2026-06-30",
+      "type": "period",
       "layer": "政策と地政学",
-      "title": "中国が5G商用免許を交付、国家主導の整備へ",
-      "summary": "中国の工業情報化部が通信大手4社に5G商用免許を交付した。米国による制裁発動のわずか3週間後というタイミングで、当初の想定より前倒しの交付と報じられた。\n\n以後、中国は国家主導で基地局整備を進め、数年で世界の5G基地局の過半を占める規模に達する。標準・市場・政策が一体となって動く中国モデルと、同盟国連携で対抗する米国という対立軸がここで固まった。",
+      "title": "中国の国家主導5G整備、7年",
+      "summary": "中国の工業情報化部が通信大手4社に5G商用免許を交付し、国家主導の基地局整備が始まった。米国による制裁発動のわずか3週間後というタイミングで、整備網は世界の5G基地局の6割前後を占めるとされる規模へ達し、現在も拡大している。\n\nファーウェイ規制の線とこの線が3週間差で始まるのは偶然ではない。標準・市場・政策が一体で動く中国モデルと、同盟国連携で対抗する米国という対立軸がここで固まった。西側事業者が収益の調整期(事業者と市場レイヤー)にあえぐ間も、この線は太くなり続けた。",
       "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "中国工業情報化部発表・新華社報道 (2019-06-06)", "url": null}
+        {
+          "title": "中国工業情報化部発表・新華社報道 (2019-06-06)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "date": "2020-01-30",
+      "precision": "day",
+      "end_date": "2023-05-05",
+      "type": "period",
+      "layer": "事業者と市場",
+      "title": "コロナ禍の3年3か月",
+      "summary": "WHOが新型コロナを「国際的に懸念される公衆衛生上の緊急事態」と宣言してから解除までの3年3か月である。在宅勤務と遠隔授業でトラフィックは急増し、通信網は生活インフラとしての負荷試験を受け続けた。\n\n日本の5G商用開始(2020年3月)はこの線の始点のすぐ上にあり、外出制限で5Gを体験する場を奪われたまま推移した。3GPPの標準化会合もオンライン化され、Release 17の完成は約半年遅れた(技術と標準化レイヤー)。**理想の5Gより先に、ただつながることの価値**が証明された3年だった。",
+      "detail": null,
+      "credibility": "verified",
+      "credibility_note": null,
+      "sources": [
+        {
+          "title": "WHO: COVID-19 Public Health Emergency of International Concern(2020-01-30宣言、2023-05-05終了)",
+          "url": null
+        }
       ]
     },
     {
@@ -109,12 +154,15 @@
       "type": "point",
       "layer": "事業者と市場",
       "title": "日本で5G商用サービス開始",
-      "summary": "NTTドコモが日本初の5G商用サービスを開始し、同じ週にKDDI、ソフトバンクも続いた。当初は都市部のごく限られたスポットからの出発だった。\n\n直後に新型コロナの外出制限が重なり、5Gを体験する機会自体が限られたまま推移する。エリアの狭さと対応端末の少なさから「つながらない5G」との批判も受け、規格への期待と利用実態のギャップが早くも表面化した。",
+      "summary": "NTTドコモが日本初の5G商用サービスを開始し、同じ週にKDDI、ソフトバンクも続いた。当初は都市部のごく限られたスポットからの出発だった。\n\n開始の2か月前からコロナ禍の線(同レイヤー)が走り出しており、外出制限で5Gを体験する機会自体が限られたまま推移する。エリアの狭さと対応端末の少なさから「つながらない5G」との批判も受け、規格への期待と利用実態のギャップが早くも表面化した。",
       "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "NTTドコモ報道発表 (2020-03-25)", "url": null}
+        {
+          "title": "NTTドコモ報道発表 (2020-03-25)",
+          "url": null
+        }
       ]
     },
     {
@@ -129,7 +177,10 @@
       "credibility": "disputed",
       "credibility_note": "「世界初の完全仮想化モバイルネットワーク」は同社の主張であり、仮想化の定義や範囲をめぐって業界内で見解が分かれる。",
       "sources": [
-        {"title": "楽天モバイル報道発表 (2020-04-08)", "url": null}
+        {
+          "title": "楽天モバイル報道発表 (2020-04-08)",
+          "url": null
+        }
       ]
     },
     {
@@ -144,7 +195,10 @@
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "英政府(DCMS)発表 (2020-07-14)", "url": null}
+        {
+          "title": "英政府(DCMS)発表 (2020-07-14)",
+          "url": null
+        }
       ]
     },
     {
@@ -159,7 +213,10 @@
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "FCC Auction 107 (3.7 GHz Service) 結果公表", "url": "https://www.fcc.gov/auction/107"}
+        {
+          "title": "FCC Auction 107 (3.7 GHz Service) 結果公表",
+          "url": "https://www.fcc.gov/auction/107"
+        }
       ]
     },
     {
@@ -169,12 +226,15 @@
       "type": "period",
       "layer": "事業者と市場",
       "title": "「期待と現実」の調整期、FWAが想定外の主役に",
-      "summary": "各国で5Gエリアは拡大したものの、収益の柱と期待された法人向け用途や自動運転は立ち上がらず、米国では5Gを使った固定無線アクセス(FWA)が家庭向け回線として急伸するという想定外の展開になった。\n\nSA方式への移行も調査会社の推計では想定より遅れ、**華々しい標語と収益の実態の乖離**がこの時期の主題となる。6Gの議論が「5Gの反省」から始まる素地は、この数年間に形づくられた。",
+      "summary": "各国で5Gエリアは拡大したものの、収益の柱と期待された法人向け用途や自動運転は立ち上がらず、米国では5Gを使った固定無線アクセス(FWA)が家庭向け回線として急伸するという想定外の展開になった。\n\nSA方式への移行も調査会社の推計では想定より遅れ、**華々しい標語と収益の実態の乖離**がこの時期の主題となる。同じ3年間、中国の国家主導整備の線(政策と地政学レイヤー)は伸び続けていた。6Gの議論が「5Gの反省」から始まる素地は、この期間に形づくられた。",
       "detail": null,
       "credibility": "unverified",
       "credibility_note": "SA移行率やFWA契約数は調査会社・事業者発表による推計値で、業界全体の確定的な統計は存在しない。",
       "sources": [
-        {"title": "Ericsson Mobility Report", "url": "https://www.ericsson.com/en/reports-and-papers/mobility-report"}
+        {
+          "title": "Ericsson Mobility Report",
+          "url": "https://www.ericsson.com/en/reports-and-papers/mobility-report"
+        }
       ]
     },
     {
@@ -189,7 +249,10 @@
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "3GPP: Release 17", "url": "https://www.3gpp.org/specifications-technologies/releases/release-17"}
+        {
+          "title": "3GPP: Release 17",
+          "url": "https://www.3gpp.org/specifications-technologies/releases/release-17"
+        }
       ]
     },
     {
@@ -204,22 +267,28 @@
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "ITU-R勧告 M.2160: Framework and overall objectives of the future development of IMT for 2030 and beyond", "url": "https://www.itu.int/rec/R-REC-M.2160"}
+        {
+          "title": "ITU-R勧告 M.2160: Framework and overall objectives of the future development of IMT for 2030 and beyond",
+          "url": "https://www.itu.int/rec/R-REC-M.2160"
+        }
       ]
     },
     {
       "date": "2024-03-01",
       "precision": "month",
-      "end_date": null,
-      "type": "point",
+      "end_date": "2026-06-30",
+      "type": "period",
       "layer": "技術と標準化",
-      "title": "Release 18(5G-Advanced)の主要仕様が固まる",
-      "summary": "3GPPが5G-Advancedの最初の版となるRelease 18の主要仕様を凍結した。無線区間へのAI・機械学習の適用、ネットワーク省電力化、衛星通信(NTN)の拡張などが盛り込まれた。\n\n5Gと6Gをつなぐ橋渡しと位置づけられ、6Gの本命とされるAIネイティブなネットワークの予行演習という意味を持つ。収益化に苦しむ事業者(事業者と市場レイヤー)にとっては、追加投資に値するかを測る試金石ともなった。",
+      "title": "5G-Advanced期、6Gへの橋渡し",
+      "summary": "3GPPが5G-Advancedの最初の版となるRelease 18の主要仕様を凍結した。無線区間へのAI・機械学習の適用、ネットワーク省電力化、衛星通信(NTN)の拡張が柱で、続くRelease 19と合わせて6Gまでの期間を埋める世代となる。\n\n6Gの本命とされるAIネイティブ網の予行演習であり、この線の上で6G標準化の号砲(2025年3月)が鳴った。収益化に苦しむ事業者(事業者と市場レイヤー)にとっては、追加投資に値する世代かを測る試金石の期間が続いている。",
       "detail": null,
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "3GPP: Release 18", "url": "https://www.3gpp.org/specifications-technologies/releases/release-18"}
+        {
+          "title": "3GPP: Release 18",
+          "url": "https://www.3gpp.org/specifications-technologies/releases/release-18"
+        }
       ]
     },
     {
@@ -234,7 +303,10 @@
       "credibility": "verified",
       "credibility_note": null,
       "sources": [
-        {"title": "3GPP発表: 6G Workshop, Incheon (2025-03)", "url": null}
+        {
+          "title": "3GPP発表: 6G Workshop, Incheon (2025-03)",
+          "url": null
+        }
       ]
     },
     {
@@ -249,7 +321,10 @@
       "credibility": "unverified",
       "credibility_note": "仕様策定と商用化の時期はいずれも標準化団体・各社の計画・見込みであり、今後変動しうる。",
       "sources": [
-        {"title": "3GPP発表・主要各社6Gホワイトペーパー", "url": null}
+        {
+          "title": "3GPP発表・主要各社6Gホワイトペーパー",
+          "url": null
+        }
       ]
     }
   ]
