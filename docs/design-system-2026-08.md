@@ -50,6 +50,17 @@
 - アコーディオン等の開閉状態もモノトーンで表現（円形ボタンの枠と背景を白系の透明度で変化）
 - すべてのモーションは `@media (prefers-reduced-motion:reduce)` で無効化する
 
+## 5. アクセシビリティ
+
+- **ズームを禁止しない**。`<meta viewport>` に `user-scalable=no` / `maximum-scale` を入れない（WCAG 1.4.4）。指定は `width=device-width, initial-scale=1.0, viewport-fit=cover`
+- iOSはフォントが16px未満の入力欄にフォーカスすると自動でズームするため、**タッチ環境でだけ入力欄を16pxにする**。`--fs-input:16px` / `--lh-input:24px` はこの用途専用のトークン:
+  ```css
+  @media (pointer:coarse){
+    input,textarea,select{font-size:var(--fs-input) !important;line-height:var(--lh-input) !important}
+  }
+  ```
+- `:focus-visible` はホバー用メディアクエリの外に置き、キーボード操作を常に有効にする（枠は `2px solid var(--text-h)`）
+
 ## 5. その他
 
 - コピーに「!」は使わない（UIコピーのルール。シードコンテンツ側はペルソナ許可制で例外あり）

@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Chronos — オンボーディング</title>
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -28,6 +28,7 @@
   --fs-body:15px;--lh-body:28px;
   --fs-sm:13px;--lh-sm:22px;
   --fs-xs:11px;--lh-xs:18px;
+  --fs-input:16px;--lh-input:24px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{background:var(--bg);color-scheme:dark;min-height:100vh;min-height:100dvh}
@@ -190,6 +191,13 @@ body{font-family:var(--f-body);color:var(--text);font-size:var(--fs-body);line-h
 }
 @media (prefers-reduced-motion:reduce){
   *{transition:none !important;animation:none !important}
+}
+
+/* ─ a11y: ズーム制限は解除済み。iOSでフォーカス時に自動ズームしないよう
+   タッチ環境の入力欄だけ16pxにする（--fs-input はこの用途専用のトークン）*/
+@media (pointer:coarse){
+  /* クラス指定より優先させる（a11yのための上書き）*/
+  input,textarea,select{font-size:var(--fs-input) !important;line-height:var(--lh-input) !important}
 }
 </style>
 </head>

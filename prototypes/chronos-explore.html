@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Chronos — 年表を探す</title>
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -21,6 +21,7 @@
   --fs-body:15px;--lh-body:28px;
   --fs-sm:13px;--lh-sm:22px;
   --fs-xs:11px;--lh-xs:18px;
+  --fs-input:16px;--lh-input:24px;
   /* レイヤーカラー7色（データ専用・変更不可） */
   --c-blue:#5B9BD5;--c-blue-d:rgba(91,155,213,0.12);
   --c-green:#7BC67E;--c-green-d:rgba(123,198,126,0.12);
@@ -371,6 +372,13 @@ body.sheet-open{overflow:hidden}
   .tl-list-item:hover{background:#1A1A1F;border-color:var(--border2)}
   .tl-list-item:hover .tl-list-title{color:#FFFFFF}
   .sb-sheet-close:hover{color:var(--text);background:var(--accent-soft)}
+}
+
+/* ─ a11y: ズーム制限は解除済み。iOSでフォーカス時に自動ズームしないよう
+   タッチ環境の入力欄だけ16pxにする（--fs-input はこの用途専用のトークン）*/
+@media (pointer:coarse){
+  /* クラス指定より優先させる（a11yのための上書き）*/
+  input,textarea,select{font-size:var(--fs-input) !important;line-height:var(--lh-input) !important}
 }
 </style>
 </head>
