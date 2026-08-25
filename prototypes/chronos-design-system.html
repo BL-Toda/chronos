@@ -6,76 +6,81 @@
 <title>Chronos — Design System & React Handoff</title>
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link href="https://api.fontshare.com/v2/css?f[]=erode@300,400,500,600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=erode@400,500,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0A0A0C;--bg2:#111114;--bg-card:#16161A;--bg-card-h:#1C1C22;
-  --accent:#C8A87E;--accent-dim:rgba(200,168,126,0.13);
-  --text:#E8E4DE;--text-h:#F5F2ED;--text2:#8A8680;--text3:#5A5754;
-  --border:rgba(200,168,126,0.1);--border2:rgba(200,168,126,0.22);
+  --bg:#0A0A0C;--bg2:#0E0E11;--bg-card:#16161A;--bg-card-h:#1A1A1F;
+  --accent:#B8B4AE;--accent-dim:rgba(232,228,222,0.07);--accent-soft:rgba(232,228,222,0.07);--accent-med:rgba(232,228,222,0.14);
+  --text:#E8E4DE;--text-h:#F5F2ED;--text2:#9A9590;--text3:#7A7570;
+  --border:rgba(232,228,222,0.09);--border2:rgba(232,228,222,0.18);
   --f-d:'Erode','Shippori Mincho',serif;--f-b:'DM Sans',sans-serif;--f-m:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  /* タイプスケール5段（docs/design-system-2026-08.md）*/
+  --fs-display:clamp(24px,4vw,32px);--lh-display:44px;
+  --fs-title:18px;--lh-title:28px;
+  --fs-body:15px;--lh-body:28px;
+  --fs-sm:13px;--lh-sm:22px;
+  --fs-xs:11px;--lh-xs:18px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:var(--f-b);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+body{font-family:var(--f-b);color:var(--text);background:var(--bg);font-size:var(--fs-body);line-height:var(--lh-body);font-weight:400;-webkit-font-smoothing:antialiased}
 .wrap{max-width:840px;margin:0 auto;padding:40px 24px 120px}
 
 /* Header */
 .doc-header{text-align:center;margin-bottom:56px;padding-bottom:28px;border-bottom:1px solid var(--border)}
-.doc-brand{font-family:var(--f-d);font-size:14px;font-weight:500;letter-spacing:0.18em;color:var(--accent);text-transform:uppercase;margin-bottom:6px}
-.doc-title{font-family:var(--f-d);font-size:26px;font-weight:400;color:var(--text-h);margin-bottom:10px}
-.doc-desc{font-size:12px;color:var(--text2);line-height:1.7}
+.doc-brand{font-family:var(--f-d);font-size:var(--fs-sm);line-height:var(--lh-sm);font-weight:500;letter-spacing:0.18em;color:var(--accent);text-transform:uppercase;margin-bottom:8px}
+.doc-title{font-family:var(--f-d);font-size:var(--fs-display);line-height:var(--lh-display);font-weight:400;color:var(--text-h);margin-bottom:8px}
+.doc-desc{font-size:var(--fs-sm);color:var(--text2);line-height:var(--lh-sm)}
 
 /* TOC */
 .toc{padding:20px 24px;border-radius:14px;background:var(--bg-card);border:1px solid var(--border);margin-bottom:48px}
-.toc-title{font-family:var(--f-m);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
-.toc-list{list-style:none;display:flex;flex-direction:column;gap:6px}
-.toc-list li{font-size:14px;color:var(--text2);padding:6px 0;border-bottom:1px solid rgba(200,168,126,0.05)}
+.toc-title{font-family:var(--f-m);font-size:var(--fs-xs);line-height:var(--lh-xs);letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.toc-list li{font-size:var(--fs-sm);line-height:var(--lh-sm);color:var(--text2);padding:8px 0;border-bottom:1px solid rgba(232,228,222,0.05)}
 .toc-list li:last-child{border:none}
 .toc-list a{color:var(--text2);text-decoration:none;transition:color 0.2s}
-.toc-list a:hover{color:var(--accent)}
-.toc-num{font-family:var(--f-m);font-size:11px;color:var(--text3);margin-right:10px}
+.toc-num{font-family:var(--f-m);font-size:var(--fs-xs);line-height:var(--lh-xs);color:var(--text3);margin-right:8px}
 
 /* Section */
 .section{margin-bottom:56px}
-.section-label{font-family:var(--f-m);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
-.section-title{font-family:var(--f-d);font-size:22px;font-weight:400;color:var(--text-h);margin-bottom:8px}
-.section-desc{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:24px}
+.section-label{font-family:var(--f-m);font-size:var(--fs-xs);line-height:var(--lh-xs);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.section-title{font-family:var(--f-d);font-size:var(--fs-title);line-height:var(--lh-title);font-weight:400;color:var(--text-h);margin-bottom:8px}
+.section-desc{font-size:var(--fs-sm);color:var(--text2);line-height:var(--lh-sm);margin-bottom:24px}
 
 /* Code block */
 .code{padding:20px;border-radius:12px;background:var(--bg2);border:1px solid var(--border);margin:16px 0;overflow-x:auto}
-.code pre{font-family:var(--f-m);font-size:12px;color:var(--text);line-height:1.7;white-space:pre}
-.code-label{font-family:var(--f-m);font-size:10px;letter-spacing:0.08em;color:var(--text3);margin-bottom:8px}
-.code-filename{font-family:var(--f-m);font-size:11px;color:var(--accent);margin-bottom:6px;display:inline-block;padding:2px 8px;border-radius:4px;background:var(--accent-dim)}
+.code pre{font-family:var(--f-m);font-size:var(--fs-sm);color:var(--text);line-height:var(--lh-sm);white-space:pre}
+.code-label{font-family:var(--f-m);font-size:var(--fs-xs);line-height:var(--lh-xs);letter-spacing:0.08em;color:var(--text3);margin-bottom:8px}
+.code-filename{font-family:var(--f-m);font-size:var(--fs-xs);line-height:var(--lh-xs);color:var(--accent);margin-bottom:8px;display:inline-block;padding:2px 8px;border-radius:4px;background:var(--accent-dim)}
 
 /* Table */
 .tbl{width:100%;border-collapse:collapse;margin:16px 0}
-.tbl th{font-family:var(--f-m);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);font-weight:400}
-.tbl td{font-size:12px;color:var(--text);padding:10px 12px;border-bottom:1px solid rgba(200,168,126,0.05);vertical-align:top}
-.tbl td code{font-family:var(--f-m);font-size:11px;color:var(--accent);background:var(--accent-dim);padding:1px 6px;border-radius:4px}
-.tbl tr:hover td{background:rgba(200,168,126,0.03)}
+.tbl th{font-family:var(--f-m);font-size:var(--fs-xs);line-height:var(--lh-xs);letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);text-align:left;padding:8px 12px;border-bottom:1px solid var(--border);font-weight:400}
+.tbl td{font-size:var(--fs-sm);line-height:var(--lh-sm);color:var(--text);padding:8px 12px;border-bottom:1px solid rgba(232,228,222,0.05);vertical-align:top}
+.tbl td code{font-family:var(--f-m);font-size:var(--fs-xs);line-height:var(--lh-xs);color:var(--accent);background:var(--accent-dim);padding:1px 8px;border-radius:4px}
 
 /* Component card */
 .comp{padding:24px;border-radius:14px;background:var(--bg-card);border:1px solid var(--border);margin:16px 0}
-.comp-name{font-family:var(--f-d);font-size:18px;color:var(--text-h);margin-bottom:4px}
-.comp-desc{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:16px}
-.comp-props{display:flex;flex-direction:column;gap:6px}
-.comp-prop{display:flex;gap:8px;font-size:12px;align-items:baseline}
-.comp-prop-name{font-family:var(--f-m);font-size:11px;color:var(--accent);min-width:110px;flex-shrink:0}
-.comp-prop-type{font-family:var(--f-m);font-size:10px;color:var(--text3);min-width:100px;flex-shrink:0}
+.comp-name{font-family:var(--f-d);font-size:var(--fs-title);line-height:var(--lh-title);color:var(--text-h);margin-bottom:4px}
+.comp-desc{font-size:var(--fs-sm);color:var(--text2);line-height:var(--lh-sm);margin-bottom:16px}
+.comp-props{display:flex;flex-direction:column;gap:8px}
+.comp-prop{display:flex;gap:8px;font-size:var(--fs-sm);line-height:var(--lh-sm);align-items:baseline}
+.comp-prop-name{font-family:var(--f-m);font-size:var(--fs-xs);line-height:var(--lh-xs);color:var(--accent);min-width:110px;flex-shrink:0}
+.comp-prop-type{font-family:var(--f-m);font-size:var(--fs-xs);line-height:var(--lh-xs);color:var(--text3);min-width:100px;flex-shrink:0}
 .comp-prop-desc{color:var(--text2)}
 
 /* State badge */
-.state-badge{display:inline-block;padding:2px 8px;border-radius:6px;font-family:var(--f-m);font-size:10px;letter-spacing:0.04em}
-.sb-global{background:rgba(200,168,126,0.1);color:var(--accent)}
+.state-badge{display:inline-block;padding:2px 8px;border-radius:6px;font-family:var(--f-m);font-size:var(--fs-xs);line-height:var(--lh-xs);letter-spacing:0.04em}
+.sb-global{background:var(--border);color:var(--accent)}
 .sb-local{background:rgba(91,155,213,0.1);color:#5B9BD5}
 .sb-server{background:rgba(123,198,126,0.1);color:#7BC67E}
 
 /* Tree */
-.tree{font-family:var(--f-m);font-size:12px;color:var(--text2);line-height:2.0;padding:20px 24px;background:var(--bg2);border-radius:12px;border:1px solid var(--border);margin:16px 0}
+.tree{font-family:var(--f-m);font-size:var(--fs-sm);color:var(--text2);line-height:var(--lh-sm);padding:20px 24px;background:var(--bg2);border-radius:12px;border:1px solid var(--border);margin:16px 0}
 .tree .dir{color:var(--accent)}
 .tree .file{color:var(--text)}
-.tree .note{color:var(--text3);font-size:10px}
+.tree .note{color:var(--text3);font-size:var(--fs-xs);line-height:var(--lh-xs)}
 
 /* Swatch inline */
 .sw{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:middle;margin-right:4px}
@@ -86,6 +91,12 @@ body{font-family:var(--f-b);color:var(--text);background:var(--bg);-webkit-font-
 @media(max-width:500px){
   .comp-prop{flex-direction:column;gap:2px}
   .comp-prop-name,.comp-prop-type{min-width:auto}
+}
+
+/* ─ hover（ポインタ環境のみ）*/
+@media (hover:hover) and (pointer:fine){
+  .toc-list a:hover{color:var(--text-h)}
+  .tbl tr:hover td{background:rgba(232,228,222,0.03)}
 }
 </style>
 </head>
@@ -132,20 +143,22 @@ export const colors = {
   bgCard:    '#16161A',
   bgCardH:   '#1C1C22',
 
-  // Accent
-  accent:    '#C8A87E',
-  accentDim: 'rgba(200,168,126,0.13)',
+  // Accent（2026-08-25: ゴールド #C8A87E を廃止しモノトーンへ。
+  // 彩度を持つのはレイヤーカラー7色だけ、というのが現在のルール）
+  accent:    '#B8B4AE',
+  accentSoft:'rgba(232,228,222,0.07)',
+  accentMed: 'rgba(232,228,222,0.14)',
 
-  // Text
-  textH:     '#F5F2ED',   // 見出し
+  // Text（4段でヒエラルキーを作る）
+  textH:     '#F5F2ED',   // 見出し・強調
   text:      '#E8E4DE',   // 本文
-  text2:     '#8A8680',   // サブテキスト
-  text3:     '#5A5754',   // ラベル・プレースホルダ
+  text2:     '#9A9590',   // サブテキスト・説明
+  text3:     '#7A7570',   // ラベル・メタ・出典
 
-  // Borders
-  border:    'rgba(200,168,126,0.10)',
-  border2:   'rgba(200,168,126,0.22)',
-  line:      'rgba(200,168,126,0.15)',
+  // Borders（モノトーン）
+  border:    'rgba(232,228,222,0.09)',
+  border2:   'rgba(232,228,222,0.18)',
+  line:      'rgba(232,228,222,0.12)',
 
   // Layer Colors (7色プリセット)
   layer: {
@@ -212,23 +225,27 @@ export const fontFamily = {
 // Shippori Mincho: Erode未対応の日本語にフォールバック
 // ※ 斜体は使用しない（全ウェイト正体のみ）
 
-export const fontSize = {
-  xs:    10,  // タグ・バッジ・最小ラベル
-  cap:   11,  // キャプション・年月ラベル
-  sm:    12,  // サブテキスト・説明文
-  base:  14,  // 本文・ボタン・ナビ ★基準値
-  md:    16,  // カードタイトル・小見出し
-  lg:    18,  // セクション見出し
-  xl:    22,  // モーダル見出し
-  '2xl': 26,  // ページタイトル
+// 2026-08-25改定: 9段→5段に整理。サイズを減らし、
+// ウェイトと文字色でヒエラルキーを作る方針に変更した。
+// 行間は必ず偶数pxの固定値（1.5 等の倍率指定は使わない）。
+export const typeScale = {
+  display: { size: 'clamp(24px,4vw,32px)', line: 44 },  // ページ・年表タイトル
+  title:   { size: 18, line: 28 },  // カード見出し・イベント見出し・セクション名
+  body:    { size: 15, line: 28 },  // 本文・リード・説明文 ★基準値
+  sm:      { size: 13, line: 22 },  // 日付・カード説明・補足・チップ・ボタン
+  xs:      { size: 11, line: 18 },  // バッジ・出典・統計・ラベル・件数
 } as const;
 
+// ウェイトは3種のみ
 export const fontWeight = {
-  light:    300,
-  regular:  400,
-  medium:   500,
-  semibold: 600,
+  regular:  400,  // 本文・説明
+  medium:   500,  // 見出し・日付・ラベル・選択中の要素
+  bold:     700,  // 強調語・統計の数値
 } as const;
+
+// 数字の使い分け:
+//   年月（2012.10 / 1988–2024）→ body フォント + font-variant-numeric: tabular-nums
+//   データ（イベント数・統計）  → mono フォント
 
 // フォント読み込み（next/font or @fontsource）
 // Erode: https://www.fontshare.com/fonts/erode (OFL)
@@ -238,16 +255,15 @@ export const fontWeight = {
   </div>
 
   <table class="tbl">
-    <tr><th>Size</th><th>Font</th><th>Weight</th><th>用途</th></tr>
-    <tr><td>10px</td><td><code>mono</code></td><td>400</td><td>タグ、バッジ、年月ラベル内アクセント</td></tr>
-    <tr><td>11px</td><td><code>mono</code></td><td>400</td><td>年月ラベル、メタ情報、信憑性フラグ</td></tr>
-    <tr><td>12px</td><td><code>body</code></td><td>300–400</td><td>サブテキスト、カード説明文、ナビリンク</td></tr>
-    <tr><td>14px</td><td><code>body</code></td><td>400–500</td><td>本文、ボタンラベル、フォーム入力</td></tr>
-    <tr><td>16px</td><td><code>display</code></td><td>500</td><td>イベントタイトル、カード見出し</td></tr>
-    <tr><td>18px</td><td><code>display</code></td><td>400</td><td>セクション見出し、共有シートタイトル</td></tr>
-    <tr><td>22px</td><td><code>display</code></td><td>400</td><td>モーダル見出し、ヒーローサブ</td></tr>
-    <tr><td>26px</td><td><code>display</code></td><td>400</td><td>ページタイトル、年表タイトル</td></tr>
+    <tr><th>トークン</th><th>Size / Line</th><th>Font</th><th>Weight</th><th>用途</th></tr>
+    <tr><td><code>display</code></td><td>24–32px / 44px</td><td><code>display</code></td><td>500</td><td>ページタイトル、年表タイトル</td></tr>
+    <tr><td><code>title</code></td><td>18px / 28px</td><td><code>display</code> or <code>body</code></td><td>500</td><td>カード見出し、イベント見出し、セクション名</td></tr>
+    <tr><td><code>body</code></td><td>15px / 28px</td><td><code>body</code></td><td>400</td><td>本文、リード、説明文（強調語のみ700）</td></tr>
+    <tr><td><code>sm</code></td><td>13px / 22px</td><td><code>body</code></td><td>400–500</td><td>日付、カード説明、補足メモ、チップ、ボタン</td></tr>
+    <tr><td><code>xs</code></td><td>11px / 18px</td><td><code>mono</code></td><td>400</td><td>バッジ、出典、統計、ラベル、件数</td></tr>
   </table>
+
+  <div class="section-desc" style="margin-top:24px">同じ13pxでも「日付＝Medium＋アクセント色」「カード説明＝Regular＋text2」のように、ウェイトと色で差をつける。サイズを増やさずにヒエラルキーを作るのが現在の方針。余白はすべて4の倍数、ホバーは <code>@media (hover:hover) and (pointer:fine)</code> の中だけに書く。詳細は <code>docs/design-system-2026-08.md</code> が正。</div>
 </div>
 
 <!-- ===== 03. LOGO ===== -->
